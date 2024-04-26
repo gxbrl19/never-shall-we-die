@@ -14,10 +14,12 @@ public class Door : MonoBehaviour
 
     private bool _locked;
     private bool _playerTriggered = false;
-    private PlayerInputs _input;
+    PlayerInputs _input;
+    PlayerHealth _health;
 
     private void Awake() {
         _input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInputs>();
+        _health = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     private void Start()
@@ -54,11 +56,7 @@ public class Door : MonoBehaviour
 
     void GetNextScene()
     {
-        _scriptablePosition._sceneTransition = true;
-        _scriptablePosition._direction = _direction;
-        _scriptablePosition._indexStartPosition = _indexPosition;
-        //_scriptablePosition._initialValue = _playerPosition;
-        //_scriptablePosition._initialValue = new Vector3(_startPoints[_indexPosition].position.x, _startPoints[_indexPosition].position.y, _startPoints[_indexPosition].position.z);
+        _scriptablePosition.SetAttributes(true, _direction, _indexPosition, _health._currentHealth, _health._currenteMana);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
     }
 

@@ -37,8 +37,6 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         CheckAttributes();
-        _currentHealth = _maxHealth;
-        _currenteMana = _maxMana;
         _startColor = _spriteRenderer.color;
     }
 
@@ -87,13 +85,13 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void FinishHealing() //chamado na anima��o  
-    {   
+    public void FinishHealing() //chamado na animação  
+    {
         _player._healing = false;
     }
 
     public void ManaConsumption(float consume) //consumir mana ao usar as skills
-    { 
+    {
         if (_currenteMana > consume)
         {
             _currenteMana -= consume;
@@ -109,16 +107,22 @@ public class PlayerHealth : MonoBehaviour
         if (!_player._canMove)
             return;
 
-        //TODO: aqui ser� definido a vida m�xima do player
+        //TODO: aqui será definido a vida máxima do player
         _maxHealth = 5;
 
-        //TODO: aqui ser� definido a qtd m�xima de mana do player
+        //TODO: aqui será definido a qtd máxima de mana do player
         _maxMana = 5;
     }
 
     public void FinishHit()
     {
         StartCoroutine(FinishInvincible());
+    }
+
+    public void ResetHealth()
+    {
+        _currentHealth = _maxHealth;
+        _currenteMana = 0f;
     }
 
     IEnumerator FinishInvincible()

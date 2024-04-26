@@ -14,6 +14,7 @@ public class SceneController : MonoBehaviour
     //public Vector3 _playerPosition;
     public PlayerPosition _scriptablePosition;
     Player _player;
+    PlayerHealth _health;
 
 
     void Awake()
@@ -24,6 +25,7 @@ public class SceneController : MonoBehaviour
         }
 
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _health = _player.GetComponent<PlayerHealth>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -44,11 +46,7 @@ public class SceneController : MonoBehaviour
 
     void GetNextScene()
     {
-        _scriptablePosition._sceneTransition = true;
-        _scriptablePosition._direction = _direction;
-        _scriptablePosition._indexStartPosition = _indexPosition;
-        //_scriptablePosition._initialValue = _playerPosition;
-        //_scriptablePosition._initialValue = new Vector3(_startPoints[_indexPosition].position.x, _startPoints[_indexPosition].position.y, _startPoints[_indexPosition].position.z);
+        _scriptablePosition.SetAttributes(true, _direction, _indexPosition, _health._currentHealth, _health._currenteMana);        
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
     }
 
@@ -67,9 +65,7 @@ public class SceneController : MonoBehaviour
 
     public void GameOver()
     {
-        _scriptablePosition._sceneTransition = true;
-        _scriptablePosition._direction = GameManager.instance._direction;
-        _scriptablePosition._indexStartPosition = 0;
+        _scriptablePosition.SetAttributes(true, GameManager.instance._direction, 0, _health._maxHealth, 0f);
 
         _player.gameObject.layer = LayerMask.NameToLayer("PlayerDead");
         _player.gameObject.GetComponent<Player>().DisableControls();

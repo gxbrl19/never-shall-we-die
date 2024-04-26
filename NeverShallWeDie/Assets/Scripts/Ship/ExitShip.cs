@@ -10,11 +10,13 @@ public class ExitShip : MonoBehaviour
     bool _triggered;
     Player _player;
     PlayerInputs _input;
+    PlayerHealth _health;
 
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
+        _health = _player.GetComponent<PlayerHealth>();
     }
 
     void Update()
@@ -42,9 +44,7 @@ public class ExitShip : MonoBehaviour
 
     void GetNextScene()
     {
-        _scriptablePosition._sceneTransition = true;
-        _scriptablePosition._direction = 1;
-        _scriptablePosition._indexStartPosition = 1;
+        _scriptablePosition.SetAttributes(true, 1, 1, _health._currentHealth, _health._currenteMana);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
     }
 

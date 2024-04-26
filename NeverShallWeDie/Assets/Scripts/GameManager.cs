@@ -190,6 +190,11 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+
+        if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f) 
+        {
+            _inputType = "Gamepad";
+        }
     }
     #endregion Inputs
 }

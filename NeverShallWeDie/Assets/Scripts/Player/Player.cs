@@ -168,15 +168,21 @@ public class Player : MonoBehaviour
         _timeTornado = _timeForSkills;
         _timeWaterSpin = _timeForSkills;
 
-        if (_scriptablePosition._sceneTransition)
+        if (_scriptablePosition.SceneTransition)
         {
-            int _index = _scriptablePosition._indexStartPosition;
+            int _index = _scriptablePosition.Index;
             StartPosition _startPosition = FindFirstObjectByType<StartPosition>();
             Vector3 _position = new Vector3(_startPosition._startPositions[_index].position.x, _startPosition._startPositions[_index].position.y, _startPosition._startPositions[_index].position.z);
 
-            //transform.position = _scriptablePosition._initialValue;
             transform.position = _position;
-            if (_scriptablePosition._direction == -1) { Flip(); }
+            if (_scriptablePosition.Direction == -1) { Flip(); }
+
+            _health._currentHealth = _scriptablePosition.Health;
+            _health._currenteMana = _scriptablePosition.Mana;
+        }
+        else
+        {
+            _health.ResetHealth();
         }
     }
 
@@ -537,17 +543,6 @@ public class Player : MonoBehaviour
         DisableControls();
         _animation.OnDead();
         SceneController.instance.GameOver();
-    }
-
-    public void OnRestart()
-    {
-        EnabledControls();
-        _dead = false;
-        _input.enabled = true;
-
-        _health._isDead = false;
-        _health._currentHealth = _health._maxHealth;
-        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     public void SetPowerPickup(Sprite sprite)
