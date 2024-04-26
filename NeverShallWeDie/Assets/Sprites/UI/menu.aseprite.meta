@@ -1,0 +1,594 @@
+fileFormatVersion: 2
+guid: 026c5e1c14335214e8762edea3b31f1f
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 16
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638483426808051396
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: background
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 522
+      height: 400
+    spriteID: 3caa47abebb36ed45bb9c872a2998a34
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: clouds
+    originalName: 
+    pivot: {x: 0.6807229, y: -0.01999998}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 534
+      y: 166
+      width: 332
+      height: 150
+    spriteID: 6c1701dd35c7ed54dbf72ae267240c79
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 534, y: 166}
+  - name: mountains
+    originalName: 
+    pivot: {x: 0.40993792, y: 1.384615}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 534
+      y: 367
+      width: 322
+      height: 13
+    spriteID: 952c590b9f5dbcb4391f201ec7d47f90
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 534, y: 367}
+  - name: water
+    originalName: 
+    pivot: {x: 0.5, y: 1.1525425}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 718
+      width: 522
+      height: 118
+    spriteID: 4b033974f0a94bd429153270099d8294
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 718}
+  - name: ship
+    originalName: 
+    pivot: {x: -2.4594598, y: 0.39999992}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 874
+      y: 274
+      width: 37
+      height: 45
+    spriteID: 580cd55ff8ca270419d0cc961739f850
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 874, y: 274}
+  - name: palm
+    originalName: 
+    pivot: {x: 0.47181627, y: 0.9805195}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 534
+      y: 4
+      width: 479
+      height: 154
+    spriteID: f3609fbb4369af54faece25ba699eb2a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 534, y: 4}
+  - name: palm_foliage
+    originalName: 
+    pivot: {x: 2.4392524, y: 0.65999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 874
+      y: 166
+      width: 107
+      height: 100
+    spriteID: 813d73f00e6a66147acec86751b04d5e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 874, y: 166}
+  - name: foliage
+    originalName: 
+    pivot: {x: 0.5, y: 1.3986014}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 567
+      width: 522
+      height: 143
+    spriteID: e0f8c40153e0e62409769665ecfdbea1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 567}
+  - name: rocks
+    originalName: 
+    pivot: {x: 1.3311688, y: 2.1460674}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 534
+      y: 718
+      width: 154
+      height: 89
+    spriteID: 4cb7d01eebb2a4443add6e811109b005
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 534, y: 718}
+  - name: sword
+    originalName: 
+    pivot: {x: 0.46779662, y: 2.3714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 534
+      y: 324
+      width: 295
+      height: 35
+    spriteID: 0d78c915d58c9b5468f5e8990f588e3a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 534, y: 324}
+  - name: sand
+    originalName: 
+    pivot: {x: 0.5, y: 1.3605442}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 412
+      width: 522
+      height: 147
+    spriteID: d7319fba47ef1664d88f9cd9996cdf1a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 412}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1978471590
+    name: background
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: background
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 522
+        height: 400
+      spriteId: 3caa47abebb36ed45bb9c872a2998a34
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 1
+    guid: -1178930727
+    name: clouds
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: clouds
+      frameIndex: 0
+      cellRect:
+        x: 35
+        y: 203
+        width: 332
+        height: 150
+      spriteId: 6c1701dd35c7ed54dbf72ae267240c79
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 2
+    guid: 1809627104
+    name: mountains
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: mountains
+      frameIndex: 0
+      cellRect:
+        x: 129
+        y: 182
+        width: 322
+        height: 13
+      spriteId: 952c590b9f5dbcb4391f201ec7d47f90
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 3
+    guid: -1960105722
+    name: water
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: water
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: 64
+        width: 522
+        height: 118
+      spriteId: 4b033974f0a94bd429153270099d8294
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 4
+    guid: 2074934196
+    name: ship
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: ship
+      frameIndex: 0
+      cellRect:
+        x: 352
+        y: 182
+        width: 37
+        height: 45
+      spriteId: 580cd55ff8ca270419d0cc961739f850
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 6
+    guid: 1195508104
+    name: palm
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: palm
+      frameIndex: 0
+      cellRect:
+        x: 35
+        y: 49
+        width: 479
+        height: 154
+      spriteId: f3609fbb4369af54faece25ba699eb2a
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 7
+    guid: 183545765
+    name: palm_foliage
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: palm_foliage
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: 134
+        width: 107
+        height: 100
+      spriteId: 813d73f00e6a66147acec86751b04d5e
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 8
+    guid: -557699557
+    name: foliage
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: foliage
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 522
+        height: 143
+      spriteId: e0f8c40153e0e62409769665ecfdbea1
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 9
+    guid: 1870078581
+    name: rocks
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: rocks
+      frameIndex: 0
+      cellRect:
+        x: 56
+        y: 9
+        width: 154
+        height: 89
+      spriteId: 4cb7d01eebb2a4443add6e811109b005
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 10
+    guid: -44376525
+    name: sword
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: sword
+      frameIndex: 0
+      cellRect:
+        x: 123
+        y: 117
+        width: 295
+        height: 35
+      spriteId: 0d78c915d58c9b5468f5e8990f588e3a
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 5
+    guid: 1920062141
+    name: sand
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: sand
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 522
+        height: 147
+      spriteId: d7319fba47ef1664d88f9cd9996cdf1a
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 522, y: 400}

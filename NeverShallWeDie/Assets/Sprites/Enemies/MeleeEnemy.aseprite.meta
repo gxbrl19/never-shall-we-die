@@ -1,0 +1,1036 @@
+fileFormatVersion: 2
+guid: df690b9ca924a854f89152a28fb52ef2
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 16
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638462131816309902
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: MeleeEnemy_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.55172414}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 193
+      width: 20
+      height: 29
+    spriteID: d4e501bfa4aff784fadef77318ba5106
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 193}
+  - name: MeleeEnemy_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5925926}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 41
+      width: 20
+      height: 27
+    spriteID: ce2bda68845692a4a8ca4e56c5740dc3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 41}
+  - name: MeleeEnemy_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.61538464}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 111
+      width: 20
+      height: 26
+    spriteID: 645e5dd8bede3e84b9394af4cbed4a68
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 111}
+  - name: MeleeEnemy_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.61538464}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 145
+      width: 20
+      height: 26
+    spriteID: c69e96032b8888444a9343044265dd17
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 145}
+  - name: MeleeEnemy_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.61538464}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 179
+      width: 20
+      height: 26
+    spriteID: d81dce870a15449499bf88865e393482
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 179}
+  - name: MeleeEnemy_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5925926}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 76
+      width: 20
+      height: 27
+    spriteID: 77033c6b06b60fb47b304352d38579fb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 76}
+  - name: MeleeEnemy_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.55172414}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 4
+      width: 20
+      height: 29
+    spriteID: faaf6bd597ada594ca6e51dd577e15d0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 4}
+  - name: MeleeEnemy_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.53333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 43
+      width: 20
+      height: 30
+    spriteID: baeb18998b321e44b98a12132ee6c523
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 43}
+  - name: MeleeEnemy_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.53333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 81
+      width: 20
+      height: 30
+    spriteID: 63ecdc1de83c7014c859c14c18429c03
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 81}
+  - name: MeleeEnemy_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: 0.53333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 119
+      width: 20
+      height: 30
+    spriteID: b9d552652299d5c4baaa134f7919ad19
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 119}
+  - name: MeleeEnemy_Frame_10
+    originalName: 
+    pivot: {x: 0.5416666, y: 0.55172414}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 173
+      width: 24
+      height: 29
+    spriteID: fd380ec00ca478343865a5564a34f9b0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 173}
+  - name: MeleeEnemy_Frame_11
+    originalName: 
+    pivot: {x: 0.48148146, y: 0.44444445}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 72
+      width: 27
+      height: 27
+    spriteID: bb7f0aa4794daf740aa789e3c2fc7926
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 72}
+  - name: MeleeEnemy_Frame_12
+    originalName: 
+    pivot: {x: 0.56000006, y: 0.516129}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 4
+      width: 25
+      height: 31
+    spriteID: 2b44ec71f6b069d41bb8eeb1810cfd98
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 4}
+  - name: MeleeEnemy_Frame_13
+    originalName: 
+    pivot: {x: 0.33333334, y: 0.5714286}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 157
+      width: 21
+      height: 28
+    spriteID: d130e78779b8e484c919eb27e05aeff7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 157}
+  - name: MeleeEnemy_Frame_14
+    originalName: 
+    pivot: {x: 0.4615385, y: 0.55172414}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 35
+      width: 26
+      height: 29
+    spriteID: e2ebdc943d7aab44da31524e8383d458
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 35}
+  - name: MeleeEnemy_Frame_15
+    originalName: 
+    pivot: {x: 0.5185185, y: 0.38235295}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 175
+      width: 27
+      height: 34
+    spriteID: 26d1ef79f3b958b4e9385dc86f51071f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 175}
+  - name: MeleeEnemy_Frame_16
+    originalName: 
+    pivot: {x: 0.4666667, y: 0.516129}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 136
+      width: 30
+      height: 31
+    spriteID: 67c9f52ce7b89ef428744de6e2b1e49a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 136}
+  - name: MeleeEnemy_Frame_17
+    originalName: 
+    pivot: {x: 0.22727273, y: 0.5714286}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 210
+      width: 22
+      height: 28
+    spriteID: 82a84b6e99a037340bc866df5dd239f1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 210}
+  - name: MeleeEnemy_Frame_18
+    originalName: 
+    pivot: {x: 0.6875, y: 0.5714286}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 217
+      width: 32
+      height: 28
+    spriteID: 711786d63e7fcf449ae681fca428dbfd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 217}
+  - name: MeleeEnemy_Frame_19
+    originalName: 
+    pivot: {x: 0.62857145, y: 0.47058824}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 52
+      width: 35
+      height: 34
+    spriteID: 95984c0a37fa64942a0949e3f70486eb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 52}
+  - name: MeleeEnemy_Frame_20
+    originalName: 
+    pivot: {x: 0.6, y: 0.47058824}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 94
+      width: 35
+      height: 34
+    spriteID: 3b7b8153bfb64ec4a9b5a3777b48ac52
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 94}
+  - name: MeleeEnemy_Frame_21
+    originalName: 
+    pivot: {x: 0.23684214, y: 0.4}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 38
+      height: 40
+    spriteID: a3944d9dcbe5b11448daa23167e1cf98
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: MeleeEnemy_Frame_22
+    originalName: 
+    pivot: {x: 0.2727273, y: 0.6956522}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 4
+      width: 33
+      height: 23
+    spriteID: 2281f679777a1314487ea61b0356806f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 4}
+  - name: MeleeEnemy_Frame_23
+    originalName: 
+    pivot: {x: 0.5882353, y: 0.5714286}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 152
+      y: 4
+      width: 17
+      height: 28
+    spriteID: acacc74a9a267b8458d3f4acd2cc95fd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 152, y: 4}
+  - name: MeleeEnemy_Frame_24
+    originalName: 
+    pivot: {x: 0.8214286, y: 0.64}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 107
+      width: 28
+      height: 25
+    spriteID: f2811933848aa844db19ba73b040af18
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 107}
+  - name: MeleeEnemy_Frame_25
+    originalName: 
+    pivot: {x: 0.6, y: 0.6666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 213
+      width: 20
+      height: 24
+    spriteID: a388548058b8a104397969afad97d4a1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 213}
+  - name: MeleeEnemy_Frame_26
+    originalName: 
+    pivot: {x: 0.39130437, y: 0.7619048}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 230
+      width: 23
+      height: 21
+    spriteID: c70500c63bd2fe44c9aad0c46fe65524
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 230}
+  - name: MeleeEnemy_Frame_27
+    originalName: 
+    pivot: {x: 0.75, y: 0.64}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 140
+      width: 28
+      height: 25
+    spriteID: 02cfdcf53669ccc429016f3c76c59201
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 140}
+  - name: MeleeEnemy_Frame_28
+    originalName: 
+    pivot: {x: 0.87878793, y: 1.1428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 177
+      y: 4
+      width: 33
+      height: 14
+    spriteID: 02b55ab27e383f14ab842ae1f7fd4b29
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 177, y: 4}
+  - name: MeleeEnemy_Frame_29
+    originalName: 
+    pivot: {x: 0.87878793, y: 1.7777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 177
+      y: 26
+      width: 33
+      height: 9
+    spriteID: 32e6f15836e709a45a7633c11a07dc32
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 177, y: 26}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -1510738634
+    name: MeleeEnemy
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: MeleeEnemy_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 30
+        y: 16
+        width: 20
+        height: 29
+      spriteId: d4e501bfa4aff784fadef77318ba5106
+    - name: MeleeEnemy_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 30
+        y: 16
+        width: 20
+        height: 27
+      spriteId: ce2bda68845692a4a8ca4e56c5740dc3
+    - name: MeleeEnemy_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 30
+        y: 16
+        width: 20
+        height: 26
+      spriteId: 645e5dd8bede3e84b9394af4cbed4a68
+    - name: MeleeEnemy_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 30
+        y: 16
+        width: 20
+        height: 26
+      spriteId: c69e96032b8888444a9343044265dd17
+    - name: MeleeEnemy_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 30
+        y: 16
+        width: 20
+        height: 26
+      spriteId: d81dce870a15449499bf88865e393482
+    - name: MeleeEnemy_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 30
+        y: 16
+        width: 20
+        height: 27
+      spriteId: 77033c6b06b60fb47b304352d38579fb
+    - name: MeleeEnemy_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 30
+        y: 16
+        width: 20
+        height: 29
+      spriteId: faaf6bd597ada594ca6e51dd577e15d0
+    - name: MeleeEnemy_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 30
+        y: 16
+        width: 20
+        height: 30
+      spriteId: baeb18998b321e44b98a12132ee6c523
+    - name: MeleeEnemy_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 30
+        y: 16
+        width: 20
+        height: 30
+      spriteId: 63ecdc1de83c7014c859c14c18429c03
+    - name: MeleeEnemy_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 30
+        y: 16
+        width: 20
+        height: 30
+      spriteId: b9d552652299d5c4baaa134f7919ad19
+    - name: MeleeEnemy_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 27
+        y: 16
+        width: 24
+        height: 29
+      spriteId: fd380ec00ca478343865a5564a34f9b0
+    - name: MeleeEnemy_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 27
+        y: 20
+        width: 27
+        height: 27
+      spriteId: bb7f0aa4794daf740aa789e3c2fc7926
+    - name: MeleeEnemy_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 26
+        y: 16
+        width: 25
+        height: 31
+      spriteId: 2b44ec71f6b069d41bb8eeb1810cfd98
+    - name: MeleeEnemy_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 33
+        y: 16
+        width: 21
+        height: 28
+      spriteId: d130e78779b8e484c919eb27e05aeff7
+    - name: MeleeEnemy_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 28
+        y: 16
+        width: 26
+        height: 29
+      spriteId: e2ebdc943d7aab44da31524e8383d458
+    - name: MeleeEnemy_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 26
+        y: 19
+        width: 27
+        height: 34
+      spriteId: 26d1ef79f3b958b4e9385dc86f51071f
+    - name: MeleeEnemy_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 26
+        y: 16
+        width: 30
+        height: 31
+      spriteId: 67c9f52ce7b89ef428744de6e2b1e49a
+    - name: MeleeEnemy_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 35
+        y: 16
+        width: 22
+        height: 28
+      spriteId: 82a84b6e99a037340bc866df5dd239f1
+    - name: MeleeEnemy_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 18
+        y: 16
+        width: 32
+        height: 28
+      spriteId: 711786d63e7fcf449ae681fca428dbfd
+    - name: MeleeEnemy_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 18
+        y: 16
+        width: 35
+        height: 34
+      spriteId: 95984c0a37fa64942a0949e3f70486eb
+    - name: MeleeEnemy_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 19
+        y: 16
+        width: 35
+        height: 34
+      spriteId: 3b7b8153bfb64ec4a9b5a3777b48ac52
+    - name: MeleeEnemy_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 31
+        y: 16
+        width: 38
+        height: 40
+      spriteId: a3944d9dcbe5b11448daa23167e1cf98
+    - name: MeleeEnemy_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 31
+        y: 16
+        width: 33
+        height: 23
+      spriteId: 2281f679777a1314487ea61b0356806f
+    - name: MeleeEnemy_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 30
+        y: 16
+        width: 17
+        height: 28
+      spriteId: acacc74a9a267b8458d3f4acd2cc95fd
+    - name: MeleeEnemy_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 17
+        y: 16
+        width: 28
+        height: 25
+      spriteId: f2811933848aa844db19ba73b040af18
+    - name: MeleeEnemy_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 28
+        y: 16
+        width: 20
+        height: 24
+      spriteId: a388548058b8a104397969afad97d4a1
+    - name: MeleeEnemy_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 31
+        y: 16
+        width: 23
+        height: 21
+      spriteId: c70500c63bd2fe44c9aad0c46fe65524
+    - name: MeleeEnemy_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 19
+        y: 16
+        width: 28
+        height: 25
+      spriteId: 02cfdcf53669ccc429016f3c76c59201
+    - name: MeleeEnemy_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 11
+        y: 16
+        width: 33
+        height: 14
+      spriteId: 02b55ab27e383f14ab842ae1f7fd4b29
+    - name: MeleeEnemy_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 11
+        y: 16
+        width: 33
+        height: 9
+      spriteId: 32e6f15836e709a45a7633c11a07dc32
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 80, y: 64}

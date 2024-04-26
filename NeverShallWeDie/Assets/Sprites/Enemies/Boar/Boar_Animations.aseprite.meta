@@ -1,0 +1,616 @@
+fileFormatVersion: 2
+guid: 77d20cdce132e234eb9da35b776a6c04
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 16
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638460091908186554
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Boar_Animations_Frame_0
+    originalName: 
+    pivot: {x: 0.49230766, y: 0.6666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 4
+      width: 65
+      height: 39
+    spriteID: 409b42621b76b9348a7872ff07c9843e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 4}
+  - name: Boar_Animations_Frame_1
+    originalName: 
+    pivot: {x: 0.44615382, y: 0.84210527}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 51
+      width: 65
+      height: 38
+    spriteID: ccbfd8d2c5627eb43a7c207a6f7550be
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 51}
+  - name: Boar_Animations_Frame_2
+    originalName: 
+    pivot: {x: 0.51612896, y: 0.84210527}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 200
+      width: 62
+      height: 38
+    spriteID: 0525d941c117f704b85d621d72da9665
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 200}
+  - name: Boar_Animations_Frame_3
+    originalName: 
+    pivot: {x: 0.6111111, y: 0.8888889}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 432
+      width: 54
+      height: 36
+    spriteID: 6ab7d69ab0c51f14b95ae708d0780252
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 432}
+  - name: Boar_Animations_Frame_4
+    originalName: 
+    pivot: {x: 0.5964913, y: 0.8}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 294
+      width: 57
+      height: 40
+    spriteID: 5282a0631191b4948ab585610ed2fb78
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 294}
+  - name: Boar_Animations_Frame_5
+    originalName: 
+    pivot: {x: 0.5762712, y: 0.8}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 152
+      width: 59
+      height: 40
+    spriteID: 9126b4891417a524697dcc04f83fce62
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 152}
+  - name: Boar_Animations_Frame_6
+    originalName: 
+    pivot: {x: 0.5471698, y: 0.8888889}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 4
+      width: 53
+      height: 36
+    spriteID: a1a0703c5774c8f48b4982eb42e62bb9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 4}
+  - name: Boar_Animations_Frame_7
+    originalName: 
+    pivot: {x: 0.61702126, y: 0.5423729}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 47
+      height: 59
+    spriteID: 21ce973f820795645a71e0f85c676dec
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Boar_Animations_Frame_8
+    originalName: 
+    pivot: {x: 0.55555564, y: 0.5614035}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 71
+      width: 45
+      height: 57
+    spriteID: f6afe6aca7608544bb5d3fb581378dbd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 71}
+  - name: Boar_Animations_Frame_9
+    originalName: 
+    pivot: {x: 0.53846157, y: 0.68085104}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 97
+      width: 52
+      height: 47
+    spriteID: 16127a338efb34a46b8db3151b549502
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 97}
+  - name: Boar_Animations_Frame_10
+    originalName: 
+    pivot: {x: 0.5799999, y: 0.9411765}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 48
+      width: 50
+      height: 34
+    spriteID: 30e5fc3d6f50de1489e5418fcc96e1a8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 48}
+  - name: Boar_Animations_Frame_11
+    originalName: 
+    pivot: {x: 0.509434, y: 0.82051283}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 342
+      width: 53
+      height: 39
+    spriteID: 577d26d8c3461e542a0c6a3ba38438f9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 342}
+  - name: Boar_Animations_Frame_12
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.8}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 246
+      width: 58
+      height: 40
+    spriteID: ceb51dd8c8efff04ba6aed962d23d45c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 246}
+  - name: Boar_Animations_Frame_13
+    originalName: 
+    pivot: {x: 0.41379312, y: 0.9142857}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 389
+      width: 58
+      height: 35
+    spriteID: c77b894f088e92741bd6754758562d57
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 389}
+  - name: Boar_Animations_Frame_14
+    originalName: 
+    pivot: {x: 0.40677965, y: 1.1851852}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 476
+      width: 59
+      height: 27
+    spriteID: 04c626e2a7f276242baaafac505798a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 476}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1540948992
+    name: Boar_Animations
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Boar_Animations_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 16
+        y: 6
+        width: 65
+        height: 39
+      spriteId: 409b42621b76b9348a7872ff07c9843e
+    - name: Boar_Animations_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 19
+        y: 0
+        width: 65
+        height: 38
+      spriteId: ccbfd8d2c5627eb43a7c207a6f7550be
+    - name: Boar_Animations_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 16
+        y: 0
+        width: 62
+        height: 38
+      spriteId: 0525d941c117f704b85d621d72da9665
+    - name: Boar_Animations_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 15
+        y: 0
+        width: 54
+        height: 36
+      spriteId: 6ab7d69ab0c51f14b95ae708d0780252
+    - name: Boar_Animations_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 14
+        y: 0
+        width: 57
+        height: 40
+      spriteId: 5282a0631191b4948ab585610ed2fb78
+    - name: Boar_Animations_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 14
+        y: 0
+        width: 59
+        height: 40
+      spriteId: 9126b4891417a524697dcc04f83fce62
+    - name: Boar_Animations_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 19
+        y: 0
+        width: 53
+        height: 36
+      spriteId: a1a0703c5774c8f48b4982eb42e62bb9
+    - name: Boar_Animations_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 19
+        y: 0
+        width: 47
+        height: 59
+      spriteId: 21ce973f820795645a71e0f85c676dec
+    - name: Boar_Animations_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 23
+        y: 0
+        width: 45
+        height: 57
+      spriteId: f6afe6aca7608544bb5d3fb581378dbd
+    - name: Boar_Animations_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 20
+        y: 0
+        width: 52
+        height: 47
+      spriteId: 16127a338efb34a46b8db3151b549502
+    - name: Boar_Animations_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 19
+        y: 0
+        width: 50
+        height: 34
+      spriteId: 30e5fc3d6f50de1489e5418fcc96e1a8
+    - name: Boar_Animations_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 21
+        y: 0
+        width: 53
+        height: 39
+      spriteId: 577d26d8c3461e542a0c6a3ba38438f9
+    - name: Boar_Animations_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 19
+        y: 0
+        width: 58
+        height: 40
+      spriteId: ceb51dd8c8efff04ba6aed962d23d45c
+    - name: Boar_Animations_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 24
+        y: 0
+        width: 58
+        height: 35
+      spriteId: c77b894f088e92741bd6754758562d57
+    - name: Boar_Animations_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 24
+        y: 0
+        width: 59
+        height: 27
+      spriteId: 04c626e2a7f276242baaafac505798a4
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 96, y: 64}
