@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -35,6 +36,9 @@ public class Menu : MonoBehaviour
     public RectTransform _configButtons;
     public RectTransform _referenceConfig;
     public RectTransform _initialPosConfig;
+    public Dropdown _resolutionDropdown;
+
+    Resolution[] _resolutions;
 
     private void Start()
     {
@@ -44,6 +48,29 @@ public class Menu : MonoBehaviour
         _intro = true;
         _enabled = false;
         Invoke("StartIntro", 0.3f);
+
+        //initial Resolutions
+        _resolutions = Screen.resolutions;
+        _resolutionDropdown.ClearOptions();
+
+        List<string> _options = new List<string>();
+
+        int _currentResolutionIndex = 0;
+        for (int i = 0; i < _resolutions.Length; i++)
+        {
+            string _option = _resolutions[i].width + " x " + _resolutions[i].height;
+            _options.Add(_option);
+
+            if (_resolutions[i].width == Screen.currentResolution.width && _resolutions[i].height == Screen.currentResolution.height)
+            {
+                _currentResolutionIndex = i;
+            }
+        }
+
+        _resolutionDropdown.AddOptions(_options);
+        _resolutionDropdown.value = _currentResolutionIndex;
+        _resolutionDropdown.RefreshShownValue();
+        //finish Resolutions
     }
 
     private void Update()
@@ -82,6 +109,12 @@ public class Menu : MonoBehaviour
     {
         _intro = false;
         _txtStart.SetActive(true);
+    }
+
+    public void SetResolution(int resolutionIndex) //chamado no Dropdown
+    {
+        Resolution _resolution = _resolutions[resolutionIndex];
+        Screen.SetResolution(_resolution.width, _resolution.height, Screen.fullScreen);
     }
 
     public void EnabledMainMenu()

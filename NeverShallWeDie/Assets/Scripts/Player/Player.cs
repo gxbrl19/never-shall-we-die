@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Windows;
-using UnityEditor.SearchService;
 
 public class Player : MonoBehaviour
 {
