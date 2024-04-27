@@ -16,7 +16,6 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
 
     private Vector2 m_NextScrollPosition = Vector2.up;
     public int RewiredPlayerID = 0;
-    private Player rePlayer;
 
     void OnEnable()
     {
@@ -28,8 +27,6 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
     void Awake()
     {
         m_ScrollRect = GetComponent<ScrollRect>();
-        //remove this line if not using Rewired
-        //rePlayer = ReInput.players.GetPlayer(RewiredPlayerID);
     }
     void Start()
     {
@@ -57,7 +54,6 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         if (m_Selectables.Count > 0)
         {
-            //remove the rePlayer getaxis calls is you aren't using Rewired
             //if it still doesn't work, check your input manager settings's axes and make sure they are defined properly
             //if you're using the new input system, this is also probably where you should replace the calls to the old one
             if (Input.GetAxis("Vertical") !=  0.0f || Input.GetAxis("Horizontal") != 0.0f || Input.GetButtonDown("Horizontal") 
