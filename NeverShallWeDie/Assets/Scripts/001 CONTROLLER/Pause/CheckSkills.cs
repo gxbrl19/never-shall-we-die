@@ -18,13 +18,13 @@ public class CheckSkills : MonoBehaviour
     {
         if (PlayerSkills.instance.skills.Contains(_skill.skill))
         {
-            _imageButton.enabled = true;
-            if (_textButton != null) { _textButton.text = _skill.name; }
+            _imageButton.enabled = true;            
+            if (_textButton != null) { _textButton.enabled = true; }
         }
         else
         {
-            _imageButton.enabled = false;
-            if (_textButton != null) { _textButton.text = "???"; }
+            _imageButton.enabled = false;            
+            if (_textButton != null) { _textButton.enabled = false; }
         }
     }
 

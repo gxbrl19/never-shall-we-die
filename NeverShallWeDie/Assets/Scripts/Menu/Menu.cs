@@ -37,6 +37,7 @@ public class Menu : MonoBehaviour
     public RectTransform _referenceConfig;
     public RectTransform _initialPosConfig;
     public Dropdown _resolutionDropdown;
+    public GameObject[] _configInfo;
 
     Resolution[] _resolutions;
 
@@ -146,5 +147,15 @@ public class Menu : MonoBehaviour
     {
         _configButtons.DOMoveX(_referenceConfig.position.x, 0.3f).SetEase(Ease.InOutBack);
         _imgMenu.DOMoveY(_initialPosMenu.position.y, 0.3f).SetEase(Ease.InOutSine);
+    }
+
+    public void SelectInfo(int panelID)
+    {
+        for (int i = 0; i < _configInfo.Length; i++)
+        {
+            _configInfo[i].SetActive(false);
+        }
+
+        _configInfo[panelID].SetActive(true);
     }
 }

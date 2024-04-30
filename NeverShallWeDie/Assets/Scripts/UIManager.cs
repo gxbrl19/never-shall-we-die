@@ -17,14 +17,13 @@ public class UIManager : MonoBehaviour
     private Scene _currentScene;
     public int _sceneID;
 
-    [BoxGroup("HUD")][SerializeField] private Text _txtHealth;
-    [BoxGroup("HUD")][SerializeField] private Text _txtHealing;
+    [BoxGroup("HUD")][SerializeField] private Image _healthBar;
+    [BoxGroup("HUD")][SerializeField] private Image _healingBar;
     [BoxGroup("HUD")][SerializeField] private Text _txtGold;
     [BoxGroup("HUD")][SerializeField] private Image _fire;
     [BoxGroup("HUD")][SerializeField] private Image _air;
     [BoxGroup("HUD")][SerializeField] private Image _water;
     [BoxGroup("HUD")][SerializeField] private GameObject _interact;
-    [BoxGroup("HUD")][SerializeField] private Text _txtInteract;
 
     [BoxGroup("Pause")] public bool _isPaused;
     [BoxGroup("Pause")] public RectTransform _menuPause;
@@ -89,16 +88,12 @@ public class UIManager : MonoBehaviour
     #region HUD
     void HealthControl()
     {
-        _txtHealth.text = _health._currentHealth.ToString();
-
-        //Vector3 _healthBarScale = _healthBar.rectTransform.localScale;
-        //_healthBarScale.x = (float)_health._currentHealth / _health._maxHealth;
-        //_healthBar.rectTransform.localScale = _healthBarScale;
+        _healthBar.fillAmount = _health._currentHealth / _health._maxHealth;
     }
 
     public void HealingControl()
     {
-        _txtHealing.text = _health._currenteMana.ToString();
+        _healingBar.fillAmount = _health._currentMana / _health._maxMana;
     }
 
     void GoldControl()
@@ -113,9 +108,8 @@ public class UIManager : MonoBehaviour
         _water.fillAmount = _player._timeWaterSpin / _player._timeForSkills;
     }
 
-    public void InteractPanel(bool show, string inform)
-    {        
-        _txtInteract.text = inform;
+    public void InteractPanel(bool show)
+    {
         _interact.SetActive(show);
     }
     #endregion

@@ -6,13 +6,13 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Live")]
-    [HideInInspector] public int _maxHealth;
-    public int _currentHealth;
+    [HideInInspector] public float _maxHealth;
+    public float _currentHealth;
     public bool _isDead;
 
     [Header("Elixir")]
     [HideInInspector] public float _maxMana;
-    public float _currenteMana;
+    public float _currentMana;
 
     [Header("Particle")]
     public GameObject _particleHit;
@@ -38,6 +38,11 @@ public class PlayerHealth : MonoBehaviour
     {
         CheckAttributes();
         _startColor = _spriteRenderer.color;
+    }
+
+    void Update()
+    {
+        Healing();
     }
 
     public void TakeDamage(int damage)
@@ -67,17 +72,21 @@ public class PlayerHealth : MonoBehaviour
 
     public void FillBottle(float healing)
     {
-        _currenteMana = _currenteMana < _maxMana ? _currenteMana += healing : _currenteMana = _maxMana;
+        _currentMana = _currentMana < _maxMana ? _currentMana += healing : _currentMana = _maxMana;
     }
 
-    public void Healing(int life)
+    public void Healing()
     {
-        if (_currentHealth < _maxHealth && _currenteMana >= 1)
+        if (_player._healing && _currentHealth < _maxHealth && _currentMana >= 0.1)
         {
-            _player._healing = true;
-            _currentHealth += life;
-            _currenteMana -= life;
-            _animation.OnHealing();
+            //_player._healing = true;
+            _currentHealth += 0.05f;
+            _currentMana -= 0.1f;
+            //_animation.OnHealing();
+
+            //deixa zerado quando os valores forem negativos
+            if (_currentHealth < 0) { _currentHealth = 0f; } else if (_currentHealth > _maxHealth) { _currentHealth = _maxHealth; }
+            if (_currentMana < 0) { _currentMana = 0f; } else if (_currentMana > _maxMana) { _currentMana = _maxMana; }
         }
         else
         {
@@ -85,20 +94,15 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void FinishHealing() //chamado na animação  
-    {
-        _player._healing = false;
-    }
-
     public void ManaConsumption(float consume) //consumir mana ao usar as skills
     {
-        if (_currenteMana > consume)
+        if (_currentMana > consume)
         {
-            _currenteMana -= consume;
+            _currentMana -= consume;
         }
-        else if (_currenteMana <= consume && _currenteMana > 0)
+        else if (_currentMana <= consume && _currentMana > 0)
         {
-            _currenteMana = 0f;
+            _currentMana = 0f;
         }
     }
 
@@ -108,10 +112,10 @@ public class PlayerHealth : MonoBehaviour
             return;
 
         //TODO: aqui será definido a vida máxima do player
-        _maxHealth = 5;
+        _maxHealth = 20;
 
         //TODO: aqui será definido a qtd máxima de mana do player
-        _maxMana = 5;
+        _maxMana = 10;
     }
 
     public void FinishHit()
@@ -122,7 +126,7 @@ public class PlayerHealth : MonoBehaviour
     public void ResetHealth()
     {
         _currentHealth = _maxHealth;
-        _currenteMana = 0f;
+        _currentMana = 0f;
     }
 
     IEnumerator FinishInvincible()

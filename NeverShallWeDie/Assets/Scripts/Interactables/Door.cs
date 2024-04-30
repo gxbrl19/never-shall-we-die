@@ -56,7 +56,7 @@ public class Door : MonoBehaviour
 
     void GetNextScene()
     {
-        _scriptablePosition.SetAttributes(true, _direction, _indexPosition, _health._currentHealth, _health._currenteMana);
+        _scriptablePosition.SetAttributes(true, _direction, _indexPosition, _health._currentHealth, _health._currentMana);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
     }
 

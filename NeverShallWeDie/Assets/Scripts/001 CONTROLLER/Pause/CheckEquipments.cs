@@ -19,12 +19,12 @@ public class CheckEquipments : MonoBehaviour
         if (PlayerEquipment.instance.equipments.Contains(_equipment.equipment))
         {
             _imageButton.enabled = true;
-            _textButton.text = _equipment.name;
+            _textButton.enabled = true;
         }
         else
         {
             _imageButton.enabled = false;
-            _textButton.text = "???";
+            _textButton.enabled = false;
         }
     }
 

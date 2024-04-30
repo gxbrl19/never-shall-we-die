@@ -208,12 +208,17 @@ public class PlayerInputs : MonoBehaviour
 
     public void Healing(InputAction.CallbackContext _callback)
     {
-        if (_player._dead || _player._healing || _isAttacking || _isAirCuting || Time.timeScale == 0f || _player._onWater || _player._canMove == false)
+        if (_player._dead || _isAttacking || _isAirCuting || Time.timeScale == 0f || _player._onWater || _player._canMove == false)
             return;
 
         if (_callback.started)
         {
-            _health.Healing(1);
+            //_health.Healing(1);
+            _player._healing = true;
+        }
+
+        if(_callback.canceled) {
+            _player._healing = false;
         }
     }
 
@@ -228,7 +233,7 @@ public class PlayerInputs : MonoBehaviour
         }
         else if (_callback.started && _player._onWater && PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.WaterSpin))
         {
-            if (_health._currenteMana > 0 && _player._timeWaterSpin >= _player._timeForSkills)
+            if (_health._currentMana > 0 && _player._timeWaterSpin >= _player._timeForSkills)
             {
                 _isAttacking = true;
                 _player._timeWaterSpin = 0f; //reseta o tempo do water spin para poder fazer a contagem;
@@ -260,7 +265,7 @@ public class PlayerInputs : MonoBehaviour
 
         if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.Tornado))
         {
-            if (_health._currenteMana > 0 && _player._timeTornado >= _player._timeForSkills)
+            if (_health._currentMana > 0 && _player._timeTornado >= _player._timeForSkills)
             {
                 isTornado = true;
                 _player._timeTornado = 0f; //reseta o tempo do tornado para poder fazer a contagem;
@@ -276,7 +281,7 @@ public class PlayerInputs : MonoBehaviour
 
         if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.AirCut))
         {
-            if (_health._currenteMana > 0 && _player._timeAirCut >= _player._timeForSkills)
+            if (_health._currentMana > 0 && _player._timeAirCut >= _player._timeForSkills)
             {
                 isAirCuting = true;
                 _player._timeAirCut = 0f; //reseta o tempo do aircut para poder fazer a contagem;

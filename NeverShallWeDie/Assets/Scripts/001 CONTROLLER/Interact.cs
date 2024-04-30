@@ -10,7 +10,7 @@ public class Interact : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
-            UIManager.instance.InteractPanel(true, _textToInteract);
+            UIManager.instance.InteractPanel(true);
         }
     }
 
@@ -18,7 +18,7 @@ public class Interact : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
-            UIManager.instance.InteractPanel(false, "");
+            UIManager.instance.InteractPanel(false);
         }
     }
 }

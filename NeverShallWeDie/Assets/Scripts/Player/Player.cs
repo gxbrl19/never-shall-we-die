@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool _onAcid;
 
     //Skills
-    [HideInInspector] public float _manaConsumption = 0.4f;
+    [HideInInspector] public float _manaConsumption = 1f;
     [HideInInspector] public float _timeForSkills;
 
     //Water Spin
@@ -177,7 +177,7 @@ public class Player : MonoBehaviour
             if (_scriptablePosition.Direction == -1) { Flip(); }
 
             _health._currentHealth = _scriptablePosition.Health;
-            _health._currenteMana = _scriptablePosition.Mana;
+            _health._currentMana = _scriptablePosition.Mana;
         }
         else
         {
