@@ -126,8 +126,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 84
-      y: 4
+      x: 4
+      y: 78
       width: 27
       height: 28
     spriteID: e512ed5078717d44faa4d96f090810bb
@@ -138,17 +138,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 84, y: 4}
+    uvTransform: {x: 4, y: 78}
   - name: Healing_Frame_1
     originalName: 
-    pivot: {x: 0.53125, y: 0.55172414}
+    pivot: {x: 0.6296296, y: 0.55172414}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 32
+      width: 27
       height: 29
     spriteID: ea9499474c4bde741a17f4f2938e2740
     spriteBone: []
@@ -161,15 +161,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Healing_Frame_2
     originalName: 
-    pivot: {x: 0.52, y: 0.53333336}
+    pivot: {x: 0.6296296, y: 0.5714286}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 41
-      width: 25
-      height: 30
+      x: 39
+      y: 4
+      width: 27
+      height: 28
     spriteID: 377d093ab064ce5418551dcb34e82ccb
     spriteBone: []
     spriteOutline: []
@@ -178,17 +178,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 41}
+    uvTransform: {x: 39, y: 4}
   - name: Healing_Frame_3
     originalName: 
-    pivot: {x: 0.53125, y: 0.55172414}
+    pivot: {x: 0.6296296, y: 0.55172414}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 44
-      y: 4
-      width: 32
+      x: 4
+      y: 41
+      width: 27
       height: 29
     spriteID: 4584f4e0e2b3ab5409cde5ad09e3b2c6
     spriteBone: []
@@ -198,7 +198,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 44, y: 4}
+    uvTransform: {x: 4, y: 41}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -221,23 +221,23 @@ ScriptedImporter:
       cellRect:
         x: 23
         y: 16
-        width: 32
+        width: 27
         height: 29
       spriteId: ea9499474c4bde741a17f4f2938e2740
     - name: Healing_Frame_2
       frameIndex: 2
       cellRect:
-        x: 27
+        x: 23
         y: 16
-        width: 25
-        height: 30
+        width: 27
+        height: 28
       spriteId: 377d093ab064ce5418551dcb34e82ccb
     - name: Healing_Frame_3
       frameIndex: 3
       cellRect:
         x: 23
         y: 16
-        width: 32
+        width: 27
         height: 29
       spriteId: 4584f4e0e2b3ab5409cde5ad09e3b2c6
     linkedCells: []

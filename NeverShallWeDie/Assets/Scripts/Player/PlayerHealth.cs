@@ -80,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
         if (_player._healing && _currentHealth < _maxHealth && _currentMana >= 0.1)
         {
             //_player._healing = true;
-            _currentHealth += 0.05f;
+            _currentHealth += 0.08f;
             _currentMana -= 0.1f;
             //_animation.OnHealing();
 
