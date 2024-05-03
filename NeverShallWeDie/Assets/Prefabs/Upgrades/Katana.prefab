@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1974233642283366679}
   - component: {fileID: 363849955751110532}
   - component: {fileID: 445406846452844455}
+  - component: {fileID: 6789437119472672904}
   - component: {fileID: 8136824794253687956}
   m_Layer: 0
   m_Name: Katana
@@ -151,6 +152,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _equipmentObject: {fileID: 11400000, guid: 6e33cd5ac01cf094db50eddc774140b1, type: 2}
+--- !u!114 &6789437119472672904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304275970455231582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d33dfc71ce494bf44bcf503236ceec9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &8136824794253687956
 AudioSource:
   m_ObjectHideFlags: 0

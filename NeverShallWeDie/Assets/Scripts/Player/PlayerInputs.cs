@@ -217,7 +217,8 @@ public class PlayerInputs : MonoBehaviour
             _player._healing = true;
         }
 
-        if(_callback.canceled) {
+        if (_callback.canceled)
+        {
             _player._healing = false;
         }
     }
@@ -237,7 +238,7 @@ public class PlayerInputs : MonoBehaviour
             {
                 _isAttacking = true;
                 _player._timeWaterSpin = 0f; //reseta o tempo do water spin para poder fazer a contagem;
-                _health.ManaConsumption(_player._manaConsumption);
+                _health.ManaConsumption(_player._aircutMana);
             }
         }
     }
@@ -260,17 +261,20 @@ public class PlayerInputs : MonoBehaviour
 
     public void TornadoAttack(InputAction.CallbackContext _callback)
     {
-        if (_player._dead || !_player._isGrounded || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player._onClimbing || _collision._onWall || _player._onHit || _player._isGrabing || _player._onWater || _player._isDoubleJumping || _player._isRolling || _player._canMove == false)
+        if (_player._dead || !_player._isGrounded || _isAttacking || _isAirCuting || Time.timeScale == 0f || _player._onClimbing || _collision._onWall || _player._onHit || _player._isGrabing || _player._onWater || _player._isDoubleJumping || _player._isRolling || _player._canMove == false)
             return;
 
-        if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.Tornado))
+        if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.Tornado))
         {
             if (_health._currentMana > 0 && _player._timeTornado >= _player._timeForSkills)
             {
-                isTornado = true;
-                _player._timeTornado = 0f; //reseta o tempo do tornado para poder fazer a contagem;
-                _animation.OnTornado();
+                _isTornado = true;
             }
+        }
+
+        if (_callback.canceled || _health._currentMana <= 0f)
+        {
+            _isTornado = false;
         }
     }
 

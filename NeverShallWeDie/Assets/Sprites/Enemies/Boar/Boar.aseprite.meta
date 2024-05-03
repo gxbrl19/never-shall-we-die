@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 674763146fdd77a41939c06d8cd8a2f5
+guid: 8430696812215694b8d9475b3f94bf11
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638448899645084580
+  platformSettingsDirtyTick: 638503265196625263
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Tornado_Frame_0
+  - name: Boar_Frame_0
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.48717952, y: 0.55172414}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 52
+      width: 39
       height: 29
-    spriteID: 9083c0d90b07bf346adae63a8fb1621d
+    spriteID: 5bd0356a6a9632e408d2a3df22e08b94
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,38 +139,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Tornado_Frame_1
+  - name: Boar_Frame_1
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 41
-      width: 52
-      height: 29
-    spriteID: e704ebf066c451b49af87ee6d72db100
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 41}
-  - name: Tornado_Frame_2
-    originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.48717952, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 78
-      width: 52
-      height: 29
-    spriteID: 9b370c0a830ebac4dbde4f60bd950b48
+      width: 39
+      height: 28
+    spriteID: 1302e67b5fa3fe24586a4e48555ef614
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -179,38 +159,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 78}
-  - name: Tornado_Frame_3
+  - name: Boar_Frame_2
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.48717952, y: 0.55172414}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 64
-      y: 4
-      width: 52
-      height: 29
-    spriteID: 92beb01db93a8ed43aea5e2394a4e1b1
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 64, y: 4}
-  - name: Tornado_Frame_4
-    originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 64
+      x: 4
       y: 41
-      width: 52
+      width: 39
       height: 29
-    spriteID: f200e6e0b32682a4eab274bab946c13d
+    spriteID: 1f53ca2597e8e1f4884342b428fda166
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -218,19 +178,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 64, y: 41}
-  - name: Tornado_Frame_5
+    uvTransform: {x: 4, y: 41}
+  - name: Boar_Frame_3
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.48717952, y: 0.5925926}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 64
-      y: 78
-      width: 52
-      height: 29
-    spriteID: a3e0239e8a2189d4ab1b94466d878bfc
+      x: 4
+      y: 114
+      width: 39
+      height: 27
+    spriteID: 14074f131f802784fa845ca253a5d03b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -238,64 +198,216 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 64, y: 78}
+    uvTransform: {x: 4, y: 114}
+  - name: Boar_Frame_4
+    originalName: 
+    pivot: {x: 0.4736842, y: 0.61538464}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 51
+      y: 4
+      width: 38
+      height: 26
+    spriteID: 49f1ff2ca1962d1449f608b99cb885c8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 51, y: 4}
+  - name: Boar_Frame_5
+    originalName: 
+    pivot: {x: 0.48717952, y: 0.5925926}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 149
+      width: 39
+      height: 27
+    spriteID: f379b1b80933a3c46ba1b4d9af587ead
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 149}
+  - name: Boar_Frame_6
+    originalName: 
+    pivot: {x: 0.48571432, y: 0.53333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 219
+      width: 35
+      height: 30
+    spriteID: 3f35a24f73d03054fb53c77b21d6de4e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 219}
+  - name: Boar_Frame_7
+    originalName: 
+    pivot: {x: 0.48717952, y: 0.5925926}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 184
+      width: 39
+      height: 27
+    spriteID: c20ebecaa91223042a5da664b75a4294
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 184}
+  - name: Boar_Frame_8
+    originalName: 
+    pivot: {x: 0.48717952, y: 0.64}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 51
+      y: 38
+      width: 39
+      height: 25
+    spriteID: 8068fd4acc965654388db1a60bee3cbd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 51, y: 38}
+  - name: Boar_Frame_9
+    originalName: 
+    pivot: {x: 0.48717952, y: 0.7619048}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 51
+      y: 71
+      width: 39
+      height: 21
+    spriteID: 7f3a41a548f17a844abebd9901182da7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 51, y: 71}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1283003863
-    name: Tornado
+    guid: -1909518874
+    name: Boar
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Tornado_Frame_0
+    - name: Boar_Frame_0
       frameIndex: 0
       cellRect:
         x: 5
-        y: 16
-        width: 52
+        y: 0
+        width: 39
         height: 29
-      spriteId: 9083c0d90b07bf346adae63a8fb1621d
-    - name: Tornado_Frame_1
+      spriteId: 5bd0356a6a9632e408d2a3df22e08b94
+    - name: Boar_Frame_1
       frameIndex: 1
       cellRect:
         x: 5
-        y: 16
-        width: 52
-        height: 29
-      spriteId: e704ebf066c451b49af87ee6d72db100
-    - name: Tornado_Frame_2
+        y: 2
+        width: 39
+        height: 28
+      spriteId: 1302e67b5fa3fe24586a4e48555ef614
+    - name: Boar_Frame_2
       frameIndex: 2
       cellRect:
         x: 5
-        y: 16
-        width: 52
+        y: 0
+        width: 39
         height: 29
-      spriteId: 9b370c0a830ebac4dbde4f60bd950b48
-    - name: Tornado_Frame_3
+      spriteId: 1f53ca2597e8e1f4884342b428fda166
+    - name: Boar_Frame_3
       frameIndex: 3
       cellRect:
         x: 5
-        y: 16
-        width: 52
-        height: 29
-      spriteId: 92beb01db93a8ed43aea5e2394a4e1b1
-    - name: Tornado_Frame_4
+        y: 0
+        width: 39
+        height: 27
+      spriteId: 14074f131f802784fa845ca253a5d03b
+    - name: Boar_Frame_4
       frameIndex: 4
       cellRect:
-        x: 5
-        y: 16
-        width: 52
-        height: 29
-      spriteId: f200e6e0b32682a4eab274bab946c13d
-    - name: Tornado_Frame_5
+        x: 6
+        y: 0
+        width: 38
+        height: 26
+      spriteId: 49f1ff2ca1962d1449f608b99cb885c8
+    - name: Boar_Frame_5
       frameIndex: 5
       cellRect:
         x: 5
-        y: 16
-        width: 52
-        height: 29
-      spriteId: a3e0239e8a2189d4ab1b94466d878bfc
+        y: 0
+        width: 39
+        height: 27
+      spriteId: f379b1b80933a3c46ba1b4d9af587ead
+    - name: Boar_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 7
+        y: 0
+        width: 35
+        height: 30
+      spriteId: 3f35a24f73d03054fb53c77b21d6de4e
+    - name: Boar_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 5
+        y: 0
+        width: 39
+        height: 27
+      spriteId: c20ebecaa91223042a5da664b75a4294
+    - name: Boar_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 5
+        y: 0
+        width: 39
+        height: 25
+      spriteId: 8068fd4acc965654388db1a60bee3cbd
+    - name: Boar_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 5
+        y: 0
+        width: 39
+        height: 21
+      spriteId: 7f3a41a548f17a844abebd9901182da7
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -361,4 +473,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 64, y: 64}
+  canvasSize: {x: 48, y: 32}

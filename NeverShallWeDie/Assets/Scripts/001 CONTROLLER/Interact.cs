@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
-    [SerializeField] string _textToInteract;
+    //[SerializeField] string _textToInteract;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

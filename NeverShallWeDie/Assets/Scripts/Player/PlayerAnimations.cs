@@ -64,6 +64,9 @@ public class PlayerAnimations : MonoBehaviour
         //Water Spin
         _animation.SetBool("WaterSpin", _player._inWaterSpin);
 
+        //Tornado
+        _animation.SetBool("Tornado", _player._inTornado);
+
         //Grab
         _animation.SetBool("IsGrabing", _player._isGrabing);
 
@@ -103,17 +106,6 @@ public class PlayerAnimations : MonoBehaviour
     { //chamado na animação de Air Cut
         _input.isAirCuting = false;
         _animation.SetBool("AirCut", false);
-    }
-
-    public void OnTornado()
-    {
-        _animation.SetBool("Tornado", true);
-    }
-
-    void StopTornado()
-    { //chamado na animação de Tornado
-        _input.isTornado = false;
-        _animation.SetBool("Tornado", false);
     }
 
     public void OnHealing()

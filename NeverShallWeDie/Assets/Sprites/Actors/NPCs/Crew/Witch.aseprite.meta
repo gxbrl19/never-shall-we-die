@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 674763146fdd77a41939c06d8cd8a2f5
+guid: 6c9234916e2fe17429be396693999a12
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638448899645084580
+  platformSettingsDirtyTick: 638503331478252350
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,38 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Tornado_Frame_0
+  - name: Witch_Frame_0
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.5, y: 0.36363637}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 4
+      width: 18
+      height: 44
+    spriteID: d5be15042714c6040b13444973b0d983
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 4}
+  - name: Witch_Frame_1
+    originalName: 
+    pivot: {x: 0.47368422, y: 0.37209302}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 52
-      height: 29
-    spriteID: 9083c0d90b07bf346adae63a8fb1621d
+      width: 19
+      height: 43
+    spriteID: e5a4231e400e48348bea1d94961c7dcb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,18 +159,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Tornado_Frame_1
+  - name: Witch_Frame_2
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.47368422, y: 0.3809524}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 41
-      width: 52
-      height: 29
-    spriteID: e704ebf066c451b49af87ee6d72db100
+      y: 55
+      width: 19
+      height: 42
+    spriteID: 5756a49405666ec45b61e2a9576da639
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -158,19 +178,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 41}
-  - name: Tornado_Frame_2
+    uvTransform: {x: 4, y: 55}
+  - name: Witch_Frame_3
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.47058824, y: 0.36363637}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 78
-      width: 52
-      height: 29
-    spriteID: 9b370c0a830ebac4dbde4f60bd950b48
+      x: 57
+      y: 55
+      width: 17
+      height: 44
+    spriteID: f6ad67c0efa23794e8e73e01080be9fe
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -178,19 +198,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 78}
-  - name: Tornado_Frame_3
+    uvTransform: {x: 57, y: 55}
+  - name: Witch_Frame_4
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.5, y: 0.37209302}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 64
+      x: 57
       y: 4
-      width: 52
-      height: 29
-    spriteID: 92beb01db93a8ed43aea5e2394a4e1b1
+      width: 18
+      height: 43
+    spriteID: 472564c9cd856e04fb5f4e896258ac4a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -198,19 +218,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 64, y: 4}
-  - name: Tornado_Frame_4
+    uvTransform: {x: 57, y: 4}
+  - name: Witch_Frame_5
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.5, y: 0.36363637}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 64
-      y: 41
-      width: 52
-      height: 29
-    spriteID: f200e6e0b32682a4eab274bab946c13d
+      x: 31
+      y: 56
+      width: 18
+      height: 44
+    spriteID: e81367315558e0a4993d1160c1129aea
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -218,84 +238,64 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 64, y: 41}
-  - name: Tornado_Frame_5
-    originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 64
-      y: 78
-      width: 52
-      height: 29
-    spriteID: a3e0239e8a2189d4ab1b94466d878bfc
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 64, y: 78}
+    uvTransform: {x: 31, y: 56}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1283003863
-    name: Tornado
+    guid: 2088752421
+    name: Witch
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Tornado_Frame_0
+    - name: Witch_Frame_0
       frameIndex: 0
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: 9083c0d90b07bf346adae63a8fb1621d
-    - name: Tornado_Frame_1
+        width: 18
+        height: 44
+      spriteId: d5be15042714c6040b13444973b0d983
+    - name: Witch_Frame_1
       frameIndex: 1
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: e704ebf066c451b49af87ee6d72db100
-    - name: Tornado_Frame_2
+        width: 19
+        height: 43
+      spriteId: e5a4231e400e48348bea1d94961c7dcb
+    - name: Witch_Frame_2
       frameIndex: 2
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: 9b370c0a830ebac4dbde4f60bd950b48
-    - name: Tornado_Frame_3
+        width: 19
+        height: 42
+      spriteId: 5756a49405666ec45b61e2a9576da639
+    - name: Witch_Frame_3
       frameIndex: 3
       cellRect:
-        x: 5
+        x: 24
         y: 16
-        width: 52
-        height: 29
-      spriteId: 92beb01db93a8ed43aea5e2394a4e1b1
-    - name: Tornado_Frame_4
+        width: 17
+        height: 44
+      spriteId: f6ad67c0efa23794e8e73e01080be9fe
+    - name: Witch_Frame_4
       frameIndex: 4
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: f200e6e0b32682a4eab274bab946c13d
-    - name: Tornado_Frame_5
+        width: 18
+        height: 43
+      spriteId: 472564c9cd856e04fb5f4e896258ac4a
+    - name: Witch_Frame_5
       frameIndex: 5
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: a3e0239e8a2189d4ab1b94466d878bfc
+        width: 18
+        height: 44
+      spriteId: e81367315558e0a4993d1160c1129aea
     linkedCells: []
     parentIndex: -1
   platformSettings:

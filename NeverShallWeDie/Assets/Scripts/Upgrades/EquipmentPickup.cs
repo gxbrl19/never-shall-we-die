@@ -41,7 +41,7 @@ public class EquipmentPickup : MonoBehaviour
         }
 
         //verifica o input
-        if (_input.vertical == 1 && _triggered)
+        if (_input.interact && _triggered)
         {
             DisableSkill();
             Invoke("NewSkill", 0.5f); //da um delay para a animação de nova skill      

@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Input")] public int _prefsInput;
     [BoxGroup("Input")] public string _inputType;
 
-    [BoxGroup("ItemsInLevel")] public int[] _stones; //Text Stones já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _flags; //Flags já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _airCutblock; //Air Cut Blocks já destruídos
 
@@ -59,8 +58,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        _stones = new int[7]; //define o tamanho do array
+        
         _flags = new int[11];
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         LoadBasic();

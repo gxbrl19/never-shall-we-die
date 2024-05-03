@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boar : MonoBehaviour {
     public List<Transform> _paths = new List<Transform>();    
-    [SerializeField] private float _speed;   
+    private float _speed = 6f;   
     private float _knockbackForce = 7f; 
     private float _initialSpeed;
     private int _pathIndex;

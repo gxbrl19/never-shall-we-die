@@ -89,23 +89,27 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool _onAcid;
 
     //Skills
-    [HideInInspector] public float _manaConsumption = 1f;
     [HideInInspector] public float _timeForSkills;
 
     //Water Spin
     [HideInInspector] public float _timeWaterSpin;
     private float _waterSpinForce = 10f;
     [HideInInspector] public bool _inWaterSpin;
+    [HideInInspector] public float _waterSpinMana = 1f;
 
     //Air Cut    
     [HideInInspector] public float _timeAirCut;
     [BoxGroup("GameObjects")] public AirCut _aircut;
     [BoxGroup("Components")] public Transform _aircutPoint;
+    [HideInInspector] public float _aircutMana = 1f;
 
     //Tornado
+    [HideInInspector] public bool _inTornado;
+    private float _tornadoForce = 7f;
     [HideInInspector] public float _timeTornado;
     [BoxGroup("GameObjects")] public WindSpin _tornado;
     [BoxGroup("Components")] public Transform _tornadoPoint;
+    private float _tornadoMana = 0.05f;
 
     //Particles
     [SerializeField][Header("Particles")][BoxGroup("GameObjects")] private GameObject _dust;
@@ -148,10 +152,10 @@ public class Player : MonoBehaviour
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
-        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
-        if (!PlayerSkills.instance.skills.Contains(Skills.AirCut)) { PlayerSkills.instance.skills.Add(Skills.AirCut); }
+        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
+        //if (!PlayerSkills.instance.skills.Contains(Skills.AirCut)) { PlayerSkills.instance.skills.Add(Skills.AirCut); }
         if (!PlayerSkills.instance.skills.Contains(Skills.Tornado)) { PlayerSkills.instance.skills.Add(Skills.Tornado); }
-        if (!PlayerSkills.instance.skills.Contains(Skills.WaterSpin)) { PlayerSkills.instance.skills.Add(Skills.WaterSpin); }
+        //if (!PlayerSkills.instance.skills.Contains(Skills.WaterSpin)) { PlayerSkills.instance.skills.Add(Skills.WaterSpin); }
     }
 
     void Start()
@@ -209,6 +213,7 @@ public class Player : MonoBehaviour
 
         //Special Attacks
         WaterSpin();
+        Tornado();
     }
 
     #region Movement
@@ -375,7 +380,7 @@ public class Player : MonoBehaviour
 
     void JumpControl()
     {
-        if (_input.isJumping && (_isGrounded || _ghostTime > Time.time) && !_onWater && _input.vertical > -0.3f && !_onClimbing)
+        if (_input.isJumping && (_isGrounded || _ghostTime > Time.time) && !_onWater && _input.vertical > -0.3f && !_onClimbing && !_inTornado)
         { //pulo comum
             _isJumping = true;
             _input.isJumping = false;
@@ -565,7 +570,7 @@ public class Player : MonoBehaviour
 
     void Flip()
     {
-        if (_dead || !_canMove || _isGrabing || _input.isTornado || _input.isAirCuting || _inWaterSpin)
+        if (_dead || !_canMove || _isGrabing || _input.isAirCuting || _inWaterSpin)
             return;
 
         if (_isGrounded)
@@ -595,16 +600,30 @@ public class Player : MonoBehaviour
         _aircut.transform.localScale = _scale;
 
         Instantiate(_aircut.gameObject, _aircutPoint.position, _aircutPoint.rotation);
-        _health.ManaConsumption(_manaConsumption);
+        _health.ManaConsumption(_waterSpinMana);
     }
 
-    public void Tornado() //chamado na animação de Tornado
+    public void Tornado()
     {
-        if (_dead || !_canMove)
-            return;
+        if (_dead || !_canMove) { return; }
 
-        Instantiate(_tornado.gameObject, _tornadoPoint.position, _tornadoPoint.rotation);
-        _health.ManaConsumption(_manaConsumption);
+        if (_input.isTornado && _health._currentMana > 0f)
+        {
+            _inTornado = true;
+            gameObject.layer = LayerMask.NameToLayer("Invencible");
+            _health.ManaConsumption(_tornadoMana);
+
+            if (_direction < 0) { _body.velocity = Vector2.left * _tornadoForce; }
+            else if (_direction > 0) { _body.velocity = Vector2.right * _tornadoForce; }
+        }
+        else if (_inTornado)
+        {
+            _inTornado = false;
+            _input.isTornado = false;
+            gameObject.layer = LayerMask.NameToLayer("Player");
+            _body.velocity = Vector2.zero;
+            _timeTornado = 0f; //reseta o tempo do tornado para poder fazer a contagem;
+        }
     }
 
     void WaterSpin()

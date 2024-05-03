@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 674763146fdd77a41939c06d8cd8a2f5
+guid: efa57a0a28cde284c9a32f734b9555df
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638448899645084580
+  platformSettingsDirtyTick: 638502433113300913
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,98 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Tornado_Frame_0
+  - name: Navigator_Frame_0
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.6, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 43
+      width: 15
+      height: 32
+    spriteID: 9b70d315cf9fd60488eb3a42e4ff7a5f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 43}
+  - name: Navigator_Frame_1
+    originalName: 
+    pivot: {x: 0.6, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 83
+      width: 15
+      height: 32
+    spriteID: c4f6d1ac227a69542a479379971546c8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 83}
+  - name: Navigator_Frame_2
+    originalName: 
+    pivot: {x: 0.6, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 28
+      y: 4
+      width: 15
+      height: 32
+    spriteID: dac7b0ed75c93d24490936611cf5e285
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 28, y: 4}
+  - name: Navigator_Frame_3
+    originalName: 
+    pivot: {x: 0.6, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 28
+      y: 44
+      width: 15
+      height: 32
+    spriteID: 9d8011a158afd8148a5d3daf58c3eef6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 28, y: 44}
+  - name: Navigator_Frame_4
+    originalName: 
+    pivot: {x: 0.5625, y: 0.516129}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 52
-      height: 29
-    spriteID: 9083c0d90b07bf346adae63a8fb1621d
+      width: 16
+      height: 31
+    spriteID: 6935c8ab1e2a56a46b14bc9c4f454bdf
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,18 +219,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Tornado_Frame_1
+  - name: Navigator_Frame_5
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.6, y: 0.516129}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 41
-      width: 52
-      height: 29
-    spriteID: e704ebf066c451b49af87ee6d72db100
+      x: 28
+      y: 84
+      width: 15
+      height: 31
+    spriteID: 4242eb7ef4b80d24a9d395b3833d820d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -158,39 +238,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 41}
-  - name: Tornado_Frame_2
+    uvTransform: {x: 28, y: 84}
+  - name: Navigator_Frame_6
     originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
+    pivot: {x: 0.6, y: 0.516129}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 78
-      width: 52
-      height: 29
-    spriteID: 9b370c0a830ebac4dbde4f60bd950b48
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 78}
-  - name: Tornado_Frame_3
-    originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 64
+      x: 51
       y: 4
-      width: 52
-      height: 29
-    spriteID: 92beb01db93a8ed43aea5e2394a4e1b1
+      width: 15
+      height: 31
+    spriteID: a15a8aeda8637b0479733951b02b5db9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -198,104 +258,72 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 64, y: 4}
-  - name: Tornado_Frame_4
-    originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 64
-      y: 41
-      width: 52
-      height: 29
-    spriteID: f200e6e0b32682a4eab274bab946c13d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 64, y: 41}
-  - name: Tornado_Frame_5
-    originalName: 
-    pivot: {x: 0.5192308, y: 0.55172414}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 64
-      y: 78
-      width: 52
-      height: 29
-    spriteID: a3e0239e8a2189d4ab1b94466d878bfc
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 64, y: 78}
+    uvTransform: {x: 51, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1283003863
-    name: Tornado
+    guid: 1564776495
+    name: Navigator
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Tornado_Frame_0
+    - name: Navigator_Frame_0
       frameIndex: 0
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: 9083c0d90b07bf346adae63a8fb1621d
-    - name: Tornado_Frame_1
+        width: 15
+        height: 32
+      spriteId: 9b70d315cf9fd60488eb3a42e4ff7a5f
+    - name: Navigator_Frame_1
       frameIndex: 1
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: e704ebf066c451b49af87ee6d72db100
-    - name: Tornado_Frame_2
+        width: 15
+        height: 32
+      spriteId: c4f6d1ac227a69542a479379971546c8
+    - name: Navigator_Frame_2
       frameIndex: 2
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: 9b370c0a830ebac4dbde4f60bd950b48
-    - name: Tornado_Frame_3
+        width: 15
+        height: 32
+      spriteId: dac7b0ed75c93d24490936611cf5e285
+    - name: Navigator_Frame_3
       frameIndex: 3
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: 92beb01db93a8ed43aea5e2394a4e1b1
-    - name: Tornado_Frame_4
+        width: 15
+        height: 32
+      spriteId: 9d8011a158afd8148a5d3daf58c3eef6
+    - name: Navigator_Frame_4
       frameIndex: 4
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: f200e6e0b32682a4eab274bab946c13d
-    - name: Tornado_Frame_5
+        width: 16
+        height: 31
+      spriteId: 6935c8ab1e2a56a46b14bc9c4f454bdf
+    - name: Navigator_Frame_5
       frameIndex: 5
       cellRect:
-        x: 5
+        x: 23
         y: 16
-        width: 52
-        height: 29
-      spriteId: a3e0239e8a2189d4ab1b94466d878bfc
+        width: 15
+        height: 31
+      spriteId: 4242eb7ef4b80d24a9d395b3833d820d
+    - name: Navigator_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 23
+        y: 16
+        width: 15
+        height: 31
+      spriteId: a15a8aeda8637b0479733951b02b5db9
     linkedCells: []
     parentIndex: -1
   platformSettings:
