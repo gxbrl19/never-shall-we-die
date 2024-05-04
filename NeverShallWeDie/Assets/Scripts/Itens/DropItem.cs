@@ -3,32 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DropItem : MonoBehaviour
-{
+{    
     [SerializeField] private GameObject _item;
-    [HideInInspector] public int _dropRate; //pega no scriptable object
+    [SerializeField] private bool _interactable; //verifica se é o barril e atribui o droprate
+    [HideInInspector] public int _dropRate; //para os inimigos essa informação vem do scriptable object
 
-    public void Drop(string type) 
+    public void DropGold()
     {
-        if(type == "Gold") 
+        if (_item == null) { return; } //retorna se não tiver nenhum item
+        if (_interactable) { _dropRate = 10; }
+
+        for (int i = 0; i < _dropRate; i++)
         {
-            if (_item != null)         
-            {
-                for (int i = 0; i < _dropRate; i++)
-                {
-                    Instantiate(_item, transform.position, transform.rotation);
-                }     
-            }  
+            Instantiate(_item, transform.position, transform.rotation);
         }
-        else if(type == "Healing")
-        {
-            int _n = 4;
-            if (_item != null)         
-            {
-                for (int i = 0; i < _n; i++)
-                {
-                    Instantiate(_item, transform.position, transform.rotation);
-                }     
-            }  
-        }                  
     }
 }

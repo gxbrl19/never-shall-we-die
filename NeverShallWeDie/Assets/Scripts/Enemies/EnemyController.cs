@@ -70,7 +70,7 @@ public class EnemyController : MonoBehaviour
         if (_currentHealth <= 0)
         {
             _audio.PlayOneShot(_deadSound);
-            _dropHealth.Drop("Gold");
+            _dropHealth.DropGold();
             _isDead = true;
             _animation.SetBool("Dead", true);
 

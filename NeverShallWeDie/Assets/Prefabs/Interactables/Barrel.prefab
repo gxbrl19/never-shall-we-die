@@ -29,6 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7307292371763543439}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -36,7 +37,6 @@ Transform:
   m_Children:
   - {fileID: 3418197842839299744}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7307292371763543437
 SpriteRenderer:
@@ -76,15 +76,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -425641465
-  m_SortingLayer: 2
+  m_SortingLayerID: -197623469
+  m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 1380203805528671675, guid: f5e578f7d35a54d459a808e52995917e, type: 3}
+  m_Sprite: {fileID: 5885340638667073481, guid: 42f4a82c3cf927f43beec3b00a994738, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 1}
+  m_Size: {x: 1.375, y: 1.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,7 +98,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7307292371763543439}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d2c9bbfb2a5684d4ab87f8f91bf4ebba, type: 2}
   m_CullingMode: 0
@@ -146,9 +146,9 @@ BoxCollider2D:
   m_Offset: {x: -0.0030555725, y: -0.21969795}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 2}
-    newSize: {x: 2, y: 1}
+    pivot: {x: 0.5, y: 0.5714286}
+    oldSize: {x: 1.375, y: 1.75}
+    newSize: {x: 1.375, y: 1.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -168,11 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa37e1a0a270a44d8ff1be008b87d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeBarrel: 2
-  _barrel: {fileID: 0}
-  _barrelImages:
-  - {fileID: 2347233569298177347, guid: dca70c417b8546449bab8748c623957f, type: 3}
-  - {fileID: -1978661657809404450, guid: dca70c417b8546449bab8748c623957f, type: 3}
   _barrelBreak: {fileID: 8300000, guid: 0f5776835c72af642910cdcef41005e7, type: 3}
 --- !u!114 &6530343848684851427
 MonoBehaviour:
@@ -186,9 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07cb9b2e136621c42b16bedb58e76bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: Barrel
-  _dropItem: {fileID: 3418197842839299744}
   _item: {fileID: 62880426106912218, guid: a9adf4fda0599e24abf6d0d01f7fedf9, type: 3}
+  _interactable: 1
   _dropRate: 0
 --- !u!82 &7342506176083512644
 AudioSource:
@@ -309,11 +303,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8606973496281176324}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7307292371763543434}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
