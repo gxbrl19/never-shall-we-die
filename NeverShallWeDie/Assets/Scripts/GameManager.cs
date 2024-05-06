@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     [BoxGroup("PlayerStats")] public List<Equipments> _equipments;
     [BoxGroup("PlayerStats")] public List<Skills> _skills;
+    [BoxGroup("PlayerStats")] public List<CrewMembers> _crewMembers;
     [BoxGroup("PlayerStats")] public int _gold; //total de gold coletado
 
     [BoxGroup("Sound")] public float _masterVol;

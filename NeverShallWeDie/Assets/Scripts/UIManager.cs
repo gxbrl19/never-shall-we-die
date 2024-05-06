@@ -45,6 +45,10 @@ public class UIManager : MonoBehaviour
 
     [BoxGroup("Map")] public bool _inMap;
     [BoxGroup("Map")] public RectTransform _menuMap;
+    [BoxGroup("Map")] public RectTransform[] _mapPanels;
+    [BoxGroup("Map")] public Image[] _localizations;
+    private int _mapID;
+    private int _mapPanelIndex;
 
     [Header("Game Over")]
     public bool _isGameOver;
@@ -197,6 +201,10 @@ public class UIManager : MonoBehaviour
         _menuMap.gameObject.SetActive(true);
         _inMap = true;
         _input.horizontal = 0f;
+
+        SetLocalization();
+        _mapPanelIndex = _mapID;
+        CurrentMap();
     }
 
     void CancelMap()
@@ -207,6 +215,78 @@ public class UIManager : MonoBehaviour
         _player.EnabledControls();
     }
 
+    void ChangeMap(string side)
+    {
+        int limit = _mapPanels.Length - 1;
+
+        if (_inMap)
+        {
+            if (side == "Right" && _mapPanelIndex < limit)
+            {
+                _mapPanelIndex++;
+            }
+            else if (side == "Left" && _mapPanelIndex > 0)
+            {
+                _mapPanelIndex--;
+            }
+
+            MoveMap();
+        }
+    }
+
+    void MoveMap()
+    {
+        for (int i = 0; i < _mapPanels.Length; i++)
+        {
+            if (i == _mapPanelIndex)
+            {
+                _mapPanels[i].DOAnchorPos(new Vector2(0f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+            }
+            else if (i < _mapPanelIndex)
+            {
+                _mapPanels[i].DOAnchorPos(new Vector2(-384f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+            }
+            else if (i > _mapPanelIndex)
+            {
+                _mapPanels[i].DOAnchorPos(new Vector2(384f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+            }
+        }
+    }
+
+    public void CurrentMap()
+    {
+        for (int i = 0; i < _mapPanels.Length; i++)
+        {
+            if (i == _mapPanelIndex)
+            {
+                _mapPanels[i].DOAnchorPos(new Vector2(0f, 0f), 0f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+            }
+            else if (i < _mapPanelIndex)
+            {
+                _mapPanels[i].DOAnchorPos(new Vector2(-384f, 0f), 0f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+            }
+            else if (i > _mapPanelIndex)
+            {
+                _mapPanels[i].DOAnchorPos(new Vector2(384f, 0f), 0f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+            }
+        }
+    }
+
+    public void SetLocalization() //verifica em qual ilha o player está para ativar a localização no mapa
+    {     
+        if (_sceneID >= 4 && _sceneID <= 5) { _mapID = 0; }
+        else if (_sceneID >= 6 && _sceneID <= 59) { _mapID = 1; }
+        else if (_sceneID >= 60 && _sceneID <= 119) { _mapID = 2; }
+        else if (_sceneID >= 120 && _sceneID <= 180) { _mapID = 3; }
+        else if (_sceneID >= 181 && _sceneID <= 242) { _mapID = 4; }
+
+        for (int i = 0; i < _localizations.Length; i++)
+        {
+            _localizations[i].enabled = false;
+        }
+
+        _localizations[_mapID].enabled = true;
+    }
     #endregion
 
     #region Fade
@@ -221,6 +301,8 @@ public class UIManager : MonoBehaviour
     {
         if (callback.started)
         {
+            if (_inMap) { return; }
+
             if (!_isPaused)
             {
                 InPause();
@@ -238,6 +320,8 @@ public class UIManager : MonoBehaviour
     {
         if (callback.started)
         {
+            if (_isPaused) { return; }
+
             if (!_inMap)
             {
                 InMap();
@@ -255,7 +339,8 @@ public class UIManager : MonoBehaviour
     {
         if (callback.started)
         {
-            SwitchPanel("Right");
+            if(_isPaused) { SwitchPanel("Right"); }
+            else if(_inMap) { ChangeMap("Right"); }
         }
     }
 
@@ -263,7 +348,8 @@ public class UIManager : MonoBehaviour
     {
         if (callback.started)
         {
-            SwitchPanel("Left");
+            if(_isPaused) { SwitchPanel("Left"); }
+            else if(_inMap) { ChangeMap("Left"); }
         }
     }
     #endregion
