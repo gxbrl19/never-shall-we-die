@@ -3163,7 +3163,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 76
-      m_TileSpriteIndex: 89
+      m_TileSpriteIndex: 90
       m_TileMatrixIndex: 0
       m_TileColorIndex: 30
       m_TileObjectToInstantiateIndex: 65535
@@ -3443,7 +3443,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 90
-      m_TileSpriteIndex: 88
+      m_TileSpriteIndex: 89
       m_TileMatrixIndex: 0
       m_TileColorIndex: 30
       m_TileObjectToInstantiateIndex: 65535
@@ -4183,7 +4183,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 80
-      m_TileSpriteIndex: 80
+      m_TileSpriteIndex: 88
       m_TileMatrixIndex: 0
       m_TileColorIndex: 30
       m_TileObjectToInstantiateIndex: 65535
@@ -4383,7 +4383,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 81
-      m_TileSpriteIndex: 81
+      m_TileSpriteIndex: 86
       m_TileMatrixIndex: 0
       m_TileColorIndex: 30
       m_TileObjectToInstantiateIndex: 65535
@@ -6014,28 +6014,28 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 472254522, guid: 5c640069a92db564b9e13685a2eb6c01, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 801535999, guid: 5c640069a92db564b9e13685a2eb6c01, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 4
     m_Data: {fileID: 684069196, guid: 5c640069a92db564b9e13685a2eb6c01, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 472254522, guid: 5c640069a92db564b9e13685a2eb6c01, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 554809952, guid: 5c640069a92db564b9e13685a2eb6c01, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1896692384, guid: 5c640069a92db564b9e13685a2eb6c01, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 477
     m_Data:
@@ -6529,6 +6529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502524965f6e9a747b2553f3c5954b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _oneCamScene: 0
+  _offset_x: 0
+  _offset_y: 0
 --- !u!114 &239819007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10181,16 +10184,19 @@ MonoBehaviour:
   _save3: 0
   _equipments: 
   _skills: 
+  _crewMembers: 
   _gold: 0
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
   _prefsInput: 0
   _inputType: 
-  _stones: 
   _flags: 
   _airCutblock: 
+  _checkpointScene: 0
+  _direction: 0
   _shipInitialPosition: {x: 0, y: 0, z: 0}
+  _currentPier: 
 --- !u!4 &654701005
 Transform:
   m_ObjectHideFlags: 0
