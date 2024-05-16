@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
         _flags = new int[11];
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         LoadBasic();
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        _currentPier = "01/H1"; //TODO: na cena do mapa, ao selecionar um Pier passar o valor para essa variavel
+        _currentPier = "06/H0"; //TODO: na cena do mapa, ao selecionar um Pier passar o valor para essa variavel
     }
 
     void Update()
@@ -179,8 +179,8 @@ public class GameManager : MonoBehaviour
         if (Input.anyKeyDown)
         {
             _inputType = "Keyboard";
-        }        
-        
+        }
+        //
         for (int i = 0; i < 20; i++) // 20 é um número arbitrário para os botões do gamepad
         {
             if (Input.GetKeyDown("joystick button " + i))
@@ -189,8 +189,8 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-
-        if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f) 
+        //
+        if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
         {
             _inputType = "Gamepad";
         }
