@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5373271078219029727}
   - component: {fileID: 5373271078219029726}
   - component: {fileID: 7777610449698987891}
+  - component: {fileID: 7917786081040427319}
+  - component: {fileID: 6886577985300210533}
   m_Layer: 0
   m_Name: Helmsman
   m_TagString: Untagged
@@ -139,16 +141,41 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.62547493, y: 0}
+  m_Offset: {x: 1, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.44444445, y: -0.4848485}
-    oldSize: {x: 0.18, y: 0.33}
+    pivot: {x: 0.44444445, y: 0.4848485}
+    oldSize: {x: 1.125, y: 2.0625}
     newSize: {x: 0.875, y: 1.9375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6017609, y: 1}
+  m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7917786081040427319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5373271078219029721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2596688fe42029544a18425b91e8aef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerTriggered: 0
+--- !u!114 &6886577985300210533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5373271078219029721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d33dfc71ce494bf44bcf503236ceec9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

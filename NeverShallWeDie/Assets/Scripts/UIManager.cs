@@ -50,6 +50,11 @@ public class UIManager : MonoBehaviour
     private int _mapID;
     private int _mapPanelIndex;
 
+    [BoxGroup("Dialogue")] public GameObject _pnlDialogue;
+    [BoxGroup("Dialogue")] public TextMeshProUGUI _txtName;
+    [BoxGroup("Dialogue")] public TextMeshProUGUI _txtTalk;
+    public bool _inDialogue = false;
+
     [Header("Game Over")]
     public bool _isGameOver;
     public GameObject _pnlGameOver;
@@ -87,6 +92,7 @@ public class UIManager : MonoBehaviour
         HealingControl();
         GoldControl();
         SkillControl();
+        DialogueControl();
     }
 
     #region HUD
@@ -273,7 +279,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void SetLocalization() //verifica em qual ilha o player está para ativar a localização no mapa
-    {     
+    {
         if (_sceneID >= 4 && _sceneID <= 5) { _mapID = 0; }
         else if (_sceneID >= 6 && _sceneID <= 59) { _mapID = 1; }
         else if (_sceneID >= 60 && _sceneID <= 119) { _mapID = 2; }
@@ -286,6 +292,30 @@ public class UIManager : MonoBehaviour
         }
 
         _localizations[_mapID].enabled = true;
+    }
+    #endregion
+
+    #region Dialogue
+    void DialogueControl()
+    {
+        _pnlDialogue.SetActive(_inDialogue);
+    }
+
+    public void SetName(string name)
+    {
+        _txtName.text = name;
+    }
+
+    public void EnableDialogue()
+    {
+        _inDialogue = true;
+    }
+
+    public void DisableDialogue()
+    {
+        _inDialogue = false;
+        _txtName.text = "";
+        _txtTalk.text = "";
     }
     #endregion
 
@@ -339,8 +369,8 @@ public class UIManager : MonoBehaviour
     {
         if (callback.started)
         {
-            if(_isPaused) { SwitchPanel("Right"); }
-            else if(_inMap) { ChangeMap("Right"); }
+            if (_isPaused) { SwitchPanel("Right"); }
+            else if (_inMap) { ChangeMap("Right"); }
         }
     }
 
@@ -348,8 +378,8 @@ public class UIManager : MonoBehaviour
     {
         if (callback.started)
         {
-            if(_isPaused) { SwitchPanel("Left"); }
-            else if(_inMap) { ChangeMap("Left"); }
+            if (_isPaused) { SwitchPanel("Left"); }
+            else if (_inMap) { ChangeMap("Left"); }
         }
     }
     #endregion
