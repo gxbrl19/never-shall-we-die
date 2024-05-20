@@ -1889,6 +1889,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 611241113564523214, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
+      propertyPath: textObject
+      value: 
+      objectReference: {fileID: 639119658717873593}
     - target: {fileID: 5373271078219029721, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_Name
       value: Helmsman
@@ -1933,6 +1937,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5472299401849235660, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
+      propertyPath: dialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f217c137295afe4d9768d00d233e3b8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2043,7 +2051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1212069990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2057,7 +2065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeDelay: 0.05
-  textObject: {fileID: 639119658717873593}
+  textObject: {fileID: 0}
   fullText: 
 --- !u!4 &1212069991
 Transform:

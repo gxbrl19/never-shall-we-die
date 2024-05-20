@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public enum STATE
 {
@@ -24,7 +27,7 @@ public class DialogueSystem : MonoBehaviour
     {
         typeText = FindObjectOfType<TypeTextAnimation>();
         typeText.TypeFinished = OnTypeFinishe;
-        
+
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
@@ -55,9 +58,20 @@ public class DialogueSystem : MonoBehaviour
             UIManager.instance.EnableDialogue();
         }
 
-        UIManager.instance.SetName(dialogueData.talkScript[currentText].name);
+        //localization
+        var currentLocale = LocalizationSettings.SelectedLocale;
 
-        typeText.fullText = dialogueData.talkScript[currentText++].text;
+        if (currentLocale.Identifier.Code == "pt-BR")
+        {
+            UIManager.instance.SetName(dialogueData.talkScript[currentText].portugueseName);
+            typeText.fullText = dialogueData.talkScript[currentText++].portugueseText;
+        }
+        else if (currentLocale.Identifier.Code == "en")
+        {
+            UIManager.instance.SetName(dialogueData.talkScript[currentText].englishName);
+            typeText.fullText = dialogueData.talkScript[currentText++].englishText;
+        }
+        //localization
 
         if (currentText == dialogueData.talkScript.Count) finished = true;
 

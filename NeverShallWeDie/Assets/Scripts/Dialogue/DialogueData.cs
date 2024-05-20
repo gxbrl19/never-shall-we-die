@@ -5,9 +5,10 @@ using UnityEngine;
 [Serializable]
 public struct Dialogue
 {
-    public string name;
-    [TextArea(5, 10)]
-    public string text;
+    public string portugueseName;
+    public string englishName;
+    [TextArea(5, 10)] public string portugueseText;
+    [TextArea(5, 10)] public string englishText;
 
 }
 
