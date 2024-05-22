@@ -64,8 +64,8 @@ public class PlayerAnimations : MonoBehaviour
         //Water Spin
         _animation.SetBool("WaterSpin", _player._inWaterSpin);
 
-        //Tornado
-        _animation.SetBool("Tornado", _player._inTornado);
+        //Slide
+        _animation.SetBool("IsSliding", _input.isSliding);
 
         //Grab
         _animation.SetBool("IsGrabing", _player._isGrabing);
@@ -111,6 +111,17 @@ public class PlayerAnimations : MonoBehaviour
     public void OnHealing()
     {
         _animation.SetTrigger("Healing");
+    }
+
+    public void OnTornado()
+    {
+        _animation.SetBool("Tornado", true);
+    }
+
+    void StopTornado() //chamado na animação de Tornado
+    {
+        _input.isTornado = false;
+        _animation.SetBool("Tornado", false);
     }
 
     public void OnDead()

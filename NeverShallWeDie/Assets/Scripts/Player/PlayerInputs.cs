@@ -15,6 +15,7 @@ public class PlayerInputs : MonoBehaviour
     private bool _isAttacking;
     private bool _isAirCuting;
     private bool _isTornado;
+    private bool _isSliding;
     private bool _isParachuting;
     private bool _isGrabing;
     private bool _interact;
@@ -84,6 +85,12 @@ public class PlayerInputs : MonoBehaviour
     {
         get { return _isRolling; }
         set { _isRolling = value; }
+    }
+
+    public bool isSliding
+    {
+        get { return _isSliding; }
+        set { _isSliding = value; }
     }
 
     public bool isParachuting
@@ -175,12 +182,26 @@ public class PlayerInputs : MonoBehaviour
         if (_player._dead || _player._canMove == false || Time.timeScale == 0f)
             return;
 
-        if (_callback.started)
+        if (_player._isGrounded || _collision._onWall || _player._onClimbing || _player._onWater)
         {
-            _isJumping = true;
-        }
+            if (_callback.started)
+            {
+                _isJumping = true;
+            }
 
-        _jumpHeld = _callback.performed;
+            _jumpHeld = _callback.performed;
+        }
+        else
+        {
+            if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Parachute) && !_collision._onWall)
+            {
+                _isParachuting = true;
+            }
+            else if (_player._isGrounded || _callback.canceled)
+            {
+                _isParachuting = false;
+            }
+        }
     }
 
     public void Interact(InputAction.CallbackContext _callback)
@@ -225,7 +246,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void SwordAttack(InputAction.CallbackContext _callback)
     {
-        if (_player._dead || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player._onClimbing || _collision._onWall || _player._onHit || _player._isGrabing || _player._isDoubleJumping || _player._isRolling || _player._canMove == false)
+        if (_player._dead || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player._onClimbing || _collision._onWall || _player._onHit || _player._isGrabing || _player._isDoubleJumping || _player._isRolling || _player._isSliding || _player._canMove == false)
             return;
 
         if (_callback.started && !_player._onWater && PlayerEquipment.instance.equipments.Contains(Equipments.Katana))
@@ -243,38 +264,30 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void Parachute(InputAction.CallbackContext _callback)
+    public void Slide(InputAction.CallbackContext _callback)
     {
-        if (_player._dead || _player._canMove == false || Time.timeScale == 0f)
+        if (_player._dead || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player._onClimbing || _collision._onWall || _player._onWater || _player._onHit || _player._isGrabing || _player._isDoubleJumping || _player._isRolling || _player._isSliding || _player._canMove == false)
             return;
 
-        if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Parachute))
+        if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots))
         {
-            _isParachuting = true;
-        }
-
-        if (_callback.canceled)
-        {
-            _isParachuting = false;
+            _isSliding = true;
         }
     }
 
     public void TornadoAttack(InputAction.CallbackContext _callback)
     {
-        if (_player._dead || !_player._isGrounded || _isAttacking || _isAirCuting || Time.timeScale == 0f || _player._onClimbing || _collision._onWall || _player._onHit || _player._isGrabing || _player._onWater || _player._isDoubleJumping || _player._isRolling || _player._canMove == false)
+        if (_player._dead || !_player._isGrounded || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player._onClimbing || _collision._onWall || _player._onHit || _player._isGrabing || _player._onWater || _player._isDoubleJumping || _player._isRolling || _player._canMove == false)
             return;
 
-        if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.Tornado))
+        if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.Tornado))
         {
             if (_health._currentMana > 0 && _player._timeTornado >= _player._timeForSkills)
             {
-                _isTornado = true;
+                isTornado = true;
+                _player._timeTornado = 0f; //reseta o tempo do tornado para poder fazer a contagem;
+                _animation.OnTornado();
             }
-        }
-
-        if (_callback.canceled || _health._currentMana <= 0f)
-        {
-            _isTornado = false;
         }
     }
 

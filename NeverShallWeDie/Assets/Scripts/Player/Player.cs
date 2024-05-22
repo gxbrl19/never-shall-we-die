@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
     //Jump
     private bool _isJumping;
     private float _jumpForce = 16f;
-    private float _doubleJumpForce = 30f;
     [HideInInspector] public bool _canDoubleJump = false;
 
     //Jump Hold
@@ -60,6 +59,13 @@ public class Player : MonoBehaviour
     [HideInInspector] public Transform _ladder;
     [HideInInspector] public Transform _vine;
     [HideInInspector] public bool _onClimbing;
+
+    //Slide
+    [HideInInspector] public bool _isSliding = false;
+    bool _hitSlide = false;
+    float _timeSlide = 0f;
+    float _limitSlide = 0.5f;
+    float _slideForce = 15f;
 
     //Grab
     private float _grabSpeed = 2f;
@@ -105,11 +111,10 @@ public class Player : MonoBehaviour
 
     //Tornado
     [HideInInspector] public bool _inTornado;
-    private float _tornadoForce = 7f;
     [HideInInspector] public float _timeTornado;
     [BoxGroup("GameObjects")] public WindSpin _tornado;
     [BoxGroup("Components")] public Transform _tornadoPoint;
-    private float _tornadoMana = 0.05f;
+    private float _tornadoMana = 1f;
 
     //Particles
     [SerializeField][Header("Particles")][BoxGroup("GameObjects")] private GameObject _dust;
@@ -148,13 +153,13 @@ public class Player : MonoBehaviour
         _health = GetComponent<PlayerHealth>();
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
         //if (!PlayerSkills.instance.skills.Contains(Skills.AirCut)) { PlayerSkills.instance.skills.Add(Skills.AirCut); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.Tornado)) { PlayerSkills.instance.skills.Add(Skills.Tornado); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.Tornado)) { PlayerSkills.instance.skills.Add(Skills.Tornado); }
         //if (!PlayerSkills.instance.skills.Contains(Skills.WaterSpin)) { PlayerSkills.instance.skills.Add(Skills.WaterSpin); }
     }
 
@@ -205,15 +210,16 @@ public class Player : MonoBehaviour
         BlockMove();
         CheckSlope();
         CheckBridge();
+        CheckSlide();
+        OnSlide();
         OnWater();
         OnClimb();
-        OnRoll();
+        OnRoll();        
         OnParachute();
         OnHit();
 
         //Special Attacks
         WaterSpin();
-        Tornado();
     }
 
     #region Movement
@@ -393,15 +399,6 @@ public class Player : MonoBehaviour
             _ghostTime = Time.time;
             _audio.PlayAudio(_audio._jumpSound);
             CreateDust(1);
-        }
-        else if (_input.isJumping && PlayerEquipment.instance.equipments.Contains(Equipments.Boots) && _canDoubleJump && !_isGrounded && !_onWater && !_isDoubleJumping && !_collision._onWall && !_onClimbing)
-        { //double jump
-            _canDoubleJump = false;
-            _body.velocity = Vector2.zero;
-            _body.AddForce(Vector2.up * _doubleJumpForce, ForceMode2D.Impulse);
-            _audio.PlayAudio(_audio._jumpSound);
-            _isDoubleJumping = true;
-            _input.isJumping = false;
         }
         else if (_input.isJumping && _onWater && !_onAcid && _canSwin && !_collision._onWall)
         { // na água
@@ -603,27 +600,12 @@ public class Player : MonoBehaviour
         _health.ManaConsumption(_waterSpinMana);
     }
 
-    public void Tornado()
+    public void Tornado() //chamado na animação de Tornado
     {
         if (_dead || !_canMove) { return; }
 
-        if (_input.isTornado && _health._currentMana > 0f)
-        {
-            _inTornado = true;
-            gameObject.layer = LayerMask.NameToLayer("Invencible");
-            _health.ManaConsumption(_tornadoMana);
-
-            if (_direction < 0) { _body.velocity = Vector2.left * _tornadoForce; }
-            else if (_direction > 0) { _body.velocity = Vector2.right * _tornadoForce; }
-        }
-        else if (_inTornado)
-        {
-            _inTornado = false;
-            _input.isTornado = false;
-            gameObject.layer = LayerMask.NameToLayer("Player");
-            _body.velocity = Vector2.zero;
-            _timeTornado = 0f; //reseta o tempo do tornado para poder fazer a contagem;
-        }
+        Instantiate(_tornado.gameObject, _tornadoPoint.position, _tornadoPoint.rotation);
+        _health.ManaConsumption(_tornadoMana);
     }
 
     void WaterSpin()
@@ -683,6 +665,45 @@ public class Player : MonoBehaviour
         _input.isRolling = false;
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
+    #endregion
+
+    #region Slide
+    void OnSlide()
+    {
+        if (_dead || !_canMove) { return; }
+
+        if (_input.isSliding && !_isSliding) { _isSliding = true; }
+
+        if (_isSliding && ((_timeSlide < _limitSlide) || _hitSlide)) //_hitSlide verifica se ainda tem GroundLayer em cima
+        {
+            _timeSlide += Time.deltaTime;
+            if (_direction < 0) { _body.velocity = Vector2.left * _slideForce; }
+            else if (_direction > 0) { _body.velocity = Vector2.right * _slideForce; }
+        }
+        else if (_isSliding && _timeSlide >= _limitSlide)
+        {
+            if (!_hitSlide) //se ainda estiver em baixo do GroundLayer continua o Slide
+            {
+                _timeSlide = 0f;
+                _input.isSliding = false;            
+                _isSliding = false;
+                _body.velocity = Vector2.zero;
+            }            
+        }
+    }
+
+    public void CheckSlide()
+    {
+        _hitSlide = false;
+        Vector2 position = new Vector2(transform.position.x, transform.position.y - 1f);
+        RaycastHit2D _slideHit = RaycastSlide(position, Vector2.up, 1.5f, _groundLayer);
+
+        if (_slideHit)
+        {
+            _hitSlide = true;
+        }
+    }
+
     #endregion
 
     #region Climb
@@ -884,6 +905,15 @@ public class Player : MonoBehaviour
         Vector2 _position = new Vector2(offset.x, offset.y + 0.10f);
         RaycastHit2D _hit = Physics2D.Raycast(_position, rayDirection, length, layerMask);
         Color _color = _hit ? Color.cyan : Color.blue;
+        Debug.DrawRay(_position, rayDirection * length, _color);
+        return _hit;
+    }
+
+    RaycastHit2D RaycastSlide(Vector2 offset, Vector2 rayDirection, float length, LayerMask layerMask)
+    {
+        Vector2 _position = new Vector2(offset.x, offset.y + 0.10f);
+        RaycastHit2D _hit = Physics2D.Raycast(_position, rayDirection, length, layerMask);
+        Color _color = _hit ? Color.green : Color.white;
         Debug.DrawRay(_position, rayDirection * length, _color);
         return _hit;
     }
