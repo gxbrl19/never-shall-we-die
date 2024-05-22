@@ -22,6 +22,7 @@ public class DialogueSystem : MonoBehaviour
     TypeTextAnimation typeText;
     STATE state;
     Player _player;
+    NPCController _npcController;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class DialogueSystem : MonoBehaviour
         typeText.TypeFinished = OnTypeFinishe;
 
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _npcController = FindObjectOfType<NPCController>();
     }
 
     private void Start()
@@ -99,6 +101,7 @@ public class DialogueSystem : MonoBehaviour
                 currentText = 0;
                 finished = false;
                 _player.EnabledControls();
+                _npcController.NextState();
             }
         }
     }

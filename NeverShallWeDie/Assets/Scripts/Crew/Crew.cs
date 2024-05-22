@@ -2,26 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CrewMembers
-{
-    Helmsman, Navigator, Witch, Blacksmith
-}
-
 public class Crew : MonoBehaviour
 {
-    public static Crew instance;
-    public List<CrewMembers> crewMembers;
+    public CrewMembers _function;
 
-    private void Awake()
+    private void Update()
     {
-        instance = this;
+
     }
 
-    private void Start()
+    void Helmsman()
     {
-        for (int i = 0; i < GameManager.instance._crewMembers.Count; i++)
-        {
-            crewMembers.Add(GameManager.instance._crewMembers[i]);
-        }
+        
     }
 }

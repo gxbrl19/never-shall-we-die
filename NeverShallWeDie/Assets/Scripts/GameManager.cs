@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Checkpoint")] public int _checkpointScene; //a cena atual que será o checkpoint
     [BoxGroup("Checkpoint")] public int _direction;
 
+    [BoxGroup("Crew")] public string _helmsman;
+
     [BoxGroup("Maps")] public Vector3 _shipInitialPosition = new Vector3(5.5f, 4.7f, 0f);
     [BoxGroup("Maps")] public string _currentPier;
 
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
 
         _currentPier = "06/H0"; //TODO: na cena do mapa, ao selecionar um Pier passar o valor para essa variavel
+        _helmsman = "KNOWING";
     }
 
     void Update()
