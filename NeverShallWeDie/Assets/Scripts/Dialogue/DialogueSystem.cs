@@ -88,7 +88,7 @@ public class DialogueSystem : MonoBehaviour
 
     void Waiting()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Submit"))
         {
             if (!finished)
             {
@@ -108,7 +108,7 @@ public class DialogueSystem : MonoBehaviour
 
     void Typing()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Submit"))
         {
             typeText.Skip();
             state = STATE.WAITING;
