@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
 
     [BoxGroup("PlayerStats")] public List<Equipments> _equipments;
     [BoxGroup("PlayerStats")] public List<Skills> _skills;
-    [BoxGroup("PlayerStats")] public List<CrewMembers> _crewMembers;
     [BoxGroup("PlayerStats")] public int _gold; //total de gold coletado
 
     [BoxGroup("Sound")] public float _masterVol;
@@ -43,6 +42,7 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Checkpoint")] public int _checkpointScene; //a cena atual que será o checkpoint
     [BoxGroup("Checkpoint")] public int _direction;
 
+    [BoxGroup("Crew")] public string _ship;
     [BoxGroup("Crew")] public string _helmsman;
 
     [BoxGroup("Maps")] public Vector3 _shipInitialPosition = new Vector3(5.5f, 4.7f, 0f);
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
 
         _currentPier = "06/H0"; //TODO: na cena do mapa, ao selecionar um Pier passar o valor para essa variavel
-        _helmsman = "KNOWING";
+        _helmsman = "MEET";
     }
 
     void Update()

@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private Image _fire;
     [BoxGroup("HUD")][SerializeField] private Image _air;
     [BoxGroup("HUD")][SerializeField] private Image _water;
+    [BoxGroup("HUD")][SerializeField] private TextMeshProUGUI _txtInteract;
     [BoxGroup("HUD")][SerializeField] private GameObject _interact;
 
     [BoxGroup("Pause")] public bool _isPaused;
@@ -118,9 +119,10 @@ public class UIManager : MonoBehaviour
         _water.fillAmount = _player._timeWaterSpin / _player._timeForSkills;
     }
 
-    public void InteractPanel(bool show)
+    public void InteractPanel(bool show, string text)
     {
         _interact.SetActive(show);
+        _txtInteract.text = text;
     }
     #endregion
 

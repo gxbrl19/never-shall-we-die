@@ -11,7 +11,7 @@ public class NPC_Dialogue : MonoBehaviour
 
     void Awake()
     {
-        _dialogueSystem = FindObjectOfType<DialogueSystem>();
+        _dialogueSystem = GetComponentInChildren<DialogueSystem>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
     }
