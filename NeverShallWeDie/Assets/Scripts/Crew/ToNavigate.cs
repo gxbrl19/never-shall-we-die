@@ -23,7 +23,9 @@ public class ToNavigate : MonoBehaviour
 
         if (_playerTriggered && _input.interact)
         {
-            //TODO: chamar a cena do navio para ir para outras ilhas
+            _playerTriggered = false;
+            _input.interact = false;
+            UIManager.instance.ActivePanelNavigate();
         }
     }
 

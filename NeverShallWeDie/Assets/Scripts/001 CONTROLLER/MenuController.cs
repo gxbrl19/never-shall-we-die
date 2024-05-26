@@ -84,16 +84,11 @@ public class MenuController : MonoBehaviour
         Invoke("LoadScene", 1f);  //invoca o load com delay, para dar tempo de fazer o fade
     }
 
-    private void LoadScene()
+    private void LoadScene() //chamado na função SelectSave
     {
         GameManager.instance.LoadGame();
 
-        //TODO: verificar se é um novo save para carregar a primeira fase
-
-        Time.timeScale = 1f;
-        PlayerPrefs.SetInt("Scene", 3); //chama a cena do Mapa (configurar o index de acordo com o build settings)
-        SceneManager.LoadScene("Scenes/Load");
-        GameManager.instance.SavePlayerPrefs(_masterVolSlider.value, _musicVolSlider.value, _sfxVolSlider.value);
+        //TODO: verificar se é um novo save para carregar a primeira fase ou o último save acionado    
     }
 
     public void QuitGame()
@@ -133,19 +128,5 @@ public class MenuController : MonoBehaviour
     public void SelectTest()
     {
         SceneManager.LoadScene("Scenes/Test/01");
-    }
-
-    public void SetInputType(int index)
-    {
-        if (index == 0)
-        {
-            GameManager.instance._inputType = "Keyboard";
-        }
-        else if (index == 1)
-        {
-            GameManager.instance._inputType = "Gamepad";
-        }
-
-        GameManager.instance.SaveInput(index);
     }
 }

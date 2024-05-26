@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        _currentPier = "06/H0"; //TODO: na cena do mapa, ao selecionar um Pier passar o valor para essa variavel
+        _currentPier = "06/H0"; //TODO: na cena do mapa, ao selecionar um Pier passar o valor para essa variavel (usar PlayerPrefs)
         _helmsman = "MEET";
     }
 
@@ -110,11 +110,6 @@ public class GameManager : MonoBehaviour
         _file.Close();
     }
 
-    public void SaveInput(int index)
-    {
-        PlayerPrefs.SetInt("InputType", index);
-    }
-
     void LoadBasic()
     {
         //verifica se existem os saves para mostrar nos botões do menu
@@ -142,18 +137,6 @@ public class GameManager : MonoBehaviour
             _masterVol = 1;
             _musicVol = 1;
             _sfxVol = 1;
-        }
-
-        //
-        _prefsInput = PlayerPrefs.GetInt("InputType");
-
-        if (_prefsInput == 0)
-        {
-            _inputType = "Keyboard";
-        }
-        else if (_prefsInput == 1)
-        {
-            _inputType = "Gamepad";
         }
     }
 

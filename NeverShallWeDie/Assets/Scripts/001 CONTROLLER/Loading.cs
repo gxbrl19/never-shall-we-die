@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Loading : MonoBehaviour
 {
-    //puxar o level index para carregar depois do load
-
     void Start()
+    {
+        Invoke("StartTheCoroutine", 3f); //um delay para chamar a corrotina
+    }
+
+    void StartTheCoroutine()
     {
         StartCoroutine(LoadingScene());
     }

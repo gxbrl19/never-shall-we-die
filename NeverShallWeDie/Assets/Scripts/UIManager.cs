@@ -54,7 +54,10 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Dialogue")] public GameObject _pnlDialogue;
     [BoxGroup("Dialogue")] public TextMeshProUGUI _txtName;
     [BoxGroup("Dialogue")] public TextMeshProUGUI _txtTalk;
-    public bool _inDialogue = false;
+    private bool _inDialogue = false;
+
+    [BoxGroup("Crew")] [Header("Helmsman")] public GameObject _pnlNavigate;
+    [BoxGroup("Crew")] public GameObject _buttonYesNavigate;
 
     [Header("Game Over")]
     public bool _isGameOver;
@@ -202,7 +205,6 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Map
-
     void InMap()
     {
         Time.timeScale = 0f;
@@ -319,6 +321,33 @@ public class UIManager : MonoBehaviour
         _txtName.text = "";
         _txtTalk.text = "";
     }
+    #endregion
+
+    #region CrewFunctions
+
+    public void ActivePanelNavigate()
+    {
+        //Time.timeScale = 0f;
+        _player.DisableControls();
+        _pnlNavigate.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_buttonYesNavigate);
+    }
+
+    public void Navigate() //chamdo no botão Yes do pnl_navigate (UI Manager)
+    {
+        //Time.timeScale = 1f;
+        _player.EnabledControls();
+        PlayerPrefs.SetInt("Scene", 2); //cena do OpenWorld (configurar o index de acordo com o BuildSettings)
+        SceneManager.LoadScene("Scenes/Load");
+    }
+
+    public void RecuseNavigate() //chamdo no botão No do pnl_navigate (UI Manager)
+    {
+        //Time.timeScale = 1f;
+        _player.EnabledControls();
+        _pnlNavigate.SetActive(false);
+    }
+
     #endregion
 
     #region Fade
