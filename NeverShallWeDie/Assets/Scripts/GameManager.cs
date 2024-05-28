@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Crew")] public string _ship;
     [BoxGroup("Crew")] public string _helmsman;
 
-    [BoxGroup("Maps")] public Vector3 _shipInitialPosition = new Vector3(5.5f, 4.7f, 0f);
+    [BoxGroup("Maps")] public Vector3 _shipInitialPosition = new Vector3(-44f, 0f, 0f);
     [BoxGroup("Maps")] public string _currentPier;
 
     private string _path; //caminho para salvar o arquivo
