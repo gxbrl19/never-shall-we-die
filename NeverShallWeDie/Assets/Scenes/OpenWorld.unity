@@ -1210,9 +1210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529cb446a27c19240acc8ed3bdfba0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneID: 02/H3
-  _ptIslandName: 
-  _engIslandName: 
+  _sceneName: 02/H3
+  _ptIslandName: Cidade Mizuton
+  _engIslandName: Mizuton City
 --- !u!1 &172441068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529cb446a27c19240acc8ed3bdfba0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneID: 03/H6
+  _sceneName: 03/H6
   _ptIslandName: 
   _engIslandName: 
 --- !u!1 &341653109
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529cb446a27c19240acc8ed3bdfba0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneID: 03/H5
+  _sceneName: 03/H5
   _ptIslandName: 
   _engIslandName: 
 --- !u!1 &348129181
@@ -99850,7 +99850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529cb446a27c19240acc8ed3bdfba0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneID: 04/H7
+  _sceneName: 04/H7
   _ptIslandName: 
   _engIslandName: 
 --- !u!1 &736206906
@@ -100436,10 +100436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34b22f82a4fe1042bdc3a6590d1c324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedMax: 3.5
-  _philSpeed: 0.02
-  _hSpeed: 0
-  _vSpeed: 0
   _canMove: 0
   _states:
   - Up
@@ -100548,7 +100544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529cb446a27c19240acc8ed3bdfba0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneID: 01/H1
+  _sceneName: 01/H1
   _ptIslandName: "FLORESTA DO CREP\xDASCULO"
   _engIslandName: TWILIGHT FOREST
 --- !u!1 &1056422656
@@ -110559,8 +110555,6 @@ MonoBehaviour:
   _direction: 0
   _ship: 
   _helmsman: 
-  _shipInitialPosition: {x: 0, y: 0, z: 0}
-  _currentPier: 
 --- !u!4 &1153450162
 Transform:
   m_ObjectHideFlags: 0
@@ -111097,6 +111091,7 @@ MonoBehaviour:
   _btnYes: {fileID: 1590654390}
   _btnNo: {fileID: 1292478864}
   _islandName: {fileID: 1155635474}
+  _sceneName: 
   _countGold: {fileID: 46191931}
 --- !u!1 &1438776495
 GameObject:
@@ -111479,9 +111474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529cb446a27c19240acc8ed3bdfba0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneID: 02/H4
-  _ptIslandName: 
-  _engIslandName: 
+  _sceneName: 02/H4
+  _ptIslandName: Cidade Mizuton
+  _engIslandName: Mizuton City
 --- !u!1 &1590654390
 GameObject:
   m_ObjectHideFlags: 0
@@ -111821,9 +111816,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529cb446a27c19240acc8ed3bdfba0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneID: 01/H2
-  _ptIslandName: 
-  _engIslandName: 
+  _sceneName: 01/H2
+  _ptIslandName: "Minas Solit\xE1rias"
+  _engIslandName: Lonely Mines
 --- !u!1 &1689089344
 GameObject:
   m_ObjectHideFlags: 0

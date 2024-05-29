@@ -20,6 +20,9 @@ public class CanvasOpenWorld : MonoBehaviour
     public GameObject _btnNo;
     public Text _islandName;
 
+    //Pier
+    [HideInInspector] public string _sceneName;
+
     ShipOpenWorld _ship;
 
     [Header("Progress")]
@@ -42,12 +45,19 @@ public class CanvasOpenWorld : MonoBehaviour
 
     }
 
-    public void EnterLevel()
+    public void EnterLevel() //chamado no botão YES do pnl_select
     {
+        _ship.SavePos();
 
+        _ship._canMove = true;
+        PlayerPrefs.SetInt("Scene", 4); //cena do navio
+        SceneManager.LoadScene("Scenes/Load");
+
+        //passa o nome da cena para usar no ExitShip
+        PlayerPrefs.SetString("Pier", _sceneName);
     }
 
-    public void CancelLevel()
+    public void CancelLevel() //chamado no botão NO do pnl_select
     {
         _ship._canMove = true;
         _pnlLevelSelect.SetActive(false);

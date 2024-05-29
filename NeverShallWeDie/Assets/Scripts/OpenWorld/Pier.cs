@@ -6,7 +6,7 @@ using UnityEngine.Localization.Settings;
 
 public class Pier : MonoBehaviour
 {
-    [SerializeField] string _sceneID;
+    [SerializeField] string _sceneName;
     [SerializeField] string _ptIslandName;
     [SerializeField] string _engIslandName;
     string _islandName;
@@ -28,8 +28,10 @@ public class Pier : MonoBehaviour
             var currentLocale = LocalizationSettings.SelectedLocale;
             _islandName = (currentLocale.Identifier.Code == "pt-BR") ? _ptIslandName : _engIslandName;
             //if (currentLocale.Identifier.Code == "pt-BR") { _islandName = _ptIslandName; } else if (currentLocale.Identifier.Code == "en") { _islandName = _engIslandName; }
+            
             _ship._canMove = false;
             CanvasOpenWorld.instance.OpenLevelSelect(_islandName);
+            CanvasOpenWorld.instance._sceneName = _sceneName;
         }
     }
 

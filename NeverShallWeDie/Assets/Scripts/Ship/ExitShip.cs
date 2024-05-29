@@ -29,7 +29,8 @@ public class ExitShip : MonoBehaviour
 
     void Exit()
     {
-        _nextSceneName = GameManager.instance._currentPier;
+        //verifica se já existe o PlayerPrefs com o nome da cena do Pier selecionado
+        _nextSceneName = PlayerPrefs.HasKey("Pier") ? PlayerPrefs.GetString("Pier") : "06/H0";
 
         if (SceneExists("Scenes/" + _nextSceneName))
         {
