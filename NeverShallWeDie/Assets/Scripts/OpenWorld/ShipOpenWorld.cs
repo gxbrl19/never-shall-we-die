@@ -9,12 +9,12 @@ public class ShipOpenWorld : MonoBehaviour
     float _speedMax = 3.5f;
     float _hSpeed;
     float _vSpeed;
-    float accelarate = 0.02f;
-    float stop = 0.04f;
+    float accelarate = 0.04f;
+    float stop = 0.06f;
     [HideInInspector] public bool _canMove;
 
-
     [SerializeField] List<string> _states = new List<string>();
+    string _state = "";
 
     Rigidbody2D _body;
     Animator _animation;
@@ -81,35 +81,18 @@ public class ShipOpenWorld : MonoBehaviour
 
     void IdleSprite()
     {
-        string _state = "";
-
-        if (_movement.y > 0) //Up
-        {
-            _state = "Up";
-        }
-        else if (_movement.x < 0 && _movement.y == 0) //Left
-        {
-            _state = "Left";
-        }
-        else if (_movement.x > 0 && _movement.y == 0) //Right
-        {
-            _state = "Right";
-        }
-        else if (_movement.y < 0) //Down
-        {
-            _state = "Down";
-        }
+        if (_movement.x == 0 && _movement.y > 0.01f) { _state = "Up"; }
+        else if (_movement.x < -0.01f && _movement.y > 0.01f) { _state = "UpLeft"; }
+        else if (_movement.x < -0.01f && _movement.y == 0) { _state = "Left"; }
+        else if (_movement.x < -0.01f && _movement.y < -0.01f) { _state = "DownLeft"; }
+        else if (_movement.x == 0 && _movement.y < -0.01f) { _state = "Down"; }
+        else if (_movement.x > 0.01f && _movement.y < -0.01f) { _state = "DownRight"; }
+        else if (_movement.x > 0.01f && _movement.y == 0) { _state = "Right"; }
+        else if (_movement.x > 0.01f && _movement.y > 0.01f) { _state = "UpRight"; }
 
         for (int i = 0; i < _states.Count; i++)
         {
-            if (_states[i] != _state)
-            {
-                _animation.SetBool(_states[i], false);
-            }
-            else
-            {
-                _animation.SetBool(_states[i], true);
-            }
+            if (_states[i] != _state) { _animation.SetBool(_states[i], false); } else { _animation.SetBool(_states[i], true); }
         }
     }
 
