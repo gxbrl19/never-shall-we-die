@@ -8,16 +8,12 @@ public class PlayerPosition : ScriptableObject
     bool _sceneTransition = false;
     int _direction;
     int _indexStartPosition;
-    float _health;
-    float _mana;
 
-    public void SetAttributes(bool sceneTransition, int direction, int index, float health, float mana)
+    public void SetAttributes(bool sceneTransition, int direction, int index)
     {
         _sceneTransition = sceneTransition;
         _direction = direction;
         _indexStartPosition = index;
-        _health = health;
-        _mana = mana;
     }
 
     public bool SceneTransition
@@ -36,17 +32,5 @@ public class PlayerPosition : ScriptableObject
     {
         get { return _direction; }
         set { _direction = value; }
-    }
-
-    public float Health
-    {
-        get { return _health; }
-        set { _health = value; }
-    }
-
-    public float Mana
-    {
-        get { return _mana; }
-        set { _mana = value; }
     }
 }

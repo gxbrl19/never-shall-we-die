@@ -88,7 +88,8 @@ public class MenuController : MonoBehaviour
     {
         GameManager.instance.LoadGame();
 
-        //TODO: verificar se é um novo save para carregar a primeira fase ou o último save acionado    
+        //TODO: verificar se é um novo save para carregar a primeira fase ou o último save acionado
+        SceneManager.LoadScene("Scenes/06/01");
     }
 
     public void QuitGame()

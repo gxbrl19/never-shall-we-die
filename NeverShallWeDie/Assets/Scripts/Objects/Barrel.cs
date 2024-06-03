@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Barrel : MonoBehaviour
 {
+	public int _idBarrel;
 	public AudioClip _barrelBreak;
 
 	int _lifeBarrel = 4;
@@ -11,9 +12,10 @@ public class Barrel : MonoBehaviour
 	AudioSource _audio;
 	DropItem _dropItem;
 
-
 	void Start()
 	{
+		if (GameManager.instance._barrels[_idBarrel] == 1) { gameObject.SetActive(false); }
+
 		_audio = GetComponent<AudioSource>();
 		_animation = GetComponent<Animator>();
 		_dropItem = GetComponent<DropItem>();
@@ -34,6 +36,11 @@ public class Barrel : MonoBehaviour
 			_animation.SetBool("Break", true);
 			_dropItem.DropGold();
 		}
+	}
+
+	public void FinishBreak()
+	{
+		GameManager.instance._barrels[_idBarrel] = 1;
 	}
 
 	void OnTriggerEnter2D(Collider2D _other)

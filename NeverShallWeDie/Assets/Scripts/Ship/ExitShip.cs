@@ -45,7 +45,7 @@ public class ExitShip : MonoBehaviour
 
     void GetNextScene()
     {
-        _scriptablePosition.SetAttributes(true, 1, 1, _health._currentHealth, _health._currentMana);
+        _scriptablePosition.SetAttributes(true, 1, 1);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
     }
 

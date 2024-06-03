@@ -38,6 +38,9 @@ public class PlayerHealth : MonoBehaviour
     {
         CheckAttributes();
         _startColor = _spriteRenderer.color;
+
+        _currentHealth = GetHealth();
+        _currentMana = GetMana();
     }
 
     void Update()
@@ -52,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
         _player._onHit = true;
         _player._canMove = false;
         _currentHealth -= damage;
+        SetHealth(_currentHealth);
         _audio.PlayAudio(_audio._damageSound); //audio do dano
         CinemachineShake.instance.ShakeCamera(6f, 0.15f); //tremida da camera        
         _spriteRenderer.color = _damageColor;
@@ -73,20 +77,23 @@ public class PlayerHealth : MonoBehaviour
     public void FillBottle(float healing)
     {
         _currentMana = _currentMana < _maxMana ? _currentMana += healing : _currentMana = _maxMana;
+        SetMana(_currentMana);
     }
 
     public void Healing()
     {
         if (_player._healing && _currentHealth < _maxHealth && _currentMana >= 0.1)
         {
-            //_player._healing = true;
             _currentHealth += 0.08f;
             _currentMana -= 0.1f;
-            //_animation.OnHealing();
 
             //deixa zerado quando os valores forem negativos
             if (_currentHealth < 0) { _currentHealth = 0f; } else if (_currentHealth > _maxHealth) { _currentHealth = _maxHealth; }
             if (_currentMana < 0) { _currentMana = 0f; } else if (_currentMana > _maxMana) { _currentMana = _maxMana; }
+
+
+            SetHealth(_currentHealth);
+            SetMana(_currentMana);
         }
         else
         {
@@ -96,14 +103,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void ManaConsumption(float consume) //consumir mana ao usar as skills
     {
-        if (_currentMana > consume)
-        {
-            _currentMana -= consume;
-        }
-        else if (_currentMana <= consume && _currentMana > 0)
-        {
-            _currentMana = 0f;
-        }
+        if (_currentMana > consume) { _currentMana -= consume; }
+        else if (_currentMana <= consume && _currentMana > 0) { _currentMana = 0f; }
+
+        SetMana(_currentMana);
     }
 
     public void CheckAttributes()
@@ -137,4 +140,29 @@ public class PlayerHealth : MonoBehaviour
         _spriteRenderer.color = _startColor;
         _player.gameObject.layer = LayerMask.NameToLayer("Player");
     }
+
+    #region "Prefabs" 
+    //PlayerPrefs para a troca de cena
+    public void SetHealth(float health)
+    {
+        PlayerPrefs.SetFloat("Health", health);
+    }
+
+    public float GetHealth()
+    {
+        float health = PlayerPrefs.HasKey("Health") ? PlayerPrefs.GetFloat("Health") : _maxHealth;
+        return health;
+    }
+
+    public void SetMana(float mana)
+    {
+        PlayerPrefs.SetFloat("Mana", mana);
+    }
+
+    public float GetMana()
+    {
+        float mana = PlayerPrefs.HasKey("Mana") ? PlayerPrefs.GetFloat("Mana") : 0f;
+        return mana;
+    }
+    #endregion
 }

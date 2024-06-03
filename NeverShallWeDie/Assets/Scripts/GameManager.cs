@@ -24,26 +24,27 @@ public class GameManager : MonoBehaviour
     [BoxGroup("IndexSave")] public bool _save1 = false;
     [BoxGroup("IndexSave")] public bool _save2 = false;
     [BoxGroup("IndexSave")] public bool _save3 = false;
-
+    
     [BoxGroup("PlayerStats")] public List<Equipments> _equipments;
     [BoxGroup("PlayerStats")] public List<Skills> _skills;
     [BoxGroup("PlayerStats")] public int _gold; //total de gold coletado
 
-    [BoxGroup("Sound")] public float _masterVol;
-    [BoxGroup("Sound")] public float _musicVol;
-    [BoxGroup("Sound")] public float _sfxVol;
-
-    [BoxGroup("Input")] public int _prefsInput;
-    [BoxGroup("Input")] public string _inputType;
-
     [BoxGroup("ItemsInLevel")] public int[] _flags; //Flags já liberadas
+    [BoxGroup("ItemsInLevel")] public int[] _barrels; //Barrels já destruídos
     [BoxGroup("ItemsInLevel")] public int[] _airCutblock; //Air Cut Blocks já destruídos
 
     [BoxGroup("Checkpoint")] public int _checkpointScene; //a cena atual que será o checkpoint
     [BoxGroup("Checkpoint")] public int _direction;
 
-    [BoxGroup("Crew")] public string _ship;
     [BoxGroup("Crew")] public string _helmsman;
+
+    //Prefabs
+    [BoxGroup("Sound")] public float _masterVol;
+    [BoxGroup("Sound")] public float _musicVol;
+    [BoxGroup("Sound")] public float _sfxVol;
+
+    [HideInInspector] public string _inputType;
+    [HideInInspector] public float _aspectRadio; //pega a proporção da tela
 
     private string _path; //caminho para salvar o arquivo
 
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
 
         _flags = new int[11];
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
+        _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
         LoadBasic();
     }
 

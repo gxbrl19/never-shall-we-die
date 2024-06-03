@@ -34,9 +34,9 @@ public class CinemachineShake : MonoBehaviour
             float _screenWidth = Screen.width;
             float _screenHeight = Screen.height;
 
-            float _aspectRadio = _screenWidth / _screenHeight;
+            GameManager.instance._aspectRadio = _screenWidth / _screenHeight;
 
-            if (_aspectRadio > 2f)
+            if (GameManager.instance._aspectRadio > 2f)
             {
                 _cineVC.m_Lens.OrthographicSize = 6;
             }

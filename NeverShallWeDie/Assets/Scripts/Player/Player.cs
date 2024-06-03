@@ -153,8 +153,8 @@ public class Player : MonoBehaviour
         _health = GetComponent<PlayerHealth>();
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
@@ -184,9 +184,6 @@ public class Player : MonoBehaviour
 
             transform.position = _position;
             if (_scriptablePosition.Direction == -1) { Flip(); }
-
-            _health._currentHealth = _scriptablePosition.Health;
-            _health._currentMana = _scriptablePosition.Mana;
         }
         else
         {
@@ -214,7 +211,7 @@ public class Player : MonoBehaviour
         OnSlide();
         OnWater();
         OnClimb();
-        OnRoll();        
+        OnRoll();
         OnParachute();
         OnHit();
 
@@ -670,12 +667,12 @@ public class Player : MonoBehaviour
     #region Slide
     void OnSlide()
     {
-        if (_dead || !_canMove) { return; }
-
         if (_input.isSliding && !_isSliding) { _isSliding = true; }
 
         if (_isSliding && ((_timeSlide < _limitSlide) || _hitSlide)) //_hitSlide verifica se ainda tem GroundLayer em cima
         {
+            
+            DisableControls();;
             _timeSlide += Time.deltaTime;
             if (_direction < 0) { _body.velocity = Vector2.left * _slideForce; }
             else if (_direction > 0) { _body.velocity = Vector2.right * _slideForce; }
@@ -685,10 +682,11 @@ public class Player : MonoBehaviour
             if (!_hitSlide) //se ainda estiver em baixo do GroundLayer continua o Slide
             {
                 _timeSlide = 0f;
-                _input.isSliding = false;            
+                _input.isSliding = false;
                 _isSliding = false;
                 _body.velocity = Vector2.zero;
-            }            
+                EnabledControls();
+            }
         }
     }
 
@@ -696,7 +694,7 @@ public class Player : MonoBehaviour
     {
         _hitSlide = false;
         Vector2 position = new Vector2(transform.position.x, transform.position.y - 1f);
-        RaycastHit2D _slideHit = RaycastSlide(position, Vector2.up, 1.5f, _groundLayer);
+        RaycastHit2D _slideHit = RaycastSlide(position, Vector2.up, 2f, _groundLayer);
 
         if (_slideHit)
         {

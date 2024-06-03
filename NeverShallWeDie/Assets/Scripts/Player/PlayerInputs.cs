@@ -234,7 +234,6 @@ public class PlayerInputs : MonoBehaviour
 
         if (_callback.started)
         {
-            //_health.Healing(1);
             _player._healing = true;
         }
 
@@ -266,7 +265,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext _callback)
     {
-        if (_player._dead || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player._onClimbing || _collision._onWall || _player._onWater || _player._onHit || _player._isGrabing || _player._isDoubleJumping || _player._isRolling || _player._isSliding || _player._canMove == false)
+        if (_player._dead || !_player._isGrounded || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player._onClimbing || _collision._onWall || _player._onWater || _player._onHit || _player._isGrabing || _player._isDoubleJumping || _player._isRolling || _player._isSliding || _player._canMove == false)
             return;
 
         if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots))

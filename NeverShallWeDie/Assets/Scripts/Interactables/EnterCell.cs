@@ -43,7 +43,7 @@ public class EnterCell : MonoBehaviour
 
     void GetNextScene()
     {
-        _scriptablePosition.SetAttributes(true, _direction, _indexPosition, _health._currentHealth, _health._currentMana);
+        _scriptablePosition.SetAttributes(true, _direction, _indexPosition);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
     }
 

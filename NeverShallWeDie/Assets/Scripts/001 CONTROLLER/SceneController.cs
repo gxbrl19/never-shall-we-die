@@ -19,10 +19,7 @@ public class SceneController : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
+        if (instance == null) { instance = this; }
 
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _health = _player.GetComponent<PlayerHealth>();
@@ -46,7 +43,7 @@ public class SceneController : MonoBehaviour
 
     void GetNextScene()
     {
-        _scriptablePosition.SetAttributes(true, _direction, _indexPosition, _health._currentHealth, _health._currentMana);        
+        _scriptablePosition.SetAttributes(true, _direction, _indexPosition);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
     }
 
@@ -65,7 +62,10 @@ public class SceneController : MonoBehaviour
 
     public void GameOver()
     {
-        _scriptablePosition.SetAttributes(true, GameManager.instance._direction, 0, _health._maxHealth, 0f);
+        _scriptablePosition.SetAttributes(true, GameManager.instance._direction, 0);
+
+        _health.SetHealth(_health._maxHealth);
+        _health.SetMana(0f); 
 
         _player.gameObject.layer = LayerMask.NameToLayer("PlayerDead");
         _player.gameObject.GetComponent<Player>().DisableControls();

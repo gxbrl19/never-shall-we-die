@@ -52,11 +52,13 @@ public class UIManager : MonoBehaviour
     private int _mapPanelIndex;
 
     [BoxGroup("Dialogue")] public GameObject _pnlDialogue;
+    [BoxGroup("Dialogue")] public RectTransform _margem1;
+    [BoxGroup("Dialogue")] public RectTransform _margem2;
     [BoxGroup("Dialogue")] public TextMeshProUGUI _txtName;
     [BoxGroup("Dialogue")] public TextMeshProUGUI _txtTalk;
     private bool _inDialogue = false;
 
-    [BoxGroup("Crew")] [Header("Helmsman")] public GameObject _pnlNavigate;
+    [BoxGroup("Crew")][Header("Helmsman")] public GameObject _pnlNavigate;
     [BoxGroup("Crew")] public GameObject _buttonYesNavigate;
 
     [Header("Game Over")]
