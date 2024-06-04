@@ -93,19 +93,24 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
-        _path = Application.persistentDataPath + "/playerSave" + _indexSave + ".sav";
-        BinaryFormatter _binaryFormatter = new BinaryFormatter();
-        FileStream _file = File.Create(_path); //cria o arquivo no caminho
-        PlayerData _data = new PlayerData(); //instanciando objeto da classe PlayerData
+        UIManager.instance.SaveEnabled();
+        //TODO: salvar dados do jogo
+
+        //_path = Application.persistentDataPath + "/playerSave" + _indexSave + ".sav";
+        //BinaryFormatter _binaryFormatter = new BinaryFormatter();
+        //FileStream _file = File.Create(_path); //cria o arquivo no caminho
+        //PlayerData _data = new PlayerData(); //instanciando objeto da classe PlayerData
 
         //atribui os valores do jogo ao objeto
-        _data.skills = _skills;
-        _data.gold = _gold;
+        //_data.skills = _skills;
+        //_data.gold = _gold;
 
         //envia os dados do objeto pra dentro de um arquivo
-        _binaryFormatter.Serialize(_file, _data);
+        //_binaryFormatter.Serialize(_file, _data);
 
-        _file.Close();
+        //file.Close();
+
+        UIManager.instance.SaveDisabled();
     }
 
     void LoadBasic()

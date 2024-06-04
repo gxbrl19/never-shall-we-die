@@ -25,12 +25,14 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private Image _water;
     [BoxGroup("HUD")][SerializeField] private TextMeshProUGUI _txtInteract;
     [BoxGroup("HUD")][SerializeField] private GameObject _interact;
+    [BoxGroup("HUD")][SerializeField] private GameObject _skullSave;
 
     [BoxGroup("Pause")] public bool _isPaused;
     [BoxGroup("Pause")] public RectTransform _menuPause;
     [BoxGroup("Pause")] public RectTransform[] _panels;
     private int _panelIndex;
 
+    [Header("Equipments")]
     [BoxGroup("Pause Switch")] public Image[] _btnSwitch;
     [BoxGroup("Pause Switch")] public Sprite _spriteSwitch1;
     [BoxGroup("Pause Switch")] public Sprite _spriteSwitch;
@@ -60,12 +62,6 @@ public class UIManager : MonoBehaviour
 
     [BoxGroup("Crew")][Header("Helmsman")] public GameObject _pnlNavigate;
     [BoxGroup("Crew")] public GameObject _buttonYesNavigate;
-
-    [Header("Game Over")]
-    public bool _isGameOver;
-    public GameObject _pnlGameOver;
-    public GameObject _btnRestart;
-    public GameObject _btnQuit;
 
     [Header("Fade")]
     public Image _pnlFade;
@@ -128,6 +124,16 @@ public class UIManager : MonoBehaviour
     {
         _interact.SetActive(show);
         _txtInteract.text = text;
+    }
+
+    public void SaveEnabled()
+    {
+        _skullSave.SetActive(true);
+    }
+
+    public void SaveDisabled()
+    {
+        _skullSave.SetActive(false);
     }
     #endregion
 

@@ -6,55 +6,64 @@ using UnityEngine.SceneManagement;
 public class Flag : MonoBehaviour
 {
     public int _idFlag;
-    public int _price;
-    public int _direction;
+    public int _direction = 1;
     bool _playerTriggered;
     Animator _animation;
     Player _player;
     PlayerInputs _inputs;
 
-    void Awake() {
+    void Awake()
+    {
         _animation = GetComponent<Animator>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _inputs = _player.GetComponent<PlayerInputs>();
     }
 
-    void Update() {
+    void Update()
+    {
         int _enabled = GameManager.instance._flags[_idFlag];
 
-        if (_enabled == 0) {
-            if (_playerTriggered && _inputs.interact && GameManager.instance._gold >= _price) {
-                GameManager.instance._flags[_idFlag] = 1;
-                GameManager.instance._gold -= _price;
+        if (_enabled == 0)
+        {
+            if (_playerTriggered && _inputs.interact)
+            {
                 _animation.SetBool("Begin", true);
                 _animation.SetBool("Enabled", true);
-                SetCheckpoint();
             }
         }
-        else {
+        else
+        {
             _animation.SetBool("Begin", false);
             _animation.SetBool("Enabled", true);
+        }
 
-            if (_playerTriggered && _inputs.interact) {
-                //TODO: fazer a viagem rápida para flags já liberadas
-            }
-        }        
+        if (_playerTriggered && _inputs.interact)
+        {
+            GameManager.instance._flags[_idFlag] = 1;
+            SetCheckpoint();
+            GameManager.instance.SaveGame();
+        }
     }
 
-    void SetCheckpoint() {
+    void SetCheckpoint()
+    {
         Scene _currentScene = SceneManager.GetActiveScene();
         GameManager.instance._checkpointScene = _currentScene.buildIndex;
         GameManager.instance._direction = _direction;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Player") {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
             _playerTriggered = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.tag == "Player") {
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
             _playerTriggered = false;
         }
     }

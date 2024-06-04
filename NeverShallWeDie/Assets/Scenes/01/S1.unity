@@ -5989,18 +5989,17 @@ MonoBehaviour:
   _equipments: 
   _skills: 
   _gold: 10000
-  _masterVol: 0
-  _musicVol: 0
-  _sfxVol: 0
-  _prefsInput: 0
-  _inputType: 
-  _stones: 
   _flags: 
+  _barrels: 
   _airCutblock: 
   _checkpointScene: 0
   _direction: 0
-  _shipInitialPosition: {x: 0, y: 0, z: 0}
-  _currentPier: 
+  _helmsman: 
+  _masterVol: 0
+  _musicVol: 0
+  _sfxVol: 0
+  _inputType: 
+  _aspectRadio: 0
 --- !u!4 &650729052
 Transform:
   m_ObjectHideFlags: 0
@@ -10554,7 +10553,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.720001
+      value: 18.72778
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y

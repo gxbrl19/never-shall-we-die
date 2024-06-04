@@ -19,7 +19,23 @@ public class EquipmentObject : ScriptableObject
     [BoxGroup("Info")]
     [VerticalGroup("Info/Stats")]
     [LabelWidth(100)]
-    public Equipments equipment;
+    public Equipments equipment;    
+
+    [BoxGroup("Info")]
+    [VerticalGroup("Info/Stats")]
+    [LabelWidth(100)] public Sprite keyboardButton;
+
+    [BoxGroup("Info")]
+    [VerticalGroup("Info/Stats")]
+    [LabelWidth(100)] public Sprite gamepadButton;
+
+    [BoxGroup("Info")]
+    [VerticalGroup("Info/Stats")]
+    [TextArea(5, 10)] public string ptDescription;
+
+    [BoxGroup("Info")]
+    [VerticalGroup("Info/Stats")]
+    [TextArea(5, 10)] public string engDescription;
 
     public int damager1;
     public int damager2;
