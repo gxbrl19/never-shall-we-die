@@ -83,7 +83,7 @@ public class BossController : MonoBehaviour
         transform.localScale = _initialScale;
         _direction = 1;        
         _currentHealth = _maxHealth;
-        _bossTrigger.ResetIntro();
+        //_bossTrigger.ResetIntro();
         _isDead = false;
         _onHit = false;
     }

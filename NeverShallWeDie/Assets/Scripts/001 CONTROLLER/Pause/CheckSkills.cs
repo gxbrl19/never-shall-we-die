@@ -14,16 +14,16 @@ public class CheckSkills : MonoBehaviour
         _textButton = GetComponentInChildren<Text>();
     }
 
-    private void Start()
+    private void Update()
     {
         if (PlayerSkills.instance.skills.Contains(_skill.skill))
         {
-            _imageButton.enabled = true;            
+            _imageButton.enabled = true;
             if (_textButton != null) { _textButton.enabled = true; }
         }
         else
         {
-            _imageButton.enabled = false;            
+            _imageButton.enabled = false;
             if (_textButton != null) { _textButton.enabled = false; }
         }
     }
@@ -33,28 +33,10 @@ public class CheckSkills : MonoBehaviour
         if (PlayerSkills.instance.skills.Contains(_skill.skill))
         {
             UIManager.instance._pnlSkills.SetActive(true);
-
-            switch (_skill.name)
-            {
-                case "Fire Insignia":
-                    UIManager.instance._fireSkill.SetActive(true);
-                    UIManager.instance._waterSkill.SetActive(false);
-                    UIManager.instance._airSkill.SetActive(false);
-                    UIManager.instance._nameSkill.text = "Faikatto";
-                    break;
-                case "Water Insignia":
-                    UIManager.instance._fireSkill.SetActive(false);
-                    UIManager.instance._waterSkill.SetActive(true);
-                    UIManager.instance._airSkill.SetActive(false);
-                    UIManager.instance._nameSkill.text = "Mizu no Kaiten";
-                    break;
-                case "Air Insignia":
-                    UIManager.instance._fireSkill.SetActive(false);
-                    UIManager.instance._waterSkill.SetActive(false);
-                    UIManager.instance._airSkill.SetActive(true);
-                    UIManager.instance._nameSkill.text = "Tatsumaki";
-                    break;
-            }
+            UIManager.instance._nameSkill.text = _skill.nameSkill;
+            UIManager.instance._imgParchment.sprite = _skill.parchment;
+            UIManager.instance._keyboardSkill.sprite = _skill.keyboardButton;
+            UIManager.instance._gamepadSkill.sprite = _skill.gamepadButton;
         }
         else
         {

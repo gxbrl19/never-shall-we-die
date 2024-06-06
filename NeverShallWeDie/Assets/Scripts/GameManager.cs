@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     [BoxGroup("IndexSave")] public bool _save1 = false;
     [BoxGroup("IndexSave")] public bool _save2 = false;
     [BoxGroup("IndexSave")] public bool _save3 = false;
-    
+
     [BoxGroup("PlayerStats")] public List<Equipments> _equipments;
     [BoxGroup("PlayerStats")] public List<Skills> _skills;
     [BoxGroup("PlayerStats")] public int _gold; //total de gold coletado
@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Checkpoint")] public int _direction;
 
     [BoxGroup("Crew")] public string _helmsman;
+    [BoxGroup("Crew")] public string _navigator;
+    [BoxGroup("Crew")] public string _witch;
+    [BoxGroup("Crew")] public string _blacksmith;
 
     //Prefabs
     [BoxGroup("Sound")] public float _masterVol;
@@ -73,6 +76,9 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
 
         _helmsman = "MEET";
+        _navigator = "MEET";
+        _witch = "MEET";
+        _blacksmith = "MEET";
     }
 
     void Update()

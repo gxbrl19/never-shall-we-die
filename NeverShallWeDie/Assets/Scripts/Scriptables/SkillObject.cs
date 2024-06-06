@@ -24,7 +24,22 @@ public class SkillObject : ScriptableObject
     [BoxGroup("Info")]
     [VerticalGroup("Info/Stats")]
     [LabelWidth(100)]
-    public bool _weapon;
+    public string nameSkill;
+
+    [BoxGroup("Info")]
+    [PreviewField(75)]
+    [HideLabel]
+    public Sprite parchment;
+
+    [BoxGroup("Info")]
+    [VerticalGroup("Info/Stats")]
+    [LabelWidth(100)] public Sprite keyboardButton;
+
+    [BoxGroup("Info")]
+    [VerticalGroup("Info/Stats")]
+    [LabelWidth(100)] public Sprite gamepadButton;
+
+
 
     //
     public int level1;

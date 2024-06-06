@@ -224,6 +224,8 @@ public class Player : MonoBehaviour
     public void DisableControls()
     {
         _body.velocity = Vector2.zero;
+        _input.horizontal = 0f;
+        _input.vertical = 0f;
         _canMove = false;
     }
 

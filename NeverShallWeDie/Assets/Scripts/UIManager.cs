@@ -10,6 +10,8 @@ using Cinemachine;
 using DG.Tweening;
 using TMPro;
 using System;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Audio;
 
 public class UIManager : MonoBehaviour
 {
@@ -38,13 +40,22 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Pause Switch")] public Sprite _spriteSwitch;
     [BoxGroup("Pause Switch")] public GameObject[] _buttons;
     [BoxGroup("Pause Switch")] public GameObject _descriptions;
+    [BoxGroup("Pause Switch")] public Image _btnKeyboard;
+    [BoxGroup("Pause Switch")] public Image _btnGamepad;
+    [BoxGroup("Pause Switch")] public Text _txtDescription;
 
     [Header("Skills")]
     [BoxGroup("Pause Switch")] public GameObject _pnlSkills;
     [BoxGroup("Pause Switch")] public Text _nameSkill;
-    [BoxGroup("Pause Switch")] public GameObject _fireSkill;
-    [BoxGroup("Pause Switch")] public GameObject _airSkill;
-    [BoxGroup("Pause Switch")] public GameObject _waterSkill;
+    [BoxGroup("Pause Switch")] public Image _imgParchment;
+    [BoxGroup("Pause Switch")] public Image _gamepadSkill;
+    [BoxGroup("Pause Switch")] public Image _keyboardSkill;
+
+    [Header("Crew")]
+    [BoxGroup("Pause Switch")] public GameObject _pnlCrew;
+    [BoxGroup("Pause Switch")] public Text _txtNameCrew;
+    [BoxGroup("Pause Switch")] public Image _spriteMemberCrew;
+    [BoxGroup("Pause Switch")] public Text _txtDescriptionCrew;
 
     [BoxGroup("Map")] public bool _inMap;
     [BoxGroup("Map")] public RectTransform _menuMap;
@@ -54,8 +65,6 @@ public class UIManager : MonoBehaviour
     private int _mapPanelIndex;
 
     [BoxGroup("Dialogue")] public GameObject _pnlDialogue;
-    [BoxGroup("Dialogue")] public RectTransform _margem1;
-    [BoxGroup("Dialogue")] public RectTransform _margem2;
     [BoxGroup("Dialogue")] public TextMeshProUGUI _txtName;
     [BoxGroup("Dialogue")] public TextMeshProUGUI _txtTalk;
     private bool _inDialogue = false;
@@ -63,8 +72,13 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")][Header("Helmsman")] public GameObject _pnlNavigate;
     [BoxGroup("Crew")] public GameObject _buttonYesNavigate;
 
-    [Header("Fade")]
-    public Image _pnlFade;
+    [BoxGroup("Fade")] public Image _pnlFade;
+
+    [BoxGroup("Config")] public GameObject _pnlConfig;
+    [BoxGroup("Config")] public GameObject[] _configInfo;
+    [BoxGroup("Config")] public AudioMixer _mixer;
+    [BoxGroup("Config")] public Dropdown _resolutionDropdown;
+    Resolution[] _resolutions;
 
     Player _player;
     PlayerInputs _input;
@@ -86,6 +100,8 @@ public class UIManager : MonoBehaviour
     {
         _currentScene = SceneManager.GetActiveScene();
         _sceneID = _currentScene.buildIndex;
+
+        Resolutions();
     }
 
     void Update()
@@ -185,6 +201,11 @@ public class UIManager : MonoBehaviour
 
     void MovePanel()
     {
+        _descriptions.SetActive(false);
+        _pnlSkills.SetActive(false);
+        _pnlCrew.SetActive(false);
+        _pnlConfig.SetActive(false);
+
         for (int i = 0; i < _panels.Length; i++)
         {
             if (i == _panelIndex)
@@ -203,12 +224,12 @@ public class UIManager : MonoBehaviour
                 _panels[i].DOAnchorPos(new Vector2(200f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
                 _btnSwitch[i].sprite = _spriteSwitch;
             }
+
+            if (_panelIndex == 4) //config
+            {
+                _pnlConfig.SetActive(true);
+            }
         }
-    }
-
-    public void ChangeSkillDescription()
-    {
-
     }
     #endregion
 
@@ -420,6 +441,106 @@ public class UIManager : MonoBehaviour
             if (_isPaused) { SwitchPanel("Left"); }
             else if (_inMap) { ChangeMap("Left"); }
         }
+    }
+    #endregion
+
+    #region Config
+    public void SelectInfo(int panelID)
+    {
+        for (int i = 0; i < _configInfo.Length; i++)
+        {
+            _configInfo[i].SetActive(false);
+        }
+
+        _configInfo[panelID].SetActive(true);
+    }
+    #endregion
+
+    #region Language
+    public void ChangeLocal(int localeID)
+    {
+        StartCoroutine(SetLocale(localeID));
+    }
+
+    private IEnumerator SetLocale(int localeID)
+    {
+        yield return LocalizationSettings.InitializationOperation;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[localeID];
+        PlayerPrefs.SetInt("LocalKey", localeID);
+    }
+    #endregion
+
+    #region Sound
+    public void ClickSound(string type) //chamado na ação dos botões
+    {
+        AudioHUD.instance.SoundClick(type);
+    }
+
+    public void SetMasterVol(float volume)
+    {
+        _mixer.SetFloat("MasterVol", GetVol(volume));
+    }
+
+    public void SetMusicVol(float volume)
+    {
+
+        _mixer.SetFloat("MusicVol", GetVol(volume));
+    }
+
+    public void SetSFXVol(float volume)
+    {
+        _mixer.SetFloat("SFXVol", GetVol(volume));
+    }
+
+    public void SelectTest()
+    {
+        SceneManager.LoadScene("Scenes/Test/01");
+    }
+
+    float GetVol(float volume)
+    {
+        float _newVol = 0;
+        _newVol = 20 * Mathf.Log10(volume);
+
+        if (volume <= 0)
+        {
+            _newVol = -80;
+        }
+
+        return _newVol;
+    }
+    #endregion
+
+    #region Resolution
+    void Resolutions()
+    {
+        //initial Resolutions
+        _resolutions = Screen.resolutions;
+        _resolutionDropdown.ClearOptions();
+
+        List<string> _options = new List<string>();
+
+        int _currentResolutionIndex = 0;
+        for (int i = 0; i < _resolutions.Length; i++)
+        {
+            string _option = _resolutions[i].width + " x " + _resolutions[i].height;
+            _options.Add(_option);
+
+            if (_resolutions[i].width == Screen.currentResolution.width && _resolutions[i].height == Screen.currentResolution.height)
+            {
+                _currentResolutionIndex = i;
+            }
+        }
+
+        _resolutionDropdown.AddOptions(_options);
+        _resolutionDropdown.value = _currentResolutionIndex;
+        _resolutionDropdown.RefreshShownValue();
+        //finish Resolutions
+    }
+    public void SetResolution(int resolutionIndex) //chamado no Dropdown
+    {
+        Resolution _resolution = _resolutions[resolutionIndex];
+        Screen.SetResolution(_resolution.width, _resolution.height, Screen.fullScreen);
     }
     #endregion
 }
