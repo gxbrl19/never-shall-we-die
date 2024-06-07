@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    //Scriptable Object Data
     public EnemyObject _enemyObject;
     [HideInInspector] public string _name;
     [HideInInspector] public int _maxHealth;
@@ -56,8 +55,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (_onHit || _name == "Beetboom")
-            return;
+        if (_onHit || _name == "Beetboom") { return; }
 
         _onHit = true;
         _currentHealth -= damage;
@@ -86,7 +84,7 @@ public class EnemyController : MonoBehaviour
     }
 
     public void FinishHit() //chamado na animação
-    {  
+    {
         _onHit = false;
         _sprite.color = _defaultColor;
     }

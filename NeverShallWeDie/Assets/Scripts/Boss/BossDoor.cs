@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class BossDoor : MonoBehaviour
 {
-    public static BossDoor instance;
-
-    public Transform _up, _down;
-    public float _speed = 2f;
-    public bool _tiggered;
+    [SerializeField] public Transform _up, _down;
+    [HideInInspector] public float _speed = 2f;
+    [HideInInspector] public bool _tiggered;
 
     AudioSource _audioSource;
 
     private void Awake()
     {
-        instance = this;
+        //_audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        //fecha a porta quando o trigger é acionado
         if (_tiggered && transform.position.y > _down.position.y)
         {
             transform.Translate(Vector2.down * Time.deltaTime * _speed);
         }
 
-        if (!_tiggered && transform.position.y < _up.position.y)
+        //abre a porta quando o boss morre
+        /*if (!_tiggered && transform.position.y < _up.position.y)
         {
             transform.Translate(Vector2.up * Time.deltaTime * _speed);
-        }
+        }*/
     }
 }

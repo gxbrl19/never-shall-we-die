@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "enemySettings", menuName = "Enemy")]
-public class EnemyObject : ScriptableObject
+[CreateAssetMenu(fileName = "bossSettings", menuName = "Boss")]
+public class BossObject : ScriptableObject
 {
     public Sprite sprite;
 

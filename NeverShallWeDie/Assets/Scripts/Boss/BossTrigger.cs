@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossTrigger : MonoBehaviour
 {
-    //public GameObject _bossObject;
-    public BossDoor _bossDoor;
-    public BossDoor _bossDoor2;
+    [SerializeField] BossController _bossController;
+    [SerializeField] BossDoor _bossDoor;
+    [SerializeField] BossDoor _bossDoor2;
 
     Collider2D _collider;
     Player _player;
@@ -22,19 +23,13 @@ public class BossTrigger : MonoBehaviour
     {
         if (other.gameObject.layer == 9)//Player
         {
-            //_bossObject.GetComponent<Animator>().SetBool("Enabled", true);
-            //_bossObject.SetActive(true);
+            _bossController.GetComponent<Animator>().SetBool("Intro", true);
             _bossDoor._tiggered = true;
             _bossDoor2._tiggered = true;
             _collider.enabled = false;
             _player.DisableControls();
-            Invoke("FinishIntro", 3.5f);
-        }
-    }
 
-    public void FinishIntro() //invocado no OnTriggerEnter
-    {
-        //_backgroundMusic.Play();
-        _player.EnabledControls();
+            UIManager.instance.BossEnabled();
+        }
     }
 }

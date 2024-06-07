@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private TextMeshProUGUI _txtInteract;
     [BoxGroup("HUD")][SerializeField] private GameObject _interact;
     [BoxGroup("HUD")][SerializeField] private GameObject _skullSave;
+    [BoxGroup("HUD")][SerializeField] private GameObject _pnlBoss;
+    [BoxGroup("HUD")] public Text _txtBossName;
 
     [BoxGroup("Pause")] public bool _isPaused;
     [BoxGroup("Pause")] public RectTransform _menuPause;
@@ -349,6 +351,18 @@ public class UIManager : MonoBehaviour
         _inDialogue = false;
         _txtName.text = "";
         _txtTalk.text = "";
+    }
+    #endregion
+
+    #region Boss
+    public void BossEnabled()
+    {
+        _pnlBoss.SetActive(true);
+    }
+
+    public void BossDisabled()
+    {
+        _pnlBoss.SetActive(false);
     }
     #endregion
 

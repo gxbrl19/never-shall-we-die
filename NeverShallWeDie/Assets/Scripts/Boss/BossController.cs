@@ -4,47 +4,35 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    public static BossController instance;
+    public BossObject _bossObject;
 
-    public EnemyObject _enemyObject;
-    public GameObject _itemDrop;
-    public BossTrigger _bossTrigger;
+    [HideInInspector] public string _name;
+    [HideInInspector] public int _maxHealth;
+    [HideInInspector] public int _itemDropRate;
+    [HideInInspector] public AudioClip _deadSound;
+    [HideInInspector] public float _volume;
+    [HideInInspector] public Color _damageColor;
 
-    private string _enemyType;
-
-    private int _maxHealth;
-    [SerializeField] private int _currentHealth;
-    private float _invincibleTime;
-
-    private AudioClip _damageSound;
-    private float _volume;
-    private float _finishAttackTime;
-
-    [SerializeField] private Vector3 _initialPos;
-    [SerializeField] private Vector3 _initialScale;
-
-    [HideInInspector] public float _direction = 1;
-    [HideInInspector] public Animator _animation;
-    [HideInInspector] public bool _isDead;
+    //Enemy Data
+    public int _currentHealth;
     [HideInInspector] public bool _onHit;
+    [HideInInspector] public bool _isDead;
+    [HideInInspector] public Animator _animation;
+
+    Color _defaultColor;
+    SpriteRenderer _sprite;
+    AudioSource _audio;
 
     void Awake()
     {
-        instance = this;
-
-        _initialPos = transform.position;
-        _initialScale = transform.localScale;
-
         _animation = GetComponent<Animator>();
-        
-        _maxHealth = _enemyObject.maxHealth;
-        _damageSound = _enemyObject.deadSound;
-        _volume = _enemyObject.volume;
-    }
 
-    void Start()
-    {
-        ResetBoss();
+        UIManager.instance._txtBossName.text = _bossObject.name;
+        _maxHealth = _bossObject.maxHealth;
+        _itemDropRate = _bossObject.dropRate;
+        _deadSound = _bossObject.deadSound;
+        _volume = _bossObject.volume;
+        _damageColor = _bossObject.damageColor;
     }
 
     void Update()
@@ -54,48 +42,25 @@ public class BossController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (_onHit)
-            return;
+        if (_onHit) { return; }
 
         _onHit = true;
         _currentHealth -= damage;
-
-        CinemachineShake.instance.ShakeCamera(3f, 0.15f); 
-
-        //
+        _audio.volume = _volume;
+        _sprite.color = _damageColor;
+        AudioItems.instance.PlaySound(AudioItems.instance._hitSound, AudioItems.instance._hitVolume);
+        Invoke("FinishHit", 0.3f);
+        
         if (_currentHealth <= 0)
         {
             _isDead = true;
             _animation.SetTrigger("Dead");
-            Invoke("DropItem", 2f);
-        }
-
-        if (!_isDead)
-        {
-            StartCoroutine(FinishHit());
         }
     }
 
-    public void ResetBoss()
+    public void FinishHit() //chamado na animação
     {
-        _animation.SetBool("Enabled", false);
-        transform.position = _initialPos;
-        transform.localScale = _initialScale;
-        _direction = 1;        
-        _currentHealth = _maxHealth;
-        //_bossTrigger.ResetIntro();
-        _isDead = false;
         _onHit = false;
-    }
-
-    IEnumerator FinishHit()
-    {
-        yield return new WaitForSeconds(_invincibleTime);
-        _onHit = false;
-    }
-
-    void DropItem() //dentro da fun��o TakeDamage
-    {
-        _itemDrop.SetActive(true);
+        _sprite.color = _defaultColor;
     }
 }

@@ -439,6 +439,7 @@ MonoBehaviour:
     m_Bits: 512
   _sizeBox: {x: 22, y: 5}
   _detectPosition: {fileID: 7600265245757693489}
+  _detectPlayer: 0
   _isAttacking: 0
   _damager: {fileID: 8474145224458130349}
 --- !u!114 &2483645018870198666
@@ -454,6 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 62880426106912218, guid: a9adf4fda0599e24abf6d0d01f7fedf9, type: 3}
+  _interactable: 0
   _dropRate: 0
 --- !u!82 &4542243164606084315
 AudioSource:
