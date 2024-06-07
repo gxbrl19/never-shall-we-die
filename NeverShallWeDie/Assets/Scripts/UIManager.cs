@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private GameObject _interact;
     [BoxGroup("HUD")][SerializeField] private GameObject _skullSave;
     [BoxGroup("HUD")][SerializeField] private GameObject _pnlBoss;
+    [BoxGroup("HUD")] public Image _healthBoss;
     [BoxGroup("HUD")] public Text _txtBossName;
 
     [BoxGroup("Pause")] public bool _isPaused;

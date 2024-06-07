@@ -16,7 +16,17 @@ public class BossTrigger : MonoBehaviour
     {
         _collider = GetComponent<Collider2D>();
         _player = FindObjectOfType<Player>();
-        //_audioSource = GetComponent<AudioSource>();
+
+
+    }
+
+    void Start()
+    {
+        if (GameManager.instance._bosses[_bossController._bossID] == 1)
+        {
+            _collider.enabled = false;
+            _bossController.gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

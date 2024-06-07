@@ -6115,6 +6115,8 @@ MonoBehaviour:
   _navigator: 
   _witch: 
   _blacksmith: 
+  _bestiary: 
+  _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
@@ -12130,7 +12132,7 @@ Transform:
   m_GameObject: {fileID: 794457271}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.88, y: -45.63, z: 0}
+  m_LocalPosition: {x: 5.35, y: -45.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12994,7 +12996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 2
+  _power: 3
   _hitEffect: {fileID: 0}
 --- !u!58 &1581284436
 CircleCollider2D:
@@ -16073,9 +16075,9 @@ GameObject:
   - component: {fileID: 2086455876}
   - component: {fileID: 2086455875}
   - component: {fileID: 2086455878}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KingBoar
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16202,7 +16204,7 @@ MonoBehaviour:
   _bossObject: {fileID: 11400000, guid: 7b0fd3633d185ff49abc38b0787a9c66, type: 2}
   _name: 
   _maxHealth: 0
-  _itemDropRate: 0
+  _bossID: 0
   _deadSound: {fileID: 0}
   _volume: 0
   _damageColor: {r: 0, g: 0, b: 0, a: 0}
@@ -16210,6 +16212,8 @@ MonoBehaviour:
   _onHit: 0
   _isDead: 0
   _animation: {fileID: 0}
+  _bossDoor: {fileID: 1840211399}
+  _bossDoor2: {fileID: 1242314782}
 --- !u!70 &2086455877
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -16257,7 +16261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 1
+  _power: 2
   _hitEffect: {fileID: 0}
 --- !u!1 &2095755094
 GameObject:

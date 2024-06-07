@@ -56,7 +56,7 @@ public class KingBoar : MonoBehaviour
 
         //attack
         if (!_attacking) { _timer += Time.deltaTime; }
-        if (_timer > 2f) { AttackController(); }
+        if (_timer > 1.3f) { AttackController(); }
 
         _velocitySpike = (_player.transform.position - transform.position) * _launchForce;
         _timerMinions += Time.deltaTime;
@@ -84,9 +84,9 @@ public class KingBoar : MonoBehaviour
 
         _attacking = true;
 
-        if (!_walking && _timerMinions < 14f) { _numAttack = 1; }
-        else if (_walking && _timerMinions < 14f) { _numAttack = 2; }
-        else if (_walking && _timerMinions >= 14f) { _numAttack = 3; }
+        if (!_walking && _timerMinions < 10f) { _numAttack = 1; }
+        else if (_walking && _timerMinions < 10f) { _numAttack = 2; }
+        else if (_walking && _timerMinions >= 10f) { _numAttack = 3; }
         _bossController._animation.SetInteger("Index", _numAttack);
         _bossController._animation.SetBool("Attacking", true);
     }

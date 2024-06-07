@@ -24,9 +24,9 @@ public class BossDoor : MonoBehaviour
         }
 
         //abre a porta quando o boss morre
-        /*if (!_tiggered && transform.position.y < _up.position.y)
+        if (!_tiggered && transform.position.y < _up.position.y)
         {
             transform.Translate(Vector2.up * Time.deltaTime * _speed);
-        }*/
+        }
     }
 }

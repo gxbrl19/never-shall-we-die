@@ -7,10 +7,8 @@ using Sirenix.OdinInspector;
 public class BossObject : ScriptableObject
 {
     public Sprite sprite;
-
-    [Header("Settings")]
-    public int maxHealth;
-    public int dropRate;
+    public int bossID;
+    public float maxHealth;
     public AudioClip deadSound;
     public float volume;
     public Color damageColor;

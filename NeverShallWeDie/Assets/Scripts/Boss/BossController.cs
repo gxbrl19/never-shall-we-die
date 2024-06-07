@@ -7,17 +7,20 @@ public class BossController : MonoBehaviour
     public BossObject _bossObject;
 
     [HideInInspector] public string _name;
-    [HideInInspector] public int _maxHealth;
-    [HideInInspector] public int _itemDropRate;
+    [HideInInspector] public float _maxHealth;
+    [HideInInspector] public int _bossID;
     [HideInInspector] public AudioClip _deadSound;
     [HideInInspector] public float _volume;
     [HideInInspector] public Color _damageColor;
 
     //Enemy Data
-    public int _currentHealth;
+    public float _currentHealth;
     [HideInInspector] public bool _onHit;
     [HideInInspector] public bool _isDead;
     [HideInInspector] public Animator _animation;
+
+    [SerializeField] BossDoor _bossDoor;
+    [SerializeField] BossDoor _bossDoor2;
 
     Color _defaultColor;
     SpriteRenderer _sprite;
@@ -26,18 +29,24 @@ public class BossController : MonoBehaviour
     void Awake()
     {
         _animation = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
 
         UIManager.instance._txtBossName.text = _bossObject.name;
         _maxHealth = _bossObject.maxHealth;
-        _itemDropRate = _bossObject.dropRate;
+        _bossID = _bossObject.bossID;
         _deadSound = _bossObject.deadSound;
         _volume = _bossObject.volume;
         _damageColor = _bossObject.damageColor;
+
+        _currentHealth = _maxHealth;
+        _isDead = false;
+        _onHit = false;
+        _defaultColor = _sprite.color;
     }
 
     void Update()
     {
-
+        UIManager.instance._healthBoss.fillAmount = _currentHealth / _maxHealth;
     }
 
     public void TakeDamage(int damage)
@@ -46,19 +55,22 @@ public class BossController : MonoBehaviour
 
         _onHit = true;
         _currentHealth -= damage;
-        _audio.volume = _volume;
+        //_audio.volume = _volume;
         _sprite.color = _damageColor;
         AudioItems.instance.PlaySound(AudioItems.instance._hitSound, AudioItems.instance._hitVolume);
         Invoke("FinishHit", 0.3f);
-        
+
         if (_currentHealth <= 0)
         {
             _isDead = true;
             _animation.SetTrigger("Dead");
+            GameManager.instance._bosses[_bossID] = 1;
+            _bossDoor._tiggered = false;
+            _bossDoor2._tiggered = false;
         }
     }
 
-    public void FinishHit() //chamado na animação
+    public void FinishHit() //chamado no TakeDamage()
     {
         _onHit = false;
         _sprite.color = _defaultColor;

@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Crew")] public string _witch;
     [BoxGroup("Crew")] public string _blacksmith;
 
+    //Enemy
+    [BoxGroup("Enemy")] public int[] _bestiary;
+    [BoxGroup("Enemy")] public int[] _bosses;
+
     //Prefabs
     [BoxGroup("Sound")] public float _masterVol;
     [BoxGroup("Sound")] public float _musicVol;
@@ -66,6 +70,8 @@ public class GameManager : MonoBehaviour
         _flags = new int[11];
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
+
+        _bosses = new int[6];
         LoadBasic();
     }
 

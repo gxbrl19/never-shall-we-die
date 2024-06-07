@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
         }*/
     }
 
-    public void FinishHit() //chamado na animação
+    public void FinishHit() //chamado no TakeDamage()
     {
         _onHit = false;
         _sprite.color = _defaultColor;
