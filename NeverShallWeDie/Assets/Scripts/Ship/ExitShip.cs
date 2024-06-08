@@ -17,6 +17,8 @@ public class ExitShip : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
         _health = _player.GetComponent<PlayerHealth>();
+
+        _triggered = false;
     }
 
     void Update()
@@ -47,6 +49,34 @@ public class ExitShip : MonoBehaviour
     {
         _scriptablePosition.SetAttributes(true, 1, 1);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
+
+        switch (_nextSceneName)
+        {
+            case "06/H0":
+                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._kingdomTheme);
+                break;
+            case "01/H1":
+                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme);
+                break;
+            case "01/H2":
+                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._minesTheme);
+                break;
+            case "02/H3":
+                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._mizutonTheme);
+                break;
+            case "02/H4":
+                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._mizutonTheme);
+                break;
+            case "03/H5":
+                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._cemeteryTheme);
+                break;
+            case "03/H6":
+                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._cemeteryTheme);
+                break;
+            case "04/H7":
+                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._prisonTheme);
+                break;
+        }
     }
 
     private bool SceneExists(string sceneName)
@@ -64,7 +94,7 @@ public class ExitShip : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
             _triggered = true;
         }
@@ -72,7 +102,7 @@ public class ExitShip : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
             _triggered = false;
         }

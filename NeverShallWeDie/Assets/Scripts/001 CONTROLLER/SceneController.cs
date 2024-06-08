@@ -45,6 +45,7 @@ public class SceneController : MonoBehaviour
     {
         _scriptablePosition.SetAttributes(true, _direction, _indexPosition);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
+        if (_nextSceneName == "00/01") { BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._shipTheme); }
     }
 
     private bool SceneExists(string sceneName)

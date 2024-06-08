@@ -139,10 +139,9 @@ public class UIManager : MonoBehaviour
         _water.fillAmount = _player._timeWaterSpin / _player._timeForSkills;
     }
 
-    public void InteractPanel(bool show, string text)
+    public void InteractPanel(bool show)
     {
         _interact.SetActive(show);
-        _txtInteract.text = text;
     }
 
     public void SaveEnabled()
@@ -162,6 +161,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Scenes/MainMenu");
+        BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._mizutonTheme);
     }
 
     void InPause()

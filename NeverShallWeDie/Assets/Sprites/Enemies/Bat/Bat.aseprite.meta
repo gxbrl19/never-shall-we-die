@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 16
+    spritePixelsToUnits: 24
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638472183007107273
+  platformSettingsDirtyTick: 638533692317904889
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Bat_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0.5555556}
+    pivot: {x: 0.47619048, y: 0.49999997}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 49
-      y: 68
-      width: 10
-      height: 18
+      x: 60
+      y: 180
+      width: 21
+      height: 42
     spriteID: 12b5c3ebcb5896a4cb91933b36fea3ce
     spriteBone: []
     spriteOutline: []
@@ -138,18 +138,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 49, y: 68}
+    uvTransform: {x: 60, y: 180}
   - name: Bat_Frame_1
     originalName: 
-    pivot: {x: 0.33333334, y: 0.23809524}
+    pivot: {x: 0.4939759, y: 0.27586213}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 39
-      width: 24
-      height: 21
+      y: 106
+      width: 83
+      height: 29
     spriteID: 08b234b62d03fc546a6dec2966829c67
     spriteBone: []
     spriteOutline: []
@@ -158,18 +158,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 39}
+    uvTransform: {x: 4, y: 106}
   - name: Bat_Frame_2
     originalName: 
-    pivot: {x: 0.47058824, y: 0.5}
+    pivot: {x: 0.48051947, y: 0.51282054}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 106
-      y: 39
-      width: 17
-      height: 12
+      x: 4
+      y: 59
+      width: 77
+      height: 39
     spriteID: bb9b8d438d2a0b443b3b5301f1d855a9
     spriteBone: []
     spriteOutline: []
@@ -178,18 +178,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 106, y: 39}
+    uvTransform: {x: 4, y: 59}
   - name: Bat_Frame_3
     originalName: 
-    pivot: {x: 0.6666667, y: 0.61538464}
+    pivot: {x: 0.56249994, y: 0.6666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 68
-      width: 12
-      height: 26
+      y: 180
+      width: 48
+      height: 42
     spriteID: df1d4d7de01144246b7336c27d280df1
     spriteBone: []
     spriteOutline: []
@@ -198,18 +198,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 68}
+    uvTransform: {x: 4, y: 180}
   - name: Bat_Frame_4
     originalName: 
-    pivot: {x: 0.5625, y: 0.09090909}
+    pivot: {x: 0.5507246, y: 0.1702128}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 67
-      y: 68
-      width: 16
-      height: 11
+      x: 4
+      y: 4
+      width: 69
+      height: 47
     spriteID: 5beb401d2bf250049aff05c23f77a4de
     spriteBone: []
     spriteOutline: []
@@ -218,18 +218,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 67, y: 68}
+    uvTransform: {x: 4, y: 4}
   - name: Bat_Frame_5
     originalName: 
-    pivot: {x: 0.47368422, y: 0.3125}
+    pivot: {x: 0.50602406, y: 0.62068975}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 36
-      y: 39
-      width: 19
-      height: 16
+      x: 4
+      y: 143
+      width: 83
+      height: 29
     spriteID: ff62ad1b8a87670408eeeecd3469d447
     spriteBone: []
     spriteOutline: []
@@ -238,18 +238,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 36, y: 39}
+    uvTransform: {x: 4, y: 143}
   - name: Bat_Frame_6
     originalName: 
-    pivot: {x: 0.47058824, y: 0.5}
+    pivot: {x: 0.45238099, y: 0.4651163}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 24
-      y: 68
-      width: 17
-      height: 12
+      x: 81
+      y: 4
+      width: 42
+      height: 43
     spriteID: 3fb28b06fa0228747a7fa4f1d5f4dc67
     spriteBone: []
     spriteOutline: []
@@ -258,127 +258,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 24, y: 68}
-  - name: Bat_Frame_7
-    originalName: 
-    pivot: {x: 0.61538464, y: 0.6315789}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 85
-      y: 39
-      width: 13
-      height: 19
-    spriteID: 3831a1a4912960d49b8e2aeab36538bf
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 85, y: 39}
-  - name: Bat_Frame_8
-    originalName: 
-    pivot: {x: 0.5714286, y: 0.5714286}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 63
-      y: 39
-      width: 14
-      height: 21
-    spriteID: 4eaa5479a4b6dfb48adb0e5d936fe78a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 63, y: 39}
-  - name: Bat_Frame_9
-    originalName: 
-    pivot: {x: 0.5882353, y: 0.5652174}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 102
-      y: 4
-      width: 17
-      height: 23
-    spriteID: a898310b6eaa9884eae1d7640e147047
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 102, y: 4}
-  - name: Bat_Frame_10
-    originalName: 
-    pivot: {x: 0.5909091, y: 0.53846157}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 72
-      y: 4
-      width: 22
-      height: 26
-    spriteID: 0dfaa2274f38fd14d9a579941a864b46
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 72, y: 4}
-  - name: Bat_Frame_11
-    originalName: 
-    pivot: {x: 0.5833334, y: 0.5769231}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 40
-      y: 4
-      width: 24
-      height: 26
-    spriteID: 18ec7e40a103d434a8c9d5663f1988b6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 40, y: 4}
-  - name: Bat_Frame_12
-    originalName: 
-    pivot: {x: 0.5, y: 0.5925926}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 28
-      height: 27
-    spriteID: 9fe2eca7766d64f40b3643f7cf2369fe
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 81, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -391,107 +271,59 @@ ScriptedImporter:
     - name: Bat_Frame_0
       frameIndex: 0
       cellRect:
-        x: 11
-        y: 6
-        width: 10
-        height: 18
+        x: 70
+        y: 59
+        width: 21
+        height: 42
       spriteId: 12b5c3ebcb5896a4cb91933b36fea3ce
     - name: Bat_Frame_1
       frameIndex: 1
       cellRect:
-        x: 8
-        y: 11
-        width: 24
-        height: 21
+        x: 39
+        y: 72
+        width: 83
+        height: 29
       spriteId: 08b234b62d03fc546a6dec2966829c67
     - name: Bat_Frame_2
       frameIndex: 2
       cellRect:
-        x: 8
-        y: 10
-        width: 17
-        height: 12
+        x: 43
+        y: 60
+        width: 77
+        height: 39
       spriteId: bb9b8d438d2a0b443b3b5301f1d855a9
     - name: Bat_Frame_3
       frameIndex: 3
       cellRect:
-        x: 8
-        y: 0
-        width: 12
-        height: 26
+        x: 53
+        y: 52
+        width: 48
+        height: 42
       spriteId: df1d4d7de01144246b7336c27d280df1
     - name: Bat_Frame_4
       frameIndex: 4
       cellRect:
-        x: 7
-        y: 15
-        width: 16
-        height: 11
+        x: 42
+        y: 72
+        width: 69
+        height: 47
       spriteId: 5beb401d2bf250049aff05c23f77a4de
     - name: Bat_Frame_5
       frameIndex: 5
       cellRect:
-        x: 7
-        y: 11
-        width: 19
-        height: 16
+        x: 38
+        y: 62
+        width: 83
+        height: 29
       spriteId: ff62ad1b8a87670408eeeecd3469d447
     - name: Bat_Frame_6
       frameIndex: 6
       cellRect:
-        x: 8
-        y: 10
-        width: 17
-        height: 12
+        x: 61
+        y: 60
+        width: 42
+        height: 43
       spriteId: 3fb28b06fa0228747a7fa4f1d5f4dc67
-    - name: Bat_Frame_7
-      frameIndex: 7
-      cellRect:
-        x: 8
-        y: 4
-        width: 13
-        height: 19
-      spriteId: 3831a1a4912960d49b8e2aeab36538bf
-    - name: Bat_Frame_8
-      frameIndex: 8
-      cellRect:
-        x: 8
-        y: 4
-        width: 14
-        height: 21
-      spriteId: 4eaa5479a4b6dfb48adb0e5d936fe78a
-    - name: Bat_Frame_9
-      frameIndex: 9
-      cellRect:
-        x: 6
-        y: 3
-        width: 17
-        height: 23
-      spriteId: a898310b6eaa9884eae1d7640e147047
-    - name: Bat_Frame_10
-      frameIndex: 10
-      cellRect:
-        x: 3
-        y: 2
-        width: 22
-        height: 26
-      spriteId: 0dfaa2274f38fd14d9a579941a864b46
-    - name: Bat_Frame_11
-      frameIndex: 11
-      cellRect:
-        x: 2
-        y: 1
-        width: 24
-        height: 26
-      spriteId: 18ec7e40a103d434a8c9d5663f1988b6
-    - name: Bat_Frame_12
-      frameIndex: 12
-      cellRect:
-        x: 2
-        y: 0
-        width: 28
-        height: 27
-      spriteId: 9fe2eca7766d64f40b3643f7cf2369fe
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -557,4 +389,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 160, y: 160}

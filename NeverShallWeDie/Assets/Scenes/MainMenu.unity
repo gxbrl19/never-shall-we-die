@@ -709,7 +709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &101904695
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2192,6 +2192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 253720391}
   - component: {fileID: 253720390}
+  - component: {fileID: 253720392}
   m_Layer: 0
   m_Name: BackgroundMusic
   m_TagString: Untagged
@@ -2211,7 +2212,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -6697715818617287364, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
   m_audioClip: {fileID: 8300000, guid: 105d40825a9197d4c94032464de69f17, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2310,6 +2311,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &253720392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253720389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47056afbf74da6540b83e5a9572befcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nswdTheme: {fileID: 8300000, guid: 105d40825a9197d4c94032464de69f17, type: 3}
+  _kingdomTheme: {fileID: 8300000, guid: d4c9026a1dd3e8c4389a94637d790206, type: 3}
+  _shipTheme: {fileID: 8300000, guid: d9332cc1b4c345344a6567d27849cf23, type: 3}
+  _forestTheme: {fileID: 8300000, guid: 3b76f9a0585b9bf4a91368fddfb2f1de, type: 3}
+  _minesTheme: {fileID: 8300000, guid: 51468a851103e364a8f55fe17c665249, type: 3}
+  _mizutonTheme: {fileID: 8300000, guid: 6b1fd8c885021294285bd71b148ecafb, type: 3}
+  _cemeteryTheme: {fileID: 8300000, guid: 43d6d27c815b2a1439677a4d0b7cbb32, type: 3}
+  _prisonTheme: {fileID: 8300000, guid: 07be97c05bfb6364bb77f1f589701016, type: 3}
+  _mansionTheme: {fileID: 8300000, guid: 5223153799e5482478869d2c39984ebb, type: 3}
+  _bossTheme: {fileID: 8300000, guid: 9b9d4e62a60c680429afbeb931fa5fc2, type: 3}
+  _deadSound: {fileID: 0}
 --- !u!1 &265471147
 GameObject:
   m_ObjectHideFlags: 0
@@ -17830,6 +17854,8 @@ MonoBehaviour:
   _navigator: 
   _witch: 
   _blacksmith: 
+  _bestiary: 
+  _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
