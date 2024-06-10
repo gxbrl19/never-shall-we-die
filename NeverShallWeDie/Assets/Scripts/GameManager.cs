@@ -11,9 +11,20 @@ using Sirenix.OdinInspector;
 [Serializable]
 public class PlayerData
 {
-    public int levelIndex;
+    public List<Equipments> equipments;
     public List<Skills> skills;
     public int gold;
+    public int[] flags;
+    public int[] barrels;
+    public int[] airCutblock;
+    public int checkpointScene;
+    public int direction;
+    public string helmsman;
+    public string navigator;
+    public string witch;
+    public string blacksmith;
+    public int[] bestiary;
+    public int[] bosses;
 }
 
 public class GameManager : MonoBehaviour
@@ -106,19 +117,35 @@ public class GameManager : MonoBehaviour
     public void SaveGame()
     {
         UIManager.instance.SaveEnabled();
-        //TODO: salvar dados do jogo
 
-        //_path = Application.persistentDataPath + "/playerSave" + _indexSave + ".sav";
-        //BinaryFormatter _binaryFormatter = new BinaryFormatter();
-        //FileStream _file = File.Create(_path); //cria o arquivo no caminho
-        //PlayerData _data = new PlayerData(); //instanciando objeto da classe PlayerData
+        _path = Application.persistentDataPath + "/playerSave" + _indexSave + ".sav";
+        BinaryFormatter _binaryFormatter = new BinaryFormatter();
+        FileStream _file = File.Create(_path); //cria o arquivo no caminho
+        PlayerData _data = new PlayerData(); //instanciando objeto da classe PlayerData
 
         //atribui os valores do jogo ao objeto
-        //_data.skills = _skills;
-        //_data.gold = _gold;
+        _data.equipments = _equipments;
+        _data.skills = _skills;
+        _data.gold = _gold;
+
+        _data.flags = _flags;
+        _data.barrels = _barrels;
+        _data.airCutblock = _airCutblock;
+
+        _data.checkpointScene = _checkpointScene;
+        _data.direction = _direction;
+
+        _data.helmsman = _helmsman;
+        _data.navigator = _navigator;
+        _data.witch = _witch;
+        _data.blacksmith = _blacksmith;
+
+        _data.bestiary = _bestiary;
+        _data.bosses = _bosses;
+
 
         //envia os dados do objeto pra dentro de um arquivo
-        //_binaryFormatter.Serialize(_file, _data);
+        _binaryFormatter.Serialize(_file, _data);
 
         //file.Close();
 
@@ -169,8 +196,24 @@ public class GameManager : MonoBehaviour
 
 
             //atribui os valores do objeto ao jogo
+            _equipments = _data.equipments;
             _skills = _data.skills;
             _gold = _data.gold;
+
+            _flags = _data.flags;
+            _barrels = _data.barrels;
+            _airCutblock = _data.airCutblock;
+
+            _checkpointScene = _data.checkpointScene;
+            _direction = _data.direction;
+
+            _helmsman = _data.helmsman;
+            _navigator = _data.navigator;
+            _witch = _data.witch;
+            _blacksmith = _data.blacksmith;
+
+            _bestiary = _data.bestiary;
+            _bosses = _data.bosses;
         }
     }
 

@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 2
+  _power: 25
   _hitEffect: {fileID: 7245457253207120127, guid: f4497f1acf392664b8560044aac6210a, type: 3}
 --- !u!1 &5474408373558853201
 GameObject:
@@ -819,6 +819,7 @@ MonoBehaviour:
   _ladder: {fileID: 0}
   _vine: {fileID: 0}
   _onClimbing: 0
+  _isSliding: 0
   _onHit: 0
   _canSwin: 1
   _onWater: 0
@@ -1277,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 2
+  _power: 20
   _hitEffect: {fileID: 7245457253207120127, guid: f4497f1acf392664b8560044aac6210a, type: 3}
 --- !u!1 &9025100403178150623
 GameObject:

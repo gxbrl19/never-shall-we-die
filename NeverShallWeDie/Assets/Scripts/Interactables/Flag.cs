@@ -43,12 +43,13 @@ public class Flag : MonoBehaviour
         {
             GameManager.instance._flags[_idFlag] = 1;
             SetCheckpoint();
-            GameManager.instance.SaveGame();
 
             //reseta a vida do player
             _health._currentHealth = _health._maxHealth;
             _health.SetHealth(_health._currentHealth);
             _health.SetMana(_health._currentMana);
+            
+            GameManager.instance.SaveGame();
         }
     }
 

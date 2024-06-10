@@ -10,10 +10,12 @@ public class AudioHUD : MonoBehaviour
 
     [Header("Audio")]
     public AudioClip _btnClick;
+    public AudioClip _navigationBtn;
     public AudioClip _pauseBtn;
 
     [Header("Volume")]
     public float _clickVolume;
+    public float _navigationVolume;
     public float _pauseVolume;
 
     private void Awake()
@@ -42,6 +44,11 @@ public class AudioHUD : MonoBehaviour
         {
             PlaySound(_pauseBtn, _pauseVolume);
         }
+    }
+
+    public void NavigationButton()
+    {
+        PlaySound(_navigationBtn, _navigationVolume);
     }
 
     public void PlaySound(AudioClip sound, float volume)

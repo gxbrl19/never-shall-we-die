@@ -80,8 +80,8 @@ public class MenuController : MonoBehaviour
     public void SelectSave(int saveIndex)
     {
         GameManager.instance._indexSave = saveIndex;
-
-        Invoke("LoadScene", 1f);  //invoca o load com delay, para dar tempo de fazer o fade
+        LoadScene();
+        //Invoke("LoadScene", 1f);  //invoca o load com delay, para dar tempo de fazer o fade
     }
 
     private void LoadScene() //chamado na função SelectSave
@@ -89,8 +89,9 @@ public class MenuController : MonoBehaviour
         GameManager.instance.LoadGame();
 
         //TODO: verificar se é um novo save para carregar a primeira fase ou o último save acionado
-        SceneManager.LoadScene("Scenes/06/00");
-        BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._kingdomTheme);
+        SceneManager.LoadScene("Scenes/Intro");
+        BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme); //DEMO
+        //BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._kingdomTheme);
     }
 
     public void QuitGame()

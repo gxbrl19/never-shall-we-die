@@ -101,6 +101,11 @@ public class Menu : MonoBehaviour
         AudioHUD.instance.SoundClick(type);
     }
 
+    public void NavigationSound() //chamado na ação dos botões
+    {
+        AudioHUD.instance.NavigationButton();
+    }
+
     public void StartIntro() //no inicio da Cena
     {
         Invoke("FinishIntro", 3.1f);

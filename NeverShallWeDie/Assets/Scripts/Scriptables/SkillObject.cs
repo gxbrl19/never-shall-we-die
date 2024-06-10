@@ -38,12 +38,4 @@ public class SkillObject : ScriptableObject
     [BoxGroup("Info")]
     [VerticalGroup("Info/Stats")]
     [LabelWidth(100)] public Sprite gamepadButton;
-
-
-
-    //
-    public int level1;
-    public int level2;
-    public int level3;
-    public int level4;
 }
