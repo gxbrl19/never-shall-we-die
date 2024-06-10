@@ -11,12 +11,14 @@ public class Flag : MonoBehaviour
     Animator _animation;
     Player _player;
     PlayerInputs _inputs;
+    PlayerHealth _health;
 
     void Awake()
     {
         _animation = GetComponent<Animator>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _inputs = _player.GetComponent<PlayerInputs>();
+        _health = _player.GetComponent<PlayerHealth>();
     }
 
     void Update()
@@ -42,6 +44,11 @@ public class Flag : MonoBehaviour
             GameManager.instance._flags[_idFlag] = 1;
             SetCheckpoint();
             GameManager.instance.SaveGame();
+
+            //reseta a vida do player
+            _health._currentHealth = _health._maxHealth;
+            _health.SetHealth(_health._currentHealth);
+            _health.SetMana(_health._currentMana);
         }
     }
 

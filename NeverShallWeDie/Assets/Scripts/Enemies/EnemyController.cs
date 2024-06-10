@@ -22,13 +22,13 @@ public class EnemyController : MonoBehaviour
     Color _defaultColor;
     SpriteRenderer _sprite;
     AudioSource _audio;
-    DropItem _dropHealth;
+    DropItem _dropItem;
 
     void Awake()
     {
         _animation = GetComponent<Animator>();
         _audio = GetComponent<AudioSource>();
-        _dropHealth = GetComponent<DropItem>();
+        _dropItem = GetComponent<DropItem>();
         _sprite = GetComponent<SpriteRenderer>();
 
 
@@ -47,9 +47,9 @@ public class EnemyController : MonoBehaviour
         _onHit = false;
         _defaultColor = _sprite.color;
 
-        if (_dropHealth != null)
+        if (_dropItem != null)
         {
-            _dropHealth._dropRate = _itemDropRate;
+            _dropItem._dropRate = _itemDropRate;
         }
     }
 
@@ -68,13 +68,13 @@ public class EnemyController : MonoBehaviour
         if (_currentHealth <= 0)
         {
             _audio.PlayOneShot(_deadSound);
-            _dropHealth.DropGold();
+            _dropItem.DropGold();
             _isDead = true;
             _animation.SetBool("Dead", true);
 
             //da um pouco de mana ao player
             PlayerHealth _playerHealth = FindFirstObjectByType<PlayerHealth>();
-            _playerHealth.FillBottle(0.6f);
+            _playerHealth.FillBottle(0.8f);
         }
 
         /*if (_name == "Boar") {

@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 3717038023925824456}
   - component: {fileID: 3717038023925824459}
   m_Layer: 12
-  m_Name: BarrelEnemy
+  m_Name: BarrelMonkey
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,8 +286,8 @@ BoxCollider2D:
   m_Offset: {x: -0.016378403, y: -0.15120506}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5714286}
-    oldSize: {x: 1.25, y: 1.75}
+    pivot: {x: 0.5833334, y: 0.53333336}
+    oldSize: {x: 1.5, y: 1.875}
     newSize: {x: 1.25, y: 1.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 62880426106912218, guid: a9adf4fda0599e24abf6d0d01f7fedf9, type: 3}
+  _interactable: 0
   _dropRate: 0
 --- !u!82 &3717038023925824459
 AudioSource:
@@ -526,7 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 1
+  _power: 5
   _hitEffect: {fileID: 0}
 --- !u!70 &5992098915503188086
 CapsuleCollider2D:

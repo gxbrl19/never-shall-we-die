@@ -85,7 +85,7 @@ public class PlayerHealth : MonoBehaviour
         if (_player._healing && _currentHealth < _maxHealth && _currentMana >= 0.1)
         {
             _currentHealth += 0.08f;
-            _currentMana -= 0.1f;
+            _currentMana -= 0.08f;
 
             //deixa zerado quando os valores forem negativos
             if (_currentHealth < 0) { _currentHealth = 0f; } else if (_currentHealth > _maxHealth) { _currentHealth = _maxHealth; }
@@ -94,6 +94,8 @@ public class PlayerHealth : MonoBehaviour
 
             SetHealth(_currentHealth);
             SetMana(_currentMana);
+
+            CinemachineShake.instance.ShakeCamera(3f, 0.15f);
         }
         else
         {
@@ -115,10 +117,10 @@ public class PlayerHealth : MonoBehaviour
             return;
 
         //TODO: aqui será definido a vida máxima do player
-        _maxHealth = 20;
+        _maxHealth = 25;
 
         //TODO: aqui será definido a qtd máxima de mana do player
-        _maxMana = 10;
+        _maxMana = 15;
     }
 
     public void FinishHit()
