@@ -10,7 +10,6 @@ public class BackgroundMusic : MonoBehaviour
     public AudioClip _kingdomTheme;
     public AudioClip _shipTheme;
     public AudioClip _forestTheme;
-    public AudioClip _minesTheme;
     public AudioClip _mizutonTheme;
     public AudioClip _cemeteryTheme;
     public AudioClip _prisonTheme;
@@ -39,6 +38,20 @@ public class BackgroundMusic : MonoBehaviour
     {
         _audioSource.Stop();
         _audioSource.clip = audioClip;
+        _audioSource.Play();
+    }
+
+    public void BossMusic()
+    {
+        _audioSource.Stop();
+        _audioSource.clip = _bossTheme;
+        _audioSource.Play();
+    }
+
+    public void FinishBoss()
+    {
+        _audioSource.Stop();
+        _audioSource.clip = _forestTheme; //TODO: pegar a musica da ilha atual
         _audioSource.Play();
     }
 }

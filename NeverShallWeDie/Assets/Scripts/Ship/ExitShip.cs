@@ -59,7 +59,7 @@ public class ExitShip : MonoBehaviour
                 BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme);
                 break;
             case "01/H2":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._minesTheme);
+                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme);
                 break;
             case "02/H3":
                 BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._mizutonTheme);

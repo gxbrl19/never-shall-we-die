@@ -67,6 +67,8 @@ public class BossController : MonoBehaviour
             GameManager.instance._bosses[_bossID] = 1;
             _bossDoor._tiggered = false;
             _bossDoor2._tiggered = false;
+            UIManager.instance.BossDisabled();
+            BackgroundMusic.instance.FinishBoss();
         }
     }
 

@@ -40,6 +40,7 @@ public class BossTrigger : MonoBehaviour
             _player.DisableControls();
 
             UIManager.instance.BossEnabled();
+            BackgroundMusic.instance.BossMusic();
         }
     }
 }
