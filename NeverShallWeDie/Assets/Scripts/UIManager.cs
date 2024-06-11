@@ -147,9 +147,10 @@ public class UIManager : MonoBehaviour
     public void SaveEnabled()
     {
         _skullSave.SetActive(true);
+        Invoke("SaveDisabled", 2f);
     }
 
-    public void SaveDisabled()
+    public void SaveDisabled() //chamado na função SaveEnabled()
     {
         _skullSave.SetActive(false);
     }

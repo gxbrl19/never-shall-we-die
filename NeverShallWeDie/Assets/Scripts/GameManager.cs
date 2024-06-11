@@ -147,9 +147,7 @@ public class GameManager : MonoBehaviour
         //envia os dados do objeto pra dentro de um arquivo
         _binaryFormatter.Serialize(_file, _data);
 
-        //file.Close();
-
-        UIManager.instance.SaveDisabled();
+        _file.Close();
     }
 
     void LoadBasic()

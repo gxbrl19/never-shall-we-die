@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MenuController : MonoBehaviour
 {
     public static MenuController instance;
 
     public AudioMixer _mixer;
+    public Image _pnlFade;
 
     [Header("Save Select")]
     public Text _txtSave1;
@@ -80,18 +82,29 @@ public class MenuController : MonoBehaviour
     public void SelectSave(int saveIndex)
     {
         GameManager.instance._indexSave = saveIndex;
-        LoadScene();
-        //Invoke("LoadScene", 1f);  //invoca o load com delay, para dar tempo de fazer o fade
+        _pnlFade.DOFade(1f, .3f);
+
+        Invoke("LoadScene", 1f);  //invoca o load com delay, para dar tempo de fazer o fade
     }
 
     private void LoadScene() //chamado na função SelectSave
     {
         GameManager.instance.LoadGame();
+        int scene = GameManager.instance._checkpointScene;        
 
-        //TODO: verificar se é um novo save para carregar a primeira fase ou o último save acionado
-        SceneManager.LoadScene("Scenes/Intro");
-        BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme); //DEMO
-        //BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._kingdomTheme);
+        if (scene == 0)
+        {
+            SceneManager.LoadScene("Scenes/Intro");
+            BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme); //DEMO
+            //BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._kingdomTheme);
+        }
+        else
+        {
+            //TODO: verificar a ilha que está selecionada para passar a musica
+            BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme);
+            PlayerPrefs.SetInt("Scene", scene);
+            SceneManager.LoadScene("Scenes/Load");
+        }
     }
 
     public void QuitGame()

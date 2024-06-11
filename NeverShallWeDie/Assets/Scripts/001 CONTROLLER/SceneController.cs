@@ -66,7 +66,7 @@ public class SceneController : MonoBehaviour
         _scriptablePosition.SetAttributes(true, GameManager.instance._direction, 0);
 
         _health.SetHealth(_health._maxHealth);
-        _health.SetMana(0f); 
+        _health.SetMana(0f);
 
         _player.gameObject.layer = LayerMask.NameToLayer("PlayerDead");
         _player.gameObject.GetComponent<Player>().DisableControls();
@@ -82,6 +82,17 @@ public class SceneController : MonoBehaviour
 
     void FinishGameOver()
     {
+        int id = GameManager.instance._checkpointScene;
+        
+        if (id == 0) //se ainda não tiver chegado em uma bandeira
+        {
+            SceneManager.LoadScene("Scenes/01/H1"); //DEMO
+            //SceneManager.LoadScene("Scenes/06/01");
+            _player.gameObject.GetComponent<Player>().EnabledControls();
+            _player.gameObject.GetComponent<PlayerInputs>().enabled = true;
+            return;
+        }
+
         SceneManager.LoadScene(GameManager.instance._checkpointScene);
         _player.gameObject.GetComponent<Player>().EnabledControls();
         _player.gameObject.GetComponent<PlayerInputs>().enabled = true;
