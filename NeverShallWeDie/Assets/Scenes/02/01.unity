@@ -929,8 +929,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 70745961}
   _btnClick: {fileID: 8300000, guid: f0a14e9cf62052c4ab9fd28a833aa187, type: 3}
+  _navigationBtn: {fileID: 0}
   _pauseBtn: {fileID: 8300000, guid: d989b46cd18b9a24d9cd45f9d7944e5c, type: 3}
   _clickVolume: 0.5
+  _navigationVolume: 0
   _pauseVolume: 0.7
 --- !u!82 &70745961
 AudioSource:
@@ -9738,6 +9740,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502524965f6e9a747b2553f3c5954b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _oneCamScene: 0
+  _offset_x: 0
+  _offset_y: 0
 --- !u!114 &239819007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10014,8 +10019,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0
   m_LocalBounds:
-    m_Center: {x: -0.032050014, y: -0.035700023, z: 0}
-    m_Extent: {x: 1.41145, y: 1.8416, z: 0}
+    m_Center: {x: -0.03219998, y: -0.03430003, z: 0}
+    m_Extent: {x: 1.41, y: 1.8359001, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -10191,14 +10196,22 @@ MonoBehaviour:
   _equipments: 
   _skills: 
   _gold: 0
+  _flags: 
+  _barrels: 
+  _airCutblock: 
+  _checkpointScene: 0
+  _direction: 0
+  _helmsman: 
+  _navigator: 
+  _witch: 
+  _blacksmith: 
+  _bestiary: 
+  _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
-  _prefsInput: 0
   _inputType: 
-  _stones: 
-  _flags: 
-  _shipInitialPosition: {x: 0, y: 0, z: 0}
+  _aspectRadio: 0
 --- !u!4 &566699222
 Transform:
   m_ObjectHideFlags: 0
@@ -24562,8 +24575,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0
   m_LocalBounds:
-    m_Center: {x: -0.035650015, y: -0.035300016, z: 0}
-    m_Extent: {x: 1.40715, y: 1.841, z: 0}
+    m_Center: {x: -0.031650007, y: -0.034950018, z: 0}
+    m_Extent: {x: 1.41045, y: 1.83655, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -24651,53 +24664,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a50ec05acd5cf740b1f447235baf780, type: 3}
---- !u!1 &1302365597
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1302365599}
-  - component: {fileID: 1302365598}
-  m_Layer: 0
-  m_Name: CheckpointController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1302365598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302365597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff6d5f9409d0d9b4693111fb9962a3fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerPos: {fileID: 0}
-  _intensity: 0
-  _camera: {fileID: 0}
---- !u!4 &1302365599
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302365597}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -31.512001, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1366094017
 GameObject:
   m_ObjectHideFlags: 0
@@ -25990,7 +25956,6 @@ SceneRoots:
   - {fileID: 101246366}
   - {fileID: 1191872198}
   - {fileID: 1407301883}
-  - {fileID: 1302365599}
   - {fileID: 464805052}
   - {fileID: 1967415560}
   - {fileID: 880809858}
