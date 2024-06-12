@@ -36,21 +36,21 @@ public class BackgroundMusic : MonoBehaviour
 
     public void ChangeMusic(AudioClip audioClip)
     {
-        _audioSource.Stop();
+        //_audioSource.Stop();
         _audioSource.clip = audioClip;
         _audioSource.Play();
     }
 
     public void BossMusic()
     {
-        _audioSource.Stop();
+        //_audioSource.Stop();
         _audioSource.clip = _bossTheme;
         _audioSource.Play();
     }
 
     public void FinishBoss()
     {
-        _audioSource.Stop();
+        //_audioSource.Stop();
         _audioSource.clip = _forestTheme; //TODO: pegar a musica da ilha atual
         _audioSource.Play();
     }

@@ -27,15 +27,11 @@ AnimationClip:
     - time: 0.25
       value: {fileID: -4043987265626305719, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
     - time: 0.375
-      value: {fileID: 2613203225963272283, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
+      value: {fileID: -4043987265626305719, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
     - time: 0.5
-      value: {fileID: 4761439832005193761, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
+      value: {fileID: -4043987265626305719, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
     - time: 0.625
-      value: {fileID: -6338843459148662378, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
-    - time: 0.75
-      value: {fileID: -2877440601731799046, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
-    - time: 0.875
-      value: {fileID: -3606308062502997427, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
+      value: {fileID: -4043987265626305719, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -61,17 +57,15 @@ AnimationClip:
     - {fileID: 5462865008826627517, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
     - {fileID: -6194998227869375322, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
     - {fileID: -4043987265626305719, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
-    - {fileID: 2613203225963272283, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
-    - {fileID: 4761439832005193761, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
-    - {fileID: -6338843459148662378, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
-    - {fileID: -2877440601731799046, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
-    - {fileID: -3606308062502997427, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
+    - {fileID: -4043987265626305719, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
+    - {fileID: -4043987265626305719, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
+    - {fileID: -4043987265626305719, guid: 1be123196b4d7a9488d125fd58ce43ff, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -91,14 +85,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.375
+  - time: 0.25
     functionName: SpikeAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.875
+  - time: 0.625
     functionName: FinishAttack
     data: 
     objectReferenceParameter: {fileID: 0}

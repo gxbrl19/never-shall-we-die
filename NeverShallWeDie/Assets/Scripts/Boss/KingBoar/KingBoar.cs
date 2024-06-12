@@ -15,6 +15,10 @@ public class KingBoar : MonoBehaviour
     [SerializeField] Transform _boarMinionLeft;
     [SerializeField] Transform _boarMinionRight;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip _scream;
+    [SerializeField] AudioClip _minion;
+
     float _speed = 2f;
     float _timer;
     float _timerMinions;
@@ -25,12 +29,14 @@ public class KingBoar : MonoBehaviour
     bool _attacking = false;
     bool _walking = false;
     BossController _bossController;
+    AudioSource _audioSource;
     Player _player;
 
 
     void Awake()
     {
         _bossController = GetComponent<BossController>();
+        _audioSource = GetComponent<AudioSource>();
         _player = FindObjectOfType<Player>();
     }
 
@@ -104,7 +110,9 @@ public class KingBoar : MonoBehaviour
     }
 
     public void MinionAttack() //chamado na animação Attack03
-    {
+    {        
+        _audioSource.PlayOneShot(_minion);
+
         if (_direction == 1)
         {
             GameObject minion = Instantiate(_boarMinion, _boarMinionLeft.position, Quaternion.identity);
@@ -146,6 +154,7 @@ public class KingBoar : MonoBehaviour
     public void Intro() //chamado na animação de Intro
     {
         _intro = true;
+        _audioSource.PlayOneShot(_scream);
     }
 
     public void FinishIntro() //chamado na animação de Intro
