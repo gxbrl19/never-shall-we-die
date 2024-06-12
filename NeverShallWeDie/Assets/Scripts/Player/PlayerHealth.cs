@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public float _currentMana;
 
     [Header("Particle")]
+    public GameObject _objHealing;
     public GameObject _particleHit;
     public Color _damageColor;
 
@@ -81,7 +82,9 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void Healing()
-    {
+    {        
+        _objHealing.SetActive(_player._healing);
+
         if (_player._healing && _currentHealth < _maxHealth && _currentMana >= 0.1)
         {
             _currentHealth += 0.08f;

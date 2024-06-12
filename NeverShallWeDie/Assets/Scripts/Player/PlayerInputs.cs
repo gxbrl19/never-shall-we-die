@@ -328,5 +328,6 @@ public class PlayerInputs : MonoBehaviour
         isGrabing = false;
         isAirCuting = false;
         isTornado = false;
+        _player._healing = false;
     }
 }
