@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC_Dialogue : MonoBehaviour
+public class BuyMap : MonoBehaviour
 {
+    [SerializeField] int _mapID;
+    [SerializeField] int _price;
     bool _playerTriggered;
-    DialogueSystem _dialogueSystem;
     Player _player;
     PlayerInputs _input;
+    Collider2D _collider;
 
     void Awake()
     {
-        _dialogueSystem = GetComponentInChildren<DialogueSystem>();
+        _collider = GetComponent<Collider2D>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
     }
@@ -20,10 +22,11 @@ public class NPC_Dialogue : MonoBehaviour
     {
         if (_playerTriggered && _input.interact)
         {
-            _dialogueSystem.Next();
-            _player.DisableControls();
-            _input.interact = false;
             _playerTriggered = false;
+            _input.interact = false;
+            UIManager.instance._mapPrice = _price;
+            UIManager.instance._mapBuyId = _mapID;
+            UIManager.instance.ActivePanelBuyMap();
         }
     }
 

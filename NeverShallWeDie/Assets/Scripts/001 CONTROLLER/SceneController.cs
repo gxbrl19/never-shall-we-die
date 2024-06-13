@@ -32,13 +32,19 @@ public class SceneController : MonoBehaviour
             if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
             {
                 UIManager.instance.FadeIn();
-                Invoke("GetNextScene", .5f);
+                if (_nextSceneName == "01/34") { Invoke("FimDaDemo", .5f); } else { Invoke("GetNextScene", .5f); } //DEMO: para a versão normal descomentar linha de baixo
+                //Invoke("GetNextScene", .5f);
             }
         }
         else
         {
             Debug.Log("Local liberado somente na versão final");
         }
+    }
+
+    void FimDaDemo()
+    {
+        SceneManager.LoadScene("Scenes/Demo");
     }
 
     void GetNextScene()
@@ -83,7 +89,7 @@ public class SceneController : MonoBehaviour
     void FinishGameOver()
     {
         int id = GameManager.instance._checkpointScene;
-        
+
         if (id == 0) //se ainda não tiver chegado em uma bandeira
         {
             SceneManager.LoadScene("Scenes/01/H1"); //DEMO

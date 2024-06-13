@@ -253,6 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7427233521603349511}
   - component: {fileID: 2936557521386257318}
+  - component: {fileID: 3380624885820179318}
   - component: {fileID: 7863404133132266013}
   m_Layer: 0
   m_Name: Crew_Member
@@ -321,6 +322,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3380624885820179318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007541482370517467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3652715ff5b91ce4c983f868a9247bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7863404133132266013
 MonoBehaviour:
   m_ObjectHideFlags: 0

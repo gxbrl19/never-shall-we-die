@@ -41,6 +41,10 @@ public class Navigator : MonoBehaviour
 
     public void NextState()
     {
+        //atribui o mapa do navio
+        if (GameManager.instance._navigator == "OTHER") { GameManager.instance._maps[0] = 1; }
+
+        //trocando o STATE do Navegador
         if (GameManager.instance._navigator == "MEET") { GameManager.instance._navigator = "QUEST"; }
         else if (GameManager.instance._navigator == "COMPLETE") { GameManager.instance._navigator = "OTHER"; }
         else if (GameManager.instance._navigator == "OTHER") { GameManager.instance._navigator = "CREW"; }

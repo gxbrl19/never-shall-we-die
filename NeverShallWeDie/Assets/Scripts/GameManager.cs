@@ -23,6 +23,7 @@ public class PlayerData
     public string shipwright;
     public string witch;
     public string blacksmith;
+    public int[] maps;
     public int[] bestiary;
     public int[] bosses;
 }
@@ -51,6 +52,9 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Crew")] public string _shipwright;
     [BoxGroup("Crew")] public string _witch;
     [BoxGroup("Crew")] public string _blacksmith;
+
+    [Header("Functions")]
+    [BoxGroup("Crew")] public int[] _maps;
 
     //Enemy
     [BoxGroup("Enemy")] public int[] _bestiary;
@@ -82,7 +86,12 @@ public class GameManager : MonoBehaviour
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
 
+        //Crew
+        _maps = new int[6];
+
+        //Enemies
         _bosses = new int[6];
+
         LoadBasic();
     }
 
@@ -139,6 +148,8 @@ public class GameManager : MonoBehaviour
         _data.shipwright = _shipwright;
         _data.witch = _witch;
         _data.blacksmith = _blacksmith;
+
+        _data.maps = _maps;
 
         _data.bestiary = _bestiary;
         _data.bosses = _bosses;
@@ -209,6 +220,8 @@ public class GameManager : MonoBehaviour
             _shipwright = _data.shipwright;
             _witch = _data.witch;
             _blacksmith = _data.blacksmith;
+
+            _maps = _data.maps;
 
             _bestiary = _data.bestiary;
             _bosses = _data.bosses;

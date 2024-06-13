@@ -72,8 +72,13 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Dialogue")] public TextMeshProUGUI _txtTalk;
     private bool _inDialogue = false;
 
-    [BoxGroup("Crew")][Header("Helmsman")] public GameObject _pnlNavigate;
+    [BoxGroup("Crew")][Header("Helm")] public GameObject _pnlNavigate;
     [BoxGroup("Crew")] public GameObject _buttonYesNavigate;
+    [BoxGroup("Crew")][Header("Navigator")] public GameObject _pnlBuyMap;
+    [BoxGroup("Crew")] public GameObject _buttonYesBuyMap;
+    [BoxGroup("Crew")] public Text _txtMapPrice;
+    [HideInInspector] public int _mapPrice;    
+    [HideInInspector] public int _mapBuyId;
 
     [BoxGroup("Fade")] public Image _pnlFade;
 
@@ -162,7 +167,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Scenes/MainMenu");
-        BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._mizutonTheme);
+        BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._nswdTheme);
     }
 
     void InPause()
@@ -243,11 +248,13 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         _menuMap.gameObject.SetActive(true);
         _inMap = true;
-        _input.horizontal = 0f;
+        _input.horizontal = 0f;        
 
         SetLocalization();
         _mapPanelIndex = _mapID;
         CurrentMap();
+
+        CheckMap();
     }
 
     void CancelMap()
@@ -302,7 +309,7 @@ public class UIManager : MonoBehaviour
         {
             if (i == _mapPanelIndex)
             {
-                _mapPanels[i].DOAnchorPos(new Vector2(0f, 0f), 0f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+                _mapPanels[i].DOAnchorPos(new Vector2(0f, 0f), 0f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);                
             }
             else if (i < _mapPanelIndex)
             {
@@ -312,6 +319,14 @@ public class UIManager : MonoBehaviour
             {
                 _mapPanels[i].DOAnchorPos(new Vector2(384f, 0f), 0f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
             }
+        }
+    }
+
+    public void CheckMap() //verifica se o mapa já foi comprado
+    {
+        for (int i = 0; i < _mapPanels.Length; i++)
+        {
+            if (GameManager.instance._maps[i] == 0) { _mapPanels[i].gameObject.SetActive(false); } else { _mapPanels[_mapPanelIndex].gameObject.SetActive(true); }
         }
     }
 
@@ -372,7 +387,7 @@ public class UIManager : MonoBehaviour
 
     public void ActivePanelNavigate()
     {
-        //Time.timeScale = 0f;
+        _isPaused = true;
         _player.DisableControls();
         _pnlNavigate.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesNavigate);
@@ -380,7 +395,7 @@ public class UIManager : MonoBehaviour
 
     public void Navigate() //chamdo no botão Yes do pnl_navigate (UI Manager)
     {
-        //Time.timeScale = 1f;
+        _isPaused = false;
         _player.EnabledControls();
         PlayerPrefs.SetInt("Scene", 2); //cena do OpenWorld (configurar o index de acordo com o BuildSettings)
         SceneManager.LoadScene("Scenes/Load");
@@ -388,9 +403,33 @@ public class UIManager : MonoBehaviour
 
     public void RecuseNavigate() //chamdo no botão No do pnl_navigate (UI Manager)
     {
-        //Time.timeScale = 1f;
+        _isPaused = false;
         _player.EnabledControls();
         _pnlNavigate.SetActive(false);
+    }
+
+    public void ActivePanelBuyMap()
+    {
+        _isPaused = true;
+        _player.DisableControls();
+        _txtMapPrice.text = _mapPrice.ToString();
+        _pnlBuyMap.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_buttonYesBuyMap);
+    }
+
+    public void BuyMap() //chamdo no botão Yes do pnl_buymap (UI Manager)
+    {
+        _isPaused = false;        
+        _player.EnabledControls();
+        GameManager.instance._maps[_mapBuyId] = 1;
+        _pnlBuyMap.SetActive(false);
+    }
+
+    public void RecuseBuyMap() //chamado no botão No do pnl_buymap (UI Manager)
+    {
+        _isPaused = false;
+        _player.EnabledControls();
+        _pnlBuyMap.SetActive(false);
     }
 
     #endregion
