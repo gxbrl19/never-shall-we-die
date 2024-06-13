@@ -14,7 +14,7 @@ public enum STATE
 
 public enum CrewFunction
 {
-    Helmsman, Navigator, Witch, Blacksmith
+    Navigator, Shipwright, Witch, Blacksmith
 }
 
 public class DialogueSystem : MonoBehaviour
@@ -28,7 +28,6 @@ public class DialogueSystem : MonoBehaviour
     TypeTextAnimation typeText;
     STATE state;
     Player _player;
-    Helmsman _helmsman;
     Navigator _navigator;
 
     private void Awake()
@@ -38,8 +37,7 @@ public class DialogueSystem : MonoBehaviour
 
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        if (_function == CrewFunction.Helmsman) { _helmsman = FindObjectOfType<Helmsman>(); }
-        else if (_function == CrewFunction.Navigator) { _navigator = FindObjectOfType<Navigator>(); }
+        if (_function == CrewFunction.Navigator) { _navigator = FindObjectOfType<Navigator>(); }
 
         //_npcController = FindObjectOfType<NPCController>();
     }
@@ -112,8 +110,7 @@ public class DialogueSystem : MonoBehaviour
                 currentText = 0;
                 finished = false;
                 _player.EnabledControls();
-                if (_helmsman != null) { _helmsman.NextState(); }
-                if (_navigator != null) { _helmsman.NextState(); }
+                if (_navigator != null) { _navigator.NextState(); }
             }
         }
     }

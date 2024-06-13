@@ -101,20 +101,20 @@ public class Player : MonoBehaviour
     [HideInInspector] public float _timeWaterSpin;
     private float _waterSpinForce = 10f;
     [HideInInspector] public bool _inWaterSpin;
-    [HideInInspector] public float _waterSpinMana = 1f;
+    [HideInInspector] public float _waterSpinMana = 2f;
 
     //Air Cut    
     [HideInInspector] public float _timeAirCut;
     [BoxGroup("GameObjects")] public AirCut _aircut;
     [BoxGroup("Components")] public Transform _aircutPoint;
-    [HideInInspector] public float _aircutMana = 1f;
+    [HideInInspector] public float _aircutMana = 2f;
 
     //Tornado
     [HideInInspector] public bool _inTornado;
     [HideInInspector] public float _timeTornado;
     [BoxGroup("GameObjects")] public WindSpin _tornado;
     [BoxGroup("Components")] public Transform _tornadoPoint;
-    private float _tornadoMana = 1f;
+    private float _tornadoMana = 2f;
 
     //Particles
     [SerializeField][Header("Particles")][BoxGroup("GameObjects")] private GameObject _dust;
@@ -154,13 +154,13 @@ public class Player : MonoBehaviour
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.AirCut)) { PlayerSkills.instance.skills.Add(Skills.AirCut); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.Tornado)) { PlayerSkills.instance.skills.Add(Skills.Tornado); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.WaterSpin)) { PlayerSkills.instance.skills.Add(Skills.WaterSpin); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.AirCut)) { PlayerSkills.instance.skills.Add(Skills.AirCut); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.Tornado)) { PlayerSkills.instance.skills.Add(Skills.Tornado); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.WaterSpin)) { PlayerSkills.instance.skills.Add(Skills.WaterSpin); }
     }
 
     void Start()
@@ -385,8 +385,8 @@ public class Player : MonoBehaviour
 
     void JumpControl()
     {
-        if (_input.isJumping && (_isGrounded || _ghostTime > Time.time) && !_onWater && _input.vertical > -0.3f && !_onClimbing && !_inTornado)
-        { //pulo comum
+        if (_input.isJumping && (_isGrounded || _ghostTime > Time.time) && !_onWater && _input.vertical > -0.3f && !_onClimbing && !_inTornado) //pulo comum
+        {
             _isJumping = true;
             _input.isJumping = false;
             _canDoubleJump = true;
@@ -396,11 +396,11 @@ public class Player : MonoBehaviour
             _jumpTime = Time.time + _jumpHoldDuration;
 
             _ghostTime = Time.time;
-            _audio.PlayAudio(_audio._jumpSound);
+            _audio.PlayAudio(_audio._jump);
             CreateDust(1);
         }
-        else if (_input.isJumping && _onWater && !_onAcid && _canSwin && !_collision._onWall)
-        { // na água
+        else if (_input.isJumping && _onWater && !_onAcid && _canSwin && !_collision._onWall) // na água
+        {
             if (_collision._outWaterHit && _collision._inWaterHit)
             {
                 _isJumping = true;
@@ -409,7 +409,7 @@ public class Player : MonoBehaviour
                 _body.AddForce(Vector2.up * _jumpOutWater, ForceMode2D.Impulse);
                 _jumpTime = Time.time + _jumpHoldDuration;
                 _ghostTime = Time.time;
-                _audio.PlayAudio(_audio._jumpSound);
+                _audio.PlayAudio(_audio._jump);
             }
             else if (!_collision._outWaterHit && _collision._inWaterHit)
             {
@@ -418,8 +418,8 @@ public class Player : MonoBehaviour
                 _canSwin = false;
             }
         }
-        else if (_input.isJumping && !_onWater && _onAcid && _canSwin && !_collision._onWall)
-        { // no acido
+        else if (_input.isJumping && !_onWater && _onAcid && _canSwin && !_collision._onWall) // no acido
+        {
             if (_collision._outAcidHit && _collision._inAcidHit)
             {
                 _isJumping = true;
@@ -428,7 +428,7 @@ public class Player : MonoBehaviour
                 _body.AddForce(Vector2.up * _jumpOutWater, ForceMode2D.Impulse);
                 _jumpTime = Time.time + _jumpHoldDuration;
                 _ghostTime = Time.time;
-                _audio.PlayAudio(_audio._jumpSound);
+                _audio.PlayAudio(_audio._jump);
             }
             else if (!_collision._outAcidHit && _collision._inAcidHit)
             {
@@ -437,27 +437,27 @@ public class Player : MonoBehaviour
                 _canSwin = false;
             }
         }
-        else if (_input.isJumping && _input.vertical <= -0.3f && !_onClimbing)
-        { // pulo por baixo da plataforma
+        else if (_input.isJumping && _input.vertical <= -0.3f && !_onClimbing) // pulo por baixo da plataforma
+        {
             PassThroughBridge();
         }
-        else if (_input.isJumping && _collision._onWall && !_isGrounded && !_onWater && !_onAcid)
-        { // pulo parede 
+        else if (_input.isJumping && _collision._onWall && !_isGrounded && !_onWater && !_onAcid) // pulo parede 
+        {
             _isJumping = true;
             _input.isJumping = false;
             _canDoubleJump = true;
 
             _body.AddForce(new Vector2((_jumpForce + 2f) * -_direction, _jumpForce + 7f), ForceMode2D.Impulse);
         }
-        else if (_input.isJumping && _onClimbing && (TouchingVine() || TouchingLadder()))
-        { //pulo da LADDER ou VINE
+        else if (_input.isJumping && _onClimbing && (TouchingVine() || TouchingLadder())) //pulo da LADDER ou VINE
+        {
             FinishClimb();
             _isJumping = true;
             _input.vertical = 0f;
             _body.velocity = Vector2.zero;
             _body.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _jumpTime = Time.time + _jumpHoldDuration;
-            _audio.PlayAudio(_audio._jumpSound);
+            _audio.PlayAudio(_audio._jump);
         }
 
         if (_isJumping)
@@ -476,13 +476,13 @@ public class Player : MonoBehaviour
         _input.isJumping = false;
     }
 
-    void BlockMove()
+    void BlockMove() //verifica se está no ar e tira a gravidade do player  
     {
         if (_dead || !_canMove)
             return;
 
         if ((_input.isAttacking || _input.isAirCuting || _input.isTornado) && !_onWater && !_onAcid)
-        { //verifica se está no ar e tira a gravidade do player            
+        {          
             if (!_isGrounded)
             {
                 _body.velocity = Vector2.zero;
@@ -495,8 +495,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void FinishAttack()
-    { //chamado na animação de ataque da katana    
+    public void FinishAttack() //chamado na animação de ataque da katana   
+    {
         _input.isAttacking = false;
         _body.gravityScale = _initialGravity;
     }

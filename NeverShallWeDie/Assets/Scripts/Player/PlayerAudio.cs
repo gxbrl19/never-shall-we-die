@@ -4,27 +4,16 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    [Header("AudioClips")]
-    public AudioClip _swordSwish;
-    public AudioClip _jumpSound;
-    public AudioClip _pistolSound;
-    public AudioClip _damageSound;
-
-    [Header("Volumes")]
-    public float _swordVolume;
-    public float _jumpVolume;
-    public float _pistolVolume;
-    public float _damageVolume;
+    //sons nas animações que se repetem não funcionam, precisam ser chamados via script
+    public AudioClip _jump;
+    public AudioClip _damage;
 
     AudioSource _audioSource;
-    Player _player;
 
     void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        _player = GetComponent<Player>();
     }
-
 
     public void PlayAudio(AudioClip sound)
     {
@@ -36,26 +25,28 @@ public class PlayerAudio : MonoBehaviour
         }
     }
 
-    public void VolumeControl(AudioClip _sound)
+    void VolumeControl(AudioClip sound)
     {
-        if (_sound == _swordSwish)
+        switch (sound.name)
         {
-            _audioSource.volume = _swordVolume;
-        }
-
-        if (_sound == _jumpSound)
-        {
-            _audioSource.volume = _jumpVolume;
-        }
-
-        if (_sound == _pistolSound)
-        {
-            _audioSource.volume = _pistolVolume;
-        }
-
-        if (_sound == _damageSound)
-        {
-            _audioSource.volume = _damageVolume;
+            case "sword_swish": //animação
+                _audioSource.volume = .4f;
+                break;
+            case "jump": //script
+                _audioSource.volume = .6f;
+                break;
+            case "damage_player": //script
+                _audioSource.volume = .6f;
+                break;
+            case "swin": //animação
+                _audioSource.volume = .8f;
+                break;
+            case "aircut": //animação
+                _audioSource.volume = .8f;
+                break;
+            case "water_spin": //animação
+                _audioSource.volume = .8f;
+                break;
         }
     }
 }

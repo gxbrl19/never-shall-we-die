@@ -57,7 +57,7 @@ public class PlayerHealth : MonoBehaviour
         _player._canMove = false;
         _currentHealth -= damage;
         SetHealth(_currentHealth);
-        _audio.PlayAudio(_audio._damageSound); //audio do dano
+        _audio.PlayAudio(_audio._damage); //audio do dano
         CinemachineShake.instance.ShakeCamera(6f, 0.15f); //tremida da camera        
         _spriteRenderer.color = _damageColor;
 

@@ -1039,8 +1039,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 70745961}
   _btnClick: {fileID: 8300000, guid: f0a14e9cf62052c4ab9fd28a833aa187, type: 3}
+  _navigationBtn: {fileID: 0}
   _pauseBtn: {fileID: 8300000, guid: d989b46cd18b9a24d9cd45f9d7944e5c, type: 3}
   _clickVolume: 0.5
+  _navigationVolume: 0
   _pauseVolume: 0.7
 --- !u!82 &70745961
 AudioSource:
@@ -7943,6 +7945,55 @@ Transform:
   - {fileID: 1668371975}
   - {fileID: 702692660}
   - {fileID: 1563441911}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &676690380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 676690382}
+  - component: {fileID: 676690381}
+  m_Layer: 0
+  m_Name: Navigator_Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &676690381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676690380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd178287dacb9c4baf4d14947146a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meet: {fileID: 1655115827}
+  _quest: {fileID: 1146893348}
+  _complete: {fileID: 93077711}
+  _crew: {fileID: 0}
+  _other: {fileID: 0}
+--- !u!4 &676690382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676690380}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &702692659
@@ -18105,7 +18156,7 @@ PrefabInstance:
       objectReference: {fileID: 1020347432}
     - target: {fileID: 5373271078219029721, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_Name
-      value: Helmsman_Quest
+      value: Navigator_Quest
       objectReference: {fileID: 0}
     - target: {fileID: 5373271078219029721, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_IsActive
@@ -18472,55 +18523,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1381320967}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1096300331
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1096300333}
-  - component: {fileID: 1096300332}
-  m_Layer: 0
-  m_Name: Helmsman_Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1096300332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096300331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 491ae115e01b04546a4dcbc603ea431a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _meet: {fileID: 1655115827}
-  _quest: {fileID: 1146893348}
-  _complete: {fileID: 93077711}
-  _crew: {fileID: 0}
-  _other: {fileID: 0}
---- !u!4 &1096300333
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096300331}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1146893348 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5373271078219029721, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
@@ -18808,7 +18810,7 @@ PrefabInstance:
       objectReference: {fileID: 1020347432}
     - target: {fileID: 5373271078219029721, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_Name
-      value: Helmsman_Meet
+      value: Navigator_Meet
       objectReference: {fileID: 0}
     - target: {fileID: 5373271078219029724, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19573,17 +19575,22 @@ MonoBehaviour:
   _equipments: 
   _skills: 
   _gold: 0
-  _masterVol: 0
-  _musicVol: 0
-  _sfxVol: 0
-  _prefsInput: 0
-  _inputType: 
   _flags: 
+  _barrels: 
   _airCutblock: 
   _checkpointScene: 0
   _direction: 0
-  _ship: 
-  _helmsman: 
+  _navigator: 
+  _shipwright: 
+  _witch: 
+  _blacksmith: 
+  _bestiary: 
+  _bosses: 
+  _masterVol: 0
+  _musicVol: 0
+  _sfxVol: 0
+  _inputType: 
+  _aspectRadio: 0
 --- !u!4 &1636271031
 Transform:
   m_ObjectHideFlags: 0
@@ -20208,7 +20215,7 @@ PrefabInstance:
       objectReference: {fileID: 1020347432}
     - target: {fileID: 5373271078219029721, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_Name
-      value: Helmsman_Complete
+      value: Navigator_Complete
       objectReference: {fileID: 0}
     - target: {fileID: 5373271078219029721, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_IsActive
@@ -20700,7 +20707,7 @@ SceneRoots:
   - {fileID: 267900019}
   - {fileID: 324969968}
   - {fileID: 1381320967}
-  - {fileID: 1096300333}
+  - {fileID: 676690382}
   - {fileID: 2025284175}
   - {fileID: 70745962}
   - {fileID: 4706422229354561718}

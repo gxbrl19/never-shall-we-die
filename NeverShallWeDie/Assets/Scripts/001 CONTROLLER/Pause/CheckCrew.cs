@@ -25,17 +25,17 @@ public class CheckCrew : MonoBehaviour
     {
         switch (nameMember)
         {
-            case "Selena":
-                _textButton.enabled = GameManager.instance._helmsman == "CREW";
-                break;
             case "Caleb":
                 _textButton.enabled = GameManager.instance._navigator == "CREW";
+                break;
+            case "Selena":
+                _textButton.enabled = GameManager.instance._blacksmith == "CREW";
                 break;
             case "Eleonore":
                 _textButton.enabled = GameManager.instance._witch == "CREW";
                 break;
             case "Gribbit":
-                _textButton.enabled = GameManager.instance._blacksmith == "CREW";
+                _textButton.enabled = GameManager.instance._shipwright == "CREW";
                 break;
         }
     }

@@ -18,9 +18,9 @@ public class PlayerData
     public int[] barrels;
     public int[] airCutblock;
     public int checkpointScene;
-    public int direction;
-    public string helmsman;
+    public int direction;    
     public string navigator;
+    public string shipwright;
     public string witch;
     public string blacksmith;
     public int[] bestiary;
@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Checkpoint")] public int _checkpointScene; //a cena atual que será o checkpoint
     [BoxGroup("Checkpoint")] public int _direction;
 
-    [BoxGroup("Crew")] public string _helmsman;
     [BoxGroup("Crew")] public string _navigator;
+    [BoxGroup("Crew")] public string _shipwright;
     [BoxGroup("Crew")] public string _witch;
     [BoxGroup("Crew")] public string _blacksmith;
 
@@ -91,9 +91,9 @@ public class GameManager : MonoBehaviour
         //bloqueia o cursor do mouse
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        _helmsman = "MEET";
+        
         _navigator = "MEET";
+        _shipwright = "MEET";
         _witch = "MEET";
         _blacksmith = "MEET";
     }
@@ -134,9 +134,9 @@ public class GameManager : MonoBehaviour
 
         _data.checkpointScene = _checkpointScene;
         _data.direction = _direction;
-
-        _data.helmsman = _helmsman;
+        
         _data.navigator = _navigator;
+        _data.shipwright = _shipwright;
         _data.witch = _witch;
         _data.blacksmith = _blacksmith;
 
@@ -204,9 +204,9 @@ public class GameManager : MonoBehaviour
 
             _checkpointScene = _data.checkpointScene;
             _direction = _data.direction;
-
-            _helmsman = _data.helmsman;
+            
             _navigator = _data.navigator;
+            _shipwright = _data.shipwright;
             _witch = _data.witch;
             _blacksmith = _data.blacksmith;
 

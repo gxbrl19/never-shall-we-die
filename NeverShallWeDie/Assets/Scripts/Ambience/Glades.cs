@@ -14,17 +14,17 @@ public class Glades : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance._helmsman == "KNOWING")
+        if (GameManager.instance._navigator == "KNOWING")
         {
             gameObject.SetActive(true);
             _collider.enabled = false;
         }
-        else if (GameManager.instance._helmsman == "QUEST")
+        else if (GameManager.instance._navigator == "QUEST")
         {
             gameObject.SetActive(true);
             _collider.enabled = true;
         }
-        else if (GameManager.instance._helmsman == "COMPLETE" || GameManager.instance._helmsman == "CREW")
+        else if (GameManager.instance._navigator == "COMPLETE" || GameManager.instance._navigator == "CREW")
         {
             gameObject.SetActive(false);
             _collider.enabled = false;
@@ -41,6 +41,6 @@ public class Glades : MonoBehaviour
 
     public void SetNewState() //chamado na animação de break
     {
-        GameManager.instance._helmsman = "COMPLETE";
+        GameManager.instance._navigator = "COMPLETE";
     }
 }

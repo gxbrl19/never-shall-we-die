@@ -259,6 +259,7 @@ public class PlayerInputs : MonoBehaviour
                 _isAttacking = true;
                 _player._timeWaterSpin = 0f; //reseta o tempo do water spin para poder fazer a contagem;
                 _health.ManaConsumption(_player._aircutMana);
+                //_audio.PlayAudio(_audio._waterspinSound);
             }
         }
     }
@@ -302,6 +303,7 @@ public class PlayerInputs : MonoBehaviour
                 isAirCuting = true;
                 _player._timeAirCut = 0f; //reseta o tempo do aircut para poder fazer a contagem;
                 _animation.OnAirCut();
+                //.PlayAudio(_audio._aircutSound);
             }
         }
     }

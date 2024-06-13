@@ -5929,14 +5929,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488c53fe1fc17124b9b20568d7333add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _swordSwish: {fileID: 0}
-  _jumpSound: {fileID: 8300000, guid: eece0b5b13950d544b832c86ca3569cc, type: 3}
-  _pistolSound: {fileID: 8300000, guid: ee000818940ebe14f91bcf477ce7755b, type: 3}
-  _damageSound: {fileID: 8300000, guid: 0ec02875453dfb54e8a671125312b25c, type: 3}
-  _swordVolume: 0
-  _jumpVolume: 0.6
-  _pistolVolume: 0.2
-  _damageVolume: 0.6
+  _jump: {fileID: 8300000, guid: eece0b5b13950d544b832c86ca3569cc, type: 3}
+  _damage: {fileID: 8300000, guid: 0ec02875453dfb54e8a671125312b25c, type: 3}
 --- !u!82 &5885178588111815687
 AudioSource:
   m_ObjectHideFlags: 0

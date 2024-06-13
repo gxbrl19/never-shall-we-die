@@ -8548,7 +8548,7 @@ GameObject:
   - component: {fileID: 2049508697314532037}
   - component: {fileID: 2596694366272675012}
   m_Layer: 5
-  m_Name: txt_helmsman
+  m_Name: txt_navigator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9666,12 +9666,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737696945f67dce44885d711aeda08e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteMember: {fileID: -1030644065684402313, guid: 57635381bde36434db7f2a24a7be89cf, type: 3}
-  nameMember: Gribbit
-  ptDescription: "Nascido no Mar Gamatso, o Ferreiro empunha seu martelo como nenhum
-    outro. D\xEA a ele as barras de ferro que encontrar e ele melhorar\xE1 sua Katana."
-  engDescription: Born in the Gamatso Sea, the Blacksmith wields his hammer like
-    no other. Give him the Iron Bars you find and he will improve your Katana.
+  spriteMember: {fileID: -8131576020307332339, guid: bfa8c0fc809e07c428a4eccbcf54f51a, type: 3}
+  nameMember: Selena
+  ptDescription: "Tamb\xE9m buscando a B\xFAssola Quebrada, a Ferreira dos Piratas
+    Kitsune usa as barras de ferro para melhorar sua Katana."
+  engDescription: Also searching for the Broken Compass, the Blacksmith of the Kitsune
+    Pirates uses the iron bars to improve her Katana.
 --- !u!114 &8775777680605393985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15140,7 +15140,7 @@ GameObject:
   - component: {fileID: 1739677540703213604}
   - component: {fileID: 4032661564845539573}
   m_Layer: 5
-  m_Name: txt_navigator
+  m_Name: txt_shipwright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16711,7 +16711,7 @@ GameObject:
   - component: {fileID: 4745592510294470651}
   - component: {fileID: 1237396719942315172}
   m_Layer: 5
-  m_Name: btn_helmsman
+  m_Name: btn_navigator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16831,12 +16831,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737696945f67dce44885d711aeda08e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteMember: {fileID: 6320250275531415386, guid: bfa8c0fc809e07c428a4eccbcf54f51a, type: 3}
-  nameMember: Selena
-  ptDescription: "Tamb\xE9m buscando a B\xFAssola Quebrada, a Timoneira dos Piratass
-    Kitsune conduz o Corvo para seus objetivos."
-  engDescription: Also searching for the Broken Compass, Pirate Helmswoman Kitsune
-    leads The Crow to her goals.
+  spriteMember: {fileID: 5697492075919682957, guid: efa57a0a28cde284c9a32f734b9555df, type: 3}
+  nameMember: Caleb
+  ptDescription: Especialista em desenhar mapas, e amante de ouro, o Navegador desenha
+    e vende mapas das ilhas que visita.
+  engDescription: An expert in drawing maps and a lover of gold, the Navigator draws
+    and sells maps of the islands he visited.
 --- !u!114 &1237396719942315172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19653,7 +19653,7 @@ GameObject:
   - component: {fileID: 1066487658036999956}
   - component: {fileID: 7927563301295055380}
   m_Layer: 5
-  m_Name: btn_navigator
+  m_Name: btn_shipwright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19773,12 +19773,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737696945f67dce44885d711aeda08e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteMember: {fileID: 5697492075919682957, guid: efa57a0a28cde284c9a32f734b9555df, type: 3}
-  nameMember: Caleb
-  ptDescription: Especialista em desenhar mapas, e amante de ouro, o Navegador vende
-    mapas das ilhas que visita.
-  engDescription: An expert in drawing maps and a lover of gold, the Navigator sells
-    maps of the islands he visited.
+  spriteMember: {fileID: -3530761210929120711, guid: 57635381bde36434db7f2a24a7be89cf, type: 3}
+  nameMember: Gribbit
+  ptDescription: "Nascido no Mar de Gamatso. D\xEA a ele os projetos que encontrar
+    para melhorar o Corvo."
+  engDescription: Born in the Gamatso Sea. Give him any projects you find to improve
+    Crow.
 --- !u!114 &7927563301295055380
 MonoBehaviour:
   m_ObjectHideFlags: 0

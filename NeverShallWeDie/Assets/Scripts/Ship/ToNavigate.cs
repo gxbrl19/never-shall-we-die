@@ -13,7 +13,7 @@ public class ToNavigate : MonoBehaviour
     {
         _collider = GetComponent<Collider2D>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        _input = _player.GetComponent<PlayerInputs>();        
+        _input = _player.GetComponent<PlayerInputs>();
     }
 
     void Update()
