@@ -5929,8 +5929,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488c53fe1fc17124b9b20568d7333add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jump: {fileID: 8300000, guid: eece0b5b13950d544b832c86ca3569cc, type: 3}
+  _jump: {fileID: 8300000, guid: b65f89be90b00f848983c1987db4f568, type: 3}
   _damage: {fileID: 8300000, guid: 0ec02875453dfb54e8a671125312b25c, type: 3}
+  _splash: {fileID: 8300000, guid: b0efeba1b6ac61c42a84829b0bb9792d, type: 3}
+  _parachute: {fileID: 8300000, guid: 61909f43c56a86b40882a30f55f8acc8, type: 3}
+  _slide: {fileID: 8300000, guid: 682c69cd37afa5541b03431e86330846, type: 3}
 --- !u!82 &5885178588111815687
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5943,7 +5946,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5314338856241744941, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0

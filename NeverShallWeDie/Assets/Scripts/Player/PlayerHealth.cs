@@ -87,8 +87,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (_player._healing && _currentHealth < _maxHealth && _currentMana >= 0.1)
         {
-            _currentHealth += 0.08f;
-            _currentMana -= 0.08f;
+            _currentHealth += 0.1f;
+            _currentMana -= 0.1f;
 
             //deixa zerado quando os valores forem negativos
             if (_currentHealth < 0) { _currentHealth = 0f; } else if (_currentHealth > _maxHealth) { _currentHealth = _maxHealth; }

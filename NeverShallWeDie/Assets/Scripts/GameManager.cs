@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
 
         //Crew
         _maps = new int[6];
+        _maps[0] = 1; //DEMO
 
         //Enemies
         _bosses = new int[6];
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         
-        _navigator = "MEET";
+        _navigator = "CREW";
         _shipwright = "MEET";
         _witch = "MEET";
         _blacksmith = "MEET";

@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")][Header("Navigator")] public GameObject _pnlBuyMap;
     [BoxGroup("Crew")] public GameObject _buttonYesBuyMap;
     [BoxGroup("Crew")] public Text _txtMapPrice;
-    [HideInInspector] public int _mapPrice;    
+    [HideInInspector] public int _mapPrice;
     [HideInInspector] public int _mapBuyId;
 
     [BoxGroup("Fade")] public Image _pnlFade;
@@ -248,7 +248,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         _menuMap.gameObject.SetActive(true);
         _inMap = true;
-        _input.horizontal = 0f;        
+        _input.horizontal = 0f;
 
         SetLocalization();
         _mapPanelIndex = _mapID;
@@ -309,7 +309,7 @@ public class UIManager : MonoBehaviour
         {
             if (i == _mapPanelIndex)
             {
-                _mapPanels[i].DOAnchorPos(new Vector2(0f, 0f), 0f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);                
+                _mapPanels[i].DOAnchorPos(new Vector2(0f, 0f), 0f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
             }
             else if (i < _mapPanelIndex)
             {
@@ -417,12 +417,20 @@ public class UIManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_buttonYesBuyMap);
     }
 
-    public void BuyMap() //chamdo no botão Yes do pnl_buymap (UI Manager)
+    public void BuyMap() //chamado no botão Yes do pnl_buymap (UI Manager)
     {
-        _isPaused = false;        
-        _player.EnabledControls();
-        GameManager.instance._maps[_mapBuyId] = 1;
-        _pnlBuyMap.SetActive(false);
+        if (GameManager.instance._gold >= _mapPrice)
+        {
+            _isPaused = false;
+            _player.EnabledControls();
+            GameManager.instance._maps[_mapBuyId] = 1;
+            _pnlBuyMap.SetActive(false);
+            GameManager.instance._gold -= _mapPrice;
+        }
+        else
+        {
+            //TODO: dar um feedback que não tem dinheiro o suficiente
+        }
     }
 
     public void RecuseBuyMap() //chamado no botão No do pnl_buymap (UI Manager)

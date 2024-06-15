@@ -74,7 +74,7 @@ public class EnemyController : MonoBehaviour
 
             //da um pouco de mana ao player
             PlayerHealth _playerHealth = FindFirstObjectByType<PlayerHealth>();
-            _playerHealth.FillBottle(0.8f);
+            _playerHealth.FillBottle(1.5f);
         }
 
         /*if (_name == "Boar") {

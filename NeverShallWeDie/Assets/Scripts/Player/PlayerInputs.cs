@@ -196,6 +196,7 @@ public class PlayerInputs : MonoBehaviour
             if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Parachute) && !_collision._onWall)
             {
                 _isParachuting = true;
+                _audio.PlayAudio(_audio._parachute);
             }
             else if (_player._isGrounded || _callback.canceled)
             {
@@ -258,8 +259,7 @@ public class PlayerInputs : MonoBehaviour
             {
                 _isAttacking = true;
                 _player._timeWaterSpin = 0f; //reseta o tempo do water spin para poder fazer a contagem;
-                _health.ManaConsumption(_player._aircutMana);
-                //_audio.PlayAudio(_audio._waterspinSound);
+                _health.ManaConsumption(_player._waterSpinMana);
             }
         }
     }
@@ -272,6 +272,7 @@ public class PlayerInputs : MonoBehaviour
         if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots))
         {
             _isSliding = true;
+            _audio.PlayAudio(_audio._slide);
         }
     }
 

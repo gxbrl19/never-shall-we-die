@@ -101,20 +101,20 @@ public class Player : MonoBehaviour
     [HideInInspector] public float _timeWaterSpin;
     private float _waterSpinForce = 10f;
     [HideInInspector] public bool _inWaterSpin;
-    [HideInInspector] public float _waterSpinMana = 2f;
+    [HideInInspector] public float _waterSpinMana;
 
     //Air Cut    
     [HideInInspector] public float _timeAirCut;
     [BoxGroup("GameObjects")] public AirCut _aircut;
     [BoxGroup("Components")] public Transform _aircutPoint;
-    [HideInInspector] public float _aircutMana = 2f;
+    [HideInInspector] public float _aircutMana;
 
     //Tornado
     [HideInInspector] public bool _inTornado;
     [HideInInspector] public float _timeTornado;
     [BoxGroup("GameObjects")] public WindSpin _tornado;
     [BoxGroup("Components")] public Transform _tornadoPoint;
-    private float _tornadoMana = 2f;
+    private float _tornadoMana;
 
     //Particles
     [SerializeField][Header("Particles")][BoxGroup("GameObjects")] private GameObject _dust;
@@ -151,6 +151,10 @@ public class Player : MonoBehaviour
         _collision = GetComponent<PlayerCollision>();
         _audio = GetComponent<PlayerAudio>();
         _health = GetComponent<PlayerHealth>();
+
+        _waterSpinMana = 4f;
+        _aircutMana = 4f;
+        _tornadoMana = 4f;
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
@@ -596,7 +600,7 @@ public class Player : MonoBehaviour
         _aircut.transform.localScale = _scale;
 
         Instantiate(_aircut.gameObject, _aircutPoint.position, _aircutPoint.rotation);
-        _health.ManaConsumption(_waterSpinMana);
+        _health.ManaConsumption(_aircutMana);
     }
 
     public void Tornado() //chamado na animação de Tornado

@@ -36,6 +36,7 @@ public class PlayerCollision : MonoBehaviour
     Player _player;
     PlayerInputs _input;
     PlayerHealth _health;
+    PlayerAudio _audio;
 
     private void Awake()
     {
@@ -48,6 +49,7 @@ public class PlayerCollision : MonoBehaviour
         _player = GetComponent<Player>();
         _input = GetComponent<PlayerInputs>();
         _health = GetComponent<PlayerHealth>();
+        _audio = GetComponent<PlayerAudio>();
     }
 
     private void Update()
@@ -169,15 +171,21 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
+            //verifica primeiro se é a layer do Player ou do Invencible que está entrando na água
+            if(gameObject.layer != LayerMask.NameToLayer("Player") && gameObject.layer != LayerMask.NameToLayer("Invencible")) { return; }
+
             _player._onWater = true;
             Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
             Instantiate(_dropWater, position, other.transform.rotation);
+            _audio.PlayAudio(_audio._splash);
 
             if (_player._isRolling)
             {
                 _player.FinishRoll(); //cancela o Roll ao entrar na água
                 return;
             }
+
+            if (_input.isParachuting == true) { _input.isParachuting = false; } //cancela o parachute
 
             _player.EnterInWater();
         }
@@ -194,9 +202,13 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
+            //verifica primeiro se é a layer do Player ou do Invencible que está saindo da água
+            if(gameObject.layer != LayerMask.NameToLayer("Player") && gameObject.layer != LayerMask.NameToLayer("Invencible")) { return; }
+
             _player._onWater = false;
             Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
             Instantiate(_dropWater, position, other.transform.rotation);
+            _audio.PlayAudio(_audio._splash);
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Acid"))
