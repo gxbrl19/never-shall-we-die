@@ -239,6 +239,46 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: btn_delete
+    originalName: 
+    pivot: {x: -5.7031245, y: -8.21875}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 442
+      y: 514
+      width: 32
+      height: 32
+    spriteID: 0029e3509f297054ca7fb953b8762407
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 442, y: 514}
+  - name: btn_delete1
+    originalName: 
+    pivot: {x: -5.7031245, y: -6.21875}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 362
+      y: 577
+      width: 32
+      height: 32
+    spriteID: 2966de3a89773ce4eb682c093966e91e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 362, y: 577}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -341,6 +381,40 @@ ScriptedImporter:
         width: 464
         height: 288
       spriteId: 5610c9ffc3a76c545bb28c7e1e1725f1
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 6
+    guid: 940366106
+    name: btn_delete
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: btn_delete
+      frameIndex: 0
+      cellRect:
+        x: 519
+        y: 263
+        width: 32
+        height: 32
+      spriteId: 0029e3509f297054ca7fb953b8762407
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 7
+    guid: -1673642184
+    name: btn_delete1
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: btn_delete1
+      frameIndex: 0
+      cellRect:
+        x: 519
+        y: 199
+        width: 32
+        height: 32
+      spriteId: 2966de3a89773ce4eb682c093966e91e
     linkedCells: []
     parentIndex: -1
   platformSettings:

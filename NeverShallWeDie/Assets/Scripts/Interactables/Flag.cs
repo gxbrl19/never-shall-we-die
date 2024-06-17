@@ -49,7 +49,7 @@ public class Flag : MonoBehaviour
             _health.SetHealth(_health._currentHealth);
             _health.SetMana(_health._currentMana);
             
-            //GameManager.instance.SaveGame();
+            GameManager.instance.SaveGame();
         }
     }
 

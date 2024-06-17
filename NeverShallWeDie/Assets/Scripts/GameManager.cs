@@ -18,7 +18,7 @@ public class PlayerData
     public int[] barrels;
     public int[] airCutblock;
     public int checkpointScene;
-    public int direction;    
+    public int direction;
     public string navigator;
     public string shipwright;
     public string witch;
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         //bloqueia o cursor do mouse
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        
+
         _navigator = "CREW";
         _shipwright = "MEET";
         _witch = "MEET";
@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
 
         _data.checkpointScene = _checkpointScene;
         _data.direction = _direction;
-        
+
         _data.navigator = _navigator;
         _data.shipwright = _shipwright;
         _data.witch = _witch;
@@ -216,7 +216,7 @@ public class GameManager : MonoBehaviour
 
             _checkpointScene = _data.checkpointScene;
             _direction = _data.direction;
-            
+
             _navigator = _data.navigator;
             _shipwright = _data.shipwright;
             _witch = _data.witch;
@@ -227,6 +227,19 @@ public class GameManager : MonoBehaviour
             _bestiary = _data.bestiary;
             _bosses = _data.bosses;
         }
+    }
+
+    public void DeleteSave(int indexSave)
+    {
+        // Constrói o caminho do arquivo do save a ser deletado
+        string pathToDelete = Application.persistentDataPath + "/playerSave" + indexSave + ".sav";
+
+        // Verifica se o arquivo existe antes de tentar deletá-lo
+        if (File.Exists(pathToDelete)) { File.Delete(pathToDelete); } // Deleta o arquivo
+
+        if (indexSave == 1) { _save1 = false; }
+        else if (indexSave == 2) { _save2 = false; }
+        else if (indexSave == 3) { _save3 = false; }
     }
 
     #region Inputs
