@@ -8,14 +8,14 @@ public class EnemyController : MonoBehaviour
     [HideInInspector] public string _name;
     [HideInInspector] public int _maxHealth;
     [HideInInspector] public int _itemDropRate;
-    [HideInInspector] public AudioClip _deadSound;
-    [HideInInspector] public float _volume;
     [HideInInspector] public Color _damageColor;
 
     //Enemy Data
     public int _currentHealth;
     public bool _onHit;
     public bool _isDead;
+    [SerializeField] AudioClip _hitSound;
+    [SerializeField] AudioClip _deadSound;
     [HideInInspector] public Animator _animation;
 
 
@@ -36,8 +36,6 @@ public class EnemyController : MonoBehaviour
         _name = _enemyObject.name;
         _maxHealth = _enemyObject.maxHealth;
         _itemDropRate = _enemyObject.dropRate;
-        _deadSound = _enemyObject.deadSound;
-        _volume = _enemyObject.volume;
         _damageColor = _enemyObject.damageColor;
 
 
@@ -59,23 +57,27 @@ public class EnemyController : MonoBehaviour
 
         _onHit = true;
         _currentHealth -= damage;
-        _audio.volume = _volume;
         _sprite.color = _damageColor;
-        AudioItems.instance.PlaySound(AudioItems.instance._hitSound, AudioItems.instance._hitVolume);
+        //AudioItems.instance.PlaySound(AudioItems.instance._hitSound, AudioItems.instance._hitVolume);
         CinemachineShake.instance.ShakeCamera(3f, 0.15f); //tremida na camera
-        Invoke("FinishHit", 0.3f);
 
-        if (_currentHealth <= 0)
+        if (_currentHealth > 0)
         {
-            _audio.PlayOneShot(_deadSound);
+            _audio.PlayOneShot(_hitSound);
+        }
+        else //morte do inimigo
+        {
             _dropItem.DropGold();
             _isDead = true;
             _animation.SetBool("Dead", true);
+            _audio.PlayOneShot(_deadSound);
 
             //da um pouco de mana ao player
             PlayerHealth _playerHealth = FindFirstObjectByType<PlayerHealth>();
             _playerHealth.FillBottle(1.5f);
         }
+
+        Invoke("FinishHit", 0.3f);
 
         /*if (_name == "Boar") {
             Boar _boar = GetComponent<Boar>();

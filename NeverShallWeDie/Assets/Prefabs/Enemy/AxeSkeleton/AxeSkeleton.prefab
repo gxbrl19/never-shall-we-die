@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21365755984498470}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 21365757086570031}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &21365755984498468
 BoxCollider2D:
@@ -108,6 +108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21365757086570018}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.18, y: -0.203, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
@@ -117,7 +118,6 @@ Transform:
   - {fileID: 21365755984498469}
   - {fileID: 2934158822736092450}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &21365757086570016
 SpriteRenderer:
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -425641465
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 45966500872709769, guid: 7b73e4b7a5fcd004f835e341dfb61481, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -267,17 +267,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyObject: {fileID: 11400000, guid: 15888d9500d45384b963c687f6d3b29f, type: 2}
-  _enemyType: 
+  _name: 
   _maxHealth: 0
-  _currentHealth: 0
-  _invincibleTime: 0.5
   _itemDropRate: 0
-  _damageSound: {fileID: 0}
-  _volume: 0
-  _distancePlayer: 0
-  _animation: {fileID: 0}
-  _isDead: 0
+  _damageColor: {r: 0, g: 0, b: 0, a: 0}
+  _currentHealth: 0
   _onHit: 0
+  _isDead: 0
+  _hitSound: {fileID: 0}
+  _deadSound: {fileID: 0}
+  _animation: {fileID: 0}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -310,9 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07cb9b2e136621c42b16bedb58e76bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: Enemy
-  _dropItem: {fileID: 2934158822736092450}
   _item: {fileID: 1668899868801883058, guid: a8c2747d4748ac8478988e385f1c3301, type: 3}
+  _interactable: 0
   _dropRate: 0
 --- !u!82 &21365757086570026
 AudioSource:
@@ -326,7 +324,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5314338856241744941, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -435,13 +433,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21365757090189416}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 21365757086570031}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &21365757090189334
 CircleCollider2D:
@@ -515,11 +513,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8264949899957489005}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 21365757086570031}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -11,7 +11,5 @@ public class EnemyObject : ScriptableObject
     [Header("Settings")]
     public int maxHealth;
     public int dropRate;
-    public AudioClip deadSound;
-    public float volume;
     public Color damageColor;
 }

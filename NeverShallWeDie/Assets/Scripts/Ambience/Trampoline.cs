@@ -5,11 +5,13 @@ using UnityEngine;
 public class Trampoline : MonoBehaviour
 {
     private Animator _animation;
-    public float _jumpForce = 16.5f;
+    float _jumpForce = 40f;
+    AudioSource _audio;
 
     private void Awake()
     {
         _animation = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -29,5 +31,10 @@ public class Trampoline : MonoBehaviour
         {
             _animation.SetBool("Collision", false);
         }
+    }
+
+    public void JumpSound(AudioClip jumpSound) //chamado na animação
+    {
+        _audio.PlayOneShot(jumpSound);
     }
 }
