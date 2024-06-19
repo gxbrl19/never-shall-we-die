@@ -7,15 +7,19 @@ public class Flag : MonoBehaviour
 {
     public int _idFlag;
     public int _direction = 1;
+    public AudioClip _saveSound;
+    public GameObject _saveEffect;
     bool _playerTriggered;
     Animator _animation;
     Player _player;
     PlayerInputs _inputs;
     PlayerHealth _health;
+    AudioSource _audio;
 
     void Awake()
     {
         _animation = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _inputs = _player.GetComponent<PlayerInputs>();
         _health = _player.GetComponent<PlayerHealth>();
@@ -48,16 +52,19 @@ public class Flag : MonoBehaviour
             _health._currentHealth = _health._maxHealth;
             _health.SetHealth(_health._currentHealth);
             _health.SetMana(_health._currentMana);
-            
-            GameManager.instance.SaveGame();
         }
     }
 
     void SetCheckpoint()
     {
+        _inputs.interact = false;
         Scene _currentScene = SceneManager.GetActiveScene();
         GameManager.instance._checkpointScene = _currentScene.buildIndex;
         GameManager.instance._direction = _direction;
+
+        _audio.PlayOneShot(_saveSound);
+        Instantiate(_saveEffect, _player.transform.position, Quaternion.identity);
+        GameManager.instance.SaveGame();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

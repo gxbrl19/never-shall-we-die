@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     [BoxGroup("HUD")][SerializeField] private Image _healthBar;
     [BoxGroup("HUD")][SerializeField] private Image _healingBar;
+    [BoxGroup("HUD")][SerializeField] private Text _healthTxt;
+    [BoxGroup("HUD")][SerializeField] private Text _healingTxt;
     [BoxGroup("HUD")][SerializeField] private Text _txtGold;
     [BoxGroup("HUD")][SerializeField] private Image _fire;
     [BoxGroup("HUD")][SerializeField] private Image _air;
@@ -125,11 +127,13 @@ public class UIManager : MonoBehaviour
     void HealthControl()
     {
         _healthBar.fillAmount = _health._currentHealth / _health._maxHealth;
+        _healthTxt.text = _health._maxHealth.ToString();
     }
 
     public void HealingControl()
     {
         _healingBar.fillAmount = _health._currentMana / _health._maxMana;
+        _healingTxt.text = _health._maxMana.ToString();
     }
 
     void GoldControl()

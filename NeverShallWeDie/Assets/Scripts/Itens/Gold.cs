@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Gold : MonoBehaviour
 {
+    [SerializeField] GameObject _goldEffect;
     AudioSource _audio;
     Rigidbody2D _body;
     SpriteRenderer _sprite;
@@ -34,13 +35,12 @@ public class Gold : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            //int _value = Random.Range(8, 12);
             GameManager.instance._gold += 1;
-            //LevelController.instance._goldInLevel += _value;
             _audio.Play();
             //AudioItems.instance.PlaySound(_audio._goldSound, _audio._goldVolume);
             _sprite.enabled = false;
             _collider.enabled = false;
+            Instantiate(_goldEffect, transform.position, Quaternion.identity);
             //Destroy(gameObject, 0.5f);
         }
     }
