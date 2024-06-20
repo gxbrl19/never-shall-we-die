@@ -96,4 +96,9 @@ public class Beetboom : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, _sizeBox);
     }
+
+    public void PlaySound(AudioClip audio) //chamado na animação
+    {
+        _controller._audio.PlayOneShot(audio);
+    }
 }

@@ -9,11 +9,13 @@ public class Bombman_Bomb : MonoBehaviour
     float _height = 18f;
     Rigidbody2D _body;
     Animator _animation;
+    AudioSource _audio;
 
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
         _animation = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -31,7 +33,7 @@ public class Bombman_Bomb : MonoBehaviour
             float _angle = Mathf.Atan2(_body.velocity.y, _body.velocity.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(_angle, Vector3.forward);
         }
-        else 
+        else
         {
             transform.rotation = Quaternion.AngleAxis(0f, Vector3.forward);
         }
@@ -57,8 +59,13 @@ public class Bombman_Bomb : MonoBehaviour
     {
         _explosion = true;
         _body.velocity = Vector2.zero;
-        _body.bodyType = RigidbodyType2D.Static;        
+        _body.bodyType = RigidbodyType2D.Static;
         _animation.SetBool("Explode", true);
         Destroy(gameObject, 4f);
+    }
+
+    public void PlaySound(AudioClip audio) //chamado na animação
+    {
+        _audio.PlayOneShot(audio);
     }
 }

@@ -17,11 +17,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField] AudioClip _hitSound;
     [SerializeField] AudioClip _deadSound;
     [HideInInspector] public Animator _animation;
-
+    [HideInInspector] public AudioSource _audio;
 
     Color _defaultColor;
     SpriteRenderer _sprite;
-    AudioSource _audio;
     DropItem _dropItem;
 
     void Awake()

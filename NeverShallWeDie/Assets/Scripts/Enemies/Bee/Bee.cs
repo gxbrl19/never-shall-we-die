@@ -10,6 +10,7 @@ public class Bee : MonoBehaviour
 
     [SerializeField] bool _detectPlayer;
     [SerializeField] bool _isAttacking;
+    [SerializeField] AudioClip _attackSound;
     int _direction;
     float _speed = 3f;
     float _speedAtk = 15f;
@@ -66,6 +67,7 @@ public class Bee : MonoBehaviour
 
         _controller._animation.SetBool("Attack", true);
         _isAttacking = true;
+        _controller._audio.PlayOneShot(_attackSound);
         Invoke("FinishAttack", 0.5f);
     }
 

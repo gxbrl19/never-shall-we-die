@@ -53,21 +53,21 @@ public class Deadshot : MonoBehaviour
         }
     }
 
-    public void Attack()
-    { //chamado na animacao
+    public void Attack() //chamado na animacao
+    {
         GameObject proj = Instantiate(_projectile.gameObject, _shootPoint.position, Quaternion.identity);
         float dir = transform.localScale.x;
         proj.GetComponent<Deadshot_Projectile>()._direction = dir;
     }
 
-    public void FinishAttack()
-    { //chamado na animacao
+    public void FinishAttack() //chamado na animacao
+    {
         _attacking = false;
         _controller._animation.SetBool("Attack", false);
     }
 
-    public void FinishReload()
-    { //chamado na animacao
+    public void FinishReload() //chamado na animacao
+    {
         _canAttack = true;
     }
 
@@ -76,5 +76,10 @@ public class Deadshot : MonoBehaviour
         Vector2 _raycastDirection = Vector2.right * transform.localScale.x;
         Vector2 _raycastPosition = new Vector2(transform.position.x, transform.position.y + 0.5f);
         Debug.DrawRay(_raycastPosition, _raycastDirection * _raycastSize, Color.red);
+    }
+
+    public void PlaySound(AudioClip audio) //chamado na animação
+    {
+        _controller._audio.PlayOneShot(audio);
     }
 }
