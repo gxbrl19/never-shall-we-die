@@ -119,9 +119,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Forest
+  - name: Layer 1
     originalName: 
-    pivot: {x: 0.5, y: 0.48387095}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -129,8 +129,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 32
-      height: 62
-    spriteID: 4de437f091e41064d8b35737063f98b5
+      height: 64
+    spriteID: 25af6cff9301a2f43aa69821e585bafd
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1229776939
-    name: Forest
+    guid: 1317222744
+    name: Layer 1
     layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: Forest
+    - name: Layer 1
       frameIndex: 0
       cellRect:
         x: 16
-        y: 2
+        y: 0
         width: 32
-        height: 62
-      spriteId: 4de437f091e41064d8b35737063f98b5
+        height: 64
+      spriteId: 25af6cff9301a2f43aa69821e585bafd
     linkedCells: []
     parentIndex: -1
   platformSettings:
