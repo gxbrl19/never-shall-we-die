@@ -17,6 +17,7 @@ public class PlayerData
     public int[] flags;
     public int[] barrels;
     public int[] airCutblock;
+    public int[] barriersLever;
     public int checkpointScene;
     public int direction;
     public string navigator;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     [BoxGroup("ItemsInLevel")] public int[] _flags; //Flags já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _barrels; //Barrels já destruídos
     [BoxGroup("ItemsInLevel")] public int[] _airCutblock; //Air Cut Blocks já destruídos
+    [BoxGroup("ItemsInLevel")] public int[] _barriersLever; //Barriers Lever já acionados
 
     [BoxGroup("Checkpoint")] public int _checkpointScene; //a cena atual que será o checkpoint
     [BoxGroup("Checkpoint")] public int _direction;
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviour
         _flags = new int[11];
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
+        _barriersLever = new int[50]; //TODO: colocar o numero de Barriers lever que estarão no game
 
         //Crew
         _maps = new int[6];
@@ -141,6 +144,7 @@ public class GameManager : MonoBehaviour
         _data.flags = _flags;
         _data.barrels = _barrels;
         _data.airCutblock = _airCutblock;
+        _data.barriersLever = _barriersLever;
 
         _data.checkpointScene = _checkpointScene;
         _data.direction = _direction;
@@ -213,6 +217,7 @@ public class GameManager : MonoBehaviour
             _flags = _data.flags;
             _barrels = _data.barrels;
             _airCutblock = _data.airCutblock;
+            _barriersLever = _data.barriersLever;
 
             _checkpointScene = _data.checkpointScene;
             _direction = _data.direction;

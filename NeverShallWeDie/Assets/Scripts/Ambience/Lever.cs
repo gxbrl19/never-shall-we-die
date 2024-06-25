@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Lever : MonoBehaviour
 {
-    private bool _enabled;
-    [SerializeField] private Sprite _disabledSprite;
-    [SerializeField] private Sprite _enabledSprite;    
-    private SpriteRenderer _sprite;
-    [SerializeField] private BarrierLever _barrier;
+    bool _enabled;
+    [SerializeField] Sprite _disabledSprite;
+    [SerializeField] Sprite _enabledSprite;
+    [SerializeField] BarrierLever _barrier;
+    SpriteRenderer _sprite;
 
     void Awake()
     {
@@ -17,9 +17,9 @@ public class Lever : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(!_enabled && other.CompareTag("SwordAtk"))
+        if (!_enabled && other.CompareTag("SwordAtk"))
         {
-            _barrier._enabled = true;
+            _barrier.EnabledCamera();
             _enabled = true;
             _sprite.sprite = _enabledSprite;
         }

@@ -4,57 +4,53 @@ using UnityEngine;
 
 public class BarrierLever : MonoBehaviour
 {
-    public Transform _up, _down;
-    float _speed = 1f;
+    [SerializeField] int _id;
 
-    public bool _enabled;
+    [Header("Camera")]
+    [SerializeField] Animator _animation;
+    [SerializeField] GameObject _mainCamera;
+    [SerializeField] GameObject _barrierCamera;
 
     [Header("Audio")]
-    public AudioClip _moveSound;
-    public bool _audioStart;
+    [SerializeField] AudioClip _moveSound;
 
-    AudioSource _audioSource;
+    AudioSource _audio;
+    Player _player;
 
     private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
+        _audio = GetComponent<AudioSource>();
+        _player = FindObjectOfType<Player>();
     }
 
-    void Update()
+    private void Start()
     {
-        if (_enabled && transform.position.y > _down.position.y)
-        {
-            //_audioStart = true;
-            transform.Translate(Vector2.down * Time.deltaTime * _speed);
-            //AudioMove();
-            _audioSource.PlayOneShot(_moveSound);
-
-            if (transform.position.y <= _down.position.y)
-            {
-                _audioSource.Stop();
-            }
-        }
-
-        if (!_enabled && transform.position.y < _up.position.y)
-        {
-            //_audioStart = true;
-            transform.Translate(Vector2.up * Time.deltaTime * _speed);
-            _audioSource.PlayOneShot(_moveSound);
-            //AudioMove();
-
-            if (transform.position.y >= _up.position.y)
-            {
-                _audioSource.Stop();
-            }
-        }
+        //verifica se já foi acionado
+        bool finish = GameManager.instance._barriersLever[_id] == 1;
+        _animation.SetBool("Finish", finish);
     }
 
-    public void AudioMove()
+    public void EnabledCamera()
     {
-        if (_audioStart)
-        {
+        _player.DisableControls();
+        _mainCamera.SetActive(false);
+        _barrierCamera.SetActive(true);
+        Invoke("EnabledBarrier", 1f);
+    }
 
-            _audioStart = false;
-        }
+    void EnabledBarrier()
+    {
+        GameManager.instance._barriersLever[_id] = 1;
+        _animation.SetBool("Enabled", true);
+        _audio.PlayOneShot(_moveSound);
+        Invoke("FinishEnabled", 2.02f);
+    }
+
+    public void FinishEnabled()
+    {
+        _player.EnabledControls();
+        _animation.SetBool("Finish", true);
+        _mainCamera.SetActive(true);
+        _barrierCamera.SetActive(false);
     }
 }
