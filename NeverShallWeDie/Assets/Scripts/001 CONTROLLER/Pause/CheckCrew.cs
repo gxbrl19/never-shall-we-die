@@ -9,11 +9,8 @@ using UnityEngine.Localization.Settings;
 
 public class CheckCrew : MonoBehaviour
 {
-    public Sprite spriteMember;
-    public string nameMember;
-    [TextArea(5, 10)] public string ptDescription;
-    [TextArea(5, 10)] public string engDescription;
-
+    public CrewObject _crewObject;
+    string _name;
     Text _textButton;
 
     private void Awake()
@@ -21,21 +18,25 @@ public class CheckCrew : MonoBehaviour
         _textButton = GetComponentInChildren<Text>();
     }
 
+    private void Start() {
+        _name = _crewObject.name;
+    }
+
     private void Update()
     {
-        switch (nameMember)
+        switch (_name)
         {
-            case "Caleb":
+            case "Marvin":
                 _textButton.enabled = GameManager.instance._navigator == "CREW";
                 break;
             case "Selena":
-                _textButton.enabled = GameManager.instance._blacksmith == "CREW";
+                _textButton.enabled = GameManager.instance._shipwright == "CREW";
                 break;
-            case "Eleonore":
+            case "Lyra":
                 _textButton.enabled = GameManager.instance._witch == "CREW";
                 break;
             case "Gribbit":
-                _textButton.enabled = GameManager.instance._shipwright == "CREW";
+                _textButton.enabled = GameManager.instance._blacksmith == "CREW";
                 break;
         }
     }
@@ -45,13 +46,13 @@ public class CheckCrew : MonoBehaviour
         if (_textButton.enabled)
         {
             UIManager.instance._pnlCrew.SetActive(true);
-            UIManager.instance._txtNameCrew.text = nameMember;
-            UIManager.instance._spriteMemberCrew.sprite = spriteMember;
+            UIManager.instance._txtNameCrew.text = _crewObject.name;
+            UIManager.instance._spriteMemberCrew.sprite = _crewObject.draw;
 
             //localization
             var currentLocale = LocalizationSettings.SelectedLocale;
-            if (currentLocale.Identifier.Code == "pt-BR") { UIManager.instance._txtDescriptionCrew.text = ptDescription; }
-            else if (currentLocale.Identifier.Code == "en") { UIManager.instance._txtDescriptionCrew.text = engDescription; }
+            if (currentLocale.Identifier.Code == "pt-BR") { UIManager.instance._txtDescriptionCrew.text = _crewObject.ptDescription; }
+            else if (currentLocale.Identifier.Code == "en") { UIManager.instance._txtDescriptionCrew.text = _crewObject.engDescription; }
             //localization
         }
         else

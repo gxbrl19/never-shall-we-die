@@ -1246,12 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737696945f67dce44885d711aeda08e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteMember: {fileID: -4515419932742929341, guid: 6c9234916e2fe17429be396693999a12, type: 3}
-  nameMember: Eleonore
-  ptDescription: "Usa Souls Points para criar seus feiti\xE7os, a Feiticeira pode
-    troc\xE1-los por HP ou MP"
-  engDescription: She uses Souls Points to create her spells, the Witch can exchange
-    them for HP or MP
+  _crewObject: {fileID: 11400000, guid: 6e196e86d608426459ab941a45fa77fd, type: 2}
 --- !u!114 &2356458109725414225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2259,14 +2254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737696945f67dce44885d711aeda08e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteMember: {fileID: -8918972874084674637, guid: 1a511171bc798684da822cafe96f646d, type: 3}
-  nameMember: Ao Kitsune
-  ptDescription: "Conhecido como \"A Raposa Azul\", Capit\xE3o dos Piratas Kitsune,
-    busca o Grande Tesouro para enfim sair da vida de pirataria. Foi tra\xEDdo por
-    sua antiga tripula\xE7\xE3o e deixado pra morrer."
-  engDescription: Known as "The Blue Fox", Captain of the Kitsune Pirates, seeks
-    the Great Treasure to finally leave the life of piracy. He was betrayed by his
-    former crew and left for dead.
+  _crewObject: {fileID: 11400000, guid: fcd67eeb3be33354ca059a25b52fd3ee, type: 2}
 --- !u!114 &6388679734644427062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4875,8 +4863,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58.322, y: 4.8}
-  m_SizeDelta: {x: 116.64, y: 23.2}
+  m_AnchoredPosition: {x: 66.686, y: 79.1}
+  m_SizeDelta: {x: 161.84, y: 23.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1615636670711619360
 CanvasRenderer:
@@ -5232,15 +5220,15 @@ RectTransform:
   m_GameObject: {fileID: 1773669835311060315}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6809844458520923496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -77.6, y: 59.3}
-  m_SizeDelta: {x: 38, y: 39}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 86.6, y: 1.3}
+  m_SizeDelta: {x: 172.8, y: 216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7065924723268998222
 CanvasRenderer:
@@ -5270,7 +5258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4515419932742929341, guid: 6c9234916e2fe17429be396693999a12, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9b4c4ed3d0b87f240be0a4af48ef966b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -10039,12 +10027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737696945f67dce44885d711aeda08e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteMember: {fileID: -8131576020307332339, guid: bfa8c0fc809e07c428a4eccbcf54f51a, type: 3}
-  nameMember: Selena
-  ptDescription: "Tamb\xE9m buscando a B\xFAssola Quebrada, a Ferreira dos Piratas
-    Kitsune usa as barras de ferro para melhorar sua Katana."
-  engDescription: Also searching for the Broken Compass, the Blacksmith of the Kitsune
-    Pirates uses the iron bars to improve her Katana.
+  _crewObject: {fileID: 11400000, guid: 7a931df472e1e654fb4b229ccdfd9a39, type: 2}
 --- !u!114 &8775777680605393985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11351,6 +11334,7 @@ RectTransform:
   - {fileID: 3599212207756508038}
   - {fileID: 1899247522610456770}
   - {fileID: 6661860977217100547}
+  - {fileID: 3627984399826570969}
   - {fileID: 288359163955922762}
   - {fileID: 1103159435466890151}
   - {fileID: 5802209221931623054}
@@ -11619,6 +11603,13 @@ MonoBehaviour:
   _pnlDialogue: {fileID: 5335087405616710876}
   _txtName: {fileID: 8462234299571113950}
   _txtTalk: {fileID: 796155678224599241}
+  _spritesCrew2d:
+  - {fileID: 21300000, guid: e2356b01157751d40b0a14744c87487b, type: 3}
+  - {fileID: 21300000, guid: aa4cf65aeb3d6854892bb8767d93aeda, type: 3}
+  - {fileID: 21300000, guid: 85f7717f33e23c64791a368f243dd512, type: 3}
+  - {fileID: 21300000, guid: 0e4ba793263bd0d44a3ee45ef5ed1a8a, type: 3}
+  _pnlCrew2d: {fileID: 5521184137367269171}
+  _imgCrew2d: {fileID: 8528356627370306400}
   _pnlNavigate: {fileID: 28404837414971651}
   _buttonYesNavigate: {fileID: 4920713732499534521}
   _pnlBuyMap: {fileID: 7410158054039492648}
@@ -14441,6 +14432,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _localization: {fileID: 8399050093138880967}
   _sceneID: 47
+--- !u!1 &5521184137367269171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3627984399826570969}
+  - component: {fileID: 5730088101032675248}
+  - component: {fileID: 4186239416451479437}
+  m_Layer: 5
+  m_Name: pnl_crew_2d
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &3627984399826570969
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521184137367269171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 643652515160251146}
+  m_Father: {fileID: 5875273315883990113}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -140.5, y: -113.983}
+  m_SizeDelta: {x: 135, y: 227.34}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5730088101032675248
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521184137367269171}
+  m_CullTransparentMesh: 1
+--- !u!114 &4186239416451479437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521184137367269171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.09019608, b: 0.16078432, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5524868893992421245
 GameObject:
   m_ObjectHideFlags: 0
@@ -17682,12 +17749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737696945f67dce44885d711aeda08e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteMember: {fileID: 5697492075919682957, guid: efa57a0a28cde284c9a32f734b9555df, type: 3}
-  nameMember: Caleb
-  ptDescription: Especialista em desenhar mapas, e amante de ouro, o Navegador desenha
-    e vende mapas das ilhas que visita.
-  engDescription: An expert in drawing maps and a lover of gold, the Navigator draws
-    and sells maps of the islands he visited.
+  _crewObject: {fileID: 11400000, guid: cc27f7526147b6b4c8676538ca99d228, type: 2}
 --- !u!114 &1237396719942315172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18514,6 +18576,81 @@ MonoBehaviour:
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7374963544898053450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 643652515160251146}
+  - component: {fileID: 5408144582200084998}
+  - component: {fileID: 8528356627370306400}
+  m_Layer: 5
+  m_Name: img_crew_2d
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &643652515160251146
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7374963544898053450}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3627984399826570969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 172.8, y: 216}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5408144582200084998
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7374963544898053450}
+  m_CullTransparentMesh: 1
+--- !u!114 &8528356627370306400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7374963544898053450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 7e54dcb7f51342242aba73ba7d772644, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -20330,8 +20467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.82825, y: -52.8559}
-  m_SizeDelta: {x: 232.34, y: 87.0628}
+  m_AnchoredPosition: {x: 66.687416, y: -19.912}
+  m_SizeDelta: {x: 161.8392, y: 169.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8676620106001493323
 CanvasRenderer:
@@ -21064,12 +21201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737696945f67dce44885d711aeda08e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteMember: {fileID: -3530761210929120711, guid: 57635381bde36434db7f2a24a7be89cf, type: 3}
-  nameMember: Gribbit
-  ptDescription: "Nascido no Mar de Gamatso. D\xEA a ele os projetos que encontrar
-    para melhorar o Corvo."
-  engDescription: Born in the Gamatso Sea. Give him any projects you find to improve
-    Crow.
+  _crewObject: {fileID: 11400000, guid: fcc495caa84a7ff42957eb76a653dd82, type: 2}
 --- !u!114 &7927563301295055380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23142,15 +23274,15 @@ RectTransform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4713871509391519864}
   - {fileID: 2749476151496462236}
+  - {fileID: 4713871509391519864}
   - {fileID: 76290326045136689}
   m_Father: {fileID: 1899247522610456770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 81.57632, y: -15.927}
-  m_SizeDelta: {x: 234, y: 198}
+  m_AnchoredPosition: {x: 96.162, y: -6.913498}
+  m_SizeDelta: {x: 314.75, y: 223.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3216888538806441558
 CanvasRenderer:
