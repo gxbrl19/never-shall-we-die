@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -72,6 +73,19 @@ public class PlayerHealth : MonoBehaviour
             _isDead = true;
             _player._body.velocity = Vector2.zero;
             _player.OnDead();
+            LostGold(0.3f);
+        }
+    }
+
+    void LostGold(float percentual)
+    {
+        int gold = GameManager.instance._gold;
+
+        if (gold > 0)
+        {
+            float lostValue = gold * percentual;
+            int lostGold = (int)Math.Round(lostValue, MidpointRounding.AwayFromZero); //Arredondar para um número inteiro
+            GameManager.instance._gold -= lostGold;
         }
     }
 
@@ -82,7 +96,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void Healing()
-    {        
+    {
         _objHealing.SetActive(_player._healing);
 
         if (_player._healing && _currentHealth < _maxHealth && _currentMana >= 0.1)
