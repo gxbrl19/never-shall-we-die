@@ -74,9 +74,6 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Dialogue")] public TextMeshProUGUI _txtTalk;
     private bool _inDialogue = false;
 
-    [BoxGroup("Crew")] public Sprite[] _spritesCrew2d;
-    [BoxGroup("Crew")] public GameObject _pnlCrew2d;
-    [BoxGroup("Crew")] public Image _imgCrew2d;
     [BoxGroup("Crew")][Header("Helm")] public GameObject _pnlNavigate;
     [BoxGroup("Crew")] public GameObject _buttonYesNavigate;
     [BoxGroup("Crew")][Header("Navigator")] public GameObject _pnlBuyMap;
@@ -84,6 +81,7 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")] public Text _txtMapPrice;
     [HideInInspector] public int _mapPrice;
     [HideInInspector] public int _mapBuyId;
+    [BoxGroup("Crew")] public Animator _buyFeedback;
 
     [BoxGroup("Fade")] public Image _pnlFade;
 
@@ -420,8 +418,6 @@ public class UIManager : MonoBehaviour
         _isPaused = true;
         _player.DisableControls();
         _txtMapPrice.text = _mapPrice.ToString();
-        _imgCrew2d.sprite = _spritesCrew2d[0];
-        _pnlCrew2d.SetActive(true);
         _pnlBuyMap.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesBuyMap);
     }
@@ -433,13 +429,12 @@ public class UIManager : MonoBehaviour
             _isPaused = false;
             _player.EnabledControls();
             GameManager.instance._maps[_mapBuyId] = 1;
-            _pnlCrew2d.SetActive(false);
             _pnlBuyMap.SetActive(false);
             GameManager.instance._gold -= _mapPrice;
         }
         else
         {
-            //TODO: dar um feedback que não tem dinheiro o suficiente
+            _buyFeedback.SetTrigger("Start");
         }
     }
 
@@ -447,7 +442,6 @@ public class UIManager : MonoBehaviour
     {
         _isPaused = false;
         _player.EnabledControls();
-        _pnlCrew2d.SetActive(false);
         _pnlBuyMap.SetActive(false);
     }
 
