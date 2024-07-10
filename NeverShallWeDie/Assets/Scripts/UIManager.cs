@@ -91,9 +91,17 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Config")] public Dropdown _resolutionDropdown;
     Resolution[] _resolutions;
 
+    [BoxGroup("AudioHUD")] public AudioClip _btnClick;
+    [BoxGroup("AudioHUD")] public AudioClip _navigationBtn;
+    [BoxGroup("AudioHUD")] public AudioClip _pauseBtn;
+    [BoxGroup("AudioHUD")] public float _clickVolume;
+    [BoxGroup("AudioHUD")] public float _navigationVolume;
+    [BoxGroup("AudioHUD")] public float _pauseVolume;
+
     Player _player;
     PlayerInputs _input;
     PlayerHealth _health;
+    AudioSource _audioSource;
 
     private void Awake()
     {
@@ -102,6 +110,7 @@ public class UIManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
         _health = _player.GetComponent<PlayerHealth>();
+        _audioSource = GetComponent<AudioSource>();
 
         Time.timeScale = 1f;
         //_player.EnabledControls();
@@ -420,6 +429,7 @@ public class UIManager : MonoBehaviour
         _txtMapPrice.text = _mapPrice.ToString();
         _pnlBuyMap.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesBuyMap);
+        SoundClick("Pause");
     }
 
     public void BuyMap() //chamado no botão Yes do pnl_buymap (UI Manager)
@@ -470,7 +480,7 @@ public class UIManager : MonoBehaviour
                 CancelPause();
             }
 
-            AudioHUD.instance.SoundClick("Pause");
+            SoundClick("Pause");
         }
     }
 
@@ -489,7 +499,7 @@ public class UIManager : MonoBehaviour
                 CancelMap();
             }
 
-            AudioHUD.instance.SoundClick("Pause");
+            SoundClick("Pause");
         }
     }
 
@@ -611,4 +621,31 @@ public class UIManager : MonoBehaviour
         Screen.SetResolution(_resolution.width, _resolution.height, Screen.fullScreen);
     }
     #endregion
+
+    #region AudioHUD
+    public void SoundClick(string clickType)
+    {
+        if (clickType == "Menu")
+        {
+            PlaySound(_btnClick, _clickVolume);
+        }
+
+        if (clickType == "Pause")
+        {
+            PlaySound(_pauseBtn, _pauseVolume);
+        }
+    }
+
+    public void NavigationButton()
+    {
+        PlaySound(_navigationBtn, _navigationVolume);
+    }
+
+    public void PlaySound(AudioClip sound, float volume)
+    {
+        _audioSource.volume = volume;
+        _audioSource.PlayOneShot(sound);
+    }
+
+    #endregion 
 }

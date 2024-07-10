@@ -20,6 +20,8 @@ public class BuyMap : MonoBehaviour
 
     void Update()
     {
+        VerifyMap(); //verifica se já tem o mapa e desabilita o collider
+
         if (_playerTriggered && _input.interact)
         {
             _playerTriggered = false;
@@ -44,5 +46,11 @@ public class BuyMap : MonoBehaviour
         {
             _playerTriggered = false;
         }
+    }
+
+    private void VerifyMap()
+    {
+        int _withMap = GameManager.instance._maps[_mapID];
+        _collider.enabled = _withMap == 0;
     }
 }

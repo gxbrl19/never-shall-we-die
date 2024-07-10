@@ -11622,6 +11622,12 @@ MonoBehaviour:
   - {fileID: 5168757187284498219}
   _mixer: {fileID: 24100000, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
   _resolutionDropdown: {fileID: 8252734957381643376}
+  _btnClick: {fileID: 8300000, guid: f0a14e9cf62052c4ab9fd28a833aa187, type: 3}
+  _navigationBtn: {fileID: 8300000, guid: 84ee01784b2c851418dc0526d8f09a2c, type: 3}
+  _pauseBtn: {fileID: 8300000, guid: d989b46cd18b9a24d9cd45f9d7944e5c, type: 3}
+  _clickVolume: 0.5
+  _navigationVolume: 1
+  _pauseVolume: 0.7
 --- !u!225 &8689666315068897558
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -15596,7 +15602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.15294118, b: 0.26666668, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8235294}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18113,7 +18119,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates: []
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 9067393720111904276}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: NavigationButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6990182844558652312
 GameObject:
   m_ObjectHideFlags: 0
@@ -20746,6 +20768,7 @@ GameObject:
   - component: {fileID: 5639666312112392419}
   - component: {fileID: 8812030446985164875}
   - component: {fileID: 3469324446088800132}
+  - component: {fileID: 4919400174765859150}
   m_Layer: 5
   m_Name: btn_yes
   m_TagString: Untagged
@@ -20867,6 +20890,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4919400174765859150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8108342346241402380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 9067393720111904276}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: NavigationButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8147515123893154930
 GameObject:
   m_ObjectHideFlags: 0
