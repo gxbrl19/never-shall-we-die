@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     [BoxGroup("ItemsInLevel")] public int[] _flags; //Flags já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _barrels; //Barrels já destruídos
+    [BoxGroup("ItemsInLevel")] public int[] _chests; //Chests já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _airCutblock; //Air Cut Blocks já destruídos
     [BoxGroup("ItemsInLevel")] public int[] _barriersLever; //Barriers Lever já acionados
 
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         _flags = new int[11];
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
+        _chests = new int[50]; //TODO: colocar o numero de Chests que estarão no game
         _barriersLever = new int[50]; //TODO: colocar o numero de Barriers lever que estarão no game
 
         //Crew

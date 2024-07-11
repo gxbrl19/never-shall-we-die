@@ -160,7 +160,7 @@ public class PlayerHealth : MonoBehaviour
         _player.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
-    #region "Prefabs" 
+    #region "Prefs" 
     //PlayerPrefs para a troca de cena
     public void SetHealth(float health)
     {

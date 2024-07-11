@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8588945458967287939}
   - component: {fileID: 8588945458967287948}
   - component: {fileID: 8588945458967287936}
+  - component: {fileID: 6918157317790413829}
+  - component: {fileID: 1767176361119824186}
   - component: {fileID: 3829424671697748023}
   m_Layer: 0
   m_Name: Chest
@@ -75,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -197623469
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 3
   m_Sprite: {fileID: 1696344051, guid: 5c640069a92db564b9e13685a2eb6c01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -166,8 +168,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe84bf6664396549841e113be1408ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillObject: {fileID: 0}
+  _idChest: 0
   _openChest: {fileID: 8300000, guid: fe270c3eb9dc9ff42b4cfee1422bb746, type: 3}
+--- !u!114 &6918157317790413829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8588945458967287949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07cb9b2e136621c42b16bedb58e76bbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 0}
+  _dropRate: 0
+--- !u!114 &1767176361119824186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8588945458967287949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d33dfc71ce494bf44bcf503236ceec9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &3829424671697748023
 AudioSource:
   m_ObjectHideFlags: 0

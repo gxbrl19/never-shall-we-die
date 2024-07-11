@@ -5,76 +5,54 @@ using UnityEngine.Windows;
 
 public class Chest : MonoBehaviour
 {
-    [Header("Components")]
-    public SkillObject _skillObject;
+    public int _idChest;
+    public AudioClip _openChest;
 
-    private Skills _skill;
-    private Sprite _pickedSprite;
-    private string _name;
-    private bool _triggered = false;
+    bool _triggered;
+    Animator _animation;
+    Collider2D _collider;
+    AudioSource _audio;
+    AudioItems _audioItems;
+    Player _player;
+    PlayerInputs _input;
+    DropItem _dropItem;
 
-    private Animator _animation;
-	private BoxCollider2D _collider;
-	private AudioSource _audio;
-	private AudioItems _audioItems;
-    private Player _player;
-    private PlayerInputs _input;
-
-	public AudioClip _openChest;
-
-	void Start()
-	{
-		_animation = GetComponent<Animator>();
-		_collider = GetComponent<BoxCollider2D>();
-		_audio = GetComponent<AudioSource>();
+    void Start()
+    {
+        _animation = GetComponent<Animator>();
+        _collider = GetComponent<BoxCollider2D>();
+        _audio = GetComponent<AudioSource>();
+        _dropItem = GetComponent<DropItem>();
         _audioItems = FindFirstObjectByType<AudioItems>();
         _player = FindFirstObjectByType<Player>();
         _input = _player.GetComponent<PlayerInputs>();
-
-        //dados da skill
-        _skill = _skillObject.skill;
-        _pickedSprite = _skillObject.sprite;
-        _name = _skillObject.name;
     }
 
     void Update()
     {
-        //verifica se o player já tem a habilidade e desativa o baú
-        for (int i = 0; i < PlayerSkills.instance.skills.Count; i++)
-        {
-            if (PlayerSkills.instance.skills[i] == _skill)
-            {
-                DisableChest();
-            }
-        }
+        // verifica se ainda não foi aberto
+        bool enabled = GameManager.instance._chests[_idChest] == 0;
+        _animation.enabled = !enabled;
+        _collider.enabled = enabled;
 
         //verifica o input
-        if(_input.vertical == 1 && _triggered)
+        if (_input.interact && _triggered)
         {
             _audio.PlayOneShot(_openChest);
             DisableChest();
-
-            Invoke("NewSkill", 0.5f); //da um delay para a animação de nova skill      
         }
-    }
-
-    void NewSkill() //chamado no update
-    {
-        _audioItems.PlaySound(_audioItems._powerPickupSound, _audioItems._powerVolume);
-        _player.SetPowerPickup(_pickedSprite);
-
-        GameManager.instance._skills.Add(_skill);
-        PlayerSkills.instance.skills.Add(_skill);
     }
 
     void DisableChest()
     {
-        _collider.enabled = false;
-        _animation.enabled = true;
+        _triggered = false;
+        _input.interact = false;
+        _dropItem.DropRecovery();
+        GameManager.instance._chests[_idChest] = 1;
     }
 
     void OnTriggerEnter2D(Collider2D other)
-	{
+    {
         Player _player = other.GetComponent<Player>();
 
         if (_player != null)
