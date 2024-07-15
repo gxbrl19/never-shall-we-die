@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a67a5b72b15535e4aaa63eac67c1e09b
+guid: d23528efa0a19f846ba45981d0d109e5
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638530549266062804
+  platformSettingsDirtyTick: 638566359687157679
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,27 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Torch_Frame_0
-    originalName: 
-    pivot: {x: 0.5, y: 0.516129}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 20
-      y: 4
-      width: 8
-      height: 31
-    spriteID: 9a0805f539db80045a6cb58b2cfe2b20
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 20, y: 4}
-  - name: Torch_Frame_1
+  - name: Lever
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
@@ -149,8 +129,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 8
-      height: 32
-    spriteID: 78f1e80ae68abaa48a9a39b2ccfa1903
+      height: 28
+    spriteID: 404e3dab4f6d5e74ab2a18be160f69e0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -159,18 +139,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Torch_Frame_2
+  - name: Lever_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0.516129}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 36
+      x: 20
       y: 4
       width: 8
-      height: 31
-    spriteID: baa6d1204f60355448bb281ba7cb3c3e
+      height: 28
+    spriteID: 2b92400ad59911f458340ae93a8d66c6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -178,68 +158,32 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 36, y: 4}
-  - name: Torch_Frame_3
-    originalName: 
-    pivot: {x: 0.5, y: 0.516129}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 52
-      y: 4
-      width: 8
-      height: 31
-    spriteID: e6c7ca9f4ed0b46468281ece29864cb2
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 52, y: 4}
+    uvTransform: {x: 20, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -2102477512
-    name: Torch
+    guid: 1827928206
+    name: Lever
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Torch_Frame_0
+    - name: Lever_Frame_0
       frameIndex: 0
       cellRect:
         x: 4
-        y: 0
+        y: 2
         width: 8
-        height: 31
-      spriteId: 9a0805f539db80045a6cb58b2cfe2b20
-    - name: Torch_Frame_1
+        height: 28
+      spriteId: 404e3dab4f6d5e74ab2a18be160f69e0
+    - name: Lever_Frame_1
       frameIndex: 1
       cellRect:
         x: 4
-        y: 0
+        y: 2
         width: 8
-        height: 32
-      spriteId: 78f1e80ae68abaa48a9a39b2ccfa1903
-    - name: Torch_Frame_2
-      frameIndex: 2
-      cellRect:
-        x: 4
-        y: 0
-        width: 8
-        height: 31
-      spriteId: baa6d1204f60355448bb281ba7cb3c3e
-    - name: Torch_Frame_3
-      frameIndex: 3
-      cellRect:
-        x: 4
-        y: 0
-        width: 8
-        height: 31
-      spriteId: e6c7ca9f4ed0b46468281ece29864cb2
+        height: 28
+      spriteId: 2b92400ad59911f458340ae93a8d66c6
     linkedCells: []
     parentIndex: -1
   platformSettings:

@@ -1,0 +1,588 @@
+fileFormatVersion: 2
+guid: 81d37b922e1fa8744a668d9303182801
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 16
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638566364174470164
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: WaterBomb
+    originalName: 
+    pivot: {x: 0.51515156, y: 0.37662333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 87
+      y: 152
+      width: 33
+      height: 77
+    spriteID: 0053a221e0184f244ba78390d736fc6b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 87, y: 152}
+  - name: WaterBomb_Frame_1
+    originalName: 
+    pivot: {x: 0.54545456, y: 0.36842108}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 87
+      y: 322
+      width: 33
+      height: 76
+    spriteID: f994a84ce28940f45ac4ab9a5d7211ca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 87, y: 322}
+  - name: WaterBomb_Frame_2
+    originalName: 
+    pivot: {x: 0.48484847, y: 0.36842108}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 87
+      y: 406
+      width: 33
+      height: 76
+    spriteID: 8c97dd967d704424fbb5d42473f160bb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 87, y: 406}
+  - name: WaterBomb_Frame_3
+    originalName: 
+    pivot: {x: 0.51515156, y: 0.37662333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 87
+      y: 237
+      width: 33
+      height: 77
+    spriteID: ceddbf71b6593ee4181d7328f5596345
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 87, y: 237}
+  - name: WaterBomb_Frame_4
+    originalName: 
+    pivot: {x: 0.5555556, y: 0.37662333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 152
+      width: 9
+      height: 77
+    spriteID: e554c3bbd13af9f4a87a6dcdfc9e5fa7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 152}
+  - name: WaterBomb_Frame_5
+    originalName: 
+    pivot: {x: 0.51282054, y: 0.27272728}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 87
+      y: 78
+      width: 39
+      height: 66
+    spriteID: d1deae0cdc01b904a808b891d3546ea9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 87, y: 78}
+  - name: WaterBomb_Frame_6
+    originalName: 
+    pivot: {x: 0.5090909, y: 0.27272728}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 87
+      y: 4
+      width: 55
+      height: 66
+    spriteID: 532717e89b31b9949a95cc75528fa20c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 87, y: 4}
+  - name: WaterBomb_Frame_7
+    originalName: 
+    pivot: {x: 0.5074627, y: 0.27272728}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 369
+      width: 67
+      height: 66
+    spriteID: f3c5af4dcba91d84d80137b3c359e03f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 369}
+  - name: WaterBomb_Frame_8
+    originalName: 
+    pivot: {x: 0.50666666, y: 0.26153848}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 75
+      height: 65
+    spriteID: ec48fde53432dab4a990f4e1de2178eb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: WaterBomb_Frame_9
+    originalName: 
+    pivot: {x: 0.50666666, y: 0.26153848}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 77
+      width: 75
+      height: 65
+    spriteID: 78a8f79b0e86f1c44bd9738f8333eff9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 77}
+  - name: WaterBomb_Frame_10
+    originalName: 
+    pivot: {x: 0.50666666, y: 0.26153848}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 150
+      width: 75
+      height: 65
+    spriteID: 0e6cda76edc40f147b20721d02560b29
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 150}
+  - name: WaterBomb_Frame_11
+    originalName: 
+    pivot: {x: 0.50666666, y: 0.26153848}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 223
+      width: 75
+      height: 65
+    spriteID: 244f5220b9d0dec43b8a0f3ab141f0d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 223}
+  - name: WaterBomb_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: 0.26153848}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 296
+      width: 72
+      height: 65
+    spriteID: 96888dc032436054997b1ae05b6756ca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 296}
+  - name: WaterBomb_Frame_13
+    originalName: 
+    pivot: {x: 0.5555556, y: -0.06666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 322
+      width: 9
+      height: 45
+    spriteID: c728d9da929f7f3418e4411f2ce49e94
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 322}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -832206829
+    name: WaterBomb
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: WaterBomb_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 23
+        y: 19
+        width: 33
+        height: 77
+      spriteId: 0053a221e0184f244ba78390d736fc6b
+    - name: WaterBomb_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 22
+        y: 20
+        width: 33
+        height: 76
+      spriteId: f994a84ce28940f45ac4ab9a5d7211ca
+    - name: WaterBomb_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 24
+        y: 20
+        width: 33
+        height: 76
+      spriteId: 8c97dd967d704424fbb5d42473f160bb
+    - name: WaterBomb_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 23
+        y: 19
+        width: 33
+        height: 77
+      spriteId: ceddbf71b6593ee4181d7328f5596345
+    - name: WaterBomb_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 35
+        y: 19
+        width: 9
+        height: 77
+      spriteId: e554c3bbd13af9f4a87a6dcdfc9e5fa7
+    - name: WaterBomb_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 20
+        y: 30
+        width: 39
+        height: 66
+      spriteId: d1deae0cdc01b904a808b891d3546ea9
+    - name: WaterBomb_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 12
+        y: 30
+        width: 55
+        height: 66
+      spriteId: 532717e89b31b9949a95cc75528fa20c
+    - name: WaterBomb_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 6
+        y: 30
+        width: 67
+        height: 66
+      spriteId: f3c5af4dcba91d84d80137b3c359e03f
+    - name: WaterBomb_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 2
+        y: 31
+        width: 75
+        height: 65
+      spriteId: ec48fde53432dab4a990f4e1de2178eb
+    - name: WaterBomb_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 2
+        y: 31
+        width: 75
+        height: 65
+      spriteId: 78a8f79b0e86f1c44bd9738f8333eff9
+    - name: WaterBomb_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 2
+        y: 31
+        width: 75
+        height: 65
+      spriteId: 0e6cda76edc40f147b20721d02560b29
+    - name: WaterBomb_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 2
+        y: 31
+        width: 75
+        height: 65
+      spriteId: 244f5220b9d0dec43b8a0f3ab141f0d9
+    - name: WaterBomb_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 4
+        y: 31
+        width: 72
+        height: 65
+      spriteId: 96888dc032436054997b1ae05b6756ca
+    - name: WaterBomb_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 35
+        y: 51
+        width: 9
+        height: 45
+      spriteId: c728d9da929f7f3418e4411f2ce49e94
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 80, y: 96}
