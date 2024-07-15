@@ -8,7 +8,6 @@ public class Flag : MonoBehaviour
     public int _idFlag;
     public int _direction = 1;
     public AudioClip _saveSound;
-    public GameObject _saveEffect;
     bool _playerTriggered;
     Animator _animation;
     Player _player;
@@ -63,7 +62,6 @@ public class Flag : MonoBehaviour
         GameManager.instance._direction = _direction;
 
         _audio.PlayOneShot(_saveSound);
-        Instantiate(_saveEffect, _player.transform.position, Quaternion.identity);
         GameManager.instance.SaveGame();
     }
 

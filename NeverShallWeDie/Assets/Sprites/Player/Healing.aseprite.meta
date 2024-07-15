@@ -121,14 +121,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Healing_Frame_0
     originalName: 
-    pivot: {x: 0.60714287, y: 0.55172414}
+    pivot: {x: 0.5666667, y: 0.55172414}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 80
-      width: 28
+      x: 53
+      y: 139
+      width: 30
       height: 29
     spriteID: e512ed5078717d44faa4d96f090810bb
     spriteBone: []
@@ -138,18 +138,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 80}
+    uvTransform: {x: 53, y: 139}
   - name: Healing_Frame_1
     originalName: 
-    pivot: {x: 0.60714287, y: 0.53333336}
+    pivot: {x: 0.51515156, y: 0.53125}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
-      width: 28
-      height: 30
+      x: 91
+      y: 44
+      width: 33
+      height: 32
     spriteID: ea9499474c4bde741a17f4f2938e2740
     spriteBone: []
     spriteOutline: []
@@ -158,18 +158,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 91, y: 44}
   - name: Healing_Frame_2
     originalName: 
-    pivot: {x: 0.60714287, y: 0.55172414}
+    pivot: {x: 0.60714287, y: 0.43243244}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 40
-      y: 4
+      x: 53
+      y: 94
       width: 28
-      height: 29
+      height: 37
     spriteID: 377d093ab064ce5418551dcb34e82ccb
     spriteBone: []
     spriteOutline: []
@@ -178,18 +178,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 4}
+    uvTransform: {x: 53, y: 94}
   - name: Healing_Frame_3
     originalName: 
-    pivot: {x: 0.60714287, y: 0.53333336}
+    pivot: {x: 0.5666667, y: 0.4047619}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 42
-      width: 28
-      height: 30
+      x: 53
+      y: 44
+      width: 30
+      height: 42
     spriteID: 4584f4e0e2b3ab5409cde5ad09e3b2c6
     spriteBone: []
     spriteOutline: []
@@ -198,7 +198,127 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 42}
+    uvTransform: {x: 53, y: 44}
+  - name: Healing_Frame_4
+    originalName: 
+    pivot: {x: 0.44736844, y: 0.39534885}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 105
+      width: 38
+      height: 43
+    spriteID: 60e028ec8b52e194791d6c2b7bbeb4ff
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 105}
+  - name: Healing_Frame_5
+    originalName: 
+    pivot: {x: 0.41463417, y: 0.5625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 53
+      y: 4
+      width: 41
+      height: 32
+    spriteID: be963ca41262f304aae898f1aaa53293
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 53, y: 4}
+  - name: Healing_Frame_6
+    originalName: 
+    pivot: {x: 0.41463417, y: 0.54545456}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 203
+      width: 41
+      height: 33
+    spriteID: bad696e2756e2e946b7facb258ee63c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 203}
+  - name: Healing_Frame_7
+    originalName: 
+    pivot: {x: 0.41463417, y: 0.46153846}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 156
+      width: 41
+      height: 39
+    spriteID: 8ce6d84dd11eade46bc1fac62f8f6bb6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 156}
+  - name: Healing_Frame_8
+    originalName: 
+    pivot: {x: 0.41463417, y: 0.41860464}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 41
+      height: 43
+    spriteID: 6739df967bd73ec44b13382b2cc3411d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Healing_Frame_9
+    originalName: 
+    pivot: {x: 0.41463417, y: 0.3809524}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 55
+      width: 41
+      height: 42
+    spriteID: afa518e90ed6a554bb916dae67fdd04d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 55}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -213,16 +333,16 @@ ScriptedImporter:
       cellRect:
         x: 23
         y: 16
-        width: 28
+        width: 30
         height: 29
       spriteId: e512ed5078717d44faa4d96f090810bb
     - name: Healing_Frame_1
       frameIndex: 1
       cellRect:
         x: 23
-        y: 16
-        width: 28
-        height: 30
+        y: 15
+        width: 33
+        height: 32
       spriteId: ea9499474c4bde741a17f4f2938e2740
     - name: Healing_Frame_2
       frameIndex: 2
@@ -230,16 +350,64 @@ ScriptedImporter:
         x: 23
         y: 16
         width: 28
-        height: 29
+        height: 37
       spriteId: 377d093ab064ce5418551dcb34e82ccb
     - name: Healing_Frame_3
       frameIndex: 3
       cellRect:
         x: 23
-        y: 16
-        width: 28
-        height: 30
+        y: 15
+        width: 30
+        height: 42
       spriteId: 4584f4e0e2b3ab5409cde5ad09e3b2c6
+    - name: Healing_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 23
+        y: 15
+        width: 38
+        height: 43
+      spriteId: 60e028ec8b52e194791d6c2b7bbeb4ff
+    - name: Healing_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 23
+        y: 14
+        width: 41
+        height: 32
+      spriteId: be963ca41262f304aae898f1aaa53293
+    - name: Healing_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 23
+        y: 14
+        width: 41
+        height: 33
+      spriteId: bad696e2756e2e946b7facb258ee63c3
+    - name: Healing_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 23
+        y: 14
+        width: 41
+        height: 39
+      spriteId: 8ce6d84dd11eade46bc1fac62f8f6bb6
+    - name: Healing_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 23
+        y: 14
+        width: 41
+        height: 43
+      spriteId: 6739df967bd73ec44b13382b2cc3411d
+    - name: Healing_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 23
+        y: 16
+        width: 41
+        height: 42
+      spriteId: afa518e90ed6a554bb916dae67fdd04d
     linkedCells: []
     parentIndex: -1
   platformSettings:

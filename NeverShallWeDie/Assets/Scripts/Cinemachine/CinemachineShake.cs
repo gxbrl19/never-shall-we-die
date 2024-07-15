@@ -26,7 +26,7 @@ public class CinemachineShake : MonoBehaviour
     {
         f_tranposer = _cineVC.GetCinemachineComponent<CinemachineFramingTransposer>();
 
-        if (_oneCamScene)
+        /*if (_oneCamScene)
         {
             //2.37037 21:9
             //1.333333 4:3
@@ -44,7 +44,7 @@ public class CinemachineShake : MonoBehaviour
             {
                 _cineVC.m_Lens.OrthographicSize = 8;
             }
-        }
+        }*/
     }
 
     private void Update()

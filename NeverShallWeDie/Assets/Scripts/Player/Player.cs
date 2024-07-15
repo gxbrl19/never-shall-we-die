@@ -118,6 +118,7 @@ public class Player : MonoBehaviour
 
     //Particles
     [SerializeField][Header("Particles")][BoxGroup("GameObjects")] private GameObject _dust;
+    [SerializeField][BoxGroup("GameObjects")] private GameObject _recoveryEffect;
 
     [HideInInspector] public bool _isGrounded;
     [HideInInspector] public bool _isDoubleJumping = false;
@@ -160,7 +161,7 @@ public class Player : MonoBehaviour
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
         //if (!PlayerSkills.instance.skills.Contains(Skills.AirCut)) { PlayerSkills.instance.skills.Add(Skills.AirCut); }
         //if (!PlayerSkills.instance.skills.Contains(Skills.Tornado)) { PlayerSkills.instance.skills.Add(Skills.Tornado); }
@@ -486,7 +487,7 @@ public class Player : MonoBehaviour
             return;
 
         if ((_input.isAttacking || _input.isAirCuting || _input.isTornado) && !_onWater && !_onAcid)
-        {          
+        {
             if (!_isGrounded)
             {
                 _body.velocity = Vector2.zero;
@@ -677,8 +678,8 @@ public class Player : MonoBehaviour
 
         if (_isSliding && ((_timeSlide < _limitSlide) || _hitSlide)) //_hitSlide verifica se ainda tem GroundLayer em cima
         {
-            
-            DisableControls();;
+
+            DisableControls(); ;
             _timeSlide += Time.deltaTime;
             if (_direction < 0) { _body.velocity = Vector2.left * _slideForce; }
             else if (_direction > 0) { _body.velocity = Vector2.right * _slideForce; }
@@ -893,6 +894,11 @@ public class Player : MonoBehaviour
         _dust.transform.localScale = _scale;
 
         Instantiate(_dust, _position, Quaternion.identity);
+    }
+
+    public void CreateRecoveryEffect()
+    {
+        Instantiate(_recoveryEffect, transform.position, Quaternion.identity);
     }
 
     RaycastHit2D Raycast(Vector2 offset, Vector2 rayDirection, float length, LayerMask layerMask)

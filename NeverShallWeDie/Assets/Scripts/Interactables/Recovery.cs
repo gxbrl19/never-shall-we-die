@@ -41,6 +41,7 @@ public class Recovery : MonoBehaviour
             _audio.Play();
             _sprite.enabled = false;
             _collider.enabled = false;
+            _player.CreateRecoveryEffect();
             _health._currentMana = _health._maxMana;
             _health.SetMana(_health._currentMana);
         }
