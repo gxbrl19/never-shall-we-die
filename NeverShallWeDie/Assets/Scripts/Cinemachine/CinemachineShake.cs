@@ -25,26 +25,6 @@ public class CinemachineShake : MonoBehaviour
     private void Start()
     {
         f_tranposer = _cineVC.GetCinemachineComponent<CinemachineFramingTransposer>();
-
-        /*if (_oneCamScene)
-        {
-            //2.37037 21:9
-            //1.333333 4:3
-            //1.777778 16:9
-            float _screenWidth = Screen.width;
-            float _screenHeight = Screen.height;
-
-            GameManager.instance._aspectRadio = _screenWidth / _screenHeight;
-
-            if (GameManager.instance._aspectRadio > 2f)
-            {
-                _cineVC.m_Lens.OrthographicSize = 6;
-            }
-            else
-            {
-                _cineVC.m_Lens.OrthographicSize = 8;
-            }
-        }*/
     }
 
     private void Update()
@@ -64,6 +44,26 @@ public class CinemachineShake : MonoBehaviour
         {
             f_tranposer.m_TrackedObjectOffset.x = _offset_x;
             f_tranposer.m_TrackedObjectOffset.y = _offset_y;
+        }
+
+
+        //Ortho Size Cam   
+        ChangeOrthoSizeCam();
+    }
+
+    void ChangeOrthoSizeCam()
+    {
+        if (_oneCamScene)
+        {
+            //2.37037 21:9
+            //1.333333 4:3
+            //1.777778 16:9
+            float _screenWidth = Screen.width;
+            float _screenHeight = Screen.height;
+            float _aspectRadio;
+
+            _aspectRadio = _screenWidth / _screenHeight;
+            _cineVC.m_Lens.OrthographicSize = _aspectRadio > 2f ? 6 : 8;
         }
     }
 

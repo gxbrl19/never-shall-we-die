@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Sound")] public float _sfxVol;
 
     [HideInInspector] public string _inputType;
-    [HideInInspector] public float _aspectRadio; //pega a proporção da tela
 
     private string _path; //caminho para salvar o arquivo
 

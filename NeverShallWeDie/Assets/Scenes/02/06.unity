@@ -8210,6 +8210,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bb256b874137c841b4f12d58672b9c5, type: 3}
+--- !u!4 &573932584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1227248344232258055, guid: 3bb256b874137c841b4f12d58672b9c5, type: 3}
+  m_PrefabInstance: {fileID: 573932583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &637829838
 GameObject:
   m_ObjectHideFlags: 0
@@ -27873,7 +27878,6 @@ MonoBehaviour:
   _musicVol: 0
   _sfxVol: 0
   _inputType: 
-  _aspectRadio: 0
 --- !u!4 &946359268
 Transform:
   m_ObjectHideFlags: 0
@@ -34442,7 +34446,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1883681277}
   - component: {fileID: 1883681276}
-  - component: {fileID: 1883681275}
   - component: {fileID: 1883681274}
   m_Layer: 0
   m_Name: CM vcam0 (1)
@@ -34468,21 +34471,6 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 930666033}
   m_ConfineScreenEdges: 1
   m_Damping: 0
---- !u!114 &1883681275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883681273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 502524965f6e9a747b2553f3c5954b70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _oneCamScene: 0
-  _offset_x: 0
-  _offset_y: 0
 --- !u!114 &1883681276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34502,10 +34490,10 @@ MonoBehaviour:
   m_Priority: 9
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 573932584}
   m_Lens:
     FieldOfView: 80
-    OrthographicSize: 8
+    OrthographicSize: 6
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -34531,7 +34519,7 @@ Transform:
   m_GameObject: {fileID: 1883681273}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.7, y: -42.482002, z: -5}
+  m_LocalPosition: {x: 11.52, y: -43, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -34646,7 +34634,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 75.87778
+      value: 71.13704
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y
