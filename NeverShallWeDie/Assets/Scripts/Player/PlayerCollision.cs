@@ -70,7 +70,7 @@ public class PlayerCollision : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
         RaycastHit2D _hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, _distanceBox, _boxLayer);
 
-        if (_hit)
+        if (_hit && _player._isGrounded)
         {
             _player._canGrab = true;
         }
