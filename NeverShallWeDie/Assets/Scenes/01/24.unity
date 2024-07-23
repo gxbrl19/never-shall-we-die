@@ -14728,7 +14728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502524965f6e9a747b2553f3c5954b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _oneCamScene: 0
+  _oneCamScene: 1
   _offset_x: 0
   _offset_y: 0
 --- !u!114 &239819007
@@ -15325,8 +15325,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.6622001, y: -0.90505, z: 0}
-    m_Extent: {x: 2.4492002, y: 2.23575, z: 0}
+    m_Center: {x: -1.6620499, y: -0.90525, z: 0}
+    m_Extent: {x: 2.44945, y: 2.23595, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -37115,8 +37115,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.6619499, y: -0.9052, z: 0}
-    m_Extent: {x: 2.44925, y: 2.2358, z: 0}
+    m_Center: {x: -1.6619501, y: -0.90535, z: 0}
+    m_Extent: {x: 2.44875, y: 2.2360501, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -37674,7 +37674,9 @@ MonoBehaviour:
   _gold: 0
   _flags: 
   _barrels: 
+  _chests: 
   _airCutblock: 
+  _barriersLever: 
   _checkpointScene: 0
   _direction: 0
   _navigator: 
@@ -37688,7 +37690,6 @@ MonoBehaviour:
   _musicVol: 0
   _sfxVol: 0
   _inputType: 
-  _aspectRadio: 0
 --- !u!4 &1197791755
 Transform:
   m_ObjectHideFlags: 0
@@ -39114,7 +39115,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 90
-      m_TileSpriteIndex: 20
+      m_TileSpriteIndex: 28
       m_TileMatrixIndex: 0
       m_TileColorIndex: 6
       m_TileObjectToInstantiateIndex: 65535
@@ -39365,24 +39366,24 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -680101113, guid: 77a294411219f8643ab04023e969af42, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -1222924971, guid: 77a294411219f8643ab04023e969af42, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 3
     m_Data:
@@ -39451,7 +39452,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.712223
+      value: 18.720001
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y

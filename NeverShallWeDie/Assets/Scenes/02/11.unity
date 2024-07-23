@@ -10721,7 +10721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502524965f6e9a747b2553f3c5954b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _oneCamScene: 0
+  _oneCamScene: 1
   _offset_x: 0
   _offset_y: 0
 --- !u!114 &239819007
@@ -10839,10 +10839,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 21, y: -2.97}
+    - - {x: 9.95, y: -2.97}
       - {x: -18.51, y: -2.97}
       - {x: -18.51, y: -19.04}
-      - {x: 21, y: -19.04}
+      - {x: 9.95, y: -19.04}
   m_UseDelaunayMesh: 0
 --- !u!1 &324969967
 GameObject:
@@ -11066,7 +11066,6 @@ MonoBehaviour:
   _musicVol: 0
   _sfxVol: 0
   _inputType: 
-  _aspectRadio: 0
 --- !u!4 &654701005
 Transform:
   m_ObjectHideFlags: 0
@@ -19170,7 +19169,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.712223
+      value: 18.720001
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y
