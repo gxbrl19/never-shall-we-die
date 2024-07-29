@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class SkillPickup : MonoBehaviour
 {
@@ -35,7 +34,7 @@ public class SkillPickup : MonoBehaviour
 
     void Update()
     {
-        //verifica se o player já tem a habilidade e desativa o baú
+        //verifica se o player jÃ¡ tem a habilidade e desativa o prefab
         for (int i = 0; i < PlayerSkills.instance.skills.Count; i++)
         {
             if (PlayerSkills.instance.skills[i] == _skill)
@@ -45,11 +44,10 @@ public class SkillPickup : MonoBehaviour
         }
 
         //verifica o input
-        if (_input.vertical == 1 && _triggered)
+        if (_input.interact && _triggered)
         {
             DisableSkill();
-
-            Invoke("NewSkill", 0.5f); //da um delay para a animação de nova skill      
+            Invoke("NewSkill", 0.5f); //da um delay para a animaÃ§Ã£o de nova skill
         }
     }
 

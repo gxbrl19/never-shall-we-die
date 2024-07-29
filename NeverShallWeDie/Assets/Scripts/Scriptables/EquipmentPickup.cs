@@ -26,7 +26,7 @@ public class EquipmentPickup : MonoBehaviour
         _player = FindFirstObjectByType<Player>();
         _input = _player.GetComponent<PlayerInputs>();
 
-        //dados da skill
+        //dados do equipamento
         _equipment = _equipmentObject.equipment;
         _pickedSprite = _equipmentObject.sprite;
         _name = _equipmentObject.name;
@@ -34,7 +34,7 @@ public class EquipmentPickup : MonoBehaviour
 
     void Update()
     {
-        //verifica se o player já tem a habilidade e desativa o prefab
+        //verifica se o player já tem o equipamento e desativa o prefab
         for (int i = 0; i < PlayerEquipment.instance.equipments.Count; i++)
         {
             if (PlayerEquipment.instance.equipments[i] == _equipment) { DisableSkill(); }
@@ -44,7 +44,7 @@ public class EquipmentPickup : MonoBehaviour
         if (_input.interact && _triggered)
         {
             DisableSkill();
-            Invoke("NewSkill", 0.5f); //da um delay para a animação de nova skill      
+            Invoke("NewSkill", 0.5f); //da um delay para a animação de novo equipamento
         }
     }
 
