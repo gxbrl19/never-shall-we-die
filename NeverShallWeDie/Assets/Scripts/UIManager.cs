@@ -94,9 +94,11 @@ public class UIManager : MonoBehaviour
     [BoxGroup("AudioHUD")] public AudioClip _btnClick;
     [BoxGroup("AudioHUD")] public AudioClip _navigationBtn;
     [BoxGroup("AudioHUD")] public AudioClip _pauseBtn;
+    [BoxGroup("AudioHUD")] public AudioClip _buyMap;
     [BoxGroup("AudioHUD")] public float _clickVolume;
     [BoxGroup("AudioHUD")] public float _navigationVolume;
     [BoxGroup("AudioHUD")] public float _pauseVolume;
+    [BoxGroup("AudioHUD")] public float _buyMapVolume;
 
     Player _player;
     PlayerInputs _input;
@@ -441,6 +443,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance._maps[_mapBuyId] = 1;
             _pnlBuyMap.SetActive(false);
             GameManager.instance._gold -= _mapPrice;
+            PlaySound(_buyMap, _buyMapVolume);
         }
         else
         {

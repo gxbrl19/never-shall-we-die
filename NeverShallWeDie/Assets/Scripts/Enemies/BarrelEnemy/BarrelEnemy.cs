@@ -14,10 +14,12 @@ public class BarrelEnemy : MonoBehaviour
     bool _beginRoll = false;
     bool _isRolling = false;
     EnemyController _controller;
+    Transform _playerPosition;
 
     void Awake()
     {
         _controller = GetComponent<EnemyController>();
+        _playerPosition = FindObjectOfType<Player>().transform;
     }
 
     void Update()
@@ -39,7 +41,7 @@ public class BarrelEnemy : MonoBehaviour
     }
 
     public void FinishBeginRoll() //chamado na animação de BeginRoll
-    { 
+    {
         _beginRoll = false;
         _controller._animation.SetBool("DetectPlayer", false);
     }
@@ -50,12 +52,17 @@ public class BarrelEnemy : MonoBehaviour
             return;
 
         Vector2 _raycastDirection;
+        Vector2 _raycastBack;
         _raycastDirection = Vector2.right * transform.localScale.x;
+        _raycastBack = Vector2.left * transform.localScale.x;
         RaycastHit2D _hit = Physics2D.Raycast(transform.position, _raycastDirection, _raycastSize, _playerLayer);
-        if (_hit)
+        RaycastHit2D _hitBack = Physics2D.Raycast(transform.position, _raycastBack, _raycastSize, _playerLayer);
+        if (_hit || _hitBack)
         {
             _beginRoll = true;
             _detectPlayer = true;
+
+            if (_hitBack) { Flip(); }
         }
     }
 
@@ -83,5 +90,24 @@ public class BarrelEnemy : MonoBehaviour
         Vector2 _raycastDirection;
         _raycastDirection = Vector2.right * transform.localScale.x;
         Debug.DrawRay(transform.position, _raycastDirection * _raycastSize, Color.red);
+        
+        Vector2 _raycastBack;
+        _raycastBack = Vector2.left * transform.localScale.x;
+        Debug.DrawRay(transform.position, _raycastBack * _raycastSize, Color.red);
+    }
+
+    void Flip()
+    {
+        if (_isRolling)
+            return;
+
+        if (transform.position.x < _playerPosition.transform.position.x)
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
+        else if (transform.position.x > _playerPosition.transform.position.x)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
     }
 }
