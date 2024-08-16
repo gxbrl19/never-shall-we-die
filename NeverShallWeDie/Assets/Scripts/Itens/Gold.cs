@@ -21,8 +21,8 @@ public class Gold : MonoBehaviour
 
     private void Start()
     {
-        float x = Random.Range(-2f, 2f);
-        float y = Random.Range(4f, 6f);
+        float x = Random.Range(-3f, 3f);
+        float y = Random.Range(9f, 11f);
         _body.AddForce(new Vector2(x, y), ForceMode2D.Impulse);
         //Invoke("StopMovement", 0.3f);
     }

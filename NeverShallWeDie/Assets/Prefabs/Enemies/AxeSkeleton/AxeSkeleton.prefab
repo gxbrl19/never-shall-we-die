@@ -277,6 +277,7 @@ MonoBehaviour:
   _hitSound: {fileID: 0}
   _deadSound: {fileID: 0}
   _animation: {fileID: 0}
+  _audio: {fileID: 0}
   _playerLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -310,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 1668899868801883058, guid: a8c2747d4748ac8478988e385f1c3301, type: 3}
-  _interactable: 0
+  _dropPoint: {fileID: 2934158822736092450}
   _dropRate: 0
 --- !u!82 &21365757086570026
 AudioSource:

@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 3266877800437462400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.729, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -262,6 +262,7 @@ MonoBehaviour:
   _hitSound: {fileID: 8300000, guid: 5f05da1b9d607904190778d4f57c9c1d, type: 3}
   _deadSound: {fileID: 8300000, guid: 464efdaf9f319bd4fa15cee4cfe21adf, type: 3}
   _animation: {fileID: 0}
+  _audio: {fileID: 0}
 --- !u!114 &7793659646403794897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 62880426106912218, guid: a9adf4fda0599e24abf6d0d01f7fedf9, type: 3}
-  _interactable: 0
+  _dropPoint: {fileID: 3266877800437462401}
   _dropRate: 0
 --- !u!114 &3266877800644549773
 MonoBehaviour:

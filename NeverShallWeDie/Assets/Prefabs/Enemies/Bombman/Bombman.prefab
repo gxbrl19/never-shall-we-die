@@ -201,6 +201,7 @@ MonoBehaviour:
   _hitSound: {fileID: 8300000, guid: 5f05da1b9d607904190778d4f57c9c1d, type: 3}
   _deadSound: {fileID: 8300000, guid: 464efdaf9f319bd4fa15cee4cfe21adf, type: 3}
   _animation: {fileID: 0}
+  _audio: {fileID: 0}
 --- !u!114 &1208705192499544673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 62880426106912218, guid: a9adf4fda0599e24abf6d0d01f7fedf9, type: 3}
-  _interactable: 0
+  _dropPoint: {fileID: 3717038025535556846}
   _dropRate: 0
 --- !u!114 &4713748599425319506
 MonoBehaviour:
