@@ -31,7 +31,7 @@ public class BossController : MonoBehaviour
         _animation = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
 
-        UIManager.instance._txtBossName.text = _bossObject.name;
+        //UIManager.instance._txtBossName.text = _bossObject.name;
         _maxHealth = _bossObject.maxHealth;
         _bossID = _bossObject.bossID;
         _deadSound = _bossObject.deadSound;
@@ -46,7 +46,8 @@ public class BossController : MonoBehaviour
 
     void Update()
     {
-        UIManager.instance._healthBoss.fillAmount = _currentHealth / _maxHealth;
+        //if(UIManager.instance._pnlBoss.ac)
+        //UIManager.instance._healthBoss.fillAmount = _currentHealth / _maxHealth;
     }
 
     public void TakeDamage(int damage)

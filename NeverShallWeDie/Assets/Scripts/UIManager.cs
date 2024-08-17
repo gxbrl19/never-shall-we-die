@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private TextMeshProUGUI _txtInteract;
     [BoxGroup("HUD")][SerializeField] private GameObject _interact;
     [BoxGroup("HUD")][SerializeField] private GameObject _skullSave;
-    [BoxGroup("HUD")][SerializeField] private GameObject _pnlBoss;
+    [BoxGroup("HUD")] public GameObject _pnlBoss;
     [BoxGroup("HUD")] public Image _healthBoss;
     [BoxGroup("HUD")] public Text _txtBossName;
 
