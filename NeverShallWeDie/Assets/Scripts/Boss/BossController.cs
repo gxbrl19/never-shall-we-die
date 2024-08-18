@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossController : MonoBehaviour
 {
     public BossObject _bossObject;
+    bool _enabled;
 
     [HideInInspector] public string _name;
     [HideInInspector] public float _maxHealth;
@@ -31,7 +32,7 @@ public class BossController : MonoBehaviour
         _animation = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
 
-        //UIManager.instance._txtBossName.text = _bossObject.name;
+
         _maxHealth = _bossObject.maxHealth;
         _bossID = _bossObject.bossID;
         _deadSound = _bossObject.deadSound;
@@ -40,14 +41,17 @@ public class BossController : MonoBehaviour
 
         _currentHealth = _maxHealth;
         _isDead = false;
+        _enabled = false;
         _onHit = false;
         _defaultColor = _sprite.color;
     }
 
     void Update()
     {
-        //if(UIManager.instance._pnlBoss.ac)
-        //UIManager.instance._healthBoss.fillAmount = _currentHealth / _maxHealth;
+        if (_enabled == true)
+        {
+            UIManager.instance._healthBoss.fillAmount = _currentHealth / _maxHealth;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -71,6 +75,12 @@ public class BossController : MonoBehaviour
             UIManager.instance.BossDisabled();
             BackgroundMusic.instance.FinishBoss();
         }
+    }
+
+    public void EnabledUI()
+    {
+        _enabled = true;
+        UIManager.instance._txtBossName.text = _bossObject.name;
     }
 
     public void FinishHit() //chamado no TakeDamage()

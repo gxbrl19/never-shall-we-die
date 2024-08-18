@@ -38,8 +38,9 @@ public class BossTrigger : MonoBehaviour
             _bossDoor2._tiggered = true;
             _collider.enabled = false;
             _player.DisableControls();
-
+            
             UIManager.instance.BossEnabled();
+            _bossController.EnabledUI();
             BackgroundMusic.instance.BossMusic();
         }
     }
