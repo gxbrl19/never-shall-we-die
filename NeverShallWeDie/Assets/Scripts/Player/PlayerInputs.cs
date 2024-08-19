@@ -230,7 +230,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Healing(InputAction.CallbackContext _callback)
     {
-        if (_player._dead || _isAttacking || _isAirCuting || Time.timeScale == 0f || _player._onWater || _player._canMove == false)
+        if (_player._dead || !_player._isGrounded || _player._onHit || _isAttacking || _isAirCuting || Time.timeScale == 0f || _player._onWater || _player._canMove == false || _collision._onWall || _player._isGrabing || _player._isRolling || _player._isSliding)
             return;
 
         if (_callback.started)

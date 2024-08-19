@@ -25,9 +25,13 @@ public class Damager : MonoBehaviour
         else if (other.gameObject.layer == 9)
         { //Player
             PlayerHealth _playerHealth = other.GetComponent<PlayerHealth>();
+            Player _player = other.GetComponent<Player>();
 
             if (_playerHealth != null)
             {
+                //true seria o dano a direita e false o dano da esquerda
+                _player._knockback = other.transform.position.x < transform.position.x ? true: false;
+
                 _playerHealth.TakeDamage(_power);
             }
         }

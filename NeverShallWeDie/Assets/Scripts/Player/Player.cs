@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
     private float _grabSpeed = 2f;
 
     //Hit
+    [HideInInspector] public bool _knockback;
     private float _knockbackForce = 5f;
     [HideInInspector] public bool _onHit = false;
 
@@ -122,7 +123,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public bool _isGrounded;
     [HideInInspector] public bool _isDoubleJumping = false;
-    [HideInInspector] public bool _healing;
+     public bool _healing;
     [HideInInspector] public bool _isOnSlope;
     [HideInInspector] public bool _canGrab;
     [HideInInspector] public bool _isGrabing;
@@ -283,14 +284,14 @@ public class Player : MonoBehaviour
         float _xVelocity = 0f;
         float _yVelocity = 0f;
 
-        if (_isGrounded && !_isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_onAcid && !_input.isAttacking)
+        if (_isGrounded && !_isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_onAcid && !_input.isAttacking && !_healing)
         { //chão comum
             _xVelocity = _speed * _input.horizontal;
             _yVelocity = 0.0f;
             _body.velocity = new Vector2(_xVelocity, _yVelocity);
         }
-        else if (_isGrounded && _isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_onAcid)
-        { //escada diagonal
+        else if (_isGrounded && _isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_onAcid && !_healing)
+        { //diagonal
             _xVelocity = _speed * _slopeNormalPerp.x * -_input.horizontal;
             _yVelocity = _speed * _slopeNormalPerp.y * -_input.horizontal;
             _body.velocity = new Vector2(_xVelocity, _yVelocity);
@@ -390,7 +391,7 @@ public class Player : MonoBehaviour
 
     void JumpControl()
     {
-        if (_input.isJumping && (_isGrounded || _ghostTime > Time.time) && !_onWater && _input.vertical > -0.3f && !_onClimbing && !_inTornado) //pulo comum
+        if (_input.isJumping && (_isGrounded || _ghostTime > Time.time) && !_onWater && _input.vertical > -0.3f && !_onClimbing && !_inTornado && !_healing) //pulo comum
         {
             _isJumping = true;
             _input.isJumping = false;
@@ -861,25 +862,26 @@ public class Player : MonoBehaviour
 
         _input.OnHit(); //cancela os inputs quando toma dano
 
-        if (_direction < 0)
-        {
-            _input.horizontal = 0;
-            _body.velocity = Vector2.zero;
-            _body.AddForce(Vector2.right * _knockbackForce, ForceMode2D.Impulse);
-        }
-        else if (_direction > 0)
+        if (_knockback)
         {
             _input.horizontal = 0;
             _body.velocity = Vector2.zero;
             _body.AddForce(Vector2.left * _knockbackForce, ForceMode2D.Impulse);
         }
+        else
+        {
+            _input.horizontal = 0;
+            _body.velocity = Vector2.zero;
+            _body.AddForce(Vector2.right * _knockbackForce, ForceMode2D.Impulse);
+        }
     }
 
-    public void FinishKnockback()
-    { //chamado na animação de Hit     
+    public void FinishKnockback() //chamado na animação de Hit
+    {
         _onHit = false;
         _canMove = true;
         _health.FinishHit();
+        _knockback = false;
     }
     #endregion
 
