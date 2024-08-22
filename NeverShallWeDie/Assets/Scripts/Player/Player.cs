@@ -290,7 +290,7 @@ public class Player : MonoBehaviour
             _yVelocity = 0.0f;
             _body.velocity = new Vector2(_xVelocity, _yVelocity);
         }
-        else if (_isGrounded && _isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_onAcid && !_healing)
+        else if (_isGrounded && _isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_onAcid && !_healing & !_input.isAttacking)
         { //diagonal
             _xVelocity = _speed * _slopeNormalPerp.x * -_input.horizontal;
             _yVelocity = _speed * _slopeNormalPerp.y * -_input.horizontal;
@@ -379,7 +379,7 @@ public class Player : MonoBehaviour
             Debug.DrawRay(_hit.point, _hit.normal, Color.yellow);
         }
 
-        if (_isOnSlope && _input.horizontal == 0.0f)
+        if (_isOnSlope && (_input.horizontal == 0.0f || _isOnSlope && _input.isAttacking || _healing))
         {
             _body.sharedMaterial = _frictionMaterial;
         }
@@ -487,9 +487,10 @@ public class Player : MonoBehaviour
         if (_dead || !_canMove)
             return;
 
-        if (_input.isAttacking && _isGrounded) { _body.velocity = Vector2.zero; }
+        if ((_input.isAttacking && _isGrounded && !_onWater) || _healing) { _body.velocity = Vector2.zero; }
 
-        if ((_input.isAirCuting || _input.isTornado) && !_onWater && !_onAcid)
+        //para no ar
+        if (_input.isAirCuting || _input.isTornado)
         {
             if (!_isGrounded)
             {
