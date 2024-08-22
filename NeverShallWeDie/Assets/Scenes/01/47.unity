@@ -939,8 +939,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 70745961}
   _btnClick: {fileID: 8300000, guid: f0a14e9cf62052c4ab9fd28a833aa187, type: 3}
+  _navigationBtn: {fileID: 0}
   _pauseBtn: {fileID: 8300000, guid: d989b46cd18b9a24d9cd45f9d7944e5c, type: 3}
   _clickVolume: 0.5
+  _navigationVolume: 0
   _pauseVolume: 0.7
 --- !u!82 &70745961
 AudioSource:
@@ -16823,18 +16825,24 @@ MonoBehaviour:
   _equipments: 
   _skills: 
   _gold: 0
+  _flags: 
+  _barrels: 
+  _chests: 
+  _airCutblock: 
+  _barriersLever: 
+  _checkpointScene: 0
+  _direction: 0
+  _navigator: 
+  _shipwright: 
+  _witch: 
+  _blacksmith: 
+  _maps: 
+  _bestiary: 
+  _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
-  _prefsInput: 0
   _inputType: 
-  _stones: 
-  _flags: 
-  _airCutblock: 
-  _checkpointScene: 0
-  _direction: 0
-  _shipInitialPosition: {x: 0, y: 0, z: 0}
-  _currentPier: 
 --- !u!4 &1068377454
 Transform:
   m_ObjectHideFlags: 0
@@ -18015,8 +18023,8 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 5
-  m_DeadZoneWidth: 0.29
-  m_DeadZoneHeight: 0.13539824
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
@@ -18150,7 +18158,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.712221
+      value: 18.71508
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y

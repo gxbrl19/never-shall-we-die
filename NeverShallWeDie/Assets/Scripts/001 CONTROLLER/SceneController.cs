@@ -77,7 +77,7 @@ public class SceneController : MonoBehaviour
         _player.gameObject.layer = LayerMask.NameToLayer("PlayerDead");
         _player.gameObject.GetComponent<Player>().DisableControls();
         _player.gameObject.GetComponent<PlayerInputs>().enabled = false;
-        Invoke("SetGameOver", 2f);
+        Invoke("SetGameOver", 4f);
     }
 
     public void SetGameOver() //chamado no Invoke na função GameOver()

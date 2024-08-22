@@ -17924,8 +17924,8 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 5
-  m_DeadZoneWidth: 0.29
-  m_DeadZoneHeight: 0.13539824
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
@@ -17994,7 +17994,9 @@ MonoBehaviour:
   _gold: 0
   _flags: 
   _barrels: 
+  _chests: 
   _airCutblock: 
+  _barriersLever: 
   _checkpointScene: 0
   _direction: 0
   _navigator: 
@@ -18008,7 +18010,6 @@ MonoBehaviour:
   _musicVol: 0
   _sfxVol: 0
   _inputType: 
-  _aspectRadio: 0
 --- !u!4 &1756414798
 Transform:
   m_ObjectHideFlags: 0
@@ -18184,7 +18185,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.712223
+      value: 18.71508
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y

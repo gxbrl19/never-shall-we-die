@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Death_Frame_0
     originalName: 
-    pivot: {x: 0.6538462, y: 0.516129}
+    pivot: {x: 0.6774193, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 26
-      height: 31
+      width: 31
+      height: 28
     spriteID: 8c317ae27709b164bb168a2e3f64dd37
     spriteBone: []
     spriteOutline: []
@@ -141,15 +141,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Death_Frame_1
     originalName: 
-    pivot: {x: 0.6521739, y: 0.53333336}
+    pivot: {x: 0.969697, y: 1.0666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 43
-      width: 23
-      height: 30
+      y: 40
+      width: 33
+      height: 15
     spriteID: 90488922bdfbbf540b36f003dec7e195
     spriteBone: []
     spriteOutline: []
@@ -158,18 +158,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 43}
+    uvTransform: {x: 4, y: 40}
   - name: Death_Frame_2
     originalName: 
-    pivot: {x: 0.5714286, y: 0.5925926}
+    pivot: {x: 1, y: 1.0666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 81
-      width: 21
-      height: 27
+      y: 63
+      width: 33
+      height: 15
     spriteID: 85e0b3999d7ea904da36b908fbf60c4e
     spriteBone: []
     spriteOutline: []
@@ -178,18 +178,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 81}
+    uvTransform: {x: 4, y: 63}
   - name: Death_Frame_3
     originalName: 
-    pivot: {x: 0.5714286, y: 0.64}
+    pivot: {x: 1, y: 1.7777778}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 38
-      y: 33
-      width: 21
-      height: 25
+      x: 4
+      y: 86
+      width: 33
+      height: 9
     spriteID: 49ad01056831a4045a4d47734ea77b09
     spriteBone: []
     spriteOutline: []
@@ -198,127 +198,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 38, y: 33}
-  - name: Death_Frame_4
-    originalName: 
-    pivot: {x: 0.5714286, y: 0.64}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 38
-      y: 66
-      width: 21
-      height: 25
-    spriteID: 92b2f9a79707480408e18e96e401f783
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 38, y: 66}
-  - name: Death_Frame_5
-    originalName: 
-    pivot: {x: 0.5714286, y: 0.64}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 38
-      y: 99
-      width: 21
-      height: 25
-    spriteID: bb49bad68aac8c14193904f4b107b688
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 38, y: 99}
-  - name: Death_Frame_6
-    originalName: 
-    pivot: {x: 0.3448276, y: 0.7619048}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 38
-      y: 4
-      width: 29
-      height: 21
-    spriteID: 2cb604e94e319a240928afc05ed9de2a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 38, y: 4}
-  - name: Death_Frame_7
-    originalName: 
-    pivot: {x: 0.2857143, y: 2.4285715}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 75
-      y: 4
-      width: 35
-      height: 7
-    spriteID: a8dd3045f3ac17a4d924101796dfc1e9
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 75, y: 4}
-  - name: Death_Frame_8
-    originalName: 
-    pivot: {x: 0.2857143, y: 2.6666667}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 75
-      y: 19
-      width: 35
-      height: 6
-    spriteID: 852e37a679127c04ca80902de00815d0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 75, y: 19}
-  - name: Death_Frame_9
-    originalName: 
-    pivot: {x: 0.2857143, y: 2.6666667}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 75
-      y: 33
-      width: 35
-      height: 6
-    spriteID: 25e9817943fc11640a23a919e03cbbba
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 75, y: 33}
+    uvTransform: {x: 4, y: 86}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -331,83 +211,35 @@ ScriptedImporter:
     - name: Death_Frame_0
       frameIndex: 0
       cellRect:
-        x: 23
-        y: 16
-        width: 26
-        height: 31
+        x: 19
+        y: 18
+        width: 31
+        height: 28
       spriteId: 8c317ae27709b164bb168a2e3f64dd37
     - name: Death_Frame_1
       frameIndex: 1
       cellRect:
-        x: 25
+        x: 8
         y: 16
-        width: 23
-        height: 30
+        width: 33
+        height: 15
       spriteId: 90488922bdfbbf540b36f003dec7e195
     - name: Death_Frame_2
       frameIndex: 2
       cellRect:
-        x: 28
+        x: 7
         y: 16
-        width: 21
-        height: 27
+        width: 33
+        height: 15
       spriteId: 85e0b3999d7ea904da36b908fbf60c4e
     - name: Death_Frame_3
       frameIndex: 3
       cellRect:
-        x: 28
+        x: 7
         y: 16
-        width: 21
-        height: 25
+        width: 33
+        height: 9
       spriteId: 49ad01056831a4045a4d47734ea77b09
-    - name: Death_Frame_4
-      frameIndex: 4
-      cellRect:
-        x: 28
-        y: 16
-        width: 21
-        height: 25
-      spriteId: 92b2f9a79707480408e18e96e401f783
-    - name: Death_Frame_5
-      frameIndex: 5
-      cellRect:
-        x: 28
-        y: 16
-        width: 21
-        height: 25
-      spriteId: bb49bad68aac8c14193904f4b107b688
-    - name: Death_Frame_6
-      frameIndex: 6
-      cellRect:
-        x: 30
-        y: 16
-        width: 29
-        height: 21
-      spriteId: 2cb604e94e319a240928afc05ed9de2a
-    - name: Death_Frame_7
-      frameIndex: 7
-      cellRect:
-        x: 30
-        y: 15
-        width: 35
-        height: 7
-      spriteId: a8dd3045f3ac17a4d924101796dfc1e9
-    - name: Death_Frame_8
-      frameIndex: 8
-      cellRect:
-        x: 30
-        y: 16
-        width: 35
-        height: 6
-      spriteId: 852e37a679127c04ca80902de00815d0
-    - name: Death_Frame_9
-      frameIndex: 9
-      cellRect:
-        x: 30
-        y: 16
-        width: 35
-        height: 6
-      spriteId: 25e9817943fc11640a23a919e03cbbba
     linkedCells: []
     parentIndex: -1
   platformSettings:

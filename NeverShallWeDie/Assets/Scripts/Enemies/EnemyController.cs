@@ -57,7 +57,6 @@ public class EnemyController : MonoBehaviour
         _onHit = true;
         _currentHealth -= damage;
         _sprite.color = _damageColor;
-        //AudioItems.instance.PlaySound(AudioItems.instance._hitSound, AudioItems.instance._hitVolume);
         CinemachineShake.instance.ShakeCamera(3f, 0.15f); //tremida na camera
 
         if (_currentHealth > 0)
@@ -73,15 +72,10 @@ public class EnemyController : MonoBehaviour
 
             //da um pouco de mana ao player
             PlayerHealth _playerHealth = FindFirstObjectByType<PlayerHealth>();
-            _playerHealth.FillBottle(1.5f);
+            _playerHealth.FillBottle(3f);
         }
 
         Invoke("FinishHit", 0.3f);
-
-        /*if (_name == "Boar") {
-            Boar _boar = GetComponent<Boar>();
-            _boar.Knockback();
-        }*/
     }
 
     public void FinishHit() //chamado no TakeDamage()

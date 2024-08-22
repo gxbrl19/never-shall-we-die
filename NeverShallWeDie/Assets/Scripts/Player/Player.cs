@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public bool _isGrounded;
     [HideInInspector] public bool _isDoubleJumping = false;
-     public bool _healing;
+    public bool _healing;
     [HideInInspector] public bool _isOnSlope;
     [HideInInspector] public bool _canGrab;
     [HideInInspector] public bool _isGrabing;
@@ -487,7 +487,9 @@ public class Player : MonoBehaviour
         if (_dead || !_canMove)
             return;
 
-        if ((_input.isAttacking || _input.isAirCuting || _input.isTornado) && !_onWater && !_onAcid)
+        if (_input.isAttacking && _isGrounded) { _body.velocity = Vector2.zero; }
+
+        if ((_input.isAirCuting || _input.isTornado) && !_onWater && !_onAcid)
         {
             if (!_isGrounded)
             {
@@ -572,7 +574,7 @@ public class Player : MonoBehaviour
 
     void Flip()
     {
-        if (_dead || !_canMove || _isGrabing || _input.isAirCuting || _inWaterSpin)
+        if (_dead || !_canMove || _isGrabing || _input.isAirCuting || _inWaterSpin || _input.isAttacking)
             return;
 
         if (_isGrounded)

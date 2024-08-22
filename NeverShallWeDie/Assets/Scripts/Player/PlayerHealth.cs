@@ -69,7 +69,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (_currentHealth < 1)
         {
-            Time.timeScale = 0.5f;
+            //Time.timeScale = 0.5f;
             _isDead = true;
             _player._body.velocity = Vector2.zero;
             _player.OnDead();

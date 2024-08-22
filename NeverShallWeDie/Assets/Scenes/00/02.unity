@@ -12917,7 +12917,7 @@ Transform:
   m_GameObject: {fileID: 239819003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.77, y: -45.957, z: -5}
+  m_LocalPosition: {x: 7.77, y: -45.957, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20197,8 +20197,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1731112011}
   - component: {fileID: 1731112014}
-  - component: {fileID: 1731112013}
   - component: {fileID: 1731112012}
+  - component: {fileID: 1731112015}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -20238,7 +20238,19 @@ MonoBehaviour:
   m_AmplitudeGain: 0
   m_FrequencyGain: 1
   mNoiseOffsets: {x: 271.21136, y: -863.24316, z: 832.5543}
---- !u!114 &1731112013
+--- !u!114 &1731112014
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731112010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1731112015
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20260,9 +20272,9 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 5
-  m_DeadZoneWidth: 0.29
-  m_DeadZoneHeight: 0.13539824
+  m_CameraDistance: 10
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
@@ -20281,18 +20293,6 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
---- !u!114 &1731112014
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731112010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1751238292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20419,20 +20419,22 @@ MonoBehaviour:
   _gold: 0
   _flags: 
   _barrels: 
+  _chests: 
   _airCutblock: 
+  _barriersLever: 
   _checkpointScene: 0
   _direction: 0
   _navigator: 
   _shipwright: 
   _witch: 
   _blacksmith: 
+  _maps: 
   _bestiary: 
   _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
   _inputType: 
-  _aspectRadio: 0
 --- !u!4 &1883190977
 Transform:
   m_ObjectHideFlags: 0
@@ -20614,7 +20616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalRotation.w
