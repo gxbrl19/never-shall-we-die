@@ -116,7 +116,7 @@
             ],
             "bindings": [
                 {
-                    "name": "Arrow",
+                    "name": "AD",
                     "id": "34a34e10-4eef-4f65-808e-955f63343dd4",
                     "path": "1DAxis",
                     "interactions": "",
@@ -129,7 +129,7 @@
                 {
                     "name": "negative",
                     "id": "0e26c010-c03a-4007-92fc-867d0b4d8611",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -140,7 +140,7 @@
                 {
                     "name": "positive",
                     "id": "0c0ded9f-f20b-4de6-9a8f-e1b983b7c799",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -217,7 +217,7 @@
                 {
                     "name": "",
                     "id": "a6339739-1976-4eed-ac70-756bb06ffe62",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -239,7 +239,7 @@
                 {
                     "name": "",
                     "id": "d1875d92-6ae7-485f-99c3-afc3e13ea99b",
-                    "path": "<Keyboard>/x",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -272,7 +272,7 @@
                 {
                     "name": "",
                     "id": "d0af90e2-4d06-4402-b632-e26d95fc431c",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -294,7 +294,7 @@
                 {
                     "name": "",
                     "id": "adc54ed4-4511-4689-9456-7e84e07257bf",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -305,7 +305,7 @@
                 {
                     "name": "",
                     "id": "9f4711d7-0bc0-4709-9512-06f6ebaa592b",
-                    "path": "<Keyboard>/v",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -327,7 +327,7 @@
                 {
                     "name": "",
                     "id": "92e49fb8-9193-4578-8dbe-b27175b50ed8",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/u",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -347,7 +347,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Arrow",
+                    "name": "WS",
                     "id": "b3551397-e3b0-45b9-ba53-e5d8f6c22d92",
                     "path": "1DAxis",
                     "interactions": "",
@@ -360,7 +360,7 @@
                 {
                     "name": "negative",
                     "id": "17c4ff97-4645-444c-bc8e-38b9a20705a0",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -371,7 +371,7 @@
                 {
                     "name": "positive",
                     "id": "c982d3f9-0a37-4275-ab98-9d510ac8a7f8",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -448,7 +448,7 @@
                 {
                     "name": "",
                     "id": "fd82cbf5-db1d-4f9b-af7d-3712966cc2a0",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/o",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -470,7 +470,7 @@
                 {
                     "name": "",
                     "id": "e8727313-a393-4955-9451-f18141641cfa",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -523,6 +523,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Arrow",
+                    "id": "ad9db04e-9416-41bd-8239-edd32882fa74",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Stick Horizontal",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "daf1113c-4128-45e0-86ac-0bd276cebde2",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Stick Horizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "1259b3f6-0d07-452b-9ec0-6dec53e4e357",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Stick Horizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "Gamepad",
                     "id": "41c3d5a8-c0e3-4c0b-8831-bc980bf9771d",
                     "path": "1DAxis",
@@ -548,6 +581,39 @@
                     "name": "positive",
                     "id": "8ef278d9-6581-4ed4-8b6e-850f27598888",
                     "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RIght Stick Verical",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Arrow",
+                    "id": "8e85503a-469b-40b0-9535-9ee3be543b33",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RIght Stick Verical",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "53e8d85d-8998-4a05-a63f-5390289336a5",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RIght Stick Verical",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a643ca2a-0696-4762-b284-e4ceb05bd54f",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -314,7 +314,7 @@ public class PlayerInputs : MonoBehaviour
         if (_player._dead || !_player._isGrounded || _player._canMove == false || _isAttacking || _player._onWater || Time.timeScale == 0f)
             return;
 
-        if (_callback.started && !_player._canGrab)
+        if (_callback.started && !_player._canGrab && _horizontal != 0f)
         {
             _isRolling = true;
         }

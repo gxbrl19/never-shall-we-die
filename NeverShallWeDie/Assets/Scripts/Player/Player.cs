@@ -575,7 +575,7 @@ public class Player : MonoBehaviour
 
     void Flip()
     {
-        if (_dead || !_canMove || _isGrabing || _input.isAirCuting || _inWaterSpin || _input.isAttacking)
+        if (_dead || !_canMove || _isGrabing || _input.isAirCuting || _inWaterSpin || _input.isAttacking || _isRolling)
             return;
 
         if (_isGrounded)
