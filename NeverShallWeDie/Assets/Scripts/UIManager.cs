@@ -24,10 +24,11 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private Text _healthTxt;
     [BoxGroup("HUD")][SerializeField] private Text _healingTxt;
     [BoxGroup("HUD")][SerializeField] private Text _txtGold;
+    [BoxGroup("HUD")][SerializeField] private Text _txtGoldBuy;
+    [BoxGroup("HUD")][SerializeField] private Animator _goldBuyAnimator;
     [BoxGroup("HUD")][SerializeField] private Image _fire;
     [BoxGroup("HUD")][SerializeField] private Image _air;
     [BoxGroup("HUD")][SerializeField] private Image _water;
-    [BoxGroup("HUD")][SerializeField] private TextMeshProUGUI _txtInteract;
     [BoxGroup("HUD")][SerializeField] private GameObject _interact;
     [BoxGroup("HUD")][SerializeField] private GameObject _skullSave;
     [BoxGroup("HUD")] public GameObject _pnlBoss;
@@ -444,6 +445,8 @@ public class UIManager : MonoBehaviour
             _pnlBuyMap.SetActive(false);
             GameManager.instance._gold -= _mapPrice;
             PlaySound(_buyMap, _buyMapVolume);
+            _txtGoldBuy.text = "-" + _mapPrice.ToString();
+            _goldBuyAnimator.SetTrigger("Start");
         }
         else
         {
@@ -493,16 +496,16 @@ public class UIManager : MonoBehaviour
         {
             if (_isPaused) { return; }
 
-            if (!_inMap)
+            if (!_inMap && GameManager.instance._maps[1] == 1) //só habilita quando tiver o mapa da ilha 1
             {
                 InMap();
+                SoundClick("Pause");
             }
-            else
+            else if (_inMap)
             {
                 CancelMap();
+                SoundClick("Pause");
             }
-
-            SoundClick("Pause");
         }
     }
 

@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
         //Crew
         _maps = new int[6];
-        _maps[0] = 1; //DEMO
+        _maps[0] = 1; //DEMO (o mapa do navio será atribuido quando liberar o Navegador no jogo final)
 
         //Enemies
         _bosses = new int[6];
