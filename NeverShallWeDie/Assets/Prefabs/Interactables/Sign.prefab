@@ -223,12 +223,8 @@ MonoBehaviour:
   _txtEnglish: Attack
   _btnSprite: {fileID: 533292271, guid: 8a9a77f8be3369542b5e82f994831f05, type: 3}
   _keySprite: {fileID: -1526911864, guid: 8a9a77f8be3369542b5e82f994831f05, type: 3}
-  _btnSprite2: {fileID: 0}
-  _keySprite2: {fileID: 0}
   _canvas: {fileID: 8982201690979557804}
   _btnImage: {fileID: 2825662714259686128}
-  _btnImage2: {fileID: 0}
-  _2buttons: {fileID: 0}
   _text: {fileID: 5150757135403313779}
 --- !u!1 &7084531310678385298
 GameObject:
@@ -265,8 +261,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.63}
-  m_SizeDelta: {x: 9.5974, y: 2.3068}
+  m_AnchoredPosition: {x: 0.0987, y: 2.786}
+  m_SizeDelta: {x: 7.537, y: 3.1179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2590122886778276692
 CanvasRenderer:
@@ -323,15 +319,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2
-  m_fontSizeBase: 2
+  m_fontSize: 1.5
+  m_fontSizeBase: 1.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
