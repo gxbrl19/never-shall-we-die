@@ -14,8 +14,8 @@ public class Gold : MonoBehaviour
     private void Awake()
     {
         _audio = GetComponent<AudioSource>();
-        _body = GetComponent<Rigidbody2D>();
-        _sprite = GetComponent<SpriteRenderer>();
+        _body = GetComponentInParent<Rigidbody2D>();
+        _sprite = GetComponentInParent<SpriteRenderer>();
         _trigger = GetComponent<Collider2D>();
     }
 
@@ -24,7 +24,6 @@ public class Gold : MonoBehaviour
         float x = Random.Range(-3f, 3f);
         float y = Random.Range(9f, 11f);
         _body.AddForce(new Vector2(x, y), ForceMode2D.Impulse);
-        //Invoke("StopMovement", 0.3f);
     }
 
     void StopMovement()
@@ -32,23 +31,9 @@ public class Gold : MonoBehaviour
         _body.velocity = Vector2.zero;
     }
 
-    /*private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            GameManager.instance._gold += 1;
-            _audio.Play();
-            //AudioItems.instance.PlaySound(_audio._goldSound, _audio._goldVolume);
-            _sprite.enabled = false;
-            _collider.enabled = false;
-            Instantiate(_goldEffect, transform.position, Quaternion.identity);
-            //Destroy(gameObject, 0.5f);
-        }
-    }*/
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
             GameManager.instance._gold += 1;
             _audio.Play();
