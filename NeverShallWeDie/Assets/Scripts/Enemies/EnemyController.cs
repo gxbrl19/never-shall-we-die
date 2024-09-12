@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     public int _currentHealth;
     public bool _onHit;
     public bool _isDead;
+    [SerializeField] GameObject _deathEffect;
     [SerializeField] AudioClip _hitSound;
     [SerializeField] AudioClip _deadSound;
     [HideInInspector] public Animator _animation;
@@ -71,6 +72,7 @@ public class EnemyController : MonoBehaviour
             _audio.PlayOneShot(_deadSound);
 
             //da um pouco de mana ao player
+            Instantiate(_deathEffect, transform.position, Quaternion.identity);
             PlayerHealth _playerHealth = FindFirstObjectByType<PlayerHealth>();
             _playerHealth.FillBottle(3f);
         }
