@@ -909,10 +909,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 4227336
+    m_Bits: 4227400
   _slopeLayer:
     serializedVersion: 2
     m_Bits: 256
+  _iceLayer:
+    serializedVersion: 2
+    m_Bits: 64
   _ladderLayer:
     serializedVersion: 2
     m_Bits: 8192
@@ -926,6 +929,7 @@ MonoBehaviour:
   _newSkill: {fileID: 4311861710362157515}
   _noFrictionMaterial: {fileID: 6200000, guid: a7b70eb610115da4298050a8df16cfc7, type: 2}
   _frictionMaterial: {fileID: 6200000, guid: ea23e2b1dbfa7924bb44eac0bbde01b9, type: 2}
+  _iceMaterial: {fileID: 6200000, guid: c8f0b295e3a5e4e4599fbac923f81173, type: 2}
   _scriptablePosition: {fileID: 11400000, guid: f39253ef9bb01d94299a5a95310a731c, type: 2}
   _powerPickup: {fileID: 9056689326667320452}
   _direction: 1
@@ -939,7 +943,7 @@ MonoBehaviour:
   _onHit: 0
   _canSwin: 1
   _onWater: 0
-  _onAcid: 0
+  _onIce: 0
   _timeForSkills: 0
   _timeWaterSpin: 0
   _inWaterSpin: 0
@@ -1016,12 +1020,6 @@ MonoBehaviour:
   _waterLayer:
     serializedVersion: 2
     m_Bits: 16
-  _outAcidHit: 0
-  _inAcidHit: 0
-  _dropAcid: {fileID: 9192269212389312563, guid: eb51fd3f9dd891e44bc2404b016e6152, type: 3}
-  _acidLayer:
-    serializedVersion: 2
-    m_Bits: 64
   _onWall: 0
   _climbLedgePoint: {fileID: 1601008547502738022}
   _groundLayer:

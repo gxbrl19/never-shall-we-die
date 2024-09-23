@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [BoxGroup("Components")] public SpriteRenderer _newSkill;
     [BoxGroup("Components")] public PhysicsMaterial2D _noFrictionMaterial;
     [BoxGroup("Components")] public PhysicsMaterial2D _frictionMaterial;
+    [BoxGroup("Components")] public PhysicsMaterial2D _iceMaterial;
     [BoxGroup("Components")] public PlayerPosition _scriptablePosition;
     [BoxGroup("GameObjects")] public GameObject _powerPickup;
 
@@ -93,7 +94,6 @@ public class Player : MonoBehaviour
     private float _swinLimit = 0.2f;
     [HideInInspector] public bool _canSwin = true;
     [HideInInspector] public bool _onWater;
-    [HideInInspector] public bool _onAcid;
 
     //Skills
     [HideInInspector] public float _timeForSkills;
@@ -250,9 +250,10 @@ public class Player : MonoBehaviour
             RaycastHit2D _leftFoot = Raycast(new Vector2(-_footOffset, -_groundOffset), Vector2.down, _groundDistance, _groundLayer);
             RaycastHit2D _rightFoot = Raycast(new Vector2(_footOffset, -_groundOffset), Vector2.down, _groundDistance, _groundLayer);
 
-            if ((_leftFoot || _rightFoot) && !_bridgeHit && !_onClimbing)
+            _isGrounded = _leftFoot || _rightFoot;
+
+            if (_isGrounded && !_bridgeHit && !_onClimbing)
             {
-                _isGrounded = true;
                 _input.isParachuting = false;
                 _canDoubleJump = false;
             }
@@ -269,7 +270,7 @@ public class Player : MonoBehaviour
         }
 
         //gravidade na água
-        if (_onWater || _onAcid)
+        if (_onWater)
         {
             _body.gravityScale = _waterGravity;
         }
@@ -284,32 +285,32 @@ public class Player : MonoBehaviour
         float _xVelocity = 0f;
         float _yVelocity = 0f;
 
-        if (_isGrounded && !_isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_onAcid && !_input.isAttacking && !_healing)
-        { //chão comum
+        if (_isGrounded && !_isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_input.isAttacking && !_healing) //chão comum
+        {
             _xVelocity = _speed * _input.horizontal;
             _yVelocity = 0.0f;
             _body.velocity = new Vector2(_xVelocity, _yVelocity);
         }
-        else if (_isGrounded && _isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_onAcid && !_healing & !_input.isAttacking)
-        { //diagonal
+        else if (_isGrounded && _isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_healing & !_input.isAttacking) //diagonal
+        {
             _xVelocity = _speed * _slopeNormalPerp.x * -_input.horizontal;
             _yVelocity = _speed * _slopeNormalPerp.y * -_input.horizontal;
             _body.velocity = new Vector2(_xVelocity, _yVelocity);
         }
-        else if (_isGrounded && _isGrabing && !_isOnSlope && !_isJumping)
-        { //empurrando caixa
+        else if (_isGrounded && _isGrabing && !_isOnSlope && !_isJumping) //empurrando caixa
+        {
             _xVelocity = _grabSpeed * _input.horizontal;
             _yVelocity = _body.velocity.y;
             _body.velocity = new Vector2(_xVelocity, _yVelocity);
         }
-        else if (!_isGrounded && !_onWater && !_onAcid)
-        { //no ar
+        else if (!_isGrounded && !_onWater) //no ar
+        {
             _xVelocity = _speed * _input.horizontal;
             _yVelocity = _body.velocity.y;
             _body.velocity = new Vector2(_xVelocity, _yVelocity);
         }
-        else if (_onWater || _onAcid)
-        { //na água        
+        else if (_onWater) //na água
+        {
             _xVelocity = _waterSpeed * _input.horizontal;
             _yVelocity = _body.velocity.y;
             _body.velocity = new Vector2(_xVelocity, _yVelocity);
@@ -405,7 +406,7 @@ public class Player : MonoBehaviour
             _audio.PlayAudio(_audio._jump);
             CreateDust(1);
         }
-        else if (_input.isJumping && _onWater && !_onAcid && _canSwin && !_collision._onWall) // na água
+        else if (_input.isJumping && _onWater && _canSwin && !_collision._onWall) // na água
         {
             if (_collision._outWaterHit && _collision._inWaterHit)
             {
@@ -424,30 +425,11 @@ public class Player : MonoBehaviour
                 _canSwin = false;
             }
         }
-        else if (_input.isJumping && !_onWater && _onAcid && _canSwin && !_collision._onWall) // no acido
-        {
-            if (_collision._outAcidHit && _collision._inAcidHit)
-            {
-                _isJumping = true;
-                _input.isJumping = false;
-                _body.velocity = Vector2.zero;
-                _body.AddForce(Vector2.up * _jumpOutWater, ForceMode2D.Impulse);
-                _jumpTime = Time.time + _jumpHoldDuration;
-                _ghostTime = Time.time;
-                _audio.PlayAudio(_audio._jump);
-            }
-            else if (!_collision._outAcidHit && _collision._inAcidHit)
-            {
-                _body.velocity = Vector2.zero;
-                _body.AddForce(Vector2.up * _swimForce, ForceMode2D.Impulse);
-                _canSwin = false;
-            }
-        }
         else if (_input.isJumping && _input.vertical <= -0.3f && !_onClimbing) // pulo por baixo da plataforma
         {
             PassThroughBridge();
         }
-        else if (_input.isJumping && _collision._onWall && !_isGrounded && !_onWater && !_onAcid) // pulo parede 
+        else if (_input.isJumping && _collision._onWall && !_isGrounded && !_onWater) // pulo parede 
         {
             _isJumping = true;
             _input.isJumping = false;
@@ -525,7 +507,7 @@ public class Player : MonoBehaviour
 
     void OnWater()
     {
-        if (_dead || (!_onWater && !_onAcid))
+        if (_dead || !_onWater)
             return;
 
         if (!_canSwin)
@@ -547,7 +529,6 @@ public class Player : MonoBehaviour
     public void OnDead()
     {
         _dead = true;
-        //_body.velocity = Vector2.zero;
         _input.horizontal = 0;
         DisableControls();
         _animation.OnDead();
@@ -557,7 +538,6 @@ public class Player : MonoBehaviour
     public void SetPowerPickup(Sprite sprite)
     {
         _newSkillCollected = true;
-        //_body.velocity = Vector2.zero;
         _input.horizontal = 0f;
         DisableControls();
         _animation.SetPowerPickup();
@@ -566,8 +546,8 @@ public class Player : MonoBehaviour
         _powerPickup.SetActive(true);
     }
 
-    void EndPowerPickup()
-    { //chamado na animação
+    void EndPowerPickup() //chamado na animação
+    {
         _newSkillCollected = false;
         EnabledControls();
         _powerPickup.SetActive(false);

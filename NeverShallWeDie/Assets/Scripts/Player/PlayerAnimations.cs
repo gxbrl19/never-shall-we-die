@@ -59,7 +59,7 @@ public class PlayerAnimations : MonoBehaviour
         _animation.SetBool("Healing", _player._healing);
 
         //Swim
-        if (_player._onAcid || _player._onWater) { _animation.SetBool("IsSwimming", true); } else { _animation.SetBool("IsSwimming", false); }
+        if (_player._onWater) { _animation.SetBool("IsSwimming", true); } else { _animation.SetBool("IsSwimming", false); }
 
         //Water Spin
         _animation.SetBool("WaterSpin", _player._inWaterSpin);

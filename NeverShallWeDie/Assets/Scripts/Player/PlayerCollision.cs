@@ -19,12 +19,6 @@ public class PlayerCollision : MonoBehaviour
     [BoxGroup("Water")] public GameObject _dropWater;
     [BoxGroup("Water")] public LayerMask _waterLayer;
 
-    //Acid
-    [HideInInspector] public bool _outAcidHit;
-    [HideInInspector] public bool _inAcidHit;
-    [BoxGroup("Acid")] public GameObject _dropAcid;
-    [BoxGroup("Acid")] public LayerMask _acidLayer;
-
     //Climb Ledge   
     private float _wallRayDistance = 0.24f;
     private BoxCollider2D _colliderClimbLedge;
@@ -61,7 +55,6 @@ public class PlayerCollision : MonoBehaviour
     {
         BoxMoveCheck();
         WaterCheck();
-        AcidCheck();
         WallCheck();
     }
 
@@ -111,24 +104,6 @@ public class PlayerCollision : MonoBehaviour
         else
         {
             _player._onWater = false;
-        }
-    }
-
-    void AcidCheck()
-    {
-        if (_player._dead)
-            return;
-
-        _outAcidHit = !Physics2D.OverlapCircle(_outWaterPoint.transform.position, _waterCheckRadius, _acidLayer);
-        _inAcidHit = Physics2D.OverlapCircle(_outWaterPoint.transform.position - _waterCheckDistance, _waterCheckRadius, _acidLayer);
-
-        if (_inAcidHit)
-        {
-            _player._onAcid = true;
-        }
-        else
-        {
-            _player._onAcid = false;
         }
     }
 
@@ -189,13 +164,6 @@ public class PlayerCollision : MonoBehaviour
 
             _player.EnterInWater();
         }
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Acid"))
-        {
-            _player._onAcid = true;
-            Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
-            Instantiate(_dropAcid, position, other.transform.rotation);
-        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -209,13 +177,6 @@ public class PlayerCollision : MonoBehaviour
             Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
             Instantiate(_dropWater, position, other.transform.rotation);
             _audio.PlayAudio(_audio._splash);
-        }
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Acid"))
-        {
-            _player._onAcid = false;
-            Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
-            Instantiate(_dropAcid, position, other.transform.rotation);
         }
     }
 
