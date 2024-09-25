@@ -250,10 +250,9 @@ public class Player : MonoBehaviour
             RaycastHit2D _leftFoot = Raycast(new Vector2(-_footOffset, -_groundOffset), Vector2.down, _groundDistance, _groundLayer);
             RaycastHit2D _rightFoot = Raycast(new Vector2(_footOffset, -_groundOffset), Vector2.down, _groundDistance, _groundLayer);
 
-            _isGrounded = _leftFoot || _rightFoot;
-
-            if (_isGrounded && !_bridgeHit && !_onClimbing)
+            if ((_leftFoot || _rightFoot) && !_bridgeHit && !_onClimbing)
             {
+                _isGrounded = true;
                 _input.isParachuting = false;
                 _canDoubleJump = false;
             }
