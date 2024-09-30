@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [BoxGroup("Components")] public SpriteRenderer _newSkill;
     [BoxGroup("Components")] public PhysicsMaterial2D _noFrictionMaterial;
     [BoxGroup("Components")] public PhysicsMaterial2D _frictionMaterial;
-    [BoxGroup("Components")] public PhysicsMaterial2D _iceMaterial;
     [BoxGroup("Components")] public PlayerPosition _scriptablePosition;
     [BoxGroup("GameObjects")] public GameObject _powerPickup;
 
@@ -121,7 +120,7 @@ public class Player : MonoBehaviour
     [SerializeField][Header("Particles")][BoxGroup("GameObjects")] private GameObject _dust;
     [SerializeField][BoxGroup("GameObjects")] private GameObject _recoveryEffect;
 
-    [HideInInspector] public bool _isGrounded;
+    public bool _isGrounded;
     [HideInInspector] public bool _isDoubleJumping = false;
     public bool _healing;
     [HideInInspector] public bool _isOnSlope;

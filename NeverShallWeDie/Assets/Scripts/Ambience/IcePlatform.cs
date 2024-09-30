@@ -14,9 +14,9 @@ public class IcePlatform : MonoBehaviour
         _animation = GetComponent<Animator>();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("PlayerFoot"))
         {
             _life -= 1;
             if (_life == 1) { _animation.SetBool("Collision", true); } else if (_life <= 0) { StartCoroutine(Break()); }
