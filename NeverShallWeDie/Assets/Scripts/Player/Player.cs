@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
     [SerializeField][Header("Particles")][BoxGroup("GameObjects")] private GameObject _dust;
     [SerializeField][BoxGroup("GameObjects")] private GameObject _recoveryEffect;
 
-    public bool _isGrounded;
+    [HideInInspector] public bool _isGrounded;
     [HideInInspector] public bool _isDoubleJumping = false;
     public bool _healing;
     [HideInInspector] public bool _isOnSlope;
