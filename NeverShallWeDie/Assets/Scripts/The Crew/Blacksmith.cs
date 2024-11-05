@@ -41,12 +41,8 @@ public class Blacksmith : MonoBehaviour
 
     public void NextState()
     {
-        //atribui o mapa do navio
-        if (GameManager.instance._blacksmith == "OTHER") { GameManager.instance._maps[0] = 1; }
-
-        //trocando o STATE do Navegador
+        //trocando o STATE do Ferreiro
         if (GameManager.instance._blacksmith == "MEET") { GameManager.instance._blacksmith = "QUEST"; }
-        else if (GameManager.instance._blacksmith == "COMPLETE") { GameManager.instance._blacksmith = "OTHER"; }
-        else if (GameManager.instance._blacksmith == "OTHER") { GameManager.instance._blacksmith = "CREW"; }
+        else if (GameManager.instance._blacksmith == "COMPLETE") { GameManager.instance._blacksmith = "CREW"; }
     }
 }

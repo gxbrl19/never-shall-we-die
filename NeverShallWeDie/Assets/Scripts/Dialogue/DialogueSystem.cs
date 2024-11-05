@@ -29,6 +29,9 @@ public class DialogueSystem : MonoBehaviour
     STATE state;
     Player _player;
     Navigator _navigator;
+    Blacksmith _blacksmith;
+    Witch _witch;
+    Shipwright _shipwright;
 
     private void Awake()
     {
@@ -38,6 +41,9 @@ public class DialogueSystem : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         if (_function == CrewFunction.Navigator) { _navigator = FindObjectOfType<Navigator>(); }
+        if (_function == CrewFunction.Blacksmith) { _blacksmith = FindObjectOfType<Blacksmith>(); }
+        if (_function == CrewFunction.Witch) { _witch = FindObjectOfType<Witch>(); }
+        if (_function == CrewFunction.Shipwright) { _shipwright = FindObjectOfType<Shipwright>(); }
 
         //_npcController = FindObjectOfType<NPCController>();
     }
@@ -111,6 +117,9 @@ public class DialogueSystem : MonoBehaviour
                 finished = false;
                 _player.EnabledControls();
                 if (_navigator != null) { _navigator.NextState(); }
+                if (_blacksmith != null) { _blacksmith.NextState(); }
+                if (_witch != null) { _witch.NextState(); }
+                if (_shipwright != null) { _shipwright.NextState(); }
             }
         }
     }
