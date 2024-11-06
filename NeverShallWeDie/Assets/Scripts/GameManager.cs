@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour
     [Header("Functions")]
     [BoxGroup("Crew")] public int[] _maps;
 
+    [Header("CrewItens")]
+    [BoxGroup("Crew")] public int _hammer; //0 para false e 1 para true
+    [BoxGroup("Crew")] public int _grimoire;
+
     //Enemy
     [BoxGroup("Enemy")] public int[] _bestiary;
     [BoxGroup("Enemy")] public int[] _bosses;
