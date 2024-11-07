@@ -43,7 +43,7 @@ public class Blacksmith : MonoBehaviour
     {
         //trocando o STATE do Ferreiro
         if (GameManager.instance._blacksmith == "MEET") { GameManager.instance._blacksmith = "QUEST"; }
-        else if(GameManager.instance._hammer == 1 && GameManager.instance._blacksmith == "QUEST") { GameManager.instance._blacksmith = "COMPLETE"; }
+        else if (GameManager.instance._hammer == 1 && GameManager.instance._blacksmith == "QUEST") { GameManager.instance._blacksmith = "COMPLETE"; }
         else if (GameManager.instance._blacksmith == "COMPLETE") { GameManager.instance._blacksmith = "CREW"; }
     }
 }

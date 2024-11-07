@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class UpgradeSword : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    bool _playerTriggered;
+    Player _player;
+    PlayerInputs _input;
+    Collider2D _collider;
+
+    void Awake()
     {
-        
+        _collider = GetComponent<Collider2D>();
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _input = _player.GetComponent<PlayerInputs>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (_playerTriggered && _input.interact)
+        {
+            _playerTriggered = false;
+            _input.interact = false;
+            Debug.Log("Melhorando Sword");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
+        {
+            _playerTriggered = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
+        {
+            _playerTriggered = false;
+        }
     }
 }
