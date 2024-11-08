@@ -82,6 +82,12 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")] public Text _txtMapPrice;
     [HideInInspector] public int _mapPrice;
     [HideInInspector] public int _mapBuyId;
+    [BoxGroup("Crew")][Header("Blacksmith")] public GameObject _pnlUpKatana;
+    [BoxGroup("Crew")] public GameObject _buttonYesUpKatana;
+    [BoxGroup("Crew")] public Text _txtKatanaPrice;
+    [BoxGroup("Crew")] public Text _txtCurrForgeStone;
+    public int _katanaPrice;
+    public int _qtdForgeStone;
     [BoxGroup("Crew")] public Animator _buyFeedback;
 
     [BoxGroup("Fade")] public Image _pnlFade;
@@ -459,6 +465,44 @@ public class UIManager : MonoBehaviour
         _isPaused = false;
         _player.EnabledControls();
         _pnlBuyMap.SetActive(false);
+    }
+
+    public void ActivePanelUpKatana()
+    {
+        _isPaused = true;
+        _player.DisableControls();
+        _txtKatanaPrice.text = _katanaPrice.ToString();
+        _txtCurrForgeStone.text = _qtdForgeStone.ToString();
+        _pnlUpKatana.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_buttonYesUpKatana);
+        SoundClick("Pause");
+    }
+
+    public void UpgradeKatana() //chamado no botão Yes do pnl_upKatana (UI Manager)
+    {
+        if (GameManager.instance._gold >= _katanaPrice && _qtdForgeStone >= 4)
+        {
+            _isPaused = false;
+            _player.EnabledControls();
+            //GameManager.instance._maps[_mapBuyId] = 1; //TODO: mudar o level da Katana
+            _pnlUpKatana.SetActive(false);
+            GameManager.instance._gold -= _katanaPrice;
+            GameManager.instance._forgeStone -= 4;
+            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de forja
+            _txtGoldBuy.text = "-" + _katanaPrice.ToString();
+            _goldBuyAnimator.SetTrigger("Start");
+        }
+        else
+        {
+            _buyFeedback.SetTrigger("Start");
+        }
+    }
+
+    public void RecuseUpgradeKatana() //chamado no botão No do pnl_upKatana (UI Manager)
+    {
+        _isPaused = false;
+        _player.EnabledControls();
+        _pnlUpKatana.SetActive(false);
     }
 
     #endregion

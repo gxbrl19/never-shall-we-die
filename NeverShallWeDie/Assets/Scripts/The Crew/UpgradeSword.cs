@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UpgradeSword : MonoBehaviour
 {
+    int _price = 200;
     bool _playerTriggered;
     Player _player;
     PlayerInputs _input;
@@ -22,7 +23,9 @@ public class UpgradeSword : MonoBehaviour
         {
             _playerTriggered = false;
             _input.interact = false;
-            Debug.Log("Melhorando Sword");
+            UIManager.instance._qtdForgeStone = GameManager.instance._forgeStone;
+            UIManager.instance._katanaPrice = _price;
+            UIManager.instance.ActivePanelUpKatana();
         }
     }
 

@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     [BoxGroup("PlayerStats")] public List<Equipments> _equipments;
     [BoxGroup("PlayerStats")] public List<Skills> _skills;
     [BoxGroup("PlayerStats")] public int _gold; //total de gold coletado
+    [BoxGroup("PlayerStats")] public int _forgeStone; //total de forge stones coletado
 
     [BoxGroup("ItemsInLevel")] public int[] _flags; //Flags já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _barrels; //Barrels já destruídos
@@ -110,10 +111,10 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        _navigator = "CREW"; //DEMO - passar para o MEET ao terminar a demo
-        _shipwright = "COMPLETE"; //DEMO - passar para o COMPLETE ao terminar a demo
-        _witch = "MEET";
-        _blacksmith = "MEET";
+        _navigator = "CREW"; //TODO: - passar para o MEET ao terminar a demo
+        _shipwright = "CREW"; //DEMO - passar para o COMPLETE ao terminar a demo
+        _witch = "CREW"; //TODO: - passar para o MEET ao terminar a demo
+        _blacksmith = "CREW"; //TODO: - passar para o MEET ao terminar a demo
     }
 
     void Update()
