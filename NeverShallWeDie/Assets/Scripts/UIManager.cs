@@ -86,8 +86,14 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")] public GameObject _buttonYesUpKatana;
     [BoxGroup("Crew")] public Text _txtKatanaPrice;
     [BoxGroup("Crew")] public Text _txtCurrForgeStone;
-    public int _katanaPrice;
-    public int _qtdForgeStone;
+    [HideInInspector] public int _katanaPrice;
+    [HideInInspector] public int _qtdForgeStone;
+    [BoxGroup("Crew")][Header("Witch")] public GameObject _pnlUpHpMp;
+    [BoxGroup("Crew")] public GameObject _buttonYesUpHpMp;
+    [BoxGroup("Crew")] public Text _txtUpHpMpPrice;
+    [BoxGroup("Crew")] public Text _txtCurrSoulsPoints;
+    public int _UpHpMpPrice;
+    public int _qtdSoulsPoints;
     [BoxGroup("Crew")] public Animator _buyFeedback;
 
     [BoxGroup("Fade")] public Image _pnlFade;
@@ -503,6 +509,64 @@ public class UIManager : MonoBehaviour
         _isPaused = false;
         _player.EnabledControls();
         _pnlUpKatana.SetActive(false);
+    }
+
+    public void ActivePanelHpMp()
+    {
+        _isPaused = true;
+        _player.DisableControls();
+        _txtUpHpMpPrice.text = _UpHpMpPrice.ToString();
+        _txtCurrSoulsPoints.text = _qtdSoulsPoints.ToString();
+        _pnlUpHpMp.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_buttonYesUpHpMp);
+        SoundClick("Pause");
+    }
+
+    public void UpgradeHP() //chamado no botão HP do pnl_upHpMp (UI Manager)
+    {
+        if (GameManager.instance._gold >= _UpHpMpPrice && _qtdSoulsPoints >= 4)
+        {
+            _isPaused = false;
+            _player.EnabledControls();
+            //GameManager.instance._maps[_mapBuyId] = 1; //TODO: aumentar o HP
+            _pnlUpHpMp.SetActive(false);
+            GameManager.instance._gold -= _UpHpMpPrice;
+            GameManager.instance._soulsPoints -= 4;
+            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de forja
+            _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
+            _goldBuyAnimator.SetTrigger("Start");
+        }
+        else
+        {
+            _buyFeedback.SetTrigger("Start");
+        }
+    }
+
+    public void UpgradeMP() //chamado no botão MP do pnl_upHpMp (UI Manager)
+    {
+        if (GameManager.instance._gold >= _UpHpMpPrice && _qtdSoulsPoints >= 4)
+        {
+            _isPaused = false;
+            _player.EnabledControls();
+            //GameManager.instance._maps[_mapBuyId] = 1; //TODO: aumentar o HP
+            _pnlUpHpMp.SetActive(false);
+            GameManager.instance._gold -= _UpHpMpPrice;
+            GameManager.instance._soulsPoints -= 4;
+            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de forja
+            _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
+            _goldBuyAnimator.SetTrigger("Start");
+        }
+        else
+        {
+            _buyFeedback.SetTrigger("Start");
+        }
+    }
+
+    public void RecuseUpHpMp() //chamado no botão Cancel do pnl_upHpMp (UI Manager)
+    {
+        _isPaused = false;
+        _player.EnabledControls();
+        _pnlUpHpMp.SetActive(false);
     }
 
     #endregion

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UpgradePoints : MonoBehaviour
 {
+    int _price = 200;
     bool _playerTriggered;
     Player _player;
     PlayerInputs _input;
@@ -15,14 +16,16 @@ public class UpgradePoints : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
     }
-    
+
     void Update()
     {
         if (_playerTriggered && _input.interact)
         {
             _playerTriggered = false;
             _input.interact = false;
-            Debug.Log("Melhorando HP");
+            UIManager.instance._qtdSoulsPoints = GameManager.instance._soulsPoints;
+            UIManager.instance._UpHpMpPrice = _price;
+            UIManager.instance.ActivePanelHpMp();
         }
     }
 

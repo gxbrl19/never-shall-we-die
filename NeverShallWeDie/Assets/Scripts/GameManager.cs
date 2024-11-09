@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     [BoxGroup("PlayerStats")] public List<Skills> _skills;
     [BoxGroup("PlayerStats")] public int _gold; //total de gold coletado
     [BoxGroup("PlayerStats")] public int _forgeStone; //total de forge stones coletado
+    [BoxGroup("PlayerStats")] public int _soulsPoints; //total de souls points coletado
 
     [BoxGroup("ItemsInLevel")] public int[] _flags; //Flags já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _barrels; //Barrels já destruídos
