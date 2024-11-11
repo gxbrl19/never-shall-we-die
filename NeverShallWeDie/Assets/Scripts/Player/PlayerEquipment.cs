@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Equipments 
+public enum Equipments
 {
     Katana, Compass, Parachute, Boots, Lantern
 }

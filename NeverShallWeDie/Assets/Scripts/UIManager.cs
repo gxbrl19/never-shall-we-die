@@ -108,10 +108,12 @@ public class UIManager : MonoBehaviour
     [BoxGroup("AudioHUD")] public AudioClip _navigationBtn;
     [BoxGroup("AudioHUD")] public AudioClip _pauseBtn;
     [BoxGroup("AudioHUD")] public AudioClip _buyMap;
+    [BoxGroup("AudioHUD")] public AudioClip _upKatana;
     [BoxGroup("AudioHUD")] public float _clickVolume;
     [BoxGroup("AudioHUD")] public float _navigationVolume;
     [BoxGroup("AudioHUD")] public float _pauseVolume;
     [BoxGroup("AudioHUD")] public float _buyMapVolume;
+    [BoxGroup("AudioHUD")] public float _upKatanaVolume;
 
     Player _player;
     PlayerInputs _input;
@@ -490,11 +492,11 @@ public class UIManager : MonoBehaviour
         {
             _isPaused = false;
             _player.EnabledControls();
-            //GameManager.instance._maps[_mapBuyId] = 1; //TODO: mudar o level da Katana
+            GameManager.instance._katanaLevel += 1;
             _pnlUpKatana.SetActive(false);
             GameManager.instance._gold -= _katanaPrice;
             GameManager.instance._forgeStone -= 4;
-            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de forja
+            PlaySound(_upKatana, _upKatanaVolume);
             _txtGoldBuy.text = "-" + _katanaPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
         }

@@ -19,7 +19,7 @@ public class EquipmentObject : ScriptableObject
     [BoxGroup("Info")]
     [VerticalGroup("Info/Stats")]
     [LabelWidth(100)]
-    public Equipments equipment;    
+    public Equipments equipment;
 
     [BoxGroup("Info")]
     [VerticalGroup("Info/Stats")]

@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     [BoxGroup("Components")] public PlayerPosition _scriptablePosition;
     [BoxGroup("GameObjects")] public GameObject _powerPickup;
 
-    //Config      
+    //Config
     private float _normalSpeed = 8f;
     private float _initialGravity;
     [HideInInspector] public int _direction = 1;
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     private float _jumpHoldDuration = 0.17f;
     private float _jumpTime;
 
-    //Ghost Jump    
+    //Ghost Jump
     private float _ghostDuration = 0.15f;
     private float _ghostTime;
 
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     private float _normalFallSpeed = 0f;
     private float _speedParachute = 20f;
 
-    //Climb    
+    //Climb
     private float _climbSpeed = 3.5f;
     private float _checkRadius = 0.5f;
     private Vector3 _checkPositionUp = new Vector3(0f, 0.6f, 0f);
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool _inWaterSpin;
     [HideInInspector] public float _waterSpinMana;
 
-    //Air Cut    
+    //Air Cut
     [HideInInspector] public float _timeAirCut;
     [BoxGroup("GameObjects")] public AirCut _aircut;
     [BoxGroup("Components")] public Transform _aircutPoint;
