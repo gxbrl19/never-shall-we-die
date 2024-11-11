@@ -13,9 +13,15 @@ public class PlayerData
 {
     public List<Equipments> equipments;
     public List<Skills> skills;
+    public float hpMax;
+    public float mpMax;
     public int gold;
+    public int katanaLevel;
+    public int forgeStone;
+    public int soulsPoints;
     public int[] flags;
     public int[] barrels;
+    public int[] chests;
     public int[] airCutblock;
     public int[] barriersLever;
     public int checkpointScene;
@@ -25,6 +31,8 @@ public class PlayerData
     public string witch;
     public string blacksmith;
     public int[] maps;
+    public int hammer;
+    public int grimoire;
     public int[] bestiary;
     public int[] bosses;
 }
@@ -40,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     [BoxGroup("PlayerStats")] public List<Equipments> _equipments;
     [BoxGroup("PlayerStats")] public List<Skills> _skills;
+    [BoxGroup("PlayerStats")] public float _hpMax = 25f;
+    [BoxGroup("PlayerStats")] public float _mpMax = 15f;
     [BoxGroup("PlayerStats")] public int _katanaLevel;
     [BoxGroup("PlayerStats")] public int _gold; //total de gold coletado
     [BoxGroup("PlayerStats")] public int _forgeStone; //total de forge stones coletado
@@ -147,10 +157,16 @@ public class GameManager : MonoBehaviour
         //atribui os valores do jogo ao objeto
         _data.equipments = _equipments;
         _data.skills = _skills;
+        _data.hpMax = _hpMax;
+        _data.mpMax = _mpMax;
         _data.gold = _gold;
+        _data.katanaLevel = _katanaLevel;
+        _data.forgeStone = _forgeStone;
+        _data.soulsPoints = _soulsPoints;
 
         _data.flags = _flags;
         _data.barrels = _barrels;
+        _data.chests = _chests;
         _data.airCutblock = _airCutblock;
         _data.barriersLever = _barriersLever;
 
@@ -163,6 +179,9 @@ public class GameManager : MonoBehaviour
         _data.blacksmith = _blacksmith;
 
         _data.maps = _maps;
+
+        _data.hammer = _hammer;
+        _data.grimoire = _grimoire;
 
         _data.bestiary = _bestiary;
         _data.bosses = _bosses;
@@ -220,10 +239,16 @@ public class GameManager : MonoBehaviour
             //atribui os valores do objeto ao jogo
             _equipments = _data.equipments;
             _skills = _data.skills;
+            _hpMax = _data.hpMax;
+            _mpMax = _data.mpMax;
             _gold = _data.gold;
+            _katanaLevel = _data.katanaLevel;
+            _forgeStone = _data.forgeStone;
+            _soulsPoints = _data.soulsPoints;
 
             _flags = _data.flags;
             _barrels = _data.barrels;
+            _chests = _data.chests;
             _airCutblock = _data.airCutblock;
             _barriersLever = _data.barriersLever;
 
@@ -236,6 +261,9 @@ public class GameManager : MonoBehaviour
             _blacksmith = _data.blacksmith;
 
             _maps = _data.maps;
+
+            _hammer = _data.hammer;
+            _grimoire = _data.grimoire;
 
             _bestiary = _data.bestiary;
             _bosses = _data.bosses;

@@ -38,7 +38,9 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        CheckAttributes();
+        _maxHealth = 25f;
+        _maxMana = 15f;
+
         _startColor = _spriteRenderer.color;
 
         _currentHealth = GetHealth();
@@ -59,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth -= damage;
         SetHealth(_currentHealth);
         _audio.PlayAudio(_audio._damage); //audio do dano
-        CinemachineShake.instance.ShakeCamera(6f, 0.15f); //tremida da camera        
+        CinemachineShake.instance.ShakeCamera(6f, 0.15f); //tremida da camera
         _spriteRenderer.color = _damageColor;
 
         GameObject hit = Instantiate(_particleHit, transform.position, _particleHit.transform.rotation);
@@ -128,18 +130,6 @@ public class PlayerHealth : MonoBehaviour
         SetMana(_currentMana);
     }
 
-    public void CheckAttributes()
-    {
-        if (!_player._canMove)
-            return;
-
-        //TODO: aqui será definido a vida máxima do player
-        _maxHealth = 25;
-
-        //TODO: aqui será definido a qtd máxima de mana do player
-        _maxMana = 15;
-    }
-
     public void FinishHit()
     {
         StartCoroutine(FinishInvincible());
@@ -160,7 +150,7 @@ public class PlayerHealth : MonoBehaviour
         _player.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
-    #region "Prefs" 
+    #region "Prefs"
     //PlayerPrefs para a troca de cena
     public void SetHealth(float health)
     {

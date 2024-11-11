@@ -530,11 +530,12 @@ public class UIManager : MonoBehaviour
         {
             _isPaused = false;
             _player.EnabledControls();
-            //GameManager.instance._maps[_mapBuyId] = 1; //TODO: aumentar o HP
+            _health._maxHealth += 5f;
+            GameManager.instance._hpMax = _health._maxHealth;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
             GameManager.instance._soulsPoints -= 4;
-            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de forja
+            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de poção
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
         }
@@ -550,11 +551,12 @@ public class UIManager : MonoBehaviour
         {
             _isPaused = false;
             _player.EnabledControls();
-            //GameManager.instance._maps[_mapBuyId] = 1; //TODO: aumentar o HP
+            _health._maxMana += 5f;
+            GameManager.instance._mpMax = _health._maxMana;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
             GameManager.instance._soulsPoints -= 4;
-            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de forja
+            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de poção
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
         }
