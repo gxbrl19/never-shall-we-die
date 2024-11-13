@@ -5939,7 +5939,14 @@ MonoBehaviour:
   _save3: 0
   _equipments: 
   _skills: 
+  _hpMax: 25
+  _mpMax: 15
+  _katanaLevel: 0
   _gold: 0
+  _qtdPotentium: 0
+  _qtdOrb: 0
+  _potentiuns: 
+  _orbs: 
   _flags: 
   _barrels: 
   _chests: 
@@ -10319,11 +10326,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5068584652038163707, guid: ff38446ff8d67ff4ba53b46406ad4d31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.36
+      value: 28.51
       objectReference: {fileID: 0}
     - target: {fileID: 5068584652038163707, guid: ff38446ff8d67ff4ba53b46406ad4d31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -46.074
+      value: -46.35
       objectReference: {fileID: 0}
     - target: {fileID: 5068584652038163707, guid: ff38446ff8d67ff4ba53b46406ad4d31, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10403,7 +10410,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.712223
+      value: 18.715
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10632,9 +10639,9 @@ SceneRoots:
   - {fileID: 1798431695}
   - {fileID: 34503289}
   - {fileID: 1407301883}
+  - {fileID: 1982692524}
   - {fileID: 464805052}
   - {fileID: 1967415560}
   - {fileID: 880809858}
   - {fileID: 727451690}
   - {fileID: 654701005}
-  - {fileID: 1982692524}

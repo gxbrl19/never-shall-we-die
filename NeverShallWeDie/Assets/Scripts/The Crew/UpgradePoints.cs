@@ -23,7 +23,7 @@ public class UpgradePoints : MonoBehaviour
         {
             _playerTriggered = false;
             _input.interact = false;
-            UIManager.instance._qtdSoulsPoints = GameManager.instance._soulsPoints;
+            UIManager.instance._qtdOrbs = GameManager.instance._qtdOrb;
             UIManager.instance._UpHpMpPrice = _price;
             UIManager.instance.ActivePanelHpMp();
         }

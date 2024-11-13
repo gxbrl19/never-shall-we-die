@@ -17,8 +17,10 @@ public class PlayerData
     public float mpMax;
     public int gold;
     public int katanaLevel;
-    public int forgeStone;
-    public int soulsPoints;
+    public int qtdPotentium;
+    public int qtdOrb;
+    public int[] potentiuns;
+    public int[] orbs;
     public int[] flags;
     public int[] barrels;
     public int[] chests;
@@ -52,9 +54,11 @@ public class GameManager : MonoBehaviour
     [BoxGroup("PlayerStats")] public float _mpMax = 15f;
     [BoxGroup("PlayerStats")] public int _katanaLevel;
     [BoxGroup("PlayerStats")] public int _gold; //total de gold coletado
-    [BoxGroup("PlayerStats")] public int _forgeStone; //total de forge stones coletado
-    [BoxGroup("PlayerStats")] public int _soulsPoints; //total de souls points coletado
+    [BoxGroup("PlayerStats")] public int _qtdPotentium; //total de Potentiuns coletado
+    [BoxGroup("PlayerStats")] public int _qtdOrb; //total de Orbs points coletado
 
+    [BoxGroup("ItemsInLevel")] public int[] _potentiuns; //Potentiuns já pegas
+    [BoxGroup("ItemsInLevel")] public int[] _orbs; //Barrels já pegas
     [BoxGroup("ItemsInLevel")] public int[] _flags; //Flags já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _barrels; //Barrels já destruídos
     [BoxGroup("ItemsInLevel")] public int[] _chests; //Chests já liberadas
@@ -101,6 +105,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        _potentiuns = new int[11]; //TODO: colocar o numero de Potentiuns que estarão no game
+        _orbs = new int[11]; //TODO: colocar o numero de Orbs que estarão no game
         _flags = new int[11];
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
@@ -161,9 +167,11 @@ public class GameManager : MonoBehaviour
         _data.mpMax = _mpMax;
         _data.gold = _gold;
         _data.katanaLevel = _katanaLevel;
-        _data.forgeStone = _forgeStone;
-        _data.soulsPoints = _soulsPoints;
+        _data.qtdPotentium = _qtdPotentium;
+        _data.qtdOrb = _qtdOrb;
 
+        _data.potentiuns = _potentiuns;
+        _data.orbs = _orbs;
         _data.flags = _flags;
         _data.barrels = _barrels;
         _data.chests = _chests;
@@ -243,9 +251,11 @@ public class GameManager : MonoBehaviour
             _mpMax = _data.mpMax;
             _gold = _data.gold;
             _katanaLevel = _data.katanaLevel;
-            _forgeStone = _data.forgeStone;
-            _soulsPoints = _data.soulsPoints;
+            _qtdPotentium = _data.qtdPotentium;
+            _qtdOrb = _data.qtdOrb;
 
+            _potentiuns = _data.potentiuns;
+            _orbs = _data.orbs;
             _flags = _data.flags;
             _barrels = _data.barrels;
             _chests = _data.chests;

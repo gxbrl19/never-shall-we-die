@@ -23,7 +23,7 @@ public class UpgradeSword : MonoBehaviour
         {
             _playerTriggered = false;
             _input.interact = false;
-            UIManager.instance._qtdForgeStone = GameManager.instance._forgeStone;
+            UIManager.instance._qtdPotentium = GameManager.instance._qtdPotentium;
             UIManager.instance._katanaPrice = _price;
             UIManager.instance.ActivePanelUpKatana();
         }

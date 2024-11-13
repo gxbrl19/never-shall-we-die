@@ -85,15 +85,15 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")][Header("Blacksmith")] public GameObject _pnlUpKatana;
     [BoxGroup("Crew")] public GameObject _buttonYesUpKatana;
     [BoxGroup("Crew")] public Text _txtKatanaPrice;
-    [BoxGroup("Crew")] public Text _txtCurrForgeStone;
+    [BoxGroup("Crew")] public Text _txtCurrPotentium;
     [HideInInspector] public int _katanaPrice;
-    [HideInInspector] public int _qtdForgeStone;
+    [HideInInspector] public int _qtdPotentium;
     [BoxGroup("Crew")][Header("Witch")] public GameObject _pnlUpHpMp;
     [BoxGroup("Crew")] public GameObject _buttonYesUpHpMp;
     [BoxGroup("Crew")] public Text _txtUpHpMpPrice;
-    [BoxGroup("Crew")] public Text _txtCurrSoulsPoints;
+    [BoxGroup("Crew")] public Text _txtCurrOrbs;
     public int _UpHpMpPrice;
-    public int _qtdSoulsPoints;
+    public int _qtdOrbs;
     [BoxGroup("Crew")] public Animator _buyFeedback;
 
     [BoxGroup("Fade")] public Image _pnlFade;
@@ -480,7 +480,7 @@ public class UIManager : MonoBehaviour
         _isPaused = true;
         _player.DisableControls();
         _txtKatanaPrice.text = _katanaPrice.ToString();
-        _txtCurrForgeStone.text = _qtdForgeStone.ToString();
+        _txtCurrPotentium.text = _qtdPotentium.ToString();
         _pnlUpKatana.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpKatana);
         SoundClick("Pause");
@@ -488,14 +488,14 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeKatana() //chamado no botão Yes do pnl_upKatana (UI Manager)
     {
-        if (GameManager.instance._gold >= _katanaPrice && _qtdForgeStone >= 4)
+        if (GameManager.instance._gold >= _katanaPrice && _qtdPotentium >= 4)
         {
             _isPaused = false;
             _player.EnabledControls();
             GameManager.instance._katanaLevel += 1;
             _pnlUpKatana.SetActive(false);
             GameManager.instance._gold -= _katanaPrice;
-            GameManager.instance._forgeStone -= 4;
+            GameManager.instance._qtdPotentium -= 4;
             PlaySound(_upKatana, _upKatanaVolume);
             _txtGoldBuy.text = "-" + _katanaPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
@@ -518,7 +518,7 @@ public class UIManager : MonoBehaviour
         _isPaused = true;
         _player.DisableControls();
         _txtUpHpMpPrice.text = _UpHpMpPrice.ToString();
-        _txtCurrSoulsPoints.text = _qtdSoulsPoints.ToString();
+        _txtCurrOrbs.text = _qtdOrbs.ToString();
         _pnlUpHpMp.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpHpMp);
         SoundClick("Pause");
@@ -526,7 +526,7 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeHP() //chamado no botão HP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice && _qtdSoulsPoints >= 4)
+        if (GameManager.instance._gold >= _UpHpMpPrice && _qtdOrbs >= 4)
         {
             _isPaused = false;
             _player.EnabledControls();
@@ -534,7 +534,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance._hpMax = _health._maxHealth;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
-            GameManager.instance._soulsPoints -= 4;
+            GameManager.instance._qtdOrb -= 4;
             //PlaySound(_buyMap, _buyMapVolume); // TODO: som de poção
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
@@ -547,7 +547,7 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeMP() //chamado no botão MP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice && _qtdSoulsPoints >= 4)
+        if (GameManager.instance._gold >= _UpHpMpPrice && _qtdOrbs >= 4)
         {
             _isPaused = false;
             _player.EnabledControls();
@@ -555,7 +555,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance._mpMax = _health._maxMana;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
-            GameManager.instance._soulsPoints -= 4;
+            GameManager.instance._qtdOrb -= 4;
             //PlaySound(_buyMap, _buyMapVolume); // TODO: som de poção
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
