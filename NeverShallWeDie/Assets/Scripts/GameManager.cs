@@ -57,8 +57,6 @@ public class GameManager : MonoBehaviour
     [BoxGroup("PlayerStats")] public int _qtdPotentium; //total de Potentiuns coletado
     [BoxGroup("PlayerStats")] public int _qtdOrb; //total de Orbs points coletado
 
-    [BoxGroup("ItemsInLevel")] public int[] _potentiuns; //Potentiuns já pegas
-    [BoxGroup("ItemsInLevel")] public int[] _orbs; //Barrels já pegas
     [BoxGroup("ItemsInLevel")] public int[] _flags; //Flags já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _barrels; //Barrels já destruídos
     [BoxGroup("ItemsInLevel")] public int[] _chests; //Chests já liberadas
@@ -105,8 +103,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        _potentiuns = new int[11]; //TODO: colocar o numero de Potentiuns que estarão no game
-        _orbs = new int[11]; //TODO: colocar o numero de Orbs que estarão no game
         _flags = new int[11];
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
@@ -170,8 +166,6 @@ public class GameManager : MonoBehaviour
         _data.qtdPotentium = _qtdPotentium;
         _data.qtdOrb = _qtdOrb;
 
-        _data.potentiuns = _potentiuns;
-        _data.orbs = _orbs;
         _data.flags = _flags;
         _data.barrels = _barrels;
         _data.chests = _chests;
@@ -254,8 +248,6 @@ public class GameManager : MonoBehaviour
             _qtdPotentium = _data.qtdPotentium;
             _qtdOrb = _data.qtdOrb;
 
-            _potentiuns = _data.potentiuns;
-            _orbs = _data.orbs;
             _flags = _data.flags;
             _barrels = _data.barrels;
             _chests = _data.chests;
