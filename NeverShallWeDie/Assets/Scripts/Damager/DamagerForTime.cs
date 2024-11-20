@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DamagerForTime : MonoBehaviour
 {
-    [SerializeField] bool _acid;
     float _timeForDamage = 1.8f;
     bool _triggered;
     Damager _damage;
