@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [BoxGroup("Components")] public LayerMask _ladderLayer;
     [BoxGroup("Components")] public LayerMask _vineLayer;
     [BoxGroup("Components")] public LayerMask _bridgeLayer;
+    [BoxGroup("Components")] public LayerMask _gridLayer;
     [BoxGroup("Components")] public Transform _groundCheck;
     [BoxGroup("Components")] public SpriteRenderer _newSkill;
     [BoxGroup("Components")] public PhysicsMaterial2D _noFrictionMaterial;
@@ -122,13 +123,14 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public bool _isGrounded;
     [HideInInspector] public bool _isDoubleJumping = false;
-    public bool _healing;
+    [HideInInspector] public bool _healing;
     [HideInInspector] public bool _isOnSlope;
     [HideInInspector] public bool _canGrab;
     [HideInInspector] public bool _isGrabing;
     [HideInInspector] public bool _isRolling;
     [HideInInspector] public bool _onBridge;
     [HideInInspector] public bool _bridgeHit;
+    public bool _isGriding;
     [HideInInspector] public bool _canMove = true;
     [HideInInspector] public bool _newSkillCollected;
     [HideInInspector] public bool _dead = false;
@@ -216,6 +218,7 @@ public class Player : MonoBehaviour
         OnSlide();
         OnWater();
         OnClimb();
+        OnGrid();
         OnRoll();
         OnParachute();
         OnHit();
@@ -427,7 +430,7 @@ public class Player : MonoBehaviour
         {
             PassThroughBridge();
         }
-        else if (_input.isJumping && _collision._onWall && !_isGrounded && !_onWater) // pulo parede 
+        else if (_input.isJumping && _collision._onWall && !_isGrounded && !_onWater) // pulo parede
         {
             _isJumping = true;
             _input.isJumping = false;
@@ -435,9 +438,10 @@ public class Player : MonoBehaviour
 
             _body.AddForce(new Vector2((_jumpForce + 2f) * -_direction, _jumpForce + 7f), ForceMode2D.Impulse);
         }
-        else if (_input.isJumping && _onClimbing && (TouchingVine() || TouchingLadder())) //pulo da LADDER ou VINE
+        else if (_input.isJumping && (_onClimbing || _isGriding) && (TouchingVine() || TouchingLadder() || TouchingGrid())) //pulo da LADDER ou VINE
         {
             FinishClimb();
+            FinishGrid();
             _isJumping = true;
             _input.vertical = 0f;
             _body.velocity = Vector2.zero;
@@ -462,7 +466,7 @@ public class Player : MonoBehaviour
         _input.isJumping = false;
     }
 
-    void BlockMove() //verifica se está no ar e tira a gravidade do player  
+    void BlockMove() //verifica se está no ar e tira a gravidade do player
     {
         if (_dead || !_canMove)
             return;
@@ -484,7 +488,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void FinishAttack() //chamado na animação de ataque da katana   
+    public void FinishAttack() //chamado na animação de ataque da katana
     {
         _input.isAttacking = false;
         _body.gravityScale = _initialGravity;
@@ -644,7 +648,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void FinishRoll() //chamado também na animação de Roll 
+    public void FinishRoll() //chamado também na animação de Roll
     {
         _canRoll = true;
         _isRolling = false;
@@ -702,6 +706,11 @@ public class Player : MonoBehaviour
     bool TouchingVine()
     {
         return _collider.IsTouchingLayers(_vineLayer);
+    }
+
+    bool TouchingGrid()
+    {
+        return _collider.IsTouchingLayers(_gridLayer);
     }
 
     void OnClimb()
@@ -806,6 +815,45 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnGrid()
+    {
+        if ((_input.vertical >= 0.5 || _input.vertical <= -0.5) && TouchingGrid() && !_isGrounded)
+        {
+            _body.velocity = Vector2.zero;
+            _isGriding = true;
+            _body.isKinematic = true;
+        }
+
+        if (!TouchingGrid())
+        {
+            FinishGrid();
+        }
+
+        if (_isGriding && TouchingGrid())
+        {
+            float vertical = _input.vertical;
+            float horizontal = _input.horizontal;
+
+            //corrigindo o bug do controle não pegar o 1 e -1 no analógico
+            if (vertical > -1 && vertical < 0) { vertical = -1; }
+            else if (vertical < 1 && vertical > 0) { vertical = 1; }
+            else { vertical = _input.vertical; }
+
+            float y = vertical * _climbSpeed;
+            float x = horizontal * _climbSpeed;
+            _body.velocity = new Vector2(x, y);
+        }
+    }
+
+    void FinishGrid()
+    {
+        if (_isGriding)
+        {
+            _isGriding = false;
+            _body.isKinematic = false;
+            //_canMove = true;
+        }
+    }
 
     #endregion
 

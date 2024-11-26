@@ -18,13 +18,17 @@ public class PlayerCollision : MonoBehaviour
     [BoxGroup("Water")] public GameObject _outWaterPoint;
     [BoxGroup("Water")] public GameObject _dropWater;
     [BoxGroup("Water")] public LayerMask _waterLayer;
+    [BoxGroup("Water")] public GameObject _dropLava;
 
-    //Climb Ledge   
+    //Climb Ledge
     private float _wallRayDistance = 0.24f;
     private BoxCollider2D _colliderClimbLedge;
     [HideInInspector] public bool _onWall;
     [BoxGroup("ClimbLedge")] public GameObject _climbLedgePoint;
     [BoxGroup("ClimbLedge")] public LayerMask _groundLayer;
+
+    //Grid
+
 
     Collider2D _collider;
     Player _player;
@@ -147,12 +151,15 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             //verifica primeiro se é a layer do Player ou do Invencible que está entrando na água
-            if(gameObject.layer != LayerMask.NameToLayer("Player") && gameObject.layer != LayerMask.NameToLayer("Invencible")) { return; }
+            if (gameObject.layer != LayerMask.NameToLayer("Player") && gameObject.layer != LayerMask.NameToLayer("Invencible")) { return; }
 
             _player._onWater = true;
             Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
-            Instantiate(_dropWater, position, other.transform.rotation);
             _audio.PlayAudio(_audio._splash);
+
+            //drop
+            if (other.gameObject.tag.Equals("Lava")) { Instantiate(_dropLava, position, other.transform.rotation); }
+            else { Instantiate(_dropWater, position, other.transform.rotation); }
 
             if (_player._isRolling)
             {
@@ -171,12 +178,15 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             //verifica primeiro se é a layer do Player ou do Invencible que está saindo da água
-            if(gameObject.layer != LayerMask.NameToLayer("Player") && gameObject.layer != LayerMask.NameToLayer("Invencible")) { return; }
+            if (gameObject.layer != LayerMask.NameToLayer("Player") && gameObject.layer != LayerMask.NameToLayer("Invencible")) { return; }
 
             _player._onWater = false;
             Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
-            Instantiate(_dropWater, position, other.transform.rotation);
             _audio.PlayAudio(_audio._splash);
+
+            //drop
+            if (other.gameObject.tag.Equals("Lava")) { Instantiate(_dropLava, position, other.transform.rotation); }
+            else { Instantiate(_dropWater, position, other.transform.rotation); }
         }
     }
 
@@ -190,7 +200,7 @@ public class PlayerCollision : MonoBehaviour
         //if (other.gameObject.tag.Equals("Platform")) { this.transform.parent = other.transform; }
         if (other.gameObject.layer == LayerMask.NameToLayer("Platform")) { this.transform.parent = other.transform; }
 
-        //cancela o jump ataque ao cair no chão       
+        //cancela o jump ataque ao cair no chão
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) { _input.isAttacking = false; }
     }
 
@@ -199,7 +209,7 @@ public class PlayerCollision : MonoBehaviour
         //if (other.gameObject.tag.Equals("Platform")) { this.transform.parent = null; }
         if (other.gameObject.layer == LayerMask.NameToLayer("Platform")) { this.transform.parent = null; }
 
-        //cancela o Roll ao sair do chão      
+        //cancela o Roll ao sair do chão
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) { _player.FinishRoll(); }
     }
 
@@ -225,6 +235,4 @@ public class PlayerCollision : MonoBehaviour
         Debug.DrawRay(position, rayDirection * length, _color);
         return _hit;
     }
-
-    
 }

@@ -1000,6 +1000,9 @@ MonoBehaviour:
   _bridgeLayer:
     serializedVersion: 2
     m_Bits: 32768
+  _gridLayer:
+    serializedVersion: 2
+    m_Bits: 1073741824
   _groundCheck: {fileID: 1568111074333454484}
   _newSkill: {fileID: 4311861710362157515}
   _noFrictionMaterial: {fileID: 6200000, guid: a7b70eb610115da4298050a8df16cfc7, type: 2}
@@ -1040,6 +1043,7 @@ MonoBehaviour:
   _isRolling: 0
   _onBridge: 0
   _bridgeHit: 0
+  _isGriding: 0
   _canMove: 1
   _newSkillCollected: 0
   _dead: 0
@@ -1093,6 +1097,7 @@ MonoBehaviour:
   _waterLayer:
     serializedVersion: 2
     m_Bits: 16
+  _dropLava: {fileID: 9192269212389312563, guid: 6f8ad3fd913badf4186079460918d526, type: 3}
   _onWall: 0
   _climbLedgePoint: {fileID: 1601008547502738022}
   _groundLayer:

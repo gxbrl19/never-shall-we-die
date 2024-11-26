@@ -182,7 +182,7 @@ public class PlayerInputs : MonoBehaviour
         if (_player._dead || _player._canMove == false || Time.timeScale == 0f)
             return;
 
-        if (_player._isGrounded || _collision._onWall || _player._onClimbing || _player._onWater)
+        if (_player._isGrounded || _collision._onWall || _player._onClimbing || _player._onWater || _player._isGriding)
         {
             if (_callback.started)
             {
