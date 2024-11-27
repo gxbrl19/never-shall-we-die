@@ -122,7 +122,6 @@ public class PlayerCollision : MonoBehaviour
         if ((!_upRay && _downRay) && !_player._onWater)
         {
             _onWall = true;
-            _player._canDoubleJump = false;
             _input.isParachuting = false;
         }
 

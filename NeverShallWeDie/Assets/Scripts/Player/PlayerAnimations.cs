@@ -36,9 +36,6 @@ public class PlayerAnimations : MonoBehaviour
         //Walk
         _animation.SetFloat("Speed", Mathf.Abs(xVelocity));
 
-        //DoubleJump
-        _animation.SetBool("DoubleJump", _player._isDoubleJumping);
-
         //Climb
         _animation.SetBool("IsClimbing", _player._onClimbing);
         _animation.SetFloat("Vertical", Mathf.Abs(yVelocity));
@@ -57,6 +54,10 @@ public class PlayerAnimations : MonoBehaviour
 
         //Healing
         _animation.SetBool("Healing", _player._healing);
+
+        //Grid
+        _animation.SetBool("IsGriding", _player._isGriding);
+        _animation.SetBool("GridMove", xVelocity != 0 || yVelocity != 0);
 
         //Swim
         if (_player._onWater) { _animation.SetBool("IsSwimming", true); } else { _animation.SetBool("IsSwimming", false); }

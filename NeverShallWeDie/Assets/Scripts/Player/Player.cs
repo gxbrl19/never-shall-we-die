@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
     //Jump
     private bool _isJumping;
     private float _jumpForce = 16f;
-    [HideInInspector] public bool _canDoubleJump = false;
 
     //Jump Hold
     private float _jumpHoldForce = 1.7f;
@@ -122,7 +121,6 @@ public class Player : MonoBehaviour
     [SerializeField][BoxGroup("GameObjects")] private GameObject _recoveryEffect;
 
     [HideInInspector] public bool _isGrounded;
-    [HideInInspector] public bool _isDoubleJumping = false;
     [HideInInspector] public bool _healing;
     [HideInInspector] public bool _isOnSlope;
     [HideInInspector] public bool _canGrab;
@@ -256,13 +254,11 @@ public class Player : MonoBehaviour
             {
                 _isGrounded = true;
                 _input.isParachuting = false;
-                _canDoubleJump = false;
             }
 
             if (_body.velocity.y <= 0.0f)
             {
                 _isJumping = false;
-                _isDoubleJumping = false;
             }
         }
         else
@@ -397,7 +393,6 @@ public class Player : MonoBehaviour
         {
             _isJumping = true;
             _input.isJumping = false;
-            _canDoubleJump = true;
 
             _body.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
 
@@ -434,7 +429,6 @@ public class Player : MonoBehaviour
         {
             _isJumping = true;
             _input.isJumping = false;
-            _canDoubleJump = true;
 
             _body.AddForce(new Vector2((_jumpForce + 2f) * -_direction, _jumpForce + 7f), ForceMode2D.Impulse);
         }
