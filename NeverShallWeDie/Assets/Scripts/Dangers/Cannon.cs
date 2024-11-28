@@ -16,7 +16,7 @@ public class Cannon : MonoBehaviour
 
     private void Awake()
     {
-        _animation = GetComponent<Animator>();        
+        _animation = GetComponent<Animator>();
     }
 
     private void FixedUpdate()

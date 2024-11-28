@@ -16,7 +16,7 @@ public class Press : MonoBehaviour
     }
 
     IEnumerator Start()
-    {        
+    {
         yield return new WaitForSeconds(Random.Range(_interval1, _interval2));
         _animation.enabled = true;
     }
