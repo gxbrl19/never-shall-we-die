@@ -47,7 +47,7 @@ public class Chest : MonoBehaviour
     {
         _triggered = false;
         _input.interact = false;
-        _dropItem.DropRecovery();
+        _dropItem.DropChest(_idChest);
         GameManager.instance._chests[_idChest] = 1;
     }
 

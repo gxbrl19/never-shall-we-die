@@ -17,6 +17,7 @@ public class Door : MonoBehaviour
     private bool _playerTriggered = false;
     Animator _animation;
     PlayerInputs _input;
+    SpriteRenderer _spritePadlock;
 
     private void Awake()
     {

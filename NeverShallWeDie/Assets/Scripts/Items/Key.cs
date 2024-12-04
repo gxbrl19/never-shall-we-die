@@ -8,7 +8,7 @@ public class Key : MonoBehaviour
     Rigidbody2D _body;
     SpriteRenderer _sprite;
     Collider2D _collider;
-    [SerializeField] private int _keyID;
+    [HideInInspector] public int _keyID;
 
     private void Awake()
     {
@@ -23,6 +23,28 @@ public class Key : MonoBehaviour
         _collider.enabled = false;
         _body.AddForce(new Vector2(0f, 20f), ForceMode2D.Impulse);
         Invoke("EnabledCollider", 0.5f);
+
+        switch (_keyID)
+        {
+            case 1:
+                _sprite.color = Color.yellow;
+                break;
+            case 2:
+                _sprite.color = Color.red;
+                break;
+            case 3:
+                _sprite.color = Color.green;
+                break;
+            case 4:
+                _sprite.color = Color.cyan;
+                break;
+            case 5:
+                _sprite.color = Color.magenta;
+                break;
+            case 6:
+                _sprite.color = Color.grey;
+                break;
+        }
     }
 
     void EnabledCollider()
@@ -37,7 +59,7 @@ public class Key : MonoBehaviour
             _audio.Play();
             _sprite.enabled = false;
             _collider.enabled = false;
-            GameManager.instance._keys[_keyID] = 1;
+            GameManager.instance._keys[_keyID - 1] = 1; //pega um ID a menos pra ficar do ID 1 ao 6
         }
     }
 }
