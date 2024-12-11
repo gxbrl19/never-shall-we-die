@@ -13762,6 +13762,8 @@ MonoBehaviour:
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
+  _keys: 
+  _doors: 
   _inputType: 
 --- !u!4 &372491422
 Transform:
@@ -14524,7 +14526,7 @@ GameObject:
   - component: {fileID: 888607255}
   - component: {fileID: 888607254}
   m_Layer: 0
-  m_Name: 02 - D1
+  m_Name: 02 - D0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14557,7 +14559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4fa3d1aff84be4d8cbf6000ff48f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextSceneName: 04/D1
+  _nextSceneName: 04/D0
   _direction: 1
   _indexPosition: 0
   _scriptablePosition: {fileID: 11400000, guid: f39253ef9bb01d94299a5a95310a731c, type: 2}
@@ -17075,7 +17077,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 47.882317
+      value: 47.895218
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y

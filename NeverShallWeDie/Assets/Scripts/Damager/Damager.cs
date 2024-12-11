@@ -32,7 +32,7 @@ public class Damager : MonoBehaviour
                 //true seria o dano a direita e false o dano da esquerda
                 _player._knockback = other.transform.position.x < transform.position.x ? true : false;
 
-                //_playerHealth.TakeDamage(_power);
+                _playerHealth.TakeDamage(_power);
             }
         }
 
