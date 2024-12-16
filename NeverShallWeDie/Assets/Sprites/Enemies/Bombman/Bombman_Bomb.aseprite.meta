@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Bombman_Bomb
     originalName: 
-    pivot: {x: 0.5, y: 0.36363637}
+    pivot: {x: 0.5, y: 0.33333334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 232
-      y: 82
+      x: 238
+      y: 4
       width: 8
-      height: 11
+      height: 12
     spriteID: fcf329f4b8ead5041835707f4d9c488c
     spriteBone: []
     spriteOutline: []
@@ -138,8 +138,28 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 232, y: 82}
+    uvTransform: {x: 238, y: 4}
   - name: Bombman_Bomb_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 232
+      y: 82
+      width: 8
+      height: 13
+    spriteID: 01787aa90e00c5e40b852d42a8e4d1f5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 232, y: 82}
+  - name: Bombman_Bomb_Frame_2
     originalName: 
     pivot: {x: 0.4666667, y: 0.5833334}
     alignment: 9
@@ -150,7 +170,7 @@ ScriptedImporter:
       y: 62
       width: 15
       height: 12
-    spriteID: 01787aa90e00c5e40b852d42a8e4d1f5
+    spriteID: 2cba49d23e71a284c83635dd8de32d69
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -159,7 +179,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 232, y: 62}
-  - name: Bombman_Bomb_Frame_2
+  - name: Bombman_Bomb_Frame_3
     originalName: 
     pivot: {x: 0.51282054, y: 0.52500004}
     alignment: 9
@@ -170,7 +190,7 @@ ScriptedImporter:
       y: 121
       width: 39
       height: 40
-    spriteID: 2cba49d23e71a284c83635dd8de32d69
+    spriteID: 1e1563fa10c774c4f9b2fe08ee2ac010
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -179,7 +199,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 211, y: 121}
-  - name: Bombman_Bomb_Frame_3
+  - name: Bombman_Bomb_Frame_4
     originalName: 
     pivot: {x: 0.5319149, y: 0.5208334}
     alignment: 9
@@ -190,7 +210,7 @@ ScriptedImporter:
       y: 62
       width: 47
       height: 48
-    spriteID: 1e1563fa10c774c4f9b2fe08ee2ac010
+    spriteID: 78f83c85b0399cb4abe2293aa4f29ff5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -199,7 +219,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 177, y: 62}
-  - name: Bombman_Bomb_Frame_4
+  - name: Bombman_Bomb_Frame_5
     originalName: 
     pivot: {x: 0.53999996, y: 0.53061223}
     alignment: 9
@@ -210,7 +230,7 @@ ScriptedImporter:
       y: 62
       width: 50
       height: 49
-    spriteID: 78f83c85b0399cb4abe2293aa4f29ff5
+    spriteID: c4b9adbb1d44c81488eef8cc40f33baa
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -219,7 +239,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 62, y: 62}
-  - name: Bombman_Bomb_Frame_5
+  - name: Bombman_Bomb_Frame_6
     originalName: 
     pivot: {x: 0.53999996, y: 0.52}
     alignment: 9
@@ -230,26 +250,6 @@ ScriptedImporter:
       y: 4
       width: 50
       height: 50
-    spriteID: c4b9adbb1d44c81488eef8cc40f33baa
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 122, y: 4}
-  - name: Bombman_Bomb_Frame_6
-    originalName: 
-    pivot: {x: 0.54901963, y: 0.52}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 51
-      height: 50
     spriteID: 8ce35760886847e4ba3382ab22ef8e18
     spriteBone: []
     spriteOutline: []
@@ -258,7 +258,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 122, y: 4}
   - name: Bombman_Bomb_Frame_7
     originalName: 
     pivot: {x: 0.54901963, y: 0.52}
@@ -266,7 +266,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 63
+      x: 4
       y: 4
       width: 51
       height: 50
@@ -278,8 +278,28 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 4}
+    uvTransform: {x: 4, y: 4}
   - name: Bombman_Bomb_Frame_8
+    originalName: 
+    pivot: {x: 0.54901963, y: 0.52}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 63
+      y: 4
+      width: 51
+      height: 50
+    spriteID: fc89e371d03a8e14f83b8f464c6d221b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 63, y: 4}
+  - name: Bombman_Bomb_Frame_9
     originalName: 
     pivot: {x: 0.53999996, y: 0.52}
     alignment: 9
@@ -290,7 +310,7 @@ ScriptedImporter:
       y: 4
       width: 50
       height: 50
-    spriteID: fc89e371d03a8e14f83b8f464c6d221b
+    spriteID: e224882b4ce360549b04ecc389e208b8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -299,7 +319,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 180, y: 4}
-  - name: Bombman_Bomb_Frame_9
+  - name: Bombman_Bomb_Frame_10
     originalName: 
     pivot: {x: 0.53999996, y: 0.4901961}
     alignment: 9
@@ -310,7 +330,7 @@ ScriptedImporter:
       y: 62
       width: 50
       height: 51
-    spriteID: e224882b4ce360549b04ecc389e208b8
+    spriteID: cff2b9144f7c2ca42bfa6f35614c3def
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -319,7 +339,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 62}
-  - name: Bombman_Bomb_Frame_10
+  - name: Bombman_Bomb_Frame_11
     originalName: 
     pivot: {x: 0.5510204, y: 0.46938774}
     alignment: 9
@@ -330,7 +350,7 @@ ScriptedImporter:
       y: 62
       width: 49
       height: 49
-    spriteID: cff2b9144f7c2ca42bfa6f35614c3def
+    spriteID: 6e0b960a6f68dfc45b1e74b447b4ec85
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -339,7 +359,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 120, y: 62}
-  - name: Bombman_Bomb_Frame_11
+  - name: Bombman_Bomb_Frame_12
     originalName: 
     pivot: {x: 0.5319149, y: 0.48936167}
     alignment: 9
@@ -350,7 +370,7 @@ ScriptedImporter:
       y: 121
       width: 47
       height: 47
-    spriteID: 6e0b960a6f68dfc45b1e74b447b4ec85
+    spriteID: 1202e30bebbdba742a12e846f199f2b3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -359,7 +379,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 121}
-  - name: Bombman_Bomb_Frame_12
+  - name: Bombman_Bomb_Frame_13
     originalName: 
     pivot: {x: 0.5681818, y: 0.47826087}
     alignment: 9
@@ -370,7 +390,7 @@ ScriptedImporter:
       y: 121
       width: 44
       height: 46
-    spriteID: 1202e30bebbdba742a12e846f199f2b3
+    spriteID: 37820526f5492b743820662a2c1e8602
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -379,7 +399,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 59, y: 121}
-  - name: Bombman_Bomb_Frame_13
+  - name: Bombman_Bomb_Frame_14
     originalName: 
     pivot: {x: 0.5714286, y: 0.47727275}
     alignment: 9
@@ -390,7 +410,7 @@ ScriptedImporter:
       y: 121
       width: 42
       height: 44
-    spriteID: 37820526f5492b743820662a2c1e8602
+    spriteID: 09b46d5452107124fa9546e6d799a8f4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -399,7 +419,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 111, y: 121}
-  - name: Bombman_Bomb_Frame_14
+  - name: Bombman_Bomb_Frame_15
     originalName: 
     pivot: {x: 0.5714286, y: 0.47727275}
     alignment: 9
@@ -410,7 +430,7 @@ ScriptedImporter:
       y: 121
       width: 42
       height: 44
-    spriteID: 09b46d5452107124fa9546e6d799a8f4
+    spriteID: cec1c4ec9bc0c0d4c8cb6281f8cf4c41
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -434,39 +454,39 @@ ScriptedImporter:
         x: 28
         y: 28
         width: 8
-        height: 11
+        height: 12
       spriteId: fcf329f4b8ead5041835707f4d9c488c
     - name: Bombman_Bomb_Frame_1
       frameIndex: 1
+      cellRect:
+        x: 28
+        y: 28
+        width: 8
+        height: 13
+      spriteId: 01787aa90e00c5e40b852d42a8e4d1f5
+    - name: Bombman_Bomb_Frame_2
+      frameIndex: 2
       cellRect:
         x: 25
         y: 25
         width: 15
         height: 12
-      spriteId: 01787aa90e00c5e40b852d42a8e4d1f5
-    - name: Bombman_Bomb_Frame_2
-      frameIndex: 2
+      spriteId: 2cba49d23e71a284c83635dd8de32d69
+    - name: Bombman_Bomb_Frame_3
+      frameIndex: 3
       cellRect:
         x: 12
         y: 11
         width: 39
         height: 40
-      spriteId: 2cba49d23e71a284c83635dd8de32d69
-    - name: Bombman_Bomb_Frame_3
-      frameIndex: 3
+      spriteId: 1e1563fa10c774c4f9b2fe08ee2ac010
+    - name: Bombman_Bomb_Frame_4
+      frameIndex: 4
       cellRect:
         x: 7
         y: 7
         width: 47
         height: 48
-      spriteId: 1e1563fa10c774c4f9b2fe08ee2ac010
-    - name: Bombman_Bomb_Frame_4
-      frameIndex: 4
-      cellRect:
-        x: 5
-        y: 6
-        width: 50
-        height: 49
       spriteId: 78f83c85b0399cb4abe2293aa4f29ff5
     - name: Bombman_Bomb_Frame_5
       frameIndex: 5
@@ -474,14 +494,14 @@ ScriptedImporter:
         x: 5
         y: 6
         width: 50
-        height: 50
+        height: 49
       spriteId: c4b9adbb1d44c81488eef8cc40f33baa
     - name: Bombman_Bomb_Frame_6
       frameIndex: 6
       cellRect:
-        x: 4
+        x: 5
         y: 6
-        width: 51
+        width: 50
         height: 50
       spriteId: 8ce35760886847e4ba3382ab22ef8e18
     - name: Bombman_Bomb_Frame_7
@@ -495,50 +515,50 @@ ScriptedImporter:
     - name: Bombman_Bomb_Frame_8
       frameIndex: 8
       cellRect:
-        x: 5
+        x: 4
         y: 6
-        width: 50
+        width: 51
         height: 50
       spriteId: fc89e371d03a8e14f83b8f464c6d221b
     - name: Bombman_Bomb_Frame_9
       frameIndex: 9
       cellRect:
         x: 5
-        y: 7
+        y: 6
         width: 50
-        height: 51
+        height: 50
       spriteId: e224882b4ce360549b04ecc389e208b8
     - name: Bombman_Bomb_Frame_10
       frameIndex: 10
       cellRect:
         x: 5
-        y: 9
-        width: 49
-        height: 49
+        y: 7
+        width: 50
+        height: 51
       spriteId: cff2b9144f7c2ca42bfa6f35614c3def
     - name: Bombman_Bomb_Frame_11
       frameIndex: 11
       cellRect:
-        x: 7
+        x: 5
         y: 9
-        width: 47
-        height: 47
+        width: 49
+        height: 49
       spriteId: 6e0b960a6f68dfc45b1e74b447b4ec85
     - name: Bombman_Bomb_Frame_12
       frameIndex: 12
       cellRect:
         x: 7
-        y: 10
-        width: 44
-        height: 46
+        y: 9
+        width: 47
+        height: 47
       spriteId: 1202e30bebbdba742a12e846f199f2b3
     - name: Bombman_Bomb_Frame_13
       frameIndex: 13
       cellRect:
-        x: 8
-        y: 11
-        width: 42
-        height: 44
+        x: 7
+        y: 10
+        width: 44
+        height: 46
       spriteId: 37820526f5492b743820662a2c1e8602
     - name: Bombman_Bomb_Frame_14
       frameIndex: 14
@@ -548,6 +568,14 @@ ScriptedImporter:
         width: 42
         height: 44
       spriteId: 09b46d5452107124fa9546e6d799a8f4
+    - name: Bombman_Bomb_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 8
+        y: 11
+        width: 42
+        height: 44
+      spriteId: cec1c4ec9bc0c0d4c8cb6281f8cf4c41
     linkedCells: []
     parentIndex: -1
   platformSettings:
