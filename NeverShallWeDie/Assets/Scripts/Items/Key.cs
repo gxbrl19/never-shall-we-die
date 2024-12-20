@@ -26,22 +26,22 @@ public class Key : MonoBehaviour
 
         switch (_keyID)
         {
-            case 1:
+            case 0:
                 _sprite.color = Color.yellow;
                 break;
-            case 2:
+            case 1:
                 _sprite.color = Color.red;
                 break;
-            case 3:
+            case 2:
                 _sprite.color = Color.green;
                 break;
-            case 4:
+            case 3:
                 _sprite.color = Color.cyan;
                 break;
-            case 5:
+            case 4:
                 _sprite.color = Color.magenta;
                 break;
-            case 6:
+            case 5:
                 _sprite.color = Color.grey;
                 break;
         }
@@ -59,7 +59,7 @@ public class Key : MonoBehaviour
             _audio.Play();
             _sprite.enabled = false;
             _collider.enabled = false;
-            GameManager.instance._keys[_keyID - 1] = 1; //pega um ID a menos pra ficar do ID 1 ao 6
+            GameManager.instance._keys[_keyID] = 1;
         }
     }
 }

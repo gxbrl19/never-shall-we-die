@@ -28,22 +28,22 @@ public class DropItem : MonoBehaviour
             switch (chestID)
             {
                 case 6: //TODO: pegar os IDs certos depois de definidos
-                    _key._keyID = 1;
+                    _key._keyID = 0;
                     break;
                 case 7:
-                    _key._keyID = 2;
+                    _key._keyID = 1;
                     break;
                 case 8:
-                    _key._keyID = 3;
+                    _key._keyID = 2;
                     break;
                 case 9:
-                    _key._keyID = 4;
+                    _key._keyID = 3;
                     break;
                 case 10:
-                    _key._keyID = 5;
+                    _key._keyID = 4;
                     break;
                 case 11:
-                    _key._keyID = 6;
+                    _key._keyID = 5;
                     break;
             }
         }

@@ -9739,7 +9739,7 @@ GameObject:
   - component: {fileID: 1359695084}
   - component: {fileID: 1359695085}
   m_Layer: 0
-  m_Name: D1_2 - 19
+  m_Name: D3_2 - 40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9817,9 +9817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4fa3d1aff84be4d8cbf6000ff48f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextSceneName: 04/19
+  _nextSceneName: 04/40
   _direction: 1
-  _indexPosition: 0
+  _indexPosition: 1
   _scriptablePosition: {fileID: 11400000, guid: f39253ef9bb01d94299a5a95310a731c, type: 2}
 --- !u!1 &1407301882
 GameObject:
@@ -10692,11 +10692,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 95051433145036992, guid: c4fc76e79952d534795087dc50b6764b, type: 3}
       propertyPath: _doorID
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 95051433145036992, guid: c4fc76e79952d534795087dc50b6764b, type: 3}
       propertyPath: _nextSceneName
-      value: 04/D1
+      value: 04/D3
       objectReference: {fileID: 0}
     - target: {fileID: 267070145420666914, guid: c4fc76e79952d534795087dc50b6764b, type: 3}
       propertyPath: m_Name
@@ -10743,12 +10743,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 878802205840630218, guid: c4fc76e79952d534795087dc50b6764b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 878802205840630218, guid: c4fc76e79952d534795087dc50b6764b, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 878802205840630218, guid: c4fc76e79952d534795087dc50b6764b, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
