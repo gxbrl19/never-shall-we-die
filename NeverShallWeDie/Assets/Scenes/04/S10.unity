@@ -5459,6 +5459,84 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1 &204415699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204415701}
+  - component: {fileID: 204415700}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &204415700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204415699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9f5c5a037b9e3419bf4bc0105f76d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _indexSave: 0
+  _save1: 0
+  _save2: 0
+  _save3: 0
+  _equipments: 
+  _skills: 
+  _hpMax: 25
+  _mpMax: 15
+  _katanaLevel: 0
+  _gold: 0
+  _qtdPotentium: 0
+  _qtdOrb: 0
+  _flags: 
+  _barrels: 
+  _chests: 
+  _airCutblock: 
+  _barriersLever: 
+  _checkpointScene: 0
+  _direction: 0
+  _navigator: 
+  _shipwright: 
+  _witch: 
+  _blacksmith: 
+  _maps: 
+  _hammer: 0
+  _grimoire: 0
+  _bestiary: 
+  _bosses: 
+  _masterVol: 0
+  _musicVol: 0
+  _sfxVol: 0
+  _keys: 
+  _doors: 
+  _inputType: 
+--- !u!4 &204415701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204415699}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &239819003
 GameObject:
   m_ObjectHideFlags: 0
@@ -9395,6 +9473,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d77158d8b54d645b564ce852f453df, type: 3}
+--- !u!1001 &838243864
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3085606070143251655, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085606070143251655, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -31.512001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085606070143251655, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085606070143251655, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085606070143251655, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085606070143251655, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085606070143251655, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085606070143251655, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085606070143251655, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085606070143251655, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780393971882256302, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
+      propertyPath: m_Name
+      value: CastlePrisonLight
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7062cfda69bc7e14c96c27454f268039, type: 3}
 --- !u!1 &880809857
 GameObject:
   m_ObjectHideFlags: 0
@@ -10307,6 +10442,7 @@ SceneRoots:
   - {fileID: 70745962}
   - {fileID: 4706422229354561718}
   - {fileID: 1681699721}
+  - {fileID: 838243864}
   - {fileID: 569487878}
   - {fileID: 1849113041}
   - {fileID: 1407301883}
@@ -10315,3 +10451,4 @@ SceneRoots:
   - {fileID: 1967415560}
   - {fileID: 880809858}
   - {fileID: 727451690}
+  - {fileID: 204415701}

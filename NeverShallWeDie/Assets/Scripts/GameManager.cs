@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        _flags = new int[11];
+        _flags = new int[13];
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
         _chests = new int[50]; //TODO: colocar o numero de Chests que estarão no game
