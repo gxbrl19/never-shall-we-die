@@ -5852,6 +5852,71 @@ PolygonCollider2D:
       - {x: -18.51, y: -19.04}
       - {x: 9.95, y: -19.04}
   m_UseDelaunayMesh: 0
+--- !u!1001 &270612239
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6918157317790413829, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 1506438664584456377, guid: c1f21c2e3cbc1434ba89963125a2afac, type: 3}
+    - target: {fileID: 8588945458967287936, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: _idChest
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -42.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588945458967287949, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: m_Name
+      value: Chest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
 --- !u!1 &324969967
 GameObject:
   m_ObjectHideFlags: 0
@@ -9547,6 +9612,8 @@ MonoBehaviour:
   _chests: 
   _airCutblock: 
   _barriersLever: 
+  _gateMechanism: 0
+  _gateBoss: 0
   _checkpointScene: 0
   _direction: 0
   _navigator: 
@@ -10386,6 +10453,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1899247522610456770, guid: 774f7d125c99b794a8e19bf645e7fd50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.3589325
+      objectReference: {fileID: 0}
     - target: {fileID: 4491579791724944907, guid: 774f7d125c99b794a8e19bf645e7fd50, type: 3}
       propertyPath: m_Name
       value: UIPlayer
@@ -10550,6 +10621,7 @@ SceneRoots:
   - {fileID: 569487878}
   - {fileID: 1849113041}
   - {fileID: 1407301883}
+  - {fileID: 270612239}
   - {fileID: 464805052}
   - {fileID: 1967415560}
   - {fileID: 880809858}

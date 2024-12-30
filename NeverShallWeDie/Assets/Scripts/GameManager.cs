@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
     [BoxGroup("ItemsInLevel")] public int[] _chests; //Chests já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _airCutblock; //Air Cut Blocks já destruídos
     [BoxGroup("ItemsInLevel")] public int[] _barriersLever; //Barriers Lever já acionados
+    [BoxGroup("ItemsInLevel")] public int _gateMechanism; //se já pegou o gate mechanism
+    [BoxGroup("ItemsInLevel")] public int _gateBoss; //Portão do Boss do mapa 04 (1 = consertado | 2 = aberto)
 
     [BoxGroup("Checkpoint")] public int _checkpointScene; //a cena atual que será o checkpoint
     [BoxGroup("Checkpoint")] public int _direction;
