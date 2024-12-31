@@ -21,7 +21,7 @@ public class GateBoss : MonoBehaviour
         bool finish = GameManager.instance._gateBoss == 2;
         _animation.SetBool("Finish", finish);
 
-        bool ok = GameManager.instance._gateMechanism == 1;
+        bool ok = GameManager.instance._gateBoss > 0;
         _animationMechanism.SetBool("Ok", ok);
     }
 

@@ -7264,8 +7264,8 @@ Tilemap:
   - first: {x: 3, y: -59, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 88
-      m_TileSpriteIndex: 88
+      m_TileIndex: 69
+      m_TileSpriteIndex: 69
       m_TileMatrixIndex: 0
       m_TileColorIndex: 30
       m_TileObjectToInstantiateIndex: 65535
@@ -7274,8 +7274,8 @@ Tilemap:
   - first: {x: 4, y: -59, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 88
-      m_TileSpriteIndex: 88
+      m_TileIndex: 68
+      m_TileSpriteIndex: 68
       m_TileMatrixIndex: 0
       m_TileColorIndex: 30
       m_TileObjectToInstantiateIndex: 65535
@@ -7284,8 +7284,8 @@ Tilemap:
   - first: {x: 5, y: -59, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 88
-      m_TileSpriteIndex: 88
+      m_TileIndex: 67
+      m_TileSpriteIndex: 67
       m_TileMatrixIndex: 0
       m_TileColorIndex: 30
       m_TileObjectToInstantiateIndex: 65535
@@ -7294,8 +7294,8 @@ Tilemap:
   - first: {x: 6, y: -59, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 88
-      m_TileSpriteIndex: 88
+      m_TileIndex: 69
+      m_TileSpriteIndex: 69
       m_TileMatrixIndex: 0
       m_TileColorIndex: 30
       m_TileObjectToInstantiateIndex: 65535
@@ -13417,11 +13417,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 495cd2cb7ab0abb4f8d9e089881a652b, type: 2}
   - m_RefCount: 38
     m_Data: {fileID: 11400000, guid: df925586266d1af4fb557b3221fc3024, type: 2}
-  - m_RefCount: 32
+  - m_RefCount: 33
     m_Data: {fileID: 11400000, guid: 8074ca266ae7847408718c1554af9fd9, type: 2}
-  - m_RefCount: 36
-    m_Data: {fileID: 11400000, guid: de917009ba913784399eb3fac9b7d305, type: 2}
   - m_RefCount: 37
+    m_Data: {fileID: 11400000, guid: de917009ba913784399eb3fac9b7d305, type: 2}
+  - m_RefCount: 39
     m_Data: {fileID: 11400000, guid: 6d31bfb7b9c565947926b50bf43c32fb, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 89e8a1dd4b7f9584a94eafdc267a59d4, type: 2}
@@ -13459,7 +13459,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 9f11fab157c31504fb2f4304b4dbdf85, type: 2}
   - m_RefCount: 9
     m_Data: {fileID: 11400000, guid: c683cadabaa7f144ea4c0c1ca8420f61, type: 2}
-  - m_RefCount: 845
+  - m_RefCount: 841
     m_Data: {fileID: 11400000, guid: 8371ab5eb88449c459d68e1d10b848a0, type: 2}
   - m_RefCount: 9
     m_Data: {fileID: 11400000, guid: c7ecc621a8a409d40914c9e7ea9e7d7c, type: 2}
@@ -13600,11 +13600,11 @@ Tilemap:
     m_Data: {fileID: 1814716990, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
   - m_RefCount: 38
     m_Data: {fileID: 1507680514, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
-  - m_RefCount: 32
+  - m_RefCount: 33
     m_Data: {fileID: 85583250, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
-  - m_RefCount: 36
-    m_Data: {fileID: 1170453633, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
   - m_RefCount: 37
+    m_Data: {fileID: 1170453633, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
+  - m_RefCount: 39
     m_Data: {fileID: 500309922, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 208801544, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
@@ -13642,7 +13642,7 @@ Tilemap:
     m_Data: {fileID: -1937153333, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
   - m_RefCount: 9
     m_Data: {fileID: -1958414518, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
-  - m_RefCount: 845
+  - m_RefCount: 841
     m_Data: {fileID: -702055455, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
   - m_RefCount: 9
     m_Data: {fileID: -1313553232, guid: ffdedd414d84e864db3c9a6414da782f, type: 3}
@@ -28603,6 +28603,8 @@ MonoBehaviour:
   _chests: 
   _airCutblock: 
   _barriersLever: 
+  _gateMechanism: 0
+  _gateBoss: 0
   _checkpointScene: 0
   _direction: 0
   _navigator: 
@@ -29571,7 +29573,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.714785
+      value: 18.720001
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y
