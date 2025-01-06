@@ -53,7 +53,7 @@ public class CheckEquipments : MonoBehaviour
             var currentLocale = LocalizationSettings.SelectedLocale;
             if (currentLocale.Identifier.Code == "pt-BR") { UIManager.instance._txtDescription.text = _equipment.ptDescription; }
             else if (currentLocale.Identifier.Code == "en") { UIManager.instance._txtDescription.text = _equipment.engDescription; }
-            //localization            
+            //localization
         }
     }
 }

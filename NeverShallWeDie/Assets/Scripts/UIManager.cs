@@ -265,7 +265,7 @@ public class UIManager : MonoBehaviour
                 _btnSwitch[i].sprite = _spriteSwitch;
             }
 
-            if (_panelIndex == 4) //config
+            if (_panelIndex == 5) //config
             {
                 _pnlConfig.SetActive(true);
             }
