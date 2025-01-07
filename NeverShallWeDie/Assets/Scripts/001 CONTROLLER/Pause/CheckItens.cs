@@ -9,11 +9,8 @@ public class CheckItens : MonoBehaviour
 {
     [SerializeField] string _item;
     [SerializeField] Image _imageButton;
-
-    void Start()
-    {
-
-    }
+    [SerializeField] string _ptDesc;
+    [SerializeField] string _engDesc;
 
     void Update()
     {
@@ -62,14 +59,60 @@ public class CheckItens : MonoBehaviour
     {
         switch (_item)
         {
+            case "Gold":
+                UIManager.instance._pnlItems.SetActive(true);
+                UIManager.instance._qtdItems.text = GameManager.instance._gold.ToString();
+                break;
             case "Hammer":
-                CheckHammer();
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._hammer == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
+                break;
+            case "Grimoire":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._grimoire == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
+                break;
+            case "Orb":
+                UIManager.instance._pnlItems.SetActive(true);
+                UIManager.instance._qtdItems.text = GameManager.instance._qtdOrb.ToString();
+                break;
+            case "Potentium":
+                UIManager.instance._pnlItems.SetActive(true);
+                UIManager.instance._qtdItems.text = GameManager.instance._qtdPotentium.ToString();
+                break;
+            case "Crank":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._gateMechanism == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
+                break;
+            case "Key0":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[0] == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
+                break;
+            case "Key1":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[1] == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
+                break;
+            case "Key2":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[2] == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
+                break;
+            case "Key3":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[3] == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
+                break;
+            case "Key4":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[4] == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
+                break;
+            case "Key5":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[5] == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
                 break;
         }
-    }
 
-    void CheckHammer()
-    {
-        Debug.Log("descrição");
+        //localization
+        var currentLocale = LocalizationSettings.SelectedLocale;
+        if (currentLocale.Identifier.Code == "pt-BR") { UIManager.instance._descItems.text = _ptDesc; }
+        else if (currentLocale.Identifier.Code == "en") { UIManager.instance._descItems.text = _engDesc; }
+        //localization
     }
 }

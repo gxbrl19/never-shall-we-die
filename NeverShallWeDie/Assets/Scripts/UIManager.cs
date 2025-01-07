@@ -57,6 +57,11 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Pause Switch")] public Image _gamepadSkill;
     [BoxGroup("Pause Switch")] public Image _keyboardSkill;
 
+    [Header("Skills")]
+    [BoxGroup("Pause Switch")] public GameObject _pnlItems;
+    [BoxGroup("Pause Switch")] public Text _qtdItems;
+    [BoxGroup("Pause Switch")] public Text _descItems;
+
     [Header("Crew")]
     [BoxGroup("Pause Switch")] public GameObject _pnlCrew;
     [BoxGroup("Pause Switch")] public Text _txtNameCrew;

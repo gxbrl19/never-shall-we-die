@@ -627,8 +627,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 2718670905164182644}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -653,6 +653,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Potentium
   _imageButton: {fileID: 3804863551278785836}
+  _ptDesc: "Este mineral \xE9 encontrado em todas as ilhas, e os ferreiros podem
+    transform\xE1-lo em armas poderosas."
+  _engDesc: This mineral is found all over the islands, and Blacksmiths can transform
+    it into powerful weapons.
 --- !u!1 &47690663614705966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3949,8 +3953,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 3259681074565186615}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -3975,6 +3979,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Grimoire
   _imageButton: {fileID: 1819906056285480330}
+  _ptDesc: "Feiticeiras usam o grim\xF3rio para conjurar magias, isso pode ser \xFAtil
+    para alguma feiticeira que tenha encontrado."
+  _engDesc: Witches use the grimoire to cast spells, this may be useful to any witches
+    you have encountered.
 --- !u!1 &978859929642551670
 GameObject:
   m_ObjectHideFlags: 0
@@ -6481,8 +6489,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 1305443282117257157}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -6507,6 +6515,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Crank
   _imageButton: {fileID: 6906111963606481450}
+  _ptDesc: Um mecanismo que parece abrir alguma porta.
+  _engDesc: A mechanism that seems to open some door.
+--- !u!1 &1999251235450662512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7466743160464014212}
+  - component: {fileID: 7059563452135609967}
+  - component: {fileID: 7441195628221955144}
+  - component: {fileID: 673893588864840972}
+  m_Layer: 5
+  m_Name: txt_qtd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7466743160464014212
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999251235450662512}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1345776748952595792}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -35.5, y: 45.2}
+  m_SizeDelta: {x: 49.197, y: 20.8057}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7059563452135609967
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999251235450662512}
+  m_CullTransparentMesh: 0
+--- !u!114 &7441195628221955144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999251235450662512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.6745098, b: 0.34509805, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8bc38dea0ca8c4d43a9d2ebc832cb84f, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 80
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 0.8
+  m_Text: 00
+--- !u!114 &673893588864840972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999251235450662512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0.04705883, b: 0.078431375, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2021896082905817985
 GameObject:
   m_ObjectHideFlags: 0
@@ -7470,6 +7575,101 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _localization: {fileID: 8399050093138880967}
   _sceneID: 57
+--- !u!1 &2179952819713747341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353291706849165771}
+  - component: {fileID: 3683196456377805318}
+  - component: {fileID: 636881024811977570}
+  - component: {fileID: 3018373647161365943}
+  m_Layer: 5
+  m_Name: txt_description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1353291706849165771
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179952819713747341}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1345776748952595792}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.5831, y: -9.5269}
+  m_SizeDelta: {x: 121.4062, y: 95.6285}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3683196456377805318
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179952819713747341}
+  m_CullTransparentMesh: 0
+--- !u!114 &636881024811977570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179952819713747341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.6745098, b: 0.34509805, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8bc38dea0ca8c4d43a9d2ebc832cb84f, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 80
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 0.8
+  m_Text: 
+--- !u!114 &3018373647161365943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179952819713747341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0.04705883, b: 0.078431375, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2275197181497774515
 GameObject:
   m_ObjectHideFlags: 0
@@ -8815,8 +9015,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 916535336830443575}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -8841,6 +9041,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Key3
   _imageButton: {fileID: 1092186212892719653}
+  _ptDesc: Pode abrir um cadeado da mesma cor.
+  _engDesc: It can open a padlock of the same color.
 --- !u!1 &2603978990798038708
 GameObject:
   m_ObjectHideFlags: 0
@@ -12811,9 +13013,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 4491579791724944907}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
-          m_MethodName: 
+        - m_Target: {fileID: 4861877028458564770}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
+          m_MethodName: Check
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -12837,6 +13039,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Hammer
   _imageButton: {fileID: 2276167191394039265}
+  _ptDesc: "Um martelo m\xE1gico capaz de produzir as melhores armas, entregue para
+    o Ferreiro."
+  _engDesc: A magical hammer capable of producing the finest weapons, delivered to
+    the Blacksmith.
 --- !u!1 &3946629976769549461
 GameObject:
   m_ObjectHideFlags: 0
@@ -13036,8 +13242,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 8943953743485032570}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -13062,6 +13268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Key4
   _imageButton: {fileID: 9166139411901466027}
+  _ptDesc: Pode abrir um cadeado da mesma cor.
+  _engDesc: It can open a padlock of the same color.
 --- !u!1 &3976441657568757012
 GameObject:
   m_ObjectHideFlags: 0
@@ -14916,6 +15124,9 @@ MonoBehaviour:
   _imgParchment: {fileID: 2550300342738338971}
   _gamepadSkill: {fileID: 2620221388344302380}
   _keyboardSkill: {fileID: 3396334988944581427}
+  _pnlItems: {fileID: 6095745119976900096}
+  _qtdItems: {fileID: 7441195628221955144}
+  _descItems: {fileID: 636881024811977570}
   _pnlCrew: {fileID: 9031015329579738283}
   _txtNameCrew: {fileID: 7667134493692969335}
   _spriteMemberCrew: {fileID: 3645752799691038522}
@@ -17179,8 +17390,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 2112400976563639949}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -17205,6 +17416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Key2
   _imageButton: {fileID: 6608081113054468952}
+  _ptDesc: Pode abrir um cadeado da mesma cor.
+  _engDesc: It can open a padlock of the same color.
 --- !u!1 &5142475428227720992
 GameObject:
   m_ObjectHideFlags: 0
@@ -19501,8 +19714,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 1665648979802682629}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -19527,6 +19740,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Key0
   _imageButton: {fileID: 5651390025458433654}
+  _ptDesc: Pode abrir um cadeado da mesma cor.
+  _engDesc: It can open a padlock of the same color.
 --- !u!1 &5795854315313560084
 GameObject:
   m_ObjectHideFlags: 0
@@ -19999,6 +20214,83 @@ MonoBehaviour:
   m_Sprite: {fileID: -905013775924605120, guid: a0b1fd8c012f89f478a22bc00afabf57, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6095745119976900096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1345776748952595792}
+  - component: {fileID: 4304359655918322300}
+  - component: {fileID: 5699471936778114329}
+  m_Layer: 5
+  m_Name: pnl_desc_items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1345776748952595792
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095745119976900096}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7466743160464014212}
+  - {fileID: 1353291706849165771}
+  m_Father: {fileID: 1899247522610456770}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 52.5, y: 6.4}
+  m_SizeDelta: {x: 133, y: 130}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4304359655918322300
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095745119976900096}
+  m_CullTransparentMesh: 0
+--- !u!114 &5699471936778114329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095745119976900096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -2948874009392634660, guid: 608b1010f59833249ab8ca85d26d83c0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -20631,8 +20923,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 3028122078949035795}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -20657,6 +20949,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Key5
   _imageButton: {fileID: 8741762522560051908}
+  _ptDesc: Pode abrir um cadeado da mesma cor.
+  _engDesc: It can open a padlock of the same color.
 --- !u!1 &6325485491056421302
 GameObject:
   m_ObjectHideFlags: 0
@@ -21069,8 +21363,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 4009262437625485883}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -21095,6 +21389,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Orb
   _imageButton: {fileID: 8339546718106040218}
+  _ptDesc: "Muito usado em conjura\xE7\xF5es de feiti\xE7os, uma Feiticeira saber\xE1
+    o que fazer com ele."
+  _engDesc: Widely used in spellcasting, a Witch will know what to do with it.
 --- !u!1 &6411126559255075448
 GameObject:
   m_ObjectHideFlags: 0
@@ -24817,8 +25114,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 540869816037258677}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -24843,6 +25140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Key1
   _imageButton: {fileID: 6833050576356726425}
+  _ptDesc: Pode abrir um cadeado da mesma cor.
+  _engDesc: It can open a padlock of the same color.
 --- !u!1 &7522753868479133105
 GameObject:
   m_ObjectHideFlags: 0
@@ -26113,6 +26412,7 @@ RectTransform:
   - {fileID: 44293174322496107}
   - {fileID: 2064828728697164737}
   - {fileID: 837345092690327793}
+  - {fileID: 1345776748952595792}
   - {fileID: 6809844458520923496}
   - {fileID: 4628395285841774636}
   - {fileID: 2526897925206787619}
@@ -26120,7 +26420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.4110107, y: -2.3589325}
+  m_AnchoredPosition: {x: -2.4110107, y: -2.3588943}
   m_SizeDelta: {x: 4.8200073, y: 3.5700073}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7864608888899850908
@@ -26837,8 +27137,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
+        - m_Target: {fileID: 5839171754132593156}
+          m_TargetAssemblyTypeName: CheckItens, Assembly-CSharp
           m_MethodName: Check
           m_Mode: 1
           m_Arguments:
@@ -26863,6 +27163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: Gold
   _imageButton: {fileID: 9191013437668274815}
+  _ptDesc: Use gold for purchases and upgrades.
+  _engDesc: Use o ouro para compras e melhorias.
 --- !u!1 &8107261855560992565
 GameObject:
   m_ObjectHideFlags: 0
