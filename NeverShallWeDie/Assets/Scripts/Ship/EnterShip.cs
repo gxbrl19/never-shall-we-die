@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ExitShip : MonoBehaviour
+public class EnterShip : MonoBehaviour
 {
     [SerializeField] PlayerPosition _scriptablePosition;
     string _nextSceneName; //definido no GameManager
@@ -17,18 +17,16 @@ public class ExitShip : MonoBehaviour
         _input = _player.GetComponent<PlayerInputs>();
 
         _triggered = false;
+        _nextSceneName = "00/02";
     }
 
     void Update()
     {
-        if (_triggered && _input.interact) { Exit(); }
+        if (_triggered && _input.interact) { Enter(); }
     }
 
-    void Exit()
+    void Enter()
     {
-        //verifica se já existe o PlayerPrefs com o nome da cena do Pier selecionado
-        _nextSceneName = PlayerPrefs.HasKey("Pier") ? PlayerPrefs.GetString("Pier") : "06/H0";
-
         if (SceneExists("Scenes/" + _nextSceneName))
         {
             UIManager.instance.FadeIn();
@@ -42,36 +40,8 @@ public class ExitShip : MonoBehaviour
 
     void GetNextScene()
     {
-        _scriptablePosition.SetAttributes(true, 1, 1);
+        _scriptablePosition.SetAttributes(true, 1, 0);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
-
-        switch (_nextSceneName)
-        {
-            case "06/H0":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._kingdomTheme);
-                break;
-            case "01/H1":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme);
-                break;
-            case "01/H2":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme);
-                break;
-            case "02/H3":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._mizutonTheme);
-                break;
-            case "02/H4":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._mizutonTheme);
-                break;
-            case "03/H5":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._cemeteryTheme);
-                break;
-            case "03/H6":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._cemeteryTheme);
-                break;
-            case "04/H7":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._prisonTheme);
-                break;
-        }
     }
 
     private bool SceneExists(string sceneName)
