@@ -59,12 +59,12 @@ public class ShipInput : MonoBehaviour
             _submit = false;
         }
     }
-    
+
     public void Cancel(InputAction.CallbackContext callback)
     {
         if (callback.started)
         {
-            
+
         }
     }
 }

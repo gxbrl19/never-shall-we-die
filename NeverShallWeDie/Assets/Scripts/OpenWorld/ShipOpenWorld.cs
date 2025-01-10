@@ -16,15 +16,21 @@ public class ShipOpenWorld : MonoBehaviour
     [SerializeField] List<string> _states = new List<string>();
     string _state = "";
 
+    public bool _submarine;
+    public Transform _targetSubmarine;
+    float _speedSubmarine = 1f;
+
     Rigidbody2D _body;
     Animator _animation;
     Vector2 _movement;
+    Collider2D _collider;
 
     private void Awake()
     {
         instance = this;
         _body = GetComponent<Rigidbody2D>();
         _animation = GetComponent<Animator>();
+        _collider = GetComponent<Collider2D>();
     }
 
     void Start()
@@ -39,6 +45,8 @@ public class ShipOpenWorld : MonoBehaviour
 
     void Update()
     {
+        Submarine();
+
         if (!_canMove) { return; }
         IdleSprite();
         Animation();
@@ -100,5 +108,22 @@ public class ShipOpenWorld : MonoBehaviour
     {
         PlayerPrefs.SetFloat("ShipPositionX", transform.position.x);
         PlayerPrefs.SetFloat("ShipPositionY", transform.position.y);
+    }
+
+    public void Submarine()
+    {
+        if (_submarine)
+        {
+            _canMove = false;
+            _collider.enabled = false;
+            transform.position = Vector3.MoveTowards(transform.position, _targetSubmarine.position, _speedSubmarine * Time.deltaTime);
+
+            if (transform.position == _targetSubmarine.position)
+            {
+                _submarine = false;
+                _canMove = true;
+                _collider.enabled = true;
+            }
+        }
     }
 }
