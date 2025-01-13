@@ -8,6 +8,9 @@ public class ShipInput : MonoBehaviour
     private float _horizontal;
     private float _vertical;
     private bool _submit;
+    private bool _submarine;
+    private bool _propulsion;
+    private bool _cannon;
     private bool _cancel;
 
     #region Properties
@@ -28,6 +31,24 @@ public class ShipInput : MonoBehaviour
     {
         get { return _submit; }
         set { _submit = value; }
+    }
+
+    public bool submarine
+    {
+        get { return _submarine; }
+        set { _submarine = value; }
+    }
+
+    public bool propulsion
+    {
+        get { return _propulsion; }
+        set { _propulsion = value; }
+    }
+
+    public bool cannon
+    {
+        get { return _cannon; }
+        set { _cannon = value; }
     }
 
     public bool cancel
@@ -65,6 +86,45 @@ public class ShipInput : MonoBehaviour
         if (callback.started)
         {
 
+        }
+    }
+
+    public void Submarine(InputAction.CallbackContext callback)
+    {
+        if (callback.started && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Submarine))
+        {
+            _submarine = true;
+        }
+
+        if (callback.canceled)
+        {
+            _submarine = false;
+        }
+    }
+
+    public void Propulsion(InputAction.CallbackContext callback)
+    {
+        if (callback.started && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Propulsion))
+        {
+            _propulsion = true;
+        }
+
+        if (callback.canceled)
+        {
+            _propulsion = false;
+        }
+    }
+
+    public void Cannon(InputAction.CallbackContext callback)
+    {
+        if (callback.started)
+        {
+            _cannon = true;
+        }
+
+        if (callback.canceled)
+        {
+            _cannon = false;
         }
     }
 }

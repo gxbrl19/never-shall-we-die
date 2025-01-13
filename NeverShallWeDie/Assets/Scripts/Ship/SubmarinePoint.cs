@@ -18,10 +18,11 @@ public class SubmarinePoint : MonoBehaviour
 
     void Update()
     {
-        if (_triggered && _input.submit) //verificar também se possue a melhoria no navio
+        if (_triggered && _input.submarine)
         {
             _ship._targetSubmarine = _nextPoint;
             _ship._submarine = true;
+            _input.submarine = false;
         }
     }
 

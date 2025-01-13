@@ -24,6 +24,7 @@ public class ShipOpenWorld : MonoBehaviour
     Animator _animation;
     Vector2 _movement;
     Collider2D _collider;
+    ShipInput _input;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class ShipOpenWorld : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
         _animation = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
+        _input = GetComponent<ShipInput>();
     }
 
     void Start()
@@ -124,6 +126,14 @@ public class ShipOpenWorld : MonoBehaviour
                 _canMove = true;
                 _collider.enabled = true;
             }
+        }
+    }
+
+    void Propulsion()
+    {
+        if (_input.propulsion)
+        {
+            
         }
     }
 }

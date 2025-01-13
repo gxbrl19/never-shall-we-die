@@ -26,6 +26,8 @@ public class PlayerData
     public int[] chests;
     public int[] airCutblock;
     public int[] barriersLever;
+    public List<ShipUpgrade> shipUpgrades;
+    public int[] rocks;
     public int checkpointScene;
     public int direction;
     public string navigator;
@@ -64,6 +66,9 @@ public class GameManager : MonoBehaviour
     [BoxGroup("ItemsInLevel")] public int[] _barriersLever; //Barriers Lever já acionados
     [BoxGroup("ItemsInLevel")] public int _gateMechanism; //se já pegou o gate mechanism
     [BoxGroup("ItemsInLevel")] public int _gateBoss; //Portão do Boss do mapa 04 (1 = consertado | 2 = aberto)
+
+    [BoxGroup("OpenWorld")] public List<ShipUpgrade> _shipUpgrades;
+    [BoxGroup("OpenWorld")] public int[] _rocks; //Rocks já destruídos
 
     [BoxGroup("Checkpoint")] public int _checkpointScene; //a cena atual que será o checkpoint
     [BoxGroup("Checkpoint")] public int _direction;
@@ -115,6 +120,7 @@ public class GameManager : MonoBehaviour
         _barriersLever = new int[50]; //TODO: colocar o numero de Barriers lever que estarão no game
         _keys = new int[6];
         _doors = new int[6];
+        _rocks = new int[2];
 
         //Crew
         _maps = new int[6];
@@ -178,6 +184,9 @@ public class GameManager : MonoBehaviour
         _data.chests = _chests;
         _data.airCutblock = _airCutblock;
         _data.barriersLever = _barriersLever;
+
+        _data.shipUpgrades = _shipUpgrades;
+        _data.rocks = _rocks;
 
         _data.checkpointScene = _checkpointScene;
         _data.direction = _direction;
@@ -260,6 +269,9 @@ public class GameManager : MonoBehaviour
             _chests = _data.chests;
             _airCutblock = _data.airCutblock;
             _barriersLever = _data.barriersLever;
+
+            _shipUpgrades = _data.shipUpgrades;
+            _rocks = _data.rocks;
 
             _checkpointScene = _data.checkpointScene;
             _direction = _data.direction;
