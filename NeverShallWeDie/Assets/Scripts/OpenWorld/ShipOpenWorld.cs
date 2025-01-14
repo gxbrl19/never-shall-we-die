@@ -6,7 +6,7 @@ public class ShipOpenWorld : MonoBehaviour
 {
     public static ShipOpenWorld instance;
 
-    float _speedMax = 3.5f;
+    float _speedMax = 2.5f;
     float _hSpeed;
     float _vSpeed;
     float accelarate = 0.04f;
@@ -16,8 +16,8 @@ public class ShipOpenWorld : MonoBehaviour
     [SerializeField] List<string> _states = new List<string>();
     string _state = "";
 
-    public bool _submarine;
-    public Transform _targetSubmarine;
+    [HideInInspector] public bool _submarine;
+    [HideInInspector] public Transform _targetSubmarine;
     float _speedSubmarine = 1f;
 
     Rigidbody2D _body;
@@ -47,7 +47,7 @@ public class ShipOpenWorld : MonoBehaviour
 
     void Update()
     {
-        Submarine();
+        SubmarineMove();
 
         if (!_canMove) { return; }
         IdleSprite();
@@ -79,6 +79,8 @@ public class ShipOpenWorld : MonoBehaviour
 
     public void Animation()
     {
+        if (_submarine) { return; }
+
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
 
@@ -91,6 +93,8 @@ public class ShipOpenWorld : MonoBehaviour
 
     void IdleSprite()
     {
+        if (_submarine) { return; }
+
         if (_movement.x == 0 && _movement.y > 0.01f) { _state = "Up"; }
         else if (_movement.x < -0.01f && _movement.y > 0.01f) { _state = "UpLeft"; }
         else if (_movement.x < -0.01f && _movement.y == 0) { _state = "Left"; }
@@ -112,28 +116,44 @@ public class ShipOpenWorld : MonoBehaviour
         PlayerPrefs.SetFloat("ShipPositionY", transform.position.y);
     }
 
-    public void Submarine()
+    public void SubmarineMove()
     {
         if (_submarine)
         {
-            _canMove = false;
             _collider.enabled = false;
             transform.position = Vector3.MoveTowards(transform.position, _targetSubmarine.position, _speedSubmarine * Time.deltaTime);
 
             if (transform.position == _targetSubmarine.position)
             {
-                _submarine = false;
-                _canMove = true;
-                _collider.enabled = true;
+                _animation.SetBool("Submarine", false);
             }
         }
+    }
+
+    public void ActiveAnimation()
+    {
+        _canMove = false;
+        _animation.SetBool("Submarine", true);
+    }
+
+    public void BeginSubmarine() //chamado na animação
+    {
+        _submarine = true;
+        _input.submarine = false;
+    }
+
+    public void FinishSubmarine() //chamado na animação
+    {
+        _submarine = false;
+        _canMove = true;
+        _collider.enabled = true;
     }
 
     void Propulsion()
     {
         if (_input.propulsion)
         {
-            
+
         }
     }
 }

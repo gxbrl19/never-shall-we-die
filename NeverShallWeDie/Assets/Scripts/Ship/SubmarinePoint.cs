@@ -20,9 +20,8 @@ public class SubmarinePoint : MonoBehaviour
     {
         if (_triggered && _input.submarine)
         {
+            _ship.ActiveAnimation();
             _ship._targetSubmarine = _nextPoint;
-            _ship._submarine = true;
-            _input.submarine = false;
         }
     }
 
