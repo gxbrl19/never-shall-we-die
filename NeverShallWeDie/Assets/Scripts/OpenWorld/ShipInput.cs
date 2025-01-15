@@ -117,7 +117,7 @@ public class ShipInput : MonoBehaviour
 
     public void Cannon(InputAction.CallbackContext callback)
     {
-        if (callback.started)
+        if (callback.started && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Cannon))
         {
             _cannon = true;
         }

@@ -12,9 +12,12 @@ public class ShipOpenWorld : MonoBehaviour
     float accelarate = 0.04f;
     float stop = 0.06f;
     [HideInInspector] public bool _canMove;
+    bool _canAttack = true;
 
     [SerializeField] List<string> _states = new List<string>();
     string _state = "";
+    [SerializeField] Transform _cannonPosition;
+    [SerializeField] GameObject _shipCannon;
 
     [HideInInspector] public bool _submarine;
     [HideInInspector] public Transform _targetSubmarine;
@@ -52,6 +55,7 @@ public class ShipOpenWorld : MonoBehaviour
         if (!_canMove) { return; }
         IdleSprite();
         Animation();
+        Cannon();
     }
 
     void FixedUpdate()
@@ -106,8 +110,59 @@ public class ShipOpenWorld : MonoBehaviour
 
         for (int i = 0; i < _states.Count; i++)
         {
-            if (_states[i] != _state) { _animation.SetBool(_states[i], false); } else { _animation.SetBool(_states[i], true); }
+            if (_states[i] != _state)
+            {
+                _animation.SetBool(_states[i], false);
+                CannonPoint();
+            }
+            else
+            {
+                _animation.SetBool(_states[i], true);
+            }
         }
+    }
+
+    public void CannonPoint()
+    {
+        Vector3 _position = _cannonPosition.localPosition;
+
+        switch (_state)
+        {
+            case "Up":
+                _position.x = 0f;
+                _position.y = 0.7f;
+                break;
+            case "UpLeft":
+                _position.x = -0.7f;
+                _position.y = 0.7f;
+                break;
+            case "Left":
+                _position.x = -0.7f;
+                _position.y = 0f;
+                break;
+            case "DownLeft":
+                _position.x = -0.7f;
+                _position.y = -0.7f;
+                break;
+            case "Down":
+                _position.x = 0f;
+                _position.y = -0.7f;
+                break;
+            case "DownRight":
+                _position.x = 0.7f;
+                _position.y = -0.7f;
+                break;
+            case "Right":
+                _position.x = 0.7f;
+                _position.y = 0f;
+                break;
+            case "UpRight":
+                _position.x = 0.7f;
+                _position.y = 0.7f;
+                break;
+        }
+
+        _cannonPosition.localPosition = _position;
     }
 
     public void SavePos()
@@ -155,5 +210,24 @@ public class ShipOpenWorld : MonoBehaviour
         {
 
         }
+    }
+
+    void Cannon()
+    {
+        if (_canAttack && _input.cannon)
+        {
+            _canAttack = false;
+            GameObject ball = Instantiate(_shipCannon.gameObject, _cannonPosition.position, Quaternion.identity);
+            float x = _cannonPosition.localPosition.x;
+            float y = _cannonPosition.localPosition.y;
+            ball.GetComponent<ShipCannon>()._directionX = x;
+            ball.GetComponent<ShipCannon>()._directionY = y;
+            Invoke("FinishCannon", 2f);
+        }
+    }
+
+    public void FinishCannon() //chamado na função Cannon
+    {
+        _canAttack = true;
     }
 }
