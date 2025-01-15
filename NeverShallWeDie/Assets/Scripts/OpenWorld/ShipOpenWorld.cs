@@ -18,6 +18,7 @@ public class ShipOpenWorld : MonoBehaviour
     string _state = "";
     [SerializeField] Transform _cannonPosition;
     [SerializeField] GameObject _shipCannon;
+    [SerializeField] GameObject _cannonEffect;
 
     [HideInInspector] public bool _submarine;
     [HideInInspector] public Transform _targetSubmarine;
@@ -217,11 +218,15 @@ public class ShipOpenWorld : MonoBehaviour
         if (_canAttack && _input.cannon)
         {
             _canAttack = false;
+
             GameObject ball = Instantiate(_shipCannon.gameObject, _cannonPosition.position, Quaternion.identity);
             float x = _cannonPosition.localPosition.x;
             float y = _cannonPosition.localPosition.y;
             ball.GetComponent<ShipCannon>()._directionX = x;
             ball.GetComponent<ShipCannon>()._directionY = y;
+
+            Instantiate(_cannonEffect, _cannonPosition.position, Quaternion.identity);
+
             Invoke("FinishCannon", 2f);
         }
     }
