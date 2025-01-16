@@ -16,6 +16,7 @@ public class ShipOpenWorld : MonoBehaviour
 
     [SerializeField] List<string> _states = new List<string>();
     string _state = "";
+
     [SerializeField] Transform _cannonPosition;
     [SerializeField] GameObject _shipCannon;
     [SerializeField] GameObject _cannonEffect;
@@ -23,6 +24,9 @@ public class ShipOpenWorld : MonoBehaviour
     [HideInInspector] public bool _submarine;
     [HideInInspector] public Transform _targetSubmarine;
     float _speedSubmarine = 1f;
+
+    [HideInInspector] public bool _inPropulsion;
+    float _propulsionForce = 10f;
 
     Rigidbody2D _body;
     Animator _animation;
@@ -63,6 +67,7 @@ public class ShipOpenWorld : MonoBehaviour
     {
         if (!_canMove) { return; }
         Accelerate();
+        Propulsion();
     }
 
     public void Accelerate()
@@ -209,7 +214,12 @@ public class ShipOpenWorld : MonoBehaviour
     {
         if (_input.propulsion)
         {
-
+            _inPropulsion = true;
+            _body.velocity = new Vector2(_movement.x * _propulsionForce, _movement.y * _propulsionForce);
+        }
+        else if (!_input.propulsion)
+        {
+            _inPropulsion = false;
         }
     }
 

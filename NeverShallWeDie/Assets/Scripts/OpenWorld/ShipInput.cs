@@ -13,6 +13,8 @@ public class ShipInput : MonoBehaviour
     private bool _cannon;
     private bool _cancel;
 
+    ShipOpenWorld _ship;
+
     #region Properties
 
     public float horizontal
@@ -58,6 +60,11 @@ public class ShipInput : MonoBehaviour
     }
     #endregion
 
+    void Start()
+    {
+        _ship = GetComponent<ShipOpenWorld>();
+    }
+
     public void Horizontal(InputAction.CallbackContext callback)
     {
         _horizontal = callback.ReadValue<float>();
@@ -91,6 +98,8 @@ public class ShipInput : MonoBehaviour
 
     public void Submarine(InputAction.CallbackContext callback)
     {
+        if (_ship._inPropulsion || _ship._submarine) { return; }
+
         if (callback.started && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Submarine))
         {
             _submarine = true;
@@ -104,6 +113,8 @@ public class ShipInput : MonoBehaviour
 
     public void Propulsion(InputAction.CallbackContext callback)
     {
+        if (_ship._submarine) { return; }
+
         if (callback.started && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Propulsion))
         {
             _propulsion = true;
@@ -117,6 +128,8 @@ public class ShipInput : MonoBehaviour
 
     public void Cannon(InputAction.CallbackContext callback)
     {
+        if (_ship._inPropulsion || _ship._submarine) { return; }
+
         if (callback.started && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Cannon))
         {
             _cannon = true;
