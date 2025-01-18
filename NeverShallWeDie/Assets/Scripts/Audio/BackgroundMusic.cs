@@ -6,7 +6,6 @@ public class BackgroundMusic : MonoBehaviour
 {
     public static BackgroundMusic instance;
 
-    public AudioClip _nswdTheme;
     public AudioClip _kingdomTheme;
     public AudioClip _shipTheme;
     public AudioClip _forestTheme;
@@ -16,7 +15,7 @@ public class BackgroundMusic : MonoBehaviour
     public AudioClip _mansionTheme;
     public AudioClip _bossTheme;
 
-    AudioSource _audioSource;
+    [HideInInspector] public AudioSource _audioSource;
     [HideInInspector] public AudioClip _deadSound;
 
     private void Awake()
@@ -36,6 +35,7 @@ public class BackgroundMusic : MonoBehaviour
 
     public void ChangeMusic(AudioClip audioClip)
     {
+        BackgroundMusic.instance._audioSource.enabled = true;
         //_audioSource.Stop();
         _audioSource.clip = audioClip;
         _audioSource.Play();

@@ -2317,12 +2317,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253720389}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6697715818617287364, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 105d40825a9197d4c94032464de69f17, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2433,15 +2433,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47056afbf74da6540b83e5a9572befcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nswdTheme: {fileID: 8300000, guid: 105d40825a9197d4c94032464de69f17, type: 3}
   _kingdomTheme: {fileID: 8300000, guid: 2e527d3ba3be99e43848e043b0cc1dbd, type: 3}
-  _shipTheme: {fileID: 8300000, guid: 6b80468b767d52d4f80dcea5fdeffc44, type: 3}
-  _forestTheme: {fileID: 8300000, guid: 15475252b200f6d43ae13453f8643be6, type: 3}
+  _shipTheme: {fileID: 8300000, guid: 0fb594139d32fa64d861abf1f99f05f5, type: 3}
+  _forestTheme: {fileID: 8300000, guid: 6b47a603dc8ec7746869838725ff7534, type: 3}
   _mizutonTheme: {fileID: 8300000, guid: ca6cfbeba4ad66240a7c88106a9a3321, type: 3}
   _cemeteryTheme: {fileID: 8300000, guid: a0260558b762a0145aad95ca9b0bb5d4, type: 3}
   _prisonTheme: {fileID: 8300000, guid: 2724d5860619b7e458ab6386e02a2530, type: 3}
   _mansionTheme: {fileID: 8300000, guid: b1242b12c4e1efc419e9853f8fb20a85, type: 3}
   _bossTheme: {fileID: 8300000, guid: 1d9ba116e86c3294bb698a4f5cc146d4, type: 3}
+  _audioSource: {fileID: 0}
   _deadSound: {fileID: 0}
 --- !u!1 &265471147
 GameObject:
@@ -3975,6 +3975,8 @@ GameObject:
   m_Component:
   - component: {fileID: 436505375}
   - component: {fileID: 436505374}
+  - component: {fileID: 436505377}
+  - component: {fileID: 436505376}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -4025,6 +4027,116 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &436505376
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436505373}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6697715818617287364, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
+  m_audioClip: {fileID: 8300000, guid: c9a67d1783e23b54f93c7a55f64f62da, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.6
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &436505377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436505373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14cce950b5cfef4e9e35026f1347eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nswdIntro: {fileID: 8300000, guid: c9a67d1783e23b54f93c7a55f64f62da, type: 3}
+  _nswdTheme: {fileID: 8300000, guid: 658cfb43448972440b03ff719e5192ed, type: 3}
 --- !u!1 &460889404
 GameObject:
   m_ObjectHideFlags: 0
@@ -19052,9 +19164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 1679039004}
-  _btnClick: {fileID: 8300000, guid: f0a14e9cf62052c4ab9fd28a833aa187, type: 3}
-  _navigationBtn: {fileID: 8300000, guid: 84ee01784b2c851418dc0526d8f09a2c, type: 3}
-  _pauseBtn: {fileID: 8300000, guid: d989b46cd18b9a24d9cd45f9d7944e5c, type: 3}
+  _btnClick: {fileID: 8300000, guid: 7827c9f00b1a905418e0d5da7ad5361f, type: 3}
+  _navigationBtn: {fileID: 8300000, guid: 733e52e27c9cbf444881327b75cea153, type: 3}
+  _pauseBtn: {fileID: 8300000, guid: 7827c9f00b1a905418e0d5da7ad5361f, type: 3}
   _clickVolume: 0.5
   _navigationVolume: 1
   _pauseVolume: 0.7
@@ -19204,10 +19316,21 @@ MonoBehaviour:
   _save3: 0
   _equipments: 
   _skills: 
+  _hpMax: 25
+  _mpMax: 15
+  _katanaLevel: 0
   _gold: 0
+  _qtdPotentium: 0
+  _qtdOrb: 0
   _flags: 
   _barrels: 
+  _chests: 
   _airCutblock: 
+  _barriersLever: 
+  _gateMechanism: 0
+  _gateBoss: 0
+  _shipUpgrades: 
+  _rocks: 
   _checkpointScene: 0
   _direction: 0
   _navigator: 
@@ -19215,13 +19338,16 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
+  _hammer: 0
+  _grimoire: 0
   _bestiary: 
   _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
+  _keys: 
+  _doors: 
   _inputType: 
-  _aspectRadio: 0
 --- !u!4 &1710845086
 Transform:
   m_ObjectHideFlags: 0

@@ -203,7 +203,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Scenes/MainMenu");
-        BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._nswdTheme);
+        BackgroundMusic.instance._audioSource.enabled = false;
     }
 
     void InPause()

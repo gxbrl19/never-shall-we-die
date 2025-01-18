@@ -110,6 +110,7 @@ public class MenuController : MonoBehaviour
         GameManager.instance.LoadGame();
         int scene = GameManager.instance._checkpointScene;
 
+        BackgroundMusic.instance._audioSource.enabled = true;
         if (scene == 0)
         {
             SceneManager.LoadScene("Scenes/Intro");
