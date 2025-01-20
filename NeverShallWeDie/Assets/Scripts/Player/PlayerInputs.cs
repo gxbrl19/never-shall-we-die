@@ -196,7 +196,7 @@ public class PlayerInputs : MonoBehaviour
             if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Parachute) && !_collision._onWall)
             {
                 _isParachuting = true;
-                _audio.PlayAudio(_audio._parachute);
+                _audio.PlayAudio("parachute");
             }
             else if (_player._isGrounded || _callback.canceled)
             {
@@ -272,7 +272,7 @@ public class PlayerInputs : MonoBehaviour
         if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots))
         {
             _isSliding = true;
-            _audio.PlayAudio(_audio._slide);
+            _audio.PlayAudio("slide");
         }
     }
 
@@ -304,7 +304,7 @@ public class PlayerInputs : MonoBehaviour
                 isAirCuting = true;
                 _player._timeAirCut = 0f; //reseta o tempo do aircut para poder fazer a contagem;
                 _animation.OnAirCut();
-                //.PlayAudio(_audio._aircutSound);
+                //.PlayAudio("aircut");
             }
         }
     }

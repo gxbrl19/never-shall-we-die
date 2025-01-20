@@ -1011,7 +1011,6 @@ MonoBehaviour:
   _powerPickup: {fileID: 9056689326667320452}
   _direction: 1
   _speed: 4
-  _canDoubleJump: 0
   _ladder: {fileID: 0}
   _vine: {fileID: 0}
   _onClimbing: 0
@@ -1035,7 +1034,6 @@ MonoBehaviour:
   _dust: {fileID: 2433915885738270050, guid: e76119983bc3ad942bb43f70e9f7a201, type: 3}
   _recoveryEffect: {fileID: 8334568750684773814, guid: af97633c12733e54cb5109b0d6ba86ba, type: 3}
   _isGrounded: 1
-  _isDoubleJumping: 0
   _healing: 0
   _isOnSlope: 0
   _canGrab: 0
@@ -1161,11 +1159,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488c53fe1fc17124b9b20568d7333add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jump: {fileID: 8300000, guid: b65f89be90b00f848983c1987db4f568, type: 3}
-  _damage: {fileID: 8300000, guid: 0ec02875453dfb54e8a671125312b25c, type: 3}
+  _katanas:
+  - {fileID: 8300000, guid: ad2fb36a17379f94181e39f9edbf802a, type: 3}
+  - {fileID: 8300000, guid: 53f9d1f3b719db04dbe1756e91eb0c77, type: 3}
+  - {fileID: 8300000, guid: 5cc6fa25ad8dfc54492dfe43f3ff904e, type: 3}
+  _hits:
+  - {fileID: 8300000, guid: 4165baa3c212cc743831917b0a63cd21, type: 3}
+  - {fileID: 8300000, guid: daa70388538970c49a7f7c1de100da37, type: 3}
+  _jump: {fileID: 8300000, guid: ebbfc1f6a7850d547a38deb38c18a1fe, type: 3}
+  _roll: {fileID: 8300000, guid: 4a737da5b81aed24da9962c6e8fbf8c0, type: 3}
   _splash: {fileID: 8300000, guid: b0efeba1b6ac61c42a84829b0bb9792d, type: 3}
+  _swim: {fileID: 8300000, guid: 859d7908bb910c147ab21024e0eddf58, type: 3}
   _parachute: {fileID: 8300000, guid: 61909f43c56a86b40882a30f55f8acc8, type: 3}
   _slide: {fileID: 8300000, guid: 3603ceda3e483de4392cfd02089df0c8, type: 3}
+  _aircut: {fileID: 8300000, guid: da0ec01591bbb6a40a8185cf5ec56162, type: 3}
+  _waterspin: {fileID: 8300000, guid: 5856574d3d02617498fbfb4780c4e8ce, type: 3}
 --- !u!82 &5885178588111815687
 AudioSource:
   m_ObjectHideFlags: 0

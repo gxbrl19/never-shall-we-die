@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    //sons nas animações que se repetem não funcionam, precisam ser chamados via script
-    public AudioClip _jump;
-    public AudioClip _damage;
-    public AudioClip _splash;
+    [Header("Katana")] public AudioClip[] _katanas;
+    [Header("Hit")] public AudioClip[] _hits;
+    [Header("Jump")] public AudioClip _jump;
+    [Header("Roll")] public AudioClip _roll;
+    [Header("Water")] public AudioClip _splash;
+    [Header("Water")] public AudioClip _swim;
     public AudioClip _parachute;
     public AudioClip _slide;
+
+    [Header("Skills")] public AudioClip _aircut;
+    [Header("Skills")] public AudioClip _waterspin;
 
     AudioSource _audioSource;
 
@@ -18,43 +23,40 @@ public class PlayerAudio : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayAudio(AudioClip sound)
+    public void PlayAudio(string audio)
     {
-        if (Time.timeScale != 0f)
-        {
-            _audioSource.pitch = 1f;
-            //VolumeControl(sound);
-            _audioSource.PlayOneShot(sound);
-        }
-    }
+        if (Time.timeScale == 0f) { return; }
 
-    void VolumeControl(AudioClip sound)
-    {
-        switch (sound.name)
+        switch (audio)
         {
-            case "sword_swish": //animação
-                _audioSource.volume = 1.3f;
+            case "katana": //animação
+                int katanas = Random.Range(0, 3);
+                _audioSource.PlayOneShot(_katanas[katanas]);
                 break;
             case "jump": //script
-                _audioSource.volume = 1.8f;
+                _audioSource.PlayOneShot(_jump);
                 break;
-            case "damage_player": //script
-                _audioSource.volume = 1.4f;
+            case "roll": //animação
+                _audioSource.PlayOneShot(_roll);
+                break;
+            case "hit": //script
+                int hits = Random.Range(0, 2);
+                _audioSource.PlayOneShot(_hits[hits]);
                 break;
             case "swin": //animação
-                _audioSource.volume = 1.6f;
+                _audioSource.PlayOneShot(_swim);
                 break;
             case "aircut": //animação
-                _audioSource.volume = 1.6f;
+                _audioSource.PlayOneShot(_aircut);
                 break;
-            case "water_spin": //animação
-                _audioSource.volume = 1.5f;
+            case "waterspin": //animação
+                _audioSource.PlayOneShot(_waterspin);
                 break;
             case "splash": //script
-                _audioSource.volume = 1.3f;
+                _audioSource.PlayOneShot(_splash);
                 break;
             case "parachute": //script
-                _audioSource.volume = .9f;
+                _audioSource.PlayOneShot(_parachute);
                 break;
         }
     }
