@@ -241,6 +241,7 @@ public class PlayerInputs : MonoBehaviour
         if (_callback.canceled)
         {
             _player._healing = false;
+            _audio._audioSource.Stop();
         }
     }
 

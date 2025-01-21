@@ -1171,9 +1171,11 @@ MonoBehaviour:
   _splash: {fileID: 8300000, guid: b0efeba1b6ac61c42a84829b0bb9792d, type: 3}
   _swim: {fileID: 8300000, guid: 859d7908bb910c147ab21024e0eddf58, type: 3}
   _parachute: {fileID: 8300000, guid: 61909f43c56a86b40882a30f55f8acc8, type: 3}
-  _slide: {fileID: 8300000, guid: 3603ceda3e483de4392cfd02089df0c8, type: 3}
+  _slide: {fileID: 8300000, guid: 682c69cd37afa5541b03431e86330846, type: 3}
   _aircut: {fileID: 8300000, guid: da0ec01591bbb6a40a8185cf5ec56162, type: 3}
   _waterspin: {fileID: 8300000, guid: 5856574d3d02617498fbfb4780c4e8ce, type: 3}
+  _healing: {fileID: 8300000, guid: 7e2cc06cb8b258645b987a25331af776, type: 3}
+  _audioSource: {fileID: 0}
 --- !u!82 &5885178588111815687
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1186,7 +1188,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5314338856241744941, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.9
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
