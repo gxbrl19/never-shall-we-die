@@ -377,8 +377,8 @@ MonoBehaviour:
   _onHit: 0
   _isDead: 0
   _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _hitSound: {fileID: 8300000, guid: 5f05da1b9d607904190778d4f57c9c1d, type: 3}
-  _deadSound: {fileID: 8300000, guid: 464efdaf9f319bd4fa15cee4cfe21adf, type: 3}
+  _hitSound: {fileID: 8300000, guid: 55c77bbed58e6af45a25e9330a71ecb5, type: 3}
+  _deadSound: {fileID: 8300000, guid: 359bfb03bc84a6143af98e22b5bccc39, type: 3}
   _animation: {fileID: 0}
   _audio: {fileID: 0}
 --- !u!114 &8626063002186934191
@@ -436,9 +436,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5314338856241744941, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
-  m_audioClip: {fileID: 8300000, guid: f2feb2ecf26d22b44897c5bcb0e1dc99, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 359bfb03bc84a6143af98e22b5bccc39, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0

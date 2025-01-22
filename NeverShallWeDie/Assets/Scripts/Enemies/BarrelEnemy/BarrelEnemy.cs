@@ -8,6 +8,8 @@ public class BarrelEnemy : MonoBehaviour
     public float _speed;
     public float _raycastSize;
     public Transform _finishPoint;
+    [SerializeField] AudioClip _startRollingSound;
+    [SerializeField] AudioClip _rollingSound;
     [SerializeField] AudioClip _attackSound;
 
     bool _detectPlayer = false;
@@ -27,9 +29,12 @@ public class BarrelEnemy : MonoBehaviour
         if (_controller._isDead)
             return;
 
+        _controller._audio.loop = _isRolling;
+
         if (_detectPlayer) { _controller._animation.SetBool("DetectPlayer", true); }
         if (_detectPlayer && !_beginRoll)
         {
+            if (!_isRolling) { _controller._audio.PlayOneShot(_rollingSound); }
             _isRolling = true;
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(_finishPoint.position.x, transform.position.y), _speed * Time.deltaTime);
         }
@@ -61,6 +66,7 @@ public class BarrelEnemy : MonoBehaviour
         {
             _beginRoll = true;
             _detectPlayer = true;
+            _controller._audio.PlayOneShot(_startRollingSound);
 
             if (_hitBack) { Flip(); }
         }
@@ -90,7 +96,7 @@ public class BarrelEnemy : MonoBehaviour
         Vector2 _raycastDirection;
         _raycastDirection = Vector2.right * transform.localScale.x;
         Debug.DrawRay(transform.position, _raycastDirection * _raycastSize, Color.red);
-        
+
         Vector2 _raycastBack;
         _raycastBack = Vector2.left * transform.localScale.x;
         Debug.DrawRay(transform.position, _raycastBack * _raycastSize, Color.red);

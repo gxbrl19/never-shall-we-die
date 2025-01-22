@@ -15,6 +15,7 @@ public class Bombman : MonoBehaviour
     int _direction;
     EnemyController _controller;
     Transform _playerPosition;
+    [SerializeField] AudioClip _throwBombSound;
     [SerializeField] Transform _shootPoint;
     [SerializeField] Transform _bomb;
     [SerializeField] LayerMask _playerLayer;
@@ -35,11 +36,12 @@ public class Bombman : MonoBehaviour
 
     void Update()
     {
-        if (_controller._isDead){
+        if (_controller._isDead)
+        {
             IsDead();
         }
 
-        _velocity = (_playerPosition.position - transform.position) * _launchForce;        
+        _velocity = (_playerPosition.position - transform.position) * _launchForce;
 
         if (_canAttack && _detectPlayer & !_attacking && !_preparing)
         {
@@ -57,7 +59,8 @@ public class Bombman : MonoBehaviour
         DetectPlayer();
         DetectGround();
 
-        if (_canWalk && _preparing && !_attacking) {
+        if (_canWalk && _preparing && !_attacking)
+        {
             transform.Translate(new Vector3(_speed * -_direction, 0f, 0f) * Time.deltaTime);
         }
     }
@@ -83,7 +86,8 @@ public class Bombman : MonoBehaviour
         if (_hitBack) { Flip(); }
     }
 
-    void DetectGround() {
+    void DetectGround()
+    {
         if (_controller._isDead)
             return;
 
@@ -105,6 +109,7 @@ public class Bombman : MonoBehaviour
     {
         Transform bomb = Instantiate(_bomb, _shootPoint.position, Quaternion.identity);
         bomb.GetComponent<Rigidbody2D>().velocity = _velocity;
+        _controller._audio.PlayOneShot(_throwBombSound);
     }
 
     public void FinishAttack() //chamado na animacao shoot
@@ -112,21 +117,23 @@ public class Bombman : MonoBehaviour
         _attacking = false;
         _preparing = true;
 
-        if (_canWalk) {
+        if (_canWalk)
+        {
             _controller._animation.SetBool("PreparingWalk", true);
             _controller._animation.SetBool("Attack", false);
         }
-        else {
+        else
+        {
             _controller._animation.SetBool("Preparing", true);
             _controller._animation.SetBool("Attack", false);
         }
-        
+
     }
 
     public void CanAttack() //chamado na animacao preparing
     {
         _preparing = false;
-        _canAttack = true;        
+        _canAttack = true;
         _controller._animation.SetBool("Preparing", false);
         _controller._animation.SetBool("PreparingWalk", false);
     }
@@ -134,19 +141,20 @@ public class Bombman : MonoBehaviour
     private void OnDrawGizmos()
     {
         Vector2 _raycastPosition = new Vector2(transform.position.x, transform.position.y + 0.5f);
-        Debug.DrawRay(_raycastPosition, Vector2.right  * _direction * (_raycastSize  + 2f), Color.red);
-        Debug.DrawRay(_raycastPosition, Vector2.left * _direction * (_raycastSize  + 2f), Color.yellow);
+        Debug.DrawRay(_raycastPosition, Vector2.right * _direction * (_raycastSize + 2f), Color.red);
+        Debug.DrawRay(_raycastPosition, Vector2.left * _direction * (_raycastSize + 2f), Color.yellow);
 
         Vector2 _detectGround = new Vector2(transform.position.x - (1.3f * _direction), transform.position.y);
         Debug.DrawRay(_detectGround, Vector2.down * (_raycastSize - 5.5f), Color.blue);
         Debug.DrawRay(_detectGround, Vector2.left * _direction * (_raycastSize - 6.5f), Color.cyan);
     }
 
-    void IsDead() {
+    void IsDead()
+    {
         transform.Translate(new Vector3(0f, 0f, 0f) * Time.deltaTime);
         _canWalk = false;
         _preparing = false;
-        _canAttack = false;  
+        _canAttack = false;
         _controller._animation.SetBool("Attack", false);
         _controller._animation.SetBool("Preparing", false);
         _controller._animation.SetBool("PreparingWalk", false);

@@ -199,8 +199,8 @@ MonoBehaviour:
   _onHit: 0
   _isDead: 0
   _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _hitSound: {fileID: 8300000, guid: 5f05da1b9d607904190778d4f57c9c1d, type: 3}
-  _deadSound: {fileID: 8300000, guid: 464efdaf9f319bd4fa15cee4cfe21adf, type: 3}
+  _hitSound: {fileID: 8300000, guid: 80554b588772ed749832f4f2cd43c915, type: 3}
+  _deadSound: {fileID: 8300000, guid: 5f77ede05488d804998110d6ee2ea8df, type: 3}
   _animation: {fileID: 0}
   _audio: {fileID: 0}
 --- !u!114 &5600344357595299757
@@ -261,7 +261,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5314338856241744941, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
