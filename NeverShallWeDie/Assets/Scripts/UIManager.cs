@@ -250,6 +250,7 @@ public class UIManager : MonoBehaviour
         _pnlSkills.SetActive(false);
         _pnlCrew.SetActive(false);
         _pnlConfig.SetActive(false);
+        _audioSource.PlayOneShot(_navigationBtn);
 
         for (int i = 0; i < _panels.Length; i++)
         {
@@ -675,6 +676,11 @@ public class UIManager : MonoBehaviour
     public void ClickSound(string type) //chamado na ação dos botões
     {
         AudioHUD.instance.SoundClick(type);
+    }
+
+    public void SwitchButton() //chamado na ação dos botões
+    {
+        AudioHUD.instance.NavigationButton();
     }
 
     public void SetMasterVol(float volume)

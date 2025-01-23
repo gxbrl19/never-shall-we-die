@@ -144,10 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefb1b9870724ba42b76b7f1e86657a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 0
   _animation: {fileID: 1932251471150823836}
   _mainCamera: {fileID: 0}
   _barrierCamera: {fileID: 0}
-  _moveSound: {fileID: 8300000, guid: d5ef9fbf2a09f9847800092732ad8fc2, type: 3}
+  _moveSound: {fileID: 8300000, guid: 0551a02fb1b087542bb3bcf388885c69, type: 3}
 --- !u!82 &2280778115338189303
 AudioSource:
   m_ObjectHideFlags: 0
@@ -158,9 +159,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5314338856241744941, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
-  m_audioClip: {fileID: 8300000, guid: d5ef9fbf2a09f9847800092732ad8fc2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0551a02fb1b087542bb3bcf388885c69, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0

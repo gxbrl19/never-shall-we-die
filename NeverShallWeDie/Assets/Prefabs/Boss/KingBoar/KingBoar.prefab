@@ -190,8 +190,9 @@ MonoBehaviour:
   _boarMinion: {fileID: 6225380674925314573, guid: bddd0ecaca8198347b6ef5d8c2eb7b3c, type: 3}
   _boarMinionLeft: {fileID: 0}
   _boarMinionRight: {fileID: 0}
-  _scream: {fileID: 8300000, guid: 1e98ccef75e55c24f8e3b5e2f2d2c289, type: 3}
-  _minion: {fileID: 8300000, guid: e7d94c4ddafa40e4cb67068a14141f05, type: 3}
+  _scream: {fileID: 8300000, guid: c961cbf65fce78043b7727721650e05b, type: 3}
+  _minion: {fileID: 8300000, guid: e3cdc91a092b18242a7d35c5944f42ca, type: 3}
+  _throw: {fileID: 8300000, guid: 296cfab55dbadb9419b37d5940afffe4, type: 3}
 --- !u!114 &7224680742747029376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +219,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1e98ccef75e55c24f8e3b5e2f2d2c289, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0

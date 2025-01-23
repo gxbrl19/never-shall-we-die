@@ -18,6 +18,7 @@ public class KingBoar : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip _scream;
     [SerializeField] AudioClip _minion;
+    [SerializeField] AudioClip _throw;
 
     float _speed = 2f;
     float _timer;
@@ -86,7 +87,7 @@ public class KingBoar : MonoBehaviour
     void AttackController()
     {
         if (_attacking) { return; }
-        //_numAttack = Random.Range((int)_range.x, (int)_range.y);        
+        //_numAttack = Random.Range((int)_range.x, (int)_range.y);
 
         _attacking = true;
 
@@ -99,6 +100,8 @@ public class KingBoar : MonoBehaviour
 
     public void SpikeAttack() //chamado na animação Attack02
     {
+        _audioSource.PlayOneShot(_throw);
+
         Transform spike = Instantiate(_spike, _shootPoint.position, Quaternion.identity);
         spike.GetComponent<Rigidbody2D>().velocity = new Vector2(_velocitySpike.x + 4f, _velocitySpike.y - 0.5f);
 
@@ -110,7 +113,7 @@ public class KingBoar : MonoBehaviour
     }
 
     public void MinionAttack() //chamado na animação Attack03
-    {        
+    {
         _audioSource.PlayOneShot(_minion);
 
         if (_direction == 1)
@@ -162,5 +165,10 @@ public class KingBoar : MonoBehaviour
         _intro = false;
         _player.EnabledControls();
         _starter = true;
+    }
+
+    public void PlayAudio(AudioClip audio) //chamado na animação de ataque
+    {
+        _audioSource.PlayOneShot(audio);
     }
 }

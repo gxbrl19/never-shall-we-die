@@ -64,8 +64,12 @@ public class PlayerAudio : MonoBehaviour
                 _audioSource.PlayOneShot(_hits[hits]);
                 break;
             case "swin": //animação
-                _audioSource.volume = 1f;
+                _audioSource.volume = 0.3f;
                 _audioSource.PlayOneShot(_swim);
+                break;
+            case "splash": //script
+                _audioSource.volume = 0.3f;
+                _audioSource.PlayOneShot(_splash);
                 break;
             case "aircut": //animação
                 _audioSource.volume = 1f;
@@ -74,10 +78,6 @@ public class PlayerAudio : MonoBehaviour
             case "waterspin": //animação
                 _audioSource.volume = 1f;
                 _audioSource.PlayOneShot(_waterspin);
-                break;
-            case "splash": //script
-                _audioSource.volume = 1f;
-                _audioSource.PlayOneShot(_splash);
                 break;
             case "parachute": //script
                 _audioSource.volume = 0.6f;

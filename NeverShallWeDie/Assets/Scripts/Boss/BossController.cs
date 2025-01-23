@@ -31,6 +31,7 @@ public class BossController : MonoBehaviour
     {
         _animation = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
+        _audio = GetComponent<AudioSource>();
 
 
         _maxHealth = _bossObject.maxHealth;
@@ -60,7 +61,8 @@ public class BossController : MonoBehaviour
 
         _onHit = true;
         _currentHealth -= damage;
-        //_audio.volume = _volume;
+        _audio.volume = _volume;
+        _audio.PlayOneShot(_deadSound);
         _sprite.color = _damageColor;
         AudioItems.instance.PlaySound(AudioItems.instance._hitSound, AudioItems.instance._hitVolume);
         Invoke("FinishHit", 0.3f);
