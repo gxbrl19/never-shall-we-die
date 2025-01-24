@@ -6,35 +6,22 @@ public class MenuMusic : MonoBehaviour
 {
     public static MenuMusic instance;
 
-    public AudioClip _nswdIntro;
-    public AudioClip _nswdTheme;
+    public double time;
 
-    AudioSource _audioSource;
+    public AudioSource[] audioSource;
 
-    private void Awake()
+    private void Start()
     {
-        _audioSource = gameObject.GetComponent<AudioSource>();
-    }
+        // Obtém o tempo atual do sistema de áudio
+        double startTime = AudioSettings.dspTime;
 
-    void Start()
-    {
-        if (_audioSource.clip == _nswdIntro)
-        {
-            _audioSource.loop = false;
-            StartCoroutine(PlayLoop(_nswdIntro));
-        }
-        else
-        {
-            _audioSource.loop = true;
-        }
-    }
+        // Toca o primeiro áudio imediatamente
+        audioSource[0].PlayScheduled(startTime);
 
-    private System.Collections.IEnumerator PlayLoop(AudioClip clip)
-    {
-        yield return new WaitForSeconds(clip.length);
+        // Calcula o tempo de início do segundo áudio
+        double secondClipStartTime = startTime + audioSource[0].clip.length;
 
-        _audioSource.clip = _nswdTheme;
-        _audioSource.loop = true;
-        _audioSource.Play();
+        // Agenda o segundo áudio para tocar logo após o primeiro
+        audioSource[1].PlayScheduled(secondClipStartTime + 0.4);
     }
 }
