@@ -15,6 +15,7 @@ public class BackgroundMusic : MonoBehaviour
     public AudioClip _mansionTheme;
     public AudioClip _bossTheme;
 
+    public AudioSource _audioSourceIntro;
     [HideInInspector] public AudioSource _audioSource;
     [HideInInspector] public AudioClip _deadSound;
 
@@ -43,14 +44,22 @@ public class BackgroundMusic : MonoBehaviour
 
     public void BossMusic()
     {
-        //_audioSource.Stop();
+        _audioSource.Stop();
+        _audioSourceIntro.enabled = true;
+        double startTime = AudioSettings.dspTime;
+        _audioSourceIntro.PlayScheduled(startTime);
+        double secondClipStartTime = startTime + _audioSourceIntro.clip.length;
         _audioSource.clip = _bossTheme;
-        _audioSource.Play();
+        _audioSource.PlayScheduled(secondClipStartTime);
+
+
+        //_audioSource.Play();
     }
 
     public void FinishBoss()
     {
         //_audioSource.Stop();
+        _audioSourceIntro.enabled = false;
         _audioSource.clip = _forestTheme; //TODO: pegar a musica da ilha atual
         _audioSource.Play();
     }
