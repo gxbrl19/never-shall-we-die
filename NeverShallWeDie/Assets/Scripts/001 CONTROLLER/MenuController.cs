@@ -35,9 +35,12 @@ public class MenuController : MonoBehaviour
     public Slider _musicVolSlider;
     public Slider _sfxVolSlider;
 
+    BackgroundMusic _music;
+
     private void Awake()
     {
         instance = this;
+        _music = FindAnyObjectByType<BackgroundMusic>();
     }
 
     private void Start()
@@ -114,13 +117,13 @@ public class MenuController : MonoBehaviour
         if (scene == 0)
         {
             SceneManager.LoadScene("Scenes/Intro");
-            BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme); //DEMO
-            //BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._kingdomTheme);
+            _music.ChangeMusic(_music._forestTheme, _music._forestIntro); //DEMO
+            //_music.ChangeMusic(_music._kingdomTheme, _music._kingdomIntro);
         }
         else
         {
             //TODO: verificar a ilha que está selecionada para passar a musica
-            BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme);
+            _music.ChangeMusic(_music._forestTheme, _music._forestIntro);
             PlayerPrefs.SetInt("Scene", scene);
             SceneManager.LoadScene("Scenes/Load");
         }

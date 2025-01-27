@@ -15,6 +15,7 @@ public class SceneController : MonoBehaviour
     public PlayerPosition _scriptablePosition;
     Player _player;
     PlayerHealth _health;
+    BackgroundMusic _music;
 
 
     void Awake()
@@ -23,6 +24,7 @@ public class SceneController : MonoBehaviour
 
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _health = _player.GetComponent<PlayerHealth>();
+        _music = FindAnyObjectByType<BackgroundMusic>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -51,7 +53,7 @@ public class SceneController : MonoBehaviour
     {
         _scriptablePosition.SetAttributes(true, _direction, _indexPosition);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
-        if (_nextSceneName == "00/01") { BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._shipTheme); }
+        if (_nextSceneName == "00/01") { _music.ChangeMusic(_music._shipTheme, _music._shipIntro); }
     }
 
     private bool SceneExists(string sceneName)

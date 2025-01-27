@@ -10,11 +10,13 @@ public class ExitShip : MonoBehaviour
     bool _triggered;
     Player _player;
     PlayerInputs _input;
+    BackgroundMusic _music;
 
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
+        _music = FindAnyObjectByType<BackgroundMusic>();
 
         _triggered = false;
     }
@@ -48,28 +50,28 @@ public class ExitShip : MonoBehaviour
         switch (_nextSceneName)
         {
             case "06/H0":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._kingdomTheme);
+                _music.ChangeMusic(_music._kingdomTheme, _music._kingdomIntro);
                 break;
             case "01/H1":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme);
+                _music.ChangeMusic(_music._forestTheme, _music._forestIntro);
                 break;
             case "01/H2":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._forestTheme);
+                _music.ChangeMusic(_music._forestTheme, _music._forestIntro);
                 break;
             case "02/H3":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._mizutonTheme);
+                _music.ChangeMusic(_music._mizutonTheme, _music._mansionIntro);
                 break;
             case "02/H4":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._mizutonTheme);
+                _music.ChangeMusic(_music._mizutonTheme, _music._mansionIntro);
                 break;
             case "03/H5":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._cemeteryTheme);
+                _music.ChangeMusic(_music._cemeteryTheme, _music._cemeteryIntro);
                 break;
             case "03/H6":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._cemeteryTheme);
+                _music.ChangeMusic(_music._cemeteryTheme, _music._cemeteryIntro);
                 break;
             case "04/H7":
-                BackgroundMusic.instance.ChangeMusic(BackgroundMusic.instance._prisonTheme);
+                _music.ChangeMusic(_music._prisonTheme, _music._prisonIntro);
                 break;
         }
     }

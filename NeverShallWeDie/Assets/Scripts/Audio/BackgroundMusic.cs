@@ -6,6 +6,7 @@ public class BackgroundMusic : MonoBehaviour
 {
     public static BackgroundMusic instance;
 
+    [Header("Theme")]
     public AudioClip _kingdomTheme;
     public AudioClip _shipTheme;
     public AudioClip _forestTheme;
@@ -15,6 +16,17 @@ public class BackgroundMusic : MonoBehaviour
     public AudioClip _mansionTheme;
     public AudioClip _bossTheme;
 
+    [Header("Intros")]
+    public AudioClip _kingdomIntro;
+    public AudioClip _shipIntro;
+    public AudioClip _forestIntro;
+    public AudioClip _mizutonIntro;
+    public AudioClip _cemeteryIntro;
+    public AudioClip _prisonIntro;
+    public AudioClip _mansionIntro;
+    public AudioClip _bossIntro;
+
+    [Header("Components")]
     public AudioSource _audioSourceIntro;
     [HideInInspector] public AudioSource _audioSource;
     [HideInInspector] public AudioClip _deadSound;
@@ -34,26 +46,28 @@ public class BackgroundMusic : MonoBehaviour
         _audioSource = gameObject.GetComponent<AudioSource>();
     }
 
-    public void ChangeMusic(AudioClip audioClip)
+    public void ChangeMusic(AudioClip audioClip, AudioClip introClip)
     {
-        BackgroundMusic.instance._audioSource.enabled = true;
-        //_audioSource.Stop();
+        _audioSource.Stop();
+        _audioSourceIntro.enabled = true;
+        _audioSourceIntro.clip = introClip;
+        double startTime = AudioSettings.dspTime;
+        _audioSourceIntro.PlayScheduled(startTime);
+        double secondClipStartTime = startTime + _audioSourceIntro.clip.length;
         _audioSource.clip = audioClip;
-        _audioSource.Play();
+        _audioSource.PlayScheduled(secondClipStartTime + 0.3);
     }
 
     public void BossMusic()
     {
         _audioSource.Stop();
         _audioSourceIntro.enabled = true;
+        _audioSourceIntro.clip = _bossIntro;
         double startTime = AudioSettings.dspTime;
         _audioSourceIntro.PlayScheduled(startTime);
         double secondClipStartTime = startTime + _audioSourceIntro.clip.length;
         _audioSource.clip = _bossTheme;
         _audioSource.PlayScheduled(secondClipStartTime);
-
-
-        //_audioSource.Play();
     }
 
     public void FinishBoss()
