@@ -140,8 +140,8 @@ public class GameManager : MonoBehaviour
 
         _navigator = "CREW"; //TODO: - passar para o MEET ao terminar a demo
         _shipwright = "CREW"; //DEMO - passar para o COMPLETE ao terminar a demo
-        _witch = "CREW"; //TODO: - passar para o MEET ao terminar a demo
-        _blacksmith = "CREW"; //TODO: - passar para o MEET ao terminar a demo
+        _witch = "MEET"; //TODO: - passar para o MEET ao terminar a demo
+        _blacksmith = "MEET"; //TODO: - passar para o MEET ao terminar a demo
     }
 
     void Update()

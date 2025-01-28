@@ -22,6 +22,6 @@ public class MenuMusic : MonoBehaviour
         double secondClipStartTime = startTime + audioSource[0].clip.length;
 
         // Agenda o segundo áudio para tocar logo após o primeiro
-        audioSource[1].PlayScheduled(secondClipStartTime + 0.4);
+        audioSource[1].PlayScheduled(secondClipStartTime + time);
     }
 }
