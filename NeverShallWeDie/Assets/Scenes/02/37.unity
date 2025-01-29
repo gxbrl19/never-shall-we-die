@@ -12048,12 +12048,21 @@ MonoBehaviour:
   _save3: 0
   _equipments: 
   _skills: 
+  _hpMax: 25
+  _mpMax: 15
+  _katanaLevel: 0
   _gold: 0
+  _qtdPotentium: 0
+  _qtdOrb: 0
   _flags: 
   _barrels: 
   _chests: 
   _airCutblock: 
   _barriersLever: 
+  _gateMechanism: 0
+  _gateBoss: 0
+  _shipUpgrades: 
+  _rocks: 
   _checkpointScene: 0
   _direction: 0
   _navigator: 
@@ -12061,11 +12070,15 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
+  _hammer: 0
+  _grimoire: 0
   _bestiary: 
   _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
+  _keys: 
+  _doors: 
   _inputType: 
 --- !u!4 &503389168
 Transform:
@@ -13024,6 +13037,10 @@ PrefabInstance:
       propertyPath: _item
       value: 
       objectReference: {fileID: 62880426106912218, guid: 7923bea48ff6f3b499b8bee61065cb9b, type: 3}
+    - target: {fileID: 8588945458967287936, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
+      propertyPath: _idChest
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.2
@@ -13675,7 +13692,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.72492
+      value: 18.727777
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y

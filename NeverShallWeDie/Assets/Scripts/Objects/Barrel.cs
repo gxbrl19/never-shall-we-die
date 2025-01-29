@@ -34,6 +34,7 @@ public class Barrel : MonoBehaviour
 		{
 			_audio.PlayOneShot(_barrelBreak);
 			_animation.SetBool("Break", true);
+			_dropItem._dropRate = 15;
 			_dropItem.DropGold();
 		}
 	}

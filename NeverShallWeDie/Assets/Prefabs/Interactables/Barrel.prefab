@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa37e1a0a270a44d8ff1be008b87d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _idBarrel: 0
   _barrelBreak: {fileID: 8300000, guid: 0f5776835c72af642910cdcef41005e7, type: 3}
 --- !u!114 &6530343848684851427
 MonoBehaviour:
@@ -182,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 62880426106912218, guid: a9adf4fda0599e24abf6d0d01f7fedf9, type: 3}
-  _interactable: 1
+  _dropPoint: {fileID: 3418197842839299744}
   _dropRate: 0
 --- !u!82 &7342506176083512644
 AudioSource:
