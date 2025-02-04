@@ -101,6 +101,11 @@ public class ShipOpenWorld : MonoBehaviour
         _animation.SetBool("Move", move);
     }
 
+    public void StopMove()
+    {
+        _body.velocity = Vector2.zero;
+    }
+
     void IdleSprite()
     {
         if (_submarine) { return; }

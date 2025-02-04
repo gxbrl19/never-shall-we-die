@@ -138,8 +138,8 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        _navigator = "CREW"; //TODO: - passar para o MEET ao terminar a demo
-        _shipwright = "CREW"; //DEMO - passar para o COMPLETE ao terminar a demo
+        _navigator = "OTHER"; //TODO: - passar para o MEET ao terminar a demo
+        _shipwright = "COMPLETE"; //DEMO - passar para o COMPLETE ao terminar a demo
         _witch = "MEET"; //TODO: - passar para o MEET ao terminar a demo
         _blacksmith = "MEET"; //TODO: - passar para o MEET ao terminar a demo
     }

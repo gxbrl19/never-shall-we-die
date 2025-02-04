@@ -28,7 +28,8 @@ public class Pier : MonoBehaviour
             var currentLocale = LocalizationSettings.SelectedLocale;
             _islandName = (currentLocale.Identifier.Code == "pt-BR") ? _ptIslandName : _engIslandName;
             //if (currentLocale.Identifier.Code == "pt-BR") { _islandName = _ptIslandName; } else if (currentLocale.Identifier.Code == "en") { _islandName = _engIslandName; }
-            
+
+            _ship.StopMove();
             _ship._canMove = false;
             CanvasOpenWorld.instance.OpenLevelSelect(_islandName);
             CanvasOpenWorld.instance._sceneName = _sceneName;

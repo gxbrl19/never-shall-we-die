@@ -8,12 +8,14 @@ public class ExitShip : MonoBehaviour
     [SerializeField] PlayerPosition _scriptablePosition;
     string _nextSceneName; //definido no GameManager
     bool _triggered;
+    Collider2D _collider;
     Player _player;
     PlayerInputs _input;
     BackgroundMusic _music;
 
     private void Awake()
     {
+        _collider = GetComponent<Collider2D>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
         _music = FindAnyObjectByType<BackgroundMusic>();
@@ -23,6 +25,8 @@ public class ExitShip : MonoBehaviour
 
     void Update()
     {
+        //verifica se a bandeira do navio está hasteada
+        if (GameManager.instance._flags[0] == 1) { _collider.enabled = true; } else { _collider.enabled = false; }
         if (_triggered && _input.interact) { Exit(); }
     }
 

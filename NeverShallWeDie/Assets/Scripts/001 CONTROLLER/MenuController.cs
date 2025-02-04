@@ -117,7 +117,7 @@ public class MenuController : MonoBehaviour
         if (scene == 0)
         {
             SceneManager.LoadScene("Scenes/Intro");
-            _music.ChangeMusic(_music._forestTheme, _music._forestIntro); //DEMO
+            _music.ChangeMusic(_music._shipTheme, _music._shipIntro); //DEMO
             //_music.ChangeMusic(_music._kingdomTheme, _music._kingdomIntro);
         }
         else

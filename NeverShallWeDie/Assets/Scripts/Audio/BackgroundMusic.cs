@@ -51,11 +51,20 @@ public class BackgroundMusic : MonoBehaviour
         _audioSource.Stop();
         _audioSourceIntro.enabled = true;
         _audioSourceIntro.clip = introClip;
+
+        // Obter o tempo atual no DSP
         double startTime = AudioSettings.dspTime;
+
+        // Agendar a reprodução da intro
         _audioSourceIntro.PlayScheduled(startTime);
-        double secondClipStartTime = startTime + _audioSourceIntro.clip.length;
+
+        // Calcular o início do segundo clipe com precisão
+        double introDuration = (double)introClip.samples / introClip.frequency;
+        double secondClipStartTime = startTime + introDuration;
+
+        // Configurar e agendar o segundo clipe
         _audioSource.clip = audioClip;
-        _audioSource.PlayScheduled(secondClipStartTime + 0.3);
+        _audioSource.PlayScheduled(secondClipStartTime);
     }
 
     public void BossMusic()
