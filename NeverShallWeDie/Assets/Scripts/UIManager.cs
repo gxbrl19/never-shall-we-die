@@ -250,6 +250,7 @@ public class UIManager : MonoBehaviour
         _pnlSkills.SetActive(false);
         _pnlCrew.SetActive(false);
         _pnlConfig.SetActive(false);
+        _pnlItems.SetActive(false);
         _audioSource.PlayOneShot(_navigationBtn);
 
         for (int i = 0; i < _panels.Length; i++)

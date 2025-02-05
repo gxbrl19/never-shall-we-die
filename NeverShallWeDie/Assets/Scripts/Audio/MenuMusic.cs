@@ -12,16 +12,19 @@ public class MenuMusic : MonoBehaviour
 
     private void Start()
     {
+        AudioClip introClip = audioSource[0].clip;
+
         // Obtém o tempo atual do sistema de áudio
         double startTime = AudioSettings.dspTime;
 
         // Toca o primeiro áudio imediatamente
         audioSource[0].PlayScheduled(startTime);
 
-        // Calcula o tempo de início do segundo áudio
-        double secondClipStartTime = startTime + audioSource[0].clip.length;
+        // Calcular o início do segundo clipe com precisão
+        double introDuration = (double)introClip.samples / introClip.frequency;
+        double secondClipStartTime = startTime + introDuration;
 
         // Agenda o segundo áudio para tocar logo após o primeiro
-        audioSource[1].PlayScheduled(secondClipStartTime + time);
+        audioSource[1].PlayScheduled(secondClipStartTime);
     }
 }
