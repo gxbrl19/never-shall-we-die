@@ -320,11 +320,15 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        //
-        if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0f)
-        {
-            _inputType = "Gamepad";
-        }
+
+        //lendo o WASD e analógicos
+        bool keyboard = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
+
+        float stickX = Input.GetAxisRaw("Horizontal");
+        float stickY = Input.GetAxisRaw("Vertical");
+
+        if (keyboard) { _inputType = "Keyboard"; }
+        if (!keyboard && (Mathf.Abs(stickX) > 0.1f || Mathf.Abs(stickY) > 0.1f)) { _inputType = "Gamepad"; }
     }
     #endregion Inputs
 }
