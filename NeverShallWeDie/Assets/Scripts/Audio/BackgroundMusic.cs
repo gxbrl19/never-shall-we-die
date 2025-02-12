@@ -48,23 +48,28 @@ public class BackgroundMusic : MonoBehaviour
 
     public void ChangeMusic(AudioClip audioClip, AudioClip introClip)
     {
+        _audioSource.clip = audioClip;
+        _audioSource.Play();
         _audioSource.Stop();
+
         _audioSourceIntro.enabled = true;
         _audioSourceIntro.clip = introClip;
 
-        // Obter o tempo atual no DSP
+        // Pegar o tempo DSP atual
         double startTime = AudioSettings.dspTime;
 
-        // Agendar a reprodução da intro
+        // Agendar a intro para começar imediatamente
         _audioSourceIntro.PlayScheduled(startTime);
 
-        // Calcular o início do segundo clipe com precisão
-        double introDuration = (double)introClip.samples / introClip.frequency;
+        // Garantir um cálculo preciso do tempo de transição
+        double introDuration = introClip.length; // Usar a duração exata do áudio
         double secondClipStartTime = startTime + introDuration;
 
-        // Configurar e agendar o segundo clipe
+        // Configurar e agendar a música principal
         _audioSource.clip = audioClip;
         _audioSource.PlayScheduled(secondClipStartTime);
+
+        Debug.Log($"Music: {introClip.name}, Intro Duration: {introDuration}, Scheduled Start: {secondClipStartTime}");
     }
 
     public void BossMusic()
