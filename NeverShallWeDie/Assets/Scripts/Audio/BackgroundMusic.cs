@@ -68,8 +68,6 @@ public class BackgroundMusic : MonoBehaviour
         // Configurar e agendar a música principal
         _audioSource.clip = audioClip;
         _audioSource.PlayScheduled(secondClipStartTime);
-
-        Debug.Log($"Music: {introClip.name}, Intro Duration: {introDuration}, Scheduled Start: {secondClipStartTime}");
     }
 
     public void BossMusic()

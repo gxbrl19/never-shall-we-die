@@ -117,15 +117,23 @@ public class MenuController : MonoBehaviour
         if (scene == 0)
         {
             SceneManager.LoadScene("Scenes/Intro");
-            _music.ChangeMusic(_music._shipTheme, _music._shipIntro); //DEMO
-            //_music.ChangeMusic(_music._kingdomTheme, _music._kingdomIntro);
+            _music.ChangeMusic(_music._shipTheme, _music._shipIntro); //TODO: remover depois da DEMO
+            //_music.ChangeMusic(_music._kingdomTheme, _music._kingdomIntro); //descomentar depois da DEMO
         }
         else
         {
-            //TODO: verificar a ilha que está selecionada para passar a musica
-            _music.ChangeMusic(_music._forestTheme, _music._forestIntro);
             PlayerPrefs.SetInt("Scene", scene);
             SceneManager.LoadScene("Scenes/Load");
+
+            //TODO: verificar a ilha que está selecionada para passar a musica
+            if (scene == 4) //save navio
+            {
+                _music.ChangeMusic(_music._shipTheme, _music._shipIntro);
+            }
+            else if (scene == 8 || scene == 9 || scene == 10) //save floresta
+            {
+                _music.ChangeMusic(_music._forestTheme, _music._forestIntro);
+            }
         }
     }
 

@@ -34,8 +34,17 @@ public class SceneController : MonoBehaviour
             if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
             {
                 UIManager.instance.FadeIn();
-                if (_nextSceneName == "01/34") { Invoke("FimDaDemo", .5f); } else { Invoke("GetNextScene", .5f); } //DEMO: para a versão normal descomentar linha de baixo
                 //Invoke("GetNextScene", .5f);
+
+                if (_nextSceneName == "01/34") //TODO: DEMO: para a versão normal descomentar Invoke("GetNextScene", .5f);
+                {
+                    Invoke("FimDaDemo", .5f);
+                    GameManager.instance.LoadBasic();
+                }
+                else
+                {
+                    Invoke("GetNextScene", .5f);
+                }
             }
         }
         else

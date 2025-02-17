@@ -29,7 +29,5 @@ public class MenuMusic : MonoBehaviour
 
         // Agenda o segundo áudio para tocar logo após o primeiro
         audioSource[1].PlayScheduled(secondClipStartTime);
-
-        Debug.Log($"Music: {introClip.name}, Intro Duration: {introDuration}, Scheduled Start: {secondClipStartTime}");
     }
 }

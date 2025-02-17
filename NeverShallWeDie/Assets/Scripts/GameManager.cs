@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
         _file.Close();
     }
 
-    void LoadBasic()
+    public void LoadBasic()
     {
         //verifica se existem os saves para mostrar nos botões do menu
         if (File.Exists(Application.persistentDataPath + "/playerSave1.sav"))
