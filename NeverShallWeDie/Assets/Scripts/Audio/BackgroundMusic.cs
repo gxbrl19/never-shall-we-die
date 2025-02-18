@@ -46,6 +46,27 @@ public class BackgroundMusic : MonoBehaviour
         _audioSource = gameObject.GetComponent<AudioSource>();
     }
 
+    public void MusicInCheckpoint(int scene)
+    {
+        if (scene == 0)
+        {
+            ChangeMusic(_shipTheme, _shipIntro); //TODO: remover depois da DEMO
+            //_music.ChangeMusic(_music._kingdomTheme, _music._kingdomIntro); //descomentar depois da DEMO
+        }
+        else
+        {
+            //TODO: verificar a ilha que está selecionada para passar a musica
+            if (scene == 4) //save navio
+            {
+                ChangeMusic(_shipTheme, _shipIntro);
+            }
+            else if (scene == 8 || scene == 9 || scene == 10) //save floresta
+            {
+                ChangeMusic(_forestTheme, _forestIntro);
+            }
+        }
+    }
+
     public void ChangeMusic(AudioClip audioClip, AudioClip introClip)
     {
         _audioSource.clip = audioClip;
@@ -73,11 +94,17 @@ public class BackgroundMusic : MonoBehaviour
     public void BossMusic()
     {
         _audioSource.Stop();
+
         _audioSourceIntro.enabled = true;
         _audioSourceIntro.clip = _bossIntro;
+
         double startTime = AudioSettings.dspTime;
+
         _audioSourceIntro.PlayScheduled(startTime);
-        double secondClipStartTime = startTime + _audioSourceIntro.clip.length;
+
+        double introDuration = _bossIntro.length;
+        double secondClipStartTime = startTime + introDuration;
+
         _audioSource.clip = _bossTheme;
         _audioSource.PlayScheduled(secondClipStartTime);
     }

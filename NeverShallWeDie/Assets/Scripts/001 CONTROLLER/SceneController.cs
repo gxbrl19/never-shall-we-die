@@ -99,11 +99,11 @@ public class SceneController : MonoBehaviour
 
     void FinishGameOver()
     {
-        int id = GameManager.instance._checkpointScene;
+        int scene = GameManager.instance._checkpointScene;
 
-        if (id == 0) //se ainda não tiver chegado em uma bandeira
+        if (scene == 0) //se ainda não tiver chegado em uma bandeira
         {
-            SceneManager.LoadScene("Scenes/01/H1"); //DEMO
+            SceneManager.LoadScene("Scenes/01/H1"); //TODO: DEMO
             //SceneManager.LoadScene("Scenes/06/01");
             _player.gameObject.GetComponent<Player>().EnabledControls();
             _player.gameObject.GetComponent<PlayerInputs>().enabled = true;
@@ -113,5 +113,6 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(GameManager.instance._checkpointScene);
         _player.gameObject.GetComponent<Player>().EnabledControls();
         _player.gameObject.GetComponent<PlayerInputs>().enabled = true;
+        _music.MusicInCheckpoint(scene);
     }
 }
