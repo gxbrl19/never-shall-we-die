@@ -22,6 +22,7 @@ public class BossController : MonoBehaviour
 
     [SerializeField] BossDoor _bossDoor;
     [SerializeField] BossDoor _bossDoor2;
+    [SerializeField] WantedBoss _wantedBoss;
 
     Color _defaultColor;
     SpriteRenderer _sprite;
@@ -89,5 +90,12 @@ public class BossController : MonoBehaviour
     {
         _onHit = false;
         _sprite.color = _defaultColor;
+    }
+
+    public void SetWanted() //chamado na animação de morte
+    {
+        _wantedBoss._bossName = _bossObject.name;
+        _wantedBoss._bossImage = _bossObject.sprite;
+        _wantedBoss.StartWanted();
     }
 }
