@@ -69,4 +69,14 @@ public class CanvasOpenWorld : MonoBehaviour
         _pnlLevelSelect.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_btnYes);
     }
+
+    public void ClickSound(string type) //chamado na ação dos botões
+    {
+        AudioHUD.instance.SoundClick(type);
+    }
+
+    public void NavigationSound() //chamado na ação dos botões
+    {
+        AudioHUD.instance.NavigationButton();
+    }
 }

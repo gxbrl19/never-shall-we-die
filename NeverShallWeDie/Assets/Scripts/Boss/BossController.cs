@@ -94,8 +94,6 @@ public class BossController : MonoBehaviour
 
     public void SetWanted() //chamado na animação de morte
     {
-        _wantedBoss._bossName = _bossObject.name;
-        _wantedBoss._bossImage = _bossObject.sprite;
         _wantedBoss.StartWanted();
     }
 }

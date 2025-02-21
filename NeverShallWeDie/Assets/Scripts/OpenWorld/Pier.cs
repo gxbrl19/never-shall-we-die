@@ -31,6 +31,7 @@ public class Pier : MonoBehaviour
 
             _ship.StopMove();
             _ship._canMove = false;
+            AudioHUD.instance.SoundClick("Pause");
             CanvasOpenWorld.instance.OpenLevelSelect(_islandName);
             CanvasOpenWorld.instance._sceneName = _sceneName;
         }
