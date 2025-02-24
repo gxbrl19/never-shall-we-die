@@ -54,28 +54,28 @@ public class ExitShip : MonoBehaviour
         switch (_nextSceneName)
         {
             case "06/H0":
-                _music.ChangeMusic(_music._kingdomTheme, _music._kingdomIntro);
+                _music.MusicControl(6);
                 break;
             case "01/H1":
-                _music.ChangeMusic(_music._forestTheme, _music._forestIntro);
+                _music.MusicControl(1);
                 break;
             case "01/H2":
-                _music.ChangeMusic(_music._forestTheme, _music._forestIntro);
+                _music.MusicControl(1);
                 break;
             case "02/H3":
-                _music.ChangeMusic(_music._mizutonTheme, _music._mansionIntro);
+                _music.MusicControl(2);
                 break;
             case "02/H4":
-                _music.ChangeMusic(_music._mizutonTheme, _music._mansionIntro);
+                _music.MusicControl(2);
                 break;
             case "03/H5":
-                _music.ChangeMusic(_music._cemeteryTheme, _music._cemeteryIntro);
+                _music.MusicControl(3);
                 break;
             case "03/H6":
-                _music.ChangeMusic(_music._cemeteryTheme, _music._cemeteryIntro);
+                _music.MusicControl(3);
                 break;
             case "04/H7":
-                _music.ChangeMusic(_music._prisonTheme, _music._prisonIntro);
+                _music.MusicControl(4);
                 break;
         }
     }

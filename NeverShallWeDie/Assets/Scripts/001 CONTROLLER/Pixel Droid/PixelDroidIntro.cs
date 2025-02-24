@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PixelDroidIntro : MonoBehaviour
 {
-    AudioSource _audio;
+    public GameObject _audio;
+    //AudioSource _audio;
 
     private void Awake()
     {
-        _audio = GetComponent<AudioSource>();
+        //_audio = GetComponent<AudioSource>();
     }
 
     public void FinishIntro()
@@ -22,8 +23,9 @@ public class PixelDroidIntro : MonoBehaviour
         SceneManager.LoadScene("Scenes/MainMenu");
     }
 
-    public void PlayAudio(AudioClip audio)
+    public void PlayAudio()
     {
-        _audio.PlayOneShot(audio);
+        //_audio.PlayOneShot(audio);
+        _audio.SetActive(true);
     }
 }

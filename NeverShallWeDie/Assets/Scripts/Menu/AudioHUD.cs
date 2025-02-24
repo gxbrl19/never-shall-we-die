@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class AudioHUD : MonoBehaviour
 {
     public static AudioHUD instance;
 
+    [SerializeField] EventReference _confirmBtn;
+    [SerializeField] EventReference _backBtn;
+    [SerializeField] EventReference _navigationBtn;
+    [SerializeField] EventReference _selectBtn;
+
     public AudioSource _audioSource;
 
     [Header("Audio")]
     public AudioClip _btnClick;
-    public AudioClip _navigationBtn;
+    //public AudioClip _navigationBtn;
     public AudioClip _pauseBtn;
 
     [Header("Volume")]
@@ -46,9 +52,24 @@ public class AudioHUD : MonoBehaviour
         }
     }
 
-    public void NavigationButton()
+    public void PlayConfirmButton()
     {
-        PlaySound(_navigationBtn, _navigationVolume);
+        RuntimeManager.PlayOneShot(_confirmBtn);
+    }
+
+    public void PlayBackButton()
+    {
+        RuntimeManager.PlayOneShot(_backBtn);
+    }
+
+    public void PlayNavigationButton()
+    {
+        RuntimeManager.PlayOneShot(_navigationBtn);
+    }
+
+    public void PlaySelectButton()
+    {
+        RuntimeManager.PlayOneShot(_selectBtn);
     }
 
     public void PlaySound(AudioClip sound, float volume)

@@ -82,7 +82,7 @@ public class Menu : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 EnabledMainMenu();
-                AudioHUD.instance.SoundClick("Pause");
+                AudioHUD.instance.PlayConfirmButton();
             }
 
             for (int i = 0; i < 20; i++) // 20 é um número arbitrário para os botões do gamepad
@@ -90,20 +90,30 @@ public class Menu : MonoBehaviour
                 if (Input.GetKeyDown("joystick button " + i))
                 {
                     EnabledMainMenu();
-                    AudioHUD.instance.SoundClick("Pause");
+                    AudioHUD.instance.PlayConfirmButton();
                 }
             }
         }
     }
 
-    public void ClickSound(string type) //chamado na ação dos botões
+    public void ClickSound() //chamado na ação dos botões
     {
-        AudioHUD.instance.SoundClick(type);
+        AudioHUD.instance.PlaySelectButton();
     }
 
     public void NavigationSound() //chamado na ação dos botões
     {
-        AudioHUD.instance.NavigationButton();
+        AudioHUD.instance.PlayNavigationButton();
+    }
+
+    public void ConfirmSound() //chamado na ação dos botões
+    {
+        AudioHUD.instance.PlayConfirmButton();
+    }
+
+    public void BackSound() //chamado na ação dos botões
+    {
+        AudioHUD.instance.PlayBackButton();
     }
 
     public void StartIntro() //no inicio da Cena

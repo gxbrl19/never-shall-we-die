@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7417901504014534271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5459037959691422332}
+  - component: {fileID: 1651791872221571967}
+  m_Layer: 0
+  m_Name: AudioHUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5459037959691422332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417901504014534271}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1651791872221571967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417901504014534271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236b1d0fd5216a34abd330091b70e5cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _confirmBtn:
+    Guid:
+      Data1: 677346638
+      Data2: 1202147884
+      Data3: -193793112
+      Data4: -1182926109
+    Path: event:/sfx/ui/SFX_UI_confirm_button_01
+  _backBtn:
+    Guid:
+      Data1: -318185873
+      Data2: 1084449476
+      Data3: -1551365191
+      Data4: 1414433418
+    Path: event:/sfx/ui/SFX_UI_back_button_01
+  _navigationBtn:
+    Guid:
+      Data1: 826883332
+      Data2: 1136426335
+      Data3: 20923297
+      Data4: 1731102770
+    Path: event:/sfx/ui/SFX_UI_navigate_button_01
+  _selectBtn:
+    Guid:
+      Data1: -313497666
+      Data2: 1289997701
+      Data3: -1810480737
+      Data4: -683309205
+    Path: event:/sfx/ui/SFX_UI_select_button_01
+  _audioSource: {fileID: 0}
+  _btnClick: {fileID: 8300000, guid: 7827c9f00b1a905418e0d5da7ad5361f, type: 3}
+  _pauseBtn: {fileID: 8300000, guid: 7827c9f00b1a905418e0d5da7ad5361f, type: 3}
+  _clickVolume: 1
+  _navigationVolume: 1
+  _pauseVolume: 1

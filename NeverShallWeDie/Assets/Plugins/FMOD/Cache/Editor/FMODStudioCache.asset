@@ -1,5 +1,697 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9154446272567783806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_bombman_bomb_explode_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_bombman_bomb_explode_01
+  Guid:
+    Data1: 238001577
+    Data2: 1147651316
+    Data3: 868003503
+    Data4: 1348493181
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1366
+--- !u!114 &-9141676214352889601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_OBJECT_portal_open_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_OBJECT_portal_open_01
+  Guid:
+    Data1: -593835375
+    Data2: 1280328362
+    Data3: -2133475168
+    Data4: 1345330130
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1933
+--- !u!114 &-8480598557086419306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ConfirmButton
+  m_EditorClassIdentifier: 
+  Name: ConfirmButton
+  StudioPath: parameter:/ConfirmButton
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3872276051
+    data2: 1722943719
+  Type: 1
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-7718755525773731836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_crawler_hit_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_crawler_hit_01
+  Guid:
+    Data1: 1994048421
+    Data2: 1200226935
+    Data3: 1977296824
+    Data4: -998422653
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 366
+--- !u!114 &-7396669042255698840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/ui/SFX_UI_back_button_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/ui/SFX_UI_back_button_01
+  Guid:
+    Data1: -318185873
+    Data2: 1084449476
+    Data3: -1551365191
+    Data4: 1414433418
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1100
+--- !u!114 &-6646549902452893710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_king_boar_footstep_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_king_boar_footstep_01
+  Guid:
+    Data1: 1336441809
+    Data2: 1143210237
+    Data3: -256319326
+    Data4: 939610277
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 566
+--- !u!114 &-6440071889595696634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_boar_death_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_boar_death_01
+  Guid:
+    Data1: 575494128
+    Data2: 1144348170
+    Data3: -211167058
+    Data4: -1582031362
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 800
+--- !u!114 &-6230024606537200188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_king_boar_hit_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_king_boar_hit_01
+  Guid:
+    Data1: 1856260652
+    Data2: 1132018124
+    Data3: 75969954
+    Data4: 1172232180
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 533
+--- !u!114 &-6206083844892275898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_evil_vine_attack_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_evil_vine_attack_01
+  Guid:
+    Data1: -1100408143
+    Data2: 1322875382
+    Data3: 520314780
+    Data4: -1549005105
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 966
+--- !u!114 &-6194756064077321029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_evil_vine_hit_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_evil_vine_hit_01
+  Guid:
+    Data1: -1421683874
+    Data2: 1332512747
+    Data3: 698848665
+    Data4: -1907618226
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 406
+--- !u!114 &-5902576662169933630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_checkpoint_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_checkpoint_01
+  Guid:
+    Data1: -1998654466
+    Data2: 1273970880
+    Data3: 1961898628
+    Data4: 1794641571
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2066
+--- !u!114 &-5899057458559496526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638759933454316646
+  FileSizes:
+  - Name: Desktop
+    Value: 3600
+  Exists: 1
+--- !u!114 &-5175581328412698962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_deadshot_death_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_deadshot_death_01
+  Guid:
+    Data1: -1779291967
+    Data2: 1079643555
+    Data3: 870822310
+    Data4: -339706208
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1033
+--- !u!114 &-4550836798963252008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_evil_vine_death_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_evil_vine_death_01
+  Guid:
+    Data1: 1687698199
+    Data2: 1088531050
+    Data3: 2160000
+    Data4: 2095861832
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 733
+--- !u!114 &-3523626009965523403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_OBJECT_portal_close_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_OBJECT_portal_close_01
+  Guid:
+    Data1: 421466456
+    Data2: 1269612725
+    Data3: 409364864
+    Data4: 531403579
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1700
+--- !u!114 &-3202946873525561355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_pirate_hit_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_pirate_hit_01
+  Guid:
+    Data1: 201103604
+    Data2: 1284624618
+    Data3: 1501425838
+    Data4: -1987671742
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
+--- !u!114 &-3165971407761941015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_bombman_throw_bomb_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_bombman_throw_bomb_01
+  Guid:
+    Data1: 1525677379
+    Data2: 1290658737
+    Data3: -1837999992
+    Data4: 241103502
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
+--- !u!114 &-2910825988336563242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_bee_hit_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_bee_hit_01
+  Guid:
+    Data1: -740606848
+    Data2: 1208865419
+    Data3: 1718276790
+    Data4: 66332406
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 300
+--- !u!114 &-2575319807125993872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_bee_attack_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_bee_attack_01
+  Guid:
+    Data1: -1648534775
+    Data2: 1234483258
+    Data3: -1354229583
+    Data4: 2015193635
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 833
+--- !u!114 &-2556536751118582257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_coin_collect_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_coin_collect_01
+  Guid:
+    Data1: 319811996
+    Data2: 1244448973
+    Data3: -872330842
+    Data4: 1008373075
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 866
+--- !u!114 &-2365671082869353640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/ui/SFX_UI_close_map_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/ui/SFX_UI_close_map_01
+  Guid:
+    Data1: -693322174
+    Data2: 1147141741
+    Data3: -1984219988
+    Data4: 2019832391
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &-1301704598868467369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_coin_release_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_coin_release_01
+  Guid:
+    Data1: 1093606120
+    Data2: 1206222561
+    Data3: -552052590
+    Data4: -2027324701
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 466
+--- !u!114 &-531931802385311042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/mus_boss
+  m_EditorClassIdentifier: 
+  Path: event:/music/mus_boss
+  Guid:
+    Data1: -331546848
+    Data2: 1126362265
+    Data3: 1833246879
+    Data4: 1335578522
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 54493
+--- !u!114 &-207003821407435937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_pirate_healing_start_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_pirate_healing_start_01
+  Guid:
+    Data1: -1915382309
+    Data2: 1312734863
+    Data3: 767835319
+    Data4: -323861655
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6833
+--- !u!114 &-126120482693575337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_king_boar_mine_throw_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_king_boar_mine_throw_01
+  Guid:
+    Data1: 1322579187
+    Data2: 1218722617
+    Data3: 1304239012
+    Data4: 2063938819
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1600
+--- !u!114 &-84231731493910421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_barrel_monkey_roll_start_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_barrel_monkey_roll_start_01
+  Guid:
+    Data1: -1619185860
+    Data2: 1117191865
+    Data3: 1746515355
+    Data4: -260035095
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1666
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,10 +704,927 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks: []
-  EditorEvents: []
-  EditorParameters: []
-  MasterBanks: []
-  StringsBanks: []
-  cacheTime: 0
+  EditorBanks:
+  - {fileID: -5899057458559496526}
+  - {fileID: 3980210049349708886}
+  EditorEvents:
+  - {fileID: 7691062675070937}
+  - {fileID: -2575319807125993872}
+  - {fileID: 1058946320585803077}
+  - {fileID: 6832885766193455595}
+  - {fileID: 5782621307875906957}
+  - {fileID: 975832791382676566}
+  - {fileID: -4550836798963252008}
+  - {fileID: 8082736748961635633}
+  - {fileID: -531931802385311042}
+  - {fileID: 2881000599041382052}
+  - {fileID: 6542090175598569513}
+  - {fileID: -6230024606537200188}
+  - {fileID: -84231731493910421}
+  - {fileID: -2365671082869353640}
+  - {fileID: -3165971407761941015}
+  - {fileID: 5008036235751452597}
+  - {fileID: 5973297352266880919}
+  - {fileID: -3523626009965523403}
+  - {fileID: -6194756064077321029}
+  - {fileID: 5277759997143618201}
+  - {fileID: -7396669042255698840}
+  - {fileID: 6987086227108620711}
+  - {fileID: 4695217009275010715}
+  - {fileID: -2910825988336563242}
+  - {fileID: 7287411678124969455}
+  - {fileID: 4513986095276905017}
+  - {fileID: 4399959104032649854}
+  - {fileID: 565736398089014543}
+  - {fileID: 1399316621032084443}
+  - {fileID: -9141676214352889601}
+  - {fileID: -2556536751118582257}
+  - {fileID: -7718755525773731836}
+  - {fileID: 7184617691972810456}
+  - {fileID: -9154446272567783806}
+  - {fileID: 2005855432819852931}
+  - {fileID: -6206083844892275898}
+  - {fileID: 3858837592029148853}
+  - {fileID: -5175581328412698962}
+  - {fileID: 5169631222837067521}
+  - {fileID: 369688282122840450}
+  - {fileID: -6646549902452893710}
+  - {fileID: 7946022920460951865}
+  - {fileID: 6761797720008250279}
+  - {fileID: -207003821407435937}
+  - {fileID: 5103821717279377638}
+  - {fileID: 4611080792092089480}
+  - {fileID: 2973312385262717642}
+  - {fileID: -1301704598868467369}
+  - {fileID: -6440071889595696634}
+  - {fileID: -126120482693575337}
+  - {fileID: -3202946873525561355}
+  - {fileID: 7852277672169810551}
+  - {fileID: -5902576662169933630}
+  - {fileID: 2949812781516112628}
+  - {fileID: 5908845111119641462}
+  EditorParameters:
+  - {fileID: -8480598557086419306}
+  MasterBanks:
+  - {fileID: 3980210049349708886}
+  StringsBanks:
+  - {fileID: -5899057458559496526}
+  cacheTime: 638759933454316646
   cacheVersion: 131616
+--- !u!114 &7691062675070937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/ui/SFX_UI_navigate_button_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/ui/SFX_UI_navigate_button_01
+  Guid:
+    Data1: 826883332
+    Data2: 1136426335
+    Data3: 20923297
+    Data4: 1731102770
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
+--- !u!114 &369688282122840450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_MOV_pirate_jump_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_MOV_pirate_jump_01
+  Guid:
+    Data1: -1279102512
+    Data2: 1219550155
+    Data3: 939173296
+    Data4: 989410455
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 366
+--- !u!114 &565736398089014543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_beetboom_explode_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_beetboom_explode_01
+  Guid:
+    Data1: -799015281
+    Data2: 1091262121
+    Data3: 1162352273
+    Data4: -453750811
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1633
+--- !u!114 &975832791382676566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/ui/SFX_UI_decrease_slider_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/ui/SFX_UI_decrease_slider_01
+  Guid:
+    Data1: 1856908310
+    Data2: 1165699331
+    Data3: -1283239745
+    Data4: -2129898755
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 66
+--- !u!114 &1058946320585803077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_MOV_pirate_dodge_roll_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_MOV_pirate_dodge_roll_01
+  Guid:
+    Data1: 943054859
+    Data2: 1328465450
+    Data3: 855358399
+    Data4: 1881323431
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 600
+--- !u!114 &1399316621032084443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/mus_navigation
+  m_EditorClassIdentifier: 
+  Path: event:/music/mus_navigation
+  Guid:
+    Data1: 1388729744
+    Data2: 1088837736
+    Data3: -952246338
+    Data4: -1581469825
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 67795
+--- !u!114 &2005855432819852931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_voice_king_boar_call_backup_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_voice_king_boar_call_backup_01
+  Guid:
+    Data1: 1044135853
+    Data2: 1140084420
+    Data3: 729578923
+    Data4: 1055420091
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1133
+--- !u!114 &2881000599041382052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_deadshot_fire_gun_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_deadshot_fire_gun_01
+  Guid:
+    Data1: 699610917
+    Data2: 1166372623
+    Data3: 1613785730
+    Data4: -1786568153
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1266
+--- !u!114 &2949812781516112628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/pixeldroid/pixel_droid
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/pixeldroid/pixel_droid
+  Guid:
+    Data1: 1816699665
+    Data2: 1123600384
+    Data3: 398736553
+    Data4: 1071694656
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4290
+--- !u!114 &2973312385262717642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/ui/SFX_UI_open_map_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/ui/SFX_UI_open_map_01
+  Guid:
+    Data1: -1824345118
+    Data2: 1295363690
+    Data3: 1078669454
+    Data4: -1697563456
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &3858837592029148853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/ui/SFX_UI_select_button_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/ui/SFX_UI_select_button_01
+  Guid:
+    Data1: -313497666
+    Data2: 1289997701
+    Data3: -1810480737
+    Data4: -683309205
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
+--- !u!114 &3980210049349708886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638759933454276769
+  FileSizes:
+  - Name: Desktop
+    Value: 3988768
+  Exists: 1
+--- !u!114 &4399959104032649854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_OBJECT_mushroom_trampoline_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_OBJECT_mushroom_trampoline_01
+  Guid:
+    Data1: 678417035
+    Data2: 1088804615
+    Data3: 800605878
+    Data4: 1223678336
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 720
+--- !u!114 &4513986095276905017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_crawler_death_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_crawler_death_01
+  Guid:
+    Data1: 199319173
+    Data2: 1122502632
+    Data3: -1296623972
+    Data4: -742766179
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 533
+--- !u!114 &4611080792092089480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_boar_hit_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_boar_hit_01
+  Guid:
+    Data1: 1251028960
+    Data2: 1299567375
+    Data3: 1715849628
+    Data4: 738790566
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 133
+--- !u!114 &4695217009275010715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/mus_gameplay
+  m_EditorClassIdentifier: 
+  Path: event:/music/mus_gameplay
+  Guid:
+    Data1: 966761337
+    Data2: 1297271575
+    Data3: 1376287122
+    Data4: 481129731
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 69153
+--- !u!114 &5008036235751452597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_vine_crawler_death_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_vine_crawler_death_01
+  Guid:
+    Data1: -880982194
+    Data2: 1160859606
+    Data3: 117718680
+    Data4: -523094905
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1033
+--- !u!114 &5103821717279377638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_pull_crate_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_pull_crate_01
+  Guid:
+    Data1: -96048674
+    Data2: 1301151410
+    Data3: -1502969692
+    Data4: -1817972511
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4350
+--- !u!114 &5169631222837067521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/ui/SFX_UI_increase_slider_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/ui/SFX_UI_increase_slider_01
+  Guid:
+    Data1: -1407555637
+    Data2: 1188937443
+    Data3: 673578667
+    Data4: -776708648
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 66
+--- !u!114 &5277759997143618201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_bombman_death_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_bombman_death_01
+  Guid:
+    Data1: -1444123794
+    Data2: 1209960667
+    Data3: 1539037571
+    Data4: 1656383288
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 366
+--- !u!114 &5782621307875906957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_bee_death_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_bee_death_01
+  Guid:
+    Data1: -408120300
+    Data2: 1180728179
+    Data3: 1265136827
+    Data4: -371633069
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1200
+--- !u!114 &5908845111119641462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/ambience/SHIP_AMBIENCE
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/ambience/SHIP_AMBIENCE
+  Guid:
+    Data1: 1337938367
+    Data2: 1311305903
+    Data3: -171241085
+    Data4: 1155866141
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 21812
+--- !u!114 &5973297352266880919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/ui/SFX_UI_confirm_button_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/ui/SFX_UI_confirm_button_01
+  Guid:
+    Data1: 677346638
+    Data2: 1202147884
+    Data3: -193793112
+    Data4: -1182926109
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1233
+--- !u!114 &6542090175598569513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_bombman_hit_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_bombman_hit_01
+  Guid:
+    Data1: -528028374
+    Data2: 1114340778
+    Data3: 617866886
+    Data4: -1358363308
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 233
+--- !u!114 &6761797720008250279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_king_boar_attack_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_king_boar_attack_01
+  Guid:
+    Data1: -992043816
+    Data2: 1139433605
+    Data3: -361122153
+    Data4: -1579584769
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1633
+--- !u!114 &6832885766193455595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_deadshot_hit_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_deadshot_hit_01
+  Guid:
+    Data1: -263514604
+    Data2: 1254630754
+    Data3: 1680040345
+    Data4: 445862329
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 266
+--- !u!114 &6987086227108620711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_MOV_pirate_landing_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_MOV_pirate_landing_01
+  Guid:
+    Data1: 1880811375
+    Data2: 1246516095
+    Data3: 1701371300
+    Data4: -571397310
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 233
+--- !u!114 &7184617691972810456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_king_boar_death_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_king_boar_death_01
+  Guid:
+    Data1: -341506649
+    Data2: 1075864124
+    Data3: -1046982240
+    Data4: -140031906
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1133
+--- !u!114 &7287411678124969455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_pirate_death_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_pirate_death_01
+  Guid:
+    Data1: 320137348
+    Data2: 1222572152
+    Data3: 394099132
+    Data4: 1529795553
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 533
+--- !u!114 &7852277672169810551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_ACTION_voice_king_boar_grunt_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_ACTION_voice_king_boar_grunt_01
+  Guid:
+    Data1: 1789714676
+    Data2: 1260485628
+    Data3: 421469877
+    Data4: 1526223083
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2366
+--- !u!114 &7946022920460951865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/mus_menu
+  m_EditorClassIdentifier: 
+  Path: event:/music/mus_menu
+  Guid:
+    Data1: 5693906
+    Data2: 1236226792
+    Data3: 1230616483
+    Data4: 1793772811
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 38250
+--- !u!114 &8082736748961635633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/gameplay/SFX_COMBAT_pirate_sword_01
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/gameplay/SFX_COMBAT_pirate_sword_01
+  Guid:
+    Data1: -1211567334
+    Data2: 1103070275
+    Data3: 507047303
+    Data4: -120740017
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 366

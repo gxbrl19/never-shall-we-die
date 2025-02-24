@@ -7,6 +7,7 @@ public class BackgroundMusic : MonoBehaviour
     public static BackgroundMusic instance;
 
     [Header("Theme")]
+    public GameObject[] _musicObjects;
     public AudioClip _kingdomTheme;
     public AudioClip _shipTheme;
     public AudioClip _forestTheme;
@@ -50,24 +51,28 @@ public class BackgroundMusic : MonoBehaviour
     {
         if (scene == 0)
         {
-            ChangeMusic(_shipTheme, _shipIntro); //TODO: remover depois da DEMO
-            //_music.ChangeMusic(_music._kingdomTheme, _music._kingdomIntro); //descomentar depois da DEMO
+            MusicControl(0); //TODO: remover depois da DEMO
+            //MusicControl(6); //descomentar depois da DEMO (Kingdom)
         }
         else
         {
             //TODO: verificar a ilha que está selecionada para passar a musica
-            if (scene == 4) //save navio
-            {
-                ChangeMusic(_shipTheme, _shipIntro);
-            }
-            else if (scene == 8 || scene == 9 || scene == 10) //save floresta
-            {
-                ChangeMusic(_forestTheme, _forestIntro);
-            }
+            if (scene == 4)  { MusicControl(0); } //ship
+            else if (scene == 8 || scene == 9 || scene == 10) { MusicControl(1); } //forest
         }
     }
 
-    public void ChangeMusic(AudioClip audioClip, AudioClip introClip)
+    public void MusicControl(int index)
+    {
+        for (int i = 0; i < _musicObjects.Length; i++)
+        {
+            _musicObjects[i].SetActive(false);
+        }
+
+        _musicObjects[index].SetActive(true);
+    }
+
+    /*public void ChangeMusic(AudioClip audioClip, AudioClip introClip) // PARA O FMOD SUBSTITUIR TODOS OS REFERENCES DESSA FUNÇÃO PELA MUSICCONTROL
     {
         _audioSource.clip = audioClip;
         _audioSource.Play();
@@ -89,7 +94,7 @@ public class BackgroundMusic : MonoBehaviour
         // Configurar e agendar a música principal
         _audioSource.clip = audioClip;
         _audioSource.PlayScheduled(secondClipStartTime);
-    }
+    }*/
 
     public void BossMusic()
     {

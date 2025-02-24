@@ -30,7 +30,7 @@ public class CanvasOpenWorld : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;        
+        instance = this;
 
         _ship = FindAnyObjectByType<ShipOpenWorld>();
     }
@@ -70,13 +70,23 @@ public class CanvasOpenWorld : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_btnYes);
     }
 
-    public void ClickSound(string type) //chamado na ação dos botões
+    public void ConfirmSound() //chamado na ação dos botões
     {
-        AudioHUD.instance.SoundClick(type);
+        AudioHUD.instance.PlayConfirmButton();
+    }
+
+    public void ClickSound() //chamado na ação dos botões
+    {
+        AudioHUD.instance.PlayConfirmButton();
+    }
+
+    public void BackSound() //chamado na ação dos botões
+    {
+        AudioHUD.instance.PlayBackButton();
     }
 
     public void NavigationSound() //chamado na ação dos botões
     {
-        AudioHUD.instance.NavigationButton();
+        AudioHUD.instance.PlayNavigationButton();
     }
 }

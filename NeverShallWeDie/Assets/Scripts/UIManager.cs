@@ -682,7 +682,7 @@ public class UIManager : MonoBehaviour
 
     public void SwitchButton() //chamado na ação dos botões
     {
-        AudioHUD.instance.NavigationButton();
+        AudioHUD.instance.PlayNavigationButton();
     }
 
     public void SetMasterVol(float volume)
