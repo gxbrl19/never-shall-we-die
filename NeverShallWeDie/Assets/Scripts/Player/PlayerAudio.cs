@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class PlayerAudio : MonoBehaviour
 {
+    [SerializeField] EventReference katana;
+    [SerializeField] EventReference jump;
+    [SerializeField] EventReference roll;
+    [SerializeField] EventReference hit;
+    [SerializeField] EventReference death;
+
     [Header("Movement")]
     public AudioClip[] _katanas;
     public AudioClip[] _hits;
@@ -88,6 +95,31 @@ public class PlayerAudio : MonoBehaviour
                 _audioSource.PlayOneShot(_slide);
                 break;
         }
+    }
+
+    public void PlayKatana() //animação
+    {
+        RuntimeManager.PlayOneShot(katana);
+    }
+
+    public void PlayJump() //script
+    {
+        RuntimeManager.PlayOneShot(jump);
+    }
+
+    public void PlayRoll() //animação
+    {
+        RuntimeManager.PlayOneShot(roll);
+    }
+
+    public void PlayHit() //script
+    {
+        RuntimeManager.PlayOneShot(hit);
+    }
+
+    public void PlayDeath() //script
+    {
+        RuntimeManager.PlayOneShot(death);
     }
 
     void Healing()

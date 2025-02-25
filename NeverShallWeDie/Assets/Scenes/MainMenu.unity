@@ -1924,7 +1924,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EFFECTS
+  m_Text: MUSIC
 --- !u!222 &218058923
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3145,6 +3145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 369507091}
   - component: {fileID: 369507090}
+  - component: {fileID: 369507092}
   m_Layer: 5
   m_Name: sli_music
   m_TagString: Untagged
@@ -3203,10 +3204,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 436505374}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: SetMusicVol
-        m_Mode: 0
+      - m_Target: {fileID: 369507092}
+        m_TargetAssemblyTypeName: SliderController, Assembly-CSharp
+        m_MethodName: UpddateSliderOutput
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3237,6 +3238,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &369507092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369507089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcbe7fc7704ead4ea26ad233becbcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busPath: bus:/Geral/Music
+  slider: {fileID: 369507090}
 --- !u!1 &375667796
 GameObject:
   m_ObjectHideFlags: 0
@@ -3729,9 +3744,6 @@ MonoBehaviour:
   _btnDelete3: {fileID: 758587126}
   _btnDeleteFirst: {fileID: 94927454}
   _panelDelete: {fileID: 948880920}
-  _masterVolSlider: {fileID: 989164496}
-  _musicVolSlider: {fileID: 369507090}
-  _sfxVolSlider: {fileID: 1643339656}
 --- !u!4 &436505375
 Transform:
   m_ObjectHideFlags: 0
@@ -12303,6 +12315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 989164497}
   - component: {fileID: 989164496}
+  - component: {fileID: 989164498}
   m_Layer: 5
   m_Name: sli_volume
   m_TagString: Untagged
@@ -12361,10 +12374,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 436505374}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: SetMasterVol
-        m_Mode: 0
+      - m_Target: {fileID: 989164498}
+        m_TargetAssemblyTypeName: SliderController, Assembly-CSharp
+        m_MethodName: UpddateSliderOutput
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12395,6 +12408,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &989164498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989164495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcbe7fc7704ead4ea26ad233becbcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busPath: bus:/Geral
+  slider: {fileID: 989164496}
 --- !u!1 &1001821964
 GameObject:
   m_ObjectHideFlags: 0
@@ -18789,6 +18816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1643339655}
   - component: {fileID: 1643339656}
+  - component: {fileID: 1643339657}
   m_Layer: 5
   m_Name: sli_effects
   m_TagString: Untagged
@@ -18869,10 +18897,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 436505374}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: SetSFXVol
-        m_Mode: 0
+      - m_Target: {fileID: 1643339657}
+        m_TargetAssemblyTypeName: SliderController, Assembly-CSharp
+        m_MethodName: UpddateSliderOutput
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18881,6 +18909,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1643339657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643339654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcbe7fc7704ead4ea26ad233becbcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busPath: bus:/Geral/SFX
+  slider: {fileID: 1643339656}
 --- !u!1 &1657917337
 GameObject:
   m_ObjectHideFlags: 0

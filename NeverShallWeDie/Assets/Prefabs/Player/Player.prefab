@@ -1159,6 +1159,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488c53fe1fc17124b9b20568d7333add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  katana:
+    Guid:
+      Data1: -1211567334
+      Data2: 1103070275
+      Data3: 507047303
+      Data4: -120740017
+    Path: event:/sfx/gameplay/SFX_COMBAT_pirate_sword_01
+  jump:
+    Guid:
+      Data1: -1279102512
+      Data2: 1219550155
+      Data3: 939173296
+      Data4: 989410455
+    Path: event:/sfx/gameplay/SFX_MOV_pirate_jump_01
+  roll:
+    Guid:
+      Data1: 943054859
+      Data2: 1328465450
+      Data3: 855358399
+      Data4: 1881323431
+    Path: event:/sfx/gameplay/SFX_MOV_pirate_dodge_roll_01
+  hit:
+    Guid:
+      Data1: 201103604
+      Data2: 1284624618
+      Data3: 1501425838
+      Data4: -1987671742
+    Path: event:/sfx/gameplay/SFX_COMBAT_pirate_hit_01
+  death:
+    Guid:
+      Data1: 320137348
+      Data2: 1222572152
+      Data3: 394099132
+      Data4: 1529795553
+    Path: event:/sfx/gameplay/SFX_COMBAT_pirate_death_01
   _katanas:
   - {fileID: 8300000, guid: ad2fb36a17379f94181e39f9edbf802a, type: 3}
   - {fileID: 8300000, guid: 53f9d1f3b719db04dbe1756e91eb0c77, type: 3}
@@ -1169,7 +1204,6 @@ MonoBehaviour:
   _jump: {fileID: 8300000, guid: ebbfc1f6a7850d547a38deb38c18a1fe, type: 3}
   _healing: {fileID: 8300000, guid: 7e2cc06cb8b258645b987a25331af776, type: 3}
   _roll: {fileID: 8300000, guid: 4a737da5b81aed24da9962c6e8fbf8c0, type: 3}
-  _grabing: {fileID: 8300000, guid: dde30e5fc41437849977055ec3cf53c0, type: 3}
   _splash: {fileID: 8300000, guid: b0efeba1b6ac61c42a84829b0bb9792d, type: 3}
   _swim: {fileID: 8300000, guid: 859d7908bb910c147ab21024e0eddf58, type: 3}
   _parachute: {fileID: 8300000, guid: 61909f43c56a86b40882a30f55f8acc8, type: 3}

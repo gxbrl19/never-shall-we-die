@@ -30,11 +30,6 @@ public class MenuController : MonoBehaviour
     public GameObject _btnDeleteFirst;
     public GameObject _panelDelete;
 
-    [Header("Audio")]
-    public Slider _masterVolSlider;
-    public Slider _musicVolSlider;
-    public Slider _sfxVolSlider;
-
     BackgroundMusic _music;
 
     private void Awake()
@@ -43,21 +38,9 @@ public class MenuController : MonoBehaviour
         _music = FindAnyObjectByType<BackgroundMusic>();
     }
 
-    private void Start()
-    {
-        SetVolumes();
-    }
-
     private void Update()
     {
         UnlockSaveButtons();
-    }
-
-    void SetVolumes()
-    {
-        _masterVolSlider.value = GameManager.instance._masterVol;
-        _musicVolSlider.value = GameManager.instance._musicVol;
-        _sfxVolSlider.value = GameManager.instance._sfxVol;
     }
 
     void UnlockSaveButtons() //verifica os arquivos de save para atribuir aos botões
@@ -168,22 +151,6 @@ public class MenuController : MonoBehaviour
         }
 
         return _newVol;
-    }
-
-    public void SetMasterVol(float volume)
-    {
-        _mixer.SetFloat("MasterVol", GetVol(volume));
-    }
-
-    public void SetMusicVol(float volume)
-    {
-
-        _mixer.SetFloat("MusicVol", GetVol(volume));
-    }
-
-    public void SetSFXVol(float volume)
-    {
-        _mixer.SetFloat("SFXVol", GetVol(volume));
     }
 
     public void SelectTest()

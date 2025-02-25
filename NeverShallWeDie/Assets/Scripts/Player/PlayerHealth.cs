@@ -54,13 +54,15 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (_isDead) { return; }
+
         _player.gameObject.layer = LayerMask.NameToLayer("Invencible");
 
         _player._onHit = true;
         _player._canMove = false;
         _currentHealth -= damage;
         SetHealth(_currentHealth);
-        _audio.PlayAudio("hit"); //audio do dano
+        _audio.PlayHit();
         CinemachineShake.instance.ShakeCamera(6f, 0.15f); //tremida da camera
         _spriteRenderer.color = _damageColor;
 
@@ -72,6 +74,7 @@ public class PlayerHealth : MonoBehaviour
         if (_currentHealth < 1)
         {
             //Time.timeScale = 0.5f;
+            _audio.PlayDeath();
             _isDead = true;
             _player._body.velocity = Vector2.zero;
             _player.OnDead();

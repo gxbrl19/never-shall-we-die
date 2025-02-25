@@ -1924,6 +1924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4247629773200254659}
   - component: {fileID: 8203158604864243554}
+  - component: {fileID: 6315882447971096157}
   m_Layer: 5
   m_Name: sli_volume
   m_TagString: Untagged
@@ -2004,10 +2005,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9067393720111904276}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SetMasterVol
-        m_Mode: 0
+      - m_Target: {fileID: 6315882447971096157}
+        m_TargetAssemblyTypeName: SliderController, Assembly-CSharp
+        m_MethodName: UpddateSliderOutput
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2016,6 +2017,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6315882447971096157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332610302455125759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcbe7fc7704ead4ea26ad233becbcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busPath: bus:/Geral
+  slider: {fileID: 8203158604864243554}
 --- !u!1 &360467878511075089
 GameObject:
   m_ObjectHideFlags: 0
@@ -31192,6 +31207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9123990984889370911}
   - component: {fileID: 7362685287960103917}
+  - component: {fileID: 7207247107253021621}
   m_Layer: 5
   m_Name: sli_effects
   m_TagString: Untagged
@@ -31272,10 +31288,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9067393720111904276}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SetSFXVol
-        m_Mode: 0
+      - m_Target: {fileID: 7207247107253021621}
+        m_TargetAssemblyTypeName: SliderController, Assembly-CSharp
+        m_MethodName: UpddateSliderOutput
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -31284,6 +31300,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7207247107253021621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9134849303393653155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcbe7fc7704ead4ea26ad233becbcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busPath: bus:/Geral/SFX
+  slider: {fileID: 7362685287960103917}
 --- !u!1 &9153379124334952019
 GameObject:
   m_ObjectHideFlags: 0
@@ -31294,6 +31324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4910571947003317365}
   - component: {fileID: 7263739254336197105}
+  - component: {fileID: 6672747183175230092}
   m_Layer: 5
   m_Name: sli_music
   m_TagString: Untagged
@@ -31374,10 +31405,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9067393720111904276}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: SetMusicVol
-        m_Mode: 0
+      - m_Target: {fileID: 6672747183175230092}
+        m_TargetAssemblyTypeName: SliderController, Assembly-CSharp
+        m_MethodName: UpddateSliderOutput
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -31386,6 +31417,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6672747183175230092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153379124334952019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcbe7fc7704ead4ea26ad233becbcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  busPath: bus:/Geral/Music
+  slider: {fileID: 7263739254336197105}
 --- !u!1 &9200724083351529802
 GameObject:
   m_ObjectHideFlags: 0

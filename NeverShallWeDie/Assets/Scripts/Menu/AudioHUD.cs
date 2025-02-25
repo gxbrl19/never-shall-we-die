@@ -11,18 +11,8 @@ public class AudioHUD : MonoBehaviour
     [SerializeField] EventReference _backBtn;
     [SerializeField] EventReference _navigationBtn;
     [SerializeField] EventReference _selectBtn;
-
-    public AudioSource _audioSource;
-
-    [Header("Audio")]
-    public AudioClip _btnClick;
-    //public AudioClip _navigationBtn;
-    public AudioClip _pauseBtn;
-
-    [Header("Volume")]
-    public float _clickVolume;
-    public float _navigationVolume;
-    public float _pauseVolume;
+    [SerializeField] EventReference _openMap;
+    [SerializeField] EventReference _closeMap;
 
     private void Awake()
     {
@@ -34,21 +24,6 @@ public class AudioHUD : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        }
-
-        _audioSource = GetComponent<AudioSource>();
-    }
-
-    public void SoundClick(string clickType)
-    {
-        if (clickType == "Menu")
-        {
-            PlaySound(_btnClick, _clickVolume);
-        }
-
-        if (clickType == "Pause")
-        {
-            PlaySound(_pauseBtn, _pauseVolume);
         }
     }
 
@@ -72,9 +47,13 @@ public class AudioHUD : MonoBehaviour
         RuntimeManager.PlayOneShot(_selectBtn);
     }
 
-    public void PlaySound(AudioClip sound, float volume)
+    public void PlayOpenMap()
     {
-        _audioSource.volume = volume;
-        _audioSource.PlayOneShot(sound);
+        RuntimeManager.PlayOneShot(_openMap);
+    }
+
+    public void PlayCloseMap()
+    {
+        RuntimeManager.PlayOneShot(_closeMap);
     }
 }

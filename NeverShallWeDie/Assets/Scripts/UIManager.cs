@@ -105,13 +105,9 @@ public class UIManager : MonoBehaviour
 
     [BoxGroup("Config")] public GameObject _pnlConfig;
     [BoxGroup("Config")] public GameObject[] _configInfo;
-    [BoxGroup("Config")] public AudioMixer _mixer;
     [BoxGroup("Config")] public Dropdown _resolutionDropdown;
     Resolution[] _resolutions;
 
-    [BoxGroup("AudioHUD")] public AudioClip _btnClick;
-    [BoxGroup("AudioHUD")] public AudioClip _navigationBtn;
-    [BoxGroup("AudioHUD")] public AudioClip _pauseBtn;
     [BoxGroup("AudioHUD")] public AudioClip _buyMap;
     [BoxGroup("AudioHUD")] public AudioClip _upKatana;
     [BoxGroup("AudioHUD")] public float _clickVolume;
@@ -252,7 +248,7 @@ public class UIManager : MonoBehaviour
         _pnlCrew.SetActive(false);
         _pnlConfig.SetActive(false);
         _pnlItems.SetActive(false);
-        _audioSource.PlayOneShot(_navigationBtn);
+        AudioHUD.instance.PlayNavigationButton();
 
         for (int i = 0; i < _panels.Length; i++)
         {
@@ -325,6 +321,7 @@ public class UIManager : MonoBehaviour
 
     void MoveMap()
     {
+
         for (int i = 0; i < _mapPanels.Length; i++)
         {
             if (i == _mapPanelIndex)
@@ -334,10 +331,12 @@ public class UIManager : MonoBehaviour
             else if (i < _mapPanelIndex)
             {
                 _mapPanels[i].DOAnchorPos(new Vector2(-384f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+                AudioHUD.instance.PlayNavigationButton();
             }
             else if (i > _mapPanelIndex)
             {
                 _mapPanels[i].DOAnchorPos(new Vector2(384f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+                AudioHUD.instance.PlayNavigationButton();
             }
         }
     }
@@ -454,7 +453,7 @@ public class UIManager : MonoBehaviour
         _txtMapPrice.text = _mapPrice.ToString();
         _pnlBuyMap.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesBuyMap);
-        SoundClick("Pause");
+        AudioHUD.instance.PlaySelectButton();
     }
 
     public void BuyMap() //chamado no botão Yes do pnl_buymap (UI Manager)
@@ -466,7 +465,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance._maps[_mapBuyId] = 1;
             _pnlBuyMap.SetActive(false);
             GameManager.instance._gold -= _mapPrice;
-            PlaySound(_buyMap, _buyMapVolume);
+            AudioHUD.instance.PlayOpenMap();
             _txtGoldBuy.text = "-" + _mapPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
         }
@@ -491,7 +490,7 @@ public class UIManager : MonoBehaviour
         _txtCurrPotentium.text = _qtdPotentium.ToString();
         _pnlUpKatana.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpKatana);
-        SoundClick("Pause");
+        AudioHUD.instance.PlaySelectButton();
     }
 
     public void UpgradeKatana() //chamado no botão Yes do pnl_upKatana (UI Manager)
@@ -529,7 +528,7 @@ public class UIManager : MonoBehaviour
         _txtCurrOrbs.text = _qtdOrbs.ToString();
         _pnlUpHpMp.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpHpMp);
-        SoundClick("Pause");
+        AudioHUD.instance.PlaySelectButton();
     }
 
     public void UpgradeHP() //chamado no botão HP do pnl_upHpMp (UI Manager)
@@ -606,7 +605,7 @@ public class UIManager : MonoBehaviour
                 CancelPause();
             }
 
-            SoundClick("Pause");
+            AudioHUD.instance.PlaySelectButton();
         }
     }
 
@@ -619,12 +618,12 @@ public class UIManager : MonoBehaviour
             if (!_inMap && GameManager.instance._maps[1] == 1) //só habilita quando tiver o mapa da ilha 1
             {
                 InMap();
-                SoundClick("Pause");
+                AudioHUD.instance.PlayOpenMap();
             }
             else if (_inMap)
             {
                 CancelMap();
-                SoundClick("Pause");
+                AudioHUD.instance.PlayCloseMap();
             }
         }
     }
@@ -677,28 +676,12 @@ public class UIManager : MonoBehaviour
     #region Sound
     public void ClickSound(string type) //chamado na ação dos botões
     {
-        AudioHUD.instance.SoundClick(type);
+        AudioHUD.instance.PlaySelectButton();
     }
 
     public void SwitchButton() //chamado na ação dos botões
     {
         AudioHUD.instance.PlayNavigationButton();
-    }
-
-    public void SetMasterVol(float volume)
-    {
-        _mixer.SetFloat("MasterVol", GetVol(volume));
-    }
-
-    public void SetMusicVol(float volume)
-    {
-
-        _mixer.SetFloat("MusicVol", GetVol(volume));
-    }
-
-    public void SetSFXVol(float volume)
-    {
-        _mixer.SetFloat("SFXVol", GetVol(volume));
     }
 
     public void SelectTest()
@@ -754,23 +737,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region AudioHUD
-    public void SoundClick(string clickType)
-    {
-        if (clickType == "Menu")
-        {
-            PlaySound(_btnClick, _clickVolume);
-        }
-
-        if (clickType == "Pause")
-        {
-            PlaySound(_pauseBtn, _pauseVolume);
-        }
-    }
-
-    public void NavigationButton()
-    {
-        PlaySound(_navigationBtn, _navigationVolume);
-    }
+    //TODO: trocar pelo prefab do AudioHUD e usar o FMOD
 
     public void PlaySound(AudioClip sound, float volume)
     {
@@ -778,5 +745,5 @@ public class UIManager : MonoBehaviour
         _audioSource.PlayOneShot(sound);
     }
 
-    #endregion 
+    #endregion
 }

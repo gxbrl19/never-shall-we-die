@@ -399,7 +399,7 @@ public class Player : MonoBehaviour
             _jumpTime = Time.time + _jumpHoldDuration;
 
             _ghostTime = Time.time;
-            _audio.PlayAudio("jump");
+            _audio.PlayJump();
             CreateDust(1);
         }
         else if (_input.isJumping && _onWater && _canSwin && !_collision._onWall) // na água
@@ -412,7 +412,7 @@ public class Player : MonoBehaviour
                 _body.AddForce(Vector2.up * _jumpOutWater, ForceMode2D.Impulse);
                 _jumpTime = Time.time + _jumpHoldDuration;
                 _ghostTime = Time.time;
-                _audio.PlayAudio("jump");
+                _audio.PlayJump();
             }
             else if (!_collision._outWaterHit && _collision._inWaterHit)
             {
@@ -441,7 +441,7 @@ public class Player : MonoBehaviour
             _body.velocity = Vector2.zero;
             _body.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _jumpTime = Time.time + _jumpHoldDuration;
-            _audio.PlayAudio("jump");
+            _audio.PlayJump();
         }
 
         if (_isJumping)
