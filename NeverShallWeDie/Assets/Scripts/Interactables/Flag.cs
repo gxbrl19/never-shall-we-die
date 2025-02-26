@@ -2,23 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class Flag : MonoBehaviour
 {
     public int _idFlag;
     public int _direction = 1;
-    public AudioClip _saveSound;
+    [SerializeField] EventReference _checkpointSound;
     bool _playerTriggered;
     Animator _animation;
     Player _player;
     PlayerInputs _inputs;
     PlayerHealth _health;
-    AudioSource _audio;
 
     void Awake()
     {
         _animation = GetComponent<Animator>();
-        _audio = GetComponent<AudioSource>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _inputs = _player.GetComponent<PlayerInputs>();
         _health = _player.GetComponent<PlayerHealth>();
@@ -60,8 +59,7 @@ public class Flag : MonoBehaviour
         Scene _currentScene = SceneManager.GetActiveScene();
         GameManager.instance._checkpointScene = _currentScene.buildIndex;
         GameManager.instance._direction = _direction;
-
-        _audio.PlayOneShot(_saveSound);
+        RuntimeManager.PlayOneShot(_checkpointSound);
         GameManager.instance.SaveGame();
     }
 

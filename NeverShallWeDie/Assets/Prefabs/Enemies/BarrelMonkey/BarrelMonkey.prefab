@@ -339,9 +339,13 @@ MonoBehaviour:
   _speed: 12
   _raycastSize: 12
   _finishPoint: {fileID: 4109031161652419319}
-  _startRollingSound: {fileID: 8300000, guid: a77bbc3215eff274ca89122d2efe2799, type: 3}
-  _rollingSound: {fileID: 8300000, guid: 110cd00ecabb6cb4aaa0b196f878d27e, type: 3}
-  _attackSound: {fileID: 8300000, guid: 2079782d5bfea8e40918bc497b28e37a, type: 3}
+  _soundEvent:
+    Guid:
+      Data1: -1619185860
+      Data2: 1117191865
+      Data3: 1746515355
+      Data4: -260035095
+    Path: event:/sfx/gameplay/SFX_ACTION_barrel_monkey_roll_start_01
 --- !u!114 &3717038023925824456
 MonoBehaviour:
   m_ObjectHideFlags: 0

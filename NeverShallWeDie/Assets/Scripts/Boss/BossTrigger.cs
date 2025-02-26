@@ -41,7 +41,7 @@ public class BossTrigger : MonoBehaviour
 
             UIManager.instance.BossEnabled();
             _bossController.EnabledUI();
-            _music.BossMusic();
+            _music.MusicControl(2); //TODO: alterar o indice quando tiver todas as musicas
         }
     }
 }

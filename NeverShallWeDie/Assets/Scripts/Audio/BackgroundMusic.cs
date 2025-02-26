@@ -96,7 +96,7 @@ public class BackgroundMusic : MonoBehaviour
         _audioSource.PlayScheduled(secondClipStartTime);
     }*/
 
-    public void BossMusic()
+    /*public void BossMusic()
     {
         _audioSource.Stop();
 
@@ -112,13 +112,10 @@ public class BackgroundMusic : MonoBehaviour
 
         _audioSource.clip = _bossTheme;
         _audioSource.PlayScheduled(secondClipStartTime);
-    }
+    }*/
 
     public void FinishBoss()
     {
-        //_audioSource.Stop();
-        _audioSourceIntro.enabled = false;
-        _audioSource.clip = _forestTheme; //TODO: pegar a musica da ilha atual
-        _audioSource.Play();
+        MusicControl(1); //TODO: pegar a musica da ilha atual
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class BarrierLever : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class BarrierLever : MonoBehaviour
     [SerializeField] GameObject _mainCamera;
     [SerializeField] GameObject _barrierCamera;
 
-    [Header("Audio")]
-    [SerializeField] AudioClip _moveSound;
+    [Header("FMOD Events")]
+    [SerializeField] EventReference portalOpen;
 
     AudioSource _audio;
     Player _player;
@@ -42,7 +43,7 @@ public class BarrierLever : MonoBehaviour
     {
         GameManager.instance._barriersLever[_id] = 1;
         _animation.SetBool("Enabled", true);
-        _audio.PlayOneShot(_moveSound);
+        RuntimeManager.PlayOneShot(portalOpen);
         Invoke("FinishEnabled", 2.02f);
     }
 

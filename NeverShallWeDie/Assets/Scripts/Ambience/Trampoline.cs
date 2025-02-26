@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Trampoline : MonoBehaviour
 {
     private Animator _animation;
     float _jumpForce = 40f;
-    AudioSource _audio;
+    [Header("FMOD Events")]
+    [SerializeField] EventReference mushroom;
 
     private void Awake()
     {
         _animation = GetComponent<Animator>();
-        _audio = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -35,6 +36,6 @@ public class Trampoline : MonoBehaviour
 
     public void JumpSound(AudioClip jumpSound) //chamado na animação
     {
-        _audio.PlayOneShot(jumpSound);
+        RuntimeManager.PlayOneShot(mushroom);
     }
 }

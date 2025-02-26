@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class BossController : MonoBehaviour
 {
@@ -10,8 +11,6 @@ public class BossController : MonoBehaviour
     [HideInInspector] public string _name;
     [HideInInspector] public float _maxHealth;
     [HideInInspector] public int _bossID;
-    [HideInInspector] public AudioClip _deadSound;
-    [HideInInspector] public float _volume;
     [HideInInspector] public Color _damageColor;
 
     //Enemy Data
@@ -23,6 +22,11 @@ public class BossController : MonoBehaviour
     [SerializeField] BossDoor _bossDoor;
     [SerializeField] BossDoor _bossDoor2;
     [SerializeField] WantedBoss _wantedBoss;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference hit;
+    [SerializeField] EventReference dead;
+
 
     Color _defaultColor;
     SpriteRenderer _sprite;
@@ -37,8 +41,6 @@ public class BossController : MonoBehaviour
 
         _maxHealth = _bossObject.maxHealth;
         _bossID = _bossObject.bossID;
-        _deadSound = _bossObject.deadSound;
-        _volume = _bossObject.volume;
         _damageColor = _bossObject.damageColor;
 
         _currentHealth = _maxHealth;
@@ -62,20 +64,22 @@ public class BossController : MonoBehaviour
 
         _onHit = true;
         _currentHealth -= damage;
-        _audio.volume = _volume;
-        _audio.PlayOneShot(_deadSound);
+        PlayHit();
         _sprite.color = _damageColor;
         AudioItems.instance.PlaySound(AudioItems.instance._hitSound, AudioItems.instance._hitVolume);
         Invoke("FinishHit", 0.3f);
 
         if (_currentHealth <= 0)
         {
+            if (_isDead) { return; }
+
             _isDead = true;
             _animation.SetTrigger("Dead");
             GameManager.instance._bosses[_bossID] = 1;
             _bossDoor._tiggered = false;
             _bossDoor2._tiggered = false;
             UIManager.instance.BossDisabled();
+            PlayDead();
             BackgroundMusic.instance.FinishBoss();
         }
     }
@@ -95,5 +99,15 @@ public class BossController : MonoBehaviour
     public void SetWanted() //chamado na animação de morte
     {
         _wantedBoss.StartWanted();
+    }
+
+    public void PlayHit()
+    {
+        RuntimeManager.PlayOneShot(dead);
+    }
+
+    public void PlayDead()
+    {
+        RuntimeManager.PlayOneShot(hit);
     }
 }

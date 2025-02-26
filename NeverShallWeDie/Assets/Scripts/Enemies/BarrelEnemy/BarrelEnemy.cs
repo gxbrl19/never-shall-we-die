@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class BarrelEnemy : MonoBehaviour
 {
@@ -8,15 +9,15 @@ public class BarrelEnemy : MonoBehaviour
     public float _speed;
     public float _raycastSize;
     public Transform _finishPoint;
-    [SerializeField] AudioClip _startRollingSound;
-    [SerializeField] AudioClip _rollingSound;
-    [SerializeField] AudioClip _attackSound;
+    [SerializeField] EventReference _soundEvent;
 
     bool _detectPlayer = false;
     bool _beginRoll = false;
     bool _isRolling = false;
     EnemyController _controller;
     Transform _playerPosition;
+
+    FMOD.Studio.EventInstance FMODinstance;
 
     void Awake()
     {
@@ -34,7 +35,7 @@ public class BarrelEnemy : MonoBehaviour
         if (_detectPlayer) { _controller._animation.SetBool("DetectPlayer", true); }
         if (_detectPlayer && !_beginRoll)
         {
-            if (!_isRolling) { _controller._audio.PlayOneShot(_rollingSound); }
+            //if (!_isRolling) { PlaySound("Loop"); }
             _isRolling = true;
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(_finishPoint.position.x, transform.position.y), _speed * Time.deltaTime);
         }
@@ -66,10 +67,17 @@ public class BarrelEnemy : MonoBehaviour
         {
             _beginRoll = true;
             _detectPlayer = true;
-            _controller._audio.PlayOneShot(_startRollingSound);
+            //PlaySound("Start");
 
             if (_hitBack) { Flip(); }
         }
+    }
+
+    void PlaySound(string name)
+    {
+        FMODinstance = RuntimeManager.CreateInstance(_soundEvent);
+        FMODinstance.start();
+        FMODinstance.setParameterByNameWithLabel("BarrelMonkey", name);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -80,14 +88,14 @@ public class BarrelEnemy : MonoBehaviour
             _detectPlayer = false;
             _controller._currentHealth = 0;
             _controller._animation.SetBool("Dead", true);
-            _controller._audio.PlayOneShot(_attackSound);
+            //PlaySound("End");
         }
         else if (other.gameObject.layer == 16 && _isRolling) //na katana faz o efeito de HIT
         {
             _isRolling = false;
             _detectPlayer = false;
             _controller.TakeDamage(1);
-            _controller._audio.PlayOneShot(_attackSound);
+            //PlaySound("End");
         }
     }
 

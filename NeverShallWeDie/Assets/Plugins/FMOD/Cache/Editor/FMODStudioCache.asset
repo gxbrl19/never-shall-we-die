@@ -309,10 +309,10 @@ MonoBehaviour:
   Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638760773607810162
+  lastModified: 638761631442253162
   FileSizes:
   - Name: Desktop
-    Value: 3730
+    Value: 3784
   Exists: 1
 --- !u!114 &-5175581328412698962
 MonoBehaviour:
@@ -688,7 +688,8 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 7890616231051801610}
   MinDistance: 1
   MaxDistance: 20
   Length: 1666
@@ -769,7 +770,7 @@ MonoBehaviour:
   - {fileID: 3980210049349708886}
   StringsBanks:
   - {fileID: -5899057458559496526}
-  cacheTime: 638760773607810162
+  cacheTime: 638761631442253162
   cacheVersion: 131616
 --- !u!114 &7691062675070937
 MonoBehaviour:
@@ -1083,10 +1084,10 @@ MonoBehaviour:
   Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638760773607770279
+  lastModified: 638761631442193330
   FileSizes:
   - Name: Desktop
-    Value: 3989216
+    Value: 3990176
   Exists: 1
 --- !u!114 &4399959104032649854
 MonoBehaviour:
@@ -1574,6 +1575,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2366
+--- !u!114 &7890616231051801610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SFX_ACTION_barrel_monkey_roll_start_01/BarrelMonkey
+  m_EditorClassIdentifier: 
+  Name: BarrelMonkey
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 3953283944
+    data2: 2770582277
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Start
+  - Loop
+  - End
+  Exists: 1
 --- !u!114 &7946022920460951865
 MonoBehaviour:
   m_ObjectHideFlags: 0

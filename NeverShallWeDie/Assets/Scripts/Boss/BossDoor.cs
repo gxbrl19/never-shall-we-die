@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class BossDoor : MonoBehaviour
 {
@@ -8,11 +9,15 @@ public class BossDoor : MonoBehaviour
     [HideInInspector] public float _speed = 2f;
     [HideInInspector] public bool _tiggered;
 
-    AudioSource _audioSource;
+    [Header("FMOD Events")]
+    [SerializeField] EventReference portalClose;
+    bool _start = false;
 
-    private void Awake()
+    public void EnabledSound()
     {
-        //_audioSource = gameObject.GetComponent<AudioSource>();
+        if (_start) { return; }
+        RuntimeManager.PlayOneShot(portalClose);
+        _start = true;
     }
 
     void Update()
@@ -21,12 +26,14 @@ public class BossDoor : MonoBehaviour
         if (_tiggered && transform.position.y > _down.position.y)
         {
             transform.Translate(Vector2.down * Time.deltaTime * _speed);
+            EnabledSound();
         }
 
         //abre a porta quando o boss morre
         if (!_tiggered && transform.position.y < _up.position.y)
         {
             transform.Translate(Vector2.up * Time.deltaTime * _speed);
+            EnabledSound();
         }
     }
 }

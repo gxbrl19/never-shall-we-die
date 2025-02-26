@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6646260321002561890}
   - component: {fileID: 7974561495492405567}
   - component: {fileID: 7224680742747029376}
-  - component: {fileID: 3728578281747863976}
   m_Layer: 7
   m_Name: KingBoar
   m_TagString: Enemy
@@ -164,8 +163,6 @@ MonoBehaviour:
   _name: 
   _maxHealth: 0
   _bossID: 0
-  _deadSound: {fileID: 0}
-  _volume: 0
   _damageColor: {r: 0, g: 0, b: 0, a: 0}
   _currentHealth: 0
   _onHit: 0
@@ -173,6 +170,21 @@ MonoBehaviour:
   _animation: {fileID: 0}
   _bossDoor: {fileID: 0}
   _bossDoor2: {fileID: 0}
+  _wantedBoss: {fileID: 0}
+  hit:
+    Guid:
+      Data1: 1856260652
+      Data2: 1132018124
+      Data3: 75969954
+      Data4: 1172232180
+    Path: event:/sfx/gameplay/SFX_COMBAT_king_boar_hit_01
+  dead:
+    Guid:
+      Data1: -341506649
+      Data2: 1075864124
+      Data3: -1046982240
+      Data4: -140031906
+    Path: event:/sfx/gameplay/SFX_COMBAT_king_boar_death_01
 --- !u!114 &7974561495492405567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,9 +202,34 @@ MonoBehaviour:
   _boarMinion: {fileID: 6225380674925314573, guid: bddd0ecaca8198347b6ef5d8c2eb7b3c, type: 3}
   _boarMinionLeft: {fileID: 0}
   _boarMinionRight: {fileID: 0}
-  _scream: {fileID: 8300000, guid: c961cbf65fce78043b7727721650e05b, type: 3}
-  _minion: {fileID: 8300000, guid: e3cdc91a092b18242a7d35c5944f42ca, type: 3}
-  _throw: {fileID: 8300000, guid: 296cfab55dbadb9419b37d5940afffe4, type: 3}
+  grunt:
+    Guid:
+      Data1: 1789714676
+      Data2: 1260485628
+      Data3: 421469877
+      Data4: 1526223083
+    Path: event:/sfx/gameplay/SFX_ACTION_voice_king_boar_grunt_01
+  attack:
+    Guid:
+      Data1: -992043816
+      Data2: 1139433605
+      Data3: -361122153
+      Data4: -1579584769
+    Path: event:/sfx/gameplay/SFX_COMBAT_king_boar_attack_01
+  minethrow:
+    Guid:
+      Data1: 1322579187
+      Data2: 1218722617
+      Data3: 1304239012
+      Data4: 2063938819
+    Path: event:/sfx/gameplay/SFX_ACTION_king_boar_mine_throw_01
+  callbackup:
+    Guid:
+      Data1: 1044135853
+      Data2: 1140084420
+      Data3: 729578923
+      Data4: 1055420091
+    Path: event:/sfx/gameplay/SFX_ACTION_voice_king_boar_call_backup_01
 --- !u!114 &7224680742747029376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,102 +244,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _power: 5
   _hitEffect: {fileID: 0}
---- !u!82 &3728578281747863976
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295333832740964883}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1e98ccef75e55c24f8e3b5e2f2d2c289, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.8
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &3443450116995246175
 GameObject:
   m_ObjectHideFlags: 0

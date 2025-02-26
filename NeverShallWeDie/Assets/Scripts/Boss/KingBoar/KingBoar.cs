@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class KingBoar : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class KingBoar : MonoBehaviour
     [SerializeField] Transform _boarMinionLeft;
     [SerializeField] Transform _boarMinionRight;
 
-    [Header("Audio")]
-    [SerializeField] AudioClip _scream;
-    [SerializeField] AudioClip _minion;
-    [SerializeField] AudioClip _throw;
+    [Header("FMOD Events")]
+    [SerializeField] EventReference grunt;
+    [SerializeField] EventReference attack;
+    [SerializeField] EventReference minethrow;
+    [SerializeField] EventReference callbackup;
 
     float _speed = 2f;
     float _timer;
@@ -100,7 +102,7 @@ public class KingBoar : MonoBehaviour
 
     public void SpikeAttack() //chamado na animação Attack02
     {
-        _audioSource.PlayOneShot(_throw);
+        PlayMineThrow();
 
         Transform spike = Instantiate(_spike, _shootPoint.position, Quaternion.identity);
         spike.GetComponent<Rigidbody2D>().velocity = new Vector2(_velocitySpike.x + 4f, _velocitySpike.y - 0.5f);
@@ -114,7 +116,7 @@ public class KingBoar : MonoBehaviour
 
     public void MinionAttack() //chamado na animação Attack03
     {
-        _audioSource.PlayOneShot(_minion);
+        PlayCallBackup();
 
         if (_direction == 1)
         {
@@ -157,7 +159,7 @@ public class KingBoar : MonoBehaviour
     public void Intro() //chamado na animação de Intro
     {
         _intro = true;
-        _audioSource.PlayOneShot(_scream);
+        PlayGrunt();
     }
 
     public void FinishIntro() //chamado na animação de Intro
@@ -167,8 +169,23 @@ public class KingBoar : MonoBehaviour
         _starter = true;
     }
 
-    public void PlayAudio(AudioClip audio) //chamado na animação de ataque
+    public void PlayGrunt()
     {
-        _audioSource.PlayOneShot(audio);
+        RuntimeManager.PlayOneShot(grunt);
+    }
+
+    public void PlayAttack() //chamado na animação de ataque
+    {
+        RuntimeManager.PlayOneShot(attack);
+    }
+
+    public void PlayMineThrow()
+    {
+        RuntimeManager.PlayOneShot(minethrow);
+    }
+
+    public void PlayCallBackup()
+    {
+        RuntimeManager.PlayOneShot(callbackup);
     }
 }

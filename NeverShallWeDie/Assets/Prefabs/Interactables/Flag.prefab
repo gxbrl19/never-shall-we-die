@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 6541455796690333657}
   - component: {fileID: 4944671130877243629}
   - component: {fileID: 7703511203176116092}
-  - component: {fileID: 7507495422420527359}
   - component: {fileID: 5047302638291807923}
-  - component: {fileID: 3408723025447566742}
+  - component: {fileID: 7507495422420527359}
   m_Layer: 0
   m_Name: Flag
   m_TagString: Untagged
@@ -134,21 +133,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 6}
   m_EdgeRadius: 0
---- !u!114 &7507495422420527359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3039833333579932961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a14e5f12fa7b34894bf701ddaf4dd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _idFlag: 0
-  _direction: 1
-  _saveSound: {fileID: 8300000, guid: 4a3b6f43798e4a44fb7cb0d71c51c931, type: 3}
 --- !u!95 &5047302638291807923
 Animator:
   serializedVersion: 5
@@ -170,102 +154,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!82 &3408723025447566742
-AudioSource:
+--- !u!114 &7507495422420527359
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3039833333579932961}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 5314338856241744941, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4a3b6f43798e4a44fb7cb0d71c51c931, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a14e5f12fa7b34894bf701ddaf4dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _idFlag: 0
+  _direction: 1
+  _checkpointSound:
+    Guid:
+      Data1: -1998654466
+      Data2: 1273970880
+      Data3: 1961898628
+      Data4: 1794641571
+    Path: event:/sfx/gameplay/SFX_ACTION_checkpoint_01
 --- !u!1 &5083429037779601239
 GameObject:
   m_ObjectHideFlags: 0
