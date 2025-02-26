@@ -15,6 +15,6 @@ public class Demo : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Scenes/MainMenu");
-        BackgroundMusic.instance._audioSource.enabled = false;
+        BackgroundMusic.instance.MusicControl(10); //musica do menu
     }
 }

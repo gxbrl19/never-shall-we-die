@@ -78,6 +78,33 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-8408075178750455303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/no official/mus_map03
+  m_EditorClassIdentifier: 
+  Path: event:/music/no official/mus_map03
+  Guid:
+    Data1: -2048409348
+    Data2: 1109242655
+    Data3: -1005098595
+    Data4: -1051464522
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 82285
 --- !u!114 &-7718755525773731836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,10 +336,10 @@ MonoBehaviour:
   Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638761631442253162
+  lastModified: 638761763814631008
   FileSizes:
   - Name: Desktop
-    Value: 3784
+    Value: 4040
   Exists: 1
 --- !u!114 &-5175581328412698962
 MonoBehaviour:
@@ -611,6 +638,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 54493
+--- !u!114 &-423249531037306370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/no official/mus_map05
+  m_EditorClassIdentifier: 
+  Path: event:/music/no official/mus_map05
+  Guid:
+    Data1: 1595997918
+    Data2: 1188222917
+    Data3: -1175740226
+    Data4: 1811200205
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 73846
 --- !u!114 &-207003821407435937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,13 +818,19 @@ MonoBehaviour:
   - {fileID: -5902576662169933630}
   - {fileID: 2949812781516112628}
   - {fileID: 5908845111119641462}
+  - {fileID: 5243596287346391501}
+  - {fileID: 6756882247060502366}
+  - {fileID: 7279412186054055788}
+  - {fileID: 7556162815512260369}
+  - {fileID: -423249531037306370}
+  - {fileID: -8408075178750455303}
   EditorParameters:
   - {fileID: -8480598557086419306}
   MasterBanks:
   - {fileID: 3980210049349708886}
   StringsBanks:
   - {fileID: -5899057458559496526}
-  cacheTime: 638761631442253162
+  cacheTime: 638761763814631008
   cacheVersion: 131616
 --- !u!114 &7691062675070937
 MonoBehaviour:
@@ -1084,10 +1144,10 @@ MonoBehaviour:
   Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638761631442193330
+  lastModified: 638761763814591128
   FileSizes:
   - Name: Desktop
-    Value: 3990176
+    Value: 8697600
   Exists: 1
 --- !u!114 &4399959104032649854
 MonoBehaviour:
@@ -1278,6 +1338,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 66
+--- !u!114 &5243596287346391501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/no official/mus_map04
+  m_EditorClassIdentifier: 
+  Path: event:/music/no official/mus_map04
+  Guid:
+    Data1: 672199696
+    Data2: 1136623104
+    Data3: 1957150890
+    Data4: 12698508
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 59075
 --- !u!114 &5277759997143618201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1413,6 +1500,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 233
+--- !u!114 &6756882247060502366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/no official/mus_gameover
+  m_EditorClassIdentifier: 
+  Path: event:/music/no official/mus_gameover
+  Guid:
+    Data1: -2023202284
+    Data2: 1148100340
+    Data3: 630396347
+    Data4: 1951325990
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4500
 --- !u!114 &6761797720008250279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,6 +1635,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1133
+--- !u!114 &7279412186054055788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/no official/mus_map02
+  m_EditorClassIdentifier: 
+  Path: event:/music/no official/mus_map02
+  Guid:
+    Data1: -509714121
+    Data2: 1321795466
+    Data3: -707058284
+    Data4: 1795531553
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 61440
 --- !u!114 &7287411678124969455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1548,6 +1689,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 533
+--- !u!114 &7556162815512260369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/no official/mus_map06
+  m_EditorClassIdentifier: 
+  Path: event:/music/no official/mus_map06
+  Guid:
+    Data1: -819636309
+    Data2: 1193691411
+    Data3: 1111704714
+    Data4: -662291736
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 87272
 --- !u!114 &7852277672169810551
 MonoBehaviour:
   m_ObjectHideFlags: 0

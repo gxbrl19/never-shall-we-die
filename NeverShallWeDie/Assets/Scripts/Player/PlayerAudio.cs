@@ -11,9 +11,10 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] EventReference hit;
     [SerializeField] EventReference death;
 
+    [SerializeField] GameObject healing;
+    [SerializeField] GameObject grabing;
+
     [Header("Movement")]
-    public AudioClip[] _katanas;
-    public AudioClip[] _hits;
     public AudioClip _jump;
     public AudioClip _healing;
     public AudioClip _roll;
@@ -34,16 +35,19 @@ public class PlayerAudio : MonoBehaviour
 
     [HideInInspector] public AudioSource _audioSource;
     Player _player;
+    PlayerInputs _input;
 
     void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _player = GetComponent<Player>();
+        _input = _player.GetComponent<PlayerInputs>();
     }
 
     private void Update()
     {
-        Healing();
+        PlayHealing();
+        PlayGrab();
     }
 
     public void PlayAudio(string audio)
@@ -52,11 +56,6 @@ public class PlayerAudio : MonoBehaviour
 
         switch (audio)
         {
-            case "katana": //animação
-                _audioSource.volume = 1f;
-                int katanas = Random.Range(0, 3);
-                _audioSource.PlayOneShot(_katanas[katanas]);
-                break;
             case "jump": //script
                 _audioSource.volume = 1f;
                 _audioSource.PlayOneShot(_jump);
@@ -64,11 +63,6 @@ public class PlayerAudio : MonoBehaviour
             case "roll": //animação
                 _audioSource.volume = 1f;
                 _audioSource.PlayOneShot(_roll);
-                break;
-            case "hit": //script
-                _audioSource.volume = 1f;
-                int hits = Random.Range(0, 2);
-                _audioSource.PlayOneShot(_hits[hits]);
                 break;
             case "swin": //animação
                 _audioSource.volume = 0.3f;
@@ -122,21 +116,36 @@ public class PlayerAudio : MonoBehaviour
         RuntimeManager.PlayOneShot(death);
     }
 
-    void Healing()
+    public void PlayGrab()
+    {
+        if (_player._isGrabing && _input.horizontal != 0)
+        {
+            if (!_playLoop)
+            {
+                _playLoop = true;
+                grabing.SetActive(true);
+            }
+        }
+        else
+        {
+            grabing.SetActive(false);
+            _playLoop = false;
+        }
+    }
+
+    public void PlayHealing()
     {
         if (_player._healing)
         {
             if (!_playLoop)
             {
                 _playLoop = true;
-                _audioSource.clip = _healing;
-                _audioSource.loop = true;
-                _audioSource.Play();
+                healing.SetActive(true);
             }
         }
         else
         {
-            _audioSource.loop = false;
+            healing.SetActive(false);
             _playLoop = false;
         }
     }

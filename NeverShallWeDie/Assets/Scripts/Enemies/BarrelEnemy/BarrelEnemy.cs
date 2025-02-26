@@ -9,7 +9,7 @@ public class BarrelEnemy : MonoBehaviour
     public float _speed;
     public float _raycastSize;
     public Transform _finishPoint;
-    [SerializeField] EventReference _soundEvent;
+    [SerializeField] GameObject _soundObject;
 
     bool _detectPlayer = false;
     bool _beginRoll = false;
@@ -68,16 +68,17 @@ public class BarrelEnemy : MonoBehaviour
             _beginRoll = true;
             _detectPlayer = true;
             //PlaySound("Start");
+            //_soundObject.SetActive(true);
 
             if (_hitBack) { Flip(); }
         }
     }
 
-    void PlaySound(string name)
+    void PlaySound()
     {
-        FMODinstance = RuntimeManager.CreateInstance(_soundEvent);
-        FMODinstance.start();
-        FMODinstance.setParameterByNameWithLabel("BarrelMonkey", name);
+        //FMODinstance = RuntimeManager.CreateInstance(_soundEvent);
+        //FMODinstance.start();
+        //FMODinstance.setParameterByNameWithLabel("BarrelMonkey", name);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -88,13 +89,14 @@ public class BarrelEnemy : MonoBehaviour
             _detectPlayer = false;
             _controller._currentHealth = 0;
             _controller._animation.SetBool("Dead", true);
+            //_soundObject.SetActive(false);
             //PlaySound("End");
         }
         else if (other.gameObject.layer == 16 && _isRolling) //na katana faz o efeito de HIT
         {
             _isRolling = false;
             _detectPlayer = false;
-            _controller.TakeDamage(1);
+            //_soundObject.SetActive(false);
             //PlaySound("End");
         }
     }
