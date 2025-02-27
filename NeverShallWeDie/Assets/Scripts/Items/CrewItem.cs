@@ -49,7 +49,7 @@ public class CrewItem : MonoBehaviour
 
     void NewItem() //chamado no update
     {
-        _audioItems.PlaySound(_audioItems._powerPickupSound, _audioItems._powerVolume);
+        _audioItems.PlayNewSkill();
         _player.SetPowerPickup(_pickedSprite);
 
         if (_item == CrewItens.Hammer) { GameManager.instance._hammer = 1; } else if (_item == CrewItens.Grimoire) { GameManager.instance._grimoire = 1; }

@@ -66,7 +66,6 @@ public class BossController : MonoBehaviour
         _currentHealth -= damage;
         PlayHit();
         _sprite.color = _damageColor;
-        AudioItems.instance.PlaySound(AudioItems.instance._hitSound, AudioItems.instance._hitVolume);
         Invoke("FinishHit", 0.3f);
 
         if (_currentHealth <= 0)
@@ -103,11 +102,11 @@ public class BossController : MonoBehaviour
 
     public void PlayHit()
     {
-        RuntimeManager.PlayOneShot(dead);
+        RuntimeManager.PlayOneShot(hit);
     }
 
     public void PlayDead()
     {
-        RuntimeManager.PlayOneShot(hit);
+        RuntimeManager.PlayOneShot(dead);
     }
 }

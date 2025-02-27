@@ -195,7 +195,6 @@ GameObject:
   - component: {fileID: 8626063002186934191}
   - component: {fileID: 6225380676328330653}
   - component: {fileID: 7194918199017488003}
-  - component: {fileID: 6225380676328330652}
   m_Layer: 12
   m_Name: Sprite
   m_TagString: Enemy
@@ -377,10 +376,22 @@ MonoBehaviour:
   _onHit: 0
   _isDead: 0
   _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _hitSound: {fileID: 8300000, guid: 55c77bbed58e6af45a25e9330a71ecb5, type: 3}
-  _deadSound: {fileID: 8300000, guid: 359bfb03bc84a6143af98e22b5bccc39, type: 3}
   _animation: {fileID: 0}
   _audio: {fileID: 0}
+  hit:
+    Guid:
+      Data1: 1251028960
+      Data2: 1299567375
+      Data3: 1715849628
+      Data4: 738790566
+    Path: event:/sfx/gameplay/SFX_COMBAT_boar_hit_01
+  death:
+    Guid:
+      Data1: 575494128
+      Data2: 1144348170
+      Data3: -211167058
+      Data4: -1582031362
+    Path: event:/sfx/gameplay/SFX_COMBAT_boar_death_01
 --- !u!114 &8626063002186934191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,102 +437,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _power: 4
   _hitEffect: {fileID: 0}
---- !u!82 &6225380676328330652
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6225380676328330723}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 5314338856241744941, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 359bfb03bc84a6143af98e22b5bccc39, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.8
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &6225380676907233845
 GameObject:
   m_ObjectHideFlags: 0

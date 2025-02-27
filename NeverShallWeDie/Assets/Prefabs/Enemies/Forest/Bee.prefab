@@ -237,7 +237,6 @@ GameObject:
   - component: {fileID: 7607082691297284613}
   - component: {fileID: 7967545922802645536}
   - component: {fileID: 2483645018870198666}
-  - component: {fileID: 4542243164606084315}
   m_Layer: 12
   m_Name: Bee
   m_TagString: Enemy
@@ -420,10 +419,22 @@ MonoBehaviour:
   _onHit: 0
   _isDead: 0
   _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _hitSound: {fileID: 8300000, guid: 272511ce56aa4a548bb5cf94be7512d9, type: 3}
-  _deadSound: {fileID: 8300000, guid: 8c13d3f0010fc944da1f33a70271116c, type: 3}
   _animation: {fileID: 0}
   _audio: {fileID: 0}
+  hit:
+    Guid:
+      Data1: -740606848
+      Data2: 1208865419
+      Data3: 1718276790
+      Data4: 66332406
+    Path: event:/sfx/gameplay/SFX_COMBAT_bee_hit_01
+  death:
+    Guid:
+      Data1: -408120300
+      Data2: 1180728179
+      Data3: 1265136827
+      Data4: -371633069
+    Path: event:/sfx/gameplay/SFX_COMBAT_bee_death_01
 --- !u!114 &7967545922802645536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,8 +454,14 @@ MonoBehaviour:
   _detectPosition: {fileID: 7600265245757693489}
   _detectPlayer: 0
   _isAttacking: 0
-  _attackSound: {fileID: 8300000, guid: 780f8ded773d90f4e95420f541179558, type: 3}
   _damager: {fileID: 8474145224458130349}
+  attack:
+    Guid:
+      Data1: -1648534775
+      Data2: 1234483258
+      Data3: -1354229583
+      Data4: 2015193635
+    Path: event:/sfx/gameplay/SFX_COMBAT_bee_attack_01
 --- !u!114 &2483645018870198666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,99 +477,3 @@ MonoBehaviour:
   _item: {fileID: 62880426106912218, guid: a9adf4fda0599e24abf6d0d01f7fedf9, type: 3}
   _dropPoint: {fileID: 1046688146862207115}
   _dropRate: 0
---- !u!82 &4542243164606084315
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9053940212445366370}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 5314338856241744941, guid: 988c36dd4541292408fe34a2730dcb0d, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.9
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4

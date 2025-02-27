@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class EvilVine : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class EvilVine : MonoBehaviour
     float _timer;
     bool _detectPlayer = false;
     bool _attacking = false;
-    [SerializeField] AudioClip _attackSound;
     EnemyController _controller;
     [SerializeField] Transform _shootPoint;
     [SerializeField] GameObject _projectile;
     [SerializeField] LayerMask _playerLayer;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference shoot;
 
     void Awake()
     {
@@ -65,7 +68,7 @@ public class EvilVine : MonoBehaviour
         GameObject proj = Instantiate(_projectile.gameObject, _shootPoint.position, Quaternion.identity);
         float dir = transform.localScale.x;
         proj.GetComponent<EvilVine_Projectile>()._direction = dir;
-        _controller._audio.PlayOneShot(_attackSound);
+        RuntimeManager.PlayOneShot(shoot);
     }
 
     public void FinishAttack() //chamado na animacao

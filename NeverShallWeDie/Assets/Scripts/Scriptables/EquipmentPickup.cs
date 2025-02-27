@@ -50,7 +50,7 @@ public class EquipmentPickup : MonoBehaviour
 
     void NewSkill() //chamado no update
     {
-        _audioItems.PlaySound(_audioItems._powerPickupSound, _audioItems._powerVolume);
+        _audioItems.PlayNewSkill();
         _player.SetPowerPickup(_pickedSprite);
 
         GameManager.instance._equipments.Add(_equipment);

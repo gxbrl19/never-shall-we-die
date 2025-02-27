@@ -260,10 +260,22 @@ MonoBehaviour:
   _onHit: 0
   _isDead: 0
   _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _hitSound: {fileID: 8300000, guid: be79125674eb8de4996732c8fab1186f, type: 3}
-  _deadSound: {fileID: 8300000, guid: 761ac29ff80761f4db598b7dbc2370df, type: 3}
   _animation: {fileID: 0}
   _audio: {fileID: 0}
+  hit:
+    Guid:
+      Data1: 1994048421
+      Data2: 1200226935
+      Data3: 1977296824
+      Data4: -998422653
+    Path: event:/sfx/gameplay/SFX_COMBAT_crawler_hit_01
+  death:
+    Guid:
+      Data1: 199319173
+      Data2: 1122502632
+      Data3: -1296623972
+      Data4: -742766179
+    Path: event:/sfx/gameplay/SFX_COMBAT_crawler_death_01
 --- !u!114 &7793659646403794897
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Deadshot : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class Deadshot : MonoBehaviour
     [SerializeField] Transform _shootPoint;
     [SerializeField] GameObject _projectile;
     [SerializeField] LayerMask _playerLayer;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference shoot;
 
     void Awake()
     {
@@ -78,8 +82,8 @@ public class Deadshot : MonoBehaviour
         Debug.DrawRay(_raycastPosition, _raycastDirection * _raycastSize, Color.red);
     }
 
-    public void PlaySound(AudioClip audio) //chamado na animação
+    public void PlaySound() //chamado na animação
     {
-        _controller._audio.PlayOneShot(audio);
+        RuntimeManager.PlayOneShot(shoot);
     }
 }

@@ -16,10 +16,12 @@ public class EnemyController : MonoBehaviour
     public bool _onHit;
     public bool _isDead;
     [SerializeField] GameObject _deathEffect;
-    [SerializeField] AudioClip _hitSound;
-    [SerializeField] AudioClip _deadSound;
     [HideInInspector] public Animator _animation;
     [HideInInspector] public AudioSource _audio;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference hit;
+    [SerializeField] EventReference death;
 
     Color _defaultColor;
     SpriteRenderer _sprite;
@@ -54,7 +56,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (_onHit || _name == "Beetboom") { return; }
+        if (_onHit || _name == "Beetboom" || _name == "Barrel Monkey") { return; }
 
         _onHit = true;
         _currentHealth -= damage;
@@ -63,14 +65,14 @@ public class EnemyController : MonoBehaviour
 
         if (_currentHealth > 0)
         {
-            _audio.PlayOneShot(_hitSound);
+            RuntimeManager.PlayOneShot(hit);
         }
         else //morte do inimigo
         {
             _dropItem.DropGold();
             _isDead = true;
             _animation.SetBool("Dead", true);
-            _audio.PlayOneShot(_deadSound);
+            RuntimeManager.PlayOneShot(death);
 
             //da um pouco de mana ao player
             Instantiate(_deathEffect, transform.position, Quaternion.identity);

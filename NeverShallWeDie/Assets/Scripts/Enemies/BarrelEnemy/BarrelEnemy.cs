@@ -17,8 +17,6 @@ public class BarrelEnemy : MonoBehaviour
     EnemyController _controller;
     Transform _playerPosition;
 
-    FMOD.Studio.EventInstance FMODinstance;
-
     void Awake()
     {
         _controller = GetComponent<EnemyController>();
@@ -50,6 +48,7 @@ public class BarrelEnemy : MonoBehaviour
     {
         _beginRoll = false;
         _controller._animation.SetBool("DetectPlayer", false);
+        _soundObject.SetActive(true);
     }
 
     void DetectPlayer()
@@ -67,37 +66,21 @@ public class BarrelEnemy : MonoBehaviour
         {
             _beginRoll = true;
             _detectPlayer = true;
-            //PlaySound("Start");
-            //_soundObject.SetActive(true);
 
             if (_hitBack) { Flip(); }
         }
     }
 
-    void PlaySound()
-    {
-        //FMODinstance = RuntimeManager.CreateInstance(_soundEvent);
-        //FMODinstance.start();
-        //FMODinstance.setParameterByNameWithLabel("BarrelMonkey", name);
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 8 && _isRolling) //no ground só zera a vida
+        if ((other.gameObject.layer == 8 || other.gameObject.layer == 16) && _isRolling) //layer do ground ou katana
         {
             _isRolling = false;
             _detectPlayer = false;
+            _controller._isDead = true;
             _controller._currentHealth = 0;
             _controller._animation.SetBool("Dead", true);
-            //_soundObject.SetActive(false);
-            //PlaySound("End");
-        }
-        else if (other.gameObject.layer == 16 && _isRolling) //na katana faz o efeito de HIT
-        {
-            _isRolling = false;
-            _detectPlayer = false;
-            //_soundObject.SetActive(false);
-            //PlaySound("End");
+            _soundObject.SetActive(false);
         }
     }
 

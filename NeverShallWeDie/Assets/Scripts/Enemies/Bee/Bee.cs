@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Bee : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class Bee : MonoBehaviour
 
     [SerializeField] bool _detectPlayer;
     [SerializeField] bool _isAttacking;
-    [SerializeField] AudioClip _attackSound;
     int _direction;
     float _speed = 3f;
     float _speedAtk = 15f;
@@ -22,6 +22,9 @@ public class Bee : MonoBehaviour
     EnemyController _controller;
     Rigidbody2D _body;
     [SerializeField] Collider2D _damager;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference attack;
 
     void Awake()
     {
@@ -67,7 +70,7 @@ public class Bee : MonoBehaviour
 
         _controller._animation.SetBool("Attack", true);
         _isAttacking = true;
-        _controller._audio.PlayOneShot(_attackSound);
+        RuntimeManager.PlayOneShot(attack);
         Invoke("FinishAttack", 0.5f);
     }
 

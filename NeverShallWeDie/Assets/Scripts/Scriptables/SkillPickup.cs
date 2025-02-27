@@ -53,7 +53,7 @@ public class SkillPickup : MonoBehaviour
 
     void NewSkill() //chamado no update
     {
-        _audioItems.PlaySound(_audioItems._powerPickupSound, _audioItems._powerVolume);
+        _audioItems.PlayNewSkill();
         _player.SetPowerPickup(_pickedSprite);
 
         GameManager.instance._skills.Add(_skill);

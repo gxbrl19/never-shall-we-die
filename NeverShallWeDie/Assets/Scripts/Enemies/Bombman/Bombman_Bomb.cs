@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Bombman_Bomb : MonoBehaviour
 {
@@ -9,13 +10,14 @@ public class Bombman_Bomb : MonoBehaviour
     float _height = 18f;
     Rigidbody2D _body;
     Animator _animation;
-    AudioSource _audio;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference explode;
 
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
         _animation = GetComponent<Animator>();
-        _audio = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -64,8 +66,8 @@ public class Bombman_Bomb : MonoBehaviour
         Destroy(gameObject, 4f);
     }
 
-    public void PlaySound(AudioClip audio) //chamado na animação
+    public void PlaySound() //chamado na animação
     {
-        _audio.PlayOneShot(audio);
+        RuntimeManager.PlayOneShot(explode);
     }
 }

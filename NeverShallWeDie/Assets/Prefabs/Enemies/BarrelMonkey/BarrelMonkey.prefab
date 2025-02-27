@@ -381,10 +381,22 @@ MonoBehaviour:
   _onHit: 0
   _isDead: 0
   _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _hitSound: {fileID: 8300000, guid: 2079782d5bfea8e40918bc497b28e37a, type: 3}
-  _deadSound: {fileID: 8300000, guid: 464efdaf9f319bd4fa15cee4cfe21adf, type: 3}
   _animation: {fileID: 0}
   _audio: {fileID: 0}
+  hit:
+    Guid:
+      Data1: -1619185860
+      Data2: 1117191865
+      Data3: 1746515355
+      Data4: -260035095
+    Path: event:/sfx/gameplay/SFX_ACTION_barrel_monkey_roll_start_01
+  death:
+    Guid:
+      Data1: -1619185860
+      Data2: 1117191865
+      Data3: 1746515355
+      Data4: -260035095
+    Path: event:/sfx/gameplay/SFX_ACTION_barrel_monkey_roll_start_01
 --- !u!114 &8170194837852849397
 MonoBehaviour:
   m_ObjectHideFlags: 0

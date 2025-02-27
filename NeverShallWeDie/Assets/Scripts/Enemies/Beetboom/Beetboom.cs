@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Beetboom : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class Beetboom : MonoBehaviour
     bool _detectPlayer = false;
     bool _explosion = false;
     #endregion
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference explode;
 
     void Awake()
     {
@@ -97,8 +101,8 @@ public class Beetboom : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, _sizeBox);
     }
 
-    public void PlaySound(AudioClip audio) //chamado na animação
+    public void PlaySound() //chamado na animação
     {
-        _controller._audio.PlayOneShot(audio);
+        RuntimeManager.PlayOneShot(explode);
     }
 }

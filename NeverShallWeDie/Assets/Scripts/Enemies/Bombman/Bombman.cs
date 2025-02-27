@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Bombman : MonoBehaviour
 {
@@ -15,11 +16,13 @@ public class Bombman : MonoBehaviour
     int _direction;
     EnemyController _controller;
     Transform _playerPosition;
-    [SerializeField] AudioClip _throwBombSound;
     [SerializeField] Transform _shootPoint;
     [SerializeField] Transform _bomb;
     [SerializeField] LayerMask _playerLayer;
     [SerializeField] LayerMask _groundLayer;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference throwBomb;
 
     Vector2 _velocity;
 
@@ -109,7 +112,7 @@ public class Bombman : MonoBehaviour
     {
         Transform bomb = Instantiate(_bomb, _shootPoint.position, Quaternion.identity);
         bomb.GetComponent<Rigidbody2D>().velocity = _velocity;
-        _controller._audio.PlayOneShot(_throwBombSound);
+        RuntimeManager.PlayOneShot(throwBomb);
     }
 
     public void FinishAttack() //chamado na animacao shoot
