@@ -167,6 +167,7 @@ public class KingBoar : MonoBehaviour
         _intro = false;
         _player.EnabledControls();
         _starter = true;
+        BackgroundMusic.instance.MusicControl(7);
     }
 
     public void PlayGrunt()

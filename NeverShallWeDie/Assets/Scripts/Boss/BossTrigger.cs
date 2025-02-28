@@ -11,13 +11,11 @@ public class BossTrigger : MonoBehaviour
 
     Collider2D _collider;
     Player _player;
-    BackgroundMusic _music;
 
     private void Awake()
     {
         _collider = GetComponent<Collider2D>();
         _player = FindObjectOfType<Player>();
-        _music = FindObjectOfType<BackgroundMusic>();
     }
 
     void Start()
@@ -41,7 +39,7 @@ public class BossTrigger : MonoBehaviour
 
             UIManager.instance.BossEnabled();
             _bossController.EnabledUI();
-            _music.MusicControl(7);
+            BackgroundMusic.instance.MusicControl(-1);
         }
     }
 }

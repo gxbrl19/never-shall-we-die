@@ -336,10 +336,10 @@ MonoBehaviour:
   Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638762507182090196
+  lastModified: 638763390421513245
   FileSizes:
   - Name: Desktop
-    Value: 4040
+    Value: 4142
   Exists: 1
 --- !u!114 &-5175581328412698962
 MonoBehaviour:
@@ -824,13 +824,15 @@ MonoBehaviour:
   - {fileID: -423249531037306370}
   - {fileID: -8408075178750455303}
   - {fileID: 454685569165863449}
+  - {fileID: 3524089468044979437}
+  - {fileID: 806907160715581430}
   EditorParameters:
   - {fileID: -8480598557086419306}
   MasterBanks:
   - {fileID: 3980210049349708886}
   StringsBanks:
   - {fileID: -5899057458559496526}
-  cacheTime: 638762507182090196
+  cacheTime: 638763390421513245
   cacheVersion: 131616
 --- !u!114 &7691062675070937
 MonoBehaviour:
@@ -912,7 +914,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2865
+  Length: 5044
 --- !u!114 &565736398089014543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,6 +942,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1633
+--- !u!114 &806907160715581430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/generic/items/barrel_brake
+  m_EditorClassIdentifier: 
+  Path: event:/generic/items/barrel_brake
+  Guid:
+    Data1: 162189138
+    Data2: 1239545032
+    Data3: 794430093
+    Data4: 9641242
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1537
 --- !u!114 &975832791382676566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,6 +1158,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 500
+--- !u!114 &3524089468044979437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/no official/mus_finishboss
+  m_EditorClassIdentifier: 
+  Path: event:/music/no official/mus_finishboss
+  Guid:
+    Data1: -984703001
+    Data2: 1309955256
+    Data3: 699501995
+    Data4: 2017587447
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4373
 --- !u!114 &3858837592029148853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,10 +1227,10 @@ MonoBehaviour:
   Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638762507182050299
+  lastModified: 638763390421453379
   FileSizes:
   - Name: Desktop
-    Value: 8731808
+    Value: 8834112
   Exists: 1
 --- !u!114 &4399959104032649854
 MonoBehaviour:

@@ -79,7 +79,6 @@ public class BossController : MonoBehaviour
             _bossDoor2._tiggered = false;
             UIManager.instance.BossDisabled();
             PlayDead();
-            BackgroundMusic.instance.FinishBoss();
         }
     }
 

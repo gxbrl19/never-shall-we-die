@@ -43,10 +43,16 @@ public class BackgroundMusic : MonoBehaviour
             _musicObjects[i].SetActive(false);
         }
 
+        if (index == -1) { return; } //-1 para todas as musicas
         _musicObjects[index].SetActive(true);
     }
 
     public void FinishBoss()
+    {
+        MusicControl(8);
+    }
+
+    public void BackToMapMusic() //método para retornar a música após vencer o Boss
     {
         MusicControl(1); //TODO: pegar a musica da ilha atual
     }

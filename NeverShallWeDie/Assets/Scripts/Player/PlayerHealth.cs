@@ -78,6 +78,7 @@ public class PlayerHealth : MonoBehaviour
             _isDead = true;
             _player._body.velocity = Vector2.zero;
             _player.OnDead();
+            BackgroundMusic.instance.MusicControl(9);
             LostGold(0.3f);
         }
     }

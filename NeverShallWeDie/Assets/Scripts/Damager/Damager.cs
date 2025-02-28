@@ -53,8 +53,8 @@ public class Damager : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.layer == 12)
-        { //Enemy        
+        if (other.gameObject.layer == 12) //Enemy
+        {
             EnemyController _enemy = other.GetComponent<EnemyController>();
 
             if (_enemy != null)
@@ -69,8 +69,8 @@ public class Damager : MonoBehaviour
         //        _playerHealth.TakeDamage(_power);
         //    }
         //}
-        else if (other.gameObject.layer == 7)
-        { //Boss        
+        else if (other.gameObject.layer == 7) //Boss
+        {
             BossController _boss = other.GetComponent<BossController>();
 
             if (_boss != null)

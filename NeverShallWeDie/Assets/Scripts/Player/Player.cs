@@ -884,19 +884,11 @@ public class Player : MonoBehaviour
             return;
 
         _input.OnHit(); //cancela os inputs quando toma dano
+        //_input.horizontal = 0;
+        _body.velocity = Vector2.zero;
 
-        if (_knockback)
-        {
-            _input.horizontal = 0;
-            _body.velocity = Vector2.zero;
-            _body.AddForce(Vector2.left * _knockbackForce, ForceMode2D.Impulse);
-        }
-        else
-        {
-            _input.horizontal = 0;
-            _body.velocity = Vector2.zero;
-            _body.AddForce(Vector2.right * _knockbackForce, ForceMode2D.Impulse);
-        }
+        if (_knockback) { _body.AddForce(Vector2.left * _knockbackForce, ForceMode2D.Impulse); }
+        else { _body.AddForce(Vector2.right * _knockbackForce, ForceMode2D.Impulse); }
     }
 
     public void FinishKnockback() //chamado na animação de Hit

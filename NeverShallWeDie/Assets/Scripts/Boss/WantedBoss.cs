@@ -17,10 +17,12 @@ public class WantedBoss : MonoBehaviour
     {
         _animation.SetBool("Finish", true);
         _player.DisableControls();
+        BackgroundMusic.instance.MusicControl(8);
     }
 
     public void FinishWanted() //chamado na animação
     {
         _player.EnabledControls();
+        BackgroundMusic.instance.BackToMapMusic();
     }
 }

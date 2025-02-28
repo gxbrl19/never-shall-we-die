@@ -1,22 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Barrel : MonoBehaviour
 {
 	public int _idBarrel;
-	public AudioClip _barrelBreak;
 
 	int _lifeBarrel = 4;
 	Animator _animation;
-	AudioSource _audio;
 	DropItem _dropItem;
+
+	[Header("FMOD Events")]
+	[SerializeField] EventReference barrelbreak;
 
 	void Start()
 	{
 		if (GameManager.instance._barrels[_idBarrel] == 1) { gameObject.SetActive(false); }
 
-		_audio = GetComponent<AudioSource>();
 		_animation = GetComponent<Animator>();
 		_dropItem = GetComponent<DropItem>();
 	}
@@ -27,12 +28,12 @@ public class Barrel : MonoBehaviour
 
 		if (_lifeBarrel > 0)
 		{
-			_audio.PlayOneShot(_barrelBreak);
+			RuntimeManager.PlayOneShot(barrelbreak);
 			_animation.SetTrigger("Hit");
 		}
 		else
 		{
-			_audio.PlayOneShot(_barrelBreak);
+			RuntimeManager.PlayOneShot(barrelbreak);
 			_animation.SetBool("Break", true);
 			_dropItem._dropRate = 15;
 			_dropItem.DropGold();
