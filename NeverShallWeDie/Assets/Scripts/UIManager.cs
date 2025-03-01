@@ -674,7 +674,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Sound
-    public void ClickSound(string type) //chamado na ação dos botões
+    public void ClickSound() //chamado na ação dos botões
     {
         AudioHUD.instance.PlaySelectButton();
     }

@@ -77,7 +77,7 @@ public class CanvasOpenWorld : MonoBehaviour
 
     public void ClickSound() //chamado na ação dos botões
     {
-        AudioHUD.instance.PlayConfirmButton();
+        AudioHUD.instance.PlaySelectButton();
     }
 
     public void BackSound() //chamado na ação dos botões

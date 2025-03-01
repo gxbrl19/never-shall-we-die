@@ -33,10 +33,12 @@ public class ExitShip : MonoBehaviour
     void Exit()
     {
         //verifica se já existe o PlayerPrefs com o nome da cena do Pier selecionado
-        _nextSceneName = PlayerPrefs.HasKey("Pier") ? PlayerPrefs.GetString("Pier") : "06/H0";
+        //_nextSceneName = PlayerPrefs.HasKey("Pier") ? PlayerPrefs.GetString("Pier") : "06/H0"; //TODO: DEMO (descomentar)
+        _nextSceneName = PlayerPrefs.HasKey("Pier") ? PlayerPrefs.GetString("Pier") : "01/H1"; //TODO: DEMO (excluir linha)
 
         if (SceneExists("Scenes/" + _nextSceneName))
         {
+            _input.interact = false;
             UIManager.instance.FadeIn();
             Invoke("GetNextScene", .5f);
         }
@@ -46,7 +48,7 @@ public class ExitShip : MonoBehaviour
         }
     }
 
-    void GetNextScene()
+    void GetNextScene() //chamado no Invoke na função Exit()
     {
         _scriptablePosition.SetAttributes(true, 1, 1);
         SceneManager.LoadScene("Scenes/" + _nextSceneName);
@@ -78,6 +80,7 @@ public class ExitShip : MonoBehaviour
                 _music.MusicControl(4);
                 break;
         }
+
     }
 
     private bool SceneExists(string sceneName)

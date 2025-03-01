@@ -336,11 +336,38 @@ MonoBehaviour:
   Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638763390421513245
+  lastModified: 638764275631721227
   FileSizes:
   - Name: Desktop
-    Value: 4142
+    Value: 4596
   Exists: 1
+--- !u!114 &-5868189738862785358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/pixeldroid/pixel_droid_turnon
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/pixeldroid/pixel_droid_turnon
+  Guid:
+    Data1: 1147950735
+    Data2: 1334796710
+    Data3: 856789634
+    Data4: 1829929789
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-5175581328412698962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,6 +395,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1033
+--- !u!114 &-5049271685348164664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/generic/combat/hit_sound
+  m_EditorClassIdentifier: 
+  Path: event:/generic/combat/hit_sound
+  Guid:
+    Data1: 1194926906
+    Data2: 1079356389
+    Data3: 420128935
+    Data4: -404233844
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 185
 --- !u!114 &-4550836798963252008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,13 +880,18 @@ MonoBehaviour:
   - {fileID: 454685569165863449}
   - {fileID: 3524089468044979437}
   - {fileID: 806907160715581430}
+  - {fileID: -5049271685348164664}
+  - {fileID: 644587904722651319}
+  - {fileID: 6230245091735302338}
+  - {fileID: -5868189738862785358}
+  - {fileID: 8071532455112894436}
   EditorParameters:
   - {fileID: -8480598557086419306}
   MasterBanks:
   - {fileID: 3980210049349708886}
   StringsBanks:
   - {fileID: -5899057458559496526}
-  cacheTime: 638763390421513245
+  cacheTime: 638764275631721227
   cacheVersion: 131616
 --- !u!114 &7691062675070937
 MonoBehaviour:
@@ -942,6 +1001,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1633
+--- !u!114 &644587904722651319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/pixeldroid/pixel_droid_finish
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/pixeldroid/pixel_droid_finish
+  Guid:
+    Data1: -494160100
+    Data2: 1217645702
+    Data3: -1202398578
+    Data4: -1006294695
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &806907160715581430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,10 +1313,10 @@ MonoBehaviour:
   Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638763390421453379
+  lastModified: 638764275631671334
   FileSizes:
   - Name: Desktop
-    Value: 8834112
+    Value: 8840864
   Exists: 1
 --- !u!114 &4399959104032649854
 MonoBehaviour:
@@ -1556,6 +1642,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1233
+--- !u!114 &6230245091735302338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/pixeldroid/pixel_droid_wakeup
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/pixeldroid/pixel_droid_wakeup
+  Guid:
+    Data1: -468158638
+    Data2: 1157475495
+    Data3: 2039554705
+    Data4: 329978110
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 289
 --- !u!114 &6542090175598569513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1853,6 +1966,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 38250
+--- !u!114 &8071532455112894436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/pixeldroid/pixel_droid_blinking
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/pixeldroid/pixel_droid_blinking
+  Guid:
+    Data1: -2057723761
+    Data2: 1134139774
+    Data3: 1859169421
+    Data4: 90213643
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &8082736748961635633
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class SceneController : MonoBehaviour
                 UIManager.instance.FadeIn();
                 //Invoke("GetNextScene", .5f);
 
-                if (_nextSceneName == "01/34") //TODO: DEMO: para a versão normal descomentar Invoke("GetNextScene", .5f);
+                if (_nextSceneName == "01/34") //TODO: DEMO: para a versão normal remover o if e else e descomentar Invoke("GetNextScene", .5f);
                 {
                     Invoke("FimDaDemo", .5f);
                     GameManager.instance.LoadBasic();
