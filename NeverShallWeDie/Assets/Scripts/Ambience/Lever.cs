@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Lever : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Lever : MonoBehaviour
     [SerializeField] Sprite _enabledSprite;
     [SerializeField] BarrierLever _barrier;
     SpriteRenderer _sprite;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference clickSound;
 
     void Awake()
     {
@@ -22,6 +26,7 @@ public class Lever : MonoBehaviour
             _barrier.EnabledCamera();
             _enabled = true;
             _sprite.sprite = _enabledSprite;
+            RuntimeManager.PlayOneShot(clickSound);
         }
     }
 }

@@ -154,7 +154,7 @@ public class PlayerCollision : MonoBehaviour
 
             _player._onWater = true;
             Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
-            _audio.PlayAudio("splash");
+            _audio.PlayWaterSplash();
 
             //drop
             if (other.gameObject.tag.Equals("Lava")) { Instantiate(_dropLava, position, other.transform.rotation); }
@@ -181,7 +181,7 @@ public class PlayerCollision : MonoBehaviour
 
             _player._onWater = false;
             Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
-            _audio.PlayAudio("splash");
+            _audio.PlayWaterSplash();
 
             //drop
             if (other.gameObject.tag.Equals("Lava")) { Instantiate(_dropLava, position, other.transform.rotation); }

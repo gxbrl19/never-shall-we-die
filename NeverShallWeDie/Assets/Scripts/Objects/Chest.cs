@@ -2,28 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
+using FMODUnity;
 
 public class Chest : MonoBehaviour
 {
     public int _idChest;
-    public AudioClip _openChest;
 
     bool _triggered;
     Animator _animation;
     Collider2D _collider;
-    AudioSource _audio;
-    AudioItems _audioItems;
     Player _player;
     PlayerInputs _input;
     DropItem _dropItem;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference openChest;
 
     void Start()
     {
         _animation = GetComponent<Animator>();
         _collider = GetComponent<BoxCollider2D>();
-        _audio = GetComponent<AudioSource>();
         _dropItem = GetComponent<DropItem>();
-        _audioItems = FindFirstObjectByType<AudioItems>();
         _player = FindFirstObjectByType<Player>();
         _input = _player.GetComponent<PlayerInputs>();
     }
@@ -38,7 +37,7 @@ public class Chest : MonoBehaviour
         //verifica o input
         if (_input.interact && _triggered)
         {
-            _audio.PlayOneShot(_openChest);
+            RuntimeManager.PlayOneShot(openChest);
             DisableChest();
         }
     }

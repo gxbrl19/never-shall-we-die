@@ -10,36 +10,24 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] EventReference roll;
     [SerializeField] EventReference hit;
     [SerializeField] EventReference death;
+    [SerializeField] EventReference watersplash;
+    [SerializeField] EventReference swim;
+    [SerializeField] EventReference slide;
+    [SerializeField] EventReference parachute;
+
+    [SerializeField] EventReference waterspin;
+    [SerializeField] EventReference aircut;
 
     [SerializeField] GameObject healing;
     [SerializeField] GameObject grabing;
 
-    [Header("Movement")]
-    public AudioClip _jump;
-    public AudioClip _healing;
-    public AudioClip _roll;
-
-    [Header("Water")]
-    public AudioClip _splash;
-    public AudioClip _swim;
-
-    [Header("Equipment")]
-    public AudioClip _parachute;
-    public AudioClip _slide;
-
-    [Header("Skills")]
-    public AudioClip _aircut;
-    public AudioClip _waterspin;
-
     bool _playLoop;
 
-    [HideInInspector] public AudioSource _audioSource;
     Player _player;
     PlayerInputs _input;
 
     void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
         _player = GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
     }
@@ -48,47 +36,6 @@ public class PlayerAudio : MonoBehaviour
     {
         PlayHealing();
         PlayGrab();
-    }
-
-    public void PlayAudio(string audio)
-    {
-        if (Time.timeScale == 0f) { return; }
-
-        switch (audio)
-        {
-            case "jump": //script
-                _audioSource.volume = 1f;
-                _audioSource.PlayOneShot(_jump);
-                break;
-            case "roll": //animação
-                _audioSource.volume = 1f;
-                _audioSource.PlayOneShot(_roll);
-                break;
-            case "swin": //animação
-                _audioSource.volume = 0.3f;
-                _audioSource.PlayOneShot(_swim);
-                break;
-            case "splash": //script
-                _audioSource.volume = 0.3f;
-                _audioSource.PlayOneShot(_splash);
-                break;
-            case "aircut": //animação
-                _audioSource.volume = 1f;
-                _audioSource.PlayOneShot(_aircut);
-                break;
-            case "waterspin": //animação
-                _audioSource.volume = 1f;
-                _audioSource.PlayOneShot(_waterspin);
-                break;
-            case "parachute": //script
-                _audioSource.volume = 0.6f;
-                _audioSource.PlayOneShot(_parachute);
-                break;
-            case "slide": //script
-                _audioSource.volume = 0.6f;
-                _audioSource.PlayOneShot(_slide);
-                break;
-        }
     }
 
     public void PlayKatana() //animação
@@ -114,6 +61,35 @@ public class PlayerAudio : MonoBehaviour
     public void PlayDeath() //script
     {
         RuntimeManager.PlayOneShot(death);
+    }
+
+    public void PlayWaterSplash() //script
+    {
+        RuntimeManager.PlayOneShot(watersplash);
+    }
+
+    public void PlaySwim() //animação
+    {
+        RuntimeManager.PlayOneShot(swim);
+    }
+    public void PlaySlide() //script
+    {
+        RuntimeManager.PlayOneShot(slide);
+    }
+
+    public void PlayParachute() //script
+    {
+        RuntimeManager.PlayOneShot(parachute);
+    }
+
+    public void PlayWaterSpin() //animação
+    {
+        RuntimeManager.PlayOneShot(waterspin);
+    }
+
+    public void PlayAircut() //animação
+    {
+        RuntimeManager.PlayOneShot(aircut);
     }
 
     public void PlayGrab()

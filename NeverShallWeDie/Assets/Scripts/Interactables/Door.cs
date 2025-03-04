@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class Door : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class Door : MonoBehaviour
     [SerializeField] private PlayerPosition _scriptablePosition;
     [SerializeField] private int _doorID;
     [SerializeField] private bool _withKey;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference openSound;
 
     private bool _locked;
     private bool _playerTriggered = false;
@@ -42,6 +46,7 @@ public class Door : MonoBehaviour
                 if (_withKey)
                 {
                     _animation.SetBool("Opening", true);
+                    RuntimeManager.PlayOneShot(openSound);
                 }
                 else
                 {

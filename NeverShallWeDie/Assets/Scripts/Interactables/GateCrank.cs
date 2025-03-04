@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class GateCrank : MonoBehaviour
 {
-    AudioSource _audio;
     Rigidbody2D _body;
     SpriteRenderer _sprite;
     Collider2D _collider;
 
+    [Header("FMOD Events")]
+    [SerializeField] EventReference collected;
+
     private void Awake()
     {
-        _audio = GetComponent<AudioSource>();
         _body = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
@@ -33,7 +35,7 @@ public class GateCrank : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            _audio.Play();
+            RuntimeManager.PlayOneShot(collected);
             _sprite.enabled = false;
             _collider.enabled = false;
             GameManager.instance._gateMechanism = 1;

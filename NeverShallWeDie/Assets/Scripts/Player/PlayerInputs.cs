@@ -196,7 +196,7 @@ public class PlayerInputs : MonoBehaviour
             if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Parachute) && !_collision._onWall)
             {
                 _isParachuting = true;
-                _audio.PlayAudio("parachute");
+                _audio.PlayParachute();
             }
             else if (_player._isGrounded || _callback.canceled)
             {
@@ -241,7 +241,6 @@ public class PlayerInputs : MonoBehaviour
         if (_callback.canceled)
         {
             _player._healing = false;
-            _audio._audioSource.Stop();
         }
     }
 
@@ -273,7 +272,7 @@ public class PlayerInputs : MonoBehaviour
         if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots))
         {
             _isSliding = true;
-            _audio.PlayAudio("slide");
+            _audio.PlaySlide();
         }
     }
 
