@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum CrewItens
 {
-    Hammer, Grimoire
+    Hammer, Grimoire, Submarine, Propulsion, Artillery
 }
 
 public class CrewItem : MonoBehaviour
@@ -38,6 +38,18 @@ public class CrewItem : MonoBehaviour
         {
             if (GameManager.instance._grimoire == 1) { DisableItem(); }
         }
+        else if (_item == CrewItens.Submarine)
+        {
+            if (GameManager.instance._submarine == 1) { DisableItem(); }
+        }
+        else if (_item == CrewItens.Propulsion)
+        {
+            if (GameManager.instance._propulsion == 1) { DisableItem(); }
+        }
+        else if (_item == CrewItens.Artillery)
+        {
+            if (GameManager.instance._artillery == 1) { DisableItem(); }
+        }
 
         //verifica o input
         if (_input.interact && _triggered)
@@ -52,7 +64,11 @@ public class CrewItem : MonoBehaviour
         _audioItems.PlayNewSkill();
         _player.SetPowerPickup(_pickedSprite);
 
-        if (_item == CrewItens.Hammer) { GameManager.instance._hammer = 1; } else if (_item == CrewItens.Grimoire) { GameManager.instance._grimoire = 1; }
+        if (_item == CrewItens.Hammer) { GameManager.instance._hammer = 1; }
+        else if (_item == CrewItens.Grimoire) { GameManager.instance._grimoire = 1; }
+        else if (_item == CrewItens.Submarine) { GameManager.instance._submarine = 1; }
+        else if (_item == CrewItens.Propulsion) { GameManager.instance._propulsion = 1; }
+        else if (_item == CrewItens.Artillery) { GameManager.instance._artillery = 1; }
     }
 
     void DisableItem()

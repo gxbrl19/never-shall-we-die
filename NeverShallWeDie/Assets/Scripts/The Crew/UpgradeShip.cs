@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UpgradeShip : MonoBehaviour
@@ -18,13 +19,13 @@ public class UpgradeShip : MonoBehaviour
 
     void Update()
     {
-        VeirfyProjects(); //desabilita o projeto que já foi feito
 
         if (_playerTriggered && _input.interact)
         {
             _playerTriggered = false;
             _input.interact = false;
-            Debug.Log("Melhorando Navio");
+            VerifyProjects(); //desabilita o projeto que já foi feito
+            UIManager.instance.ActivePanelShip();
         }
     }
 
@@ -44,8 +45,15 @@ public class UpgradeShip : MonoBehaviour
         }
     }
 
-    private void VeirfyProjects()
+    private void VerifyProjects()
     {
-
+        if (GameManager.instance._submarine == 1) { UIManager.instance._txtsUpgradeShip[0].enabled = true; }
+        else { UIManager.instance._txtsUpgradeShip[0].enabled = false; }
+        //
+        if (GameManager.instance._propulsion == 1) { UIManager.instance._txtsUpgradeShip[1].enabled = true; }
+        else { UIManager.instance._txtsUpgradeShip[1].enabled = false; }
+        //
+        if (GameManager.instance._artillery == 1) { UIManager.instance._txtsUpgradeShip[2].enabled = true; }
+        else { UIManager.instance._txtsUpgradeShip[2].enabled = false; }
     }
 }

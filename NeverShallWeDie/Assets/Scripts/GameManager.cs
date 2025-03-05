@@ -84,6 +84,9 @@ public class GameManager : MonoBehaviour
     [Header("CrewItens")]
     [BoxGroup("Crew")] public int _hammer; //0 para false e 1 para true
     [BoxGroup("Crew")] public int _grimoire;
+    [BoxGroup("Crew")] public int _submarine;
+    [BoxGroup("Crew")] public int _propulsion;
+    [BoxGroup("Crew")] public int _artillery;
 
     //Enemy
     [BoxGroup("Enemy")] public int[] _bestiary;

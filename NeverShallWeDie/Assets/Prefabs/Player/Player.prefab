@@ -705,6 +705,7 @@ GameObject:
   - component: {fileID: 3227473634612903610}
   - component: {fileID: 4984949831048678110}
   - component: {fileID: 8160846808588850631}
+  - component: {fileID: 4991427977566975559}
   - component: {fileID: 4093693892083451613}
   m_Layer: 9
   m_Name: Player
@@ -1274,6 +1275,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills: 
+--- !u!114 &4991427977566975559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160846808588850480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f304a9c309059643ba2984b741b2940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipUgrade: 
 --- !u!114 &4093693892083451613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,7 +1379,6 @@ MonoBehaviour:
     Path: event:/generic/player/aircut
   healing: {fileID: 6331946840236455516}
   grabing: {fileID: 3182375604534030408}
-  _audioSource: {fileID: 0}
 --- !u!1 &8160846809661711543
 GameObject:
   m_ObjectHideFlags: 0

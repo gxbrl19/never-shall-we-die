@@ -97,8 +97,14 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")] public GameObject _buttonYesUpHpMp;
     [BoxGroup("Crew")] public Text _txtUpHpMpPrice;
     [BoxGroup("Crew")] public Text _txtCurrOrbs;
-    public int _UpHpMpPrice;
-    public int _qtdOrbs;
+    [HideInInspector] public int _UpHpMpPrice;
+    [HideInInspector] public int _qtdOrbs;
+    [BoxGroup("Crew")][Header("Shipwright")] public GameObject _pnlUPShip;
+    [BoxGroup("Crew")] public GameObject _firstButtonShip;
+    [BoxGroup("Crew")] public Button[] _buttonsUpgradeShip;
+    [BoxGroup("Crew")] public Text[] _txtsUpgradeShip;
+    [BoxGroup("Crew")] public Text _txtUpShipPrice;
+    [HideInInspector] public int _upShipPrice;
     [BoxGroup("Crew")] public Animator _buyFeedback;
 
     [BoxGroup("Fade")] public Image _pnlFade;
@@ -108,18 +114,9 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Config")] public Dropdown _resolutionDropdown;
     Resolution[] _resolutions;
 
-    [BoxGroup("AudioHUD")] public AudioClip _buyMap;
-    [BoxGroup("AudioHUD")] public AudioClip _upKatana;
-    [BoxGroup("AudioHUD")] public float _clickVolume;
-    [BoxGroup("AudioHUD")] public float _navigationVolume;
-    [BoxGroup("AudioHUD")] public float _pauseVolume;
-    [BoxGroup("AudioHUD")] public float _buyMapVolume;
-    [BoxGroup("AudioHUD")] public float _upKatanaVolume;
-
     Player _player;
     PlayerInputs _input;
     PlayerHealth _health;
-    AudioSource _audioSource;
 
     private void Awake()
     {
@@ -128,7 +125,6 @@ public class UIManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
         _health = _player.GetComponent<PlayerHealth>();
-        _audioSource = GetComponent<AudioSource>();
 
         Time.timeScale = 1f;
         //_player.EnabledControls();
@@ -503,7 +499,7 @@ public class UIManager : MonoBehaviour
             _pnlUpKatana.SetActive(false);
             GameManager.instance._gold -= _katanaPrice;
             GameManager.instance._qtdPotentium -= 4;
-            PlaySound(_upKatana, _upKatanaVolume);
+            //PlaySound(_upKatana, _upKatanaVolume); // TODO: som de katana
             _txtGoldBuy.text = "-" + _katanaPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
         }
@@ -578,6 +574,71 @@ public class UIManager : MonoBehaviour
         _isPaused = false;
         _player.EnabledControls();
         _pnlUpHpMp.SetActive(false);
+    }
+
+    public void ActivePanelShip()
+    {
+        _isPaused = true;
+        _player.DisableControls();
+        _pnlUPShip.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_firstButtonShip);
+        AudioHUD.instance.PlaySelectButton();
+    }
+
+    public void SelectedButtonShip(int id)
+    {
+        if (_txtsUpgradeShip[id].enabled == false) { return; }
+
+        if (id == 0) { _upShipPrice = 100; } else if (id == 1) { _upShipPrice = 150; } else if (id == 2) { _upShipPrice = 200; }
+        _txtUpShipPrice.text = _upShipPrice.ToString();
+    }
+
+    public void UpgradeShip(int id) //chamado no botão de upgrades do pnl_Ship (UI Manager)
+    {
+        if (_txtsUpgradeShip[id].enabled == false) { return; }
+
+        if (id == 0 && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Submarine)) { return; }
+        else if (id == 1 && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Propulsion)) { return; }
+        else if (id == 2 && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Cannon)) { return; }
+
+        if (GameManager.instance._gold >= _upShipPrice)
+        {
+            _isPaused = false;
+            _player.EnabledControls();
+
+            if (id == 0)
+            {
+                GameManager.instance._shipUpgrades.Add(ShipUpgrade.Submarine);
+                ShipUpgrades.instance.shipUgrade.Add(ShipUpgrade.Submarine);
+            }
+            else if (id == 1)
+            {
+                GameManager.instance._shipUpgrades.Add(ShipUpgrade.Propulsion);
+                ShipUpgrades.instance.shipUgrade.Add(ShipUpgrade.Propulsion);
+            }
+            else if (id == 2)
+            {
+                GameManager.instance._shipUpgrades.Add(ShipUpgrade.Cannon);
+                ShipUpgrades.instance.shipUgrade.Add(ShipUpgrade.Cannon);
+            }
+
+            _pnlUPShip.SetActive(false);
+            GameManager.instance._gold -= _upShipPrice;
+            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de melhoria navio
+            _txtGoldBuy.text = "-" + _upShipPrice.ToString();
+            _goldBuyAnimator.SetTrigger("Start");
+        }
+        else
+        {
+            _buyFeedback.SetTrigger("Start");
+        }
+    }
+
+    public void RecuseUpShip() //chamado no botão Cancel do pnl_Ship (UI Manager)
+    {
+        _isPaused = false;
+        _player.EnabledControls();
+        _pnlUPShip.SetActive(false);
     }
 
     #endregion
@@ -734,16 +795,5 @@ public class UIManager : MonoBehaviour
         Resolution _resolution = _resolutions[resolutionIndex];
         Screen.SetResolution(_resolution.width, _resolution.height, Screen.fullScreen);
     }
-    #endregion
-
-    #region AudioHUD
-    //TODO: trocar pelo prefab do AudioHUD e usar o FMOD
-
-    public void PlaySound(AudioClip sound, float volume)
-    {
-        _audioSource.volume = volume;
-        _audioSource.PlayOneShot(sound);
-    }
-
     #endregion
 }
