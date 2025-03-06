@@ -499,7 +499,7 @@ public class UIManager : MonoBehaviour
             _pnlUpKatana.SetActive(false);
             GameManager.instance._gold -= _katanaPrice;
             GameManager.instance._qtdPotentium -= 4;
-            //PlaySound(_upKatana, _upKatanaVolume); // TODO: som de katana
+            AudioHUD.instance.PlayUpgradeKatana();
             _txtGoldBuy.text = "-" + _katanaPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
         }
@@ -538,7 +538,7 @@ public class UIManager : MonoBehaviour
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
             GameManager.instance._qtdOrb -= 4;
-            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de poção
+            AudioHUD.instance.PlayUpgradeHP();
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
         }
@@ -559,7 +559,7 @@ public class UIManager : MonoBehaviour
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
             GameManager.instance._qtdOrb -= 4;
-            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de poção
+            AudioHUD.instance.PlayUpgradeHP();
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
         }
@@ -624,7 +624,7 @@ public class UIManager : MonoBehaviour
 
             _pnlUPShip.SetActive(false);
             GameManager.instance._gold -= _upShipPrice;
-            //PlaySound(_buyMap, _buyMapVolume); // TODO: som de melhoria navio
+            AudioHUD.instance.PlayUpgradeShip();
             _txtGoldBuy.text = "-" + _upShipPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
         }

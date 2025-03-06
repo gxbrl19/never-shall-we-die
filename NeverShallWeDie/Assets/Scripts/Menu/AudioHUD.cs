@@ -13,6 +13,9 @@ public class AudioHUD : MonoBehaviour
     [SerializeField] EventReference _selectBtn;
     [SerializeField] EventReference _openMap;
     [SerializeField] EventReference _closeMap;
+    [SerializeField] EventReference _upgradeKatana;
+    [SerializeField] EventReference _upgradeMP;
+    [SerializeField] EventReference _upgradeShip;
 
     private void Awake()
     {
@@ -55,5 +58,20 @@ public class AudioHUD : MonoBehaviour
     public void PlayCloseMap()
     {
         RuntimeManager.PlayOneShot(_closeMap);
+    }
+
+    public void PlayUpgradeKatana()
+    {
+        RuntimeManager.PlayOneShot(_upgradeKatana);
+    }
+
+    public void PlayUpgradeHP()
+    {
+        RuntimeManager.PlayOneShot(_upgradeMP);
+    }
+
+    public void PlayUpgradeShip()
+    {
+        RuntimeManager.PlayOneShot(_upgradeShip);
     }
 }

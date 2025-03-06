@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 1739194555
   m_SortingLayer: 5
   m_SortingOrder: 4
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -5877002840784375839, guid: 6f76e9d49aa3c1b40bb111dbd9a4b756, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,8 +122,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
+    pivot: {x: 0.4615385, y: 0.5}
+    oldSize: {x: 1.625, y: 1.125}
     newSize: {x: 0.3125, y: 1.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -131,18 +131,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.6213826, y: 0.5639427}
-      - {x: -0.62094927, y: 0.000199751}
-      - {x: -0.13483219, y: 0.006291423}
-      - {x: -0.19573022, y: -0.7030662}
-      - {x: -0.19023839, y: -0.8546913}
-      - {x: -0.12888366, y: -0.9288683}
-      - {x: 0.12673853, y: -0.93708086}
-      - {x: 0.19272123, y: -0.87291247}
-      - {x: 0.19950289, y: -0.68960017}
-      - {x: 0.14441031, y: 0.0049663037}
-      - {x: 0.6137396, y: 0.005803533}
-      - {x: 0.6257533, y: 0.5732001}
+    - - {x: -0.7528398, y: 0.5748963}
+      - {x: 0.8250731, y: 0.56984305}
+      - {x: 0.82370317, y: -0.5633519}
+      - {x: -0.7544213, y: -0.5606527}
   m_UseDelaunayMesh: 0
 --- !u!114 &2704695352387820608
 MonoBehaviour:
@@ -157,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: 3
-  _pickedSprite: {fileID: -8255091861486552705, guid: 76e5dfd9ea23fe845bd3f3328435974b, type: 3}
+  _pickedSprite: {fileID: -5877002840784375839, guid: 6f76e9d49aa3c1b40bb111dbd9a4b756, type: 3}
 --- !u!114 &2572377827867999337
 MonoBehaviour:
   m_ObjectHideFlags: 0
