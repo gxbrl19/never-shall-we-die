@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class EnterShip : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class EnterShip : MonoBehaviour
     bool _triggered;
     Player _player;
     PlayerInputs _input;
+
+    [SerializeField] EventReference openDoor;
 
     private void Awake()
     {
@@ -22,7 +25,12 @@ public class EnterShip : MonoBehaviour
 
     void Update()
     {
-        if (_triggered && _input.interact) { Enter(); }
+        if (_triggered && _input.interact)
+        {
+            _input.interact = false;
+            RuntimeManager.PlayOneShot(openDoor);
+            Enter();
+        }
     }
 
     void Enter()
