@@ -10,8 +10,6 @@ using DG.Tweening;
 public class MenuController : MonoBehaviour
 {
     public static MenuController instance;
-
-    public AudioMixer _mixer;
     public Image _pnlFade;
 
     [Header("Save Select")]

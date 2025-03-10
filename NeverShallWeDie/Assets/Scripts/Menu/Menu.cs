@@ -96,6 +96,7 @@ public class Menu : MonoBehaviour
             {
                 EnabledMainMenu();
                 AudioHUD.instance.PlayConfirmButton();
+                return;
             }
 
             for (int i = 0; i < 20; i++) // 20 é um número arbitrário para os botões do gamepad
@@ -104,6 +105,7 @@ public class Menu : MonoBehaviour
                 {
                     EnabledMainMenu();
                     AudioHUD.instance.PlayConfirmButton();
+                    return;
                 }
             }
         }
