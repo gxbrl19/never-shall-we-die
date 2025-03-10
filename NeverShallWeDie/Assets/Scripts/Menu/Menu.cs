@@ -38,7 +38,13 @@ public class Menu : MonoBehaviour
     public RectTransform _initialPosConfig;
     public Dropdown _resolutionDropdown;
     public GameObject[] _configInfo;
+    public Slider _volumeSlider;
+    public Slider _effectSlider;
+    public Slider _musicSlider;
 
+    float _lastVolumeSlider;
+    float _lastEffectSlider;
+    float _lastMusicSlider;
     Resolution[] _resolutions;
 
     private void Start()
@@ -67,6 +73,13 @@ public class Menu : MonoBehaviour
                 _currentResolutionIndex = i;
             }
         }
+
+        _lastVolumeSlider = _volumeSlider.value;
+        _volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
+        _lastEffectSlider = _effectSlider.value;
+        _effectSlider.onValueChanged.AddListener(OnEffectChanged);
+        _lastMusicSlider = _musicSlider.value;
+        _musicSlider.onValueChanged.AddListener(OnMusicChanged);
 
         _resolutionDropdown.AddOptions(_options);
         _resolutionDropdown.value = _currentResolutionIndex;
@@ -114,6 +127,24 @@ public class Menu : MonoBehaviour
     public void BackSound() //chamado na ação dos botões
     {
         AudioHUD.instance.PlayBackButton();
+    }
+
+    public void OnVolumeChanged(float newVolume)
+    {
+        if (newVolume > _lastVolumeSlider) { AudioHUD.instance.PlaySliderIncrease(); }
+        else if (newVolume < _lastVolumeSlider) { AudioHUD.instance.PlaySliderDecrease(); }
+    }
+
+    public void OnEffectChanged(float newVolume)
+    {
+        if (newVolume > _lastEffectSlider) { AudioHUD.instance.PlaySliderIncrease(); }
+        else if (newVolume < _lastEffectSlider) { AudioHUD.instance.PlaySliderDecrease(); }
+    }
+
+    public void OnMusicChanged(float newVolume)
+    {
+        if (newVolume > _lastMusicSlider) { AudioHUD.instance.PlaySliderIncrease(); }
+        else if (newVolume < _lastMusicSlider) { AudioHUD.instance.PlaySliderDecrease(); }
     }
 
     public void StartIntro() //no inicio da Cena
