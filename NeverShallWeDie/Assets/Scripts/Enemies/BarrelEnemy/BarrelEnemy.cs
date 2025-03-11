@@ -28,8 +28,6 @@ public class BarrelEnemy : MonoBehaviour
         if (_controller._isDead)
             return;
 
-        _controller._audio.loop = _isRolling;
-
         if (_detectPlayer) { _controller._animation.SetBool("DetectPlayer", true); }
         if (_detectPlayer && !_beginRoll)
         {

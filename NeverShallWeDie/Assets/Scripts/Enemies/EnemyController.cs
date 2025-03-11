@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour
     public bool _isDead;
     [SerializeField] GameObject _deathEffect;
     [HideInInspector] public Animator _animation;
-    [HideInInspector] public AudioSource _audio;
 
     [Header("FMOD Events")]
     [SerializeField] EventReference hit;
@@ -30,7 +29,6 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         _animation = GetComponent<Animator>();
-        _audio = GetComponent<AudioSource>();
         _dropItem = GetComponent<DropItem>();
         _sprite = GetComponent<SpriteRenderer>();
 

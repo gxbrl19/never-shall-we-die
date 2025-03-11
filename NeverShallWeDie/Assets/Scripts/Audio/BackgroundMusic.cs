@@ -30,9 +30,13 @@ public class BackgroundMusic : MonoBehaviour
         }
         else
         {
-            //TODO: verificar a ilha que está selecionada para passar a musica
             if (scene == 4) { MusicControl(0); } //ship
             else if (scene == 8 || scene == 9 || scene == 10) { MusicControl(1); } //forest
+            else if (scene == 62 || scene == 63 || scene == 64) { MusicControl(2); } //mizuton
+            else if (scene == 122 || scene == 123 || scene == 124) { MusicControl(3); } //winter
+            else if (scene == 180 || scene == 181 || scene == 182) { MusicControl(4); } //prison
+            //else if (scene == 8 || scene == 9 || scene == 10) { MusicControl(5); } //mansion TODO: passar quando inserir a ultima ilha
+            //else if (scene == 8 || scene == 9 || scene == 10) { MusicControl(6); } //kingdom TODO: passar quando inserir a ultima ilha
         }
     }
 
@@ -54,6 +58,35 @@ public class BackgroundMusic : MonoBehaviour
 
     public void BackToMapMusic() //método para retornar a música após vencer o Boss
     {
-        MusicControl(1); //TODO: pegar a musica da ilha atual
+        //verifica se já existe o PlayerPrefs com o nome da cena do Cais selecionado
+        string _lastPier = PlayerPrefs.HasKey("Pier") ? PlayerPrefs.GetString("Pier") : "06/H0";
+
+        switch (_lastPier)
+        {
+            case "06/H0":
+                MusicControl(6);
+                break;
+            case "01/H1":
+                MusicControl(1);
+                break;
+            case "01/H2":
+                MusicControl(1);
+                break;
+            case "02/H3":
+                MusicControl(2);
+                break;
+            case "02/H4":
+                MusicControl(2);
+                break;
+            case "03/H5":
+                MusicControl(3);
+                break;
+            case "03/H6":
+                MusicControl(3);
+                break;
+            case "04/H7":
+                MusicControl(4);
+                break;
+        }
     }
 }
