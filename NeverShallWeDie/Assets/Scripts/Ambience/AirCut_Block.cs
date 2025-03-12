@@ -3,19 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using FMODUnity;
 
 public class AirCut_Block : MonoBehaviour
 {
     public int _id;
-    [SerializeField] AudioClip _destroySound;
+    [SerializeField] EventReference _burnSound;
 
     Animator _animation;
-    AudioSource _audioSource;
 
     private void Awake()
     {
         _animation = GetComponent<Animator>();
-        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -32,7 +31,7 @@ public class AirCut_Block : MonoBehaviour
         {
             _animation.SetBool("Destroy", true);
             GameManager.instance._airCutblock[_id] = 1;
-            _audioSource.PlayOneShot(_destroySound);
+            RuntimeManager.PlayOneShot(_burnSound);
         }
     }
 }

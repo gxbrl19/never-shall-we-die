@@ -213,6 +213,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1100
+--- !u!114 &-6764431397140580605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/generic/action/plat_ice_crack
+  m_EditorClassIdentifier: 
+  Path: event:/generic/action/plat_ice_crack
+  Guid:
+    Data1: 841785007
+    Data2: 1115586039
+    Data3: 946815104
+    Data4: 53218931
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 332
 --- !u!114 &-6646549902452893710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,10 +498,10 @@ MonoBehaviour:
   Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638772869347892774
+  lastModified: 638773744757058759
   FileSizes:
   - Name: Desktop
-    Value: 5532
+    Value: 5716
   Exists: 1
 --- !u!114 &-5868189738862785358
 MonoBehaviour:
@@ -638,6 +665,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1700
+--- !u!114 &-3323890135237690727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/generic/action/plat_ice_break
+  m_EditorClassIdentifier: 
+  Path: event:/generic/action/plat_ice_break
+  Guid:
+    Data1: 1700783063
+    Data2: 1296444559
+    Data3: 856489102
+    Data4: -1468725692
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 775
 --- !u!114 &-3202946873525561355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,13 +1120,17 @@ MonoBehaviour:
   - {fileID: -5084106067874180007}
   - {fileID: -8417081654971846333}
   - {fileID: 6323004875646144415}
+  - {fileID: 8944639285900363951}
+  - {fileID: -6764431397140580605}
+  - {fileID: -3323890135237690727}
+  - {fileID: 9072691424358964651}
   EditorParameters:
   - {fileID: -8480598557086419306}
   MasterBanks:
   - {fileID: 3980210049349708886}
   StringsBanks:
   - {fileID: -5899057458559496526}
-  cacheTime: 638772869347892774
+  cacheTime: 638773744757058759
   cacheVersion: 131616
 --- !u!114 &7691062675070937
 MonoBehaviour:
@@ -1656,10 +1714,10 @@ MonoBehaviour:
   Path: ../../../../Users/PC-01/Desktop/never_shall_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638772869347842887
+  lastModified: 638773744756983720
   FileSizes:
   - Name: Desktop
-    Value: 9566368
+    Value: 10052192
   Exists: 1
 --- !u!114 &4399959104032649854
 MonoBehaviour:
@@ -2146,7 +2204,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1192
+  Length: 1481
 --- !u!114 &6542090175598569513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2552,3 +2610,57 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 366
+--- !u!114 &8944639285900363951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/generic/action/air_cut_block
+  m_EditorClassIdentifier: 
+  Path: event:/generic/action/air_cut_block
+  Guid:
+    Data1: -939359448
+    Data2: 1226991869
+    Data3: 1338967481
+    Data4: 454590835
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1800
+--- !u!114 &9072691424358964651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/generic/action/plat_fall
+  m_EditorClassIdentifier: 
+  Path: event:/generic/action/plat_fall
+  Guid:
+    Data1: -1534808582
+    Data2: 1095770780
+    Data3: 1435865791
+    Data4: -1215668241
+  Banks:
+  - {fileID: 3980210049349708886}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 613

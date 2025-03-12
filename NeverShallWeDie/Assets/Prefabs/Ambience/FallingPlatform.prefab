@@ -107,7 +107,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1839216593
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -1102355732, guid: b491f97bdd540384b9c8d22642c65486, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -198,6 +198,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7015ce1bfe218d4dbd1f45c942029bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fallSound:
+    Guid:
+      Data1: -1534808582
+      Data2: 1095770780
+      Data3: 1435865791
+      Data4: -1215668241
+    Path: event:/generic/action/plat_fall
 --- !u!1 &6323603384673759089
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +276,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1839216593
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -387296164, guid: b491f97bdd540384b9c8d22642c65486, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

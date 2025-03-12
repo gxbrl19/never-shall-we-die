@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class FallingPlatform : MonoBehaviour
 {
     private float _fallDelay = 0.009f;
     private Animator _animation;
+    [SerializeField] EventReference _fallSound;
 
     private void Start()
     {
@@ -38,5 +40,10 @@ public class FallingPlatform : MonoBehaviour
     {
         yield return new WaitForSeconds(_fallDelay);
         _animation.SetBool("Collision", false);
+    }
+
+    public void PlayFallSound() //chamado na animação
+    {
+        RuntimeManager.PlayOneShot(_fallSound);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class IcePlatform : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class IcePlatform : MonoBehaviour
     int _life = 2;
 
     Animator _animation;
+    [SerializeField] EventReference _crackSound;
+    [SerializeField] EventReference _breakSound;
 
     private void Awake()
     {
@@ -19,7 +22,16 @@ public class IcePlatform : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerFoot"))
         {
             _life -= 1;
-            if (_life == 1) { _animation.SetBool("Collision", true); } else if (_life <= 0) { StartCoroutine(Break()); }
+
+            if (_life == 1)
+            {
+                _animation.SetBool("Collision", true);
+                RuntimeManager.PlayOneShot(_crackSound);
+            }
+            else if (_life <= 0)
+            {
+                StartCoroutine(Break());
+            }
         }
     }
 
@@ -27,5 +39,6 @@ public class IcePlatform : MonoBehaviour
     {
         yield return new WaitForSeconds(_breakDelay);
         _animation.SetBool("Break", true);
+        RuntimeManager.PlayOneShot(_breakSound);
     }
 }
