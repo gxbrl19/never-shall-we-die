@@ -34,9 +34,9 @@ public class SceneController : MonoBehaviour
             if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
             {
                 UIManager.instance.FadeIn();
-                Invoke("GetNextScene", .5f);
+                //Invoke("GetNextScene", .5f);
 
-                /*if (_nextSceneName == "01/34") //TODO: DEMO: para a versão normal remover o if e else e descomentar Invoke("GetNextScene", .5f);
+                if (_nextSceneName == "01/34") //TODO: DEMO: para a versão normal remover o if e else e descomentar Invoke("GetNextScene", .5f);
                 {
                     Invoke("FimDaDemo", .5f);
                     GameManager.instance.LoadBasic();
@@ -44,7 +44,7 @@ public class SceneController : MonoBehaviour
                 else
                 {
                     Invoke("GetNextScene", .5f);
-                }*/
+                }
             }
         }
         else
@@ -103,8 +103,8 @@ public class SceneController : MonoBehaviour
 
         if (scene == 0) //se ainda não tiver chegado em uma bandeira
         {
-            //SceneManager.LoadScene("Scenes/01/H1"); //TODO: DEMO
-            SceneManager.LoadScene("Scenes/06/01");
+            SceneManager.LoadScene("Scenes/01/H1"); //TODO: DEMO
+            //SceneManager.LoadScene("Scenes/06/01");
             _player.gameObject.GetComponent<Player>().EnabledControls();
             _player.gameObject.GetComponent<PlayerInputs>().enabled = true;
             return;

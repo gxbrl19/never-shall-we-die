@@ -25,8 +25,8 @@ public class BackgroundMusic : MonoBehaviour
     {
         if (scene == 0)
         {
-            //MusicControl(0); //TODO: remover depois da DEMO
-            MusicControl(6); //descomentar depois da DEMO (Kingdom)
+            MusicControl(0); //TODO: remover depois da DEMO
+            //MusicControl(6); //descomentar depois da DEMO (Kingdom)
         }
         else
         {

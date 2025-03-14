@@ -15395,8 +15395,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.66275, y: -0.90494996, z: 0}
-    m_Extent: {x: 2.44895, y: 2.23595, z: 0}
+    m_Center: {x: -1.6619, y: -0.9055, z: 0}
+    m_Extent: {x: 2.4488, y: 2.236, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -37075,7 +37075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 665579771989475376, guid: 6a50ec05acd5cf740b1f447235baf780, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -51.7875
+      value: -53.13
       objectReference: {fileID: 0}
     - target: {fileID: 665579771989475376, guid: 6a50ec05acd5cf740b1f447235baf780, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37185,8 +37185,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.66215, y: -0.90545, z: 0}
-    m_Extent: {x: 2.44915, y: 2.23625, z: 0}
+    m_Center: {x: -1.6622999, y: -0.90555, z: 0}
+    m_Extent: {x: 2.4489, y: 2.23635, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -38982,7 +38982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2118085750
 Transform:
   m_ObjectHideFlags: 0
@@ -39034,7 +39034,17 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 2118085753}
+    m_ColliderPaths:
+    - - X: 190000000
+        Y: -470000000
+      - X: 160000000
+        Y: -470000000
+      - X: 160000000
+        Y: -480000000
+      - X: 190000000
+        Y: -480000000
   m_CompositePaths:
     m_Paths:
     - - {x: 18.999971, y: -48}

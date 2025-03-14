@@ -89,8 +89,8 @@ public class Intro : MonoBehaviour
                 state_intro = STATE_INTRO.DISABLED;
                 currentText = 0;
                 finished = false;
-                //SceneManager.LoadScene("Scenes/OpenWorld"); //TODO: DEMO | remover após a demo
-                SceneManager.LoadScene("Scenes/06/00");
+                SceneManager.LoadScene("Scenes/OpenWorld"); //TODO: DEMO | remover após a demo
+                //SceneManager.LoadScene("Scenes/06/00");
             }
         }
     }
