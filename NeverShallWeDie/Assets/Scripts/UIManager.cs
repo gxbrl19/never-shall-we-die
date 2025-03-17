@@ -107,6 +107,12 @@ public class UIManager : MonoBehaviour
     [HideInInspector] public int _upShipPrice;
     [BoxGroup("Crew")] public Animator _buyFeedback;
 
+    [BoxGroup("New Member")] public bool _inNewMember;
+    [BoxGroup("New Member")] public GameObject _pnlNewMember;
+    [BoxGroup("New Member")] public Image _imgNewMember;
+    [BoxGroup("New Member")] public Text _nameNewMember;
+    [BoxGroup("New Member")] public Text _functionNewMember;
+
     [BoxGroup("Fade")] public Image _pnlFade;
 
     [BoxGroup("Config")] public GameObject _pnlConfig;
@@ -406,6 +412,33 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Boss
+
+    #region Crew Joined
+    public void MemberJoined(string name, string ptFunction, string engFunction, Sprite image)
+    {
+        _inNewMember = true;
+        _player.DisableControls();
+        _pnlNewMember.SetActive(true);
+
+        _imgNewMember.sprite = image;
+        _nameNewMember.text = name;
+
+        //localization
+        var currentLocale = LocalizationSettings.SelectedLocale;
+        if (currentLocale.Identifier.Code == "pt-BR") { _functionNewMember.text = ptFunction; }
+        else if (currentLocale.Identifier.Code == "en") { _functionNewMember.text = engFunction; }
+        //localization
+
+        Invoke("FinishMemberJoined", 6f);
+    }
+
+    public void FinishMemberJoined() //chamado na função MemberJoined()
+    {
+        _inNewMember = false;
+        _player.EnabledControls();
+        _pnlNewMember.SetActive(false);
+    }
+    #endregion
     public void BossEnabled()
     {
         _pnlBoss.SetActive(true);
@@ -655,7 +688,7 @@ public class UIManager : MonoBehaviour
     {
         if (callback.started)
         {
-            if (_inMap) { return; }
+            if (_inMap || _inNewMember) { return; }
 
             if (!_isPaused)
             {
@@ -674,7 +707,7 @@ public class UIManager : MonoBehaviour
     {
         if (callback.started)
         {
-            if (_isPaused) { return; }
+            if (_isPaused || _inNewMember) { return; }
 
             if (!_inMap && GameManager.instance._maps[1] == 1) //só habilita quando tiver o mapa da ilha 1
             {
