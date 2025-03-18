@@ -419,6 +419,7 @@ public class UIManager : MonoBehaviour
         _inNewMember = true;
         _player.DisableControls();
         _pnlNewMember.SetActive(true);
+        BackgroundMusic.instance.MusicControl(11);
 
         _imgNewMember.sprite = image;
         _nameNewMember.text = name;
@@ -437,6 +438,7 @@ public class UIManager : MonoBehaviour
         _inNewMember = false;
         _player.EnabledControls();
         _pnlNewMember.SetActive(false);
+        BackgroundMusic.instance.BackToMapMusic();
     }
     #endregion
     public void BossEnabled()

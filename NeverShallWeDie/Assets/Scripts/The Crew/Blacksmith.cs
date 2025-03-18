@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Blacksmith : MonoBehaviour
 {
+    public CrewObject _crewObject;
     public GameObject _meet;
     public GameObject _quest;
     public GameObject _complete;
@@ -41,6 +42,9 @@ public class Blacksmith : MonoBehaviour
 
     public void NextState()
     {
+        //animação de member joined
+        if (GameManager.instance._blacksmith == "COMPLETE") { UIManager.instance.MemberJoined(_crewObject.name, _crewObject.ptCrewFunction, _crewObject.engCrewFunction, _crewObject.draw); }
+
         //trocando o STATE do Ferreiro
         if (GameManager.instance._blacksmith == "MEET") { GameManager.instance._blacksmith = "QUEST"; }
         else if (GameManager.instance._hammer == 1 && GameManager.instance._blacksmith == "QUEST") { GameManager.instance._blacksmith = "COMPLETE"; }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shipwright : MonoBehaviour
 {
+    public CrewObject _crewObject;
     public GameObject _meet;
     public GameObject _quest;
     public GameObject _complete;
@@ -41,6 +42,9 @@ public class Shipwright : MonoBehaviour
 
     public void NextState()
     {
+        //animação de member joined
+        if (GameManager.instance._shipwright == "COMPLETE") { UIManager.instance.MemberJoined(_crewObject.name, _crewObject.ptCrewFunction, _crewObject.engCrewFunction, _crewObject.draw); }
+
         //trocando o STATE da Carpinteira
         if (GameManager.instance._shipwright == "MEET") { GameManager.instance._shipwright = "QUEST"; }
         else if (GameManager.instance._shipwright == "COMPLETE") { GameManager.instance._shipwright = "CREW"; }

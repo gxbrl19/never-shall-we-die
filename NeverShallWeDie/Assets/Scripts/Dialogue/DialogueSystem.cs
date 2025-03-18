@@ -28,6 +28,7 @@ public class DialogueSystem : MonoBehaviour
     TypeTextAnimation typeText;
     STATE state;
     Player _player;
+    PlayerInputs _input;
     Navigator _navigator;
     Blacksmith _blacksmith;
     Witch _witch;
@@ -39,6 +40,7 @@ public class DialogueSystem : MonoBehaviour
         typeText.TypeFinished = OnTypeFinishe;
 
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _input = _player.GetComponent<PlayerInputs>();
 
         if (_function == CrewFunction.Navigator) { _navigator = FindObjectOfType<Navigator>(); }
         if (_function == CrewFunction.Blacksmith) { _blacksmith = FindObjectOfType<Blacksmith>(); }
@@ -115,6 +117,7 @@ public class DialogueSystem : MonoBehaviour
                 state = STATE.DISABLED;
                 currentText = 0;
                 finished = false;
+                _input.interact = false;
                 _player.EnabledControls();
                 if (_navigator != null) { _navigator.NextState(); }
                 if (_blacksmith != null) { _blacksmith.NextState(); }
