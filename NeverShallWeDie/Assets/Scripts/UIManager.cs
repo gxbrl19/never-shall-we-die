@@ -430,7 +430,7 @@ public class UIManager : MonoBehaviour
         else if (currentLocale.Identifier.Code == "en") { _functionNewMember.text = engFunction; }
         //localization
 
-        Invoke("FinishMemberJoined", 6f);
+        Invoke("FinishMemberJoined", 4f);
     }
 
     public void FinishMemberJoined() //chamado na função MemberJoined()
