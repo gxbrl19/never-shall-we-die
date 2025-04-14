@@ -26,6 +26,10 @@ public class PlayerData
     public int[] chests;
     public int[] airCutblock;
     public int[] barriersLever;
+    public int[] secret;
+    public int drawbridge;
+    public int gateMechanism;
+    public int gateBoss;
     public List<ShipUpgrade> shipUpgrades;
     public int[] rocks;
     public int checkpointScene;
@@ -64,8 +68,10 @@ public class GameManager : MonoBehaviour
     [BoxGroup("ItemsInLevel")] public int[] _chests; //Chests já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _airCutblock; //Air Cut Blocks já destruídos
     [BoxGroup("ItemsInLevel")] public int[] _barriersLever; //Barriers Lever já acionados
+    [BoxGroup("ItemsInLevel")] public int[] _secret; //Segredo do mapa do mapa 04 (gerado aleatoriamente)
+    [BoxGroup("ItemsInLevel")] public int _drawbridge; //Ponte do mapa 04 (0 = fechada | 1 = aberta)
     [BoxGroup("ItemsInLevel")] public int _gateMechanism; //se já pegou o gate mechanism
-    [BoxGroup("ItemsInLevel")] public int _gateBoss; //Portão do Boss do mapa 04 (1 = consertado | 2 = aberto)
+    [BoxGroup("ItemsInLevel")] public int _gateBoss; //Portão do Boss do mapa 05 (1 = consertado | 2 = aberto)
 
     [BoxGroup("OpenWorld")] public List<ShipUpgrade> _shipUpgrades;
     [BoxGroup("OpenWorld")] public int[] _rocks; //Rocks já destruídos
@@ -188,6 +194,12 @@ public class GameManager : MonoBehaviour
         _data.airCutblock = _airCutblock;
         _data.barriersLever = _barriersLever;
 
+        _data.secret = _secret;
+
+        _data.drawbridge = _drawbridge;
+        _data.gateMechanism = _gateMechanism;
+        _data.gateBoss = _gateBoss;
+
         _data.shipUpgrades = _shipUpgrades;
         _data.rocks = _rocks;
 
@@ -272,6 +284,12 @@ public class GameManager : MonoBehaviour
             _chests = _data.chests;
             _airCutblock = _data.airCutblock;
             _barriersLever = _data.barriersLever;
+
+            _secret = _data.secret;
+
+            _drawbridge = _data.drawbridge;
+            _gateMechanism = _data.gateMechanism;
+            _gateBoss = _data.gateBoss;
 
             _shipUpgrades = _data.shipUpgrades;
             _rocks = _data.rocks;
