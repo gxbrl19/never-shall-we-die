@@ -138,6 +138,14 @@ public class GameManager : MonoBehaviour
         //Enemies
         _bosses = new int[6];
 
+        //TODO: remover depois
+        _keys[0] = 1;
+        _keys[1] = 1;
+        _keys[2] = 1;
+        _keys[3] = 1;
+        _keys[4] = 1;
+        _keys[5] = 1;
+
         LoadBasic();
     }
 

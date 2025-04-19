@@ -113,12 +113,21 @@ public class UIManager : MonoBehaviour
     [BoxGroup("New Member")] public Text _nameNewMember;
     [BoxGroup("New Member")] public Text _functionNewMember;
 
+    [BoxGroup("Secret")] public GameObject _pnlDrawbridge;
+    [BoxGroup("Secret")] public GameObject _pnlKeyDrawbridge;
+    [BoxGroup("Secret")] public GameObject[] _slotsDrawbridge;
+    [BoxGroup("Secret")] public GameObject _firstKeyDrawbridge;
+    [BoxGroup("Secret")] public int _slotID;
+    [BoxGroup("Secret")] public int[] _backupKeys;
+
     [BoxGroup("Fade")] public Image _pnlFade;
 
     [BoxGroup("Config")] public GameObject _pnlConfig;
     [BoxGroup("Config")] public GameObject[] _configInfo;
     [BoxGroup("Config")] public Dropdown _resolutionDropdown;
     Resolution[] _resolutions;
+
+    bool _inUIScreen;
 
     Player _player;
     PlayerInputs _input;
@@ -411,8 +420,6 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    #region Boss
-
     #region Crew Joined
     public void MemberJoined(string name, string ptFunction, string engFunction, Sprite image)
     {
@@ -441,6 +448,79 @@ public class UIManager : MonoBehaviour
         BackgroundMusic.instance.BackToMapMusic();
     }
     #endregion
+
+    #region Drawbridge
+
+    public void ActivePanelDrawbridge()
+    {
+        _inUIScreen = true;
+        _player.DisableControls();
+        _pnlDrawbridge.SetActive(true);
+        AudioHUD.instance.PlayBackButton();
+        EventSystem.current.SetSelectedGameObject(_slotsDrawbridge[0]);
+    }
+
+    public void RecuseDrawbridge() //chamado no botão back do pnl_drawbridge (UI Manager)
+    {
+        _inUIScreen = false;
+        _player.EnabledControls();
+        LoadBackup();
+        Drawbridge.instance.CancelSelect();
+        _pnlDrawbridge.SetActive(false);
+        AudioHUD.instance.PlayBackButton();
+    }
+
+    public void SaveBackup()
+    {
+        _backupKeys = new int[6];
+        for (int i = 0; i < _backupKeys.Length; i++)
+        {
+            _backupKeys[i] = GameManager.instance._keys[i];
+        }
+    }
+
+    void LoadBackup()
+    {
+        for (int i = 0; i < _backupKeys.Length; i++)
+        {
+            GameManager.instance._keys[i] = _backupKeys[i];
+        }
+    }
+
+    public void SelectSlot(int id) //chamado ao apertar um slot do pnl_drawbridge (UI Manager)
+    {
+        _slotID = id;
+        _pnlKeyDrawbridge.SetActive(true);
+        AudioHUD.instance.PlaySelectButton();
+        EventSystem.current.SetSelectedGameObject(_firstKeyDrawbridge);
+    }
+
+    public void SelectKey(int key) //chamado ao apertar um slot do pnl_drawbridge (UI Manager)
+    {
+        if (GameManager.instance._keys[key] != 1) { return; }
+        _pnlKeyDrawbridge.SetActive(false);
+        AudioHUD.instance.PlaySelectButton();
+        Drawbridge.instance.AddSlot(_slotID, key);
+        EventSystem.current.SetSelectedGameObject(_slotsDrawbridge[_slotID]);
+    }
+
+    public void CancelSelectKey() //cahamdo no botão voltar do pnl key
+    {
+        _pnlKeyDrawbridge.SetActive(false);
+        AudioHUD.instance.PlaySelectButton();
+        EventSystem.current.SetSelectedGameObject(_slotsDrawbridge[_slotID]);
+    }
+
+    public void UpDrawbridge()
+    {
+        _inUIScreen = false;
+        _player.EnabledControls();
+        _pnlDrawbridge.SetActive(false);
+    }
+
+    #endregion
+
+    #region Boss
     public void BossEnabled()
     {
         _pnlBoss.SetActive(true);
@@ -456,7 +536,7 @@ public class UIManager : MonoBehaviour
 
     public void ActivePanelNavigate()
     {
-        _isPaused = true;
+        _inUIScreen = true;
         _player.DisableControls();
         _pnlNavigate.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesNavigate);
@@ -464,7 +544,7 @@ public class UIManager : MonoBehaviour
 
     public void Navigate() //chamdo no botão Yes do pnl_navigate (UI Manager)
     {
-        _isPaused = false;
+        _inUIScreen = false;
         _player.EnabledControls();
         PlayerPrefs.SetInt("Scene", 2); //cena do OpenWorld (configurar o index de acordo com o BuildSettings)
         SceneManager.LoadScene("Scenes/Load");
@@ -472,14 +552,14 @@ public class UIManager : MonoBehaviour
 
     public void RecuseNavigate() //chamdo no botão No do pnl_navigate (UI Manager)
     {
-        _isPaused = false;
+        _inUIScreen = false;
         _player.EnabledControls();
         _pnlNavigate.SetActive(false);
     }
 
     public void ActivePanelBuyMap()
     {
-        _isPaused = true;
+        _inUIScreen = true;
         _player.DisableControls();
         _txtMapPrice.text = _mapPrice.ToString();
         _pnlBuyMap.SetActive(true);
@@ -491,7 +571,7 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.instance._gold >= _mapPrice)
         {
-            _isPaused = false;
+            _inUIScreen = false;
             _player.EnabledControls();
             GameManager.instance._maps[_mapBuyId] = 1;
             _pnlBuyMap.SetActive(false);
@@ -508,14 +588,14 @@ public class UIManager : MonoBehaviour
 
     public void RecuseBuyMap() //chamado no botão No do pnl_buymap (UI Manager)
     {
-        _isPaused = false;
+        _inUIScreen = false;
         _player.EnabledControls();
         _pnlBuyMap.SetActive(false);
     }
 
     public void ActivePanelUpKatana()
     {
-        _isPaused = true;
+        _inUIScreen = true;
         _player.DisableControls();
         _txtKatanaPrice.text = _katanaPrice.ToString();
         _txtCurrPotentium.text = _qtdPotentium.ToString();
@@ -528,7 +608,7 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.instance._gold >= _katanaPrice && _qtdPotentium >= 4)
         {
-            _isPaused = false;
+            _inUIScreen = false;
             _player.EnabledControls();
             GameManager.instance._katanaLevel += 1;
             _pnlUpKatana.SetActive(false);
@@ -546,14 +626,14 @@ public class UIManager : MonoBehaviour
 
     public void RecuseUpgradeKatana() //chamado no botão No do pnl_upKatana (UI Manager)
     {
-        _isPaused = false;
+        _inUIScreen = false;
         _player.EnabledControls();
         _pnlUpKatana.SetActive(false);
     }
 
     public void ActivePanelHpMp()
     {
-        _isPaused = true;
+        _inUIScreen = true;
         _player.DisableControls();
         _txtUpHpMpPrice.text = _UpHpMpPrice.ToString();
         _txtCurrOrbs.text = _qtdOrbs.ToString();
@@ -566,7 +646,7 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.instance._gold >= _UpHpMpPrice && _qtdOrbs >= 4)
         {
-            _isPaused = false;
+            _inUIScreen = false;
             _player.EnabledControls();
             _health._maxHealth += 5f;
             GameManager.instance._hpMax = _health._maxHealth;
@@ -587,7 +667,7 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.instance._gold >= _UpHpMpPrice && _qtdOrbs >= 4)
         {
-            _isPaused = false;
+            _inUIScreen = false;
             _player.EnabledControls();
             _health._maxMana += 5f;
             GameManager.instance._mpMax = _health._maxMana;
@@ -606,14 +686,14 @@ public class UIManager : MonoBehaviour
 
     public void RecuseUpHpMp() //chamado no botão Cancel do pnl_upHpMp (UI Manager)
     {
-        _isPaused = false;
+        _inUIScreen = false;
         _player.EnabledControls();
         _pnlUpHpMp.SetActive(false);
     }
 
     public void ActivePanelShip()
     {
-        _isPaused = true;
+        _inUIScreen = true;
         _player.DisableControls();
         _pnlUPShip.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_firstButtonShip);
@@ -638,7 +718,7 @@ public class UIManager : MonoBehaviour
 
         if (GameManager.instance._gold >= _upShipPrice)
         {
-            _isPaused = false;
+            _inUIScreen = false;
             _player.EnabledControls();
 
             if (id == 0)
@@ -671,7 +751,7 @@ public class UIManager : MonoBehaviour
 
     public void RecuseUpShip() //chamado no botão Cancel do pnl_Ship (UI Manager)
     {
-        _isPaused = false;
+        _inUIScreen = false;
         _player.EnabledControls();
         _pnlUPShip.SetActive(false);
     }
@@ -690,7 +770,7 @@ public class UIManager : MonoBehaviour
     {
         if (callback.started)
         {
-            if (_inMap || _inNewMember) { return; }
+            if (_inMap || _inNewMember || _inUIScreen) { return; }
 
             if (!_isPaused)
             {
@@ -709,7 +789,7 @@ public class UIManager : MonoBehaviour
     {
         if (callback.started)
         {
-            if (_isPaused || _inNewMember) { return; }
+            if (_isPaused || _inNewMember || _inUIScreen) { return; }
 
             if (!_inMap && GameManager.instance._maps[1] == 1) //só habilita quando tiver o mapa da ilha 1
             {
