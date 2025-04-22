@@ -465,7 +465,7 @@ public class UIManager : MonoBehaviour
         _inUIScreen = false;
         _player.EnabledControls();
         LoadBackup();
-        Drawbridge.instance.CancelSelect();
+        DrawbridgeMechanism.instance.CancelSelect();
         _pnlDrawbridge.SetActive(false);
         AudioHUD.instance.PlayBackButton();
     }
@@ -500,7 +500,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.instance._keys[key] != 1) { return; }
         _pnlKeyDrawbridge.SetActive(false);
         AudioHUD.instance.PlaySelectButton();
-        Drawbridge.instance.AddSlot(_slotID, key);
+        DrawbridgeMechanism.instance.AddSlot(_slotID, key);
         EventSystem.current.SetSelectedGameObject(_slotsDrawbridge[_slotID]);
     }
 

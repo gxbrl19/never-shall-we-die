@@ -14,13 +14,10 @@ public class BarrierLever : MonoBehaviour
 
     [Header("FMOD Events")]
     [SerializeField] EventReference portalOpen;
-
-    AudioSource _audio;
     Player _player;
 
     private void Awake()
     {
-        _audio = GetComponent<AudioSource>();
         _player = FindObjectOfType<Player>();
     }
 
