@@ -27,6 +27,7 @@ public class PlayerData
     public int[] airCutblock;
     public int[] barriersLever;
     public int[] secret;
+    public int secretDrawbridge;
     public int drawbridge;
     public int gateMechanism;
     public int gateBoss;
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
     [BoxGroup("ItemsInLevel")] public int[] _airCutblock; //Air Cut Blocks já destruídos
     [BoxGroup("ItemsInLevel")] public int[] _barriersLever; //Barriers Lever já acionados
     [BoxGroup("ItemsInLevel")] public int[] _secret; //Segredo do mapa do mapa 04 (gerado aleatoriamente)
+    [BoxGroup("ItemsInLevel")] public int _secretDrawbridge; //Item encontrado numa folha
     [BoxGroup("ItemsInLevel")] public int _drawbridge; //Ponte do mapa 04 (0 = fechada | 1 = aberta)
     [BoxGroup("ItemsInLevel")] public int _gateMechanism; //se já pegou o gate mechanism
     [BoxGroup("ItemsInLevel")] public int _gateBoss; //Portão do Boss do mapa 05 (1 = consertado | 2 = aberto)
@@ -195,6 +197,7 @@ public class GameManager : MonoBehaviour
         _data.barriersLever = _barriersLever;
 
         _data.secret = _secret;
+        _data.secretDrawbridge = _secretDrawbridge;
 
         _data.drawbridge = _drawbridge;
         _data.gateMechanism = _gateMechanism;
@@ -286,6 +289,7 @@ public class GameManager : MonoBehaviour
             _barriersLever = _data.barriersLever;
 
             _secret = _data.secret;
+            _secretDrawbridge = _data.secretDrawbridge;
 
             _drawbridge = _data.drawbridge;
             _gateMechanism = _data.gateMechanism;

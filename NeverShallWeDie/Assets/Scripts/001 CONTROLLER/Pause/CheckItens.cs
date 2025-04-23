@@ -19,17 +19,29 @@ public class CheckItens : MonoBehaviour
             case "Gold":
                 _imageButton.enabled = true;
                 break;
+            case "Orb":
+                _imageButton.enabled = true;
+                break;
+            case "Potentium":
+                _imageButton.enabled = true;
+                break;
             case "Hammer":
                 _imageButton.enabled = GameManager.instance._hammer == 1 ? true : false;
                 break;
             case "Grimoire":
                 _imageButton.enabled = GameManager.instance._grimoire == 1 ? true : false;
                 break;
-            case "Orb":
-                _imageButton.enabled = true;
+            case "Cannon":
+                _imageButton.enabled = GameManager.instance._artillery == 1 ? true : false;
                 break;
-            case "Potentium":
-                _imageButton.enabled = true;
+            case "Propulsion":
+                _imageButton.enabled = GameManager.instance._propulsion == 1 ? true : false;
+                break;
+            case "Submarine":
+                _imageButton.enabled = GameManager.instance._submarine == 1 ? true : false;
+                break;
+            case "Secret":
+                _imageButton.enabled = GameManager.instance._secretDrawbridge == 1 ? true : false;
                 break;
             case "Crank":
                 _imageButton.enabled = GameManager.instance._gateMechanism == 1 ? true : false;
@@ -63,6 +75,14 @@ public class CheckItens : MonoBehaviour
                 UIManager.instance._pnlItems.SetActive(true);
                 UIManager.instance._qtdItems.text = GameManager.instance._gold.ToString();
                 break;
+            case "Orb":
+                UIManager.instance._pnlItems.SetActive(true);
+                UIManager.instance._qtdItems.text = GameManager.instance._qtdOrb.ToString();
+                break;
+            case "Potentium":
+                UIManager.instance._pnlItems.SetActive(true);
+                UIManager.instance._qtdItems.text = GameManager.instance._qtdPotentium.ToString();
+                break;
             case "Hammer":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._hammer == 1 ? true : false);
                 UIManager.instance._qtdItems.text = "1";
@@ -71,13 +91,21 @@ public class CheckItens : MonoBehaviour
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._grimoire == 1 ? true : false);
                 UIManager.instance._qtdItems.text = "1";
                 break;
-            case "Orb":
-                UIManager.instance._pnlItems.SetActive(true);
-                UIManager.instance._qtdItems.text = GameManager.instance._qtdOrb.ToString();
+            case "Cannon":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._artillery == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
                 break;
-            case "Potentium":
-                UIManager.instance._pnlItems.SetActive(true);
-                UIManager.instance._qtdItems.text = GameManager.instance._qtdPotentium.ToString();
+            case "Propulsion":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._propulsion == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
+                break;
+            case "Submarine":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._submarine == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
+                break;
+            case "Secret":
+                UIManager.instance._pnlItems.SetActive(GameManager.instance._secretDrawbridge == 1 ? true : false);
+                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Crank":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._gateMechanism == 1 ? true : false);
