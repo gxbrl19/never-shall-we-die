@@ -119,6 +119,8 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Secret")] public GameObject _firstKeyDrawbridge;
     [BoxGroup("Secret")] public int _slotID;
     [BoxGroup("Secret")] public int[] _backupKeys;
+    [BoxGroup("Secret")] public GameObject _pnlSecret;
+    [BoxGroup("Secret")] public Image[] _secretSequence;
 
     [BoxGroup("Fade")] public Image _pnlFade;
 
@@ -516,6 +518,36 @@ public class UIManager : MonoBehaviour
         _inUIScreen = false;
         _player.EnabledControls();
         _pnlDrawbridge.SetActive(false);
+    }
+
+    public void SecretSequence()
+    {
+        for (int i = 0; i < GameManager.instance._secret.Length; i++)
+        {
+            int secret = GameManager.instance._secret[i];
+
+            switch (secret)
+            {
+                case 0:
+                    _secretSequence[i].color = Color.yellow;
+                    break;
+                case 1:
+                    _secretSequence[i].color = Color.red;
+                    break;
+                case 2:
+                    _secretSequence[i].color = Color.green;
+                    break;
+                case 3:
+                    _secretSequence[i].color = Color.cyan;
+                    break;
+                case 4:
+                    _secretSequence[i].color = Color.magenta;
+                    break;
+                case 5:
+                    _secretSequence[i].color = Color.grey;
+                    break;
+            }
+        }
     }
 
     #endregion

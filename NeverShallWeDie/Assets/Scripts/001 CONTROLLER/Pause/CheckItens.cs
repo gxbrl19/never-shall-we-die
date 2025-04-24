@@ -104,8 +104,8 @@ public class CheckItens : MonoBehaviour
                 UIManager.instance._qtdItems.text = "1";
                 break;
             case "Secret":
-                UIManager.instance._pnlItems.SetActive(GameManager.instance._secretDrawbridge == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
+                UIManager.instance._pnlSecret.SetActive(GameManager.instance._secretDrawbridge == 1 ? true : false);
+                UIManager.instance.SecretSequence();
                 break;
             case "Crank":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._gateMechanism == 1 ? true : false);
@@ -136,6 +136,8 @@ public class CheckItens : MonoBehaviour
                 UIManager.instance._qtdItems.text = "1";
                 break;
         }
+
+        if (_item == "Secret") { return; }
 
         //localization
         var currentLocale = LocalizationSettings.SelectedLocale;
