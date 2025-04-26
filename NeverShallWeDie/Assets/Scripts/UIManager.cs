@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private Text _txtGold;
     [BoxGroup("HUD")][SerializeField] private Text _txtGoldBuy;
     [BoxGroup("HUD")][SerializeField] private Animator _goldBuyAnimator;
+    [BoxGroup("HUD")][SerializeField] private Image _imgFeedbackItem;
+    [BoxGroup("HUD")][SerializeField] private Animator _feedbackItemAnimator;
     [BoxGroup("HUD")][SerializeField] private Image _fire;
     [BoxGroup("HUD")][SerializeField] private Image _air;
     [BoxGroup("HUD")][SerializeField] private Image _water;
@@ -203,6 +205,13 @@ public class UIManager : MonoBehaviour
     public void SaveDisabled() //chamado na função SaveEnabled()
     {
         _skullSave.SetActive(false);
+    }
+
+    public void FeedbackItem(Sprite image, Color color)
+    {
+        _imgFeedbackItem.color = color;
+        _imgFeedbackItem.sprite = image;
+        _feedbackItemAnimator.SetTrigger("Start");
     }
     #endregion
 

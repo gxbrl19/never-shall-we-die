@@ -36,6 +36,7 @@ public class SecretDrawbridge : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             RuntimeManager.PlayOneShot(collected);
+            UIManager.instance.FeedbackItem(_sprite.sprite, _sprite.color);
             _sprite.enabled = false;
             _collider.enabled = false;
             GameManager.instance._secretDrawbridge = 1;
