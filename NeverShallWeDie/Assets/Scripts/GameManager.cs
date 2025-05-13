@@ -42,6 +42,9 @@ public class PlayerData
     public int[] maps;
     public int hammer;
     public int grimoire;
+    public int submarine;
+    public int propulsion;
+    public int artillery;
     public int[] bestiary;
     public int[] bosses;
 }
@@ -218,6 +221,9 @@ public class GameManager : MonoBehaviour
 
         _data.hammer = _hammer;
         _data.grimoire = _grimoire;
+        _data.submarine = _submarine;
+        _data.propulsion = _propulsion;
+        _data.artillery = _artillery;
 
         _data.bestiary = _bestiary;
         _data.bosses = _bosses;
@@ -310,6 +316,9 @@ public class GameManager : MonoBehaviour
 
             _hammer = _data.hammer;
             _grimoire = _data.grimoire;
+            _submarine = _data.submarine;
+            _propulsion = _data.propulsion;
+            _artillery = _data.artillery;
 
             _bestiary = _data.bestiary;
             _bosses = _data.bosses;
