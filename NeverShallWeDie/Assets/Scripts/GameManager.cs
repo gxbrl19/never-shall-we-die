@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
         _barriersLever = new int[50]; //TODO: colocar o numero de Barriers lever que estarão no game
         _keys = new int[6];
         _doors = new int[6];
-        _rocks = new int[2];
+        _rocks = new int[4];
 
         //Crew
         _maps = new int[6];
