@@ -69,6 +69,9 @@ public class CheckItens : MonoBehaviour
 
     public void Check() //verificar se tem o item e mostrar no painel de descrição
     {
+        UIManager.instance._pnlItems.SetActive(false);
+        UIManager.instance._pnlSecret.SetActive(false);
+
         switch (_item)
         {
             case "Gold":

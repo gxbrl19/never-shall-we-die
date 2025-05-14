@@ -14,7 +14,7 @@ public class CannonPoint : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.instance._airCutblock[_id] == 1)
+        if (GameManager.instance._rocks[_id] == 1)
         {
             _animation.SetBool("Disable", true);
         }

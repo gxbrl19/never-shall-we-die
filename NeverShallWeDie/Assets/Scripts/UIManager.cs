@@ -270,6 +270,7 @@ public class UIManager : MonoBehaviour
         _pnlCrew.SetActive(false);
         _pnlConfig.SetActive(false);
         _pnlItems.SetActive(false);
+        _pnlSecret.SetActive(false);
         AudioHUD.instance.PlayNavigationButton();
 
         for (int i = 0; i < _panels.Length; i++)

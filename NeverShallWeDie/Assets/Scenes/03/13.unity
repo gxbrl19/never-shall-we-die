@@ -55716,6 +55716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AirCut_Block
       objectReference: {fileID: 0}
+    - target: {fileID: 807949089884001122, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
+      propertyPath: _id
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.554602
@@ -55807,6 +55811,9 @@ MonoBehaviour:
   _chests: 
   _airCutblock: 
   _barriersLever: 
+  _secret: 
+  _secretDrawbridge: 0
+  _drawbridge: 0
   _gateMechanism: 0
   _gateBoss: 0
   _shipUpgrades: 
