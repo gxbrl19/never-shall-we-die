@@ -59,9 +59,8 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Pause Switch")] public Image _gamepadSkill;
     [BoxGroup("Pause Switch")] public Image _keyboardSkill;
 
-    [Header("Skills")]
+    [Header("Items")]
     [BoxGroup("Pause Switch")] public GameObject _pnlItems;
-    [BoxGroup("Pause Switch")] public Text _qtdItems;
     [BoxGroup("Pause Switch")] public Text _descItems;
 
     [Header("Crew")]
@@ -283,12 +282,12 @@ public class UIManager : MonoBehaviour
             }
             else if (i < _panelIndex)
             {
-                _panels[i].DOAnchorPos(new Vector2(-200f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+                _panels[i].DOAnchorPos(new Vector2(-700f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
                 _btnSwitch[i].sprite = _spriteSwitch;
             }
             else if (i > _panelIndex)
             {
-                _panels[i].DOAnchorPos(new Vector2(200f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+                _panels[i].DOAnchorPos(new Vector2(700f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
                 _btnSwitch[i].sprite = _spriteSwitch;
             }
 

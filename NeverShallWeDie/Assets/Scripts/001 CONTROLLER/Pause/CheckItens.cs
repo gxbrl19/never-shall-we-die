@@ -16,15 +16,6 @@ public class CheckItens : MonoBehaviour
     {
         switch (_item)
         {
-            case "Gold":
-                _imageButton.enabled = true;
-                break;
-            case "Orb":
-                _imageButton.enabled = true;
-                break;
-            case "Potentium":
-                _imageButton.enabled = true;
-                break;
             case "Hammer":
                 _imageButton.enabled = GameManager.instance._hammer == 1 ? true : false;
                 break;
@@ -74,37 +65,20 @@ public class CheckItens : MonoBehaviour
 
         switch (_item)
         {
-            case "Gold":
-                UIManager.instance._pnlItems.SetActive(true);
-                UIManager.instance._qtdItems.text = GameManager.instance._gold.ToString();
-                break;
-            case "Orb":
-                UIManager.instance._pnlItems.SetActive(true);
-                UIManager.instance._qtdItems.text = GameManager.instance._qtdOrb.ToString();
-                break;
-            case "Potentium":
-                UIManager.instance._pnlItems.SetActive(true);
-                UIManager.instance._qtdItems.text = GameManager.instance._qtdPotentium.ToString();
-                break;
             case "Hammer":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._hammer == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Grimoire":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._grimoire == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Cannon":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._artillery == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Propulsion":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._propulsion == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Submarine":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._submarine == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Secret":
                 UIManager.instance._pnlSecret.SetActive(GameManager.instance._secretDrawbridge == 1 ? true : false);
@@ -112,31 +86,24 @@ public class CheckItens : MonoBehaviour
                 break;
             case "Crank":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._gateMechanism == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Key0":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[0] == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Key1":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[1] == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Key2":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[2] == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Key3":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[3] == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Key4":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[4] == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
             case "Key5":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._keys[5] == 1 ? true : false);
-                UIManager.instance._qtdItems.text = "1";
                 break;
         }
 
