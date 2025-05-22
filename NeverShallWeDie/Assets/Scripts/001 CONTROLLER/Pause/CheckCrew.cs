@@ -11,14 +11,10 @@ public class CheckCrew : MonoBehaviour
 {
     public CrewObject _crewObject;
     string _name;
-    Text _textButton;
+    bool _enabled = false;
 
-    private void Awake()
+    private void Start()
     {
-        _textButton = GetComponentInChildren<Text>();
-    }
-
-    private void Start() {
         _name = _crewObject.name;
     }
 
@@ -27,37 +23,34 @@ public class CheckCrew : MonoBehaviour
         switch (_name)
         {
             case "Marvin":
-                _textButton.enabled = GameManager.instance._navigator == "CREW";
+                _enabled = GameManager.instance._navigator == "CREW";
+                gameObject.SetActive(_enabled);
                 break;
             case "Selena":
-                _textButton.enabled = GameManager.instance._shipwright == "CREW";
+                _enabled = GameManager.instance._shipwright == "CREW";
+                gameObject.SetActive(_enabled);
                 break;
             case "Lyra":
-                _textButton.enabled = GameManager.instance._witch == "CREW";
+                _enabled = GameManager.instance._witch == "CREW";
+                gameObject.SetActive(_enabled);
                 break;
             case "Gribbit":
-                _textButton.enabled = GameManager.instance._blacksmith == "CREW";
+                _enabled = GameManager.instance._blacksmith == "CREW";
+                gameObject.SetActive(_enabled);
                 break;
         }
     }
 
     public void Check()
     {
-        if (_textButton.enabled)
-        {
-            UIManager.instance._pnlCrew.SetActive(true);
-            UIManager.instance._txtNameCrew.text = _crewObject.name;
-            UIManager.instance._spriteMemberCrew.sprite = _crewObject.draw;
+        UIManager.instance._pnlCrew.SetActive(true);
+        UIManager.instance._txtNameCrew.text = _crewObject.name;
+        UIManager.instance._spriteMemberCrew.sprite = _crewObject.draw;
 
-            //localization
-            var currentLocale = LocalizationSettings.SelectedLocale;
-            if (currentLocale.Identifier.Code == "pt-BR") { UIManager.instance._txtDescriptionCrew.text = _crewObject.ptDescription; }
-            else if (currentLocale.Identifier.Code == "en") { UIManager.instance._txtDescriptionCrew.text = _crewObject.engDescription; }
-            //localization
-        }
-        else
-        {
-            UIManager.instance._pnlCrew.SetActive(false);
-        }
+        //localization
+        var currentLocale = LocalizationSettings.SelectedLocale;
+        if (currentLocale.Identifier.Code == "pt-BR") { UIManager.instance._txtDescriptionCrew.text = _crewObject.ptDescription; }
+        else if (currentLocale.Identifier.Code == "en") { UIManager.instance._txtDescriptionCrew.text = _crewObject.engDescription; }
+        //localization
     }
 }
