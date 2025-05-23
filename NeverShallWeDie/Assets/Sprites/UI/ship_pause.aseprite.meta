@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3a317f0fb33667842935f39fd76d5589
+guid: da291a066a6d01949a0e1e7241f935c5
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -73,7 +73,7 @@ ScriptedImporter:
   previousAsepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -85,7 +85,7 @@ ScriptedImporter:
   asepriteImporterSettings:
     fileImportMode: 1
     importHiddenLayers: 0
-    layerImportMode: 1
+    layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638835436114982851
+  platformSettingsDirtyTick: 638835436388098290
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: skull
+  - name: Layer 1
     originalName: 
-    pivot: {x: 0.45454544, y: 0.5084746}
+    pivot: {x: 0.43452382, y: 0.50364965}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 55
-      height: 59
-    spriteID: 4545feb3eb6939a4a9e06cf6e23ed235
+      width: 168
+      height: 137
+    spriteID: 4449b5775b8eeb543a0a1bb7602d39d8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1507869957
-    name: skull
-    layerFlags: 0
+    guid: 1317222744
+    name: Layer 1
+    layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: skull
+    - name: Layer 1
       frameIndex: 0
       cellRect:
-        x: 7
-        y: 2
-        width: 55
-        height: 59
-      spriteId: 4545feb3eb6939a4a9e06cf6e23ed235
+        x: 31
+        y: 3
+        width: 168
+        height: 137
+      spriteId: 4449b5775b8eeb543a0a1bb7602d39d8
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -221,4 +221,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 64, y: 64}
+  canvasSize: {x: 208, y: 144}

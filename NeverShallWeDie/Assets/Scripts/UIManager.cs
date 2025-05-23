@@ -68,6 +68,7 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Pause Switch")] public Text _txtNameCrew;
     [BoxGroup("Pause Switch")] public Image _spriteMemberCrew;
     [BoxGroup("Pause Switch")] public Text _txtDescriptionCrew;
+    [BoxGroup("Pause Switch")] public GameObject _buttonBackCrewDescription;
 
     [BoxGroup("Map")] public bool _inMap;
     [BoxGroup("Map")] public RectTransform _menuMap;
@@ -296,6 +297,20 @@ public class UIManager : MonoBehaviour
                 _pnlConfig.SetActive(true);
             }
         }
+    }
+
+    public void OpenCrewDescription(string name, Sprite draw)
+    {
+        _pnlCrew.SetActive(true);
+        _txtNameCrew.text = name;
+        _spriteMemberCrew.sprite = draw;
+        EventSystem.current.SetSelectedGameObject(_buttonBackCrewDescription);
+    }
+
+    public void ReturnToCrewScreen() //chamado no clique do botão de voltar no pnl_crews
+    {
+        _pnlCrew.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(_buttons[2]);
     }
     #endregion
 

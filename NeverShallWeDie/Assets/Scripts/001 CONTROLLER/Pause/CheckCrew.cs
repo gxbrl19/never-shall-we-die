@@ -43,9 +43,7 @@ public class CheckCrew : MonoBehaviour
 
     public void Check()
     {
-        UIManager.instance._pnlCrew.SetActive(true);
-        UIManager.instance._txtNameCrew.text = _crewObject.name;
-        UIManager.instance._spriteMemberCrew.sprite = _crewObject.draw;
+        UIManager.instance.OpenCrewDescription(_crewObject.name, _crewObject.draw);
 
         //localization
         var currentLocale = LocalizationSettings.SelectedLocale;
