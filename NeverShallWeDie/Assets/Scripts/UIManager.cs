@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private Image _fire;
     [BoxGroup("HUD")][SerializeField] private Image _air;
     [BoxGroup("HUD")][SerializeField] private Image _water;
-    [BoxGroup("HUD")][SerializeField] private GameObject _interact;
     [BoxGroup("HUD")][SerializeField] private GameObject _skullSave;
     [BoxGroup("HUD")] public GameObject _pnlBoss;
     [BoxGroup("HUD")] public Image _healthBoss;
@@ -190,11 +189,6 @@ public class UIManager : MonoBehaviour
         _water.fillAmount = _player._timeWaterSpin / _player._timeForSkills;
     }
 
-    public void InteractPanel(bool show)
-    {
-        _interact.SetActive(show);
-    }
-
     public void SaveEnabled()
     {
         _skullSave.SetActive(true);
@@ -281,11 +275,11 @@ public class UIManager : MonoBehaviour
             }
             else if (i < _panelIndex)
             {
-                _panels[i].DOAnchorPos(new Vector2(-700f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+                _panels[i].DOAnchorPos(new Vector2(-500f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
             }
             else if (i > _panelIndex)
             {
-                _panels[i].DOAnchorPos(new Vector2(700f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
+                _panels[i].DOAnchorPos(new Vector2(500f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
             }
 
             if (_panelIndex == 5) //config

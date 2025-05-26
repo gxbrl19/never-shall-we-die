@@ -6,11 +6,13 @@ using UnityEngine.Localization.Settings;
 
 public class Interact : MonoBehaviour
 {
+    [SerializeField] GameObject _canvas;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
-            UIManager.instance.InteractPanel(true);
+            _canvas.gameObject.SetActive(true);
         }
     }
 
@@ -18,7 +20,7 @@ public class Interact : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
-            UIManager.instance.InteractPanel(false);
+            _canvas.gameObject.SetActive(false);
         }
     }
 }
