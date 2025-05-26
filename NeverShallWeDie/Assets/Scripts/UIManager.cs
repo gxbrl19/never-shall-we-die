@@ -43,7 +43,6 @@ public class UIManager : MonoBehaviour
     private int _panelIndex;
 
     [Header("Equipments")]
-    [BoxGroup("Pause Switch")] public Image[] _btnSwitch;
     [BoxGroup("Pause Switch")] public Sprite _spriteSwitch1;
     [BoxGroup("Pause Switch")] public Sprite _spriteSwitch;
     [BoxGroup("Pause Switch")] public GameObject[] _buttons;
@@ -278,18 +277,15 @@ public class UIManager : MonoBehaviour
             if (i == _panelIndex)
             {
                 _panels[i].DOAnchorPos(new Vector2(0f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
-                _btnSwitch[i].sprite = _spriteSwitch1;
                 EventSystem.current.SetSelectedGameObject(_buttons[i]);
             }
             else if (i < _panelIndex)
             {
                 _panels[i].DOAnchorPos(new Vector2(-700f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
-                _btnSwitch[i].sprite = _spriteSwitch;
             }
             else if (i > _panelIndex)
             {
                 _panels[i].DOAnchorPos(new Vector2(700f, 0f), .25f).SetUpdate(true).SetEase(Ease.Linear).SetUpdate(true).SetUpdate(UpdateType.Normal, true);
-                _btnSwitch[i].sprite = _spriteSwitch;
             }
 
             if (_panelIndex == 5) //config
