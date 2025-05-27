@@ -7,6 +7,7 @@ using UnityEngine.Localization.Settings;
 
 public class CheckEquipments : MonoBehaviour
 {
+    [SerializeField] int _buttonID;
     [SerializeField] EquipmentObject _equipment;
     [SerializeField] Image _imageButton;
 
@@ -26,7 +27,8 @@ public class CheckEquipments : MonoBehaviour
     {
         if (PlayerEquipment.instance.equipments.Contains(_equipment.equipment))
         {
-            UIManager.instance._descriptions.SetActive(true);
+            UIManager.instance.OpenEquipDescription();
+            UIManager.instance._buttonEquipID = _buttonID;
 
             if (_equipment.gamepadButton != null && _equipment.keyboardButton != null)
             {

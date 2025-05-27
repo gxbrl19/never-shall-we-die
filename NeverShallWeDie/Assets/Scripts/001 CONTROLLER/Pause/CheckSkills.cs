@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CheckSkills : MonoBehaviour
 {
+    [SerializeField] int _buttonID;
     [SerializeField] SkillObject _skill;
     [SerializeField] Image _imageButton;
     Text _textButton;
@@ -32,6 +33,8 @@ public class CheckSkills : MonoBehaviour
     {
         if (PlayerSkills.instance.skills.Contains(_skill.skill))
         {
+            UIManager.instance.OpenSkillDescription();
+            UIManager.instance._buttonSkillID = _buttonID;
             UIManager.instance._pnlSkills.SetActive(true);
             UIManager.instance._nameSkill.text = _skill.nameSkill;
             UIManager.instance._imgParchment.sprite = _skill.parchment;
