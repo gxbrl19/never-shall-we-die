@@ -705,6 +705,7 @@ GameObject:
   - component: {fileID: 3227473634612903610}
   - component: {fileID: 4984949831048678110}
   - component: {fileID: 8160846808588850631}
+  - component: {fileID: 7129567638438335874}
   - component: {fileID: 4991427977566975559}
   - component: {fileID: 4093693892083451613}
   m_Layer: 9
@@ -1275,6 +1276,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills: 
+--- !u!114 &7129567638438335874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160846808588850480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdfd661d8ae55004c94c3417315dd3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: 
 --- !u!114 &4991427977566975559
 MonoBehaviour:
   m_ObjectHideFlags: 0

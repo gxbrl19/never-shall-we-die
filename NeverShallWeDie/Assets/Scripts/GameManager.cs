@@ -13,6 +13,7 @@ public class PlayerData
 {
     public List<Equipments> equipments;
     public List<Skills> skills;
+    public List<Items> items;
     public float hpMax;
     public float mpMax;
     public int gold;
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     [BoxGroup("PlayerStats")] public List<Equipments> _equipments;
     [BoxGroup("PlayerStats")] public List<Skills> _skills;
+    [BoxGroup("PlayerStats")] public List<Items> _inventory;
     [BoxGroup("PlayerStats")] public float _hpMax = 25f;
     [BoxGroup("PlayerStats")] public float _mpMax = 15f;
     [BoxGroup("PlayerStats")] public int _katanaLevel;
@@ -93,8 +95,6 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Crew")] public int[] _maps;
 
     [Header("CrewItens")]
-    [BoxGroup("Crew")] public int _hammer; //0 para false e 1 para true
-    [BoxGroup("Crew")] public int _grimoire;
     [BoxGroup("Crew")] public int _submarine;
     [BoxGroup("Crew")] public int _propulsion;
     [BoxGroup("Crew")] public int _artillery;
@@ -186,6 +186,7 @@ public class GameManager : MonoBehaviour
         //atribui os valores do jogo ao objeto
         _data.equipments = _equipments;
         _data.skills = _skills;
+        _data.items = _inventory;
         _data.hpMax = _hpMax;
         _data.mpMax = _mpMax;
         _data.gold = _gold;
@@ -219,8 +220,6 @@ public class GameManager : MonoBehaviour
 
         _data.maps = _maps;
 
-        _data.hammer = _hammer;
-        _data.grimoire = _grimoire;
         _data.submarine = _submarine;
         _data.propulsion = _propulsion;
         _data.artillery = _artillery;
@@ -281,6 +280,7 @@ public class GameManager : MonoBehaviour
             //atribui os valores do objeto ao jogo
             _equipments = _data.equipments;
             _skills = _data.skills;
+            _inventory = _data.items;
             _hpMax = _data.hpMax;
             _mpMax = _data.mpMax;
             _gold = _data.gold;
@@ -314,8 +314,6 @@ public class GameManager : MonoBehaviour
 
             _maps = _data.maps;
 
-            _hammer = _data.hammer;
-            _grimoire = _data.grimoire;
             _submarine = _data.submarine;
             _propulsion = _data.propulsion;
             _artillery = _data.artillery;

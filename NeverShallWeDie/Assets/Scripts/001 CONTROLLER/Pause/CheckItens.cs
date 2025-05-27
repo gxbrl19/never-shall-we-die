@@ -17,10 +17,10 @@ public class CheckItens : MonoBehaviour
         switch (_item)
         {
             case "Hammer":
-                _imageButton.enabled = GameManager.instance._hammer == 1 ? true : false;
+                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Hammer) ? true : false;
                 break;
             case "Grimoire":
-                _imageButton.enabled = GameManager.instance._grimoire == 1 ? true : false;
+                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Grimoire) ? true : false;
                 break;
             case "Cannon":
                 _imageButton.enabled = GameManager.instance._artillery == 1 ? true : false;
@@ -66,10 +66,10 @@ public class CheckItens : MonoBehaviour
         switch (_item)
         {
             case "Hammer":
-                UIManager.instance._pnlItems.SetActive(GameManager.instance._hammer == 1 ? true : false);
+                UIManager.instance._pnlItems.SetActive(InventorySystem.instance.items.Contains(Items.Hammer) ? true : false);
                 break;
             case "Grimoire":
-                UIManager.instance._pnlItems.SetActive(GameManager.instance._grimoire == 1 ? true : false);
+                UIManager.instance._pnlItems.SetActive(InventorySystem.instance.items.Contains(Items.Grimoire) ? true : false);
                 break;
             case "Cannon":
                 UIManager.instance._pnlItems.SetActive(GameManager.instance._artillery == 1 ? true : false);

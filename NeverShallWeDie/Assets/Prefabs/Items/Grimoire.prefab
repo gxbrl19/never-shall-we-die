@@ -153,8 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee42b9f4c1d80844b974a14fe1cc616f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: 1
-  _pickedSprite: {fileID: -4776392569096905907, guid: 23c0bae5044e2a44eb3e360cf85a5da0, type: 3}
+  _itemObject: {fileID: 11400000, guid: da4a4737fe7912742936ceec069c19b1, type: 2}
 --- !u!114 &2572377827867999337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7228595970875070017
 RectTransform:
   m_ObjectHideFlags: 0

@@ -47,7 +47,7 @@ public class Witch : MonoBehaviour
 
         //trocando o STATE da Bruxa
         if (GameManager.instance._witch == "MEET") { GameManager.instance._witch = "QUEST"; }
-        else if (GameManager.instance._grimoire == 1 && GameManager.instance._witch == "QUEST") { GameManager.instance._witch = "COMPLETE"; }
+        else if (InventorySystem.instance.items.Contains(Items.Grimoire) && GameManager.instance._witch == "QUEST") { GameManager.instance._witch = "COMPLETE"; }
         else if (GameManager.instance._witch == "COMPLETE") { GameManager.instance._witch = "CREW"; }
     }
 }

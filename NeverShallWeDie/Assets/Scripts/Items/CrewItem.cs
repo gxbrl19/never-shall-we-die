@@ -10,9 +10,10 @@ public enum CrewItens
 
 public class CrewItem : MonoBehaviour
 {
-    [Header("Components")]
-    public CrewItens _item;
-    [SerializeField] private Sprite _pickedSprite;
+    public ItemObject _itemObject;
+
+    private Items _item;
+    private Sprite _sprite;
     private bool _triggered = false;
     private Collider2D _collider;
     private AudioItems _audioItems;
@@ -25,20 +26,23 @@ public class CrewItem : MonoBehaviour
         _audioItems = FindFirstObjectByType<AudioItems>();
         _player = FindFirstObjectByType<Player>();
         _input = _player.GetComponent<PlayerInputs>();
+
+        _item = _itemObject.item;
+        _sprite = _itemObject.sprite;
     }
 
     void Update()
     {
         //verifica se o player já tem o equipamento e desativa o prefab
-        if (_item == CrewItens.Hammer)
+        if (_item == Items.Hammer)
         {
-            if (GameManager.instance._hammer == 1) { DisableItem(); }
+            if (InventorySystem.instance.items.Contains(Items.Hammer)) { DisableItem(); }
         }
-        else if (_item == CrewItens.Grimoire)
+        else if (_item == Items.Grimoire)
         {
-            if (GameManager.instance._grimoire == 1) { DisableItem(); }
+            if (InventorySystem.instance.items.Contains(Items.Grimoire)) { DisableItem(); }
         }
-        else if (_item == CrewItens.Submarine)
+        /*else if (_item == CrewItens.Submarine)
         {
             if (GameManager.instance._submarine == 1) { DisableItem(); }
         }
@@ -49,7 +53,7 @@ public class CrewItem : MonoBehaviour
         else if (_item == CrewItens.Artillery)
         {
             if (GameManager.instance._artillery == 1) { DisableItem(); }
-        }
+        }*/
 
         //verifica o input
         if (_input.interact && _triggered)
@@ -62,13 +66,16 @@ public class CrewItem : MonoBehaviour
     void NewItem() //chamado no update
     {
         _audioItems.PlayNewSkill();
-        _player.SetPowerPickup(_pickedSprite);
+        _player.SetPowerPickup(_sprite);
 
-        if (_item == CrewItens.Hammer) { GameManager.instance._hammer = 1; }
+        GameManager.instance._inventory.Add(_item);
+        InventorySystem.instance.items.Add(_item);
+
+        /*if (_item == CrewItens.Hammer) { GameManager.instance._hammer = 1; }
         else if (_item == CrewItens.Grimoire) { GameManager.instance._grimoire = 1; }
         else if (_item == CrewItens.Submarine) { GameManager.instance._submarine = 1; }
         else if (_item == CrewItens.Propulsion) { GameManager.instance._propulsion = 1; }
-        else if (_item == CrewItens.Artillery) { GameManager.instance._artillery = 1; }
+        else if (_item == CrewItens.Artillery) { GameManager.instance._artillery = 1; }*/
     }
 
     void DisableItem()
