@@ -63,6 +63,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Items")]
     [BoxGroup("Pause Switch")] public GameObject _pnlItems;
+    [BoxGroup("Pause Switch")] public ItemObject[] _slots;
+    [BoxGroup("Pause Switch")] public Image[] _slotImage;
     [BoxGroup("Pause Switch")] public Text _descItems;
     [BoxGroup("Pause Switch")] public GameObject _inventoryButtons;
 
@@ -289,6 +291,19 @@ public class UIManager : MonoBehaviour
             if (_panelIndex == 5) //config
             {
                 _pnlConfig.SetActive(true);
+            }
+        }
+    }
+
+    public void InventoryController(ItemObject item)
+    {
+        for (int i = 0; i < _slots.Length; i++)
+        {
+            if (_slots[i] == null || _slots[i].name == item.name)
+            {
+                _slots[i] = item;
+                _slotImage[i].sprite = item.sprite;
+                break;
             }
         }
     }

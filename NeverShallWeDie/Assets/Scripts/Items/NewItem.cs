@@ -21,7 +21,7 @@ public class NewItem : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
 
-        //_item = _itemObject.item;
+        _item = _itemObject.item;
     }
 
     private void Start()
@@ -46,6 +46,8 @@ public class NewItem : MonoBehaviour
             _collider.enabled = false;
             GameManager.instance._inventory.Add(_item);
             InventorySystem.instance.items.Add(_item);
+
+            UIManager.instance.InventoryController(_itemObject);
         }
     }
 }

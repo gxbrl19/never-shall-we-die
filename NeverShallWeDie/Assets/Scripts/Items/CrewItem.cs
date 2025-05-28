@@ -37,18 +37,18 @@ public class CrewItem : MonoBehaviour
         {
             if (InventorySystem.instance.items.Contains(Items.Grimoire)) { DisableItem(); }
         }
-        /*else if (_item == CrewItens.Submarine)
+        else if (_item == Items.Submarine)
         {
-            if (GameManager.instance._submarine == 1) { DisableItem(); }
+            if (InventorySystem.instance.items.Contains(Items.Submarine)) { DisableItem(); }
         }
-        else if (_item == CrewItens.Propulsion)
+        else if (_item == Items.Propulsion)
         {
-            if (GameManager.instance._propulsion == 1) { DisableItem(); }
+            if (InventorySystem.instance.items.Contains(Items.Propulsion)) { DisableItem(); }
         }
-        else if (_item == CrewItens.Artillery)
+        else if (_item == Items.Cannon)
         {
-            if (GameManager.instance._artillery == 1) { DisableItem(); }
-        }*/
+            if (InventorySystem.instance.items.Contains(Items.Cannon)) { DisableItem(); }
+        }
 
         //verifica o input
         if (_input.interact && _triggered)
@@ -66,11 +66,7 @@ public class CrewItem : MonoBehaviour
         GameManager.instance._inventory.Add(_item);
         InventorySystem.instance.items.Add(_item);
 
-        /*if (_item == CrewItens.Hammer) { GameManager.instance._hammer = 1; }
-        else if (_item == CrewItens.Grimoire) { GameManager.instance._grimoire = 1; }
-        else if (_item == CrewItens.Submarine) { GameManager.instance._submarine = 1; }
-        else if (_item == CrewItens.Propulsion) { GameManager.instance._propulsion = 1; }
-        else if (_item == CrewItens.Artillery) { GameManager.instance._artillery = 1; }*/
+        UIManager.instance.InventoryController(_itemObject);
     }
 
     void DisableItem()
