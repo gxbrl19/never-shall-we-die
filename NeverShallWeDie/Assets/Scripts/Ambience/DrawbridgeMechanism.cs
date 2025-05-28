@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,33 +22,34 @@ public class DrawbridgeMechanism : MonoBehaviour
         CancelSelect();
     }
 
+    void Start()
+    {
+        if (GameManager.instance._drawbridge == 1) { gameObject.GetComponent<Collider2D>().enabled = false; }
+    }
+
     private void Update()
     {
         if (_triggered && _input.interact)
         {
             UIManager.instance.ActivePanelDrawbridge();
-            UIManager.instance.SaveBackup();
             _triggered = false;
             _input.interact = false;
         }
     }
 
-    public void AddSlot(int slotID, int keyID)
+    public void AddSlot(ItemObject key, int keyID)
     {
-        if (_slots[slotID] < 6)
+        for (int i = 0; i < _slots.Length; i++)
         {
-            int key = _slots[slotID];
-            GameManager.instance._keys[key] = 1;
-            _slots[slotID] = keyID;
-            GameManager.instance._keys[keyID] = 2;
-        }
-        else
-        {
-            _slots[slotID] = keyID;
-            GameManager.instance._keys[keyID] = 2;
+            if (_slots[i] == 6)
+            {
+                _keyImages[i].color = Color.white;
+                _keyImages[i].sprite = key.sprite;
+                _slots[i] = keyID;
+                break;
+            }
         }
 
-        CheckColor(slotID, keyID);
         VerifySlots();
     }
 
@@ -56,31 +58,6 @@ public class DrawbridgeMechanism : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
             _triggered = true;
-        }
-    }
-
-    void CheckColor(int slotID, int keyID)
-    {
-        switch (keyID)
-        {
-            case 0:
-                _keyImages[slotID].color = Color.yellow;
-                break;
-            case 1:
-                _keyImages[slotID].color = Color.red;
-                break;
-            case 2:
-                _keyImages[slotID].color = Color.green;
-                break;
-            case 3:
-                _keyImages[slotID].color = Color.cyan;
-                break;
-            case 4:
-                _keyImages[slotID].color = Color.magenta;
-                break;
-            case 5:
-                _keyImages[slotID].color = Color.grey;
-                break;
         }
     }
 
@@ -95,16 +72,24 @@ public class DrawbridgeMechanism : MonoBehaviour
 
     void VerifySlots() //chamado ao selecionar uma Key (configurar)
     {
+        // enquanto não estiver todo preenchido, ele não compara com o secret
+        for (int i = 0; i < _slots.Length; i++)
+        {
+            if (_slots[i] == 6) { return; }
+        }
+
         //usando Equals para verificar se é igual ao secret
         for (int i = 0; i < _slots.Length; i++)
         {
             if (!Equals(_slots[i], GameManager.instance._secret[i]))
             {
+                CancelSelect();
                 return;
             }
         }
 
         _drawbridge.EnabledBridge();
         UIManager.instance.UpDrawbridge();
+        gameObject.GetComponent<Collider2D>().enabled = false;
     }
 }

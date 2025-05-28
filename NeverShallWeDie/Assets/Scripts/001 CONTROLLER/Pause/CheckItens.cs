@@ -8,8 +8,13 @@ using UnityEngine.Localization.Settings;
 public class CheckItens : MonoBehaviour
 {
     [SerializeField] ItemObject _itemObject;
-    [SerializeField] Image _imageButton;
+    Image _imageButton;
     Items _item;
+
+    void Start()
+    {
+        _imageButton = transform.GetChild(0).gameObject.GetComponent<Image>();
+    }
 
     void Update()
     {
@@ -20,47 +25,45 @@ public class CheckItens : MonoBehaviour
         switch (_item.ToString())
         {
             case "Hammer":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Hammer) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Hammer) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Grimoire":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Grimoire) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Grimoire) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Cannon":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Cannon) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Cannon) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Propulsion":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Propulsion) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Propulsion) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Submarine":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Submarine) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Submarine) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Secret":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Secret) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Secret) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Crank":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Crank) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Crank) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Key0":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Key0) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Key0) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Key1":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Key1) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Key1) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Key2":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Key2) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Key2) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Key3":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Key3) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Key3) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Key4":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Key4) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Key4) ? _itemObject.sprite : _imageButton.sprite;
                 break;
             case "Key5":
-                _imageButton.enabled = InventorySystem.instance.items.Contains(Items.Key5) ? true : false;
+                _imageButton.sprite = InventorySystem.instance.items.Contains(Items.Key5) ? _itemObject.sprite : _imageButton.sprite;
                 break;
         }
-
-        if (_imageButton.enabled) { _imageButton.sprite = _itemObject.sprite; }
     }
 
     public void Check() //verificar se tem o item e mostrar no painel de descrição

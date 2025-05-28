@@ -46,8 +46,6 @@ public class NewItem : MonoBehaviour
             _collider.enabled = false;
             GameManager.instance._inventory.Add(_item);
             InventorySystem.instance.items.Add(_item);
-
-            UIManager.instance.InventoryController(_itemObject);
         }
     }
 }

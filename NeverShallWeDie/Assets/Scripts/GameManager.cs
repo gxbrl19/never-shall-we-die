@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Sound")] public float _musicVol;
     [BoxGroup("Sound")] public float _sfxVol;
 
-    [BoxGroup("Door")] public int[] _keys; //mostra as chaves já encontradas
     [BoxGroup("Door")] public int[] _doors; //mostra as portas já abertas
 
     [HideInInspector] public string _inputType;
@@ -132,7 +131,6 @@ public class GameManager : MonoBehaviour
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
         _chests = new int[50]; //TODO: colocar o numero de Chests que estarão no game
         _barriersLever = new int[50]; //TODO: colocar o numero de Barriers lever que estarão no game
-        _keys = new int[6];
         _doors = new int[6];
         _rocks = new int[4];
 

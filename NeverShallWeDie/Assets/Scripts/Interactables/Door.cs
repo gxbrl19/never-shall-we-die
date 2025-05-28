@@ -21,7 +21,6 @@ public class Door : MonoBehaviour
     private bool _playerTriggered = false;
     Animator _animation;
     PlayerInputs _input;
-    SpriteRenderer _spritePadlock;
 
     private void Awake()
     {
@@ -32,7 +31,13 @@ public class Door : MonoBehaviour
     private void Start()
     {
         _locked = GameManager.instance._doors[_doorID] == 0 ? true : false;
-        _withKey = GameManager.instance._keys[_doorID] == 1 ? true : false;
+
+        if (_doorID == 0) { _withKey = InventorySystem.instance.items.Contains(Items.Key0); }
+        else if (_doorID == 1) { _withKey = InventorySystem.instance.items.Contains(Items.Key1); }
+        else if (_doorID == 2) { _withKey = InventorySystem.instance.items.Contains(Items.Key2); }
+        else if (_doorID == 3) { _withKey = InventorySystem.instance.items.Contains(Items.Key3); }
+        else if (_doorID == 4) { _withKey = InventorySystem.instance.items.Contains(Items.Key4); }
+        else if (_doorID == 5) { _withKey = InventorySystem.instance.items.Contains(Items.Key5); }
 
         if (!_locked) { _animation.SetBool("Open", true); }
     }

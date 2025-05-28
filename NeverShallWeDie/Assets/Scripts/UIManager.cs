@@ -12,6 +12,7 @@ using TMPro;
 using System;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Audio;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
@@ -63,10 +64,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Items")]
     [BoxGroup("Pause Switch")] public GameObject _pnlItems;
-    [BoxGroup("Pause Switch")] public ItemObject[] _slots;
-    [BoxGroup("Pause Switch")] public Image[] _slotImage;
     [BoxGroup("Pause Switch")] public Text _descItems;
-    [BoxGroup("Pause Switch")] public GameObject _inventoryButtons;
 
     [Header("Crew")]
     [BoxGroup("Pause Switch")] public GameObject _pnlCrew;
@@ -120,12 +118,9 @@ public class UIManager : MonoBehaviour
     [BoxGroup("New Member")] public Text _nameNewMember;
     [BoxGroup("New Member")] public Text _functionNewMember;
 
+    [BoxGroup("Secret")] public GameObject _firstButtonKey;
     [BoxGroup("Secret")] public GameObject _pnlDrawbridge;
-    [BoxGroup("Secret")] public GameObject _pnlKeyDrawbridge;
     [BoxGroup("Secret")] public GameObject[] _slotsDrawbridge;
-    [BoxGroup("Secret")] public GameObject _firstKeyDrawbridge;
-    [BoxGroup("Secret")] public int _slotID;
-    [BoxGroup("Secret")] public int[] _backupKeys;
     [BoxGroup("Secret")] public GameObject _pnlSecret;
     [BoxGroup("Secret")] public Image[] _secretSequence;
 
@@ -291,19 +286,6 @@ public class UIManager : MonoBehaviour
             if (_panelIndex == 5) //config
             {
                 _pnlConfig.SetActive(true);
-            }
-        }
-    }
-
-    public void InventoryController(ItemObject item)
-    {
-        for (int i = 0; i < _slots.Length; i++)
-        {
-            if (_slots[i] == null || _slots[i].name == item.name)
-            {
-                _slots[i] = item;
-                _slotImage[i].sprite = item.sprite;
-                break;
             }
         }
     }
@@ -516,58 +498,45 @@ public class UIManager : MonoBehaviour
         _player.DisableControls();
         _pnlDrawbridge.SetActive(true);
         AudioHUD.instance.PlayBackButton();
-        EventSystem.current.SetSelectedGameObject(_slotsDrawbridge[0]);
+        EventSystem.current.SetSelectedGameObject(_firstButtonKey);
     }
 
     public void RecuseDrawbridge() //chamado no botão back do pnl_drawbridge (UI Manager)
     {
         _inUIScreen = false;
         _player.EnabledControls();
-        LoadBackup();
         DrawbridgeMechanism.instance.CancelSelect();
         _pnlDrawbridge.SetActive(false);
         AudioHUD.instance.PlayBackButton();
     }
 
-    public void SaveBackup()
+    public void SelectKey(ItemObject key) //chamado ao apertar um slot do pnl_drawbridge (UI Manager)
     {
-        _backupKeys = new int[6];
-        for (int i = 0; i < _backupKeys.Length; i++)
+        string _key = key.name.ToString();
+
+        switch (_key)
         {
-            _backupKeys[i] = GameManager.instance._keys[i];
+            case "Key0":
+                if (InventorySystem.instance.items.Contains(Items.Key0)) { DrawbridgeMechanism.instance.AddSlot(key, 0); }
+                break;
+            case "Key1":
+                if (InventorySystem.instance.items.Contains(Items.Key1)) { DrawbridgeMechanism.instance.AddSlot(key, 1); }
+                break;
+            case "Key2":
+                if (InventorySystem.instance.items.Contains(Items.Key2)) { DrawbridgeMechanism.instance.AddSlot(key, 2); }
+                break;
+            case "Key3":
+                if (InventorySystem.instance.items.Contains(Items.Key3)) { DrawbridgeMechanism.instance.AddSlot(key, 3); }
+                break;
+            case "Key4":
+                if (InventorySystem.instance.items.Contains(Items.Key4)) { DrawbridgeMechanism.instance.AddSlot(key, 4); }
+                break;
+            case "Key5":
+                if (InventorySystem.instance.items.Contains(Items.Key5)) { DrawbridgeMechanism.instance.AddSlot(key, 5); }
+                break;
         }
-    }
 
-    void LoadBackup()
-    {
-        for (int i = 0; i < _backupKeys.Length; i++)
-        {
-            GameManager.instance._keys[i] = _backupKeys[i];
-        }
-    }
-
-    public void SelectSlot(int id) //chamado ao apertar um slot do pnl_drawbridge (UI Manager)
-    {
-        _slotID = id;
-        _pnlKeyDrawbridge.SetActive(true);
         AudioHUD.instance.PlaySelectButton();
-        EventSystem.current.SetSelectedGameObject(_firstKeyDrawbridge);
-    }
-
-    public void SelectKey(int key) //chamado ao apertar um slot do pnl_drawbridge (UI Manager)
-    {
-        if (GameManager.instance._keys[key] != 1) { return; }
-        _pnlKeyDrawbridge.SetActive(false);
-        AudioHUD.instance.PlaySelectButton();
-        DrawbridgeMechanism.instance.AddSlot(_slotID, key);
-        EventSystem.current.SetSelectedGameObject(_slotsDrawbridge[_slotID]);
-    }
-
-    public void CancelSelectKey() //cahamdo no botão voltar do pnl key
-    {
-        _pnlKeyDrawbridge.SetActive(false);
-        AudioHUD.instance.PlaySelectButton();
-        EventSystem.current.SetSelectedGameObject(_slotsDrawbridge[_slotID]);
     }
 
     public void UpDrawbridge()
