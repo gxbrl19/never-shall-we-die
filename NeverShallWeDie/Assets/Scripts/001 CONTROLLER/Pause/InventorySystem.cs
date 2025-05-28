@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Items
 {
-    Hammer, Grimoire, Artillery, Submarine, Propulsion
+    Hammer, Grimoire, Cannon, Submarine, Propulsion, Secret, Crank, Key0, Key1, Key2, Key3, Key4, Key5
 }
 
 public class InventorySystem : MonoBehaviour

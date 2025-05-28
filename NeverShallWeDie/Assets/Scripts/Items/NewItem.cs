@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class SecretDrawbridge : MonoBehaviour
+public class NewItem : MonoBehaviour
 {
+    public ItemObject _itemObject;
+    private Items _item;
+
     Rigidbody2D _body;
-    SpriteRenderer _sprite;
+    SpriteRenderer _spriteRenderer;
     Collider2D _collider;
 
     [Header("FMOD Events")]
@@ -15,8 +18,10 @@ public class SecretDrawbridge : MonoBehaviour
     private void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
-        _sprite = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
+
+        //_item = _itemObject.item;
     }
 
     private void Start()
@@ -36,10 +41,11 @@ public class SecretDrawbridge : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             RuntimeManager.PlayOneShot(collected);
-            UIManager.instance.FeedbackItem(_sprite.sprite, _sprite.color);
-            _sprite.enabled = false;
+            UIManager.instance.FeedbackItem(_spriteRenderer.sprite);
+            _spriteRenderer.enabled = false;
             _collider.enabled = false;
-            GameManager.instance._secretDrawbridge = 1;
+            GameManager.instance._inventory.Add(_item);
+            InventorySystem.instance.items.Add(_item);
         }
     }
 }

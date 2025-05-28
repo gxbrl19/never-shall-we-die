@@ -64,6 +64,7 @@ public class UIManager : MonoBehaviour
     [Header("Items")]
     [BoxGroup("Pause Switch")] public GameObject _pnlItems;
     [BoxGroup("Pause Switch")] public Text _descItems;
+    [BoxGroup("Pause Switch")] public GameObject _inventoryButtons;
 
     [Header("Crew")]
     [BoxGroup("Pause Switch")] public GameObject _pnlCrew;
@@ -204,9 +205,8 @@ public class UIManager : MonoBehaviour
         _skullSave.SetActive(false);
     }
 
-    public void FeedbackItem(Sprite image, Color color)
+    public void FeedbackItem(Sprite image)
     {
-        _imgFeedbackItem.color = color;
         _imgFeedbackItem.sprite = image;
         _feedbackItemAnimator.SetTrigger("Start");
     }

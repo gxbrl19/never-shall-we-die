@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 62880426106912223}
   - component: {fileID: 62880426106912220}
   - component: {fileID: 62880426106912221}
-  - component: {fileID: 1293759266157445037}
+  - component: {fileID: 1681524983962824967}
   m_Layer: 10
-  m_Name: Key
+  m_Name: Key 1
   m_TagString: Coins
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 1739194555
   m_SortingLayer: 5
   m_SortingOrder: 6
-  m_Sprite: {fileID: 1209732715397092015, guid: 26786e3db76358d41a91f85665547085, type: 3}
+  m_Sprite: {fileID: -6664143414942157121, guid: 26786e3db76358d41a91f85665547085, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1293759266157445037
+--- !u!114 &1681524983962824967
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,10 +158,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 62880426106912218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdf312d025f59f94e804981b55d81df3, type: 3}
+  m_Script: {fileID: 11500000, guid: 44541aa01ac6afa4ab5b864dc1ad2217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyID: 0
+  _itemObject: {fileID: 11400000, guid: 3bf908fcf2156f54a81fede423c58c2b, type: 2}
   collected:
     Guid:
       Data1: 838555581

@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum CrewItens
-{
-    Hammer, Grimoire, Submarine, Propulsion, Artillery
-}
-
 public class CrewItem : MonoBehaviour
 {
     public ItemObject _itemObject;

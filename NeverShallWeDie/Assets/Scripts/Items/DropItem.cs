@@ -21,33 +21,6 @@ public class DropItem : MonoBehaviour
     public void DropChest(int chestID)
     {
         if (_item == null) { return; } //retorna se não tiver nenhum item
-        Key _key = _item.GetComponent<Key>();
-
-        if (_key != null)
-        {
-            switch (chestID)
-            {
-                case 6: //TODO: pegar os IDs certos depois de definidos
-                    _key._keyID = 0;
-                    break;
-                case 7:
-                    _key._keyID = 1;
-                    break;
-                case 8:
-                    _key._keyID = 2;
-                    break;
-                case 9:
-                    _key._keyID = 3;
-                    break;
-                case 10:
-                    _key._keyID = 4;
-                    break;
-                case 11:
-                    _key._keyID = 5;
-                    break;
-            }
-        }
-
         Instantiate(_item, transform.position, Quaternion.identity);
     }
 }

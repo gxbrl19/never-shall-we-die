@@ -41,7 +41,7 @@ public class Potentium : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             RuntimeManager.PlayOneShot(collected);
-            UIManager.instance.FeedbackItem(_sprite.sprite, _sprite.color);
+            UIManager.instance.FeedbackItem(_sprite.sprite);
             _sprite.enabled = false;
             _collider.enabled = false;
             _player.CreateRecoveryEffect();
