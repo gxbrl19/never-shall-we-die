@@ -47,9 +47,8 @@ public class ShipOpenWorld : MonoBehaviour
     {
         _canMove = true;
 
-        //verifica se já existe o PlayerPrefs com a posição do Ship
-        float _xPosition = PlayerPrefs.HasKey("ShipPositionX") ? PlayerPrefs.GetFloat("ShipPositionX") : 0f;
-        float _yPosition = PlayerPrefs.HasKey("ShipPositionY") ? PlayerPrefs.GetFloat("ShipPositionY") : 0f;
+        float _xPosition = GameManager.instance._shipPosX;
+        float _yPosition = GameManager.instance._shipPosY;
         transform.position = new Vector3(_xPosition, _yPosition, 0f);
     }
 
@@ -178,8 +177,8 @@ public class ShipOpenWorld : MonoBehaviour
 
     public void SavePos()
     {
-        PlayerPrefs.SetFloat("ShipPositionX", transform.position.x);
-        PlayerPrefs.SetFloat("ShipPositionY", transform.position.y);
+        GameManager.instance._shipPosX = transform.position.x;
+        GameManager.instance._shipPosY = transform.position.y;
     }
 
     public void SubmarineMove()

@@ -154,27 +154,27 @@ public class PlayerHealth : MonoBehaviour
         _player.gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
-    #region "Prefs"
-    //PlayerPrefs para a troca de cena
-    public void SetHealth(float health)
+    #region "GameManager"
+
+    public void SetHealth(float health) //usado para manter o HP na troca de cena
     {
-        PlayerPrefs.SetFloat("Health", health);
+        GameManager.instance._currentHP = health;
     }
 
     public float GetHealth()
     {
-        float health = PlayerPrefs.HasKey("Health") ? PlayerPrefs.GetFloat("Health") : _maxHealth;
+        float health = GameManager.instance._currentHP != 0 ? GameManager.instance._currentHP : _maxHealth;
         return health;
     }
 
-    public void SetMana(float mana)
+    public void SetMana(float mana) //usado para manter o MP na troca de cena
     {
-        PlayerPrefs.SetFloat("Mana", mana);
+        GameManager.instance._currentMP = mana;
     }
 
     public float GetMana()
     {
-        float mana = PlayerPrefs.HasKey("Mana") ? PlayerPrefs.GetFloat("Mana") : 0f;
+        float mana = GameManager.instance._currentMP != 0 ? GameManager.instance._currentMP : 0f;
         return mana;
     }
     #endregion

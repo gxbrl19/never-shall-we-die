@@ -33,6 +33,8 @@ public class PlayerData
     public int gateMechanism;
     public int gateBoss;
     public List<ShipUpgrade> shipUpgrades;
+    public float shipPosX;
+    public float shipPosY;
     public int[] rocks;
     public int checkpointScene;
     public int direction;
@@ -62,6 +64,8 @@ public class GameManager : MonoBehaviour
     [BoxGroup("PlayerStats")] public List<Equipments> _equipments;
     [BoxGroup("PlayerStats")] public List<Skills> _skills;
     [BoxGroup("PlayerStats")] public List<Items> _inventory;
+    [HideInInspector] public float _currentHP; //usado para manter o HP na troca de cena
+    [HideInInspector] public float _currentMP; //usado para manter o MP na troca de cena
     [BoxGroup("PlayerStats")] public float _hpMax = 25f;
     [BoxGroup("PlayerStats")] public float _mpMax = 15f;
     [BoxGroup("PlayerStats")] public int _katanaLevel;
@@ -81,6 +85,8 @@ public class GameManager : MonoBehaviour
     [BoxGroup("ItemsInLevel")] public int _gateBoss; //Portão do Boss do mapa 05 (1 = consertado | 2 = aberto)
 
     [BoxGroup("OpenWorld")] public List<ShipUpgrade> _shipUpgrades;
+    [HideInInspector] public float _shipPosX; //salva a posição do navio para quando voltar para o OpenWorld
+    [HideInInspector] public float _shipPosY; //salva a posição do navio para quando voltar para o OpenWorld
     [BoxGroup("OpenWorld")] public int[] _rocks; //Rocks já destruídos
 
     [BoxGroup("Checkpoint")] public int _checkpointScene; //a cena atual que será o checkpoint
@@ -206,6 +212,8 @@ public class GameManager : MonoBehaviour
         _data.gateBoss = _gateBoss;
 
         _data.shipUpgrades = _shipUpgrades;
+        _data.shipPosX = _shipPosX;
+        _data.shipPosY = _shipPosY;
         _data.rocks = _rocks;
 
         _data.checkpointScene = _checkpointScene;
@@ -300,6 +308,8 @@ public class GameManager : MonoBehaviour
             _gateBoss = _data.gateBoss;
 
             _shipUpgrades = _data.shipUpgrades;
+            _shipPosX = _data.shipPosX;
+            _shipPosY = _data.shipPosY;
             _rocks = _data.rocks;
 
             _checkpointScene = _data.checkpointScene;
