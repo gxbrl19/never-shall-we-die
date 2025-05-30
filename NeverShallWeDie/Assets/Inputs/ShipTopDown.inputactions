@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Submarine",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "1257b390-c2bd-4433-8a1a-899b24563042",
                     "expectedControlType": "Button",
@@ -63,6 +63,15 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "cc718571-6244-4b85-8e52-82f2397ed5c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Submarine",
+                    "type": "Button",
+                    "id": "db06ac89-9cc4-45ac-81ed-1603fc1a38e6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -326,7 +335,7 @@
                 {
                     "name": "",
                     "id": "060cc3b1-58a8-4474-91c8-63914cbfcb88",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -363,7 +372,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Submarine",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -374,7 +383,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Submarine",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -419,6 +428,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cannon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4c0b5c0-bb8f-4061-abe0-8fc9c7c142fd",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submarine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ac5ea4e-28b8-4138-a0cf-899f4399186a",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submarine",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

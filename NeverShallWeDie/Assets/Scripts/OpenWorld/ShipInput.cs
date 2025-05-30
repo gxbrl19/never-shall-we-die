@@ -8,6 +8,7 @@ public class ShipInput : MonoBehaviour
     private float _horizontal;
     private float _vertical;
     private bool _submit;
+    private bool _interact;
     private bool _submarine;
     private bool _propulsion;
     private bool _cannon;
@@ -33,6 +34,12 @@ public class ShipInput : MonoBehaviour
     {
         get { return _submit; }
         set { _submit = value; }
+    }
+
+    public bool interact
+    {
+        get { return _interact; }
+        set { _interact = value; }
     }
 
     public bool submarine
@@ -93,6 +100,19 @@ public class ShipInput : MonoBehaviour
         if (callback.started)
         {
 
+        }
+    }
+
+    public void Interact(InputAction.CallbackContext callback)
+    {
+        if (callback.started)
+        {
+            _interact = true;
+        }
+
+        if (callback.canceled)
+        {
+            _interact = false;
         }
     }
 

@@ -1740,7 +1740,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 1072630096}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
@@ -3641,7 +3641,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 1113707194}
     m_SelectOnLeft: {fileID: 1113707194}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
@@ -13596,7 +13596,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 1427126324}
     m_SelectOnLeft: {fileID: 1113707194}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
@@ -16704,7 +16704,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 1966979471}
     m_SelectOnLeft: {fileID: 1113707194}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
@@ -16970,7 +16970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5656769189956118579, guid: 3a317f0fb33667842935f39fd76d5589, type: 3}
+  m_Sprite: {fileID: 4076489900335106957, guid: 3a317f0fb33667842935f39fd76d5589, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18430,7 +18430,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 1072630096}
     m_SelectOnLeft: {fileID: 1113707194}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
@@ -19019,7 +19019,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 205656090}
     m_SelectOnLeft: {fileID: 1072630096}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
@@ -19462,6 +19462,9 @@ MonoBehaviour:
   _save3: 0
   _equipments: 
   _skills: 
+  _inventory: 
+  _currentHP: 0
+  _currentMP: 0
   _hpMax: 25
   _mpMax: 15
   _katanaLevel: 0
@@ -19479,6 +19482,8 @@ MonoBehaviour:
   _gateMechanism: 0
   _gateBoss: 0
   _shipUpgrades: 
+  _shipPosX: 0
+  _shipPosY: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -19487,8 +19492,6 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
-  _hammer: 0
-  _grimoire: 0
   _submarine: 0
   _propulsion: 0
   _artillery: 0
@@ -19497,7 +19500,6 @@ MonoBehaviour:
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
-  _keys: 
   _doors: 
   _inputType: 
 --- !u!4 &1710845086
@@ -21539,7 +21541,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 377961248}
     m_SelectOnLeft: {fileID: 1113707194}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}

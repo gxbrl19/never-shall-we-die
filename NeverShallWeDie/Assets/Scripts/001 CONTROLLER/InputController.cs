@@ -55,7 +55,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Submarine"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""1257b390-c2bd-4433-8a1a-899b24563042"",
                     ""expectedControlType"": ""Button"",
@@ -85,6 +85,15 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""cc718571-6244-4b85-8e52-82f2397ed5c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Submarine"",
+                    ""type"": ""Button"",
+                    ""id"": ""db06ac89-9cc4-45ac-81ed-1603fc1a38e6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -348,7 +357,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""060cc3b1-58a8-4474-91c8-63914cbfcb88"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -385,7 +394,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Submarine"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -396,7 +405,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Submarine"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -443,6 +452,28 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""action"": ""Cannon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4c0b5c0-bb8f-4061-abe0-8fc9c7c142fd"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submarine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ac5ea4e-28b8-4138-a0cf-899f4399186a"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submarine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -454,10 +485,11 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         m_TopDown_Pause = m_TopDown.FindAction("Pause", throwIfNotFound: true);
         m_TopDown_Navigate = m_TopDown.FindAction("Navigate", throwIfNotFound: true);
         m_TopDown_Submit = m_TopDown.FindAction("Submit", throwIfNotFound: true);
-        m_TopDown_Submarine = m_TopDown.FindAction("Submarine", throwIfNotFound: true);
+        m_TopDown_Interact = m_TopDown.FindAction("Interact", throwIfNotFound: true);
         m_TopDown_Propulsion = m_TopDown.FindAction("Propulsion", throwIfNotFound: true);
         m_TopDown_Cannon = m_TopDown.FindAction("Cannon", throwIfNotFound: true);
         m_TopDown_Cancel = m_TopDown.FindAction("Cancel", throwIfNotFound: true);
+        m_TopDown_Submarine = m_TopDown.FindAction("Submarine", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -522,10 +554,11 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private readonly InputAction m_TopDown_Pause;
     private readonly InputAction m_TopDown_Navigate;
     private readonly InputAction m_TopDown_Submit;
-    private readonly InputAction m_TopDown_Submarine;
+    private readonly InputAction m_TopDown_Interact;
     private readonly InputAction m_TopDown_Propulsion;
     private readonly InputAction m_TopDown_Cannon;
     private readonly InputAction m_TopDown_Cancel;
+    private readonly InputAction m_TopDown_Submarine;
     public struct TopDownActions
     {
         private @InputController m_Wrapper;
@@ -533,10 +566,11 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_TopDown_Pause;
         public InputAction @Navigate => m_Wrapper.m_TopDown_Navigate;
         public InputAction @Submit => m_Wrapper.m_TopDown_Submit;
-        public InputAction @Submarine => m_Wrapper.m_TopDown_Submarine;
+        public InputAction @Interact => m_Wrapper.m_TopDown_Interact;
         public InputAction @Propulsion => m_Wrapper.m_TopDown_Propulsion;
         public InputAction @Cannon => m_Wrapper.m_TopDown_Cannon;
         public InputAction @Cancel => m_Wrapper.m_TopDown_Cancel;
+        public InputAction @Submarine => m_Wrapper.m_TopDown_Submarine;
         public InputActionMap Get() { return m_Wrapper.m_TopDown; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -555,9 +589,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Submit.started += instance.OnSubmit;
             @Submit.performed += instance.OnSubmit;
             @Submit.canceled += instance.OnSubmit;
-            @Submarine.started += instance.OnSubmarine;
-            @Submarine.performed += instance.OnSubmarine;
-            @Submarine.canceled += instance.OnSubmarine;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
             @Propulsion.started += instance.OnPropulsion;
             @Propulsion.performed += instance.OnPropulsion;
             @Propulsion.canceled += instance.OnPropulsion;
@@ -567,6 +601,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Cancel.started += instance.OnCancel;
             @Cancel.performed += instance.OnCancel;
             @Cancel.canceled += instance.OnCancel;
+            @Submarine.started += instance.OnSubmarine;
+            @Submarine.performed += instance.OnSubmarine;
+            @Submarine.canceled += instance.OnSubmarine;
         }
 
         private void UnregisterCallbacks(ITopDownActions instance)
@@ -580,9 +617,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Submit.started -= instance.OnSubmit;
             @Submit.performed -= instance.OnSubmit;
             @Submit.canceled -= instance.OnSubmit;
-            @Submarine.started -= instance.OnSubmarine;
-            @Submarine.performed -= instance.OnSubmarine;
-            @Submarine.canceled -= instance.OnSubmarine;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
             @Propulsion.started -= instance.OnPropulsion;
             @Propulsion.performed -= instance.OnPropulsion;
             @Propulsion.canceled -= instance.OnPropulsion;
@@ -592,6 +629,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Cancel.started -= instance.OnCancel;
             @Cancel.performed -= instance.OnCancel;
             @Cancel.canceled -= instance.OnCancel;
+            @Submarine.started -= instance.OnSubmarine;
+            @Submarine.performed -= instance.OnSubmarine;
+            @Submarine.canceled -= instance.OnSubmarine;
         }
 
         public void RemoveCallbacks(ITopDownActions instance)
@@ -614,9 +654,10 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
-        void OnSubmarine(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnPropulsion(InputAction.CallbackContext context);
         void OnCannon(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnSubmarine(InputAction.CallbackContext context);
     }
 }

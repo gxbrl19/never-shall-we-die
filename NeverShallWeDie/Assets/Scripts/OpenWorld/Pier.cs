@@ -22,7 +22,7 @@ public class Pier : MonoBehaviour
 
     private void Update()
     {
-        if (_playerTriggered && _input.submit)
+        if (_playerTriggered && _input.interact)
         {
             _playerTriggered = false;
             var currentLocale = LocalizationSettings.SelectedLocale;
