@@ -538,8 +538,11 @@ public class Player : MonoBehaviour
         DisableControls();
         _animation.SetPowerPickup();
 
-        _newSkill.sprite = sprite;
-        _powerPickup.SetActive(true);
+        if (sprite != null)
+        {
+            _newSkill.sprite = sprite;
+            _powerPickup.SetActive(true);
+        }
     }
 
     void EndPowerPickup() //chamado na animação

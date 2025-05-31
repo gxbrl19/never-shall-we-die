@@ -90,8 +90,6 @@ public class UpgradeShip : MonoBehaviour
 
     public void Action()
     {
-        //_animation.SetBool("Action", true);
-
         _walk = true;
         Flip();
         _player.DisableControls();
@@ -112,9 +110,9 @@ public class UpgradeShip : MonoBehaviour
 
     public void FinishUpgrade()
     {
-        //_animation.SetBool("Action", false);
         _return = false;
-        _player.EnabledControls();
+        AudioItems.instance.PlayNewSkill();
+        _player.SetPowerPickup(null);
     }
 
     void Flip()

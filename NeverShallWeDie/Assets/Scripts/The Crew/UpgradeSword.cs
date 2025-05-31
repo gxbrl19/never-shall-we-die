@@ -57,6 +57,7 @@ public class UpgradeSword : MonoBehaviour
     public void FinishUpgrade() //chamado na função Action
     {
         _animation.SetBool("Action", false);
-        _player.EnabledControls();
+        AudioItems.instance.PlayNewSkill();
+        _player.SetPowerPickup(null);
     }
 }
