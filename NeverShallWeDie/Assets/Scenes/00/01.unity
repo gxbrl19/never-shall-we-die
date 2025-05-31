@@ -559,9 +559,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1839216593
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: 1739194555
+  m_SortingLayer: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 7705478034751146975, guid: fe6f418236e8a304487d59b1c7f73c6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -582,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 254235936}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.704, y: -41.983, z: 0}
+  m_LocalPosition: {x: 9.304, y: -42.132, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -613,6 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33dfc71ce494bf44bcf503236ceec9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 0}
 --- !u!61 &254235941
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -645,18 +646,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03125, y: -0.21875}
+  m_Offset: {x: -0.49589062, y: -0.21875}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4615385, y: 0.64}
-    oldSize: {x: 0.8125, y: 1.5625}
+    pivot: {x: 0.5714286, y: 0.516129}
+    oldSize: {x: 1.3125, y: 1.9375}
     newSize: {x: 0.8125, y: 1.1875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8125, y: 1.5625}
+  m_Size: {x: 0.6077118, y: 1.5625}
   m_EdgeRadius: 0
 --- !u!1 &267900018
 GameObject:
@@ -2172,6 +2173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33dfc71ce494bf44bcf503236ceec9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 0}
 --- !u!61 &865490151
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9398,6 +9400,9 @@ MonoBehaviour:
   _save3: 0
   _equipments: 
   _skills: 
+  _inventory: 
+  _currentHP: 0
+  _currentMP: 0
   _hpMax: 25
   _mpMax: 15
   _katanaLevel: 0
@@ -9409,9 +9414,14 @@ MonoBehaviour:
   _chests: 
   _airCutblock: 
   _barriersLever: 
+  _secret: 
+  _secretDrawbridge: 0
+  _drawbridge: 0
   _gateMechanism: 0
   _gateBoss: 0
   _shipUpgrades: 
+  _shipPosX: 0
+  _shipPosY: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -9420,8 +9430,6 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
-  _hammer: 0
-  _grimoire: 0
   _submarine: 0
   _propulsion: 0
   _artillery: 0
@@ -9430,7 +9438,6 @@ MonoBehaviour:
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
-  _keys: 
   _doors: 
   _inputType: 
 --- !u!4 &1883190977
@@ -10456,6 +10463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33dfc71ce494bf44bcf503236ceec9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 0}
 --- !u!1001 &270366038028718685
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -675,6 +675,9 @@ public class UIManager : MonoBehaviour
             AudioHUD.instance.PlayUpgradeKatana();
             _txtGoldBuy.text = "-" + _katanaPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
+
+            UpgradeSword npc = FindObjectOfType<UpgradeSword>();
+            npc.Action();
         }
         else
         {
@@ -714,6 +717,9 @@ public class UIManager : MonoBehaviour
             AudioHUD.instance.PlayUpgradeHP();
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
+
+            UpgradePoints npc = FindObjectOfType<UpgradePoints>();
+            npc.Action();
         }
         else
         {
@@ -735,6 +741,9 @@ public class UIManager : MonoBehaviour
             AudioHUD.instance.PlayUpgradeHP();
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
+
+            UpgradePoints npc = FindObjectOfType<UpgradePoints>();
+            npc.Action();
         }
         else
         {

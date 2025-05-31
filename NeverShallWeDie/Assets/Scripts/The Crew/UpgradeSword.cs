@@ -9,12 +9,14 @@ public class UpgradeSword : MonoBehaviour
     Player _player;
     PlayerInputs _input;
     Collider2D _collider;
+    Animator _animation;
 
     void Awake()
     {
         _collider = GetComponent<Collider2D>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
+        _animation = GetComponentInParent<Animator>();
     }
 
     void Update()
@@ -43,5 +45,17 @@ public class UpgradeSword : MonoBehaviour
         {
             _playerTriggered = false;
         }
+    }
+
+    public void Action()
+    {
+        _animation.SetBool("Action", true);
+        Invoke("FinishUpgrade", 2f);
+    }
+
+    public void FinishUpgrade() //chamado na função Action
+    {
+        _animation.SetBool("Action", false);
+        _player.EnabledControls();
     }
 }
