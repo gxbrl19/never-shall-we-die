@@ -25,6 +25,9 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private Text _healthTxt;
     [BoxGroup("HUD")][SerializeField] private Text _healingTxt;
     [BoxGroup("HUD")][SerializeField] private Text _txtGold;
+    [BoxGroup("HUD")][SerializeField] private Text _txtGoldInPause;
+    [BoxGroup("HUD")][SerializeField] private Text _txtPotentiumInPause;
+    [BoxGroup("HUD")][SerializeField] private Text _txtOrbInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtGoldBuy;
     [BoxGroup("HUD")][SerializeField] private Animator _goldBuyAnimator;
     [BoxGroup("HUD")][SerializeField] private Image _imgFeedbackItem;
@@ -159,29 +162,22 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        HealthControl();
-        HealingControl();
-        GoldControl();
+        StatsController();
         SkillControl();
         DialogueControl();
     }
 
     #region HUD
-    void HealthControl()
+    void StatsController()
     {
         _healthBar.fillAmount = _health._currentHealth / _health._maxHealth;
         _healthTxt.text = _health._maxHealth.ToString();
-    }
-
-    public void HealingControl()
-    {
         _healingBar.fillAmount = _health._currentMana / _health._maxMana;
         _healingTxt.text = _health._maxMana.ToString();
-    }
-
-    void GoldControl()
-    {
         _txtGold.text = GameManager.instance._gold.ToString();
+        _txtGoldInPause.text = GameManager.instance._gold.ToString();
+        _txtPotentiumInPause.text = GameManager.instance._qtdPotentium.ToString();
+        _txtOrbInPause.text = GameManager.instance._qtdOrb.ToString();
     }
 
     void SkillControl()
