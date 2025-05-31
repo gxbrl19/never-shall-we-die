@@ -51,6 +51,7 @@ public class UpgradeSword : MonoBehaviour
     {
         _animation.SetBool("Action", true);
         Invoke("FinishUpgrade", 2f);
+        _player.DisableControls();
     }
 
     public void FinishUpgrade() //chamado na função Action

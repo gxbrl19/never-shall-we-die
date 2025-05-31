@@ -806,9 +806,12 @@ public class UIManager : MonoBehaviour
 
             _pnlUPShip.SetActive(false);
             GameManager.instance._gold -= _upShipPrice;
-            AudioHUD.instance.PlayUpgradeShip();
+            //AudioHUD.instance.PlayUpgradeShip();
             _txtGoldBuy.text = "-" + _upShipPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
+
+            UpgradeShip npc = FindObjectOfType<UpgradeShip>();
+            npc.Action();
         }
         else
         {

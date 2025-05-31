@@ -100,11 +100,6 @@ public class GameManager : MonoBehaviour
     [Header("Functions")]
     [BoxGroup("Crew")] public int[] _maps;
 
-    [Header("CrewItens")]
-    [BoxGroup("Crew")] public int _submarine;
-    [BoxGroup("Crew")] public int _propulsion;
-    [BoxGroup("Crew")] public int _artillery;
-
     //Enemy
     [BoxGroup("Enemy")] public int[] _bestiary;
     [BoxGroup("Enemy")] public int[] _bosses;
@@ -226,10 +221,6 @@ public class GameManager : MonoBehaviour
 
         _data.maps = _maps;
 
-        _data.submarine = _submarine;
-        _data.propulsion = _propulsion;
-        _data.artillery = _artillery;
-
         _data.bestiary = _bestiary;
         _data.bosses = _bosses;
 
@@ -321,10 +312,6 @@ public class GameManager : MonoBehaviour
             _blacksmith = _data.blacksmith;
 
             _maps = _data.maps;
-
-            _submarine = _data.submarine;
-            _propulsion = _data.propulsion;
-            _artillery = _data.artillery;
 
             _bestiary = _data.bestiary;
             _bosses = _data.bosses;
