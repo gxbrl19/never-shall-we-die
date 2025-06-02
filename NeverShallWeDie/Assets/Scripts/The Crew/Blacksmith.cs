@@ -43,7 +43,7 @@ public class Blacksmith : MonoBehaviour
     public void NextState()
     {
         //animação de member joined
-        if (GameManager.instance._blacksmith == "COMPLETE") { UIManager.instance.MemberJoined(_crewObject.name, _crewObject.ptCrewFunction, _crewObject.engCrewFunction, _crewObject.draw); }
+        if (GameManager.instance._blacksmith == "COMPLETE") { UIManager.instance.MemberJoined(_crewObject.name, _crewObject.draw); }
 
         //trocando o STATE do Ferreiro
         if (GameManager.instance._blacksmith == "MEET") { GameManager.instance._blacksmith = "QUEST"; }

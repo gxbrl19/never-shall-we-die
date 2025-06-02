@@ -119,7 +119,6 @@ public class UIManager : MonoBehaviour
     [BoxGroup("New Member")] public GameObject _pnlNewMember;
     [BoxGroup("New Member")] public Image _imgNewMember;
     [BoxGroup("New Member")] public Text _nameNewMember;
-    [BoxGroup("New Member")] public Text _functionNewMember;
 
     [BoxGroup("Secret")] public GameObject _firstButtonKey;
     [BoxGroup("Secret")] public GameObject _pnlDrawbridge;
@@ -458,7 +457,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Crew Joined
-    public void MemberJoined(string name, string ptFunction, string engFunction, Sprite image)
+    public void MemberJoined(string name, Sprite image)
     {
         _inNewMember = true;
         _player.DisableControls();
@@ -467,12 +466,6 @@ public class UIManager : MonoBehaviour
 
         _imgNewMember.sprite = image;
         _nameNewMember.text = name;
-
-        //localization
-        var currentLocale = LocalizationSettings.SelectedLocale;
-        if (currentLocale.Identifier.Code == "pt-BR") { _functionNewMember.text = ptFunction; }
-        else if (currentLocale.Identifier.Code == "en") { _functionNewMember.text = engFunction; }
-        //localization
 
         Invoke("FinishMemberJoined", 4f);
     }

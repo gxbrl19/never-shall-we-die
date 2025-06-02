@@ -43,7 +43,7 @@ public class Witch : MonoBehaviour
     public void NextState()
     {
         //animação de member joined
-        if (GameManager.instance._witch == "COMPLETE") { UIManager.instance.MemberJoined(_crewObject.name, _crewObject.ptCrewFunction, _crewObject.engCrewFunction, _crewObject.draw); }
+        if (GameManager.instance._witch == "COMPLETE") { UIManager.instance.MemberJoined(_crewObject.name, _crewObject.draw); }
 
         //trocando o STATE da Bruxa
         if (GameManager.instance._witch == "MEET") { GameManager.instance._witch = "QUEST"; }

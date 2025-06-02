@@ -46,7 +46,7 @@ public class Navigator : MonoBehaviour
         if (GameManager.instance._navigator == "OTHER") { GameManager.instance._maps[0] = 1; }
 
         //animação de member joined
-        if (GameManager.instance._navigator == "COMPLETE") { UIManager.instance.MemberJoined(_crewObject.name, _crewObject.ptCrewFunction, _crewObject.engCrewFunction, _crewObject.draw); }
+        if (GameManager.instance._navigator == "COMPLETE") { UIManager.instance.MemberJoined(_crewObject.name, _crewObject.draw); }
 
         //trocando o STATE do Navegador
         if (GameManager.instance._navigator == "MEET") { GameManager.instance._navigator = "QUEST"; }

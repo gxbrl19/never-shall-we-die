@@ -43,7 +43,7 @@ public class Shipwright : MonoBehaviour
     public void NextState()
     {
         //animação de member joined
-        if (GameManager.instance._shipwright == "COMPLETE") { UIManager.instance.MemberJoined(_crewObject.name, _crewObject.ptCrewFunction, _crewObject.engCrewFunction, _crewObject.draw); }
+        if (GameManager.instance._shipwright == "COMPLETE") { UIManager.instance.MemberJoined(_crewObject.name, _crewObject.draw); }
 
         //trocando o STATE da Carpinteira
         if (GameManager.instance._shipwright == "MEET") { GameManager.instance._shipwright = "QUEST"; }
