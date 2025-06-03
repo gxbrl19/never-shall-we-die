@@ -22,8 +22,10 @@ public class UIManager : MonoBehaviour
 
     [BoxGroup("HUD")][SerializeField] private Image _healthBar;
     [BoxGroup("HUD")][SerializeField] private Image _healingBar;
-    [BoxGroup("HUD")][SerializeField] private Text _healthTxt;
-    [BoxGroup("HUD")][SerializeField] private Text _healingTxt;
+    [BoxGroup("HUD")][SerializeField] private Text _txtHealth;
+    [BoxGroup("HUD")][SerializeField] private Text _txtMana;
+    [BoxGroup("HUD")][SerializeField] private Text _txtHealthInPause;
+    [BoxGroup("HUD")][SerializeField] private Text _txtHealingInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtGold;
     [BoxGroup("HUD")][SerializeField] private Text _txtGoldInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtStoneInPause;
@@ -168,10 +170,12 @@ public class UIManager : MonoBehaviour
     void StatsController()
     {
         _healthBar.fillAmount = _health._currentHealth / _health._maxHealth;
-        _healthTxt.text = _health._maxHealth.ToString();
         _healingBar.fillAmount = _health._currentMana / _health._maxMana;
-        _healingTxt.text = _health._maxMana.ToString();
+        _txtHealth.text = _health._currentHealth.ToString();
+        _txtMana.text = _health._currentMana.ToString();
         _txtGold.text = GameManager.instance._gold.ToString();
+        _txtHealthInPause.text = _health._maxHealth.ToString();
+        _txtHealingInPause.text = _health._maxMana.ToString();
         _txtGoldInPause.text = GameManager.instance._gold.ToString();
         _txtStoneInPause.text = GameManager.instance._xp.ToString();
     }
