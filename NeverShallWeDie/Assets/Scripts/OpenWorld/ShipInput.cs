@@ -7,7 +7,7 @@ public class ShipInput : MonoBehaviour
 {
     private float _horizontal;
     private float _vertical;
-    private bool _submit;
+    private float _accelerate;
     private bool _interact;
     private bool _submarine;
     private bool _propulsion;
@@ -30,10 +30,10 @@ public class ShipInput : MonoBehaviour
         set { _vertical = value; }
     }
 
-    public bool submit
+    public float accelerate
     {
-        get { return _submit; }
-        set { _submit = value; }
+        get { return _accelerate; }
+        set { _accelerate = value; }
     }
 
     public bool interact
@@ -82,16 +82,16 @@ public class ShipInput : MonoBehaviour
         _vertical = callback.ReadValue<float>();
     }
 
-    public void Submit(InputAction.CallbackContext callback)
+    public void Accelerate(InputAction.CallbackContext callback)
     {
         if (callback.started)
         {
-            _submit = true;
+            _accelerate = 1f;
         }
 
         if (callback.canceled)
         {
-            _submit = false;
+            _accelerate = 0f;
         }
     }
 

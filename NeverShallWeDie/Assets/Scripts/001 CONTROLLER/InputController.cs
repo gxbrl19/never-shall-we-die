@@ -46,7 +46,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Submit"",
+                    ""name"": ""Acceleration"",
                     ""type"": ""Button"",
                     ""id"": ""cb746886-1e61-4a60-a8f2-eeac339275d2"",
                     ""expectedControlType"": ""Button"",
@@ -350,18 +350,18 @@ public partial class @InputController: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Submit"",
+                    ""action"": ""Acceleration"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""060cc3b1-58a8-4474-91c8-63914cbfcb88"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Submit"",
+                    ""action"": ""Acceleration"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -484,7 +484,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         m_TopDown = asset.FindActionMap("TopDown", throwIfNotFound: true);
         m_TopDown_Pause = m_TopDown.FindAction("Pause", throwIfNotFound: true);
         m_TopDown_Navigate = m_TopDown.FindAction("Navigate", throwIfNotFound: true);
-        m_TopDown_Submit = m_TopDown.FindAction("Submit", throwIfNotFound: true);
+        m_TopDown_Acceleration = m_TopDown.FindAction("Acceleration", throwIfNotFound: true);
         m_TopDown_Interact = m_TopDown.FindAction("Interact", throwIfNotFound: true);
         m_TopDown_Propulsion = m_TopDown.FindAction("Propulsion", throwIfNotFound: true);
         m_TopDown_Cannon = m_TopDown.FindAction("Cannon", throwIfNotFound: true);
@@ -553,7 +553,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     private List<ITopDownActions> m_TopDownActionsCallbackInterfaces = new List<ITopDownActions>();
     private readonly InputAction m_TopDown_Pause;
     private readonly InputAction m_TopDown_Navigate;
-    private readonly InputAction m_TopDown_Submit;
+    private readonly InputAction m_TopDown_Acceleration;
     private readonly InputAction m_TopDown_Interact;
     private readonly InputAction m_TopDown_Propulsion;
     private readonly InputAction m_TopDown_Cannon;
@@ -565,7 +565,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
         public TopDownActions(@InputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_TopDown_Pause;
         public InputAction @Navigate => m_Wrapper.m_TopDown_Navigate;
-        public InputAction @Submit => m_Wrapper.m_TopDown_Submit;
+        public InputAction @Acceleration => m_Wrapper.m_TopDown_Acceleration;
         public InputAction @Interact => m_Wrapper.m_TopDown_Interact;
         public InputAction @Propulsion => m_Wrapper.m_TopDown_Propulsion;
         public InputAction @Cannon => m_Wrapper.m_TopDown_Cannon;
@@ -586,9 +586,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Navigate.started += instance.OnNavigate;
             @Navigate.performed += instance.OnNavigate;
             @Navigate.canceled += instance.OnNavigate;
-            @Submit.started += instance.OnSubmit;
-            @Submit.performed += instance.OnSubmit;
-            @Submit.canceled += instance.OnSubmit;
+            @Acceleration.started += instance.OnAcceleration;
+            @Acceleration.performed += instance.OnAcceleration;
+            @Acceleration.canceled += instance.OnAcceleration;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
@@ -614,9 +614,9 @@ public partial class @InputController: IInputActionCollection2, IDisposable
             @Navigate.started -= instance.OnNavigate;
             @Navigate.performed -= instance.OnNavigate;
             @Navigate.canceled -= instance.OnNavigate;
-            @Submit.started -= instance.OnSubmit;
-            @Submit.performed -= instance.OnSubmit;
-            @Submit.canceled -= instance.OnSubmit;
+            @Acceleration.started -= instance.OnAcceleration;
+            @Acceleration.performed -= instance.OnAcceleration;
+            @Acceleration.canceled -= instance.OnAcceleration;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
@@ -653,7 +653,7 @@ public partial class @InputController: IInputActionCollection2, IDisposable
     {
         void OnPause(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
-        void OnSubmit(InputAction.CallbackContext context);
+        void OnAcceleration(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnPropulsion(InputAction.CallbackContext context);
         void OnCannon(InputAction.CallbackContext context);

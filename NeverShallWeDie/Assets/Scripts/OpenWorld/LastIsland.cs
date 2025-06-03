@@ -26,7 +26,7 @@ public class LastIsland : MonoBehaviour
     {
         var currentLocale = LocalizationSettings.SelectedLocale;
 
-        if (_playerTriggered && _input.submit)
+        if (_playerTriggered && _input.interact)
         {
             if (!GameManager.instance._equipments.Contains(Equipments.Compass))
             {
@@ -37,7 +37,7 @@ public class LastIsland : MonoBehaviour
 
             _playerTriggered = false;
             _islandName = (currentLocale.Identifier.Code == "pt-BR") ? _ptIslandName : _engIslandName;
-            _ship.StopMove();
+            //_ship.StopMove();
             _ship._canMove = false;
             AudioHUD.instance.PlaySelectButton();
             CanvasOpenWorld.instance.OpenLevelSelect(_islandName);

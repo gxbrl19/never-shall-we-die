@@ -6,16 +6,14 @@ public class ShipOpenWorld : MonoBehaviour
 {
     public static ShipOpenWorld instance;
 
-    float _speedMax = 2.5f;
-    float _hSpeed;
-    float _vSpeed;
-    float accelarate = 0.04f;
-    float stop = 0.06f;
+    float _accelerationFactor = 1.5f;
+    float _turnFactor = 0.8f;
+    float _accelerationInput = 0;
+    float _steeringInput = 0;
+    float _rotationAngle = 0;
+
     [HideInInspector] public bool _canMove;
     bool _canAttack = true;
-
-    [SerializeField] List<string> _states = new List<string>();
-    string _state = "";
 
     [SerializeField] Transform _cannonPosition;
     [SerializeField] GameObject _shipCannon;
@@ -57,86 +55,57 @@ public class ShipOpenWorld : MonoBehaviour
         SubmarineMove();
 
         if (!_canMove) { return; }
-        IdleSprite();
-        Animation();
+        InputVector();
         Cannon();
     }
 
     void FixedUpdate()
     {
         if (!_canMove) { return; }
-        Accelerate();
-        Propulsion();
+        ApplyEngineForce();
+        ApplySteering();
+        Deceleration();
     }
 
-    public void Accelerate()
+    void ApplyEngineForce()
     {
-        if (_movement.x > 0 && _hSpeed < _speedMax) { _hSpeed += accelarate; }
-        else if (_movement.x < 0 && _hSpeed > -_speedMax) { _hSpeed -= accelarate; }
-        else if (_movement.x == 0 && _hSpeed < 0) { _hSpeed += stop; }
-        else if (_movement.x == 0 && _hSpeed > 0) { _hSpeed -= stop; }
-        if (_movement.x == 0 && _hSpeed == 0) { _hSpeed = 0; }
+        if (_input.accelerate == 0f) { return; }
 
-        if (_movement.y > 0 && _vSpeed < _speedMax) { _vSpeed += accelarate; }
-        else if (_movement.y < 0 && _vSpeed > -_speedMax) { _vSpeed -= accelarate; }
-        else if (_movement.y == 0 && _vSpeed < 0) { _vSpeed += stop; }
-        else if (_movement.y == 0 && _vSpeed > 0) { _vSpeed -= stop; }
-        if (_movement.y == 0 && _vSpeed == 0) { _vSpeed = 0; }
-
-        _body.velocity = new Vector2(_hSpeed, _vSpeed);
+        Vector2 engineForce = transform.up * _accelerationInput * _accelerationFactor;
+        _body.AddForce(engineForce, ForceMode2D.Force);
     }
 
-    public void Animation()
+    void Deceleration()
     {
-        if (_submarine) { return; }
+        if (_input.accelerate > 0f) { return; }
 
-        _movement.x = Input.GetAxisRaw("Horizontal");
-        _movement.y = Input.GetAxisRaw("Vertical");
-
-        _animation.SetFloat("Horizontal", _hSpeed);
-        _animation.SetFloat("Vertical", _vSpeed);
-
-        bool move = _movement.sqrMagnitude != 0; //já retorna true ou false
-        _animation.SetBool("Move", move);
-    }
-
-    public void StopMove()
-    {
-        _body.velocity = Vector2.zero;
-    }
-
-    void IdleSprite()
-    {
-        if (_submarine) { return; }
-
-        if (_movement.x == 0 && _movement.y > 0.01f) { _state = "Up"; }
-        else if (_movement.x < -0.01f && _movement.y > 0.01f) { _state = "UpLeft"; }
-        else if (_movement.x < -0.01f && _movement.y == 0) { _state = "Left"; }
-        else if (_movement.x < -0.01f && _movement.y < -0.01f) { _state = "DownLeft"; }
-        else if (_movement.x == 0 && _movement.y < -0.01f) { _state = "Down"; }
-        else if (_movement.x > 0.01f && _movement.y < -0.01f) { _state = "DownRight"; }
-        else if (_movement.x > 0.01f && _movement.y == 0) { _state = "Right"; }
-        else if (_movement.x > 0.01f && _movement.y > 0.01f) { _state = "UpRight"; }
-
-        for (int i = 0; i < _states.Count; i++)
+        if (_body.velocity.magnitude > 0.1f) // Verificar se o Rigidbody está em movimento
         {
-            if (_states[i] != _state)
-            {
-                _animation.SetBool(_states[i], false);
-                CannonPoint();
-            }
-            else
-            {
-                _animation.SetBool(_states[i], true);
-            }
+            Vector3 decelerationForceVector = -_body.velocity.normalized * _accelerationFactor;
+            _body.AddForce(decelerationForceVector, ForceMode2D.Force);
         }
+    }
+
+    void ApplySteering()
+    {
+        //muda o angulo de rotação baseado no input
+        _rotationAngle -= _steeringInput * _turnFactor;
+
+        //aplica a direção de acordo com a rotação do navio
+        _body.MoveRotation(_rotationAngle);
+    }
+
+    void InputVector()
+    {
+        _steeringInput = Input.GetAxisRaw("Horizontal");
+        _accelerationInput = _input.accelerate;
     }
 
     public void CannonPoint()
     {
         Vector3 _position = _cannonPosition.localPosition;
 
-        switch (_state)
+        /*switch (_state)
         {
             case "Up":
                 _position.x = 0f;
@@ -170,7 +139,7 @@ public class ShipOpenWorld : MonoBehaviour
                 _position.x = 0.7f;
                 _position.y = 0.7f;
                 break;
-        }
+        }*/
 
         _cannonPosition.localPosition = _position;
     }
@@ -248,5 +217,10 @@ public class ShipOpenWorld : MonoBehaviour
     public void FinishCannon() //chamado na função Cannon
     {
         _canAttack = true;
+    }
+
+    public void StopMove()
+    {
+        _body.velocity = Vector2.zero;
     }
 }
