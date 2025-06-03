@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class Potentium : MonoBehaviour
+public class Stone : MonoBehaviour
 {
     Rigidbody2D _body;
     SpriteRenderer _sprite;
     Collider2D _collider;
     Player _player;
-    PlayerHealth _health;
 
     [Header("FMOD Events")]
     [SerializeField] EventReference collected;
@@ -21,7 +20,6 @@ public class Potentium : MonoBehaviour
         _collider = GetComponent<Collider2D>();
 
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        _health = _player.GetComponent<PlayerHealth>();
     }
 
     private void Start()
@@ -45,7 +43,7 @@ public class Potentium : MonoBehaviour
             _sprite.enabled = false;
             _collider.enabled = false;
             _player.CreateRecoveryEffect();
-            GameManager.instance._qtdPotentium += 1;
+            GameManager.instance._xp += 1;
         }
     }
 }

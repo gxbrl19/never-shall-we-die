@@ -26,8 +26,7 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private Text _healingTxt;
     [BoxGroup("HUD")][SerializeField] private Text _txtGold;
     [BoxGroup("HUD")][SerializeField] private Text _txtGoldInPause;
-    [BoxGroup("HUD")][SerializeField] private Text _txtPotentiumInPause;
-    [BoxGroup("HUD")][SerializeField] private Text _txtOrbInPause;
+    [BoxGroup("HUD")][SerializeField] private Text _txtStoneInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtGoldBuy;
     [BoxGroup("HUD")][SerializeField] private Animator _goldBuyAnimator;
     [BoxGroup("HUD")][SerializeField] private Image _imgFeedbackItem;
@@ -175,8 +174,7 @@ public class UIManager : MonoBehaviour
         _healingTxt.text = _health._maxMana.ToString();
         _txtGold.text = GameManager.instance._gold.ToString();
         _txtGoldInPause.text = GameManager.instance._gold.ToString();
-        _txtPotentiumInPause.text = GameManager.instance._qtdPotentium.ToString();
-        _txtOrbInPause.text = GameManager.instance._qtdOrb.ToString();
+        _txtStoneInPause.text = GameManager.instance._xp.ToString();
     }
 
     void SkillControl()
@@ -660,7 +658,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance._katanaLevel += 1;
             _pnlUpKatana.SetActive(false);
             GameManager.instance._gold -= _katanaPrice;
-            GameManager.instance._qtdPotentium -= 4;
+            GameManager.instance._xp -= 4;
             AudioHUD.instance.PlayUpgradeKatana();
             _txtGoldBuy.text = "-" + _katanaPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
@@ -702,7 +700,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance._hpMax = _health._maxHealth;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
-            GameManager.instance._qtdOrb -= 4;
+            GameManager.instance._xp -= 4;
             AudioHUD.instance.PlayUpgradeHP();
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
@@ -726,7 +724,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance._mpMax = _health._maxMana;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
-            GameManager.instance._qtdOrb -= 4;
+            GameManager.instance._xp -= 4;
             AudioHUD.instance.PlayUpgradeHP();
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");

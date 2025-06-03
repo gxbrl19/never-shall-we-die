@@ -25,7 +25,7 @@ public class UpgradeSword : MonoBehaviour
         {
             _playerTriggered = false;
             _input.interact = false;
-            UIManager.instance._qtdPotentium = GameManager.instance._qtdPotentium;
+            UIManager.instance._qtdPotentium = GameManager.instance._xp;
             UIManager.instance._katanaPrice = _price;
             UIManager.instance.ActivePanelUpKatana();
         }

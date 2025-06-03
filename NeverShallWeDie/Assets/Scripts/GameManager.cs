@@ -16,12 +16,9 @@ public class PlayerData
     public List<Items> items;
     public float hpMax;
     public float mpMax;
+    public int xp;
     public int gold;
     public int katanaLevel;
-    public int qtdPotentium;
-    public int qtdOrb;
-    public int[] potentiuns;
-    public int[] orbs;
     public int[] flags;
     public int[] barrels;
     public int[] chests;
@@ -68,10 +65,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float _currentMP; //usado para manter o MP na troca de cena
     [BoxGroup("PlayerStats")] public float _hpMax = 25f;
     [BoxGroup("PlayerStats")] public float _mpMax = 15f;
+    [BoxGroup("PlayerStats")] public int _xp;
     [BoxGroup("PlayerStats")] public int _katanaLevel;
     [BoxGroup("PlayerStats")] public int _gold; //total de gold coletado
-    [BoxGroup("PlayerStats")] public int _qtdPotentium; //total de Potentiuns coletado
-    [BoxGroup("PlayerStats")] public int _qtdOrb; //total de Orbs points coletado
 
     [BoxGroup("ItemsInLevel")] public int[] _flags; //Flags já liberadas
     [BoxGroup("ItemsInLevel")] public int[] _barrels; //Barrels já destruídos
@@ -188,10 +184,9 @@ public class GameManager : MonoBehaviour
         _data.items = _inventory;
         _data.hpMax = _hpMax;
         _data.mpMax = _mpMax;
+        _data.xp = _xp;
         _data.gold = _gold;
         _data.katanaLevel = _katanaLevel;
-        _data.qtdPotentium = _qtdPotentium;
-        _data.qtdOrb = _qtdOrb;
 
         _data.flags = _flags;
         _data.barrels = _barrels;
@@ -280,10 +275,9 @@ public class GameManager : MonoBehaviour
             _inventory = _data.items;
             _hpMax = _data.hpMax;
             _mpMax = _data.mpMax;
+            _xp = _data.xp;
             _gold = _data.gold;
             _katanaLevel = _data.katanaLevel;
-            _qtdPotentium = _data.qtdPotentium;
-            _qtdOrb = _data.qtdOrb;
 
             _flags = _data.flags;
             _barrels = _data.barrels;
