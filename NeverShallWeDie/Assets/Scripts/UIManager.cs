@@ -99,13 +99,12 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")] public Text _txtKatanaPrice;
     [BoxGroup("Crew")] public Text _txtCurrPotentium;
     [HideInInspector] public int _katanaPrice;
-    [HideInInspector] public int _qtdPotentium;
     [BoxGroup("Crew")][Header("Witch")] public GameObject _pnlUpHpMp;
     [BoxGroup("Crew")] public GameObject _buttonYesUpHpMp;
     [BoxGroup("Crew")] public Text _txtUpHpMpPrice;
     [BoxGroup("Crew")] public Text _txtCurrOrbs;
     [HideInInspector] public int _UpHpMpPrice;
-    [HideInInspector] public int _qtdOrbs;
+    [HideInInspector] public int _xpStones;
     [BoxGroup("Crew")][Header("Shipwright")] public GameObject _pnlUPShip;
     [BoxGroup("Crew")] public GameObject _firstButtonShip;
     [BoxGroup("Crew")] public Button[] _buttonsUpgradeShip;
@@ -643,7 +642,7 @@ public class UIManager : MonoBehaviour
         _inUIScreen = true;
         _player.DisableControls();
         _txtKatanaPrice.text = _katanaPrice.ToString();
-        _txtCurrPotentium.text = _qtdPotentium.ToString();
+        _txtCurrPotentium.text = _xpStones.ToString();
         _pnlUpKatana.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpKatana);
         AudioHUD.instance.PlaySelectButton();
@@ -651,7 +650,7 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeKatana() //chamado no botão Yes do pnl_upKatana (UI Manager)
     {
-        if (GameManager.instance._gold >= _katanaPrice && _qtdPotentium >= 4)
+        if (GameManager.instance._gold >= _katanaPrice && _xpStones >= 4)
         {
             _inUIScreen = false;
             _player.EnabledControls();
@@ -684,7 +683,7 @@ public class UIManager : MonoBehaviour
         _inUIScreen = true;
         _player.DisableControls();
         _txtUpHpMpPrice.text = _UpHpMpPrice.ToString();
-        _txtCurrOrbs.text = _qtdOrbs.ToString();
+        _txtCurrOrbs.text = _xpStones.ToString();
         _pnlUpHpMp.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpHpMp);
         AudioHUD.instance.PlaySelectButton();
@@ -692,7 +691,7 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeHP() //chamado no botão HP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice && _qtdOrbs >= 4)
+        if (GameManager.instance._gold >= _UpHpMpPrice && _xpStones >= 4)
         {
             _inUIScreen = false;
             _player.EnabledControls();
@@ -716,7 +715,7 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeMP() //chamado no botão MP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice && _qtdOrbs >= 4)
+        if (GameManager.instance._gold >= _UpHpMpPrice && _xpStones >= 4)
         {
             _inUIScreen = false;
             _player.EnabledControls();
