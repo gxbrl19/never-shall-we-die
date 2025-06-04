@@ -11,6 +11,7 @@ public class ShipOpenWorld : MonoBehaviour
     float _accelerationInput = 0;
     float _steeringInput = 0;
     float _rotationAngle = 0;
+    float _maxSpeed = 2f;
 
     [HideInInspector] public bool _canMove;
     bool _canAttack = true;
@@ -65,6 +66,7 @@ public class ShipOpenWorld : MonoBehaviour
         ApplyEngineForce();
         ApplySteering();
         Deceleration();
+        _animation.SetFloat("Speed", _body.velocity.magnitude);
     }
 
     void ApplyEngineForce()
@@ -72,7 +74,19 @@ public class ShipOpenWorld : MonoBehaviour
         if (_input.accelerate == 0f) { return; }
 
         Vector2 engineForce = transform.up * _accelerationInput * _accelerationFactor;
-        _body.AddForce(engineForce, ForceMode2D.Force);
+
+        if (_body.velocity.magnitude < _maxSpeed) // Verifica se o corpo já atingiu ou ultrapassou a velocidade máxima na direção da força
+        {
+            _body.AddForce(engineForce, ForceMode2D.Force);
+        }
+        else
+        {
+            // Opcional: Se já estiver na velocidade máxima, você pode aplicar uma força menor
+            // ou nenhuma força para evitar que a velocidade exceda demais.
+            float currentSpeed = _body.velocity.magnitude;
+            Vector2 brakingForce = -_body.velocity.normalized * (currentSpeed - _maxSpeed) * _accelerationFactor;
+            _body.AddForce(brakingForce, ForceMode2D.Force);
+        }
     }
 
     void Deceleration()
@@ -88,60 +102,14 @@ public class ShipOpenWorld : MonoBehaviour
 
     void ApplySteering()
     {
-        //muda o angulo de rotação baseado no input
-        _rotationAngle -= _steeringInput * _turnFactor;
-
-        //aplica a direção de acordo com a rotação do navio
-        _body.MoveRotation(_rotationAngle);
+        _rotationAngle -= _steeringInput * _turnFactor; //muda o angulo de rotação baseado no input
+        _body.MoveRotation(_rotationAngle); //aplica a direção de acordo com a rotação do navio
     }
 
     void InputVector()
     {
         _steeringInput = Input.GetAxisRaw("Horizontal");
         _accelerationInput = _input.accelerate;
-    }
-
-    public void CannonPoint()
-    {
-        Vector3 _position = _cannonPosition.localPosition;
-
-        /*switch (_state)
-        {
-            case "Up":
-                _position.x = 0f;
-                _position.y = 0.7f;
-                break;
-            case "UpLeft":
-                _position.x = -0.7f;
-                _position.y = 0.7f;
-                break;
-            case "Left":
-                _position.x = -0.7f;
-                _position.y = 0f;
-                break;
-            case "DownLeft":
-                _position.x = -0.7f;
-                _position.y = -0.7f;
-                break;
-            case "Down":
-                _position.x = 0f;
-                _position.y = -0.7f;
-                break;
-            case "DownRight":
-                _position.x = 0.7f;
-                _position.y = -0.7f;
-                break;
-            case "Right":
-                _position.x = 0.7f;
-                _position.y = 0f;
-                break;
-            case "UpRight":
-                _position.x = 0.7f;
-                _position.y = 0.7f;
-                break;
-        }*/
-
-        _cannonPosition.localPosition = _position;
     }
 
     public void SavePos()
