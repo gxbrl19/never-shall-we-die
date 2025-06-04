@@ -67,15 +67,17 @@ public class EnemyController : MonoBehaviour
         }
         else //morte do inimigo
         {
-            _dropItem.DropGold();
+            //_dropItem.DropGold();
             _isDead = true;
             _animation.SetBool("Dead", true);
             RuntimeManager.PlayOneShot(death);
 
-            //da um pouco de mana ao player
+            //da um pouco de mana e XP ao player
             Instantiate(_deathEffect, transform.position, Quaternion.identity);
             PlayerHealth _playerHealth = FindFirstObjectByType<PlayerHealth>();
             _playerHealth.FillBottle(3f);
+            PlayerLevel _playerLevel = FindFirstObjectByType<PlayerLevel>();
+            _playerLevel.GainXP(5);
         }
 
         Invoke("FinishHit", 0.3f);

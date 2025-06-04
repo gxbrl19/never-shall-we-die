@@ -6,17 +6,18 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.InputSystem;
-using Sirenix.OdinInspector;
 
 [Serializable]
 public class PlayerData
 {
+    public int level;
+    public int xp;
     public List<Equipments> equipments;
     public List<Skills> skills;
     public List<Items> items;
     public float hpMax;
     public float mpMax;
-    public int xp;
+    public int upPoints;
     public int gold;
     public int katanaLevel;
     public int[] flags;
@@ -53,59 +54,61 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [BoxGroup("IndexSave")] public int _indexSave = 0;
-    [BoxGroup("IndexSave")] public bool _save1 = false;
-    [BoxGroup("IndexSave")] public bool _save2 = false;
-    [BoxGroup("IndexSave")] public bool _save3 = false;
+    [HideInInspector] public int _indexSave = 0;
+    [HideInInspector] public bool _save1 = false;
+    [HideInInspector] public bool _save2 = false;
+    [HideInInspector] public bool _save3 = false;
 
-    [BoxGroup("PlayerStats")] public List<Equipments> _equipments;
-    [BoxGroup("PlayerStats")] public List<Skills> _skills;
-    [BoxGroup("PlayerStats")] public List<Items> _inventory;
+    [HideInInspector] public int _level;
+    [HideInInspector] public int _xp;
+    [HideInInspector] public List<Equipments> _equipments;
+    [HideInInspector] public List<Skills> _skills;
+    [HideInInspector] public List<Items> _inventory;
     [HideInInspector] public float _currentHP; //usado para manter o HP na troca de cena
     [HideInInspector] public float _currentMP; //usado para manter o MP na troca de cena
-    [BoxGroup("PlayerStats")] public float _hpMax = 25f;
-    [BoxGroup("PlayerStats")] public float _mpMax = 15f;
-    [BoxGroup("PlayerStats")] public int _xp;
-    [BoxGroup("PlayerStats")] public int _katanaLevel;
-    [BoxGroup("PlayerStats")] public int _gold; //total de gold coletado
+    [HideInInspector] public float _hpMax = 25f;
+    [HideInInspector] public float _mpMax = 15f;
+    [HideInInspector] public int _upPoints;
+    [HideInInspector] public int _katanaLevel;
+    [HideInInspector] public int _gold; //total de gold coletado
 
-    [BoxGroup("ItemsInLevel")] public int[] _flags; //Flags já liberadas
-    [BoxGroup("ItemsInLevel")] public int[] _barrels; //Barrels já destruídos
-    [BoxGroup("ItemsInLevel")] public int[] _chests; //Chests já liberadas
-    [BoxGroup("ItemsInLevel")] public int[] _airCutblock; //Air Cut Blocks já destruídos
-    [BoxGroup("ItemsInLevel")] public int[] _barriersLever; //Barriers Lever já acionados
-    [BoxGroup("ItemsInLevel")] public int[] _secret; //Segredo do mapa do mapa 04 (gerado aleatoriamente)
-    [BoxGroup("ItemsInLevel")] public int _secretDrawbridge; //Item encontrado numa folha
-    [BoxGroup("ItemsInLevel")] public int _drawbridge; //Ponte do mapa 04 (0 = fechada | 1 = aberta)
-    [BoxGroup("ItemsInLevel")] public int _gateMechanism; //se já pegou o gate mechanism
-    [BoxGroup("ItemsInLevel")] public int _gateBoss; //Portão do Boss do mapa 05 (1 = consertado | 2 = aberto)
+    [HideInInspector] public int[] _flags; //Flags já liberadas
+    [HideInInspector] public int[] _barrels; //Barrels já destruídos
+    [HideInInspector] public int[] _chests; //Chests já liberadas
+    [HideInInspector] public int[] _airCutblock; //Air Cut Blocks já destruídos
+    [HideInInspector] public int[] _barriersLever; //Barriers Lever já acionados
+    [HideInInspector] public int[] _secret; //Segredo do mapa do mapa 04 (gerado aleatoriamente)
+    [HideInInspector] public int _secretDrawbridge; //Item encontrado numa folha
+    [HideInInspector] public int _drawbridge; //Ponte do mapa 04 (0 = fechada | 1 = aberta)
+    [HideInInspector] public int _gateMechanism; //se já pegou o gate mechanism
+    [HideInInspector] public int _gateBoss; //Portão do Boss do mapa 05 (1 = consertado | 2 = aberto)
 
-    [BoxGroup("OpenWorld")] public List<ShipUpgrade> _shipUpgrades;
+    [HideInInspector] public List<ShipUpgrade> _shipUpgrades;
     [HideInInspector] public float _shipPosX; //salva a posição do navio para quando voltar para o OpenWorld
     [HideInInspector] public float _shipPosY; //salva a posição do navio para quando voltar para o OpenWorld
-    [BoxGroup("OpenWorld")] public int[] _rocks; //Rocks já destruídos
+    [HideInInspector] public int[] _rocks; //Rocks já destruídos
 
-    [BoxGroup("Checkpoint")] public int _checkpointScene; //a cena atual que será o checkpoint
-    [BoxGroup("Checkpoint")] public int _direction;
+    [HideInInspector] public int _checkpointScene; //a cena atual que será o checkpoint
+    [HideInInspector] public int _direction;
 
-    [BoxGroup("Crew")] public string _navigator;
-    [BoxGroup("Crew")] public string _shipwright;
-    [BoxGroup("Crew")] public string _witch;
-    [BoxGroup("Crew")] public string _blacksmith;
+    [HideInInspector] public string _navigator;
+    [HideInInspector] public string _shipwright;
+    [HideInInspector] public string _witch;
+    [HideInInspector] public string _blacksmith;
 
     [Header("Functions")]
-    [BoxGroup("Crew")] public int[] _maps;
+    [HideInInspector] public int[] _maps;
 
     //Enemy
-    [BoxGroup("Enemy")] public int[] _bestiary;
-    [BoxGroup("Enemy")] public int[] _bosses;
+    [HideInInspector] public int[] _bestiary;
+    [HideInInspector] public int[] _bosses;
 
     //Prefabs
-    [BoxGroup("Sound")] public float _masterVol;
-    [BoxGroup("Sound")] public float _musicVol;
-    [BoxGroup("Sound")] public float _sfxVol;
+    [HideInInspector] public float _masterVol;
+    [HideInInspector] public float _musicVol;
+    [HideInInspector] public float _sfxVol;
 
-    [BoxGroup("Door")] public int[] _doors; //mostra as portas já abertas
+    [HideInInspector] public int[] _doors; //mostra as portas já abertas
 
     [HideInInspector] public string _inputType;
 
@@ -179,12 +182,14 @@ public class GameManager : MonoBehaviour
         PlayerData _data = new PlayerData(); //instanciando objeto da classe PlayerData
 
         //atribui os valores do jogo ao objeto
+        _data.level = _level;
+        _data.xp = _xp;
         _data.equipments = _equipments;
         _data.skills = _skills;
         _data.items = _inventory;
         _data.hpMax = _hpMax;
         _data.mpMax = _mpMax;
-        _data.xp = _xp;
+        _data.upPoints = _upPoints;
         _data.gold = _gold;
         _data.katanaLevel = _katanaLevel;
 
@@ -270,12 +275,14 @@ public class GameManager : MonoBehaviour
 
 
             //atribui os valores do objeto ao jogo
+            _level = _data.level;
+            _xp = _data.xp;
             _equipments = _data.equipments;
             _skills = _data.skills;
             _inventory = _data.items;
             _hpMax = _data.hpMax;
             _mpMax = _data.mpMax;
-            _xp = _data.xp;
+            _upPoints = _data.upPoints;
             _gold = _data.gold;
             _katanaLevel = _data.katanaLevel;
 
