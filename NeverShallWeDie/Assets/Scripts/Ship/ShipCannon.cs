@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class ShipCannon : MonoBehaviour
 {
-    [HideInInspector] public float _directionX;
-    [HideInInspector] public float _directionY;
-    private bool _destroy = false;
-    private float _force = 60f;
+    [HideInInspector] public float _rotation;
+    bool _destroy = false;
+    float _force = 10f;
+    Rigidbody2D _body;
+
+    void Awake()
+    {
+        _body = GetComponent<Rigidbody2D>();
+    }
 
     void FixedUpdate()
     {
         if (!_destroy)
         {
-            //transform.Translate(_force * _direction * Time.deltaTime);
-            transform.Translate(_directionX * _force * Time.deltaTime, _directionY * _force * Time.deltaTime, 0f);
+            Vector2 engineForce = transform.up * _force;
+            _body.AddForce(engineForce, ForceMode2D.Impulse);
         }
     }
 

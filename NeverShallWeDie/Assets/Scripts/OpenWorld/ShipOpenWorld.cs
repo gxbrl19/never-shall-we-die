@@ -6,12 +6,12 @@ public class ShipOpenWorld : MonoBehaviour
 {
     public static ShipOpenWorld instance;
 
-    float _accelerationFactor = 1.5f;
+    float _accelerationFactor = 3f;
     float _turnFactor = 0.8f;
     float _accelerationInput = 0;
     float _steeringInput = 0;
     float _rotationAngle = 0;
-    float _maxSpeed = 2f;
+    float _maxSpeed = 4f;
 
     [HideInInspector] public bool _canMove;
     bool _canAttack = true;
@@ -23,10 +23,10 @@ public class ShipOpenWorld : MonoBehaviour
     [HideInInspector] public bool _submarine;
     [HideInInspector] public Transform _targetSubmarine;
     float _speedSubmarine = 1f;
+    float _propulsionForce = 7f;
+    float _maxSpeedPropulsion = 7f;
 
-    [HideInInspector] public bool _inPropulsion;
-    float _propulsionForce = 10f;
-
+    Transform _transform;
     Rigidbody2D _body;
     Animator _animation;
     Vector2 _movement;
@@ -36,6 +36,7 @@ public class ShipOpenWorld : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        _transform = GetComponent<Transform>();
         _body = GetComponent<Rigidbody2D>();
         _animation = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
@@ -65,13 +66,14 @@ public class ShipOpenWorld : MonoBehaviour
         if (!_canMove) { return; }
         ApplyEngineForce();
         ApplySteering();
+        Propulsion();
         Deceleration();
         _animation.SetFloat("Speed", _body.velocity.magnitude);
     }
 
     void ApplyEngineForce()
     {
-        if (_input.accelerate == 0f) { return; }
+        if (_input.accelerate == 0f || _input.propulsion || !_canMove) { return; }
 
         Vector2 engineForce = transform.up * _accelerationInput * _accelerationFactor;
 
@@ -81,8 +83,6 @@ public class ShipOpenWorld : MonoBehaviour
         }
         else
         {
-            // Opcional: Se já estiver na velocidade máxima, você pode aplicar uma força menor
-            // ou nenhuma força para evitar que a velocidade exceda demais.
             float currentSpeed = _body.velocity.magnitude;
             Vector2 brakingForce = -_body.velocity.normalized * (currentSpeed - _maxSpeed) * _accelerationFactor;
             _body.AddForce(brakingForce, ForceMode2D.Force);
@@ -153,14 +153,13 @@ public class ShipOpenWorld : MonoBehaviour
 
     void Propulsion()
     {
-        if (_input.propulsion)
+        if (_input.accelerate == 0f || !_input.propulsion || !_canMove) { return; }
+
+        Vector2 engineForce = transform.up * _accelerationInput * _propulsionForce;
+
+        if (_body.velocity.magnitude < _maxSpeedPropulsion)
         {
-            _inPropulsion = true;
-            _body.velocity = new Vector2(_movement.x * _propulsionForce, _movement.y * _propulsionForce);
-        }
-        else if (!_input.propulsion)
-        {
-            _inPropulsion = false;
+            _body.AddForce(engineForce, ForceMode2D.Force);
         }
     }
 
@@ -170,12 +169,8 @@ public class ShipOpenWorld : MonoBehaviour
         {
             _canAttack = false;
 
-            GameObject ball = Instantiate(_shipCannon.gameObject, _cannonPosition.position, Quaternion.identity);
-            float x = _cannonPosition.localPosition.x;
-            float y = _cannonPosition.localPosition.y;
-            ball.GetComponent<ShipCannon>()._directionX = x;
-            ball.GetComponent<ShipCannon>()._directionY = y;
-
+            Quaternion _rotation = _transform.rotation;
+            Instantiate(_shipCannon.gameObject, _cannonPosition.position, _rotation);
             Instantiate(_cannonEffect, _cannonPosition.position, Quaternion.identity);
 
             Invoke("FinishCannon", 2f);

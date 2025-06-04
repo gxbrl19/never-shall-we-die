@@ -105,6 +105,8 @@ public class ShipInput : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext callback)
     {
+        if (propulsion || _ship._submarine || cannon) { return; }
+
         if (callback.started)
         {
             _interact = true;
@@ -118,7 +120,7 @@ public class ShipInput : MonoBehaviour
 
     public void Submarine(InputAction.CallbackContext callback)
     {
-        if (_ship._inPropulsion || _ship._submarine) { return; }
+        if (propulsion || _ship._submarine) { return; }
 
         if (callback.started && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Submarine))
         {
@@ -148,7 +150,7 @@ public class ShipInput : MonoBehaviour
 
     public void Cannon(InputAction.CallbackContext callback)
     {
-        if (_ship._inPropulsion || _ship._submarine) { return; }
+        if (propulsion || _ship._submarine) { return; }
 
         if (callback.started && ShipUpgrades.instance.shipUgrade.Contains(ShipUpgrade.Cannon))
         {
