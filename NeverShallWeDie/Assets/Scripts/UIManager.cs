@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private Text _txtHealingInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtGold;
     [BoxGroup("HUD")][SerializeField] private Text _txtGoldInPause;
-    [BoxGroup("HUD")][SerializeField] private Text _txtStoneInPause;
+    [BoxGroup("HUD")][SerializeField] private Text _txtUpPointsInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtGoldBuy;
     [BoxGroup("HUD")][SerializeField] private Animator _goldBuyAnimator;
     [BoxGroup("HUD")][SerializeField] private Image _imgFeedbackItem;
@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")] public Text _txtUpHpMpPrice;
     [BoxGroup("Crew")] public Text _txtCurrOrbs;
     [HideInInspector] public int _UpHpMpPrice;
-    [HideInInspector] public int _xpStones;
+    [HideInInspector] public int _upPoints;
     [BoxGroup("Crew")][Header("Shipwright")] public GameObject _pnlUPShip;
     [BoxGroup("Crew")] public GameObject _firstButtonShip;
     [BoxGroup("Crew")] public Button[] _buttonsUpgradeShip;
@@ -177,7 +177,7 @@ public class UIManager : MonoBehaviour
         _txtHealthInPause.text = _health._maxHealth.ToString();
         _txtHealingInPause.text = _health._maxMana.ToString();
         _txtGoldInPause.text = GameManager.instance._gold.ToString();
-        _txtStoneInPause.text = GameManager.instance._xp.ToString();
+        _txtUpPointsInPause.text = GameManager.instance._upPoints.ToString();
     }
 
     void SkillControl()
@@ -646,7 +646,7 @@ public class UIManager : MonoBehaviour
         _inUIScreen = true;
         _player.DisableControls();
         _txtKatanaPrice.text = _katanaPrice.ToString();
-        _txtCurrPotentium.text = _xpStones.ToString();
+        _txtCurrPotentium.text = _upPoints.ToString();
         _pnlUpKatana.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpKatana);
         AudioHUD.instance.PlaySelectButton();
@@ -654,14 +654,14 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeKatana() //chamado no botão Yes do pnl_upKatana (UI Manager)
     {
-        if (GameManager.instance._gold >= _katanaPrice && _xpStones >= 4)
+        if (GameManager.instance._gold >= _katanaPrice && _upPoints >= 1)
         {
             _inUIScreen = false;
             _player.EnabledControls();
             GameManager.instance._katanaLevel += 1;
             _pnlUpKatana.SetActive(false);
             GameManager.instance._gold -= _katanaPrice;
-            GameManager.instance._xp -= 4;
+            GameManager.instance._upPoints -= 1;
             AudioHUD.instance.PlayUpgradeKatana();
             _txtGoldBuy.text = "-" + _katanaPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
@@ -687,7 +687,7 @@ public class UIManager : MonoBehaviour
         _inUIScreen = true;
         _player.DisableControls();
         _txtUpHpMpPrice.text = _UpHpMpPrice.ToString();
-        _txtCurrOrbs.text = _xpStones.ToString();
+        _txtCurrOrbs.text = _upPoints.ToString();
         _pnlUpHpMp.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpHpMp);
         AudioHUD.instance.PlaySelectButton();
@@ -695,7 +695,7 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeHP() //chamado no botão HP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice && _xpStones >= 4)
+        if (GameManager.instance._gold >= _UpHpMpPrice && _upPoints >= 1)
         {
             _inUIScreen = false;
             _player.EnabledControls();
@@ -703,7 +703,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance._hpMax = _health._maxHealth;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
-            GameManager.instance._xp -= 4;
+            GameManager.instance._upPoints -= 1;
             AudioHUD.instance.PlayUpgradeHP();
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");
@@ -719,7 +719,7 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeMP() //chamado no botão MP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice && _xpStones >= 4)
+        if (GameManager.instance._gold >= _UpHpMpPrice && _upPoints >= 1)
         {
             _inUIScreen = false;
             _player.EnabledControls();
@@ -727,7 +727,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance._mpMax = _health._maxMana;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
-            GameManager.instance._xp -= 4;
+            GameManager.instance._upPoints -= 1;
             AudioHUD.instance.PlayUpgradeHP();
             _txtGoldBuy.text = "-" + _UpHpMpPrice.ToString();
             _goldBuyAnimator.SetTrigger("Start");

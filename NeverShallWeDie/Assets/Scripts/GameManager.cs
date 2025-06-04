@@ -68,9 +68,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float _currentMP; //usado para manter o MP na troca de cena
     [HideInInspector] public float _hpMax = 25f;
     [HideInInspector] public float _mpMax = 15f;
-    [HideInInspector] public int _upPoints;
+    public int _gold; //total de gold coletado
+    public int _upPoints; //pontos para melhoria com a tripulação
     [HideInInspector] public int _katanaLevel;
-    [HideInInspector] public int _gold; //total de gold coletado
 
     [HideInInspector] public int[] _flags; //Flags já liberadas
     [HideInInspector] public int[] _barrels; //Barrels já destruídos
@@ -150,10 +150,10 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        _navigator = "MEET"; //TODO: - passar para o MEET ao terminar a demo (OTHER para a demo)
-        _shipwright = "COMPLETE"; //DEMO - passar para o COMPLETE ao terminar a demo
-        _witch = "MEET"; //TODO: - passar para o MEET ao terminar a demo
-        _blacksmith = "MEET"; //TODO: - passar para o MEET ao terminar a demo
+        _navigator = "CREW"; //TODO: - passar para o MEET ao terminar a demo (OTHER para a demo)
+        _shipwright = "CREW"; //DEMO - passar para o COMPLETE ao terminar a demo
+        _witch = "CREW"; //TODO: - passar para o MEET ao terminar a demo
+        _blacksmith = "CREW"; //TODO: - passar para o MEET ao terminar a demo
     }
 
     void Update()
