@@ -13429,71 +13429,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
---- !u!1001 &949049216
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6918157317790413829, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: _item
-      value: 
-      objectReference: {fileID: 62880426106912218, guid: 2b4e9467170d3004fb6049f64d776fd3, type: 3}
-    - target: {fileID: 8588945458967287936, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: _idChest
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 32.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -46.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588945458967287949, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
-      propertyPath: m_Name
-      value: Chest
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
 --- !u!1 &1087899208
 GameObject:
   m_ObjectHideFlags: 0
@@ -13896,63 +13831,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &1230060661
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 75775502877950392, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_Name
-      value: AirCut_Block
-      objectReference: {fileID: 0}
-    - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 41.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -46.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3846744286082855749, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 05b7e4b7e9c7feb4eb749f1648f6436f, type: 3}
 --- !u!1 &1262546952
 GameObject:
   m_ObjectHideFlags: 0
@@ -14236,14 +14114,18 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
+  _level: 0
+  _xp: 0
   _equipments: 
   _skills: 
+  _inventory: 
+  _currentHP: 0
+  _currentMP: 0
   _hpMax: 25
   _mpMax: 15
-  _katanaLevel: 0
   _gold: 0
-  _qtdPotentium: 0
-  _qtdOrb: 0
+  _upPoints: 0
+  _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
@@ -14255,6 +14137,8 @@ MonoBehaviour:
   _gateMechanism: 0
   _gateBoss: 0
   _shipUpgrades: 
+  _shipPosX: 0
+  _shipPosY: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -14263,17 +14147,11 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
-  _hammer: 0
-  _grimoire: 0
-  _submarine: 0
-  _propulsion: 0
-  _artillery: 0
   _bestiary: 
   _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
-  _keys: 
   _doors: 
   _inputType: 
 --- !u!4 &1468667351
@@ -15034,9 +14912,7 @@ SceneRoots:
   - {fileID: 1849113041}
   - {fileID: 911363005}
   - {fileID: 1407301883}
-  - {fileID: 949049216}
   - {fileID: 152322172}
-  - {fileID: 1230060661}
   - {fileID: 464805052}
   - {fileID: 1967415560}
   - {fileID: 880809858}

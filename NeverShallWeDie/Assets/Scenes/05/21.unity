@@ -5419,22 +5419,31 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
+  _level: 0
+  _xp: 0
   _equipments: 
   _skills: 
+  _inventory: 
+  _currentHP: 0
+  _currentMP: 0
   _hpMax: 25
   _mpMax: 15
-  _katanaLevel: 0
   _gold: 0
-  _qtdPotentium: 0
-  _qtdOrb: 0
+  _upPoints: 0
+  _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
   _airCutblock: 
   _barriersLever: 
+  _secret: 
+  _secretDrawbridge: 0
+  _drawbridge: 0
   _gateMechanism: 0
   _gateBoss: 0
   _shipUpgrades: 
+  _shipPosX: 0
+  _shipPosY: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -5443,17 +5452,11 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
-  _hammer: 0
-  _grimoire: 0
-  _submarine: 0
-  _propulsion: 0
-  _artillery: 0
   _bestiary: 
   _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
-  _keys: 
   _doors: 
   _inputType: 
 --- !u!4 &204415701
@@ -7532,7 +7535,7 @@ PrefabInstance:
       objectReference: {fileID: 1506438664584456377, guid: c1f21c2e3cbc1434ba89963125a2afac, type: 3}
     - target: {fileID: 8588945458967287936, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
       propertyPath: _idChest
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8588945458967287937, guid: 9a98f0de0c36bef4288a68f6359788d5, type: 3}
       propertyPath: m_LocalPosition.x
