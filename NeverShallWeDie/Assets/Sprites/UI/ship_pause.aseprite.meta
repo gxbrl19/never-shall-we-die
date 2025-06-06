@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638835436388098290
+  platformSettingsDirtyTick: 638847556535911443
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,14 +121,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Layer 1
     originalName: 
-    pivot: {x: 0.521875, y: 0.50738007}
+    pivot: {x: 0.5016287, y: 0.50738007}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 320
+      width: 307
       height: 271
     spriteID: 4449b5775b8eeb543a0a1bb7602d39d8
     spriteBone: []
@@ -139,6 +139,66 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Layer 2
+    originalName: 
+    pivot: {x: -1.3225803, y: 6.2894735}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 319
+      y: 50
+      width: 31
+      height: 19
+    spriteID: cf398f648c581ff4cacc44f4aaafb636
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 319, y: 50}
+  - name: Layer 3
+    originalName: 
+    pivot: {x: 4.677419, y: 9.464286}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 319
+      y: 77
+      width: 31
+      height: 14
+    spriteID: 30b9046206016d64b82e69b3e5c3a862
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 319, y: 77}
+  - name: Layer 4
+    originalName: 
+    pivot: {x: 1.2222222, y: 3.618421}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 319
+      y: 4
+      width: 45
+      height: 38
+    spriteID: adab3a49f19755b4b90f08fb1a875379
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 319, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -151,11 +211,62 @@ ScriptedImporter:
     - name: Layer 1
       frameIndex: 0
       cellRect:
-        x: 9
+        x: 22
         y: 6
-        width: 320
+        width: 307
         height: 271
       spriteId: 4449b5775b8eeb543a0a1bb7602d39d8
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 1
+    guid: 1317221552
+    name: Layer 2
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Layer 2
+      frameIndex: 0
+      cellRect:
+        x: 217
+        y: 24
+        width: 31
+        height: 19
+      spriteId: cf398f648c581ff4cacc44f4aaafb636
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 2
+    guid: 1317221948
+    name: Layer 3
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Layer 3
+      frameIndex: 0
+      cellRect:
+        x: 31
+        y: 11
+        width: 31
+        height: 14
+      spriteId: 30b9046206016d64b82e69b3e5c3a862
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 3
+    guid: 1317223932
+    name: Layer 4
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Layer 4
+      frameIndex: 0
+      cellRect:
+        x: 121
+        y: 6
+        width: 45
+        height: 38
+      spriteId: adab3a49f19755b4b90f08fb1a875379
     linkedCells: []
     parentIndex: -1
   platformSettings:
