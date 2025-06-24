@@ -23,6 +23,7 @@ public class PlayerData
     public int[] flags;
     public int[] barrels;
     public int[] chests;
+    public int[] ancientStones;
     public int[] airCutblock;
     public int[] barriersLever;
     public int[] secret;
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int[] _flags; //Flags já liberadas
     [HideInInspector] public int[] _barrels; //Barrels já destruídos
     [HideInInspector] public int[] _chests; //Chests já liberadas
+    public int[] _ancientStones; //Daily já liberadas
     [HideInInspector] public int[] _airCutblock; //Air Cut Blocks já destruídos
     [HideInInspector] public int[] _barriersLever; //Barriers Lever já acionados
     [HideInInspector] public int[] _secret; //Segredo do mapa do mapa 04 (gerado aleatoriamente)
@@ -130,6 +132,7 @@ public class GameManager : MonoBehaviour
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
         _chests = new int[50]; //TODO: colocar o numero de Chests que estarão no game
+        _ancientStones = new int[8];
         _barriersLever = new int[50]; //TODO: colocar o numero de Barriers lever que estarão no game
         _doors = new int[6];
         _rocks = new int[4];
@@ -196,6 +199,7 @@ public class GameManager : MonoBehaviour
         _data.flags = _flags;
         _data.barrels = _barrels;
         _data.chests = _chests;
+        _data.ancientStones = _ancientStones;
         _data.airCutblock = _airCutblock;
         _data.barriersLever = _barriersLever;
 
@@ -289,6 +293,7 @@ public class GameManager : MonoBehaviour
             _flags = _data.flags;
             _barrels = _data.barrels;
             _chests = _data.chests;
+            _ancientStones = _data.ancientStones;
             _airCutblock = _data.airCutblock;
             _barriersLever = _data.barriersLever;
 
