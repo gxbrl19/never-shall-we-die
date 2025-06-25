@@ -114,6 +114,7 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")] public Text _txtUpShipPrice;
     [HideInInspector] public int _upShipPrice;
     [BoxGroup("Crew")] public Animator _buyFeedback;
+    [BoxGroup("Crew")] public GameObject _pnlAncientStoneText;
 
     [BoxGroup("New Member")] public bool _inNewMember;
     [BoxGroup("New Member")] public GameObject _pnlNewMember;
@@ -814,6 +815,18 @@ public class UIManager : MonoBehaviour
         _inUIScreen = false;
         _player.EnabledControls();
         _pnlUPShip.SetActive(false);
+    }
+
+    public void OpenAncientStone()
+    {
+        _pnlAncientStoneText.SetActive(true);
+        _player.DisableControls();
+    }
+
+    public void CloseAncientStone()
+    {
+        _pnlAncientStoneText.SetActive(false);
+        _player.EnabledControls();
     }
 
     #endregion

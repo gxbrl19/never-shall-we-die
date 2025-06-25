@@ -13,11 +13,13 @@ public class AncientStone : MonoBehaviour
     Collider2D _collider;
     Player _player;
     PlayerInputs _inputs;
+    AncientStoneDaily _daily;
 
     void Awake()
     {
         _animation = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
+        _daily = GetComponentInChildren<AncientStoneDaily>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _inputs = _player.GetComponent<PlayerInputs>();
     }
@@ -38,6 +40,12 @@ public class AncientStone : MonoBehaviour
             _animation.SetBool("Starting", true);
             _animation.SetBool("Enabled", true);
         }
+    }
+
+    public void StartText() //chamado no fim da animação
+    {
+        UIManager.instance.OpenAncientStone();
+        _daily.Next();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
