@@ -87,6 +87,7 @@ public class AncientStoneDaily : MonoBehaviour
                 state_daily = STATE_DAILY.DISABLED;
                 currentText = 0;
                 finished = false;
+                AudioHUD.instance.PlayTexting();
             }
         }
     }
@@ -97,6 +98,7 @@ public class AncientStoneDaily : MonoBehaviour
         {
             typeText.Skip();
             state_daily = STATE_DAILY.WAITING;
+            AudioHUD.instance.PlayTexting();
         }
     }
 }

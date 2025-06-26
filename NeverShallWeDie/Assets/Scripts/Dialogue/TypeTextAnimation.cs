@@ -31,6 +31,7 @@ public class TypeTextAnimation : MonoBehaviour
         textObject.maxVisibleCharacters = 0;
         for (int i = 0; i <= textObject.text.Length; i++)
         {
+            AudioHUD.instance.PlayTexting();
             textObject.maxVisibleCharacters = i;
             yield return new WaitForSeconds(typeDelay);
         }

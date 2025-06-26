@@ -91,6 +91,7 @@ public class Intro : MonoBehaviour
                 finished = false;
                 //SceneManager.LoadScene("Scenes/OpenWorld"); //TODO: DEMO | remover após a demo
                 SceneManager.LoadScene("Scenes/06/00");
+                AudioHUD.instance.PlayTexting();
             }
         }
     }
@@ -101,6 +102,7 @@ public class Intro : MonoBehaviour
         {
             typeText.Skip();
             state_intro = STATE_INTRO.WAITING;
+            AudioHUD.instance.PlayTexting();
         }
     }
 }

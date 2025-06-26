@@ -7,7 +7,8 @@ using FMODUnity;
 public class AncientStone : MonoBehaviour
 {
     public int _idStone;
-    //[SerializeField] EventReference _stoneSound;
+    [SerializeField] EventReference _enabledSound;
+    [SerializeField] EventReference _thunderSound;
     bool _playerTriggered;
     Animator _animation;
     Collider2D _collider;
@@ -62,5 +63,15 @@ public class AncientStone : MonoBehaviour
         {
             _playerTriggered = false;
         }
+    }
+
+    public void PlayEnabled() //chamado na animação
+    {
+        RuntimeManager.PlayOneShot(_enabledSound);
+    }
+
+    public void PlayThunder() //chamado na animação
+    {
+        RuntimeManager.PlayOneShot(_thunderSound);
     }
 }

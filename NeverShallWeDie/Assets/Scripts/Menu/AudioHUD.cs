@@ -18,6 +18,7 @@ public class AudioHUD : MonoBehaviour
     [SerializeField] EventReference _upgradeKatana;
     [SerializeField] EventReference _upgradeMP;
     [SerializeField] EventReference _upgradeShip;
+    [SerializeField] EventReference _texting;
 
     private void Awake()
     {
@@ -85,5 +86,10 @@ public class AudioHUD : MonoBehaviour
     public void PlayUpgradeShip()
     {
         RuntimeManager.PlayOneShot(_upgradeShip);
+    }
+
+    public void PlayTexting()
+    {
+        RuntimeManager.PlayOneShot(_texting);
     }
 }

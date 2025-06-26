@@ -119,6 +119,7 @@ public class DialogueSystem : MonoBehaviour
                 finished = false;
                 _input.interact = false;
                 _player.EnabledControls();
+                AudioHUD.instance.PlayTexting();
                 if (_navigator != null) { _navigator.NextState(); }
                 if (_blacksmith != null) { _blacksmith.NextState(); }
                 if (_witch != null) { _witch.NextState(); }
@@ -133,6 +134,7 @@ public class DialogueSystem : MonoBehaviour
         {
             typeText.Skip();
             state = STATE.WAITING;
+            AudioHUD.instance.PlayTexting();
         }
     }
 }
