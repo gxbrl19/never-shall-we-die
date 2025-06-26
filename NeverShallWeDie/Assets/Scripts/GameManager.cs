@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
         _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
         _chests = new int[50]; //TODO: colocar o numero de Chests que estarão no game
-        _ancientStones = new int[8];
+        _ancientStones = new int[9];
         _barriersLever = new int[50]; //TODO: colocar o numero de Barriers lever que estarão no game
         _doors = new int[6];
         _rocks = new int[4];
