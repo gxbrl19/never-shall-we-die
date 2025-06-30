@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,15 +13,15 @@ public enum STATE
     TYPING
 }
 
-public enum CrewFunction
+public enum Character
 {
-    Navigator, Shipwright, Witch, Blacksmith
+    Navigator, Shipwright, Witch, Blacksmith, NavyGuard
 }
 
 public class DialogueSystem : MonoBehaviour
 {
     public DialogueData dialogueData;
-    public CrewFunction _function;
+    public Character _character;
 
     int currentText = 0;
     bool finished = false;
@@ -42,16 +43,17 @@ public class DialogueSystem : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
 
-        if (_function == CrewFunction.Navigator) { _navigator = FindObjectOfType<Navigator>(); }
-        if (_function == CrewFunction.Blacksmith) { _blacksmith = FindObjectOfType<Blacksmith>(); }
-        if (_function == CrewFunction.Witch) { _witch = FindObjectOfType<Witch>(); }
-        if (_function == CrewFunction.Shipwright) { _shipwright = FindObjectOfType<Shipwright>(); }
+        if (_character == Character.Navigator) { _navigator = FindObjectOfType<Navigator>(); }
+        if (_character == Character.Blacksmith) { _blacksmith = FindObjectOfType<Blacksmith>(); }
+        if (_character == Character.Witch) { _witch = FindObjectOfType<Witch>(); }
+        if (_character == Character.Shipwright) { _shipwright = FindObjectOfType<Shipwright>(); }
 
         //_npcController = FindObjectOfType<NPCController>();
     }
 
     private void Start()
     {
+        if (_character == Character.NavyGuard) { Invoke("Next", 5f); }
         state = STATE.DISABLED;
     }
 

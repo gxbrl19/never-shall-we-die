@@ -30,14 +30,11 @@ public class BossController : MonoBehaviour
 
     Color _defaultColor;
     SpriteRenderer _sprite;
-    AudioSource _audio;
 
     void Awake()
     {
         _animation = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
-        _audio = GetComponent<AudioSource>();
-
 
         _maxHealth = _bossObject.maxHealth;
         _bossID = _bossObject.bossID;
