@@ -2018,7 +2018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4042246915461672930}
   - component: {fileID: 8975826787855424796}
-  - component: {fileID: 6989525421014994142}
+  - component: {fileID: 3342255394400947509}
   m_Layer: 0
   m_Name: background (1)
   m_TagString: Untagged
@@ -2035,7 +2035,7 @@ Transform:
   m_GameObject: {fileID: 5071921757604619675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.75}
+  m_LocalPosition: {x: 2.8, y: 0, z: 5.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2093,7 +2093,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6989525421014994142
+--- !u!114 &3342255394400947509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2102,11 +2102,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5071921757604619675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62fb96b7000eefe4e89708d26992341f, type: 3}
+  m_Script: {fileID: 11500000, guid: f481e3b9c4b88b940bb60fd7eca4d673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraPlayer: {fileID: 270366039213392137}
-  _speedParallax: 0.91
+  speed: 0.5
 --- !u!1 &5242503204957333710
 GameObject:
   m_ObjectHideFlags: 0
