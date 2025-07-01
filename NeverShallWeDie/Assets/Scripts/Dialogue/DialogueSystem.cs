@@ -57,7 +57,7 @@ public class DialogueSystem : MonoBehaviour
         {
             if (GameManager.instance._intro == 0)
             {
-                Invoke("Next", 5f);
+                Invoke("Next", 3f);
             }
             else
             {

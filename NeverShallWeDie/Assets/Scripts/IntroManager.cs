@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class IntroManager : MonoBehaviour
 {
+    BallCannonIntro _ball;
     Player _player;
-    PlayerAnimations _animation;
 
     void Awake()
     {
+        _ball = GetComponentInChildren<BallCannonIntro>();
         _player = FindObjectOfType<Player>();
-        _animation = _player.gameObject.GetComponent<PlayerAnimations>();
     }
 
     void Start()
@@ -22,7 +22,6 @@ public class IntroManager : MonoBehaviour
 
     public void NextState()
     {
-        GameManager.instance._intro = 1;
-        _player.EnabledControls();
+        _ball.FireBall();
     }
 }

@@ -861,6 +861,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 466
+--- !u!114 &-917566133733175541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/generic/combat/cannon_intro1
+  m_EditorClassIdentifier: 
+  Path: event:/generic/combat/cannon_intro1
+  Guid:
+    Data1: 1699499578
+    Data2: 1192381628
+    Data3: 192288387
+    Data4: -793250022
+  Banks:
+  - {fileID: 3080069313522275875}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3575
 --- !u!114 &-531931802385311042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,13 +1135,15 @@ MonoBehaviour:
   - {fileID: 264834783234444586}
   - {fileID: 3043206222896850996}
   - {fileID: 2536225920701132631}
+  - {fileID: -917566133733175541}
+  - {fileID: 5798644225662079123}
   EditorParameters:
   - {fileID: -8480598557086419306}
   MasterBanks:
   - {fileID: 3080069313522275875}
   StringsBanks:
   - {fileID: 3531533141968269314}
-  cacheTime: 638865339533548837
+  cacheTime: 638869226144326200
   cacheVersion: 131616
 --- !u!114 &7691062675070937
 MonoBehaviour:
@@ -1698,10 +1727,10 @@ MonoBehaviour:
   Path: ../../../never_shall_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638865339533508758
+  lastModified: 638869226144275900
   FileSizes:
   - Name: Desktop
-    Value: 10453120
+    Value: 10536128
   Exists: 1
 --- !u!114 &3517965362090361121
 MonoBehaviour:
@@ -1772,10 +1801,10 @@ MonoBehaviour:
   Path: ../../../never_shall_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638865339533548837
+  lastModified: 638869226144326200
   FileSizes:
   - Name: Desktop
-    Value: 5888
+    Value: 5988
   Exists: 1
 --- !u!114 &3560383998493286130
 MonoBehaviour:
@@ -2182,6 +2211,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1200
+--- !u!114 &5798644225662079123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/generic/combat/cannon_intro2
+  m_EditorClassIdentifier: 
+  Path: event:/generic/combat/cannon_intro2
+  Guid:
+    Data1: -988648828
+    Data2: 1153840529
+    Data3: -517934168
+    Data4: 1434423775
+  Banks:
+  - {fileID: 3080069313522275875}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1700
 --- !u!114 &5908845111119641462
 MonoBehaviour:
   m_ObjectHideFlags: 0
