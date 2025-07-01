@@ -5,9 +5,10 @@ using FMODUnity;
 
 public class BallCannonIntro : MonoBehaviour
 {
-    Animator _cannonAnimation;
+    [SerializeField] GameObject _fadeIntro;
     [SerializeField] EventReference _explosion1;
     [SerializeField] EventReference _explosion2;
+    Animator _cannonAnimation;
     Player _player;
 
     void Awake()
@@ -28,8 +29,14 @@ public class BallCannonIntro : MonoBehaviour
 
     public void PlayExplosion2() //chamado na animação
     {
-        GameManager.instance._intro = 1;
+        _fadeIntro.SetActive(true);
         RuntimeManager.PlayOneShot(_explosion2);
+        Invoke("FinishIntro", 3f);
+    }
+
+    void FinishIntro() //chamado no PlayExplosion2()
+    {
+        GameManager.instance._intro = 1;
         _player.EnabledControls();
     }
 }

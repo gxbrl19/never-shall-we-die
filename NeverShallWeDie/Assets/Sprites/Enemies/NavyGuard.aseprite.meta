@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: efa57a0a28cde284c9a32f734b9555df
+guid: e898e1708fce8fa4ab7b1ce2f8374d5d
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,18 +119,38 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Navigator_Frame_0
+  - name: NavyGuard_Frame_0
     originalName: 
-    pivot: {x: 0.57894737, y: 0.4848485}
+    pivot: {x: 0.47058824, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 29
+      y: 4
+      width: 17
+      height: 32
+    spriteID: 0a46906f7eda7eb458b2bcb2ab5ca151
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 29, y: 4}
+  - name: NavyGuard_Frame_1
+    originalName: 
+    pivot: {x: 0.47058824, y: 0.4848485}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 19
+      width: 17
       height: 33
-    spriteID: 9b70d315cf9fd60488eb3a42e4ff7a5f
+    spriteID: b46dee3b2be90174d8211fd506eba404
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,18 +159,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Navigator_Frame_1
+  - name: NavyGuard_Frame_2
     originalName: 
-    pivot: {x: 0.57894737, y: 0.4848485}
+    pivot: {x: 0.47058824, y: 0.4848485}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 45
-      width: 19
+      width: 17
       height: 33
-    spriteID: c4f6d1ac227a69542a479379971546c8
+    spriteID: 66e01bd67fb378c4ba2846fff903b699
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -159,18 +179,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 45}
-  - name: Navigator_Frame_2
+  - name: NavyGuard_Frame_3
     originalName: 
-    pivot: {x: 0.57894737, y: 0.4848485}
+    pivot: {x: 0.47058824, y: 0.4848485}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 86
-      width: 19
+      width: 17
       height: 33
-    spriteID: dac7b0ed75c93d24490936611cf5e285
+    spriteID: e4825c32b9412f74da96a75827a46e73
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -179,18 +199,58 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 86}
-  - name: Navigator_Frame_3
+  - name: NavyGuard_Frame_4
     originalName: 
-    pivot: {x: 0.57894737, y: 0.4848485}
+    pivot: {x: 0.47058824, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 31
+      x: 29
+      y: 44
+      width: 17
+      height: 32
+    spriteID: 78a9d47caaabba74d8af5248eb130e74
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 29, y: 44}
+  - name: NavyGuard_Frame_5
+    originalName: 
+    pivot: {x: 0.47058824, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 29
+      y: 84
+      width: 17
+      height: 32
+    spriteID: 2f7b57eed66e77d46ad34ebb44233288
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 29, y: 84}
+  - name: NavyGuard_Frame_6
+    originalName: 
+    pivot: {x: 0.40000004, y: 2.6666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 54
       y: 4
-      width: 19
-      height: 33
-    spriteID: 9d8011a158afd8148a5d3daf58c3eef6
+      width: 35
+      height: 6
+    spriteID: 4bf379f7b80eb884cae414af48ef3aac
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -198,132 +258,72 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 31, y: 4}
-  - name: Navigator_Frame_4
-    originalName: 
-    pivot: {x: 0.57894737, y: 0.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 31
-      y: 45
-      width: 19
-      height: 32
-    spriteID: 6935c8ab1e2a56a46b14bc9c4f454bdf
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 31, y: 45}
-  - name: Navigator_Frame_5
-    originalName: 
-    pivot: {x: 0.57894737, y: 0.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 31
-      y: 85
-      width: 19
-      height: 32
-    spriteID: 4242eb7ef4b80d24a9d395b3833d820d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 31, y: 85}
-  - name: Navigator_Frame_6
-    originalName: 
-    pivot: {x: 0.57894737, y: 0.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 58
-      y: 4
-      width: 19
-      height: 32
-    spriteID: 9ea50a528a7a1924392e76ffabce7d7b
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 58, y: 4}
+    uvTransform: {x: 54, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1564776495
-    name: Navigator
+    guid: 1423914765
+    name: NavyGuard
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Navigator_Frame_0
+    - name: NavyGuard_Frame_0
       frameIndex: 0
       cellRect:
-        x: 29
+        x: 32
         y: 16
-        width: 19
-        height: 33
-      spriteId: 9b70d315cf9fd60488eb3a42e4ff7a5f
-    - name: Navigator_Frame_1
+        width: 17
+        height: 32
+      spriteId: 0a46906f7eda7eb458b2bcb2ab5ca151
+    - name: NavyGuard_Frame_1
       frameIndex: 1
       cellRect:
-        x: 29
+        x: 32
         y: 16
-        width: 19
+        width: 17
         height: 33
-      spriteId: c4f6d1ac227a69542a479379971546c8
-    - name: Navigator_Frame_2
+      spriteId: b46dee3b2be90174d8211fd506eba404
+    - name: NavyGuard_Frame_2
       frameIndex: 2
       cellRect:
-        x: 29
+        x: 32
         y: 16
-        width: 19
+        width: 17
         height: 33
-      spriteId: dac7b0ed75c93d24490936611cf5e285
-    - name: Navigator_Frame_3
+      spriteId: 66e01bd67fb378c4ba2846fff903b699
+    - name: NavyGuard_Frame_3
       frameIndex: 3
       cellRect:
-        x: 29
+        x: 32
         y: 16
-        width: 19
+        width: 17
         height: 33
-      spriteId: 9d8011a158afd8148a5d3daf58c3eef6
-    - name: Navigator_Frame_4
+      spriteId: e4825c32b9412f74da96a75827a46e73
+    - name: NavyGuard_Frame_4
       frameIndex: 4
       cellRect:
-        x: 29
+        x: 32
         y: 16
-        width: 19
+        width: 17
         height: 32
-      spriteId: 6935c8ab1e2a56a46b14bc9c4f454bdf
-    - name: Navigator_Frame_5
+      spriteId: 78a9d47caaabba74d8af5248eb130e74
+    - name: NavyGuard_Frame_5
       frameIndex: 5
       cellRect:
-        x: 29
+        x: 32
         y: 16
-        width: 19
+        width: 17
         height: 32
-      spriteId: 4242eb7ef4b80d24a9d395b3833d820d
-    - name: Navigator_Frame_6
+      spriteId: 2f7b57eed66e77d46ad34ebb44233288
+    - name: NavyGuard_Frame_6
       frameIndex: 6
       cellRect:
-        x: 29
+        x: 26
         y: 16
-        width: 19
-        height: 32
-      spriteId: 9ea50a528a7a1924392e76ffabce7d7b
+        width: 35
+        height: 6
+      spriteId: 4bf379f7b80eb884cae414af48ef3aac
     linkedCells: []
     parentIndex: -1
   platformSettings:
