@@ -22,6 +22,8 @@ public class Intro : MonoBehaviour
     TypeTextAnimation typeText;
     STATE_INTRO state_intro;
 
+    public PlayerPosition _scriptablePosition;
+
     private void Awake()
     {
         typeText = FindObjectOfType<TypeTextAnimation>();
@@ -89,9 +91,11 @@ public class Intro : MonoBehaviour
                 state_intro = STATE_INTRO.DISABLED;
                 currentText = 0;
                 finished = false;
-                //SceneManager.LoadScene("Scenes/OpenWorld"); //TODO: DEMO | remover após a demo
-                SceneManager.LoadScene("Scenes/06/00");
                 AudioHUD.instance.PlayTexting();
+                GameManager.instance._intro = 0;
+                _scriptablePosition.SetAttributes(true, 1, 0);
+                SceneManager.LoadScene("Scenes/06/00");
+                //SceneManager.LoadScene("Scenes/OpenWorld"); //TODO: DEMO | remover após a demo
             }
         }
     }

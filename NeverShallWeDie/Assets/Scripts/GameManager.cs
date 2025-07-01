@@ -12,6 +12,7 @@ public class PlayerData
 {
     public int level;
     public int xp;
+    public int intro;
     public List<Equipments> equipments;
     public List<Skills> skills;
     public List<Items> items;
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public int _level;
     [HideInInspector] public int _xp;
+    [HideInInspector] public int _intro = 1;
     [HideInInspector] public List<Equipments> _equipments;
     [HideInInspector] public List<Skills> _skills;
     [HideInInspector] public List<Items> _inventory;
@@ -187,6 +189,7 @@ public class GameManager : MonoBehaviour
         //atribui os valores do jogo ao objeto
         _data.level = _level;
         _data.xp = _xp;
+        _data.intro = _intro;
         _data.equipments = _equipments;
         _data.skills = _skills;
         _data.items = _inventory;
@@ -281,6 +284,7 @@ public class GameManager : MonoBehaviour
             //atribui os valores do objeto ao jogo
             _level = _data.level;
             _xp = _data.xp;
+            _intro = _data.intro;
             _equipments = _data.equipments;
             _skills = _data.skills;
             _inventory = _data.items;

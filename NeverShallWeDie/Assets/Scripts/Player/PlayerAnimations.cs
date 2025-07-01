@@ -27,6 +27,9 @@ public class PlayerAnimations : MonoBehaviour
 
     void AnimatorController()
     {
+        //INTRO
+        _animation.SetBool("Intro", GameManager.instance._intro == 0);
+
         //Idle
         _animation.SetBool("IsGrounded", _player._isGrounded);
 

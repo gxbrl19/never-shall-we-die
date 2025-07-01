@@ -34,6 +34,7 @@ public class DialogueSystem : MonoBehaviour
     Blacksmith _blacksmith;
     Witch _witch;
     Shipwright _shipwright;
+    IntroManager _introManager;
 
     private void Awake()
     {
@@ -47,13 +48,24 @@ public class DialogueSystem : MonoBehaviour
         if (_character == Character.Blacksmith) { _blacksmith = FindObjectOfType<Blacksmith>(); }
         if (_character == Character.Witch) { _witch = FindObjectOfType<Witch>(); }
         if (_character == Character.Shipwright) { _shipwright = FindObjectOfType<Shipwright>(); }
-
-        //_npcController = FindObjectOfType<NPCController>();
+        if (_character == Character.NavyGuard) { _introManager = FindObjectOfType<IntroManager>(); }
     }
 
     private void Start()
     {
-        if (_character == Character.NavyGuard) { Invoke("Next", 5f); }
+        if (_character == Character.NavyGuard)
+        {
+            if (GameManager.instance._intro == 0)
+            {
+                Invoke("Next", 5f);
+            }
+            else
+            {
+                SpriteRenderer _sprite = GetComponentInParent<SpriteRenderer>();
+                _sprite.enabled = false;
+            }
+        }
+
         state = STATE.DISABLED;
     }
 
@@ -126,6 +138,7 @@ public class DialogueSystem : MonoBehaviour
                 if (_blacksmith != null) { _blacksmith.NextState(); }
                 if (_witch != null) { _witch.NextState(); }
                 if (_shipwright != null) { _shipwright.NextState(); }
+                if (_introManager != null) { _introManager.NextState(); } //TODO: criar a cena da bala de canhão
             }
         }
     }
