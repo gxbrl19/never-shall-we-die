@@ -172,11 +172,17 @@ public class UIManager : MonoBehaviour
     {
         _healthBar.fillAmount = _health._currentHealth / _health._maxHealth;
         _healingBar.fillAmount = _health._currentMana / _health._maxMana;
-        _txtHealth.text = _health._currentHealth.ToString();
-        _txtMana.text = _health._currentMana.ToString();
+
+        //convertendo para INT
+        int health = (int)_health._currentHealth;
+        int mana = (int)_health._currentMana;
+        _txtHealth.text = health.ToString();
+        _txtMana.text = mana.ToString();
         _txtGold.text = GameManager.instance._gold.ToString();
-        _txtHealthInPause.text = _health._maxHealth.ToString();
-        _txtHealingInPause.text = _health._maxMana.ToString();
+
+        //stats no pause
+        _txtHealthInPause.text = health.ToString();
+        _txtHealingInPause.text = mana.ToString();
         _txtGoldInPause.text = GameManager.instance._gold.ToString();
         _txtUpPointsInPause.text = GameManager.instance._upPoints.ToString();
     }

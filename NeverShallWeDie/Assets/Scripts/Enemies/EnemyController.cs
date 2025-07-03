@@ -67,7 +67,7 @@ public class EnemyController : MonoBehaviour
         }
         else //morte do inimigo
         {
-            //_dropItem.DropGold();
+            _dropItem.DropGold();
             _isDead = true;
             _animation.SetBool("Dead", true);
             RuntimeManager.PlayOneShot(death);
