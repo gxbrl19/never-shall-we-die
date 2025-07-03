@@ -9019,63 +9019,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &560573532
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5373271078219029721, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_Name
-      value: Sign
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 47.99488
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -42.943085
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
 --- !u!1 &569487876
 GameObject:
   m_ObjectHideFlags: 0
@@ -18674,6 +18617,9 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
+  _level: 0
+  _xp: 0
+  _intro: 1
   _equipments: 
   _skills: 
   _inventory: 
@@ -18681,13 +18627,13 @@ MonoBehaviour:
   _currentMP: 0
   _hpMax: 25
   _mpMax: 15
-  _katanaLevel: 0
   _gold: 0
-  _qtdPotentium: 0
-  _qtdOrb: 0
+  _upPoints: 0
+  _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
+  _ancientStones: 
   _airCutblock: 
   _barriersLever: 
   _secret: 
@@ -18706,9 +18652,6 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
-  _submarine: 0
-  _propulsion: 0
-  _artillery: 0
   _bestiary: 
   _bosses: 
   _masterVol: 0
@@ -19265,5 +19208,4 @@ SceneRoots:
   - {fileID: 880809858}
   - {fileID: 727451690}
   - {fileID: 1668730759}
-  - {fileID: 560573532}
   - {fileID: 2078374007}
