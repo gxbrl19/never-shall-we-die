@@ -22,6 +22,7 @@ public class DialogueSystem : MonoBehaviour
 {
     public DialogueData dialogueData;
     public Character _character;
+    [SerializeField] GameObject _canvas;
 
     int currentText = 0;
     bool finished = false;
@@ -88,22 +89,13 @@ public class DialogueSystem : MonoBehaviour
     {
         if (currentText == 0)
         {
-            UIManager.instance.EnableDialogue();
+            _canvas.SetActive(true);
         }
 
         //localization
         var currentLocale = LocalizationSettings.SelectedLocale;
-
-        if (currentLocale.Identifier.Code == "pt-BR")
-        {
-            UIManager.instance.SetName(dialogueData.talkScript[currentText].portugueseName);
-            typeText.fullText = dialogueData.talkScript[currentText++].portugueseText;
-        }
-        else if (currentLocale.Identifier.Code == "en")
-        {
-            UIManager.instance.SetName(dialogueData.talkScript[currentText].englishName);
-            typeText.fullText = dialogueData.talkScript[currentText++].englishText;
-        }
+        if (currentLocale.Identifier.Code == "pt-BR") { typeText.fullText = dialogueData.talkScript[currentText++].portugueseText; }
+        else if (currentLocale.Identifier.Code == "en") { typeText.fullText = dialogueData.talkScript[currentText++].englishText; }
         //localization
 
         if (currentText == dialogueData.talkScript.Count) finished = true;
@@ -127,18 +119,17 @@ public class DialogueSystem : MonoBehaviour
             }
             else
             {
-                UIManager.instance.DisableDialogue();
+                _canvas.SetActive(false);
                 state = STATE.DISABLED;
                 currentText = 0;
                 finished = false;
                 _input.interact = false;
                 _player.EnabledControls();
-                AudioHUD.instance.PlayTexting();
                 if (_navigator != null) { _navigator.NextState(); }
                 if (_blacksmith != null) { _blacksmith.NextState(); }
                 if (_witch != null) { _witch.NextState(); }
                 if (_shipwright != null) { _shipwright.NextState(); }
-                if (_introManager != null) { _introManager.NextState(); } //TODO: criar a cena da bala de canhão
+                if (_introManager != null) { _introManager.NextState(); }
             }
         }
     }

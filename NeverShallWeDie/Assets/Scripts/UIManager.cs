@@ -84,11 +84,6 @@ public class UIManager : MonoBehaviour
     private int _mapID;
     private int _mapPanelIndex;
 
-    [BoxGroup("Dialogue")] public GameObject _pnlDialogue;
-    [BoxGroup("Dialogue")] public TextMeshProUGUI _txtName;
-    [BoxGroup("Dialogue")] public TextMeshProUGUI _txtTalk;
-    private bool _inDialogue = false;
-
     [BoxGroup("Crew")][Header("Helm")] public GameObject _pnlNavigate;
     [BoxGroup("Crew")] public GameObject _buttonYesNavigate;
     [BoxGroup("Crew")][Header("Navigator")] public GameObject _pnlBuyMap;
@@ -164,7 +159,6 @@ public class UIManager : MonoBehaviour
     {
         StatsController();
         SkillControl();
-        DialogueControl();
     }
 
     #region HUD
@@ -437,30 +431,6 @@ public class UIManager : MonoBehaviour
         }
 
         _localizations[_mapID].enabled = true;
-    }
-    #endregion
-
-    #region Dialogue
-    void DialogueControl()
-    {
-        _pnlDialogue.SetActive(_inDialogue);
-    }
-
-    public void SetName(string name)
-    {
-        _txtName.text = name;
-    }
-
-    public void EnableDialogue()
-    {
-        _inDialogue = true;
-    }
-
-    public void DisableDialogue()
-    {
-        _inDialogue = false;
-        _txtName.text = "";
-        _txtTalk.text = "";
     }
     #endregion
 

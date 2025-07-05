@@ -11,7 +11,7 @@ public class TypeTextAnimation : MonoBehaviour
     public float typeDelay = 0.05f;
     public TextMeshProUGUI textObject;
 
-    public string fullText;
+    [HideInInspector] public string fullText;
 
     Coroutine coroutine;
 

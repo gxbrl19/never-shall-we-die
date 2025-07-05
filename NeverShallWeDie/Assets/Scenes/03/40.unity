@@ -745,6 +745,13 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  _texting:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!82 &70745961
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5707,10 +5714,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2454650401307490126, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
-      propertyPath: textObject
-      value: 
-      objectReference: {fileID: 639119658717873593}
     - target: {fileID: 4857848698564615335, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
       propertyPath: dialogueData
       value: 
@@ -5723,9 +5726,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6196630704637659677, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
+    - target: {fileID: 6196630704637659674, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6196630704637659677, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5915,22 +5918,33 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
+  _level: 0
+  _xp: 0
+  _intro: 1
   _equipments: 
   _skills: 
+  _inventory: 
+  _currentHP: 0
+  _currentMP: 0
   _hpMax: 25
   _mpMax: 15
-  _katanaLevel: 0
   _gold: 0
-  _qtdPotentium: 0
-  _qtdOrb: 0
+  _upPoints: 0
+  _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
+  _ancientStones: 
   _airCutblock: 
   _barriersLever: 
+  _secret: 
+  _secretDrawbridge: 0
+  _drawbridge: 0
   _gateMechanism: 0
   _gateBoss: 0
   _shipUpgrades: 
+  _shipPosX: 0
+  _shipPosY: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -5939,17 +5953,11 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
-  _hammer: 0
-  _grimoire: 0
-  _submarine: 0
-  _propulsion: 0
-  _artillery: 0
   _bestiary: 
   _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
-  _keys: 
   _doors: 
   _inputType: 
 --- !u!4 &654701005
@@ -10623,10 +10631,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2454650401307490126, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
-      propertyPath: textObject
-      value: 
-      objectReference: {fileID: 639119658717873593}
     - target: {fileID: 4857848698564615335, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
       propertyPath: dialogueData
       value: 
@@ -10639,9 +10643,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6196630704637659677, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
+    - target: {fileID: 6196630704637659674, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6196630704637659677, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10954,10 +10958,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2454650401307490126, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
-      propertyPath: textObject
-      value: 
-      objectReference: {fileID: 639119658717873593}
     - target: {fileID: 4857848698564615335, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
       propertyPath: dialogueData
       value: 
@@ -10966,9 +10966,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Witch_Meet
       objectReference: {fileID: 0}
-    - target: {fileID: 6196630704637659677, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
+    - target: {fileID: 6196630704637659674, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6196630704637659677, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11656,17 +11656,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 774f7d125c99b794a8e19bf645e7fd50, type: 3}
---- !u!114 &639119658717873593 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 796155678224599241, guid: 774f7d125c99b794a8e19bf645e7fd50, type: 3}
-  m_PrefabInstance: {fileID: 639119658717873592}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4706422229354561718
 PrefabInstance:
   m_ObjectHideFlags: 0

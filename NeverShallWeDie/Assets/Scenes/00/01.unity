@@ -839,10 +839,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 611241113564523214, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
-      propertyPath: textObject
-      value: 
-      objectReference: {fileID: 639119658717873593}
     - target: {fileID: 5373271078219029721, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_Name
       value: Navigator_Other
@@ -850,10 +846,6 @@ PrefabInstance:
     - target: {fileID: 5373271078219029721, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5373271078219029724, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5373271078219029724, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -894,6 +886,10 @@ PrefabInstance:
     - target: {fileID: 5373271078219029724, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029727, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5472299401849235660, guid: 0e1447a0e30e1c141850d94fd8626fa8, type: 3}
       propertyPath: dialogueData
@@ -11197,17 +11193,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 774f7d125c99b794a8e19bf645e7fd50, type: 3}
---- !u!114 &639119658717873593 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 796155678224599241, guid: 774f7d125c99b794a8e19bf645e7fd50, type: 3}
-  m_PrefabInstance: {fileID: 639119658717873592}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4706422229354561718
 PrefabInstance:
   m_ObjectHideFlags: 0
