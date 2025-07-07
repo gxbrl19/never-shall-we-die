@@ -1137,13 +1137,14 @@ MonoBehaviour:
   - {fileID: 2536225920701132631}
   - {fileID: -917566133733175541}
   - {fileID: 5798644225662079123}
+  - {fileID: 3056199213035192343}
   EditorParameters:
   - {fileID: -8480598557086419306}
   MasterBanks:
   - {fileID: 3080069313522275875}
   StringsBanks:
   - {fileID: 3531533141968269314}
-  cacheTime: 638869226144326200
+  cacheTime: 638874880777389696
   cacheVersion: 131616
 --- !u!114 &7691062675070937
 MonoBehaviour:
@@ -1712,6 +1713,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 896
+--- !u!114 &3056199213035192343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/generic/action/chest_hited
+  m_EditorClassIdentifier: 
+  Path: event:/generic/action/chest_hited
+  Guid:
+    Data1: 1777329349
+    Data2: 1080073780
+    Data3: -1401502035
+    Data4: -1073703416
+  Banks:
+  - {fileID: 3080069313522275875}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 371
 --- !u!114 &3080069313522275875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1727,10 +1755,10 @@ MonoBehaviour:
   Path: ../../../never_shall_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638869226144275900
+  lastModified: 638874880777349683
   FileSizes:
   - Name: Desktop
-    Value: 10536128
+    Value: 10541472
   Exists: 1
 --- !u!114 &3517965362090361121
 MonoBehaviour:
@@ -1801,10 +1829,10 @@ MonoBehaviour:
   Path: ../../../never_shall_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638869226144326200
+  lastModified: 638874880777389696
   FileSizes:
   - Name: Desktop
-    Value: 5988
+    Value: 6036
   Exists: 1
 --- !u!114 &3560383998493286130
 MonoBehaviour:

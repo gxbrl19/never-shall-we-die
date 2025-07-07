@@ -22,6 +22,5 @@ public class DropItem : MonoBehaviour
     {
         if (_item == null) { return; } //retorna se não tiver nenhum item
         Instantiate(_item, transform.position, Quaternion.identity);
-        //TODO: som abrindo
     }
 }

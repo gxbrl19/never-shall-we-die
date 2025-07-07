@@ -12,6 +12,7 @@ public class Chest : MonoBehaviour
 
     [Header("FMOD Events")]
     [SerializeField] EventReference openChest;
+    [SerializeField] EventReference hitedChest;
 
     void Start()
     {
@@ -35,7 +36,12 @@ public class Chest : MonoBehaviour
         if (other.gameObject.tag == "SwordAtk")
         {
             Hited();
-            RuntimeManager.PlayOneShot(openChest);
+            RuntimeManager.PlayOneShot(hitedChest);
         }
+    }
+
+    public void PlayAudioOpen() //chamado na animação
+    {
+        RuntimeManager.PlayOneShot(openChest);
     }
 }
