@@ -18,9 +18,10 @@ public class DropItem : MonoBehaviour
         }
     }
 
-    public void DropChest(int chestID)
+    public void DropChest() //chamado na animação do baú
     {
         if (_item == null) { return; } //retorna se não tiver nenhum item
         Instantiate(_item, transform.position, Quaternion.identity);
+        //TODO: som abrindo
     }
 }

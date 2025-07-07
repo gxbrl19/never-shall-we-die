@@ -8,12 +8,7 @@ public class Chest : MonoBehaviour
 {
     public int _idChest;
 
-    bool _triggered;
     Animator _animation;
-    Collider2D _collider;
-    Player _player;
-    PlayerInputs _input;
-    DropItem _dropItem;
 
     [Header("FMOD Events")]
     [SerializeField] EventReference openChest;
@@ -21,52 +16,26 @@ public class Chest : MonoBehaviour
     void Start()
     {
         _animation = GetComponent<Animator>();
-        _collider = GetComponent<BoxCollider2D>();
-        _dropItem = GetComponent<DropItem>();
-        _player = FindFirstObjectByType<Player>();
-        _input = _player.GetComponent<PlayerInputs>();
+        if (GameManager.instance._chests[_idChest] == 1) { DisableChest(); }
     }
 
-    void Update()
+    void Hited()
     {
-        // verifica se ainda não foi aberto
-        bool enabled = GameManager.instance._chests[_idChest] == 0;
-        _animation.enabled = !enabled;
-        _collider.enabled = enabled;
-
-        //verifica o input
-        if (_input.interact && _triggered)
-        {
-            RuntimeManager.PlayOneShot(openChest);
-            DisableChest();
-        }
-    }
-
-    void DisableChest()
-    {
-        _triggered = false;
-        _input.interact = false;
-        _dropItem.DropChest(_idChest);
+        _animation.SetBool("Hited", true);
         GameManager.instance._chests[_idChest] = 1;
+    }
+
+    public void DisableChest()
+    {
+        _animation.SetBool("Disabled", true);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Player _player = other.GetComponent<Player>();
-
-        if (_player != null)
+        if (other.gameObject.tag == "SwordAtk")
         {
-            _triggered = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        Player _player = other.GetComponent<Player>();
-
-        if (_player != null)
-        {
-            _triggered = false;
+            Hited();
+            RuntimeManager.PlayOneShot(openChest);
         }
     }
 }
