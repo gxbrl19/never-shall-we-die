@@ -307,12 +307,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da93cb520c9e894dbc57815589994eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _paths:
+  patrolPoints:
   - {fileID: 2379026360798802436}
   - {fileID: 2915843173698880306}
-  _playerLayer:
+  speed: 2
+  playerLayer:
     serializedVersion: 2
     m_Bits: 16896
+  detectionBoxSize: {x: 15, y: 1}
+  attackDistance: 2
 --- !u!114 &4176460974584168609
 MonoBehaviour:
   m_ObjectHideFlags: 0
