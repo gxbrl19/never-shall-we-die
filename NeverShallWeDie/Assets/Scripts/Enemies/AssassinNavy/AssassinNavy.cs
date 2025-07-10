@@ -2,24 +2,23 @@ using UnityEngine;
 
 public class AssassinNavy : MonoBehaviour
 {
-    [Header("Configurações de Detecção e Ataque")]
-    [SerializeField] private float _attackDistance = 2f;
-    [SerializeField] private LayerMask _playerLayer;
-    private float _attackCooldown = 2f;
+    [Header("Attack")]
+    [SerializeField] private float attackDistance = 2f;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private float attackCooldown = 2f;
 
-    [Header("Movimentação")]
-    private float _runSpeed = 5f;
-    private float _dashBackForce = 5f;
-    [SerializeField] private Vector2 _detectionBoxSize = new Vector2(21f, 1f);
+    [Header("Move")]
+    [SerializeField] private float runSpeed = 4f;
+    [SerializeField] private float dashBackForce = 5f;
+    [SerializeField] private Vector2 detectionBoxSize = new Vector2(10f, 2f);
 
-    private Transform _playerTransform;
+    private Transform playerTransform;
     private EnemyController _controller;
     private Rigidbody2D _body;
 
-    private float _cooldownTimer = 0f;
-    private bool _isOnCooldown = false;
-    private bool _playerDetected = false;
-    private bool _detectedEffect = false;
+    private float cooldownTimer = 0f;
+    private bool isOnCooldown = false;
+    private bool playerDetected = false;
 
     private enum State
     {
@@ -41,7 +40,7 @@ public class AssassinNavy : MonoBehaviour
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
-            _playerTransform = playerObj.transform;
+            playerTransform = playerObj.transform;
         else
             Debug.LogWarning("Player não encontrado na cena!");
     }
@@ -50,80 +49,74 @@ public class AssassinNavy : MonoBehaviour
     {
         if (_controller._isDead) return;
 
-        //atualizar animação
         _controller._animation.SetBool("Run", currentState == State.RunningToPlayer);
         _controller._animation.SetBool("Attack", currentState == State.Attacking);
         _controller._animation.SetBool("Dashback", currentState == State.DashingBack);
 
         Flip();
-
-        switch (currentState)
-        {
-            case State.Idle:
-                //parado até detectar
-                break;
-
-            case State.RunningToPlayer:
-                MoveTowardPlayer();
-                break;
-
-            case State.DashingBack:
-                //não faz nada, movimento acontece via física
-                break;
-        }
     }
 
     private void FixedUpdate()
     {
-        if (_controller._isDead || _playerTransform == null) return;
+        if (_controller._isDead || playerTransform == null) return;
 
         DetectPlayer();
 
-        float distanceToPlayer = Vector2.Distance(transform.position, _playerTransform.position);
+        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
-        if (currentState != State.Attacking && currentState != State.DashingBack)
+        switch (currentState)
         {
-            if (_playerDetected && distanceToPlayer > _attackDistance)
-            {
-                currentState = State.RunningToPlayer;
-            }
-            else if (_playerDetected && distanceToPlayer <= _attackDistance && !_isOnCooldown)
-            {
-                currentState = State.Attacking;
-                _isOnCooldown = true;
-                _cooldownTimer = _attackCooldown;
-                _body.velocity = Vector2.zero; //para movimento durante ataque
-            }
+            case State.Idle:
+                if (playerDetected)
+                    currentState = distanceToPlayer <= attackDistance && !isOnCooldown ? State.Attacking : State.RunningToPlayer;
+                break;
+
+            case State.RunningToPlayer:
+                if (distanceToPlayer <= attackDistance && !isOnCooldown)
+                {
+                    currentState = State.Attacking;
+                    isOnCooldown = true;
+                    cooldownTimer = attackCooldown;
+                    _body.velocity = Vector2.zero;
+                }
+                else
+                {
+                    MoveTowardPlayer(); // agora usa MovePosition
+                }
+                break;
+
+            case State.Attacking:
+                // movimento ocorre via animação
+                break;
+
+            case State.DashingBack:
+                // movimento via impulso
+                break;
         }
 
         // Atualizar cooldown
-        if (_isOnCooldown)
+        if (isOnCooldown)
         {
-            _cooldownTimer -= Time.fixedDeltaTime;
-            if (_cooldownTimer <= 0f)
-                _isOnCooldown = false;
+            cooldownTimer -= Time.fixedDeltaTime;
+            if (cooldownTimer <= 0f)
+                isOnCooldown = false;
         }
     }
 
     private void MoveTowardPlayer()
     {
-        Vector2 target = new Vector2(_playerTransform.position.x, transform.position.y);
-        transform.position = Vector2.MoveTowards(transform.position, target, _runSpeed * Time.deltaTime);
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
+        Vector2 targetPosition = _body.position + direction * runSpeed * Time.fixedDeltaTime;
+        _body.MovePosition(targetPosition);
     }
 
     private void DetectPlayer()
     {
-        Collider2D hit = Physics2D.OverlapBox(transform.position, _detectionBoxSize, 0, _playerLayer);
-        _playerDetected = hit != null;
-
-        if (hit != null && !_detectedEffect)
-        {
-            _controller.CreateDetectionEffect();
-            _detectedEffect = true;
-        }
+        Collider2D hit = Physics2D.OverlapBox(transform.position, detectionBoxSize, 0, playerLayer);
+        playerDetected = hit != null;
     }
 
-    public void FinishAttack() //chamado pela animação
+    public void FinishAttack() // chamado pela animação
     {
         if (!_controller._isDead)
         {
@@ -135,17 +128,18 @@ public class AssassinNavy : MonoBehaviour
     {
         currentState = State.DashingBack;
 
-        //aplicar impulso para trás
         float direction = transform.localScale.x > 0 ? -1f : 1f;
-        _body.velocity = new Vector2(direction * _dashBackForce, _body.velocity.y);
+        _body.velocity = new Vector2(direction * dashBackForce, _body.velocity.y);
 
-        //parar dash após tempo
-        Invoke(nameof(EndDashBack), 0.3f); //tempo da animação
+        Invoke(nameof(EndDashBack), 0.3f); // ajustar tempo conforme a animação
     }
 
     private void EndDashBack()
     {
-        if (_playerDetected)
+        if (_controller._isDead) return;
+
+        float distance = Vector2.Distance(transform.position, playerTransform.position);
+        if (playerDetected && distance > attackDistance)
             currentState = State.RunningToPlayer;
         else
             currentState = State.Idle;
@@ -153,11 +147,11 @@ public class AssassinNavy : MonoBehaviour
 
     private void Flip()
     {
-        if (_playerTransform == null) return;
+        if (playerTransform == null) return;
 
         if (currentState == State.RunningToPlayer || currentState == State.Attacking)
         {
-            if (transform.position.x < _playerTransform.position.x)
+            if (transform.position.x < playerTransform.position.x)
                 transform.localScale = new Vector2(1, 1);
             else
                 transform.localScale = new Vector2(-1, 1);
@@ -167,6 +161,6 @@ public class AssassinNavy : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(transform.position, _detectionBoxSize);
+        Gizmos.DrawWireCube(transform.position, detectionBoxSize);
     }
 }
