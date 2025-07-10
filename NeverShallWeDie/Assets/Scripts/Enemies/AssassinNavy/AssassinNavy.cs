@@ -3,7 +3,6 @@ using UnityEngine;
 public class AssassinNavy : MonoBehaviour
 {
     [Header("Configurações de Detecção e Ataque")]
-    [SerializeField] private float _detectionRange = 10f;
     [SerializeField] private float _attackDistance = 2f;
     [SerializeField] private LayerMask _playerLayer;
     private float _attackCooldown = 2f;
@@ -20,6 +19,7 @@ public class AssassinNavy : MonoBehaviour
     private float _cooldownTimer = 0f;
     private bool _isOnCooldown = false;
     private bool _playerDetected = false;
+    private bool _detectedEffect = false;
 
     private enum State
     {
@@ -115,6 +115,12 @@ public class AssassinNavy : MonoBehaviour
     {
         Collider2D hit = Physics2D.OverlapBox(transform.position, _detectionBoxSize, 0, _playerLayer);
         _playerDetected = hit != null;
+
+        if (hit != null && !_detectedEffect)
+        {
+            _controller.CreateDetectionEffect();
+            _detectedEffect = true;
+        }
     }
 
     public void FinishAttack() //chamado pela animação

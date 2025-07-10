@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     public bool _onHit;
     public bool _isDead;
     [SerializeField] GameObject _deathEffect;
+    [SerializeField] GameObject _detectEffect;
     [HideInInspector] public Animator _animation;
 
     [Header("FMOD Events")]
@@ -81,6 +82,12 @@ public class EnemyController : MonoBehaviour
         }
 
         Invoke("FinishHit", 0.3f);
+    }
+
+    public void CreateDetectionEffect()
+    {
+        _detectEffect.SetActive(true);
+        //Instantiate(_detectEffect, transform.position, Quaternion.identity);
     }
 
     public void FinishHit() //chamado no TakeDamage()
