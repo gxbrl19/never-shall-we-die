@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
     private float _grabSpeed = 2f;
 
     //Hit
-    [HideInInspector] public bool _knockback;
+    [HideInInspector] public float _knockbackDirection;
     private float _knockbackForce = 5f;
     [HideInInspector] public bool _onHit = false;
 
@@ -890,7 +890,7 @@ public class Player : MonoBehaviour
         //_input.horizontal = 0;
         _body.velocity = Vector2.zero;
 
-        if (_knockback) { _body.AddForce(Vector2.left * _knockbackForce, ForceMode2D.Impulse); }
+        if (_knockbackDirection > 0) { _body.AddForce(Vector2.left * _knockbackForce, ForceMode2D.Impulse); }
         else { _body.AddForce(Vector2.right * _knockbackForce, ForceMode2D.Impulse); }
     }
 
@@ -899,7 +899,6 @@ public class Player : MonoBehaviour
         _onHit = false;
         _canMove = true;
         _health.FinishHit();
-        _knockback = false;
     }
     #endregion
 

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpearNavy_Throw
+  m_Name: SpearNavy_Hit
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 7509368749202618204, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
+      value: {fileID: 2879128315700646133, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
     - time: 0.1
-      value: {fileID: -2760682244630892582, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
+      value: {fileID: 3766787523899438680, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
     - time: 0.2
-      value: {fileID: -1989370797067882451, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
-    - time: 0.3
-      value: {fileID: -3976829062098928542, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
+      value: {fileID: -8834384662785881752, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
+    - time: 0.4
+      value: {fileID: -8834384662785881752, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,16 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 7509368749202618204, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
-    - {fileID: -2760682244630892582, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
-    - {fileID: -1989370797067882451, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
-    - {fileID: -3976829062098928542, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
+    - {fileID: 2879128315700646133, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
+    - {fileID: 3766787523899438680, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
+    - {fileID: -8834384662785881752, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
+    - {fileID: -8834384662785881752, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -79,15 +79,8 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.1
-    functionName: ThrowSpear
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.3
-    functionName: FinishThrow
+  - time: 0.4
+    functionName: FinishHurt
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

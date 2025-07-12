@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpearProjectile : MonoBehaviour
 {
-    public float speed = 8f;
+    public float speed = 11f;
     public float lifetime = 5f;
     private Vector2 direction;
 

@@ -1,92 +1,77 @@
 using UnityEngine;
 
-public class SpearNavy : MonoBehaviour
+public class SpearNavy : EnemyBase
 {
-    [Header("Config")]
-    public float visionRange = 10f;
-    public float throwRange = 5f;
-    public float moveSpeed = 2f;
-    public float throwCooldown = 2f;
+    private enum State { Idle, Chase, Throw, Hurt, Dead }
+    private State currentState = State.Idle;
+
+    [Header("Comportamento")]
+    private float visionRange = 12f;
+    private float throwRange = 10f;
+    private float moveSpeed = 2f;
+    private float throwCooldown = 1.5f;
 
     [Header("Referências")]
     public GameObject spearPrefab;
     public Transform throwPoint;
+    Transform player;
 
-    enum State { Idle, Chase, Throw }
-    State currentState = State.Idle;
-    float throwTimer = 0f;
-    bool isThrowing = false;
+    private float throwTimer = 0f;
+    private bool isThrowing = false;
 
-    Rigidbody2D _body;
-    EnemyController _controller;
-    Transform _player;
-
-    private void Awake()
+    protected override void Awake()
     {
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        _controller = GetComponent<EnemyController>();
-        _body = GetComponent<Rigidbody2D>();
+        base.Awake();
     }
 
-    private void Update()
+    void Start()
     {
-        if (_player == null) return;
+        player = FindObjectOfType<Player>().GetComponent<Transform>();
+    }
+
+    protected override void Update()
+    {
+        if (isDead || isHurt || player == null) return;
 
         throwTimer += Time.deltaTime;
-
-        float distance = Vector2.Distance(transform.position, _player.position);
+        float distance = Vector2.Distance(transform.position, player.position);
 
         switch (currentState)
         {
             case State.Idle:
-                _body.velocity = Vector2.zero;
-                _controller._animation.Play("SpearNavy_Idle");
+                animator.Play("Idle");
+                rb.velocity = Vector2.zero;
 
                 if (distance <= visionRange)
-                {
-                    if (distance <= throwRange)
-                        ChangeState(State.Throw);
-                    else
-                        ChangeState(State.Chase);
-                }
+                    ChangeState(distance <= throwRange ? State.Throw : State.Chase);
                 break;
 
             case State.Chase:
-                _controller._animation.Play("SpearNavy_Walk");
+                animator.Play("Walk");
 
                 if (distance > visionRange)
-                {
                     ChangeState(State.Idle);
-                }
                 else if (distance <= throwRange)
-                {
                     ChangeState(State.Throw);
-                }
                 else
                 {
-                    Vector2 dir = (_player.position - transform.position).normalized;
-                    _body.velocity = dir * moveSpeed;
-
-                    if (dir.x != 0)
-                        transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
+                    Vector2 dir = player.position - transform.position;
+                    dir.y = 0f; //resolve o bug do inimigo flutuar
+                    rb.velocity = dir.normalized * moveSpeed;
+                    if (dir.x != 0) transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
                 }
                 break;
 
             case State.Throw:
-                _body.velocity = Vector2.zero;
+                rb.velocity = Vector2.zero;
 
                 if (distance > throwRange)
-                {
                     ChangeState(State.Chase);
-                }
                 else if (!isThrowing && throwTimer >= throwCooldown)
                 {
-                    _controller._animation.Play("SpearNavy_Throw");
+                    animator.Play("Throw");
                     isThrowing = true;
                     throwTimer = 0f;
-
-                    //delay sincronizado com a animação
-                    //Invoke(nameof(ThrowSpear), 0.5f);
                 }
                 break;
         }
@@ -94,30 +79,33 @@ public class SpearNavy : MonoBehaviour
 
     private void ChangeState(State newState)
     {
+        if (currentState == State.Dead) return;
+
         currentState = newState;
         isThrowing = false;
     }
 
-    public void ThrowSpear() //chamado na animação
+    public void ThrowSpear() // chamado por evento da animação
     {
-        if (spearPrefab == null || throwPoint == null || _player == null) return;
+        if (isDead || spearPrefab == null || throwPoint == null || player == null) return;
 
-        Vector2 dir = (_player.position - throwPoint.position).normalized;
-
+        Vector2 dir = (player.position - throwPoint.position).normalized;
         GameObject spear = Instantiate(spearPrefab, throwPoint.position, Quaternion.identity);
         spear.GetComponent<SpearProjectile>().SetDirection(dir);
 
-        //flip
         if (dir.x != 0)
             transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
     }
 
-    private void OnDrawGizmosSelected()
+    public void FinishThrow() //chamado na animação Throw
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, visionRange);
+        isThrowing = false;
+        ChangeState(State.Idle); // ou Chase
+    }
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, throwRange);
+    public void FinishHurt() // chamado na animação Hurt
+    {
+        ResetHurt();
+        ChangeState(State.Idle);
     }
 }

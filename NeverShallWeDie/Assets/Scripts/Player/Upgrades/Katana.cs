@@ -22,16 +22,16 @@ public class Katana : MonoBehaviour
         {
             default:
             case 0:
-                _damager._power = _equipmentObject.damager1;
+                _damager.attackPower = _equipmentObject.damager1;
                 break;
             case 1:
-                _damager._power = _equipmentObject.damager2;
+                _damager.attackPower = _equipmentObject.damager2;
                 break;
             case 2:
-                _damager._power = _equipmentObject.damager3;
+                _damager.attackPower = _equipmentObject.damager3;
                 break;
             case 3:
-                _damager._power = _equipmentObject.damager4;
+                _damager.attackPower = _equipmentObject.damager4;
                 break;
         }
     }

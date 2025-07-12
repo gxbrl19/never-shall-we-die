@@ -44,9 +44,7 @@ GameObject:
   - component: {fileID: 6037881703837057476}
   - component: {fileID: 3951389470403408013}
   - component: {fileID: 3859602581630026956}
-  - component: {fileID: 2063399306552059255}
   - component: {fileID: 7052122084256917196}
-  - component: {fileID: 4176460974584168609}
   - component: {fileID: 7263654638883791228}
   m_Layer: 12
   m_Name: Sprite
@@ -175,7 +173,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -183,10 +181,10 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!95 &3859602581630026956
 Animator:
   serializedVersion: 5
@@ -208,43 +206,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2063399306552059255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2601975481963441744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2403d62617d895448a0eea8de19311b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyObject: {fileID: 11400000, guid: e82c1a5bb8f37f0419d0bf5a904860d7, type: 2}
-  _name: 
-  _maxHealth: 0
-  _itemDropRate: 0
-  _damageColor: {r: 0, g: 0, b: 0, a: 0}
-  _currentHealth: 0
-  _onHit: 0
-  _isDead: 0
-  _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _detectEffect: {fileID: 0}
-  _animation: {fileID: 0}
-  hit:
-    Guid:
-      Data1: -528028374
-      Data2: 1114340778
-      Data3: 617866886
-      Data4: -1358363308
-    Path: event:/sfx/gameplay/SFX_COMBAT_bombman_hit_01
-  death:
-    Guid:
-      Data1: -1444123794
-      Data2: 1209960667
-      Data3: 1539037571
-      Data4: 1656383288
-    Path: event:/sfx/gameplay/SFX_COMBAT_bombman_death_01
 --- !u!114 &7052122084256917196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,27 +218,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c3bee8caba09f40a49767b0606deb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRange: 10
-  throwRange: 5
-  moveSpeed: 2
-  throwCooldown: 2
+  enemyObject: {fileID: 11400000, guid: 26afc1dc4746e14488d595f6718abd3b, type: 2}
+  currentHealth: 0
+  deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
+  hit:
+    Guid:
+      Data1: 1194926906
+      Data2: 1079356389
+      Data3: 420128935
+      Data4: -404233844
+    Path: event:/generic/combat/enemy_hit
+  death:
+    Guid:
+      Data1: -1277808937
+      Data2: 1287559987
+      Data3: -370825569
+      Data4: -1116620846
+    Path: event:/generic/combat/enemy_death
   spearPrefab: {fileID: 8212883212767371751, guid: ce989872d7b159d41b35c0022e56dab8, type: 3}
   throwPoint: {fileID: 5238646512257658322}
---- !u!114 &4176460974584168609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2601975481963441744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07cb9b2e136621c42b16bedb58e76bbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _item: {fileID: 62880426106912218, guid: a9adf4fda0599e24abf6d0d01f7fedf9, type: 3}
-  _dropPoint: {fileID: 3717038025535556846}
-  _dropRate: 0
 --- !u!114 &7263654638883791228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 2
+  attackPower: 2
   _hitEffect: {fileID: 0}
 --- !u!1 &3717038023925824465
 GameObject:
@@ -301,6 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3717038023925824466}
+  - component: {fileID: 3303790653747850645}
   m_Layer: 12
   m_Name: SpearNavy
   m_TagString: Enemy
@@ -324,6 +284,20 @@ Transform:
   - {fileID: 779384994571147730}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3303790653747850645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717038023925824465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 0}
 --- !u!1 &3717038025535556845
 GameObject:
   m_ObjectHideFlags: 0

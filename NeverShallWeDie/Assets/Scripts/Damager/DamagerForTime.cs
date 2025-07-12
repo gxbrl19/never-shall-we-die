@@ -35,6 +35,6 @@ public class DamagerForTime : MonoBehaviour
 
     void SetDamage()
     {
-        if (_triggered && _health._currentHealth > 0) { _health.TakeDamage(_damage._power); }
+        if (_triggered && _health._currentHealth > 0) { _health.TakeDamage(_damage.attackPower); }
     }
 }

@@ -4,22 +4,31 @@ using UnityEngine;
 
 public class Damager : MonoBehaviour
 {
-    public int _power;
+    public int attackPower;
     public GameObject _hitEffect;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 12) //Enemy
         {
-            EnemyController _enemy = other.GetComponent<EnemyController>();
+            /*EnemyController _enemy = other.GetComponent<EnemyController>();
 
             if (_enemy != null)
             {
-                _enemy.TakeDamage(_power);
+                _enemy.TakeDamage(attackPower);
                 if (_hitEffect != null)
                 {
                     Instantiate(_hitEffect, transform.position, transform.rotation);
                 }
+            }*/
+
+            Transform playerPosition = FindObjectOfType<Player>().GetComponent<Transform>();
+            IEnemy enemy = other.GetComponent<IEnemy>();
+            if (enemy != null)
+            {
+                Vector2 dir = (other.transform.position - playerPosition.position).normalized;
+                enemy.TakeHit(attackPower, dir, 6f); //knockback + dano
+                Instantiate(_hitEffect, transform.position, transform.rotation);
             }
         }
         else if (other.gameObject.layer == 9) //Player
@@ -29,10 +38,9 @@ public class Damager : MonoBehaviour
 
             if (_playerHealth != null)
             {
-                //true seria o dano a direita e false o dano da esquerda
-                _player._knockback = other.transform.position.x < transform.position.x ? true : false;
-
-                _playerHealth.TakeDamage(_power);
+                Vector2 dir = (transform.position - other.transform.position).normalized;
+                _player._knockbackDirection = dir.normalized.x;
+                _playerHealth.TakeDamage(attackPower);
             }
         }
 
@@ -42,7 +50,7 @@ public class Damager : MonoBehaviour
 
             if (_boss != null)
             {
-                _boss.TakeDamage(_power);
+                _boss.TakeDamage(attackPower);
                 if (_hitEffect != null)
                 {
                     Instantiate(_hitEffect, transform.position, transform.rotation);
@@ -59,7 +67,7 @@ public class Damager : MonoBehaviour
 
             if (_enemy != null)
             {
-                _enemy.TakeDamage(_power);
+                _enemy.TakeDamage(attackPower);
             }
         }
         //else if (other.gameObject.layer == 9) { //Player
@@ -75,7 +83,7 @@ public class Damager : MonoBehaviour
 
             if (_boss != null)
             {
-                _boss.TakeDamage(_power);
+                _boss.TakeDamage(attackPower);
             }
         }
     }
