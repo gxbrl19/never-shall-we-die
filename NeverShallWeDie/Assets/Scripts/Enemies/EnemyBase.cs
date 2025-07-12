@@ -57,7 +57,6 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         if (isHurt || isDead) return;
 
         isHurt = true;
-        animator.Play("Hurt");
         rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
 
         TakeDamage(power);
@@ -69,8 +68,15 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         GetComponent<SpriteRenderer>().color = damageColor;
         CinemachineShake.instance.ShakeCamera(3f, 0.15f); //tremida na camera
 
-        if (currentHealth <= 0) { Die(); }
-        else { RuntimeManager.PlayOneShot(hit); }
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            RuntimeManager.PlayOneShot(hit);
+            animator.SetTrigger("Hurt");
+        }
     }
 
     protected virtual void Die()
@@ -79,7 +85,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
 
         isDead = true;
         rb.velocity = Vector2.zero;
-        animator.Play("Dead");
+        animator.SetTrigger("Dead");
         RuntimeManager.PlayOneShot(death);
 
         TryDropItem();

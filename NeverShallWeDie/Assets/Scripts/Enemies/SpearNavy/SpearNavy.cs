@@ -8,7 +8,7 @@ public class SpearNavy : EnemyBase
     [Header("Comportamento")]
     private float visionRange = 12f;
     private float throwRange = 10f;
-    private float moveSpeed = 2f;
+    private float moveSpeed = 3f;
     private float throwCooldown = 1.5f;
 
     [Header("Referências")]
@@ -18,6 +18,7 @@ public class SpearNavy : EnemyBase
 
     private float throwTimer = 0f;
     private bool isThrowing = false;
+    private bool playerDetected = false;
 
     protected override void Awake()
     {
@@ -36,44 +37,68 @@ public class SpearNavy : EnemyBase
         throwTimer += Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.position);
 
+        //detecta o player apenas uma vez
+        if (!playerDetected && distance <= visionRange)
+            playerDetected = true;
+
         switch (currentState)
         {
             case State.Idle:
-                animator.Play("Idle");
                 rb.velocity = Vector2.zero;
+                animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
-                if (distance <= visionRange)
+                if (playerDetected)
                     ChangeState(distance <= throwRange ? State.Throw : State.Chase);
                 break;
 
             case State.Chase:
-                animator.Play("Walk");
+                Vector2 dir = (player.position - transform.position);
+                dir.y = 0f;
 
-                if (distance > visionRange)
-                    ChangeState(State.Idle);
-                else if (distance <= throwRange)
-                    ChangeState(State.Throw);
+                animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+
+                float distanceToPlayerX = Mathf.Abs(dir.x);
+
+                //move apenas se distância for suficiente
+                if (distanceToPlayerX > 0.2f)
+                {
+                    rb.velocity = dir.normalized * moveSpeed;
+
+                    if (dir.x != 0)
+                        transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
+                }
                 else
                 {
-                    Vector2 dir = player.position - transform.position;
-                    dir.y = 0f; //resolve o bug do inimigo flutuar
-                    rb.velocity = dir.normalized * moveSpeed;
-                    if (dir.x != 0) transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
+                    rb.velocity = Vector2.zero;
+                    rb.Sleep();
                 }
+
+                //se estiver próximo o suficiente, lança
+                if (Vector2.Distance(transform.position, player.position) <= throwRange)
+                    ChangeState(State.Throw);
+
                 break;
+
 
             case State.Throw:
                 rb.velocity = Vector2.zero;
 
-                if (distance > throwRange)
-                    ChangeState(State.Chase);
-                else if (!isThrowing && throwTimer >= throwCooldown)
+                if (!isThrowing && throwTimer >= throwCooldown)
                 {
-                    animator.Play("Throw");
+                    animator.SetBool("Throw", true);
                     isThrowing = true;
                     throwTimer = 0f;
                 }
+
+                if (distance > throwRange)
+                    ChangeState(State.Chase);
                 break;
+        }
+
+        //corrige flutuação resetando a velocidade na vertical
+        if (Mathf.Abs(rb.velocity.y) > 0.1f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
         }
     }
 
@@ -85,7 +110,7 @@ public class SpearNavy : EnemyBase
         isThrowing = false;
     }
 
-    public void ThrowSpear() // chamado por evento da animação
+    public void ThrowSpear() //chamado na animação de Throw
     {
         if (isDead || spearPrefab == null || throwPoint == null || player == null) return;
 
@@ -99,13 +124,15 @@ public class SpearNavy : EnemyBase
 
     public void FinishThrow() //chamado na animação Throw
     {
+        animator.SetBool("Throw", false);
         isThrowing = false;
-        ChangeState(State.Idle); // ou Chase
+        ChangeState(State.Chase);
     }
 
-    public void FinishHurt() // chamado na animação Hurt
+    public void FinishHurt() //chamado na animação Hurt
     {
+        animator.SetBool("Hurt", false);
         ResetHurt();
-        ChangeState(State.Idle);
+        ChangeState(State.Chase);
     }
 }
