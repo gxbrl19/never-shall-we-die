@@ -1,161 +1,145 @@
 using UnityEngine;
 
-public class AssassinNavy : MonoBehaviour
+public class AssassinNavy : EnemyBase
 {
-    [Header("Attack")]
-    [SerializeField] private float attackDistance = 2f;
-    [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private float attackCooldown = 2f;
+    private enum State { Idle, Chase, Attack, Dashback }
 
-    [Header("Move")]
-    [SerializeField] private float runSpeed = 4f;
-    [SerializeField] private float dashBackForce = 5f;
+    [Header("Comportamento")]
+    private float attackDistance = 2f;
+    private float moveSpeed = 5f;
+    private float attackCooldown = 2f;
+    private float dashBackForce = 6f;
+    private float dashBackDuration = 0.3f;
+
+    [Header("Detecção")]
     [SerializeField] private Vector2 detectionBoxSize = new Vector2(10f, 2f);
+    [SerializeField] private LayerMask playerLayer;
 
-    private Transform playerTransform;
-    private EnemyController _controller;
-    private Rigidbody2D _body;
-
+    private Transform player;
+    private State currentState = State.Idle;
     private float cooldownTimer = 0f;
+    private float dashTimer = 0f;
     private bool isOnCooldown = false;
     private bool playerDetected = false;
 
-    private enum State
-    {
-        Idle,
-        RunningToPlayer,
-        Attacking,
-        DashingBack
-    }
-
-    private State currentState = State.Idle;
-
-    private void Awake()
-    {
-        _controller = GetComponent<EnemyController>();
-        _body = GetComponent<Rigidbody2D>();
-    }
-
     private void Start()
     {
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
-            playerTransform = playerObj.transform;
-        else
-            Debug.LogWarning("Player não encontrado na cena!");
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
-    private void Update()
+    protected override void Update()
     {
-        if (_controller._isDead) return;
+        if (isDead || isHurt || player == null) return;
 
-        _controller._animation.SetBool("Run", currentState == State.RunningToPlayer);
-        _controller._animation.SetBool("Attack", currentState == State.Attacking);
-        _controller._animation.SetBool("Dashback", currentState == State.DashingBack);
+        animator.SetBool("Run", currentState == State.Chase);
+        animator.SetBool("Attack", currentState == State.Attack);
+        animator.SetBool("Dashback", currentState == State.Dashback);
 
-        Flip();
-    }
+        //corrige "flutuação" se estiver com velocidade vertical e sem gravidade
+        if (Mathf.Abs(rb.velocity.y) > 0.1f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+        }
 
-    private void FixedUpdate()
-    {
-        if (_controller._isDead || playerTransform == null) return;
+        float distance = Vector2.Distance(transform.position, player.position);
 
-        DetectPlayer();
-
-        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+        //detectando o player
+        if (!playerDetected && IsPlayerInDetectionBox())
+            playerDetected = true;
 
         switch (currentState)
         {
             case State.Idle:
                 if (playerDetected)
-                    currentState = distanceToPlayer <= attackDistance && !isOnCooldown ? State.Attacking : State.RunningToPlayer;
+                    ChangeState(State.Chase);
                 break;
 
-            case State.RunningToPlayer:
-                if (distanceToPlayer <= attackDistance && !isOnCooldown)
+            case State.Chase:
+                if (distance <= attackDistance && !isOnCooldown)
                 {
-                    currentState = State.Attacking;
+                    ChangeState(State.Attack);
+                    animator.SetTrigger("Attack");
                     isOnCooldown = true;
                     cooldownTimer = attackCooldown;
-                    _body.velocity = Vector2.zero;
+                    rb.velocity = Vector2.zero;
                 }
-                else
+                break;
+
+            case State.Attack:
+                // Espera o evento FinishAttack()
+                break;
+
+            case State.Dashback:
+                dashTimer -= Time.deltaTime;
+                if (dashTimer <= 0f)
                 {
-                    MoveTowardPlayer(); // agora usa MovePosition
+                    ChangeState(playerDetected ? State.Chase : State.Idle);
                 }
-                break;
-
-            case State.Attacking:
-                // movimento ocorre via animação
-                break;
-
-            case State.DashingBack:
-                // movimento via impulso
                 break;
         }
 
-        // Atualizar cooldown
+        // Cooldown de ataque
         if (isOnCooldown)
         {
-            cooldownTimer -= Time.fixedDeltaTime;
+            cooldownTimer -= Time.deltaTime;
             if (cooldownTimer <= 0f)
                 isOnCooldown = false;
         }
+
+        FlipTowardsPlayer();
     }
 
-    private void MoveTowardPlayer()
+    private void FixedUpdate()
     {
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
-        Vector2 targetPosition = _body.position + direction * runSpeed * Time.fixedDeltaTime;
-        _body.MovePosition(targetPosition);
+        if (isDead || isHurt || player == null) return;
+
+        if (currentState == State.Chase)
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
+            Vector2 targetPosition = rb.position + direction * moveSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(targetPosition);
+        }
     }
 
-    private void DetectPlayer()
+    private void ChangeState(State newState)
+    {
+        if (currentState == State.Dashback && newState != State.Idle && newState != State.Chase)
+            return; // Evita interromper o dash
+
+        currentState = newState;
+    }
+
+    public void FinishAttack() //chamado na animação de Attack
+    {
+        if (isDead) return;
+
+        ChangeState(State.Dashback);
+        dashTimer = dashBackDuration;
+
+        float dashDir = transform.localScale.x > 0 ? -1 : 1;
+        rb.velocity = new Vector2(dashDir * dashBackForce, rb.velocity.y);
+    }
+
+    public void FinishHurt() //chamado na animação Hurt
+    {
+        //animator.SetBool("Hurt", false);
+        ResetHurt();
+        ChangeState(State.Dashback);
+    }
+
+    private void FlipTowardsPlayer()
+    {
+        if (player == null) return;
+
+        float dir = player.position.x - transform.position.x;
+        if (dir != 0)
+            transform.localScale = new Vector3(Mathf.Sign(dir), 1, 1);
+    }
+
+    private bool IsPlayerInDetectionBox()
     {
         Collider2D hit = Physics2D.OverlapBox(transform.position, detectionBoxSize, 0, playerLayer);
-        playerDetected = hit != null;
-    }
-
-    public void FinishAttack() // chamado pela animação
-    {
-        if (!_controller._isDead)
-        {
-            StartDashBack();
-        }
-    }
-
-    private void StartDashBack()
-    {
-        currentState = State.DashingBack;
-
-        float direction = transform.localScale.x > 0 ? -1f : 1f;
-        _body.velocity = new Vector2(direction * dashBackForce, _body.velocity.y);
-
-        Invoke(nameof(EndDashBack), 0.3f); // ajustar tempo conforme a animação
-    }
-
-    private void EndDashBack()
-    {
-        if (_controller._isDead) return;
-
-        float distance = Vector2.Distance(transform.position, playerTransform.position);
-        if (playerDetected && distance > attackDistance)
-            currentState = State.RunningToPlayer;
-        else
-            currentState = State.Idle;
-    }
-
-    private void Flip()
-    {
-        if (playerTransform == null) return;
-
-        if (currentState == State.RunningToPlayer || currentState == State.Attacking)
-        {
-            if (transform.position.x < playerTransform.position.x)
-                transform.localScale = new Vector2(1, 1);
-            else
-                transform.localScale = new Vector2(-1, 1);
-        }
+        return hit != null;
     }
 
     private void OnDrawGizmosSelected()

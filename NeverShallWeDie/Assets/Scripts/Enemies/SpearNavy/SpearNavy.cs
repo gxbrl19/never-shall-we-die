@@ -131,7 +131,7 @@ public class SpearNavy : EnemyBase
 
     public void FinishHurt() //chamado na animação Hurt
     {
-        animator.SetBool("Hurt", false);
+        //animator.SetBool("Hurt", false);
         ResetHurt();
         ChangeState(State.Chase);
     }
