@@ -1,155 +1,147 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AxeNavy : MonoBehaviour
+public class AxeNavy : EnemyBase
 {
-    [Header("Patrol Settings")]
-    [SerializeField] private List<Transform> patrolPoints = new List<Transform>();
-    [SerializeField] private float speed = 2f;
+    private enum State { Idle, Patrol, Chase, Attack }
 
-    [Header("Detection Settings")]
-    [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private Vector2 detectionBoxSize = new Vector2(15f, 1f);
-    [SerializeField] private float attackDistance = 2f;
+    [Header("Comportamento")]
+    [SerializeField] Transform[] patrolPoints;
+    [SerializeField] LayerMask playerLayer;
 
-    [SerializeField] private float attackCooldown = 2f; // tempo entre ataques
-    private float cooldownTimer = 0f;
-    private bool isOnCooldown = false;
-
-    private int currentPatrolIndex = 0;
-    private Transform playerTransform;
-    private EnemyController controller;
-    private bool playerDetected = false;
-
-    private enum State
-    {
-        Patrolling,
-        Chasing,
-        Attacking
-    }
-
-    private State currentState = State.Patrolling;
-
-    private void Awake()
-    {
-        controller = GetComponent<EnemyController>();
-    }
+    float patrolSpeed = 2f;
+    float chaseSpeed = 3f;
+    float attackDistance = 2f;
+    float attackCooldown = 0.3f;
+    int patrolIndex = 0;
+    float cooldownTimer = 0f;
+    bool playerDetected = false;
+    State currentState = State.Idle;
+    Vector2 detectionBoxSize = new Vector2(20f, 1f);
+    Player player;
 
     private void Start()
     {
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
-        {
-            playerTransform = playerObj.transform;
-        }
-        else
-        {
-            Debug.LogWarning("Player not found in scene!");
-        }
+        currentState = State.Patrol;
+        player = FindAnyObjectByType<Player>();
     }
 
-    private void Update()
+    protected override void Update()
     {
-        if (controller._isDead) return;
+        if (isDead || player == null) return;
 
-        controller._animation.SetBool("Attack", currentState == State.Attacking);
-        Flip();
+        UpdateCooldown();
+        DetectPlayer();
 
         switch (currentState)
         {
-            case State.Patrolling:
-                Patrol();
+            case State.Idle:
+                HandleIdle();
                 break;
-            case State.Chasing:
-                ChasePlayer();
+            case State.Patrol:
+                HandlePatrol();
                 break;
-            case State.Attacking:
-                if (TryGetComponent<Rigidbody2D>(out var rb))
-                {
-                    rb.velocity = Vector2.zero;
-                }
+            case State.Chase:
+                HandleChase();
+                break;
+            case State.Attack:
+                HandleAttack();
                 break;
         }
+
+        animator.SetBool("Attack", currentState == State.Attack);
+        Flip();
     }
 
-    private void FixedUpdate()
+    private void UpdateCooldown()
     {
-        if (controller._isDead || playerTransform == null) return;
-
-        DetectPlayer();
-
-        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
-
-        if (distanceToPlayer <= attackDistance)
-        {
-            if (!isOnCooldown)
-            {
-                currentState = State.Attacking;
-                isOnCooldown = true;
-                cooldownTimer = attackCooldown;
-            }
-        }
-        else if (playerDetected)
-        {
-            currentState = State.Chasing;
-        }
-        else
-        {
-            currentState = State.Patrolling;
-        }
-
-        // Atualizar o cooldown
-        if (isOnCooldown)
-        {
-            cooldownTimer -= Time.fixedDeltaTime;
-            if (cooldownTimer <= 0f)
-            {
-                isOnCooldown = false;
-            }
-        }
-    }
-
-    private void Patrol()
-    {
-        if (patrolPoints.Count == 0) return;
-
-        Transform targetPoint = patrolPoints[currentPatrolIndex];
-        transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, targetPoint.position) < 0.1f)
-        {
-            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Count;
-        }
-    }
-
-    private void ChasePlayer()
-    {
-        if (playerTransform == null) return;
-
-        Vector2 targetPosition = new Vector2(playerTransform.position.x, transform.position.y);
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        if (cooldownTimer > 0f)
+            cooldownTimer -= Time.deltaTime;
     }
 
     private void DetectPlayer()
     {
-        playerDetected = Physics2D.OverlapBox(transform.position, detectionBoxSize, 0, playerLayer);
+        Vector2 origin = transform.position;
+        Vector2 center = origin + new Vector2(detectionBoxSize.x / (3f * transform.localScale.x), 0f); //desloca o centro para a direita (2f seria a metade)
+        playerDetected = Physics2D.OverlapBox(center, detectionBoxSize, 0, playerLayer);
     }
 
-    public void FinishAttack() //chamado pela animação
+    private void HandleIdle()
     {
         if (playerDetected)
-            currentState = State.Chasing;
+        {
+            currentState = State.Chase;
+        }
         else
-            currentState = State.Patrolling;
+        {
+            currentState = State.Patrol;
+        }
+    }
+
+    private void HandlePatrol()
+    {
+        if (isHurt) return;
+
+        if (patrolPoints.Length == 0) return;
+
+        if (playerDetected)
+        {
+            currentState = State.Chase;
+            return;
+        }
+
+        Transform target = patrolPoints[patrolIndex];
+        transform.position = Vector2.MoveTowards(transform.position, target.position, patrolSpeed * Time.deltaTime);
+
+        if (Vector2.Distance(transform.position, target.position) < 0.1f)
+        {
+            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
+        }
+    }
+
+    private void HandleChase()
+    {
+        if (isHurt) return;
+
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+
+        if (distance <= attackDistance && cooldownTimer <= 0f)
+        {
+            currentState = State.Attack;
+            cooldownTimer = attackCooldown;
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
+        if (!playerDetected)
+        {
+            currentState = State.Patrol;
+            return;
+        }
+
+        Vector2 targetPos = new Vector2(player.transform.position.x, transform.position.y);
+        transform.position = Vector2.MoveTowards(transform.position, targetPos, chaseSpeed * Time.deltaTime);
+    }
+
+    private void HandleAttack()
+    {
+        if (isHurt) return;
+
+        if (cooldownTimer <= attackCooldown - 0.5f) // tempo "aproximado" do ataque
+        {
+            if (playerDetected)
+                currentState = State.Chase;
+            else
+                currentState = State.Patrol;
+        }
     }
 
     private void Flip()
     {
-        if (playerTransform == null) return;
+        if (isHurt || currentState == State.Attack) return;
 
-        float targetX = currentState == State.Patrolling
-            ? patrolPoints[currentPatrolIndex].position.x
-            : playerTransform.position.x;
+        float targetX = currentState == State.Patrol && patrolPoints.Length > 0
+            ? patrolPoints[patrolIndex].position.x
+            : player.transform.position.x;
 
         if (transform.position.x < targetX)
             transform.localScale = new Vector2(1, 1);
@@ -157,9 +149,31 @@ public class AxeNavy : MonoBehaviour
             transform.localScale = new Vector2(-1, 1);
     }
 
+    public void FinishAttack() //chamado na animação de ataque
+    {
+        if (isDead) return;
+
+        if (playerDetected)
+            currentState = State.Chase;
+        else
+            currentState = State.Patrol;
+    }
+
+    public void FinishHurt() //chamado na animação Hurt
+    {
+        ResetHurt();
+
+        if (playerDetected)
+            currentState = State.Chase;
+        else
+            currentState = State.Patrol;
+    }
+
     private void OnDrawGizmosSelected()
     {
+        Vector2 origin = transform.position;
+        Vector2 center = origin + new Vector2(detectionBoxSize.x / (6f * transform.localScale.x), 0f); //desloca o centro para a direita (2f seria a metade)
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, detectionBoxSize);
+        Gizmos.DrawWireCube(center, detectionBoxSize);
     }
 }
