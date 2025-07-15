@@ -10,15 +10,18 @@ public class AssassinNavy : EnemyBase
     private float attackCooldown = 2f;
     private float dashBackForce = 6f;
     private float dashBackDuration = 0.3f;
+    private float direction;
 
     [Header("Detecção")]
-    [SerializeField] private Vector2 detectionBoxSize = new Vector2(10f, 2f);
+    [SerializeField] private Vector2 detectionSize = new Vector2(10f, 2f);
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask playerLayer;
 
     private Transform player;
     private State currentState = State.Idle;
     private float cooldownTimer = 0f;
     private float dashTimer = 0f;
+    private bool isGrounded = false;
     private bool isOnCooldown = false;
     private bool playerDetected = false;
 
@@ -31,21 +34,13 @@ public class AssassinNavy : EnemyBase
     {
         if (isDead || isHurt || player == null) return;
 
-        animator.SetBool("Run", currentState == State.Chase);
-        animator.SetBool("Attack", currentState == State.Attack);
         animator.SetBool("Dashback", currentState == State.Dashback);
-
-        //corrige "flutuação" se estiver com velocidade vertical e sem gravidade
-        if (Mathf.Abs(rb.velocity.y) > 0.1f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
-        }
+        animator.SetBool("Run", currentState == State.Chase);
 
         float distance = Vector2.Distance(transform.position, player.position);
 
         //detectando o player
-        if (!playerDetected && IsPlayerInDetectionBox())
-            playerDetected = true;
+        playerDetected = IsPlayerInDetectionBox();
 
         switch (currentState)
         {
@@ -63,6 +58,9 @@ public class AssassinNavy : EnemyBase
                     cooldownTimer = attackCooldown;
                     rb.velocity = Vector2.zero;
                 }
+
+                if (!playerDetected)
+                    ChangeState(State.Idle);
                 break;
 
             case State.Attack:
@@ -73,7 +71,7 @@ public class AssassinNavy : EnemyBase
                 dashTimer -= Time.deltaTime;
                 if (dashTimer <= 0f)
                 {
-                    ChangeState(playerDetected ? State.Chase : State.Idle);
+                    ChangeState(State.Chase);
                 }
                 break;
         }
@@ -93,7 +91,10 @@ public class AssassinNavy : EnemyBase
     {
         if (isDead || isHurt || player == null) return;
 
-        if (currentState == State.Chase)
+        RaycastHit2D detectGround = Raycast(Vector2.down, 1.1f, groundLayer);
+        isGrounded = detectGround;
+
+        if (currentState == State.Chase && isGrounded && playerDetected)
         {
             Vector2 direction = (player.position - transform.position).normalized;
             Vector2 targetPosition = rb.position + direction * moveSpeed * Time.fixedDeltaTime;
@@ -122,7 +123,6 @@ public class AssassinNavy : EnemyBase
 
     public void FinishHurt() //chamado na animação Hurt
     {
-        //animator.SetBool("Hurt", false);
         ResetHurt();
         ChangeState(State.Dashback);
     }
@@ -133,18 +133,33 @@ public class AssassinNavy : EnemyBase
 
         float dir = player.position.x - transform.position.x;
         if (dir != 0)
-            transform.localScale = new Vector3(Mathf.Sign(dir), 1, 1);
+            direction = Mathf.Sign(dir);
+
+        transform.localScale = new Vector3(direction, 1, 1);
     }
 
     private bool IsPlayerInDetectionBox()
     {
-        Collider2D hit = Physics2D.OverlapBox(transform.position, detectionBoxSize, 0, playerLayer);
+        Vector2 origin = transform.position;
+        Vector2 center = origin + new Vector2(detectionSize.x / (2f * direction), 0f); //desloca o centro para a direita, metade do tamanho
+        Collider2D hit = Physics2D.OverlapBox(center, detectionSize, 0, playerLayer);
         return hit != null;
+    }
+
+    RaycastHit2D Raycast(Vector2 rayDirection, float length, LayerMask layerMask) //raio para detectar o chão
+    {
+        Vector2 point = new Vector2(transform.position.x, transform.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(point, rayDirection, length, layerMask);
+        Color color = hit ? Color.red : Color.green;
+        Debug.DrawRay(point, rayDirection * length, color);
+        return hit;
     }
 
     private void OnDrawGizmosSelected()
     {
+        Vector2 origin = transform.position;
+        Vector2 center = origin + new Vector2(detectionSize.x / (2f * direction), 0f); //desloca o centro para a direita, metade do tamanho
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(transform.position, detectionBoxSize);
+        Gizmos.DrawWireCube(center, detectionSize);
     }
 }

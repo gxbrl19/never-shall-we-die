@@ -39,17 +39,13 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         else
         {
             Debug.LogWarning($"{gameObject.name} está sem EnemyObject atribuído!");
-            currentHealth = 3; // fallback
+            currentHealth = 3; //fallback
         }
     }
 
     protected virtual void Update()
     {
-        // Corrige "flutuação" se estiver com velocidade vertical e sem gravidade
-        if (Mathf.Abs(rb.velocity.y) > 0.1f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
-        }
+
     }
 
     public virtual void TakeHit(int power, Vector2 hitDirection, float knockbackForce = 5f)

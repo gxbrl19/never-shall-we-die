@@ -37,6 +37,11 @@ public class SpearNavy : EnemyBase
         throwTimer += Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.position);
 
+        if (Mathf.Abs(rb.velocity.y) > 0.1f) //bloqueia a flutuação
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+        }
+
         //detecta o player apenas uma vez
         if (!playerDetected && distance <= visionRange)
             playerDetected = true;
