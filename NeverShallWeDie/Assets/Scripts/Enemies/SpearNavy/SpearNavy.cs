@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpearNavy : EnemyBase
 {
-    private enum State { Idle, Chase, Throw, Hurt, Dead }
+    private enum State { Idle, Chase, Throw }
     private State currentState = State.Idle;
 
     [Header("Comportamento")]
@@ -109,7 +109,7 @@ public class SpearNavy : EnemyBase
 
     private void ChangeState(State newState)
     {
-        if (currentState == State.Dead) return;
+        if (isDead) return;
 
         currentState = newState;
         isThrowing = false;
@@ -131,13 +131,6 @@ public class SpearNavy : EnemyBase
     {
         animator.SetBool("Throw", false);
         isThrowing = false;
-        ChangeState(State.Chase);
-    }
-
-    public void FinishHurt() //chamado na animação Hurt
-    {
-        //animator.SetBool("Hurt", false);
-        ResetHurt();
         ChangeState(State.Chase);
     }
 }

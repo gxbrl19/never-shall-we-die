@@ -11,7 +11,7 @@ public class AxeNavy : EnemyBase
     float patrolSpeed = 2f;
     float chaseSpeed = 3f;
     float attackDistance = 2f;
-    float attackCooldown = 0.3f;
+    float attackCooldown = .8f;
     int patrolIndex = 0;
     float cooldownTimer = 0f;
     bool playerDetected = false;
@@ -152,16 +152,6 @@ public class AxeNavy : EnemyBase
     public void FinishAttack() //chamado na animação de ataque
     {
         if (isDead) return;
-
-        if (playerDetected)
-            currentState = State.Chase;
-        else
-            currentState = State.Patrol;
-    }
-
-    public void FinishHurt() //chamado na animação Hurt
-    {
-        ResetHurt();
 
         if (playerDetected)
             currentState = State.Chase;

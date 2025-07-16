@@ -7,9 +7,9 @@ public class AssassinNavy : EnemyBase
     [Header("Comportamento")]
     private float attackDistance = 2f;
     private float moveSpeed = 5f;
-    private float attackCooldown = 2f;
+    private float attackCooldown = .8f;
     private float dashBackForce = 6f;
-    private float dashBackDuration = 0.3f;
+    private float dashBackDuration = .3f;
     private float direction;
 
     [Header("Detecção")]
@@ -89,7 +89,7 @@ public class AssassinNavy : EnemyBase
 
     private void FixedUpdate()
     {
-        if (isDead || isHurt || player == null) return;
+        if (isDead || player == null) return;
 
         RaycastHit2D detectGround = Raycast(Vector2.down, 1.1f, groundLayer);
         isGrounded = detectGround;
@@ -119,12 +119,6 @@ public class AssassinNavy : EnemyBase
 
         float dashDir = transform.localScale.x > 0 ? -1 : 1;
         rb.velocity = new Vector2(dashDir * dashBackForce, rb.velocity.y);
-    }
-
-    public void FinishHurt() //chamado na animação Hurt
-    {
-        ResetHurt();
-        ChangeState(State.Dashback);
     }
 
     private void FlipTowardsPlayer()

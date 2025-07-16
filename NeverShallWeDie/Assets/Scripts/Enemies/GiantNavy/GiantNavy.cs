@@ -9,7 +9,7 @@ public class GiantNavy : EnemyBase
     [SerializeField] private LayerMask playerLayer;
     private float attackRange = 2.5f;
     private float moveSpeed = 2.5f;
-    private float attackCooldown = 1f;
+    private float attackCooldown = 1.5f;
     private float direction;
     private float lastAttackTime;
     private bool playerDetected = false;
@@ -26,7 +26,7 @@ public class GiantNavy : EnemyBase
     {
         base.Update();
 
-        if (isDead || isHurt || player == null) return;
+        if (isDead || player == null) return;
 
         animator.SetBool("Run", currentState == State.Chase);
 
@@ -105,10 +105,8 @@ public class GiantNavy : EnemyBase
         playerDetected = Physics2D.OverlapBox(center, detectionBoxSize, 0, playerLayer);
     }
 
-    public void FinishHurt() //chamado na animação Hurt
+    public void FinishAttack() //chamado na animação Attack
     {
-        ResetHurt();
-
         if (playerDetected)
             currentState = State.Chase;
         else

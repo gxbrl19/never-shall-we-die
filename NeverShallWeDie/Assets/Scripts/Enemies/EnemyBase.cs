@@ -15,6 +15,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
     protected Rigidbody2D rb;
     protected Animator animator;
     Color defaultColor;
+    SpriteRenderer sprite;
     protected bool isHurt = false;
     protected bool isDead = false;
 
@@ -26,6 +27,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
 
         if (enemyObject != null)
         {
@@ -34,7 +36,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
             dropRate = enemyObject.dropRate;
             dropPrefab = enemyObject.dropPrefab;
             damageColor = enemyObject.damageColor;
-            defaultColor = GetComponent<SpriteRenderer>().color;
+            defaultColor = sprite.color;
         }
         else
         {
@@ -53,7 +55,8 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         if (isHurt || isDead) return;
 
         isHurt = true;
-        rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
+        Invoke("ResetHurt", .3f);
+        //rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
 
         TakeDamage(power);
     }
@@ -61,7 +64,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
     public virtual void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        GetComponent<SpriteRenderer>().color = damageColor;
+        sprite.color = damageColor;
         CinemachineShake.instance.ShakeCamera(3f, 0.15f); //tremida na camera
 
         if (currentHealth <= 0)
@@ -71,7 +74,6 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         else
         {
             RuntimeManager.PlayOneShot(hit);
-            animator.SetTrigger("Hurt");
         }
     }
 
@@ -108,7 +110,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
 
     protected virtual void ResetHurt()
     {
+        sprite.color = defaultColor;
         isHurt = false;
-        GetComponent<SpriteRenderer>().color = defaultColor;
     }
 }
