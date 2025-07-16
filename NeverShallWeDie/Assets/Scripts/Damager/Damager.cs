@@ -38,8 +38,8 @@ public class Damager : MonoBehaviour
 
             if (_playerHealth != null)
             {
-                Vector2 dir = (transform.position - other.transform.position).normalized;
-                _player._knockbackDirection = dir.normalized.x;
+                Vector2 dir = new Vector2(transform.position.x - other.transform.position.x, 0).normalized;
+                _player._knockbackDirection = dir.normalized;
                 _playerHealth.TakeDamage(attackPower);
             }
         }

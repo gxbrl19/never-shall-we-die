@@ -71,8 +71,8 @@ public class Player : MonoBehaviour
     private float _grabSpeed = 2f;
 
     //Hit
-    [HideInInspector] public float _knockbackDirection;
-    private float _knockbackForce = 5f;
+    [HideInInspector] public Vector2 _knockbackDirection;
+    //private float _knockbackForce = 5f;
     [HideInInspector] public bool _onHit = false;
 
     //Slope
@@ -889,9 +889,12 @@ public class Player : MonoBehaviour
         _input.OnHit(); //cancela os inputs quando toma dano
         //_input.horizontal = 0;
         _body.velocity = Vector2.zero;
+        //if (!_isGrounded) { ApplyKnockback(_knockbackDirection, _knockbackForce); } //não da o knockback no chão
+    }
 
-        if (_knockbackDirection > 0) { _body.AddForce(Vector2.left * _knockbackForce, ForceMode2D.Impulse); }
-        else { _body.AddForce(Vector2.right * _knockbackForce, ForceMode2D.Impulse); }
+    public void ApplyKnockback(Vector2 direction, float force)
+    {
+        _body.AddForce(direction.normalized * force, ForceMode2D.Impulse);
     }
 
     public void FinishKnockback() //chamado na animação de Hit

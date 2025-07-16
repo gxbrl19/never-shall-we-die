@@ -5,41 +5,59 @@ using UnityEngine;
 
 public class BossTrigger : MonoBehaviour
 {
-    [SerializeField] BossController _bossController;
-    [SerializeField] BossDoor _bossDoor;
-    [SerializeField] BossDoor _bossDoor2;
+    [SerializeField] BossBase bossBase;
+    [SerializeField] private float introDelay = 0f;
+    [SerializeField] BossDoor bossDoor;
+    [SerializeField] BossDoor bossDoor2;
 
-    Collider2D _collider;
-    Player _player;
+    private bool triggered = false;
+
+    Collider2D col;
+    Player player;
 
     private void Awake()
     {
-        _collider = GetComponent<Collider2D>();
-        _player = FindObjectOfType<Player>();
+        col = GetComponent<Collider2D>();
+        player = FindObjectOfType<Player>();
     }
 
     void Start()
     {
-        if (GameManager.instance._bosses[_bossController._bossID] == 1)
+        if (GameManager.instance._bosses[bossBase.bossId] == 1)
         {
-            _collider.enabled = false;
-            _bossController.gameObject.SetActive(false);
+            col.enabled = false;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 9)//Player
-        {
-            _bossController.GetComponent<Animator>().SetBool("Intro", true);
-            _bossDoor._tiggered = true;
-            _bossDoor2._tiggered = true;
-            _collider.enabled = false;
-            _player.DisableControls();
+        if (triggered) return;
 
-            UIManager.instance.BossEnabled();
-            _bossController.EnabledUI();
-            BackgroundMusic.instance.MusicControl(-1);
+        if (other.CompareTag("Player") && bossBase != null)
+        {
+            triggered = true;
+
+            //toca a animação de intro, se houver
+            Animator anim = bossBase.GetComponent<Animator>();
+            if (anim != null && anim.HasState(0, Animator.StringToHash("Intro")))
+            {
+                anim.SetBool("Intro", true);
+            }
+
+            bossDoor._tiggered = true;
+            bossDoor2._tiggered = true;
+
+            //ativa o boss após o tempo da intro (ou imediatamente, se delay = 0)
+            Invoke(nameof(ActivateBoss), introDelay);
+
+            //desativa o trigger
+            gameObject.SetActive(false);
+            //BackgroundMusic.instance.MusicControl(-1);
         }
+    }
+
+    private void ActivateBoss()
+    {
+        bossBase.SendMessage("StartIntro", SendMessageOptions.DontRequireReceiver);
     }
 }
