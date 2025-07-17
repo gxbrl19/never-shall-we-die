@@ -9,7 +9,7 @@ public class SpearNavy : EnemyBase
     private float visionRange = 12f;
     private float throwRange = 10f;
     private float moveSpeed = 3f;
-    private float throwCooldown = 1.5f;
+    private float throwCooldown = 2f;
 
     [Header("Referências")]
     public GameObject spearPrefab;

@@ -46,6 +46,7 @@ public class BossTrigger : MonoBehaviour
 
             bossDoor._tiggered = true;
             bossDoor2._tiggered = true;
+            player.DisableControls();
 
             //ativa o boss após o tempo da intro (ou imediatamente, se delay = 0)
             Invoke(nameof(ActivateBoss), introDelay);

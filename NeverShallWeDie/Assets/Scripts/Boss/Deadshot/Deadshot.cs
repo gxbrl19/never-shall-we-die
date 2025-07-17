@@ -5,35 +5,37 @@ public class Deadshot : BossBase
     private enum State { Intro, Idle, Run, Shotgun, SwordAttack, ThrowBomb, DashAttack, Dead }
 
     [Header("Comportamento")]
-    [SerializeField] private float visionRange = 12f;
     [SerializeField] private float meleeRange = 2.5f;
-    [SerializeField] private float dashCooldown = 10f;
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float bombCooldown = 6f;
-    [SerializeField] private float shotgunCooldown = 4f;
+    [SerializeField] private float moveSpeed = .5f;
+    [SerializeField] private float swordCooldown = 2f;
+    [SerializeField] private float attackCooldown = 4f;
 
     [Header("Ataques")]
-    [SerializeField] private GameObject bombPrefab;
-    [SerializeField] private Transform bombSpawn;
+    [SerializeField] private Transform bombPoint;
     [SerializeField] private Transform shotgunFirePoint;
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("Prefabs")]
+    [SerializeField] private Transform bombPrefab;
+    [SerializeField] private GameObject shotPrefab;
+
     private State currentState = State.Intro;
 
-    private float dashTimer = 0f;
-    private float bombTimer = 0f;
-    private float shotgunTimer = 0f;
+    [SerializeField] private float attackTimer = 0f;
+    [SerializeField] private float swordTimer = 0f;
 
     private bool introPlayed = false;
     private bool isGrounded = false;
-    private Transform playerTransform;
+    private Player player;
+    private Transform playerPosition;
 
     protected override void Awake()
     {
         base.Awake();
 
-        playerTransform = FindObjectOfType<Player>().GetComponent<Transform>();
+        playerPosition = FindObjectOfType<Player>().GetComponent<Transform>();
         rb.bodyType = RigidbodyType2D.Static;
+        player = FindObjectOfType<Player>();
     }
 
     void Start()
@@ -54,16 +56,18 @@ public class Deadshot : BossBase
 
         HandleState();
 
-        dashTimer += Time.deltaTime;
-        bombTimer += Time.deltaTime;
-        shotgunTimer += Time.deltaTime;
+        if (currentState != State.Intro)
+        {
+            attackTimer += Time.deltaTime;
+            swordTimer += Time.deltaTime;
+        }
     }
 
     private void HandleState()
     {
-        if (playerTransform == null || isDead) return;
+        if (playerPosition == null || isDead) return;
 
-        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+        float distanceToPlayer = Vector2.Distance(transform.position, playerPosition.position);
 
         switch (currentState)
         {
@@ -84,7 +88,7 @@ public class Deadshot : BossBase
                 break;
 
             case State.ThrowBomb:
-                ThrowBomb();
+                BombAttack();
                 break;
 
             case State.SwordAttack:
@@ -101,21 +105,28 @@ public class Deadshot : BossBase
 
         if (currentState == State.Idle || currentState == State.Run)
         {
-            if (distanceToPlayer <= meleeRange)
+            FlipSprite();
+
+            if (distanceToPlayer <= meleeRange && swordTimer >= swordCooldown)
             {
                 ChangeState(State.SwordAttack);
             }
-            else if (dashTimer >= dashCooldown)
+            else if (attackTimer >= attackCooldown)
             {
-                ChangeState(State.DashAttack);
-            }
-            else if (shotgunTimer >= shotgunCooldown)
-            {
-                ChangeState(State.Shotgun);
-            }
-            else if (bombTimer >= bombCooldown)
-            {
-                ChangeState(State.ThrowBomb);
+                int randomAttack = Random.Range(0, 3);
+
+                switch (randomAttack)
+                {
+                    case 0:
+                        ChangeState(State.Shotgun);
+                        break;
+                    case 1:
+                        ChangeState(State.DashAttack);
+                        break;
+                    case 2:
+                        ChangeState(State.ThrowBomb);
+                        break;
+                }
             }
             else
             {
@@ -140,37 +151,45 @@ public class Deadshot : BossBase
     {
         animator.SetBool("Run", true);
 
-        Vector2 dir = (playerTransform.position - transform.position).normalized;
+        Vector2 dir = (playerPosition.position - transform.position).normalized;
         rb.velocity = new Vector2(dir.x * moveSpeed, rb.velocity.y);
-
-        FlipSprite(dir.x);
     }
 
     private void ShootShotgun()
     {
         rb.velocity = Vector2.zero;
         animator.Play("Shotgun");
-        shotgunTimer = 0f;
-
-        // Adicione o disparo no evento da animação
+        attackTimer = 0f;
     }
 
-    private void ThrowBomb()
+    public void Shoot() //chamado pela animação Shotgun
+    {
+        Vector2 dir = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+
+        GameObject shot = Instantiate(shotPrefab, shotgunFirePoint.position, Quaternion.identity);
+        shot.GetComponent<ShotgunDeadshot>().SetDirection(dir);
+    }
+
+    private void BombAttack()
     {
         rb.velocity = Vector2.zero;
         animator.Play("ThrowBomb");
-        bombTimer = 0f;
+        attackTimer = 0f;
+    }
 
-        if (bombPrefab != null && bombSpawn != null)
-        {
-            Instantiate(bombPrefab, bombSpawn.position, Quaternion.identity);
-        }
+    public void ThrowBomb() //chamado na animação bomb
+    {
+        float launchForce = 1f;
+        Vector2 velocity = (playerPosition.position - transform.position) * launchForce;
+        Transform bomb = Instantiate(bombPrefab, bombPoint.position, Quaternion.identity);
+        bomb.GetComponent<Rigidbody2D>().velocity = velocity;
     }
 
     private void SwordAttack()
     {
         rb.velocity = Vector2.zero;
         animator.Play("SwordAttack");
+        swordTimer = 0f;
 
         // Coloque a lógica de dano no evento da animação
     }
@@ -178,21 +197,22 @@ public class Deadshot : BossBase
     private void DashAttack()
     {
         animator.Play("DashAttack");
-        dashTimer = 0f;
+        attackTimer = 0f;
 
-        Vector2 dir = (playerTransform.position - transform.position).normalized;
+        Vector2 dir = (playerPosition.position - transform.position).normalized;
         rb.velocity = dir * (moveSpeed * 6); // dash mais rápido
-
-        FlipSprite(dir.x);
 
         // Adicione hitbox e reset de velocidade no final do dash (evento de animação)
     }
 
-    private void FlipSprite(float dirX)
+    private void FlipSprite()
     {
-        if (dirX > 0.1f)
+        Vector2 dir = (playerPosition.position - transform.position).normalized;
+        rb.velocity = dir * (moveSpeed * 6); // dash mais rápido
+
+        if (dir.x > 0.1f)
             transform.localScale = new Vector3(1, 1, 1);
-        else if (dirX < -0.1f)
+        else if (dir.x < -0.1f)
             transform.localScale = new Vector3(-1, 1, 1);
     }
 
@@ -208,9 +228,15 @@ public class Deadshot : BossBase
 
     public void StartBoss() //chamado na animação de intro2
     {
-        StartIntro();
         ActivateBossUI();
         ChangeState(State.Idle);
+        player.EnabledControls();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+    }
+
+    public void FinishAttack() //chamado nas animações de ataque
+    {
+        ChangeState(State.Run);
     }
 
     protected override void OnDeath()

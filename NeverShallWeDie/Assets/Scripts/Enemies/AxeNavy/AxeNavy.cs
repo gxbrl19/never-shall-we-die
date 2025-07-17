@@ -11,7 +11,7 @@ public class AxeNavy : EnemyBase
     float patrolSpeed = 2f;
     float chaseSpeed = 3f;
     float attackDistance = 2f;
-    float attackCooldown = .8f;
+    float attackCooldown = 1.6f;
     int patrolIndex = 0;
     float cooldownTimer = 0f;
     bool playerDetected = false;

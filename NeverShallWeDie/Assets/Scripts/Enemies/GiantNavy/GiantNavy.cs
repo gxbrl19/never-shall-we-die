@@ -9,7 +9,7 @@ public class GiantNavy : EnemyBase
     [SerializeField] private LayerMask playerLayer;
     private float attackRange = 2.5f;
     private float moveSpeed = 2.5f;
-    private float attackCooldown = 1.5f;
+    private float attackCooldown = 1.8f;
     private float direction;
     private float lastAttackTime;
     private bool playerDetected = false;

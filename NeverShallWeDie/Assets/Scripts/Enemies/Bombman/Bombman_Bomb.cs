@@ -60,7 +60,7 @@ public class Bombman_Bomb : MonoBehaviour
     void Explosion()
     {
         _explosion = true;
-        _body.velocity = Vector2.zero;
+        //_body.velocity = Vector2.zero;
         _body.bodyType = RigidbodyType2D.Static;
         _animation.SetBool("Explode", true);
         Destroy(gameObject, 4f);

@@ -7,7 +7,7 @@ public class AssassinNavy : EnemyBase
     [Header("Comportamento")]
     private float attackDistance = 2f;
     private float moveSpeed = 5f;
-    private float attackCooldown = .8f;
+    private float attackCooldown = 1f;
     private float dashBackForce = 6f;
     private float dashBackDuration = .3f;
     private float direction;
