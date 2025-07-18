@@ -4,16 +4,17 @@ public class Deadshot : BossBase
 {
     private enum State { Intro, Idle, Run, Shotgun, SwordAttack, ThrowBomb, DashAttack, Dead }
 
-    [Header("Comportamento")]
+    [Header("Stats")]
     [SerializeField] private float meleeRange = 2.5f;
     [SerializeField] private float moveSpeed = .5f;
     [SerializeField] private float swordCooldown = 2f;
-    [SerializeField] private float attackCooldown = 4f;
+    [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private LayerMask groundLayer;
 
-    [Header("Ataques")]
+    [Header("Attacks")]
     [SerializeField] private Transform bombPoint;
     [SerializeField] private Transform shotgunFirePoint;
-    [SerializeField] private LayerMask groundLayer;
+    private float dashSpeed = 25f;
 
     [Header("Prefabs")]
     [SerializeField] private Transform bombPrefab;
@@ -22,10 +23,12 @@ public class Deadshot : BossBase
     private State currentState = State.Intro;
 
     [SerializeField] private float attackTimer = 0f;
-    [SerializeField] private float swordTimer = 0f;
+    private float swordTimer = 0f;
 
     private bool introPlayed = false;
     private bool isGrounded = false;
+    [SerializeField] private bool isDashing = false;
+    private Vector2 dashDirection;
     private Player player;
     private Transform playerPosition;
 
@@ -159,7 +162,6 @@ public class Deadshot : BossBase
     {
         rb.velocity = Vector2.zero;
         animator.Play("Shotgun");
-        attackTimer = 0f;
     }
 
     public void Shoot() //chamado pela animação Shotgun
@@ -174,7 +176,6 @@ public class Deadshot : BossBase
     {
         rb.velocity = Vector2.zero;
         animator.Play("ThrowBomb");
-        attackTimer = 0f;
     }
 
     public void ThrowBomb() //chamado na animação bomb
@@ -190,23 +191,29 @@ public class Deadshot : BossBase
         rb.velocity = Vector2.zero;
         animator.Play("SwordAttack");
         swordTimer = 0f;
-
-        // Coloque a lógica de dano no evento da animação
     }
 
     private void DashAttack()
     {
+        if (isDashing) return;
+
+        rb.velocity = Vector2.zero;
         animator.Play("DashAttack");
-        attackTimer = 0f;
 
-        Vector2 dir = (playerPosition.position - transform.position).normalized;
-        rb.velocity = dir * (moveSpeed * 6); // dash mais rápido
+        dashDirection = (playerPosition.position - transform.position).normalized;
 
-        // Adicione hitbox e reset de velocidade no final do dash (evento de animação)
+        isDashing = true;
+    }
+
+    public void StartDashExecution() //chamado na animação de Dash
+    {
+        rb.velocity = dashDirection * dashSpeed;
     }
 
     private void FlipSprite()
     {
+        if (isDashing) return;
+
         Vector2 dir = (playerPosition.position - transform.position).normalized;
         rb.velocity = dir * (moveSpeed * 6); // dash mais rápido
 
@@ -236,7 +243,10 @@ public class Deadshot : BossBase
 
     public void FinishAttack() //chamado nas animações de ataque
     {
+        rb.velocity = Vector2.zero;
         ChangeState(State.Run);
+        isDashing = false;
+        attackTimer = 0f;
     }
 
     protected override void OnDeath()
