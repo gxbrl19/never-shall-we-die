@@ -9,13 +9,13 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
     protected string enemyName;
     protected float dropRate;
     protected GameObject dropPrefab;
-    protected Color damageColor;
     [SerializeField] protected int currentHealth;
     [SerializeField] GameObject deathEffect;
     protected Rigidbody2D rb;
     protected Animator animator;
-    Color defaultColor;
-    SpriteRenderer sprite;
+    protected Color defaultColor;
+    protected Color damageColor = Color.red;
+    protected SpriteRenderer sprite;
     protected bool isHurt = false;
     protected bool isDead = false;
 
@@ -35,7 +35,6 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
             enemyName = enemyObject.name;
             dropRate = enemyObject.dropRate;
             dropPrefab = enemyObject.dropPrefab;
-            damageColor = enemyObject.damageColor;
             defaultColor = sprite.color;
         }
         else
@@ -108,7 +107,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         }
     }
 
-    protected virtual void ResetHurt()
+    protected virtual void ResetHurt() //chamado no TakeHit()
     {
         sprite.color = defaultColor;
         isHurt = false;

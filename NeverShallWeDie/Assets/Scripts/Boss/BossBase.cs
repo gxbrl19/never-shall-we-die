@@ -2,21 +2,21 @@ using UnityEngine;
 using FMODUnity;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class BossBase : MonoBehaviour
+public abstract class BossBase : MonoBehaviour, IBoss
 {
     [Header("Stats")]
     public BossObject bossObject;
     [HideInInspector] public int bossId;
-    protected Color damageColor;
 
     protected float currentHealth;
     protected bool isDead = false;
-    protected bool onHit = false;
+    protected bool isHurt = false;
 
     protected Rigidbody2D rb;
     protected Animator animator;
     protected SpriteRenderer spriteRenderer;
-    Color defaultColor;
+    protected Color defaultColor;
+    protected Color damageColor = Color.red;
 
     [SerializeField] BossDoor bossDoor;
     [SerializeField] BossDoor bossDoor2;
@@ -32,8 +32,16 @@ public abstract class BossBase : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        currentHealth = bossObject.maxHealth;
-        defaultColor = spriteRenderer.color;
+        if (bossObject != null)
+        {
+            currentHealth = bossObject.maxHealth;
+            defaultColor = spriteRenderer.color;
+        }
+        else
+        {
+            Debug.LogWarning($"{gameObject.name} está sem BossObject atribuído!");
+            currentHealth = 3; //fallback
+        }
     }
 
     protected virtual void Update()
@@ -44,11 +52,21 @@ public abstract class BossBase : MonoBehaviour
         UIManager.instance._healthBoss.fillAmount = currentHealth / bossObject.maxHealth;
     }
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeHit(int power, Vector2 hitDirection, float knockbackForce = 5f)
     {
-        if (isDead || onHit) return;
+        if (isHurt || isDead) return;
 
-        currentHealth -= damage;
+        isHurt = true;
+        Invoke("ResetHurt", .3f);
+
+        TakeDamage(power);
+    }
+
+    public virtual void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        spriteRenderer.color = damageColor;
+        CinemachineShake.instance.ShakeCamera(3f, 0.15f); //tremida na camera
 
         if (currentHealth <= 0)
         {
@@ -56,13 +74,8 @@ public abstract class BossBase : MonoBehaviour
         }
         else
         {
-            OnHit();
+            RuntimeManager.PlayOneShot(hit);
         }
-    }
-
-    protected virtual void OnHit()
-    {
-        onHit = true;
     }
 
     protected virtual void Die()
@@ -95,10 +108,10 @@ public abstract class BossBase : MonoBehaviour
         UIManager.instance._txtBossName.text = bossObject.name;
     }
 
-    protected virtual void FinishHit() //chamado no TakeDamage()
+    protected virtual void ResetHurt() //chamado no TakeHit()
     {
-        onHit = false;
         spriteRenderer.color = defaultColor;
+        isHurt = false;
     }
 
     public virtual void SetWanted() //chamado na animação de morte

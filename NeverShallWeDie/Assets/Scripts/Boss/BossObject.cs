@@ -9,5 +9,4 @@ public class BossObject : ScriptableObject
     public Sprite sprite;
     public int bossID;
     public float maxHealth;
-    public Color damageColor;
 }

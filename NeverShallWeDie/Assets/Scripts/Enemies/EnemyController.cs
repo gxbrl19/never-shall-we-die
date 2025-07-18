@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
         _name = _enemyObject.name;
         _maxHealth = _enemyObject.maxHealth;
         _itemDropRate = _enemyObject.dropRate;
-        _damageColor = _enemyObject.damageColor;
+        //_damageColor = _enemyObject.damageColor;
 
 
         //

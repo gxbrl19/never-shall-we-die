@@ -38,7 +38,7 @@ public class BossController : MonoBehaviour
 
         _maxHealth = _bossObject.maxHealth;
         _bossID = _bossObject.bossID;
-        _damageColor = _bossObject.damageColor;
+        //_damageColor = _bossObject.damageColor;
 
         _currentHealth = _maxHealth;
         _isDead = false;

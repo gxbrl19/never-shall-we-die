@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShotgunDeadshot : MonoBehaviour
 {
-    public float speed = 18f;
+    public float speed = 25f;
     public float lifetime = 5f;
     private Vector2 direction;
 

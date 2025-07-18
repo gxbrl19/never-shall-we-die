@@ -11,6 +11,5 @@ public class EnemyObject : ScriptableObject
     [Header("Settings")]
     public int maxHealth;
     public int dropRate;
-    public Color damageColor;
     public GameObject dropPrefab;
 }

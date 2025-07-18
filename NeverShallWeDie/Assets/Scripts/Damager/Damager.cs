@@ -5,85 +5,43 @@ using UnityEngine;
 public class Damager : MonoBehaviour
 {
     public int attackPower;
-    public GameObject _hitEffect;
+    public GameObject hitEffect;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 12) //Enemy
         {
-            /*EnemyController _enemy = other.GetComponent<EnemyController>();
-
-            if (_enemy != null)
-            {
-                _enemy.TakeDamage(attackPower);
-                if (_hitEffect != null)
-                {
-                    Instantiate(_hitEffect, transform.position, transform.rotation);
-                }
-            }*/
-
             Transform playerPosition = FindObjectOfType<Player>().GetComponent<Transform>();
             IEnemy enemy = other.GetComponent<IEnemy>();
             if (enemy != null)
             {
                 Vector2 dir = (other.transform.position - playerPosition.position).normalized;
                 enemy.TakeHit(attackPower, dir, 6f); //knockback + dano
-                Instantiate(_hitEffect, transform.position, transform.rotation);
+                Instantiate(hitEffect, transform.position, transform.rotation);
             }
         }
         else if (other.gameObject.layer == 9) //Player
         {
-            PlayerHealth _playerHealth = other.GetComponent<PlayerHealth>();
-            Player _player = other.GetComponent<Player>();
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            Player player = other.GetComponent<Player>();
 
-            if (_playerHealth != null)
+            if (playerHealth != null)
             {
                 Vector2 dir = new Vector2(transform.position.x - other.transform.position.x, 0).normalized;
-                _player._knockbackDirection = dir.normalized;
-                _playerHealth.TakeDamage(attackPower);
+                player._knockbackDirection = dir.normalized;
+                playerHealth.TakeDamage(attackPower);
             }
         }
 
         else if (other.gameObject.layer == 7) //Boss
         {
-            BossController _boss = other.GetComponent<BossController>();
-
-            if (_boss != null)
+            Transform playerPosition = FindObjectOfType<Player>().GetComponent<Transform>();
+            IBoss boss = other.GetComponent<IBoss>();
+            if (boss != null)
             {
-                _boss.TakeDamage(attackPower);
-                if (_hitEffect != null)
-                {
-                    Instantiate(_hitEffect, transform.position, transform.rotation);
-                }
-            }
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 12) //Enemy
-        {
-            EnemyController _enemy = other.GetComponent<EnemyController>();
-
-            if (_enemy != null)
-            {
-                _enemy.TakeDamage(attackPower);
-            }
-        }
-        //else if (other.gameObject.layer == 9) { //Player
-        //    PlayerHealth _playerHealth = other.GetComponent<PlayerHealth>();
-
-        //    if (_playerHealth != null) {  
-        //        _playerHealth.TakeDamage(_power);
-        //    }
-        //}
-        else if (other.gameObject.layer == 7) //Boss
-        {
-            BossController _boss = other.GetComponent<BossController>();
-
-            if (_boss != null)
-            {
-                _boss.TakeDamage(attackPower);
+                Vector2 dir = (other.transform.position - playerPosition.position).normalized;
+                boss.TakeHit(attackPower, dir, 6f); //knockback + dano
+                Instantiate(hitEffect, transform.position, transform.rotation);
             }
         }
     }
