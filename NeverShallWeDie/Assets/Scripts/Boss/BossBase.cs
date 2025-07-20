@@ -70,7 +70,7 @@ public abstract class BossBase : MonoBehaviour, IBoss
 
         if (currentHealth <= 0)
         {
-            Die();
+            OnDeath();
         }
         else
         {
@@ -78,18 +78,12 @@ public abstract class BossBase : MonoBehaviour, IBoss
         }
     }
 
-    protected virtual void Die()
-    {
-        isDead = true;
-        rb.velocity = Vector2.zero;
-        OnDeath();
-    }
-
     protected virtual void OnDeath()
     {
-        if (isDead) { return; }
+        //if (isDead) { return; }
 
         isDead = true;
+        rb.velocity = Vector2.zero;
         animator.SetTrigger("Dead");
         GameManager.instance._bosses[bossId] = 1;
         bossDoor._tiggered = false;

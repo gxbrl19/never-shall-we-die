@@ -253,7 +253,6 @@ public class Deadshot : BossBase
     {
         base.OnDeath();
         ChangeState(State.Dead);
-        rb.velocity = Vector2.zero;
     }
 
     RaycastHit2D Raycast(Vector2 rayDirection, float length, LayerMask layerMask) //raio para detectar o chão
