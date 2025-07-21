@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Deadshot : BossBase
@@ -5,10 +6,11 @@ public class Deadshot : BossBase
     private enum State { Intro, Idle, Run, Shotgun, SwordAttack, ThrowBomb, DashAttack, Dead }
 
     [Header("Stats")]
-    [SerializeField] private float meleeRange = 2.5f;
-    [SerializeField] private float moveSpeed = .5f;
-    [SerializeField] private float swordCooldown = 2f;
-    [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private float meleeRange = 2f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float swordCooldown = 1.2f;
+    [SerializeField] private float attackCooldown = 1.5f;
+    private float distanceToPlayer;
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Attacks")]
@@ -70,7 +72,7 @@ public class Deadshot : BossBase
     {
         if (playerPosition == null || isDead) return;
 
-        float distanceToPlayer = Vector2.Distance(transform.position, playerPosition.position);
+        distanceToPlayer = Vector2.Distance(transform.position, playerPosition.position);
 
         switch (currentState)
         {
@@ -79,6 +81,7 @@ public class Deadshot : BossBase
                 break;
 
             case State.Idle:
+                rb.velocity = Vector2.zero;
                 animator.SetBool("Run", false);
                 break;
 
@@ -110,30 +113,36 @@ public class Deadshot : BossBase
         {
             FlipSprite();
 
-            if (distanceToPlayer <= meleeRange && swordTimer >= swordCooldown)
+            if (distanceToPlayer <= meleeRange)
             {
-                ChangeState(State.SwordAttack);
-            }
-            else if (attackTimer >= attackCooldown)
-            {
-                int randomAttack = Random.Range(0, 3);
-
-                switch (randomAttack)
-                {
-                    case 0:
-                        ChangeState(State.Shotgun);
-                        break;
-                    case 1:
-                        ChangeState(State.DashAttack);
-                        break;
-                    case 2:
-                        ChangeState(State.ThrowBomb);
-                        break;
-                }
+                if (swordTimer >= swordCooldown)
+                    ChangeState(State.SwordAttack);
+                else
+                    ChangeState(State.Idle);
             }
             else
             {
-                ChangeState(State.Run);
+                if (attackTimer >= attackCooldown)
+                {
+                    int randomAttack = Random.Range(0, 3);
+
+                    switch (randomAttack)
+                    {
+                        case 0:
+                            ChangeState(State.Shotgun);
+                            break;
+                        case 1:
+                            ChangeState(State.DashAttack);
+                            break;
+                        case 2:
+                            ChangeState(State.ThrowBomb);
+                            break;
+                    }
+                }
+                else
+                {
+                    ChangeState(State.Run);
+                }
             }
         }
     }
@@ -215,7 +224,6 @@ public class Deadshot : BossBase
         if (isDashing) return;
 
         Vector2 dir = (playerPosition.position - transform.position).normalized;
-        rb.velocity = dir * (moveSpeed * 6); // dash mais rápido
 
         if (dir.x > 0.1f)
             transform.localScale = new Vector3(1, 1, 1);
@@ -244,9 +252,9 @@ public class Deadshot : BossBase
     public void FinishAttack() //chamado nas animações de ataque
     {
         rb.velocity = Vector2.zero;
-        ChangeState(State.Run);
         isDashing = false;
         attackTimer = 0f;
+        ChangeState(State.Idle);
     }
 
     protected override void OnDeath()

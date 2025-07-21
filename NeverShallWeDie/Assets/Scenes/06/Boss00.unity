@@ -8263,9 +8263,10 @@ MonoBehaviour:
       Data4: -1116620846
     Path: event:/generic/combat/enemy_death
   meleeRange: 2
-  moveSpeed: 0.85
-  swordCooldown: 2
+  moveSpeed: 5
+  swordCooldown: 1.4
   attackCooldown: 2
+  distanceToPlayer: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -10347,7 +10348,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.712223
+      value: 19.212223
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y
