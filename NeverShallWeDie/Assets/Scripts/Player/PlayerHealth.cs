@@ -110,11 +110,6 @@ public class PlayerHealth : MonoBehaviour
             _currentHealth += .06f;
             _currentMana -= .06f;
 
-            //deixa zerado quando os valores forem negativos
-            if (_currentHealth < 0) { _currentHealth = 0f; } else if (_currentHealth > _maxHealth) { _currentHealth = _maxHealth; }
-            if (_currentMana < 0) { _currentMana = 0f; } else if (_currentMana > _maxMana) { _currentMana = _maxMana; }
-
-
             SetHealth(_currentHealth);
             SetMana(_currentMana);
 

@@ -1,29 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Torch : MonoBehaviour
 {
-    [SerializeField] AudioClip _breakSound;
-    [SerializeField] GameObject _particleHit;
-    [SerializeField] GameObject _light;
-    SpriteRenderer _sprite;
-    AudioSource _audio;
+    [SerializeField] GameObject particleHit;
+    [SerializeField] GameObject torchLight;
+    SpriteRenderer spriteRenderer;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference breackSound;
 
     private void Awake()
     {
-        _sprite = GetComponent<SpriteRenderer>();
-        _audio = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("SwordAtk"))
         {
-            _sprite.enabled = false;
-            _light.SetActive(false);
-            _audio.PlayOneShot(_breakSound);
-            GameObject hit = Instantiate(_particleHit, transform.position, _particleHit.transform.rotation);
+            spriteRenderer.enabled = false;
+            torchLight.SetActive(false);
+            RuntimeManager.PlayOneShot(breackSound);
+            GameObject hit = Instantiate(particleHit, transform.position, particleHit.transform.rotation);
             Destroy(hit, 2f);
         }
     }

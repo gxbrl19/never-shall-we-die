@@ -22,8 +22,6 @@ public class UIManager : MonoBehaviour
 
     [BoxGroup("HUD")][SerializeField] private Image _healthBar;
     [BoxGroup("HUD")][SerializeField] private Image _healingBar;
-    [BoxGroup("HUD")][SerializeField] private Text _txtHealth;
-    [BoxGroup("HUD")][SerializeField] private Text _txtMana;
     [BoxGroup("HUD")][SerializeField] private Text _txtHealthInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtHealingInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtGold;
@@ -168,10 +166,8 @@ public class UIManager : MonoBehaviour
         _healingBar.fillAmount = _health._currentMana / _health._maxMana;
 
         //convertendo para INT
-        int health = (int)_health._currentHealth;
-        int mana = (int)_health._currentMana;
-        _txtHealth.text = health.ToString();
-        _txtMana.text = mana.ToString();
+        int health = (int)_health._maxHealth;
+        int mana = (int)_health._maxMana;
         _txtGold.text = GameManager.instance._gold.ToString();
 
         //stats no pause

@@ -111,7 +111,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1739194555
   m_SortingLayer: 5
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 8671419476920680314, guid: dabd10491b0ea974bb28fccdb84227bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 2
-  _hitEffect: {fileID: 0}
+  hitEffect: {fileID: 0}
 --- !u!70 &6076887904577891345
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -124,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.516129}
-    oldSize: {x: 0.5, y: 1.9375}
+    oldSize: {x: 0.375, y: 1.9375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -166,9 +166,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ed5314070d2b244a5d15fa10dcc306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _breakSound: {fileID: 8300000, guid: ea0e4000c61f8a344b6577714cd49ddf, type: 3}
-  _particleHit: {fileID: 3090874618421301866, guid: 1cee8157bec3c324393002c767a3c4d6, type: 3}
-  _light: {fileID: 4018375290135102747}
+  particleHit: {fileID: 3090874618421301866, guid: 1cee8157bec3c324393002c767a3c4d6, type: 3}
+  torchLight: {fileID: 4018375290135102747}
+  breackSound:
+    Guid:
+      Data1: 162189138
+      Data2: 1239545032
+      Data3: 794430093
+      Data4: 9641242
+    Path: event:/generic/items/barrel_brake
 --- !u!1 &4018375290135102747
 GameObject:
   m_ObjectHideFlags: 0

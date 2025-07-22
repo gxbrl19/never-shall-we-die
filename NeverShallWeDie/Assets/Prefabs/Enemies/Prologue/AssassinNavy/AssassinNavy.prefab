@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 3
-  _hitEffect: {fileID: 0}
+  hitEffect: {fileID: 0}
 --- !u!1 &3717038023925824465
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1739194555
   m_SortingLayer: 5
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1071674360828934044, guid: 963b40e5e76987d48b65e7c34dcec146, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 2
-  _hitEffect: {fileID: 0}
+  hitEffect: {fileID: 0}
 --- !u!70 &4251409069361748780
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

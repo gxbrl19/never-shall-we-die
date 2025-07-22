@@ -58,10 +58,10 @@ public class BackgroundMusic : MonoBehaviour
 
     public void BackToMapMusic() //método para retornar a música após vencer o Boss
     {
-        //verifica se já existe o PlayerPrefs com o nome da cena do Cais selecionado
-        string _lastPier = PlayerPrefs.HasKey("Pier") ? PlayerPrefs.GetString("Pier") : "06/H0";
+        //verifica se já existe o save _lastPier com o nome da cena do Cais selecionado
+        string lastPier = GameManager.instance._lastPier != "" ? GameManager.instance._lastPier : "06/H0";
 
-        switch (_lastPier)
+        switch (lastPier)
         {
             case "06/H0":
                 MusicControl(6);

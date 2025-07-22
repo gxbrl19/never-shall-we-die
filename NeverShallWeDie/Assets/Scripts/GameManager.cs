@@ -35,6 +35,7 @@ public class PlayerData
     public List<ShipUpgrade> shipUpgrades;
     public float shipPosX;
     public float shipPosY;
+    public string lastPier;
     public int[] rocks;
     public int checkpointScene;
     public int direction;
@@ -90,6 +91,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<ShipUpgrade> _shipUpgrades;
     [HideInInspector] public float _shipPosX; //salva a posição do navio para quando voltar para o OpenWorld
     [HideInInspector] public float _shipPosY; //salva a posição do navio para quando voltar para o OpenWorld
+    public string _lastPier = "";
     [HideInInspector] public int[] _rocks; //Rocks já destruídos
 
     [HideInInspector] public int _checkpointScene; //a cena atual que será o checkpoint
@@ -216,6 +218,7 @@ public class GameManager : MonoBehaviour
         _data.shipUpgrades = _shipUpgrades;
         _data.shipPosX = _shipPosX;
         _data.shipPosY = _shipPosY;
+        _data.lastPier = _lastPier;
         _data.rocks = _rocks;
 
         _data.checkpointScene = _checkpointScene;
@@ -311,6 +314,7 @@ public class GameManager : MonoBehaviour
             _shipUpgrades = _data.shipUpgrades;
             _shipPosX = _data.shipPosX;
             _shipPosY = _data.shipPosY;
+            _lastPier = _data.lastPier;
             _rocks = _data.rocks;
 
             _checkpointScene = _data.checkpointScene;
