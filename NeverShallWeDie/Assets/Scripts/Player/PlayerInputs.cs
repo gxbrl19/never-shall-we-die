@@ -19,6 +19,7 @@ public class PlayerInputs : MonoBehaviour
     private bool _isParachuting;
     private bool _isGrabing;
     private bool _interact;
+    private float rawInput;
     private Player _player;
     private PlayerAudio _audio;
     private PlayerAnimations _animation;
@@ -121,20 +122,31 @@ public class PlayerInputs : MonoBehaviour
         _collision = GetComponent<PlayerCollision>();
     }
 
-    public void Move(InputAction.CallbackContext _callback)
+    public void Move(InputAction.CallbackContext callback)
     {
-        if (_player._dead || _player._canMove == false || _player._newSkillCollected || Time.timeScale == 0f)
-            return;
-
-        _horizontal = _callback.ReadValue<float>();
+        rawInput = callback.ReadValue<float>(); //sempre atualiza o input
+        _horizontal = callback.ReadValue<float>(); //sempre atualiza o input
     }
 
-    public void Climb(InputAction.CallbackContext _callback)
+    public float GetHorizontal()
+    {
+        if (_player._dead || _player._canMove == false || _player._newSkillCollected || Time.timeScale == 0f)
+            return 0f; //bloqueia o uso do input, mas não a leitura
+
+        return rawInput;
+    }
+
+    public void ResetHorizontal()
+    {
+        rawInput = 0f;
+    }
+
+    public void Climb(InputAction.CallbackContext callback)
     {
         if (_player._dead || Time.timeScale == 0f)
             return;
 
-        _vertical = _callback.ReadValue<float>();
+        _vertical = callback.ReadValue<float>();
     }
 
     public void R_Horizontal(InputAction.CallbackContext _callback)
@@ -314,7 +326,7 @@ public class PlayerInputs : MonoBehaviour
         if (_player._dead || !_player._isGrounded || _player._canMove == false || _isAttacking || _player._onWater || Time.timeScale == 0f)
             return;
 
-        if (_callback.started && !_player._canGrab && _horizontal != 0f)
+        if (_callback.started && !_player._canGrab && rawInput != 0f)
         {
             _isRolling = true;
         }
@@ -326,12 +338,16 @@ public class PlayerInputs : MonoBehaviour
     }
 
     public void OnHit()
-    { //cancela os inputs quando toma dano
+    {
         isAttacking = false;
         isGrabing = false;
         isAirCuting = false;
         isTornado = false;
         isParachuting = false;
         _player._healing = false;
+
+        horizontal = 0f;
+        vertical = 0f;
     }
+
 }

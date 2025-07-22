@@ -70,11 +70,6 @@ public class Player : MonoBehaviour
     //Grab
     private float _grabSpeed = 2f;
 
-    //Hit
-    [HideInInspector] public Vector2 _knockbackDirection;
-    //private float _knockbackForce = 5f;
-    [HideInInspector] public bool _onHit = false;
-
     //Slope
     private float _slopeCheckDistance = 1f;
     private float _slopeDownAngle;
@@ -123,6 +118,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool _isGrounded;
     [HideInInspector] public bool _healing;
     [HideInInspector] public bool _isOnSlope;
+    [HideInInspector] public bool _onHit = false;
     [HideInInspector] public bool _canGrab;
     [HideInInspector] public bool _isGrabing;
     [HideInInspector] public bool _isRolling;
@@ -132,11 +128,11 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool _canMove = true;
     [HideInInspector] public bool _newSkillCollected;
     [HideInInspector] public bool _dead = false;
-    [HideInInspector] public Rigidbody2D _body;
+    [HideInInspector] public Rigidbody2D rb;
 
     Vector2 _colliderSize;
     CapsuleCollider2D _collider;
-    PlayerInputs _input;
+    [HideInInspector] public PlayerInputs _input;
     PlayerAnimations _animation;
     PlayerHealth _health;
     PlayerCollision _collision;
@@ -145,7 +141,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _body = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<CapsuleCollider2D>();
         _input = GetComponent<PlayerInputs>();
         _animation = GetComponent<PlayerAnimations>();
@@ -172,7 +168,7 @@ public class Player : MonoBehaviour
     {
         _colliderSize = _collider.size;
         _speed = _normalSpeed;
-        _initialGravity = _body.gravityScale;
+        _initialGravity = rb.gravityScale;
         _onWater = false;
         _dead = false;
 
@@ -219,7 +215,6 @@ public class Player : MonoBehaviour
         OnGrid();
         OnRoll();
         OnParachute();
-        OnHit();
 
         //Special Attacks
         WaterSpin();
@@ -229,8 +224,8 @@ public class Player : MonoBehaviour
 
     public void DisableControls()
     {
-        _body.velocity = Vector2.zero;
-        _input.horizontal = 0f;
+        rb.velocity = Vector2.zero;
+        _input.ResetHorizontal();
         _input.vertical = 0f;
         _canMove = false;
     }
@@ -256,24 +251,24 @@ public class Player : MonoBehaviour
                 _input.isParachuting = false;
             }
 
-            if (_body.velocity.y <= 0.0f)
+            if (rb.velocity.y <= 0.0f)
             {
                 _isJumping = false;
             }
         }
         else
         {
-            _body.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
         }
 
         //gravidade na água
         if (_onWater)
         {
-            _body.gravityScale = _waterGravity;
+            rb.gravityScale = _waterGravity;
         }
         else
         {
-            _body.gravityScale = _initialGravity;
+            rb.gravityScale = _initialGravity;
         }
     }
 
@@ -281,36 +276,37 @@ public class Player : MonoBehaviour
     {
         float _xVelocity = 0f;
         float _yVelocity = 0f;
+        float horizontal = _input.GetHorizontal();
 
         if (_isGrounded && !_isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_input.isAttacking && !_healing) //chão comum
         {
-            _xVelocity = _speed * _input.horizontal;
+            _xVelocity = _speed * horizontal;
             _yVelocity = 0.0f;
-            _body.velocity = new Vector2(_xVelocity, _yVelocity);
+            rb.velocity = new Vector2(_xVelocity, _yVelocity);
         }
         else if (_isGrounded && _isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_healing & !_input.isAttacking) //diagonal
         {
-            _xVelocity = _speed * _slopeNormalPerp.x * -_input.horizontal;
-            _yVelocity = _speed * _slopeNormalPerp.y * -_input.horizontal;
-            _body.velocity = new Vector2(_xVelocity, _yVelocity);
+            _xVelocity = _speed * _slopeNormalPerp.x * -horizontal;
+            _yVelocity = _speed * _slopeNormalPerp.y * -horizontal;
+            rb.velocity = new Vector2(_xVelocity, _yVelocity);
         }
         else if (_isGrounded && _isGrabing && !_isOnSlope && !_isJumping) //empurrando caixa
         {
-            _xVelocity = _grabSpeed * _input.horizontal;
-            _yVelocity = _body.velocity.y;
-            _body.velocity = new Vector2(_xVelocity, _yVelocity);
+            _xVelocity = _grabSpeed * horizontal;
+            _yVelocity = rb.velocity.y;
+            rb.velocity = new Vector2(_xVelocity, _yVelocity);
         }
         else if (!_isGrounded && !_onWater) //no ar
         {
-            _xVelocity = _speed * _input.horizontal;
-            _yVelocity = _body.velocity.y;
-            _body.velocity = new Vector2(_xVelocity, _yVelocity);
+            _xVelocity = _speed * horizontal;
+            _yVelocity = rb.velocity.y;
+            rb.velocity = new Vector2(_xVelocity, _yVelocity);
         }
         else if (_onWater) //na água
         {
-            _xVelocity = _waterSpeed * _input.horizontal;
-            _yVelocity = _body.velocity.y;
-            _body.velocity = new Vector2(_xVelocity, _yVelocity);
+            _xVelocity = _waterSpeed * horizontal;
+            _yVelocity = rb.velocity.y;
+            rb.velocity = new Vector2(_xVelocity, _yVelocity);
         }
 
         if (_direction * _xVelocity < 0)
@@ -379,11 +375,11 @@ public class Player : MonoBehaviour
 
         if (_isOnSlope && (_input.horizontal == 0.0f || _isOnSlope && _input.isAttacking || _healing))
         {
-            _body.sharedMaterial = _frictionMaterial;
+            rb.sharedMaterial = _frictionMaterial;
         }
         else
         {
-            _body.sharedMaterial = _noFrictionMaterial;
+            rb.sharedMaterial = _noFrictionMaterial;
         }
     }
 
@@ -394,7 +390,7 @@ public class Player : MonoBehaviour
             _isJumping = true;
             _input.isJumping = false;
 
-            _body.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
 
             _jumpTime = Time.time + _jumpHoldDuration;
 
@@ -408,16 +404,16 @@ public class Player : MonoBehaviour
             {
                 _isJumping = true;
                 _input.isJumping = false;
-                _body.velocity = Vector2.zero;
-                _body.AddForce(Vector2.up * _jumpOutWater, ForceMode2D.Impulse);
+                rb.velocity = Vector2.zero;
+                rb.AddForce(Vector2.up * _jumpOutWater, ForceMode2D.Impulse);
                 _jumpTime = Time.time + _jumpHoldDuration;
                 _ghostTime = Time.time;
                 _audio.PlayJump();
             }
             else if (!_collision._outWaterHit && _collision._inWaterHit)
             {
-                _body.velocity = Vector2.zero;
-                _body.AddForce(Vector2.up * _swimForce, ForceMode2D.Impulse);
+                rb.velocity = Vector2.zero;
+                rb.AddForce(Vector2.up * _swimForce, ForceMode2D.Impulse);
                 _canSwin = false;
             }
         }
@@ -430,7 +426,7 @@ public class Player : MonoBehaviour
             _isJumping = true;
             _input.isJumping = false;
 
-            _body.AddForce(new Vector2((_jumpForce + 2f) * -_direction, _jumpForce + 7f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2((_jumpForce + 2f) * -_direction, _jumpForce + 7f), ForceMode2D.Impulse);
         }
         else if (_input.isJumping && (_onClimbing || _isGriding) && (TouchingVine() || TouchingLadder() || TouchingGrid())) //pulo da LADDER ou VINE
         {
@@ -438,8 +434,8 @@ public class Player : MonoBehaviour
             FinishGrid();
             _isJumping = true;
             _input.vertical = 0f;
-            _body.velocity = Vector2.zero;
-            _body.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            rb.velocity = Vector2.zero;
+            rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _jumpTime = Time.time + _jumpHoldDuration;
             _audio.PlayJump();
         }
@@ -448,7 +444,7 @@ public class Player : MonoBehaviour
         {
             if (_input.jumpHeld)
             {
-                _body.AddForce(Vector2.up * _jumpHoldForce, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * _jumpHoldForce, ForceMode2D.Impulse);
             }
 
             if (_jumpTime <= Time.time)
@@ -465,19 +461,19 @@ public class Player : MonoBehaviour
         if (_dead || !_canMove)
             return;
 
-        if ((_input.isAttacking && _isGrounded && !_onWater) || _healing) { _body.velocity = Vector2.zero; }
+        if ((_input.isAttacking && _isGrounded && !_onWater) || _healing) { rb.velocity = Vector2.zero; }
 
         //para no ar
         if (_input.isAirCuting || _input.isTornado)
         {
             if (!_isGrounded)
             {
-                _body.velocity = Vector2.zero;
-                _body.gravityScale = 0f;
+                rb.velocity = Vector2.zero;
+                rb.gravityScale = 0f;
             }
             else
             {
-                _body.velocity = Vector2.zero;
+                rb.velocity = Vector2.zero;
             }
         }
     }
@@ -485,19 +481,19 @@ public class Player : MonoBehaviour
     public void FinishAttack() //chamado na animação de ataque da katana
     {
         _input.isAttacking = false;
-        _body.gravityScale = _initialGravity;
+        rb.gravityScale = _initialGravity;
     }
 
     void OnParachute()
     {
         if (_input.isParachuting)
         {
-            _body.drag = _speedParachute;
+            rb.drag = _speedParachute;
         }
         else
         {
             _input.isParachuting = false;
-            _body.drag = _normalFallSpeed;
+            rb.drag = _normalFallSpeed;
         }
     }
 
@@ -519,13 +515,13 @@ public class Player : MonoBehaviour
 
     void InTheWater() //cancela a velocidade de queda ao entrar na agua
     {
-        _body.velocity = new Vector2(_body.velocity.x, 0f);
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
     }
 
     public void OnDead()
     {
         _dead = true;
-        _input.horizontal = 0;
+        _input.ResetHorizontal();
         DisableControls();
         _animation.OnDead();
         SceneController.instance.GameOver();
@@ -534,7 +530,7 @@ public class Player : MonoBehaviour
     public void SetPowerPickup(Sprite sprite)
     {
         _newSkillCollected = true;
-        _input.horizontal = 0f;
+        _input.ResetHorizontal();
         DisableControls();
         _animation.SetPowerPickup();
 
@@ -607,11 +603,11 @@ public class Player : MonoBehaviour
 
             if (_direction < 0)
             {
-                _body.velocity = Vector2.left * _waterSpinForce;
+                rb.velocity = Vector2.left * _waterSpinForce;
             }
             else if (_direction > 0)
             {
-                _body.velocity = Vector2.right * _waterSpinForce;
+                rb.velocity = Vector2.right * _waterSpinForce;
             }
         }
     }
@@ -636,11 +632,11 @@ public class Player : MonoBehaviour
 
             if (_direction < 0)
             {
-                _body.velocity = Vector2.left * _rollForce;
+                rb.velocity = Vector2.left * _rollForce;
             }
             else if (_direction > 0)
             {
-                _body.velocity = Vector2.right * _rollForce;
+                rb.velocity = Vector2.right * _rollForce;
             }
         }
     }
@@ -664,8 +660,8 @@ public class Player : MonoBehaviour
 
             DisableControls(); ;
             _timeSlide += Time.deltaTime;
-            if (_direction < 0) { _body.velocity = Vector2.left * _slideForce; }
-            else if (_direction > 0) { _body.velocity = Vector2.right * _slideForce; }
+            if (_direction < 0) { rb.velocity = Vector2.left * _slideForce; }
+            else if (_direction > 0) { rb.velocity = Vector2.right * _slideForce; }
         }
         else if (_isSliding && _timeSlide >= _limitSlide)
         {
@@ -674,7 +670,7 @@ public class Player : MonoBehaviour
                 _timeSlide = 0f;
                 _input.isSliding = false;
                 _isSliding = false;
-                _body.velocity = Vector2.zero;
+                rb.velocity = Vector2.zero;
                 EnabledControls();
             }
         }
@@ -721,7 +717,7 @@ public class Player : MonoBehaviour
         if ((_input.vertical >= 0.5 || _input.vertical <= -0.5) && (TouchingLadder() || TouchingVine()) && _input.horizontal <= 0.05)
         {
             _onClimbing = true;
-            _body.isKinematic = true;
+            rb.isKinematic = true;
 
             if (TouchingLadder())
             {
@@ -766,7 +762,7 @@ public class Player : MonoBehaviour
             }
 
             float y = speed * _climbSpeed;
-            _body.velocity = new Vector2(0, y);
+            rb.velocity = new Vector2(0, y);
         }
         else if (_onClimbing && TouchingVine())
         {
@@ -798,7 +794,7 @@ public class Player : MonoBehaviour
             }
 
             float y = speed * _climbSpeed;
-            _body.velocity = new Vector2(0, y);
+            rb.velocity = new Vector2(0, y);
         }
     }
 
@@ -807,7 +803,7 @@ public class Player : MonoBehaviour
         if (_onClimbing)
         {
             _onClimbing = false;
-            _body.isKinematic = false;
+            rb.isKinematic = false;
             _canMove = true;
         }
     }
@@ -816,9 +812,9 @@ public class Player : MonoBehaviour
     {
         if ((_input.vertical >= 0.5 || _input.vertical <= -0.5) && TouchingGrid() && !_isGrounded)
         {
-            _body.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
             _isGriding = true;
-            _body.isKinematic = true;
+            rb.isKinematic = true;
         }
 
         if (!TouchingGrid())
@@ -829,7 +825,7 @@ public class Player : MonoBehaviour
         if (_isGriding && TouchingGrid())
         {
             float vertical = _input.vertical;
-            float horizontal = _input.horizontal;
+            float horizontal = _input.GetHorizontal();
 
             //corrigindo o bug do controle não pegar o 1 e -1 no analógico
             if (vertical > -1 && vertical < 0) { vertical = -1; }
@@ -838,7 +834,7 @@ public class Player : MonoBehaviour
 
             float y = vertical * _climbSpeed;
             float x = horizontal * _climbSpeed;
-            _body.velocity = new Vector2(x, y);
+            rb.velocity = new Vector2(x, y);
         }
     }
 
@@ -847,7 +843,7 @@ public class Player : MonoBehaviour
         if (_isGriding)
         {
             _isGriding = false;
-            _body.isKinematic = false;
+            rb.isKinematic = false;
             //_canMove = true;
         }
     }
@@ -877,31 +873,6 @@ public class Player : MonoBehaviour
         {
             _bridge.PassingThrough();
         }
-    }
-    #endregion
-
-    #region Hit
-    void OnHit()
-    {
-        if (!_onHit || _dead)
-            return;
-
-        _input.OnHit(); //cancela os inputs quando toma dano
-        //_input.horizontal = 0;
-        _body.velocity = Vector2.zero;
-        //if (!_isGrounded) { ApplyKnockback(_knockbackDirection, _knockbackForce); } //não da o knockback no chão
-    }
-
-    public void ApplyKnockback(Vector2 direction, float force)
-    {
-        _body.AddForce(direction.normalized * force, ForceMode2D.Impulse);
-    }
-
-    public void FinishKnockback() //chamado na animação de Hit
-    {
-        _onHit = false;
-        _canMove = true;
-        _health.FinishHit();
     }
     #endregion
 

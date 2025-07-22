@@ -23,12 +23,9 @@ public class Damager : MonoBehaviour
         else if (other.gameObject.layer == 9) //Player
         {
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            Player player = other.GetComponent<Player>();
 
             if (playerHealth != null)
             {
-                Vector2 dir = new Vector2(transform.position.x - other.transform.position.x, 0).normalized;
-                player._knockbackDirection = dir.normalized;
                 playerHealth.TakeDamage(attackPower);
             }
         }

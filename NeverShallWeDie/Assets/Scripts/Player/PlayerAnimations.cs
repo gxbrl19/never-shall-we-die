@@ -34,7 +34,7 @@ public class PlayerAnimations : MonoBehaviour
         _animation.SetBool("IsGrounded", _player._isGrounded);
 
         //Fall
-        _animation.SetFloat("Fall", _player._body.velocity.y);
+        _animation.SetFloat("Fall", _player.rb.velocity.y);
 
         //Walk
         _animation.SetFloat("Speed", Mathf.Abs(xVelocity));
