@@ -100,7 +100,7 @@ public class PlayerAudio : MonoBehaviour
 
     public void PlayGrab()
     {
-        if (_player._isGrabing && _input.horizontal != 0)
+        if (_player.isGrabing && _input.horizontal != 0)
         {
             if (!_playLoop)
             {
@@ -117,7 +117,7 @@ public class PlayerAudio : MonoBehaviour
 
     public void PlayHealing()
     {
-        if (_player._healing)
+        if (_player.isHealing)
         {
             if (!_playLoop)
             {

@@ -700,6 +700,7 @@ GameObject:
   - component: {fileID: 8160846808588850493}
   - component: {fileID: 8160846808588850492}
   - component: {fileID: 8160846808588850495}
+  - component: {fileID: 7590800119887452014}
   - component: {fileID: 8160846808588850494}
   - component: {fileID: 8160846808588850481}
   - component: {fileID: 1519453342642065733}
@@ -1139,15 +1140,9 @@ MonoBehaviour:
   _frictionMaterial: {fileID: 6200000, guid: ea23e2b1dbfa7924bb44eac0bbde01b9, type: 2}
   _scriptablePosition: {fileID: 11400000, guid: f39253ef9bb01d94299a5a95310a731c, type: 2}
   _powerPickup: {fileID: 9056689326667320452}
-  _direction: 1
-  _speed: 4
-  _rollForce: 7
-  _ladder: {fileID: 0}
-  _vine: {fileID: 0}
-  _onClimbing: 0
+  _dust: {fileID: 2433915885738270050, guid: e76119983bc3ad942bb43f70e9f7a201, type: 3}
+  _recoveryEffect: {fileID: 8334568750684773814, guid: af97633c12733e54cb5109b0d6ba86ba, type: 3}
   _isSliding: 0
-  _canSwin: 1
-  _onWater: 0
   _timeForSkills: 0
   _timeWaterSpin: 0
   _inWaterSpin: 0
@@ -1160,23 +1155,30 @@ MonoBehaviour:
   _timeTornado: 0
   _tornado: {fileID: 6530606618430758576, guid: 6481ca6b4c17cda47b0f9d6303c0ce38, type: 3}
   _tornadoPoint: {fileID: 4342493059249266109}
-  _dust: {fileID: 2433915885738270050, guid: e76119983bc3ad942bb43f70e9f7a201, type: 3}
-  _recoveryEffect: {fileID: 8334568750684773814, guid: af97633c12733e54cb5109b0d6ba86ba, type: 3}
   _isGrounded: 1
+  _isJumping: 0
   _healing: 0
   _isOnSlope: 0
+  _onWater: 0
   _onHit: 0
   _canGrab: 0
+  _onClimbing: 0
   _isGrabing: 0
   _isRolling: 0
   _onBridge: 0
-  _bridgeHit: 0
   _isGriding: 0
   _canMove: 1
   _newSkillCollected: 0
   _dead: 0
   rb: {fileID: 0}
+  playerMovement: {fileID: 0}
+  _collider: {fileID: 0}
   _input: {fileID: 0}
+  _animation: {fileID: 0}
+  _health: {fileID: 0}
+  _collision: {fileID: 0}
+  _audio: {fileID: 0}
+  _bridge: {fileID: 0}
 --- !u!114 &8160846808588850495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,6 +1191,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acc01107c673864cb8268c243cbcf5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7590800119887452014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160846808588850480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82eb04aedd2a60c40af3c59f2e3dd0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDirection: 1
+  initialGravity: 0
+  speed: 0
+  _ladder: {fileID: 0}
+  _vine: {fileID: 0}
+  _canSwin: 1
+  _bridgeHit: 0
 --- !u!114 &8160846808588850494
 MonoBehaviour:
   m_ObjectHideFlags: 0

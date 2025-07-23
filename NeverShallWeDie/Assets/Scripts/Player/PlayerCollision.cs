@@ -67,27 +67,27 @@ public class PlayerCollision : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
         RaycastHit2D _hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, _distanceBox, _boxLayer);
 
-        if (_hit && _player._isGrounded)
+        if (_hit && _player.isGrounded)
         {
-            _player._canGrab = true;
+            _player.canGrab = true;
         }
         else
         {
-            _player._canGrab = false;
+            _player.canGrab = false;
         }
 
         //
-        if (_player._canGrab && _input.isGrabing)
+        if (_player.canGrab && _input.isGrabing)
         {
             _box = _hit.collider.gameObject;
-            _player._isGrabing = true;
+            _player.isGrabing = true;
             _box.GetComponent<Rigidbody2D>().mass = 1f;
             _box.GetComponent<FixedJoint2D>().enabled = true;
             _box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
         }
-        else if (!_input.isGrabing || !_player._canGrab)
+        else if (!_input.isGrabing || !_player.canGrab)
         {
-            _player._isGrabing = false;
+            _player.isGrabing = false;
             _box.GetComponent<Rigidbody2D>().mass = 500f;
             _box.GetComponent<FixedJoint2D>().enabled = false;
         }
@@ -95,7 +95,7 @@ public class PlayerCollision : MonoBehaviour
 
     void WaterCheck()
     {
-        if (_player._dead)
+        if (_player.isDead)
             return;
 
         _outWaterHit = !Physics2D.OverlapCircle(_outWaterPoint.transform.position, _waterCheckRadius, _waterLayer);
@@ -103,11 +103,11 @@ public class PlayerCollision : MonoBehaviour
 
         if (_inWaterHit)
         {
-            _player._onWater = true;
+            _player.onWater = true;
         }
         else
         {
-            _player._onWater = false;
+            _player.onWater = false;
         }
     }
 
@@ -116,10 +116,10 @@ public class PlayerCollision : MonoBehaviour
         _onWall = false;
 
         Vector3 _offset = new Vector3(0f, -0.5f, 0f);
-        RaycastHit2D _upRay = RaycastWallJump(_climbLedgePoint.transform.position, Vector2.right * _player._direction, _wallRayDistance, _groundLayer);
-        RaycastHit2D _downRay = RaycastWallJump(_climbLedgePoint.transform.position + _offset, Vector2.right * _player._direction, _wallRayDistance, _groundLayer);
+        RaycastHit2D _upRay = RaycastWallJump(_climbLedgePoint.transform.position, Vector2.right * _player.playerMovement.playerDirection, _wallRayDistance, _groundLayer);
+        RaycastHit2D _downRay = RaycastWallJump(_climbLedgePoint.transform.position + _offset, Vector2.right * _player.playerMovement.playerDirection, _wallRayDistance, _groundLayer);
 
-        if ((!_upRay && _downRay) && !_player._onWater)
+        if ((!_upRay && _downRay) && !_player.onWater)
         {
             _onWall = true;
             _input.isParachuting = false;
@@ -139,12 +139,12 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ladder"))
         {
-            _player._ladder = other.transform;
+            _player.playerMovement.ladder = other.transform;
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Vine"))
         {
-            _player._vine = other.transform;
+            _player.playerMovement.vine = other.transform;
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
@@ -152,7 +152,7 @@ public class PlayerCollision : MonoBehaviour
             //verifica primeiro se é a layer do Player ou do Invencible que está entrando na água
             if (gameObject.layer != LayerMask.NameToLayer("Player") && gameObject.layer != LayerMask.NameToLayer("Invencible")) { return; }
 
-            _player._onWater = true;
+            _player.onWater = true;
             Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
             _audio.PlayWaterSplash();
 
@@ -160,9 +160,9 @@ public class PlayerCollision : MonoBehaviour
             if (other.gameObject.tag.Equals("Lava")) { Instantiate(_dropLava, position, other.transform.rotation); }
             else { Instantiate(_dropWater, position, other.transform.rotation); }
 
-            if (_player._isRolling)
+            if (_player.isRolling)
             {
-                _player.FinishRoll(); //cancela o Roll ao entrar na água
+                _player.playerMovement.FinishRoll(); //cancela o Roll ao entrar na água
                 return;
             }
 
@@ -179,7 +179,7 @@ public class PlayerCollision : MonoBehaviour
             //verifica primeiro se é a layer do Player ou do Invencible que está saindo da água
             if (gameObject.layer != LayerMask.NameToLayer("Player") && gameObject.layer != LayerMask.NameToLayer("Invencible")) { return; }
 
-            _player._onWater = false;
+            _player.onWater = false;
             Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
             _audio.PlayWaterSplash();
 
@@ -209,7 +209,7 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Platform")) { this.transform.parent = null; }
 
         //cancela o Roll ao sair do chão
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) { _player.FinishRoll(); }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) { _player.playerMovement.FinishRoll(); }
     }
 
     private void OnDrawGizmos()

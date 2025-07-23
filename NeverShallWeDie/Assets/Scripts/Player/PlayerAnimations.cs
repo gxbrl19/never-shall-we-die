@@ -31,7 +31,7 @@ public class PlayerAnimations : MonoBehaviour
         _animation.SetBool("Intro", GameManager.instance._intro == 0);
 
         //Idle
-        _animation.SetBool("IsGrounded", _player._isGrounded);
+        _animation.SetBool("IsGrounded", _player.isGrounded);
 
         //Fall
         _animation.SetFloat("Fall", _player.rb.velocity.y);
@@ -40,14 +40,14 @@ public class PlayerAnimations : MonoBehaviour
         _animation.SetFloat("Speed", Mathf.Abs(xVelocity));
 
         //Climb
-        _animation.SetBool("IsClimbing", _player._onClimbing);
+        _animation.SetBool("IsClimbing", _player.onClimbing);
         _animation.SetFloat("Vertical", Mathf.Abs(yVelocity));
 
         //Attack
         _animation.SetBool("IsAttacking", _input.isAttacking);
 
         //Dash
-        _animation.SetBool("IsRolling", _player._isRolling);
+        _animation.SetBool("IsRolling", _player.isRolling);
 
         //Parachute
         _animation.SetBool("IsParachuting", _input.isParachuting);
@@ -56,40 +56,40 @@ public class PlayerAnimations : MonoBehaviour
         _animation.SetBool("IsWalling", _collision._onWall);
 
         //Healing
-        _animation.SetBool("Healing", _player._healing);
+        _animation.SetBool("Healing", _player.isHealing);
 
         //Grid
-        _animation.SetBool("IsGriding", _player._isGriding);
+        _animation.SetBool("IsGriding", _player.isGriding);
         _animation.SetBool("GridMove", xVelocity != 0 || yVelocity != 0);
 
         //Swim
-        if (_player._onWater) { _animation.SetBool("IsSwimming", true); } else { _animation.SetBool("IsSwimming", false); }
+        if (_player.onWater) { _animation.SetBool("IsSwimming", true); } else { _animation.SetBool("IsSwimming", false); }
 
         //Water Spin
-        _animation.SetBool("WaterSpin", _player._inWaterSpin);
+        _animation.SetBool("WaterSpin", _player.inWaterSpin);
 
         //Slide
         _animation.SetBool("IsSliding", _input.isSliding);
 
         //Grab
-        _animation.SetBool("IsGrabing", _player._isGrabing);
+        _animation.SetBool("IsGrabing", _player.isGrabing);
 
-        if (_player._direction == 1 && _input.horizontal > 0 && _player._isGrabing)
+        if (_player.playerMovement.playerDirection == 1 && _input.horizontal > 0 && _player.isGrabing)
         {
             _animation.SetBool("IsPulling", false); //puxar
             _animation.SetBool("IsPushing", true); //empurrar
         }
-        else if (_player._direction == 1 && _input.horizontal < 0 && _player._isGrabing)
+        else if (_player.playerMovement.playerDirection == 1 && _input.horizontal < 0 && _player.isGrabing)
         {
             _animation.SetBool("IsPulling", true); //puxar
             _animation.SetBool("IsPushing", false); //empurrar
         }
-        else if (_player._direction == -1 && _input.horizontal > 0 && _player._isGrabing)
+        else if (_player.playerMovement.playerDirection == -1 && _input.horizontal > 0 && _player.isGrabing)
         {
             _animation.SetBool("IsPulling", true); //puxar
             _animation.SetBool("IsPushing", false); //empurrar
         }
-        else if (_player._direction == -1 && _input.horizontal < 0 && _player._isGrabing)
+        else if (_player.playerMovement.playerDirection == -1 && _input.horizontal < 0 && _player.isGrabing)
         {
             _animation.SetBool("IsPulling", false); //puxar
             _animation.SetBool("IsPushing", true); //empurrar

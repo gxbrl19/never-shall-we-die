@@ -18,142 +18,83 @@ public class Player : MonoBehaviour
     [BoxGroup("Components")] public PhysicsMaterial2D _frictionMaterial;
     [BoxGroup("Components")] public PlayerPosition _scriptablePosition;
     [BoxGroup("GameObjects")] public GameObject _powerPickup;
-
-    //Config
-    private float _normalSpeed = 8f;
-    private float _initialGravity;
-    [HideInInspector] public int _direction = 1;
-    [HideInInspector] public float _speed;
-
-    //Check Ground
-    private float _footOffset = 0.28f;
-    private float _groundOffset = -0.2f;
-    private float _groundDistance = 0.3f;
-
-    //Jump
-    private bool _isJumping;
-    private float _jumpForce = 16f;
-
-    //Jump Hold
-    private float _jumpHoldForce = 1.7f;
-    private float _jumpHoldDuration = 0.17f;
-    private float _jumpTime;
-
-    //Ghost Jump
-    private float _ghostDuration = 0.15f;
-    private float _ghostTime;
-
-    //Roll
-    private bool _canRoll = true;
-    private float _rollForce = 13f;
-    [SerializeField] private float _rollCooldown = 1.2f;
-    private float _lastRollTime = -Mathf.Infinity;
+    [Header("Particles")][BoxGroup("GameObjects")] public GameObject _dust;
+    [BoxGroup("GameObjects")] public GameObject _recoveryEffect;
 
     //Parachute
-    private float _normalFallSpeed = 0f;
-    private float _speedParachute = 20f;
-
-    //Climb
-    private float _climbSpeed = 3.5f;
-    private float _checkRadius = 0.5f;
-    private Vector3 _checkPositionUp = new Vector3(0f, 0.6f, 0f);
-    private Vector3 _checkPositionDown = new Vector3(0f, -1.2f, 0f);
-    [HideInInspector] public Transform _ladder;
-    [HideInInspector] public Transform _vine;
-    [HideInInspector] public bool _onClimbing;
+    private float normalFallSpeed = 0f;
+    private float speedParachute = 20f;
 
     //Slide
-    [HideInInspector] public bool _isSliding = false;
-    bool _hitSlide = false;
-    float _timeSlide = 0f;
-    float _limitSlide = 0.5f;
-    float _slideForce = 15f;
-
-    //Grab
-    private float _grabSpeed = 2f;
-
-    //Slope
-    private float _slopeCheckDistance = 1f;
-    private float _slopeDownAngle;
-    private float _slopeDownAngleOld;
-    private float _slopeSideAngle;
-    private Vector2 _slopeNormalPerp;
-
-    //Bridge
-    private float _bridgeCheckDistance = -1.09f;
-
-    //Water
-    private float _waterGravity = 0.4f;
-    private float _waterSpeed = 4f;
-    private float _swimForce = 3f;
-    private float _jumpOutWater = 10f;
-    private float _swinLimit = 0.2f;
-    [HideInInspector] public bool _canSwin = true;
-    [HideInInspector] public bool _onWater;
+    [HideInInspector] public bool isSliding = false;
+    bool hitSlide = false;
+    float timeSlide = 0f;
+    float limitSlide = 0.5f;
+    float slideForce = 15f;
 
     //Skills
-    [HideInInspector] public float _timeForSkills;
+    [HideInInspector] public float timeForSkills;
 
     //Water Spin
-    [HideInInspector] public float _timeWaterSpin;
-    private float _waterSpinForce = 10f;
-    [HideInInspector] public bool _inWaterSpin;
-    [HideInInspector] public float _waterSpinMana;
+    [HideInInspector] public float timeWaterSpin;
+    private float waterSpinForce = 10f;
+    [HideInInspector] public bool inWaterSpin;
+    [HideInInspector] public float waterSpinMana;
 
     //Air Cut
-    [HideInInspector] public float _timeAirCut;
+    [HideInInspector] public float timeAirCut;
     [BoxGroup("GameObjects")] public AirCut _aircut;
     [BoxGroup("Components")] public Transform _aircutPoint;
-    [HideInInspector] public float _aircutMana;
+    [HideInInspector] public float aircutMana;
 
     //Tornado
-    [HideInInspector] public bool _inTornado;
-    [HideInInspector] public float _timeTornado;
+    [HideInInspector] public bool inTornado;
+    [HideInInspector] public float timeTornado;
     [BoxGroup("GameObjects")] public WindSpin _tornado;
     [BoxGroup("Components")] public Transform _tornadoPoint;
-    private float _tornadoMana;
+    private float tornadoMana;
 
-    //Particles
-    [SerializeField][Header("Particles")][BoxGroup("GameObjects")] private GameObject _dust;
-    [SerializeField][BoxGroup("GameObjects")] private GameObject _recoveryEffect;
+    //States
+    [HideInInspector] public bool canMove = true;
+    [HideInInspector] public bool canGrab;
+    [HideInInspector] public bool isGrounded;
+    [HideInInspector] public bool isJumping;
+    [HideInInspector] public bool isHealing;
+    [HideInInspector] public bool isRolling;
+    [HideInInspector] public bool isGrabing;
+    [HideInInspector] public bool isGriding;
+    [HideInInspector] public bool isDead = false;
+    [HideInInspector] public bool onSlope;
+    [HideInInspector] public bool onBridge;
+    [HideInInspector] public bool onWater;
+    [HideInInspector] public bool onHit = false;
+    [HideInInspector] public bool onClimbing;
+    [HideInInspector] public bool newSkillCollected;
 
-    [HideInInspector] public bool _isGrounded;
-    [HideInInspector] public bool _healing;
-    [HideInInspector] public bool _isOnSlope;
-    [HideInInspector] public bool _onHit = false;
-    [HideInInspector] public bool _canGrab;
-    [HideInInspector] public bool _isGrabing;
-    [HideInInspector] public bool _isRolling;
-    [HideInInspector] public bool _onBridge;
-    [HideInInspector] public bool _bridgeHit;
-    public bool _isGriding;
-    [HideInInspector] public bool _canMove = true;
-    [HideInInspector] public bool _newSkillCollected;
-    [HideInInspector] public bool _dead = false;
     [HideInInspector] public Rigidbody2D rb;
-
-    Vector2 _colliderSize;
-    CapsuleCollider2D _collider;
-    [HideInInspector] public PlayerInputs _input;
-    PlayerAnimations _animation;
-    PlayerHealth _health;
-    PlayerCollision _collision;
-    PlayerAudio _audio;
-    Bridge _bridge;
+    [HideInInspector] public PlayerMovement playerMovement;
+    [HideInInspector] public CapsuleCollider2D playerCollider;
+    [HideInInspector] public PlayerInputs playerInputs;
+    [HideInInspector] public PlayerAnimations playerAnimations;
+    [HideInInspector] public PlayerHealth playerHealth;
+    [HideInInspector] public PlayerCollision playerCollision;
+    [HideInInspector] public PlayerAudio playerAudio;
+    [HideInInspector] public Bridge bridge;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        _collider = GetComponent<CapsuleCollider2D>();
-        _input = GetComponent<PlayerInputs>();
-        _animation = GetComponent<PlayerAnimations>();
-        _collision = GetComponent<PlayerCollision>();
-        _audio = GetComponent<PlayerAudio>();
-        _health = GetComponent<PlayerHealth>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerCollider = GetComponent<CapsuleCollider2D>();
+        playerInputs = GetComponent<PlayerInputs>();
+        playerAnimations = GetComponent<PlayerAnimations>();
+        playerCollision = GetComponent<PlayerCollision>();
+        playerAudio = GetComponent<PlayerAudio>();
+        playerHealth = GetComponent<PlayerHealth>();
 
-        _waterSpinMana = 4f;
-        _aircutMana = 4f;
-        _tornadoMana = 4f;
+        waterSpinMana = 4f;
+        aircutMana = 4f;
+        tornadoMana = 4f;
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
@@ -168,16 +109,13 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        _colliderSize = _collider.size;
-        _speed = _normalSpeed;
-        _initialGravity = rb.gravityScale;
-        _onWater = false;
-        _dead = false;
+        onWater = false;
+        isDead = false;
 
-        _timeForSkills = 3f;
-        _timeAirCut = _timeForSkills;
-        _timeTornado = _timeForSkills;
-        _timeWaterSpin = _timeForSkills;
+        timeForSkills = 3f;
+        timeAirCut = timeForSkills;
+        timeTornado = timeForSkills;
+        timeWaterSpin = timeForSkills;
 
         if (_scriptablePosition.SceneTransition)
         {
@@ -186,36 +124,26 @@ public class Player : MonoBehaviour
             Vector3 _position = new Vector3(_startPosition._startPositions[_index].position.x, _startPosition._startPositions[_index].position.y, _startPosition._startPositions[_index].position.z);
 
             transform.position = _position;
-            if (_scriptablePosition.Direction == -1) { Flip(); }
+            if (_scriptablePosition.Direction == -1) { playerMovement.Flip(); }
         }
         else
         {
-            _health.ResetHealth();
+            playerHealth.ResetHealth();
         }
     }
 
     private void Update()
     {
         //contagem das skills
-        _timeAirCut += Time.deltaTime;
-        _timeTornado += Time.deltaTime;
-        _timeWaterSpin += Time.deltaTime;
+        timeAirCut += Time.deltaTime;
+        timeTornado += Time.deltaTime;
+        timeWaterSpin += Time.deltaTime;
     }
 
     void FixedUpdate()
     {
-        PhysicsCheck();
-        JumpControl();
-        CheckMove();
-        BlockMove();
-        CheckSlope();
-        CheckBridge();
         CheckSlide();
         OnSlide();
-        OnWater();
-        OnClimb();
-        OnGrid();
-        OnRoll();
         OnParachute();
 
         //Special Attacks
@@ -227,286 +155,32 @@ public class Player : MonoBehaviour
     public void DisableControls()
     {
         rb.velocity = Vector2.zero;
-        _input.ResetHorizontal();
-        _input.vertical = 0f;
-        _canMove = false;
+        playerInputs.ResetHorizontal();
+        playerInputs.vertical = 0f;
+        canMove = false;
     }
 
     public void EnabledControls()
     {
-        _canMove = true;
-    }
-
-    void PhysicsCheck()
-    {
-        if (!_dead)
-        {
-            _isGrounded = false;
-
-            //dispara um raio para baixo de cada pé para checagem do chão
-            RaycastHit2D _leftFoot = Raycast(new Vector2(-_footOffset, -_groundOffset), Vector2.down, _groundDistance, _groundLayer);
-            RaycastHit2D _rightFoot = Raycast(new Vector2(_footOffset, -_groundOffset), Vector2.down, _groundDistance, _groundLayer);
-
-            if ((_leftFoot || _rightFoot) && !_bridgeHit && !_onClimbing)
-            {
-                _isGrounded = true;
-                _input.isParachuting = false;
-            }
-
-            if (rb.velocity.y <= 0.0f)
-            {
-                _isJumping = false;
-            }
-        }
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
-
-        //gravidade na água
-        if (_onWater)
-        {
-            rb.gravityScale = _waterGravity;
-        }
-        else
-        {
-            rb.gravityScale = _initialGravity;
-        }
-    }
-
-    void CheckMove()
-    {
-        float _xVelocity = 0f;
-        float _yVelocity = 0f;
-        float horizontal = _input.GetHorizontal();
-
-        if (_isGrounded && !_isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_input.isAttacking && !_healing && !_isRolling) //chão comum
-        {
-            _xVelocity = _speed * horizontal;
-            _yVelocity = 0.0f;
-            rb.velocity = new Vector2(_xVelocity, _yVelocity);
-        }
-        else if (_isGrounded && _isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_healing & !_input.isAttacking) //diagonal
-        {
-            _xVelocity = _speed * _slopeNormalPerp.x * -horizontal;
-            _yVelocity = _speed * _slopeNormalPerp.y * -horizontal;
-            rb.velocity = new Vector2(_xVelocity, _yVelocity);
-        }
-        else if (_isGrounded && _isGrabing && !_isOnSlope && !_isJumping) //empurrando caixa
-        {
-            _xVelocity = _grabSpeed * horizontal;
-            _yVelocity = rb.velocity.y;
-            rb.velocity = new Vector2(_xVelocity, _yVelocity);
-        }
-        else if (!_isGrounded && !_onWater) //no ar
-        {
-            _xVelocity = _speed * horizontal;
-            _yVelocity = rb.velocity.y;
-            rb.velocity = new Vector2(_xVelocity, _yVelocity);
-        }
-        else if (_onWater) //na água
-        {
-            _xVelocity = _waterSpeed * horizontal;
-            _yVelocity = rb.velocity.y;
-            rb.velocity = new Vector2(_xVelocity, _yVelocity);
-        }
-
-        if (_direction * _xVelocity < 0)
-        {
-            Flip();
-        }
-
-        if (_isGrounded)
-        {
-            _ghostTime = Time.time + _ghostDuration;
-        }
-
-        _animation.xVelocity = Mathf.Abs(_xVelocity);
-        _animation.yVelocity = Mathf.Abs(_yVelocity);
-    }
-
-    void CheckSlope()
-    {
-        Vector2 _checkPos = transform.position - new Vector3(0.0f, _colliderSize.y / 2);
-
-        SlopeCheckHorizontal(_checkPos);
-        SlopeCheckVertical(_checkPos);
-    }
-
-    void SlopeCheckHorizontal(Vector2 checkPos)
-    {
-        RaycastHit2D _slopeHitFront = Physics2D.Raycast(checkPos, transform.right, _slopeCheckDistance, _slopeLayer);
-        RaycastHit2D _slopeHitBack = Physics2D.Raycast(checkPos, -transform.right, _slopeCheckDistance, _slopeLayer);
-
-        if (_slopeHitFront)
-        {
-            _isOnSlope = true;
-            _slopeSideAngle = Vector2.Angle(_slopeHitFront.normal, Vector2.up);
-        }
-        else if (_slopeHitBack)
-        {
-            _isOnSlope = true;
-            _slopeSideAngle = Vector2.Angle(_slopeHitBack.normal, Vector2.up);
-        }
-        else
-        {
-            _slopeSideAngle = 0.0f;
-            _isOnSlope = false;
-        }
-    }
-
-    void SlopeCheckVertical(Vector2 checkPos)
-    {
-        RaycastHit2D _hit = Physics2D.Raycast(checkPos, Vector2.down, _slopeCheckDistance, _groundLayer);
-
-        if (_hit)
-        {
-            _slopeNormalPerp = Vector2.Perpendicular(_hit.normal).normalized;
-            _slopeDownAngle = Vector2.Angle(_hit.normal, Vector2.up);
-
-            if (_slopeDownAngle != _slopeDownAngleOld)
-            {
-                _isOnSlope = true;
-            }
-
-            _slopeDownAngleOld = _slopeDownAngle;
-
-            Debug.DrawRay(_hit.point, _slopeNormalPerp, Color.green);
-            Debug.DrawRay(_hit.point, _hit.normal, Color.yellow);
-        }
-
-        if (_isOnSlope && (_input.horizontal == 0.0f || _isOnSlope && _input.isAttacking || _healing))
-        {
-            rb.sharedMaterial = _frictionMaterial;
-        }
-        else
-        {
-            rb.sharedMaterial = _noFrictionMaterial;
-        }
-    }
-
-    void JumpControl()
-    {
-        if (_input.isJumping && (_isGrounded || _ghostTime > Time.time) && !_onWater && _input.vertical > -0.3f && !_onClimbing && !_inTornado && !_healing && !_isRolling) //pulo comum
-        {
-            _isJumping = true;
-            _input.isJumping = false;
-
-            rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-
-            _jumpTime = Time.time + _jumpHoldDuration;
-
-            _ghostTime = Time.time;
-            _audio.PlayJump();
-            CreateDust(1);
-        }
-        else if (_input.isJumping && _onWater && _canSwin && !_collision._onWall) // na água
-        {
-            if (_collision._outWaterHit && _collision._inWaterHit)
-            {
-                _isJumping = true;
-                _input.isJumping = false;
-                rb.velocity = Vector2.zero;
-                rb.AddForce(Vector2.up * _jumpOutWater, ForceMode2D.Impulse);
-                _jumpTime = Time.time + _jumpHoldDuration;
-                _ghostTime = Time.time;
-                _audio.PlayJump();
-            }
-            else if (!_collision._outWaterHit && _collision._inWaterHit)
-            {
-                rb.velocity = Vector2.zero;
-                rb.AddForce(Vector2.up * _swimForce, ForceMode2D.Impulse);
-                _canSwin = false;
-            }
-        }
-        else if (_input.isJumping && _input.vertical <= -0.3f && !_onClimbing) // pulo por baixo da plataforma
-        {
-            PassThroughBridge();
-        }
-        else if (_input.isJumping && _collision._onWall && !_isGrounded && !_onWater) // pulo parede
-        {
-            _isJumping = true;
-            _input.isJumping = false;
-
-            rb.AddForce(new Vector2((_jumpForce + 2f) * -_direction, _jumpForce + 7f), ForceMode2D.Impulse);
-        }
-        else if (_input.isJumping && (_onClimbing || _isGriding) && (TouchingVine() || TouchingLadder() || TouchingGrid())) //pulo da LADDER ou VINE
-        {
-            FinishClimb();
-            FinishGrid();
-            _isJumping = true;
-            _input.vertical = 0f;
-            rb.velocity = Vector2.zero;
-            rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-            _jumpTime = Time.time + _jumpHoldDuration;
-            _audio.PlayJump();
-        }
-
-        if (_isJumping)
-        {
-            if (_input.jumpHeld)
-            {
-                rb.AddForce(Vector2.up * _jumpHoldForce, ForceMode2D.Impulse);
-            }
-
-            if (_jumpTime <= Time.time)
-            {
-                _isJumping = false;
-            }
-        }
-
-        _input.isJumping = false;
-    }
-
-    void BlockMove() //verifica se está no ar e tira a gravidade do player
-    {
-        if (_dead || !_canMove)
-            return;
-
-        if ((_input.isAttacking && _isGrounded && !_onWater) || _healing) { rb.velocity = Vector2.zero; }
-
-        //para no ar
-        if (_input.isAirCuting || _input.isTornado)
-        {
-            if (!_isGrounded)
-            {
-                rb.velocity = Vector2.zero;
-                rb.gravityScale = 0f;
-            }
-            else
-            {
-                rb.velocity = Vector2.zero;
-            }
-        }
+        canMove = true;
     }
 
     public void FinishAttack() //chamado na animação de ataque da katana
     {
-        _input.isAttacking = false;
-        rb.gravityScale = _initialGravity;
+        playerInputs.isAttacking = false;
+        rb.gravityScale = playerMovement.initialGravity;
     }
 
     void OnParachute()
     {
-        if (_input.isParachuting)
+        if (playerInputs.isParachuting)
         {
-            rb.drag = _speedParachute;
+            rb.drag = speedParachute;
         }
         else
         {
-            _input.isParachuting = false;
-            rb.drag = _normalFallSpeed;
-        }
-    }
-
-    void OnWater()
-    {
-        if (_dead || !_onWater)
-            return;
-
-        if (!_canSwin)
-        {
-            StartCoroutine(SwimControl());
+            playerInputs.isParachuting = false;
+            rb.drag = normalFallSpeed;
         }
     }
 
@@ -522,19 +196,19 @@ public class Player : MonoBehaviour
 
     public void OnDead()
     {
-        _dead = true;
-        _input.ResetHorizontal();
+        isDead = true;
+        playerInputs.ResetHorizontal();
         DisableControls();
-        _animation.OnDead();
+        playerAnimations.OnDead();
         SceneController.instance.GameOver();
     }
 
     public void SetPowerPickup(Sprite sprite)
     {
-        _newSkillCollected = true;
-        _input.ResetHorizontal();
+        newSkillCollected = true;
+        playerInputs.ResetHorizontal();
         DisableControls();
-        _animation.SetPowerPickup();
+        playerAnimations.SetPowerPickup();
 
         if (sprite != null)
         {
@@ -545,26 +219,9 @@ public class Player : MonoBehaviour
 
     void EndPowerPickup() //chamado na animação
     {
-        _newSkillCollected = false;
+        newSkillCollected = false;
         EnabledControls();
         _powerPickup.SetActive(false);
-    }
-
-    void Flip()
-    {
-        if (_dead || !_canMove || _isGrabing || _input.isAirCuting || _inWaterSpin || _input.isAttacking || _isRolling)
-            return;
-
-        if (_isGrounded)
-        {
-            CreateDust(-1);
-        }
-
-        _direction *= -1;
-
-        Vector3 _scale = transform.localScale;
-        _scale.x *= -1;
-        transform.localScale = _scale;
     }
 
     #endregion
@@ -572,84 +229,52 @@ public class Player : MonoBehaviour
     #region Skills
     public void AirCut() //chamado na animação de AirCut
     {
-        if (_dead || !_canMove)
+        if (isDead || !canMove)
             return;
 
-        _aircut._direction = _direction;
+        _aircut._direction = playerMovement.playerDirection;
 
         Vector3 _scale = _aircut.transform.localScale;
         _scale.x = transform.localScale.x;
         _aircut.transform.localScale = _scale;
 
         Instantiate(_aircut.gameObject, _aircutPoint.position, _aircutPoint.rotation);
-        _health.ManaConsumption(_aircutMana);
+        playerHealth.ManaConsumption(aircutMana);
     }
 
     public void Tornado() //chamado na animação de Tornado
     {
-        if (_dead || !_canMove) { return; }
+        if (isDead || !canMove) { return; }
 
         Instantiate(_tornado.gameObject, _tornadoPoint.position, _tornadoPoint.rotation);
-        _health.ManaConsumption(_tornadoMana);
+        playerHealth.ManaConsumption(tornadoMana);
     }
 
     void WaterSpin()
     {
-        if (_dead || !_canMove)
+        if (isDead || !canMove)
             return;
 
-        if (_input.isAttacking && _onWater && PlayerSkills.instance.skills.Contains(Skills.WaterSpin))
+        if (playerInputs.isAttacking && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterSpin))
         {
             gameObject.layer = LayerMask.NameToLayer("WaterSpin");
-            _inWaterSpin = true;
+            inWaterSpin = true;
 
-            if (_direction < 0)
+            if (playerMovement.playerDirection < 0)
             {
-                rb.velocity = Vector2.left * _waterSpinForce;
+                rb.velocity = Vector2.left * waterSpinForce;
             }
-            else if (_direction > 0)
+            else if (playerMovement.playerDirection > 0)
             {
-                rb.velocity = Vector2.right * _waterSpinForce;
+                rb.velocity = Vector2.right * waterSpinForce;
             }
         }
     }
 
     public void FinishWaterSpin() //chamado também na animação de Water Spin
     {
-        _inWaterSpin = false;
-        _input.isAttacking = false;
-        gameObject.layer = LayerMask.NameToLayer("Player");
-    }
-    #endregion
-
-    #region Roll
-    void OnRoll()
-    {
-        _canRoll = Time.time > _lastRollTime + _rollCooldown;
-
-        if (_input.pressRoll && _canRoll && !_isRolling)
-        {
-            ExecuteRoll();
-        }
-    }
-
-    private void ExecuteRoll()
-    {
-        gameObject.layer = LayerMask.NameToLayer("Invencible");
-
-        _isRolling = true;
-        _input.pressRoll = false;
-        _lastRollTime = Time.time; //marcando o momento que rolou
-
-
-        //float horizontal = _input.GetHorizontal();
-        Vector2 direction = _direction < 0 ? Vector2.left : Vector2.right;
-        rb.velocity = direction * _rollForce;
-    }
-
-    public void FinishRoll() //chamado também na animação de Roll
-    {
-        _isRolling = false;
+        inWaterSpin = false;
+        playerInputs.isAttacking = false;
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
     #endregion
@@ -657,23 +282,23 @@ public class Player : MonoBehaviour
     #region Slide
     void OnSlide()
     {
-        if (_input.isSliding && !_isSliding) { _isSliding = true; }
+        if (playerInputs.isSliding && !isSliding) { isSliding = true; }
 
-        if (_isSliding && ((_timeSlide < _limitSlide) || _hitSlide)) //_hitSlide verifica se ainda tem GroundLayer em cima
+        if (isSliding && ((timeSlide < limitSlide) || hitSlide)) //_hitSlide verifica se ainda tem GroundLayer em cima
         {
 
             DisableControls(); ;
-            _timeSlide += Time.deltaTime;
-            if (_direction < 0) { rb.velocity = Vector2.left * _slideForce; }
-            else if (_direction > 0) { rb.velocity = Vector2.right * _slideForce; }
+            timeSlide += Time.deltaTime;
+            if (playerMovement.playerDirection < 0) { rb.velocity = Vector2.left * slideForce; }
+            else if (playerMovement.playerDirection > 0) { rb.velocity = Vector2.right * slideForce; }
         }
-        else if (_isSliding && _timeSlide >= _limitSlide)
+        else if (isSliding && timeSlide >= limitSlide)
         {
-            if (!_hitSlide) //se ainda estiver em baixo do GroundLayer continua o Slide
+            if (!hitSlide) //se ainda estiver em baixo do GroundLayer continua o Slide
             {
-                _timeSlide = 0f;
-                _input.isSliding = false;
-                _isSliding = false;
+                timeSlide = 0f;
+                playerInputs.isSliding = false;
+                isSliding = false;
                 rb.velocity = Vector2.zero;
                 EnabledControls();
             }
@@ -682,238 +307,21 @@ public class Player : MonoBehaviour
 
     public void CheckSlide()
     {
-        _hitSlide = false;
+        hitSlide = false;
         Vector2 position = new Vector2(transform.position.x, transform.position.y - 1f);
         RaycastHit2D _slideHit = RaycastSlide(position, Vector2.up, 2f, _groundLayer);
 
         if (_slideHit)
         {
-            _hitSlide = true;
+            hitSlide = true;
         }
     }
 
     #endregion
-
-    #region Climb
-    bool TouchingLadder()
-    {
-        return _collider.IsTouchingLayers(_ladderLayer);
-    }
-
-    bool TouchingVine()
-    {
-        return _collider.IsTouchingLayers(_vineLayer);
-    }
-
-    bool TouchingGrid()
-    {
-        return _collider.IsTouchingLayers(_gridLayer);
-    }
-
-    void OnClimb()
-    {
-        bool _circleUpLadder = Physics2D.OverlapCircle(transform.position + _checkPositionUp, _checkRadius, _ladderLayer);
-        bool _circleDownLadder = Physics2D.OverlapCircle(transform.position + _checkPositionDown, _checkRadius, _ladderLayer);
-
-        bool _circleUpVine = Physics2D.OverlapCircle(transform.position + _checkPositionUp, _checkRadius, _vineLayer);
-        bool _circleDownVine = Physics2D.OverlapCircle(transform.position + _checkPositionDown, _checkRadius, _vineLayer);
-
-        if ((_input.vertical >= 0.5 || _input.vertical <= -0.5) && (TouchingLadder() || TouchingVine()) && _input.horizontal <= 0.05)
-        {
-            _onClimbing = true;
-            rb.isKinematic = true;
-
-            if (TouchingLadder())
-            {
-                float _xPos = _ladder.position.x;
-                transform.position = new Vector2(_xPos, transform.position.y);
-            }
-            else if (TouchingVine())
-            {
-                float _xPos = _vine.position.x;
-                transform.position = new Vector2(_xPos, transform.position.y);
-            }
-
-        }
-
-        if (_onClimbing && TouchingLadder())
-        {
-            if (!_circleUpLadder && _input.vertical >= 0)
-            {
-                FinishClimb();
-                return;
-            }
-
-            if (!_circleDownLadder && _input.vertical <= 0)
-            {
-                FinishClimb();
-                return;
-            }
-
-            //corrigindo o bug do controle não pegar o 1 e -1 no analógico
-            float speed = _input.vertical;
-            if (speed > -1 && speed < 0)
-            {
-                speed = -1;
-            }
-            else if (speed < 1 && speed > 0)
-            {
-                speed = 1;
-            }
-            else
-            {
-                speed = _input.vertical;
-            }
-
-            float y = speed * _climbSpeed;
-            rb.velocity = new Vector2(0, y);
-        }
-        else if (_onClimbing && TouchingVine())
-        {
-            if (!_circleUpVine && _input.vertical >= 0)
-            {
-                FinishClimb();
-                return;
-            }
-
-            if (!_circleDownVine && _input.vertical <= 0)
-            {
-                FinishClimb();
-                return;
-            }
-
-            //corrigindo o bug do controle não pegar o 1 e -1 no analógico
-            float speed = _input.vertical;
-            if (speed > -1 && speed < 0)
-            {
-                speed = -1;
-            }
-            else if (speed < 1 && speed > 0)
-            {
-                speed = 1;
-            }
-            else
-            {
-                speed = _input.vertical;
-            }
-
-            float y = speed * _climbSpeed;
-            rb.velocity = new Vector2(0, y);
-        }
-    }
-
-    void FinishClimb()
-    {
-        if (_onClimbing)
-        {
-            _onClimbing = false;
-            rb.isKinematic = false;
-            _canMove = true;
-        }
-    }
-
-    void OnGrid()
-    {
-        if ((_input.vertical >= 0.5 || _input.vertical <= -0.5) && TouchingGrid() && !_isGrounded)
-        {
-            rb.velocity = Vector2.zero;
-            _isGriding = true;
-            rb.isKinematic = true;
-        }
-
-        if (!TouchingGrid())
-        {
-            FinishGrid();
-        }
-
-        if (_isGriding && TouchingGrid())
-        {
-            float vertical = _input.vertical;
-            float horizontal = _input.GetHorizontal();
-
-            //corrigindo o bug do controle não pegar o 1 e -1 no analógico
-            if (vertical > -1 && vertical < 0) { vertical = -1; }
-            else if (vertical < 1 && vertical > 0) { vertical = 1; }
-            else { vertical = _input.vertical; }
-
-            float y = vertical * _climbSpeed;
-            float x = horizontal * _climbSpeed;
-            rb.velocity = new Vector2(x, y);
-        }
-    }
-
-    void FinishGrid()
-    {
-        if (_isGriding)
-        {
-            _isGriding = false;
-            rb.isKinematic = false;
-            //_canMove = true;
-        }
-    }
-
-    #endregion
-
-    #region BridgePass
-    public void CheckBridge()
-    {
-        _bridgeHit = false;
-        RaycastHit2D _bridgeHitUp = RaycastBridge(transform.position, Vector2.up, _bridgeCheckDistance, _bridgeLayer);
-
-        if (_bridgeHitUp)
-        {
-            _bridgeHit = true;
-        }
-    }
-
-    public void SetBridge(Bridge bridge)
-    {
-        _bridge = bridge;
-    }
-
-    public void PassThroughBridge()
-    {
-        if (_bridge != null)
-        {
-            _bridge.PassingThrough();
-        }
-    }
-    #endregion
-
-    public void CreateDust(int dir)
-    {
-        if (_onWater)
-            return;
-
-        Vector3 _scale = _dust.transform.localScale;
-        Vector3 _position = _groundCheck.position;
-        _scale.x *= dir;
-        _dust.transform.localScale = _scale;
-
-        Instantiate(_dust, _position, Quaternion.identity);
-    }
 
     public void CreateRecoveryEffect()
     {
         Instantiate(_recoveryEffect, transform.position, Quaternion.identity);
-    }
-
-    RaycastHit2D Raycast(Vector2 offset, Vector2 rayDirection, float length, LayerMask layerMask)
-    { //DISPARA UM RAIO DE COLISÃO PARA DETECTAR O CHÃO
-        Vector2 _playerPos = _groundCheck.position;
-        RaycastHit2D _hit = Physics2D.Raycast(_playerPos + offset, rayDirection, length, layerMask);
-        Color _color = _hit ? Color.red : Color.green;
-        Debug.DrawRay(_playerPos + offset, rayDirection * length, _color);
-        return _hit;
-    }
-
-    RaycastHit2D RaycastBridge(Vector2 offset, Vector2 rayDirection, float length, LayerMask layerMask)
-    {
-        Vector2 _position = new Vector2(offset.x, offset.y + 0.10f);
-        RaycastHit2D _hit = Physics2D.Raycast(_position, rayDirection, length, layerMask);
-        Color _color = _hit ? Color.cyan : Color.blue;
-        Debug.DrawRay(_position, rayDirection * length, _color);
-        return _hit;
     }
 
     RaycastHit2D RaycastSlide(Vector2 offset, Vector2 rayDirection, float length, LayerMask layerMask)
@@ -923,20 +331,5 @@ public class Player : MonoBehaviour
         Color _color = _hit ? Color.green : Color.white;
         Debug.DrawRay(_position, rayDirection * length, _color);
         return _hit;
-    }
-
-    public IEnumerator SwimControl()
-    {
-        yield return new WaitForSeconds(_swinLimit);
-        _input.isJumping = false;
-        _canSwin = true;
-    }
-
-    private void OnDrawGizmos()
-    {
-        //ladder
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + _checkPositionUp, _checkRadius);
-        Gizmos.DrawWireSphere(transform.position + _checkPositionDown, _checkRadius);
     }
 }

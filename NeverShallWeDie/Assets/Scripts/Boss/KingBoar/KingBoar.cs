@@ -56,7 +56,7 @@ public class KingBoar : MonoBehaviour
             return;
         }
 
-        if (!_starter || _bossController._isDead || _player._dead) { return; }
+        if (!_starter || _bossController._isDead || _player.isDead) { return; }
 
         Flip();
 

@@ -56,8 +56,8 @@ public class PlayerHealth : MonoBehaviour
         if (_isDead) return;
 
         player.gameObject.layer = LayerMask.NameToLayer("Invencible");
-        player._onHit = true;
-        player._canMove = false;
+        player.onHit = true;
+        player.canMove = false;
 
         _currentHealth -= damage;
         SetHealth(_currentHealth);
@@ -82,7 +82,7 @@ public class PlayerHealth : MonoBehaviour
 
     void OnHit()
     {
-        if (!player._onHit || player._dead) return;
+        if (!player.onHit || player.isDead) return;
 
         playerInput.OnHit(); //cancela input
         player.rb.velocity = Vector2.zero;
@@ -90,8 +90,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void FinishHit() //chamado da animação de Hit
     {
-        player._onHit = false;
-        player._canMove = true;
+        player.onHit = false;
+        player.canMove = true;
         StartCoroutine(FinishInvincible());
     }
 
@@ -132,9 +132,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void Healing()
     {
-        _objHealing.SetActive(player._healing);
+        _objHealing.SetActive(player.isHealing);
 
-        if (player._healing && _currentHealth < _maxHealth && _currentMana >= 0.1f)
+        if (player.isHealing && _currentHealth < _maxHealth && _currentMana >= 0.1f)
         {
             _currentHealth += .06f;
             _currentMana -= .06f;
@@ -145,7 +145,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            player._healing = false;
+            player.isHealing = false;
         }
     }
 

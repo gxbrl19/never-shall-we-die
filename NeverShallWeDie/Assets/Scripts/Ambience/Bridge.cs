@@ -7,12 +7,12 @@ public class Bridge : MonoBehaviour
     private int _myLayer;
 
     public int _ignoreLayer;
-    
+
     void Start()
     {
         _myLayer = gameObject.layer;
     }
-    
+
     public void PassingThrough()
     {
         gameObject.layer = _ignoreLayer;
@@ -28,10 +28,10 @@ public class Bridge : MonoBehaviour
     {
         Player _player = other.gameObject.GetComponent<Player>();
 
-        if(_player != null)
+        if (_player != null)
         {
-            _player.SetBridge(this);
-            _player._onBridge = true;
+            _player.playerMovement.SetBridge(this);
+            _player.onBridge = true;
         }
     }
 
@@ -41,7 +41,7 @@ public class Bridge : MonoBehaviour
 
         if (_player != null)
         {
-            _player._onBridge = false;
+            _player.onBridge = false;
         }
     }
 }
