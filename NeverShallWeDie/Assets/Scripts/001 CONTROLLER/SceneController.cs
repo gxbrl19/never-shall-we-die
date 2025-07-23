@@ -83,7 +83,7 @@ public class SceneController : MonoBehaviour
 
     public void GameOver()
     {
-        _scriptablePosition.SetAttributes(true, GameManager.instance._direction, 0);
+        _scriptablePosition.SetAttributes(true, GameManager.instance._direction, 1);
 
         _health.SetHealth(_health._maxHealth);
         _health.SetMana(0f);
