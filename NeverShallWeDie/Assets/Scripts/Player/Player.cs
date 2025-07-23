@@ -45,7 +45,9 @@ public class Player : MonoBehaviour
 
     //Roll
     private bool _canRoll = true;
-    private float _rollForce = 10f;
+    private float _rollForce = 13f;
+    [SerializeField] private float _rollCooldown = 1.2f;
+    private float _lastRollTime = -Mathf.Infinity;
 
     //Parachute
     private float _normalFallSpeed = 0f;
@@ -278,7 +280,7 @@ public class Player : MonoBehaviour
         float _yVelocity = 0f;
         float horizontal = _input.GetHorizontal();
 
-        if (_isGrounded && !_isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_input.isAttacking && !_healing) //chão comum
+        if (_isGrounded && !_isOnSlope && !_isGrabing && !_isJumping && !_onWater && !_input.isAttacking && !_healing && !_isRolling) //chão comum
         {
             _xVelocity = _speed * horizontal;
             _yVelocity = 0.0f;
@@ -385,7 +387,7 @@ public class Player : MonoBehaviour
 
     void JumpControl()
     {
-        if (_input.isJumping && (_isGrounded || _ghostTime > Time.time) && !_onWater && _input.vertical > -0.3f && !_onClimbing && !_inTornado && !_healing) //pulo comum
+        if (_input.isJumping && (_isGrounded || _ghostTime > Time.time) && !_onWater && _input.vertical > -0.3f && !_onClimbing && !_inTornado && !_healing && !_isRolling) //pulo comum
         {
             _isJumping = true;
             _input.isJumping = false;
@@ -623,29 +625,31 @@ public class Player : MonoBehaviour
     #region Roll
     void OnRoll()
     {
-        if ((_input.isRolling && _canRoll) || _isRolling)
+        _canRoll = Time.time > _lastRollTime + _rollCooldown;
+
+        if (_input.pressRoll && _canRoll && !_isRolling)
         {
-            gameObject.layer = LayerMask.NameToLayer("Invencible");
-
-            _canRoll = false;
-            _isRolling = true;
-
-            if (_direction < 0)
-            {
-                rb.velocity = Vector2.left * _rollForce;
-            }
-            else if (_direction > 0)
-            {
-                rb.velocity = Vector2.right * _rollForce;
-            }
+            ExecuteRoll();
         }
+    }
+
+    private void ExecuteRoll()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Invencible");
+
+        _isRolling = true;
+        _input.pressRoll = false;
+        _lastRollTime = Time.time; //marcando o momento que rolou
+
+
+        //float horizontal = _input.GetHorizontal();
+        Vector2 direction = _direction < 0 ? Vector2.left : Vector2.right;
+        rb.velocity = direction * _rollForce;
     }
 
     public void FinishRoll() //chamado também na animação de Roll
     {
-        _canRoll = true;
         _isRolling = false;
-        _input.isRolling = false;
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
     #endregion

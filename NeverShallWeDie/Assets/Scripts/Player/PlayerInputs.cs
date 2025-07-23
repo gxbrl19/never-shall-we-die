@@ -11,7 +11,7 @@ public class PlayerInputs : MonoBehaviour
     private float _vertical_r;
     private bool _isJumping;
     private bool _jumpHeld;
-    private bool _isRolling;
+    private bool _pressRoll;
     private bool _isAttacking;
     private bool _isAirCuting;
     private bool _isTornado;
@@ -82,10 +82,10 @@ public class PlayerInputs : MonoBehaviour
         set { _isTornado = value; }
     }
 
-    public bool isRolling
+    public bool pressRoll
     {
-        get { return _isRolling; }
-        set { _isRolling = value; }
+        get { return _pressRoll; }
+        set { _pressRoll = value; }
     }
 
     public bool isSliding
@@ -323,17 +323,17 @@ public class PlayerInputs : MonoBehaviour
 
     public void Roll(InputAction.CallbackContext _callback)
     {
-        if (_player._dead || !_player._isGrounded || _player._canMove == false || _isAttacking || _player._onWater || Time.timeScale == 0f)
+        if (_player._dead || !_player._isGrounded || _player._canMove == false || _player._onHit || _isAttacking || _player._onWater || Time.timeScale == 0f)
             return;
 
-        if (_callback.started && !_player._canGrab && rawInput != 0f)
+        if (_callback.started && !_player._canGrab)
         {
-            _isRolling = true;
+            _pressRoll = true;
         }
 
         if (_callback.canceled)
         {
-            _isRolling = false;
+            _pressRoll = false;
         }
     }
 

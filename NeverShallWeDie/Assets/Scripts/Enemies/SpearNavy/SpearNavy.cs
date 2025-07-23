@@ -97,6 +97,8 @@ public class SpearNavy : EnemyBase
 
                 if (distance > throwRange)
                     ChangeState(State.Chase);
+                else
+                    ChangeState(State.Idle);
                 break;
         }
 

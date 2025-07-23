@@ -1141,12 +1141,11 @@ MonoBehaviour:
   _powerPickup: {fileID: 9056689326667320452}
   _direction: 1
   _speed: 4
+  _rollForce: 7
   _ladder: {fileID: 0}
   _vine: {fileID: 0}
   _onClimbing: 0
   _isSliding: 0
-  _knockbackDirection: {x: 0, y: 0}
-  _onHit: 0
   _canSwin: 1
   _onWater: 0
   _timeForSkills: 0
@@ -1166,6 +1165,7 @@ MonoBehaviour:
   _isGrounded: 1
   _healing: 0
   _isOnSlope: 0
+  _onHit: 0
   _canGrab: 0
   _isGrabing: 0
   _isRolling: 0
@@ -1175,7 +1175,8 @@ MonoBehaviour:
   _canMove: 1
   _newSkillCollected: 0
   _dead: 0
-  _body: {fileID: 0}
+  rb: {fileID: 0}
+  _input: {fileID: 0}
 --- !u!114 &8160846808588850495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1259,9 +1260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 0
   _currentHealth: 0
-  _isDead: 0
   _maxMana: 0
   _currentMana: 0
+  _isDead: 0
   _objHealing: {fileID: 934120453744383874}
   _particleHit: {fileID: 3090874618421301866, guid: eb2b8392e365bed4f9243ee02d24c8bf, type: 3}
   _damageColor: {r: 0.972549, g: 0.27058825, b: 0.27058825, a: 1}
