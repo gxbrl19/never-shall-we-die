@@ -23,6 +23,6 @@ public class WantedBoss : MonoBehaviour
     public void FinishWanted() //chamado na animação
     {
         _player.EnabledControls();
-        BackgroundMusic.instance.BackToMapMusic();
+        BackgroundMusic.instance.ReturnToMapMusic();
     }
 }

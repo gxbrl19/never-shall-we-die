@@ -104,7 +104,7 @@ public class MenuController : MonoBehaviour
             SceneManager.LoadScene("Scenes/Load");
         }
 
-        _music.MusicInCheckpoint(scene);
+        BackgroundMusic.instance.StartMusicInCheckpoint(scene);
     }
 
     public void PressDelete(int idDelete)

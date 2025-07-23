@@ -110,12 +110,13 @@ public class SceneController : MonoBehaviour
             SceneManager.LoadScene("Scenes/06/01");
             _player.gameObject.GetComponent<Player>().EnabledControls();
             _player.gameObject.GetComponent<PlayerInputs>().enabled = true;
+            BackgroundMusic.instance.StartMusicInCheckpoint(280);
             return;
         }
 
-        SceneManager.LoadScene(GameManager.instance._checkpointScene);
+        SceneManager.LoadScene(scene);
         _player.gameObject.GetComponent<Player>().EnabledControls();
         _player.gameObject.GetComponent<PlayerInputs>().enabled = true;
-        _music.MusicInCheckpoint(scene);
+        BackgroundMusic.instance.StartMusicInCheckpoint(scene);
     }
 }

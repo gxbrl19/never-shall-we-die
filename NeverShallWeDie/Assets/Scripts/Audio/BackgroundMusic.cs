@@ -21,7 +21,7 @@ public class BackgroundMusic : MonoBehaviour
         }
     }
 
-    public void MusicInCheckpoint(int scene)
+    public void StartMusicInCheckpoint(int scene)
     {
         if (scene == 0)
         {
@@ -35,8 +35,8 @@ public class BackgroundMusic : MonoBehaviour
             else if (scene == 62 || scene == 63 || scene == 64) { MusicControl(2); } //mizuton
             else if (scene == 122 || scene == 123 || scene == 124) { MusicControl(3); } //winter
             else if (scene == 180 || scene == 181 || scene == 182) { MusicControl(4); } //prison
-            //else if (scene == 8 || scene == 9 || scene == 10) { MusicControl(5); } //mansion TODO: passar quando inserir a ultima ilha
-            //else if (scene == 8 || scene == 9 || scene == 10) { MusicControl(6); } //kingdom TODO: passar quando inserir a ultima ilha
+            else if (scene == 244 || scene == 245 || scene == 246) { MusicControl(5); } //mansion TODO: passar quando inserir a ultima ilha
+            else if (scene == 280) { MusicControl(6); } //kingdom TODO: passar quando inserir a ultima ilha
         }
     }
 
@@ -47,7 +47,7 @@ public class BackgroundMusic : MonoBehaviour
             _musicObjects[i].SetActive(false);
         }
 
-        if (index == -1) { return; } //-1 para todas as musicas
+        if (index == -1) { return; } //-1 vai parar todas as musicas
         _musicObjects[index].SetActive(true);
     }
 
@@ -56,7 +56,7 @@ public class BackgroundMusic : MonoBehaviour
         MusicControl(8);
     }
 
-    public void BackToMapMusic() //método para retornar a música após vencer o Boss
+    public void ReturnToMapMusic() //método para retornar a música após vencer o Boss
     {
         //verifica se já existe o save _lastPier com o nome da cena do Cais selecionado
         string lastPier = GameManager.instance._lastPier != "" ? GameManager.instance._lastPier : "06/H0";

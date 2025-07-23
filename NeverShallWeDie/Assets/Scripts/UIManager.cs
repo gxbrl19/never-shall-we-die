@@ -449,7 +449,7 @@ public class UIManager : MonoBehaviour
         _inNewMember = false;
         _player.EnabledControls();
         _pnlNewMember.SetActive(false);
-        BackgroundMusic.instance.BackToMapMusic();
+        BackgroundMusic.instance.ReturnToMapMusic();
     }
     #endregion
 

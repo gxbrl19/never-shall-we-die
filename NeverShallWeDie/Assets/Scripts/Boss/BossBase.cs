@@ -111,7 +111,7 @@ public abstract class BossBase : MonoBehaviour, IBoss
     public virtual void SetWanted() //chamado na animação de morte
     {
         if (wantedBoss == null)
-            BackgroundMusic.instance.BackToMapMusic(); //retorna a música sem o WantedBoss
+            BackgroundMusic.instance.ReturnToMapMusic(); //retorna a música sem o WantedBoss
         else
             wantedBoss.StartWanted();
     }
