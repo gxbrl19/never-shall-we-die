@@ -8,6 +8,7 @@ public class Torch : MonoBehaviour
     [SerializeField] GameObject particleHit;
     [SerializeField] GameObject torchLight;
     SpriteRenderer spriteRenderer;
+    Collider2D torchCollider;
 
     [Header("FMOD Events")]
     [SerializeField] EventReference breackSound;
@@ -15,6 +16,7 @@ public class Torch : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        torchCollider = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -22,6 +24,7 @@ public class Torch : MonoBehaviour
         if (other.CompareTag("SwordAtk"))
         {
             spriteRenderer.enabled = false;
+            torchCollider.enabled = false;
             torchLight.SetActive(false);
             RuntimeManager.PlayOneShot(breackSound);
             GameObject hit = Instantiate(particleHit, transform.position, particleHit.transform.rotation);

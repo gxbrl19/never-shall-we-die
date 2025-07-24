@@ -2,93 +2,79 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boar : MonoBehaviour
+public class Boar : EnemyBase
 {
-    public List<Transform> _paths = new List<Transform>();
-    [HideInInspector] public bool _knockback;
-    private float _speed = 6f;
-    private float _knockbackForce = 7f;
-    private float _initialSpeed;
-    private int _pathIndex;
-    private int _direction;
-    EnemyController _controller;
-    Rigidbody2D _body;
+    private enum State { Patrol }
 
-    void Awake()
+    [Header("Comportamento")]
+    [SerializeField] Transform[] patrolPoints;
+
+    float patrolSpeed = 6f;
+    int patrolIndex = 0;
+    State currentState;
+
+    private void Start()
     {
-        _controller = GetComponent<EnemyController>();
-        _body = GetComponent<Rigidbody2D>();
-        _initialSpeed = _speed;
+        currentState = State.Patrol;
     }
 
-    void Update()
+    protected override void Update()
     {
-        if (_controller._isDead || _controller._onHit)
+        if (isDead) return;
+
+        switch (currentState)
         {
-            _speed = 0f;
+            case State.Patrol:
+                HandlePatrol();
+                break;
         }
-        else
+
+        Flip();
+    }
+
+    private void HandlePatrol()
+    {
+        if (isHurt) return;
+
+        if (patrolPoints.Length == 0) return;
+
+        Transform target = patrolPoints[patrolIndex];
+        transform.position = Vector2.MoveTowards(transform.position, target.position, patrolSpeed * Time.deltaTime);
+
+        if (Vector2.Distance(transform.position, target.position) < 0.1f)
         {
-            _speed = _initialSpeed;
-            Move();
+            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
         }
     }
 
-    private void FixedUpdate()
+    private void Flip()
     {
-        Knockback();
+        if (isHurt) return;
+
+        float targetX = patrolPoints[patrolIndex].position.x;
+
+        if (transform.position.x < targetX)
+            transform.localScale = new Vector2(1, 1);
+        else if (transform.position.x > targetX)
+            transform.localScale = new Vector2(-1, 1);
     }
 
-    private void Move()
+    /*public void Knockback()
     {
-        if (_controller._isDead || _controller._onHit)
+        if (!controller._onHit || controller._isDead)
             return;
 
-        transform.position = Vector2.MoveTowards(transform.position, _paths[_pathIndex].position, _speed * Time.deltaTime);
-        _controller._animation.SetBool("Move", true);
-
-        if (Vector2.Distance(transform.position, _paths[_pathIndex].position) < 0.1f)
+        if (knockback)
         {
-            if (_pathIndex == 0)
+            if (direction < 0)
             {
-                _pathIndex = 1;
+                body.velocity = Vector2.zero;
+                body.AddForce(Vector2.right * knockbackForce, ForceMode2D.Impulse);
             }
-            else
+            else if (direction > 0)
             {
-                _pathIndex = 0;
-            }
-        }
-
-        Vector2 _dir = _paths[_pathIndex].position - transform.position;
-
-        if (_dir.x > 0)
-        {
-            transform.eulerAngles = new Vector2(0, 0);
-            _direction = 1;
-        }
-
-        if (_dir.x < 0)
-        {
-            transform.eulerAngles = new Vector2(0, 180);
-            _direction = -1;
-        }
-    }
-
-    public void Knockback()
-    {
-        if (!_controller._onHit || _controller._isDead)
-            return;
-
-        if (_knockback) {
-            if (_direction < 0)
-            {
-                _body.velocity = Vector2.zero;
-                _body.AddForce(Vector2.right * _knockbackForce, ForceMode2D.Impulse);
-            }
-            else if (_direction > 0)
-            {
-                _body.velocity = Vector2.zero;
-                _body.AddForce(Vector2.left * _knockbackForce, ForceMode2D.Impulse);
+                body.velocity = Vector2.zero;
+                body.AddForce(Vector2.left * knockbackForce, ForceMode2D.Impulse);
             }
 
             Invoke("FinishKnockback", 0.3f);
@@ -97,7 +83,7 @@ public class Boar : MonoBehaviour
 
     public void FinishKnockback()
     {
-        _body.velocity = Vector2.zero;
-        _knockback = false;
-    }
+        body.velocity = Vector2.zero;
+        knockback = false;
+    }*/
 }
