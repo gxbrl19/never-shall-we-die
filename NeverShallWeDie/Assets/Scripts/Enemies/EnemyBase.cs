@@ -51,7 +51,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
 
     public virtual void TakeHit(int power, Vector2 hitDirection, float knockbackForce = 5f)
     {
-        if (isHurt || isDead) return;
+        if (isHurt || isDead || enemyName == "Beetboom" || enemyName == "Barrel Monkey") return;
 
         isHurt = true;
         Invoke("ResetHurt", .3f);

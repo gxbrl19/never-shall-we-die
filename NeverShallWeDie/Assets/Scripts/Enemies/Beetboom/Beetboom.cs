@@ -3,106 +3,112 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class Beetboom : MonoBehaviour
+public class Beetboom : EnemyBase
 {
-    #region Public Variables
-    public LayerMask _playerLayer;
-    public float _attackDistance;
-    public float _speed;
-    public Vector2 _sizeBox;
-    #endregion
+    private enum State { Idle, Chase, Explosion }
+    private State currentState = State.Idle;
 
-    #region Private Variables
-    EnemyController _controller;
-    Transform _playerPosition;
-    bool _detectPlayer = false;
-    bool _explosion = false;
-    #endregion
+    [Header("Stats")]
+    [SerializeField] private LayerMask playerLayer;
+    private float attackRange = 2f;
+    private float moveSpeed = 6f;
+    private float direction;
+    private bool playerDetected = false;
+    Vector2 detectionBoxSize = new Vector2(8f, 2f);
+    Transform player;
 
     [Header("FMOD Events")]
-    [SerializeField] EventReference explode;
-
-    void Awake()
-    {
-        _controller = GetComponent<EnemyController>();
-    }
+    [SerializeField] EventReference explodeSFX;
 
     private void Start()
     {
-        _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
-    void Update()
+    protected override void Update()
     {
-        Flip();
+        base.Update();
 
-        if (_detectPlayer && !_explosion)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(_playerPosition.position.x, transform.position.y), _speed * Time.deltaTime);
-        }
-    }
+        if (isDead || player == null) return;
 
-    void FixedUpdate()
-    {
+        animator.SetBool("Run", currentState == State.Chase);
+
         DetectPlayer();
 
-        if (_detectPlayer)
-        {
-            float _hitPlayer = Vector2.Distance(transform.position, _playerPosition.position);
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-            if (_hitPlayer <= _attackDistance && !_explosion)
-            {
-                _controller._animation.SetTrigger("Explosion");
-                _explosion = true;
-            }
-            else if (_hitPlayer > _attackDistance && !_explosion)
-            {
-                _controller._animation.SetBool("Run", true);
-            }
-        }
-        else
+        switch (currentState)
         {
-            _controller._animation.SetBool("Run", false);
+            case State.Idle:
+                if (playerDetected)
+                    ChangeState(State.Chase);
+                break;
+
+            case State.Chase:
+                if (distanceToPlayer <= attackRange)
+                {
+                    rb.velocity = Vector2.zero;
+                    ChangeState(State.Explosion);
+                }
+                else
+                {
+                    MoveTowardsPlayer();
+                }
+
+                if (!playerDetected)
+                    ChangeState(State.Idle);
+                break;
+
+            case State.Explosion:
+                animator.SetTrigger("Explosion");
+                break;
         }
+
+        FlipTowardsPlayer();
     }
 
-    public void DetectPlayer()
+    private void MoveTowardsPlayer()
     {
-        Collider2D _hit = Physics2D.OverlapBox(transform.position, _sizeBox, 0, _playerLayer);
-
-        if (_hit != null)
-        {
-            _detectPlayer = true;
-        }
-        else
-        {
-            _detectPlayer = false;
-        }
+        Vector2 direction = (player.position - transform.position).normalized;
+        rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
     }
 
-    void Flip()
+    private void FlipTowardsPlayer()
     {
-        if (!_detectPlayer)
-            return;
+        if (player == null || currentState == State.Explosion) return;
 
-        if (transform.position.x < _playerPosition.transform.position.x)
-        {
-            transform.localScale = new Vector2(1, 1);
-        }
-        else if (transform.position.x > _playerPosition.transform.position.x)
-        {
-            transform.localScale = new Vector2(-1, 1);
-        }
+        float dir = player.position.x - transform.position.x;
+        if (dir != 0)
+            direction = Mathf.Sign(dir);
+
+        transform.localScale = new Vector3(direction, 1, 1);
     }
 
-    private void OnDrawGizmos()
+    private void ChangeState(State newState)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, _sizeBox);
+        if (currentState == newState) return;
+
+        currentState = newState;
+    }
+
+    private void DetectPlayer()
+    {
+        Vector2 origin = transform.position;
+        Vector2 center = origin + new Vector2(detectionBoxSize.x / (3f * transform.localScale.x), 0f); //desloca o centro para a direita (2f seria a metade)
+        playerDetected = Physics2D.OverlapBox(center, detectionBoxSize, 0, playerLayer);
     }
 
     public void PlaySound() //chamado na animação
     {
-        RuntimeManager.PlayOneShot(explode);
+        RuntimeManager.PlayOneShot(explodeSFX);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Vector2 origin = transform.position;
+        Vector2 center = origin + new Vector2(detectionBoxSize.x / (2f * direction), 0f); //desloca o centro para a direita, metade do tamanho
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(center, detectionBoxSize);
     }
 }
