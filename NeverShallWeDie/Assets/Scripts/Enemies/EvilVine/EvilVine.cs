@@ -3,84 +3,92 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class EvilVine : MonoBehaviour
+public class EvilVine : EnemyBase
 {
-    float _raycastSize = 12f;
-    float _timeForAttack = 5f;
-    float _timer;
-    bool _detectPlayer = false;
-    bool _attacking = false;
-    EnemyController _controller;
-    [SerializeField] Transform _shootPoint;
-    [SerializeField] GameObject _projectile;
-    [SerializeField] LayerMask _playerLayer;
+    enum State { Idle, Shoot }
+    State currentState = State.Idle;
+
+    [Header("Comportamento")]
+    float raycastSize = 12f;
+    float shootCooldown = .5f;
+    float shootTimer = 0f;
+    bool detectPlayer = false;
+
+    [Header("Referências")]
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] LayerMask playerLayer;
+    [SerializeField] Transform shootPoint;
+    Transform player;
 
     [Header("FMOD Events")]
-    [SerializeField] EventReference shoot;
+    [SerializeField] EventReference shootSound;
 
-    void Awake()
+    protected override void Awake()
     {
-        _controller = GetComponent<EnemyController>();
-        _timer = _timeForAttack;
+        base.Awake();
     }
 
-    void Update()
+    void Start()
     {
-        if (!_attacking)
-        {
-            _timer += 0.1f;
-        }
-
-        if ((_timer > _timeForAttack) && _detectPlayer && !_attacking)
-        {
-            _timer = 0f;
-            _attacking = true;
-            _controller._animation.SetBool("Attack", true);
-        }
+        player = FindObjectOfType<Player>().GetComponent<Transform>();
     }
 
-    void FixedUpdate()
+    protected override void Update()
     {
+        if (isDead || isHurt || player == null) return;
+
         DetectPlayer();
+        shootTimer += Time.deltaTime;
+
+        switch (currentState)
+        {
+            case State.Idle:
+                if (detectPlayer && shootTimer >= shootCooldown)
+                    ChangeState(State.Shoot);
+
+                break;
+
+            case State.Shoot:
+                animator.SetBool("Attack", true);
+
+                break;
+        }
     }
 
     void DetectPlayer()
     {
-        if (_controller._isDead)
-            return;
+        Vector2 raycastDirection = Vector2.right * transform.localScale.x;
+        Vector2 raycastPosition = new Vector2(transform.position.x, transform.position.y - 0.5f);
+        RaycastHit2D hit = Physics2D.Raycast(raycastPosition, raycastDirection, raycastSize, playerLayer);
+        detectPlayer = hit;
+    }
 
-        Vector2 _raycastDirection = Vector2.right * transform.localScale.x;
-        Vector2 _raycastPosition = new Vector2(transform.position.x, transform.position.y - 0.5f);
-        RaycastHit2D _hit = Physics2D.Raycast(_raycastPosition, _raycastDirection, _raycastSize, _playerLayer);
+    private void ChangeState(State newState)
+    {
+        if (isDead) return;
 
-        if (_hit)
-        {
-            _detectPlayer = true;
-        }
-        else
-        {
-            _detectPlayer = false;
-        }
+        currentState = newState;
     }
 
     public void Attack() //chamado na animacao
     {
-        GameObject proj = Instantiate(_projectile.gameObject, _shootPoint.position, Quaternion.identity);
+        GameObject proj = Instantiate(projectilePrefab.gameObject, shootPoint.position, Quaternion.identity);
         float dir = transform.localScale.x;
-        proj.GetComponent<EvilVine_Projectile>()._direction = dir;
-        RuntimeManager.PlayOneShot(shoot);
+        proj.GetComponent<EvilVine_Projectile>().direction = dir;
+        RuntimeManager.PlayOneShot(shootSound);
     }
 
     public void FinishAttack() //chamado na animacao
     {
-        _attacking = false;
-        _controller._animation.SetBool("Attack", false);
+        ChangeState(State.Idle);
+        animator.SetBool("Attack", false);
+        shootTimer = 0f;
     }
 
     private void OnDrawGizmos()
     {
-        Vector2 _raycastDirection = Vector2.right * transform.localScale.x;
-        Vector2 _raycastPosition = new Vector2(transform.position.x, transform.position.y - 0.5f);
-        Debug.DrawRay(_raycastPosition, _raycastDirection * _raycastSize, Color.red);
+        Vector2 raycastDirection = Vector2.right * transform.localScale.x;
+        Vector2 raycastPosition = new Vector2(transform.position.x, transform.position.y - 0.5f);
+        Debug.DrawRay(raycastPosition, raycastDirection * raycastSize, Color.red);
     }
 }

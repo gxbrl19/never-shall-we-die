@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 3717038023925824467}
   - component: {fileID: 3717038023925824460}
   - component: {fileID: 3807318910359000787}
-  - component: {fileID: 4487142061191082319}
+  - component: {fileID: 6050351977935822215}
   - component: {fileID: 8212314788853371653}
   - component: {fileID: 3717038023925824456}
-  - component: {fileID: 4713748599425319506}
   m_Layer: 12
   m_Name: EvilVine
   m_TagString: Enemy
@@ -38,6 +37,7 @@ Transform:
   m_Children:
   - {fileID: 3717038025127673065}
   - {fileID: 3717038025535556846}
+  - {fileID: 7784272846745980819}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3717038023925824467
@@ -145,7 +145,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.100173235, y: -0.625}
+  m_Offset: {x: 0.1435461, y: -0.625}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.509434, y: 0.72727275}
@@ -156,9 +156,36 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8024554, y: 2.75}
+  m_Size: {x: 2.3395405, y: 2.75}
   m_EdgeRadius: 0
---- !u!114 &4487142061191082319
+--- !u!50 &6050351977935822215
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717038023925824465}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &8212314788853371653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,20 +194,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3717038023925824465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2403d62617d895448a0eea8de19311b6, type: 3}
+  m_Script: {fileID: 11500000, guid: db48360b3c80e464d83332eef0af6e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyObject: {fileID: 11400000, guid: d692c37bdfd64b84a8aa69096becb892, type: 2}
-  _name: 
-  _maxHealth: 0
-  _itemDropRate: 0
-  _damageColor: {r: 0, g: 0, b: 0, a: 0}
-  _currentHealth: 0
-  _onHit: 0
-  _isDead: 0
-  _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _animation: {fileID: 0}
-  _audio: {fileID: 0}
+  enemyObject: {fileID: 11400000, guid: d692c37bdfd64b84a8aa69096becb892, type: 2}
+  currentHealth: 0
+  deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
   hit:
     Guid:
       Data1: -1421683874
@@ -195,24 +214,12 @@ MonoBehaviour:
       Data3: 2160000
       Data4: 2095861832
     Path: event:/sfx/gameplay/SFX_COMBAT_evil_vine_death_01
---- !u!114 &8212314788853371653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3717038023925824465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db48360b3c80e464d83332eef0af6e40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shootPoint: {fileID: 3717038025127673065}
-  _projectile: {fileID: 5985044863982500912, guid: 9ac2e97243b7ced4dbd1b0c80a8e1f49, type: 3}
-  _playerLayer:
+  projectilePrefab: {fileID: 5985044863982500912, guid: 9ac2e97243b7ced4dbd1b0c80a8e1f49, type: 3}
+  playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  shoot:
+  shootPoint: {fileID: 3717038025127673065}
+  shootSound:
     Guid:
       Data1: -1100408143
       Data2: 1322875382
@@ -234,20 +241,6 @@ MonoBehaviour:
   _item: {fileID: 62880426106912218, guid: a9adf4fda0599e24abf6d0d01f7fedf9, type: 3}
   _dropPoint: {fileID: 3717038025535556846}
   _dropRate: 0
---- !u!114 &4713748599425319506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3717038023925824465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _power: 3
-  _hitEffect: {fileID: 0}
 --- !u!1 &3717038025127673064
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,3 +303,85 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3717038023925824466}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7877636242712798193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7784272846745980819}
+  - component: {fileID: 1500231955124775635}
+  - component: {fileID: 2704350080731766980}
+  m_Layer: 12
+  m_Name: Damager
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7784272846745980819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7877636242712798193}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3717038023925824466}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1500231955124775635
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7877636242712798193}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.114180565, y: -0.72976303}
+  m_Size: {x: 1.8205204, y: 2.459526}
+  m_Direction: 0
+--- !u!114 &2704350080731766980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7877636242712798193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 2
+  hitEffect: {fileID: 0}
