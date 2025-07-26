@@ -12,7 +12,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
     [SerializeField] protected int currentHealth;
     [SerializeField] GameObject deathEffect;
     protected Rigidbody2D rb;
-    public Animator animator;
+    protected Animator animator;
     protected Color defaultColor;
     protected Color damageColor = Color.red;
     protected SpriteRenderer sprite;

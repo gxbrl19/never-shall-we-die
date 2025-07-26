@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 4
-  _hitEffect: {fileID: 0}
+  attackPower: 0
+  hitEffect: {fileID: 0}
 --- !u!58 &8474145224458130349
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -234,7 +234,6 @@ GameObject:
   - component: {fileID: 1910937495442312245}
   - component: {fileID: 2354341757770970501}
   - component: {fileID: 9053940212445366374}
-  - component: {fileID: 7607082691297284613}
   - component: {fileID: 7967545922802645536}
   - component: {fileID: 2483645018870198666}
   m_Layer: 12
@@ -398,7 +397,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7607082691297284613
+--- !u!114 &7967545922802645536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -407,20 +406,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9053940212445366370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2403d62617d895448a0eea8de19311b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 557dc061fb3355a4ca1b059c86fb1452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyObject: {fileID: 11400000, guid: 06016b5f8a9f54e4cb873c7fc99c8737, type: 2}
-  _name: 
-  _maxHealth: 0
-  _itemDropRate: 0
-  _damageColor: {r: 0, g: 0, b: 0, a: 0}
-  _currentHealth: 0
-  _onHit: 0
-  _isDead: 0
-  _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _animation: {fileID: 0}
-  _audio: {fileID: 0}
+  enemyObject: {fileID: 11400000, guid: 06016b5f8a9f54e4cb873c7fc99c8737, type: 2}
+  currentHealth: 0
+  deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
   hit:
     Guid:
       Data1: -740606848
@@ -435,27 +426,17 @@ MonoBehaviour:
       Data3: 1265136827
       Data4: -371633069
     Path: event:/sfx/gameplay/SFX_COMBAT_bee_death_01
---- !u!114 &7967545922802645536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9053940212445366370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 557dc061fb3355a4ca1b059c86fb1452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerLayer:
+  chaseSpeed: 3
+  attackSpeed: 15
+  knockbackForce: 7
+  timeToAttack: 2
+  detectBoxSize: {x: 15, y: 5.5}
+  detectOrigin: {fileID: 7600265245757693489}
+  damager: {fileID: 8474145224458130349}
+  playerLayer:
     serializedVersion: 2
-    m_Bits: 512
-  _sizeBox: {x: 22, y: 5}
-  _detectPosition: {fileID: 7600265245757693489}
-  _detectPlayer: 0
-  _isAttacking: 0
-  _damager: {fileID: 8474145224458130349}
-  attack:
+    m_Bits: 16896
+  attackSFX:
     Guid:
       Data1: -1648534775
       Data2: 1234483258

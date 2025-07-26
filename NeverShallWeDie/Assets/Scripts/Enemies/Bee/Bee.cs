@@ -1,168 +1,183 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class Bee : MonoBehaviour
+public class BeeEnemy : EnemyBase
 {
-    public LayerMask _playerLayer;
-    public Vector2 _sizeBox;
-    public Transform _detectPosition;
+    private enum State { Idle, Chase, Attack, Recover, Dead }
+    private State currentState = State.Idle;
 
-    [SerializeField] bool _detectPlayer;
-    [SerializeField] bool _isAttacking;
-    int _direction;
-    float _speed = 3f;
-    float _speedAtk = 15f;
-    float _knockbackForce = 7f;
-    float _timeForAttack = 2f;
-    float _timeAttack = 0f;
-
-    GameObject _attackPoint;
-    EnemyController _controller;
-    Rigidbody2D _body;
-    [SerializeField] Collider2D _damager;
+    [Header("Comportamento")]
+    private float chaseSpeed = 3f;
+    private float attackSpeed = 15f;
+    private float knockbackForce = 7f;
+    private float timeToAttack = 2f;
+    private Vector2 detectBoxSize = new Vector2(15f, 5.5f);
+    [SerializeField] private Transform detectOrigin;
+    [SerializeField] private Collider2D damager;
+    [SerializeField] private LayerMask playerLayer;
 
     [Header("FMOD Events")]
-    [SerializeField] EventReference attack;
+    [SerializeField] private EventReference attackSFX;
 
-    void Awake()
+    private float attackTimer;
+    private int direction;
+    private GameObject player;
+
+    protected override void Awake()
     {
-        _controller = GetComponent<EnemyController>();
-        _body = GetComponent<Rigidbody2D>();
+        base.Awake();
     }
 
-    void Start()
+    private void Start()
     {
-        _attackPoint = GameObject.FindGameObjectWithTag("AttackPoint");
+        player = GameObject.FindGameObjectWithTag("AttackPoint");
     }
 
-    void Update()
+    protected override void Update()
     {
-        if (_controller._isDead) { _body.gravityScale = 1f; }
-        if (_controller._animation == null || _controller._isDead) { return; }
-
-        if (_detectPlayer && !_isAttacking && _timeAttack < _timeForAttack)
+        if (isDead)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(_attackPoint.transform.position.x + (4f * _direction), _attackPoint.transform.position.y + 2.5f), _speed * Time.deltaTime);
-            _timeAttack += Time.deltaTime;
+            rb.gravityScale = 1f;
+            ChangeState(State.Dead);
+            return;
         }
 
+        HandleState();
         Flip();
     }
 
-    private void FixedUpdate()
+    private void HandleState()
     {
-        if (_controller._isDead) { return; }
-
-        DetectPlayer();
-        Knockback();
-
-        if (_timeAttack >= _timeForAttack && _detectPlayer) { Attack(); }
-    }
-
-    void Attack()
-    {
-        if (_isAttacking || _controller._isDead) { return; }
-
-        Vector3 _pos = (_attackPoint.transform.position - transform.position).normalized;
-        _body.velocity = _pos * _speedAtk;
-
-        _controller._animation.SetBool("Attack", true);
-        _isAttacking = true;
-        RuntimeManager.PlayOneShot(attack);
-        Invoke("FinishAttack", 0.5f);
-    }
-
-    void FinishAttack()
-    {
-        if (!_isAttacking) { return; }
-
-        _body.velocity = Vector2.zero;
-        _controller._animation.SetBool("Attack", false);
-        _isAttacking = false;
-        _timeAttack = 0f;
-    }
-
-    public void Knockback()
-    {
-        if (!_controller._onHit) { return; }
-
-        if (_direction < 0)
+        switch (currentState)
         {
-            _body.velocity = Vector2.zero;
-            _body.AddForce(Vector2.left * _knockbackForce, ForceMode2D.Impulse);
-        }
-        else if (_direction > 0)
-        {
-            _body.velocity = Vector2.zero;
-            _body.AddForce(Vector2.right * _knockbackForce, ForceMode2D.Impulse);
-        }
+            case State.Idle:
+                if (PlayerInRange()) ChangeState(State.Chase);
+                break;
 
-        Invoke("FinishKnockback", 0.3f);
-    }
+            case State.Chase:
+                attackTimer += Time.deltaTime;
 
-    public void FinishKnockback()
-    {
-        // _body.bodyType = RigidbodyType2D.Kinematic;
-        _body.velocity = Vector2.zero;
-    }
+                Vector2 target = new Vector2(player.transform.position.x + (4f * direction), player.transform.position.y + 2.5f);
+                transform.position = Vector2.MoveTowards(transform.position, target, chaseSpeed * Time.deltaTime);
 
-    public void DetectPlayer()
-    {
-        if (_detectPlayer) { return; }
+                if (attackTimer >= timeToAttack)
+                    ChangeState(State.Attack);
+                break;
 
-        _detectPlayer = false;
+            case State.Attack:
+                // movimento é iniciado uma vez no método EnterAttack
+                break;
 
-        Collider2D _hit = Physics2D.OverlapBox(_detectPosition.position, _sizeBox, 0, _playerLayer);
-
-        if (_hit != null)
-        {
-            _detectPlayer = true;
+            case State.Recover:
+                // Recupera depois do ataque
+                break;
         }
     }
 
-    void Flip()
+    private void ChangeState(State newState)
     {
-        if (_detectPlayer && !_isAttacking)
+        if (currentState == newState) return;
+
+        ExitState(currentState);
+        EnterState(newState);
+        currentState = newState;
+    }
+
+    private void EnterState(State state)
+    {
+        switch (state)
         {
-            if (transform.position.x > _attackPoint.transform.position.x)
-            {
-                transform.localScale = new Vector2(1, 1);
-                _direction = 1;
-            }
-            else if (transform.position.x < _attackPoint.transform.position.x)
-            {
-                transform.localScale = new Vector2(-1, 1);
-                _direction = -1;
-            }
+            case State.Chase:
+                attackTimer = 0f;
+                break;
+
+            case State.Attack:
+                Vector3 dir = (player.transform.position - transform.position).normalized;
+                rb.velocity = dir * attackSpeed;
+                animator?.SetBool("Attack", true);
+                RuntimeManager.PlayOneShot(attackSFX);
+                Invoke(nameof(FinishAttack), 0.5f);
+                break;
+
+            case State.Recover:
+                rb.velocity = Vector2.zero;
+                animator?.SetBool("Attack", false);
+                Invoke(nameof(EnableDamager), 0.5f);
+                break;
         }
     }
 
-    private void OnDrawGizmos()
+    private void ExitState(State state)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(_detectPosition.position, _sizeBox);
+        if (state == State.Attack)
+            rb.velocity = Vector2.zero;
+    }
+
+    private void FinishAttack()
+    {
+        ChangeState(State.Recover);
+        attackTimer = 0f;
+    }
+
+    private void Flip()
+    {
+        if (player == null || currentState == State.Attack) return;
+
+        if (transform.position.x > player.transform.position.x)
+        {
+            transform.localScale = new Vector2(1, 1);
+            direction = 1;
+        }
+        else
+        {
+            transform.localScale = new Vector2(-1, 1);
+            direction = -1;
+        }
+    }
+
+    private bool PlayerInRange()
+    {
+        Collider2D hit = Physics2D.OverlapBox(detectOrigin.position, detectBoxSize, 0, playerLayer);
+        return hit != null;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 9) //Player
+        if (other.gameObject.layer == 9 || other.gameObject.layer == 8)
         {
-            _damager.enabled = false;
-            FinishAttack();
-            Invoke("EnableDamager", 0.5f);
-        }
-        else if (other.gameObject.layer == 8) //Ground
-        {
-            _damager.enabled = false;
-            FinishAttack();
-            Invoke("EnableDamager", 0.5f);
+            damager.enabled = false;
+            if (currentState == State.Attack)
+                OnHit();
         }
     }
 
-    void EnableDamager()
+    private void EnableDamager()
     {
-        _damager.enabled = true;
+        damager.enabled = true;
+        if (PlayerInRange()) ChangeState(State.Chase);
+        else ChangeState(State.Idle);
+    }
+
+    private void OnHit()
+    {
+        FinishAttack();
+        Vector2 force = direction < 0 ? Vector2.left : Vector2.right;
+        rb.velocity = Vector2.zero;
+        rb.AddForce(force * knockbackForce, ForceMode2D.Impulse);
+        Invoke(nameof(ResetVelocity), 0.3f);
+    }
+
+    private void ResetVelocity()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (detectOrigin != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(detectOrigin.position, detectBoxSize);
+        }
     }
 }
