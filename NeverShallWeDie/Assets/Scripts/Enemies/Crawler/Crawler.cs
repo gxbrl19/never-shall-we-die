@@ -1,68 +1,72 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Crawler : MonoBehaviour
+public class Crawler : EnemyBase
 {
-    [SerializeField] LayerMask _groundLayer;
-    [SerializeField] Transform _checkPoint;
-    [SerializeField] float _speed = 1;
-    [SerializeField] float _nextFlip;
-    [SerializeField] int _direction = 0;
-    bool _onGround;    
-    Vector2 _raycastPosition;
-    Vector2 _raycastDirection;
-    Rigidbody2D _body;
-    EnemyController _controller;
+    private enum State { Move }
+    private State currentState = State.Move;
 
-    void Awake() {
-        _controller = GetComponent<EnemyController>();
-        _body = GetComponent<Rigidbody2D>();
-    }
-    
-    private void Update() {
-        CheckDirection();
+    [Header("Crawler Settings")]
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform checkPoint;
+    [SerializeField] private float speed = 1f;
+    [SerializeField] private float flipCooldown = 0.25f;
+
+    private Vector2 raycastDirection;
+    private float nextFlipTime;
+    private int directionIndex = 0; //0: Down, 1: Left, 2: Up, 3: Right
+
+    protected override void Awake()
+    {
+        base.Awake();
     }
 
-    void FixedUpdate() {
-        if (_controller._isDead) {
-            _body.velocity = Vector2.zero;
-            return;
-        }
-        
-        if (!_controller._onHit) { _body.velocity = transform.right * _speed; } else { _body.velocity = Vector2.zero; }
-        
-        _onGround = Physics2D.Raycast(_checkPoint.position, _raycastDirection, 1f, _groundLayer);
-
-        if (!_onGround && Time.time > _nextFlip) {
-            Flip();
-        }
+    private void Start()
+    {
+        SetDirectionVector();
     }
 
-    void Flip() {
-        _nextFlip = Time.time + 0.25f;
-        transform.Rotate(new Vector3(0, 0, -90));
-        if (_direction < 3) { _direction += 1; } else { _direction = 0; }
-    }
+    protected override void Update()
+    {
+        if (isDead) return;
 
-    void CheckDirection() {
-        switch (_direction) {
-            case 0:
-                _raycastDirection = Vector2.down;
-                break;
-            case 1:
-                _raycastDirection = Vector2.left;
-                break;
-            case 2:
-                _raycastDirection = Vector2.up;
-                break;
-            case 3:
-                _raycastDirection = Vector2.right;
-                break;
+        if (currentState == State.Move)
+        {
+            SetDirectionVector();
+
+            //checando a beirada
+            bool hasGround = Physics2D.Raycast(checkPoint.position, raycastDirection, 1f, groundLayer);
+            Debug.DrawRay(checkPoint.position, raycastDirection * 1f, Color.red);
+
+            if (!hasGround && Time.time > nextFlipTime)
+                RotateCrawler();
         }
     }
 
-    private void OnDrawGizmos() {        
-        Debug.DrawRay(_checkPoint.position, _raycastDirection * 1f, Color.red);
+    private void FixedUpdate()
+    {
+        if (isDead) return;
+
+        if (!isHurt && currentState == State.Move)
+            rb.velocity = transform.right * speed;
+        else
+            rb.velocity = Vector2.zero;
+    }
+
+    private void RotateCrawler()
+    {
+        nextFlipTime = Time.time + flipCooldown;
+        transform.Rotate(0, 0, -90);
+        directionIndex = (directionIndex + 1) % 4;
+    }
+
+    private void SetDirectionVector()
+    {
+        switch (directionIndex)
+        {
+            case 0: raycastDirection = Vector2.down; break;
+            case 1: raycastDirection = Vector2.left; break;
+            case 2: raycastDirection = Vector2.up; break;
+            case 3: raycastDirection = Vector2.right; break;
+        }
     }
 }

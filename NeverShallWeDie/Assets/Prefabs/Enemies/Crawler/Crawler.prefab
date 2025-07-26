@@ -75,7 +75,6 @@ GameObject:
   - component: {fileID: 3266877800644549775}
   - component: {fileID: 3266877800644549769}
   - component: {fileID: 3266877800644549768}
-  - component: {fileID: 2178545514660018937}
   - component: {fileID: 7793659646403794897}
   - component: {fileID: 3266877800644549770}
   - component: {fileID: 3266877800644549773}
@@ -238,7 +237,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2178545514660018937
+--- !u!114 &7793659646403794897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,20 +246,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3266877800644549776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2403d62617d895448a0eea8de19311b6, type: 3}
+  m_Script: {fileID: 11500000, guid: bad23cfe0c11d584ba9ad2105c9d1eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyObject: {fileID: 11400000, guid: bf0254d75001c40449c53f4ad9933419, type: 2}
-  _name: 
-  _maxHealth: 0
-  _itemDropRate: 0
-  _damageColor: {r: 0, g: 0, b: 0, a: 0}
-  _currentHealth: 0
-  _onHit: 0
-  _isDead: 0
-  _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _animation: {fileID: 0}
-  _audio: {fileID: 0}
+  enemyObject: {fileID: 11400000, guid: bf0254d75001c40449c53f4ad9933419, type: 2}
+  currentHealth: 0
+  deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
+  animator: {fileID: 0}
   hit:
     Guid:
       Data1: 1994048421
@@ -275,25 +267,12 @@ MonoBehaviour:
       Data3: -1296623972
       Data4: -742766179
     Path: event:/sfx/gameplay/SFX_COMBAT_crawler_death_01
---- !u!114 &7793659646403794897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3266877800644549776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bad23cfe0c11d584ba9ad2105c9d1eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groundLayer:
+  groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  _checkPoint: {fileID: 2474938834454868567}
-  _speed: 1
-  _nextFlip: 0
-  _direction: 0
+  checkPoint: {fileID: 2474938834454868567}
+  speed: 1
+  flipCooldown: 0.25
 --- !u!114 &3266877800644549770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,5 +300,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 2
-  _hitEffect: {fileID: 0}
+  attackPower: 0
+  hitEffect: {fileID: 0}
