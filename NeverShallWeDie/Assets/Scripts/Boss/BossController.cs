@@ -76,10 +76,6 @@ public class BossController : MonoBehaviour
             _bossDoor2._tiggered = false;
             UIManager.instance.BossDisabled();
             PlayDead();
-
-            //da um pouco de XP ao player
-            PlayerLevel _playerLevel = FindFirstObjectByType<PlayerLevel>();
-            _playerLevel.GainXP(5);
         }
     }
 

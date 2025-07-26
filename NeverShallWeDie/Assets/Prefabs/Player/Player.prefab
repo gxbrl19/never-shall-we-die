@@ -703,7 +703,6 @@ GameObject:
   - component: {fileID: 7590800119887452014}
   - component: {fileID: 8160846808588850494}
   - component: {fileID: 8160846808588850481}
-  - component: {fileID: 1519453342642065733}
   - component: {fileID: 3227473634612903610}
   - component: {fileID: 4984949831048678110}
   - component: {fileID: 8160846808588850631}
@@ -1142,43 +1141,43 @@ MonoBehaviour:
   _powerPickup: {fileID: 9056689326667320452}
   _dust: {fileID: 2433915885738270050, guid: e76119983bc3ad942bb43f70e9f7a201, type: 3}
   _recoveryEffect: {fileID: 8334568750684773814, guid: af97633c12733e54cb5109b0d6ba86ba, type: 3}
-  _isSliding: 0
-  _timeForSkills: 0
-  _timeWaterSpin: 0
-  _inWaterSpin: 0
-  _waterSpinMana: 1
-  _timeAirCut: 0
+  isSliding: 0
+  timeForSkills: 0
+  timeWaterSpin: 0
+  inWaterSpin: 0
+  waterSpinMana: 0
+  timeAirCut: 0
   _aircut: {fileID: 6993672965945786157, guid: 1d231f750fdc7224499d32169bd29f44, type: 3}
   _aircutPoint: {fileID: 2596015545165567744}
-  _aircutMana: 1
-  _inTornado: 0
-  _timeTornado: 0
+  aircutMana: 0
+  inTornado: 0
+  timeTornado: 0
   _tornado: {fileID: 6530606618430758576, guid: 6481ca6b4c17cda47b0f9d6303c0ce38, type: 3}
   _tornadoPoint: {fileID: 4342493059249266109}
-  _isGrounded: 1
-  _isJumping: 0
-  _healing: 0
-  _isOnSlope: 0
-  _onWater: 0
-  _onHit: 0
-  _canGrab: 0
-  _onClimbing: 0
-  _isGrabing: 0
-  _isRolling: 0
-  _onBridge: 0
-  _isGriding: 0
-  _canMove: 1
-  _newSkillCollected: 0
-  _dead: 0
+  canMove: 1
+  canGrab: 0
+  isGrounded: 0
+  isJumping: 0
+  isHealing: 0
+  isRolling: 0
+  isGrabing: 0
+  isGriding: 0
+  isDead: 0
+  onSlope: 0
+  onBridge: 0
+  onWater: 0
+  onHit: 0
+  onClimbing: 0
+  newSkillCollected: 0
   rb: {fileID: 0}
   playerMovement: {fileID: 0}
-  _collider: {fileID: 0}
-  _input: {fileID: 0}
-  _animation: {fileID: 0}
-  _health: {fileID: 0}
-  _collision: {fileID: 0}
-  _audio: {fileID: 0}
-  _bridge: {fileID: 0}
+  playerCollider: {fileID: 0}
+  playerInputs: {fileID: 0}
+  playerAnimations: {fileID: 0}
+  playerHealth: {fileID: 0}
+  playerCollision: {fileID: 0}
+  playerAudio: {fileID: 0}
+  bridge: {fileID: 0}
 --- !u!114 &8160846808588850495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,10 +1205,13 @@ MonoBehaviour:
   playerDirection: 1
   initialGravity: 0
   speed: 0
-  _ladder: {fileID: 0}
-  _vine: {fileID: 0}
-  _canSwin: 1
-  _bridgeHit: 0
+  maxStamina: 5
+  currentStamina: 0
+  isExhausted: 0
+  ladder: {fileID: 0}
+  vine: {fileID: 0}
+  canSwin: 1
+  bridgeHit: 0
 --- !u!114 &8160846808588850494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,20 +1255,6 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 4227328
---- !u!114 &1519453342642065733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8160846808588850480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6de66e95cf85b6a4e91e371172c50d0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentLevel: 0
-  _currentXP: 0
 --- !u!114 &3227473634612903610
 MonoBehaviour:
   m_ObjectHideFlags: 0

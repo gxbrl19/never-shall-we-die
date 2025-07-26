@@ -25,7 +25,6 @@ public class UpgradePoints : MonoBehaviour
         {
             _playerTriggered = false;
             _input.interact = false;
-            UIManager.instance._upPoints = GameManager.instance._upPoints;
             UIManager.instance._UpHpMpPrice = _price;
             UIManager.instance.ActivePanelHpMp();
         }

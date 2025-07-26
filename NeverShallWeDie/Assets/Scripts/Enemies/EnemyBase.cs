@@ -91,9 +91,6 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
 
         PlayerHealth playerHealth = FindFirstObjectByType<PlayerHealth>();
         playerHealth.FillBottle(3f);
-
-        PlayerLevel playerLevel = FindFirstObjectByType<PlayerLevel>();
-        playerLevel.GainXP(5);
     }
 
     private void TryDropItem()

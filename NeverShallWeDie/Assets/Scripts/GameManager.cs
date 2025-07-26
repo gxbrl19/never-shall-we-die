@@ -10,15 +10,12 @@ using UnityEngine.InputSystem;
 [Serializable]
 public class PlayerData
 {
-    public int level;
-    public int xp;
     public int intro;
     public List<Equipments> equipments;
     public List<Skills> skills;
     public List<Items> items;
     public float hpMax;
     public float mpMax;
-    public int upPoints;
     public int gold;
     public int katanaLevel;
     public int[] flags;
@@ -62,8 +59,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool _save2 = false;
     [HideInInspector] public bool _save3 = false;
 
-    [HideInInspector] public int _level;
-    [HideInInspector] public int _xp;
     [HideInInspector] public int _intro = 1;
     [HideInInspector] public List<Equipments> _equipments;
     [HideInInspector] public List<Skills> _skills;
@@ -73,7 +68,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float _hpMax = 25f;
     [HideInInspector] public float _mpMax = 15f;
     public int _gold; //total de gold coletado
-    public int _upPoints; //pontos para melhoria com a tripulação
     [HideInInspector] public int _katanaLevel;
 
     [HideInInspector] public int[] _flags; //Flags já liberadas
@@ -157,10 +151,10 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        _navigator = "MEET"; //TODO: - passar para o MEET ao terminar a demo (OTHER para a demo)
-        _shipwright = "COMPLETE"; //DEMO - passar para o COMPLETE ao terminar a demo
-        _witch = "MEET"; //TODO: - passar para o MEET ao terminar a demo
-        _blacksmith = "MEET"; //TODO: - passar para o MEET ao terminar a demo
+        _navigator = "CREW"; //TODO: - passar para o MEET ao terminar a demo (OTHER para a demo)
+        _shipwright = "CREW"; //DEMO - passar para o COMPLETE ao terminar a demo
+        _witch = "CREW"; //TODO: - passar para o MEET ao terminar a demo
+        _blacksmith = "CREW"; //TODO: - passar para o MEET ao terminar a demo
     }
 
     void Update()
@@ -189,15 +183,12 @@ public class GameManager : MonoBehaviour
         PlayerData _data = new PlayerData(); //instanciando objeto da classe PlayerData
 
         //atribui os valores do jogo ao objeto
-        _data.level = _level;
-        _data.xp = _xp;
         _data.intro = _intro;
         _data.equipments = _equipments;
         _data.skills = _skills;
         _data.items = _inventory;
         _data.hpMax = _hpMax;
         _data.mpMax = _mpMax;
-        _data.upPoints = _upPoints;
         _data.gold = _gold;
         _data.katanaLevel = _katanaLevel;
 
@@ -285,15 +276,12 @@ public class GameManager : MonoBehaviour
 
 
             //atribui os valores do objeto ao jogo
-            _level = _data.level;
-            _xp = _data.xp;
             _intro = _data.intro;
             _equipments = _data.equipments;
             _skills = _data.skills;
             _inventory = _data.items;
             _hpMax = _data.hpMax;
             _mpMax = _data.mpMax;
-            _upPoints = _data.upPoints;
             _gold = _data.gold;
             _katanaLevel = _data.katanaLevel;
 

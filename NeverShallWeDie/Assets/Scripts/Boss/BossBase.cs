@@ -90,10 +90,6 @@ public abstract class BossBase : MonoBehaviour, IBoss
         bossDoor2._tiggered = false;
         UIManager.instance.BossDisabled();
         PlayDead();
-
-        //da um pouco de XP ao player
-        PlayerLevel _playerLevel = FindFirstObjectByType<PlayerLevel>();
-        _playerLevel.GainXP(5);
     }
 
     protected virtual void ActivateBossUI()

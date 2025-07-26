@@ -77,8 +77,6 @@ public class EnemyController : MonoBehaviour
             Instantiate(_deathEffect, transform.position, Quaternion.identity);
             PlayerHealth _playerHealth = FindFirstObjectByType<PlayerHealth>();
             _playerHealth.FillBottle(3f);
-            PlayerLevel _playerLevel = FindFirstObjectByType<PlayerLevel>();
-            _playerLevel.GainXP(5);
         }
 
         Invoke("FinishHit", 0.3f);
