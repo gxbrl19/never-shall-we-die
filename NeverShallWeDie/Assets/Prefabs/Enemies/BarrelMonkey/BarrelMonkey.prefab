@@ -184,7 +184,6 @@ GameObject:
   - component: {fileID: 3717038023925824460}
   - component: {fileID: 4297551188163129882}
   - component: {fileID: 3759753668214570788}
-  - component: {fileID: 1510780368502352268}
   - component: {fileID: 8170194837852849397}
   - component: {fileID: 3717038023925824456}
   m_Layer: 12
@@ -359,7 +358,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6496353, y: 0.9376335}
   m_EdgeRadius: 0
---- !u!114 &1510780368502352268
+--- !u!114 &8170194837852849397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,20 +367,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3717038023925824465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2403d62617d895448a0eea8de19311b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 36977622acb88c942ac0e14cf593933b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyObject: {fileID: 11400000, guid: dbcdfc18b5c696e4ca77260b42611fcf, type: 2}
-  _name: 
-  _maxHealth: 0
-  _itemDropRate: 0
-  _damageColor: {r: 0, g: 0, b: 0, a: 0}
-  _currentHealth: 0
-  _onHit: 0
-  _isDead: 0
-  _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _animation: {fileID: 0}
-  _audio: {fileID: 0}
+  enemyObject: {fileID: 11400000, guid: dbcdfc18b5c696e4ca77260b42611fcf, type: 2}
+  currentHealth: 0
+  deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
   hit:
     Guid:
       Data1: -1619185860
@@ -396,25 +387,11 @@ MonoBehaviour:
       Data3: 1746515355
       Data4: -260035095
     Path: event:/sfx/gameplay/SFX_ACTION_barrel_monkey_roll_start_01
---- !u!114 &8170194837852849397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3717038023925824465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36977622acb88c942ac0e14cf593933b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerLayer:
+  finishPoint: {fileID: 4109031161652419319}
+  soundObject: {fileID: 2354679363572597799}
+  playerLayer:
     serializedVersion: 2
-    m_Bits: 512
-  _speed: 12
-  _raycastSize: 12
-  _finishPoint: {fileID: 4109031161652419319}
-  _soundObject: {fileID: 2354679363572597799}
+    m_Bits: 16896
 --- !u!114 &3717038023925824456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,8 +483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 5
-  _hitEffect: {fileID: 0}
+  attackPower: 0
+  hitEffect: {fileID: 0}
 --- !u!70 &5992098915503188086
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

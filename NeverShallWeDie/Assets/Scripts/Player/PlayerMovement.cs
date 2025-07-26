@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public float maxStamina = 5f;
     [HideInInspector] public float currentStamina;
     private float staminaCooldown = 1f;
-    private float rechargeStamina = .02f;
+    private float rechargeStamina = 1f;
     [HideInInspector] public bool isExhausted = false; //se zerar a stamina
     private float lastRollTime = -Mathf.Infinity;
 
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Time.time > lastRollTime + staminaCooldown && currentStamina < maxStamina)
         {
-            currentStamina += rechargeStamina;
+            currentStamina += rechargeStamina * Time.deltaTime;
 
             if (currentStamina >= maxStamina)
             {
