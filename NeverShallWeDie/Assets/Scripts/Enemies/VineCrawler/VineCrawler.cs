@@ -2,62 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VineCrawler : MonoBehaviour
+public class VineCrawler : EnemyBase
 {
-    public List<Transform> _paths = new List<Transform>();
-    [SerializeField] private float _speed;
-    private float _initialSpeed;
-    private int _pathIndex;
-    EnemyController _controller;
+    private enum State { Move }
+    private State currentState = State.Move;
+    private float speed = 2.5f;
+    private int pathIndex;
+    public List<Transform> paths = new List<Transform>();
 
-    void Awake()
+    protected override void Awake()
     {
-        _controller = GetComponent<EnemyController>();
-        _initialSpeed = _speed;
+        base.Awake();
     }
 
-    void Update()
+    protected override void Update()
     {
-        if (_controller._isDead || _controller._onHit)
-        {
-            _speed = 0f;
-        }
-        else
-        {
-            _speed = _initialSpeed;
-            Move();
-        }
-    }
+        if (isDead) return;
 
-    private void Move()
-    {
-        if (_controller._isDead || _controller._onHit)
-            return;
-
-        transform.position = Vector2.MoveTowards(transform.position, _paths[_pathIndex].position, _speed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, _paths[_pathIndex].position) < 0.1f)
+        if (currentState == State.Move)
         {
-            if (_pathIndex == 0)
+            transform.position = Vector2.MoveTowards(transform.position, paths[pathIndex].position, speed * Time.deltaTime);
+
+            if (Vector2.Distance(transform.position, paths[pathIndex].position) < 0.1f)
             {
-                _pathIndex = 1;
+                if (pathIndex == 0)
+                    pathIndex = 1;
+                else
+                    pathIndex = 0;
             }
-            else
-            {
-                _pathIndex = 0;
-            }
-        }
 
-        Vector2 _dir = _paths[_pathIndex].position - transform.position;
+            Vector2 dir = paths[pathIndex].position - transform.position;
 
-        if (_dir.x > 0)
-        {
-            transform.eulerAngles = new Vector2(0, 0);
-        }
+            /*if (dir.x > 0)
+                transform.eulerAngles = new Vector2(0, 0);
 
-        if (_dir.x < 0)
-        {
-            transform.eulerAngles = new Vector2(0, 180);
+            if (dir.x < 0)
+                transform.eulerAngles = new Vector2(0, 180);*/
         }
     }
 }

@@ -10,10 +10,15 @@ public class BeeEnemy : EnemyBase
     private float chaseSpeed = 3f;
     private float attackSpeed = 15f;
     private float knockbackForce = 7f;
-    private float timeToAttack = 2f;
-    private Vector2 detectBoxSize = new Vector2(15f, 5.5f);
+    private float attackCooldown = 1.5f;
+    private bool playerDetected = false;
+
+    private Vector2 attackReturnTarget;
+    private bool returningToTarget = false;
+
+
+    private Vector2 detectBoxSize = new Vector2(18f, 5.5f);
     [SerializeField] private Transform detectOrigin;
-    [SerializeField] private Collider2D damager;
     [SerializeField] private LayerMask playerLayer;
 
     [Header("FMOD Events")]
@@ -51,16 +56,20 @@ public class BeeEnemy : EnemyBase
         switch (currentState)
         {
             case State.Idle:
-                if (PlayerInRange()) ChangeState(State.Chase);
+                if (!playerDetected && PlayerInRange())
+                {
+                    playerDetected = true;
+                    ChangeState(State.Chase);
+                }
                 break;
 
             case State.Chase:
                 attackTimer += Time.deltaTime;
 
-                Vector2 target = new Vector2(player.transform.position.x + (4f * direction), player.transform.position.y + 2.5f);
-                transform.position = Vector2.MoveTowards(transform.position, target, chaseSpeed * Time.deltaTime);
+                attackReturnTarget = new Vector2(player.transform.position.x + (4f * direction), player.transform.position.y + 2.5f);
+                transform.position = Vector2.MoveTowards(transform.position, attackReturnTarget, chaseSpeed * Time.deltaTime);
 
-                if (attackTimer >= timeToAttack)
+                if (attackTimer >= attackCooldown)
                     ChangeState(State.Attack);
                 break;
 
@@ -69,7 +78,17 @@ public class BeeEnemy : EnemyBase
                 break;
 
             case State.Recover:
-                // Recupera depois do ataque
+                if (!returningToTarget)
+                    returningToTarget = true;
+
+                transform.position = Vector2.MoveTowards(transform.position, attackReturnTarget, chaseSpeed * Time.deltaTime);
+
+                float dist = Vector2.Distance(transform.position, attackReturnTarget);
+                if (dist <= 0.1f)
+                {
+                    returningToTarget = false;
+                    ChangeState(State.Chase);
+                }
                 break;
         }
     }
@@ -145,7 +164,6 @@ public class BeeEnemy : EnemyBase
     {
         if (other.gameObject.layer == 9 || other.gameObject.layer == 8)
         {
-            damager.enabled = false;
             if (currentState == State.Attack)
                 OnHit();
         }
@@ -153,9 +171,18 @@ public class BeeEnemy : EnemyBase
 
     private void EnableDamager()
     {
-        damager.enabled = true;
-        if (PlayerInRange()) ChangeState(State.Chase);
-        else ChangeState(State.Idle);
+        if (playerDetected)
+            ChangeState(State.Chase);
+        else if (PlayerInRange())
+        {
+            playerDetected = true;
+            ChangeState(State.Chase);
+        }
+        else
+        {
+            ChangeState(State.Idle);
+            playerDetected = false; // opcional: só se quiser resetar
+        }
     }
 
     private void OnHit()
