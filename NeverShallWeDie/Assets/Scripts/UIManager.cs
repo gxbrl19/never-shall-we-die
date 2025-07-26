@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
 
     [BoxGroup("HUD")][SerializeField] private Image _healthBar;
     [BoxGroup("HUD")][SerializeField] private Image _healingBar;
+    [BoxGroup("HUD")][SerializeField] private Image _staminaBar;
     [BoxGroup("HUD")][SerializeField] private Text _txtHealthInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtHealingInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtGold;
@@ -132,6 +133,7 @@ public class UIManager : MonoBehaviour
     Player _player;
     PlayerInputs _input;
     PlayerHealth _health;
+    PlayerMovement _movement;
 
     private void Awake()
     {
@@ -140,6 +142,7 @@ public class UIManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _input = _player.GetComponent<PlayerInputs>();
         _health = _player.GetComponent<PlayerHealth>();
+        _movement = _player.GetComponent<PlayerMovement>();
 
         Time.timeScale = 1f;
         //_player.EnabledControls();
@@ -164,6 +167,8 @@ public class UIManager : MonoBehaviour
     {
         _healthBar.fillAmount = _health._currentHealth / _health._maxHealth;
         _healingBar.fillAmount = _health._currentMana / _health._maxMana;
+        _staminaBar.fillAmount = _movement.currentStamina / _movement.maxStamina;
+        _staminaBar.color = _movement.isExhausted ? Color.red : Color.green;
 
         //convertendo para INT
         int health = (int)_health._maxHealth;

@@ -30,7 +30,12 @@ public class PlayerMovement : MonoBehaviour
     //Roll
     private bool canRoll = true;
     private float rollForce = 13f;
-    private float rollCooldown = 0.8f;
+    private float staminaToRoll = 1.1f;
+    [HideInInspector] public float maxStamina = 5f;
+    [HideInInspector] public float currentStamina;
+    private float staminaCooldown = 1f;
+    private float rechargeStamina = .02f;
+    [HideInInspector] public bool isExhausted = false; //se zerar a stamina
     private float lastRollTime = -Mathf.Infinity;
 
     //Slope
@@ -76,9 +81,25 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         speed = normalSpeed;
+        currentStamina = maxStamina;
         initialGravity = player.rb.gravityScale;
         colliderSize = player.playerCollider.size;
     }
+
+    void Update()
+    {
+        if (Time.time > lastRollTime + staminaCooldown && currentStamina < maxStamina)
+        {
+            currentStamina += rechargeStamina;
+
+            if (currentStamina >= maxStamina)
+            {
+                currentStamina = maxStamina;
+                isExhausted = false; //stamina cheia novamente
+            }
+        }
+    }
+
 
     void FixedUpdate()
     {
@@ -341,7 +362,7 @@ public class PlayerMovement : MonoBehaviour
     #region Roll
     void OnRoll()
     {
-        canRoll = Time.time > lastRollTime + rollCooldown;
+        canRoll = currentStamina > 0f && !isExhausted;
 
         if (player.playerInputs.pressRoll && canRoll && !player.isRolling)
         {
@@ -355,13 +376,22 @@ public class PlayerMovement : MonoBehaviour
 
         player.isRolling = true;
         player.playerInputs.pressRoll = false;
-        lastRollTime = Time.time; //marcando o momento que rolou
+        lastRollTime = Time.time;
 
+        if (currentStamina < staminaToRoll)
+        {
+            currentStamina = 0f;
+            isExhausted = true; //entra em exaustão
+        }
+        else
+        {
+            currentStamina -= staminaToRoll;
+        }
 
-        //float horizontal = _input.GetHorizontal();
         Vector2 direction = player.playerMovement.playerDirection < 0 ? Vector2.left : Vector2.right;
         player.rb.velocity = direction * rollForce;
     }
+
 
     public void FinishRoll() //chamado também na animação de Roll
     {
@@ -542,7 +572,9 @@ public class PlayerMovement : MonoBehaviour
             player.canMove = true;
         }
     }
+    #endregion
 
+    #region Grid
     void OnGrid()
     {
         if ((player.playerInputs.vertical >= 0.5 || player.playerInputs.vertical <= -0.5) && TouchingGrid() && !player.isGrounded)
