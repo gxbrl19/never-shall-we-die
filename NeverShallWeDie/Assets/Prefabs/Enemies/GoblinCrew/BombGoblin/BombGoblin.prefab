@@ -13,12 +13,10 @@ GameObject:
   - component: {fileID: 8295950462153100672}
   - component: {fileID: 3976053569257901827}
   - component: {fileID: 3717038023925824460}
-  - component: {fileID: 4487142061191082319}
-  - component: {fileID: 1208705192499544673}
+  - component: {fileID: 1915685226690035952}
   - component: {fileID: 3717038023925824456}
-  - component: {fileID: 4713748599425319506}
   m_Layer: 12
-  m_Name: Bombman
+  m_Name: BombGoblin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,6 +38,7 @@ Transform:
   - {fileID: 9191837266437560592}
   - {fileID: 3717038025127673065}
   - {fileID: 3717038025535556846}
+  - {fileID: 438309286098014039}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3717038023925824467
@@ -177,7 +176,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4487142061191082319
+--- !u!114 &1915685226690035952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,19 +185,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3717038023925824465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2403d62617d895448a0eea8de19311b6, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c4a4db5a4926247b858c8b6fbc8b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyObject: {fileID: 11400000, guid: 3ec0fe93859689b43adca3c6c1a060be, type: 2}
-  _name: 
-  _maxHealth: 0
-  _itemDropRate: 0
-  _damageColor: {r: 0, g: 0, b: 0, a: 0}
-  _currentHealth: 0
-  _onHit: 0
-  _isDead: 0
-  _deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  _animation: {fileID: 0}
+  enemyObject: {fileID: 11400000, guid: 3ec0fe93859689b43adca3c6c1a060be, type: 2}
+  currentHealth: 0
+  deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
   hit:
     Guid:
       Data1: -528028374
@@ -213,27 +205,19 @@ MonoBehaviour:
       Data3: 1539037571
       Data4: 1656383288
     Path: event:/sfx/gameplay/SFX_COMBAT_bombman_death_01
---- !u!114 &1208705192499544673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3717038023925824465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b4144c563dbbba4db278586bb0892ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _preparing: 0
-  _shootPoint: {fileID: 3717038025127673065}
-  _bomb: {fileID: 7461815092132374738, guid: 5837b8cd96010c34fb6ea9a3d8e43654, type: 3}
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  _groundLayer:
+  raycastSize: 20
+  launchForce: 1
+  moveSpeed: 1.5
+  attackCooldown: 1.2
+  direction: 0
+  shootPoint: {fileID: 3717038025127673065}
+  bombPrefab: {fileID: 7461815092132374738, guid: 5837b8cd96010c34fb6ea9a3d8e43654, type: 3}
+  groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
   throwBomb:
     Guid:
       Data1: 1525677379
@@ -256,20 +240,6 @@ MonoBehaviour:
   _item: {fileID: 62880426106912218, guid: a9adf4fda0599e24abf6d0d01f7fedf9, type: 3}
   _dropPoint: {fileID: 3717038025535556846}
   _dropRate: 0
---- !u!114 &4713748599425319506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3717038023925824465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _power: 3
-  _hitEffect: {fileID: 0}
 --- !u!1 &3717038025127673064
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,3 +379,95 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.90212345, y: 0.33052397}
   m_EdgeRadius: 0
+--- !u!1 &6176995962922952976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 438309286098014039}
+  - component: {fileID: 2846780929293561790}
+  - component: {fileID: 9212500744037851136}
+  m_Layer: 12
+  m_Name: Damager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &438309286098014039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176995962922952976}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3717038023925824466}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2846780929293561790
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176995962922952976}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.036551952, y: -0.027414143}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.753273, y: 1.7401811}
+  m_EdgeRadius: 0
+--- !u!114 &9212500744037851136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176995962922952976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 2
+  hitEffect: {fileID: 0}
