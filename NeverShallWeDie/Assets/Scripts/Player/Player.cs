@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool canGrab;
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool isJumping;
+    public bool isDoubleJumping;
     [HideInInspector] public bool isHealing;
     [HideInInspector] public bool isRolling;
     [HideInInspector] public bool isGrabing;
@@ -255,7 +256,7 @@ public class Player : MonoBehaviour
         if (isDead || !canMove)
             return;
 
-        if (playerInputs.isAttacking && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterSpin))
+        if (playerInputs.isAttacking && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
         {
             gameObject.layer = LayerMask.NameToLayer("WaterSpin");
             inWaterSpin = true;

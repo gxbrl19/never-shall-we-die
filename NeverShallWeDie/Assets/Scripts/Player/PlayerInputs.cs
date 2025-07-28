@@ -9,12 +9,11 @@ public class PlayerInputs : MonoBehaviour
     private float _vertical;
     private float _horizontal_r;
     private float _vertical_r;
-    private bool _isJumping;
+    private bool _jumpPressed;
     private bool _jumpHeld;
     private bool _pressRoll;
     private bool _isAttacking;
-    private bool _isAirCuting;
-    private bool _isTornado;
+    private bool _isFireCuting;
     private bool _isSliding;
     private bool _isParachuting;
     private bool _isGrabing;
@@ -52,10 +51,10 @@ public class PlayerInputs : MonoBehaviour
         set { _vertical_r = value; }
     }
 
-    public bool isJumping
+    public bool jumpPressed
     {
-        get { return _isJumping; }
-        set { _isJumping = value; }
+        get { return _jumpPressed; }
+        set { _jumpPressed = value; }
     }
 
     public bool jumpHeld
@@ -70,16 +69,10 @@ public class PlayerInputs : MonoBehaviour
         set { _isAttacking = value; }
     }
 
-    public bool isAirCuting
+    public bool isFireCuting
     {
-        get { return _isAirCuting; }
-        set { _isAirCuting = value; }
-    }
-
-    public bool isTornado
-    {
-        get { return _isTornado; }
-        set { _isTornado = value; }
+        get { return _isFireCuting; }
+        set { _isFireCuting = value; }
     }
 
     public bool pressRoll
@@ -189,37 +182,33 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void Jump(InputAction.CallbackContext _callback)
+    public void Jump(InputAction.CallbackContext callback)
     {
-        if (_player.isDead || _player.canMove == false || Time.timeScale == 0f)
-            return;
+        if (_player.isDead || _player.canMove == false || Time.timeScale == 0f) return;
 
-        if (_player.isGrounded || _collision._onWall || _player.onClimbing || _player.onWater || _player.isGriding)
+        if (_player.isGrounded || _collision._onWall || _player.onClimbing || _player.onWater || _player.isGriding && !_player.isDoubleJumping)
         {
-            if (_callback.started)
-            {
-                _isJumping = true;
-            }
+            if (callback.started)
+                _jumpPressed = true;
 
-            _jumpHeld = _callback.performed;
+            if (!_player.onWater)
+                _player.playerMovement.canDoubleJump = true;
+
+            _jumpHeld = callback.performed;
         }
-        else
+        else if (!_player.isGrounded && PlayerSkills.instance.skills.Contains(Skills.AirGem) && !_player.isDoubleJumping && _player.playerMovement.canDoubleJump)
         {
-            if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Parachute) && !_collision._onWall)
+            if (callback.started && !_collision._onWall)
             {
-                _isParachuting = true;
-                _audio.PlayParachute();
-            }
-            else if (_player.isGrounded || _callback.canceled)
-            {
-                _isParachuting = false;
+                _player.isDoubleJumping = true;
+                _player.playerMovement.canDoubleJump = false;
             }
         }
     }
 
     public void Interact(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || _player.isHealing || _isAttacking || _isAirCuting || Time.timeScale == 0f || _player.canMove == false)
+        if (_player.isDead || _player.isHealing || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.canMove == false)
             return;
 
         if (_callback.started && !_player.canGrab)
@@ -242,7 +231,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Healing(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || !_player.isGrounded || _player.onHit || _isAttacking || _isAirCuting || Time.timeScale == 0f || _player.onWater || _player.canMove == false || _collision._onWall || _player.isGrabing || _player.isRolling || _player.isSliding)
+        if (_player.isDead || !_player.isGrounded || _player.onHit || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onWater || _player.canMove == false || _collision._onWall || _player.isGrabing || _player.isRolling || _player.isSliding)
             return;
 
         if (_callback.started)
@@ -258,14 +247,14 @@ public class PlayerInputs : MonoBehaviour
 
     public void SwordAttack(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.isRolling || _player.isSliding || _player.canMove == false)
+        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.isRolling || _player.isSliding || _player.canMove == false)
             return;
 
         if (_callback.started && !_player.onWater && PlayerEquipment.instance.equipments.Contains(Equipments.Katana))
         {
             _isAttacking = true;
         }
-        else if (_callback.started && _player.onWater && PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.WaterSpin))
+        else if (_callback.started && _player.onWater && PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
         {
             if (_health._currentMana > 0 && _player.timeWaterSpin >= _player.timeForSkills)
             {
@@ -278,7 +267,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Slide(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || !_player.isGrounded || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onWater || _player.onHit || _player.isGrabing || _player.isRolling || _player.isSliding || _player.canMove == false)
+        if (_player.isDead || !_player.isGrounded || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onWater || _player.onHit || _player.isGrabing || _player.isRolling || _player.isSliding || _player.canMove == false)
             return;
 
         if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots))
@@ -288,32 +277,31 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void TornadoAttack(InputAction.CallbackContext _callback)
+    public void ParachuteButton(InputAction.CallbackContext callback)
     {
-        if (_player.isDead || !_player.isGrounded || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.onWater || _player.isRolling || _player.canMove == false)
-            return;
+        if (_player.isDead || _player.isGrounded || _collision._onWall || _player.onClimbing || _player.onWater || _player.isGriding && !_player.isDoubleJumping) return;
 
-        if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.Tornado))
+        if (callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Parachute))
         {
-            if (_health._currentMana > 0 && _player.timeTornado >= _player.timeForSkills)
-            {
-                isTornado = true;
-                _player.timeTornado = 0f; //reseta o tempo do tornado para poder fazer a contagem;
-                _animation.OnTornado();
-            }
+            _isParachuting = true;
+            _audio.PlayParachute();
+        }
+        else if (_player.isGrounded || callback.canceled)
+        {
+            _isParachuting = false;
         }
     }
 
     public void AirCutAttack(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || _isAttacking || _isAirCuting || _isTornado || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.onWater || _player.isRolling || _player.canMove == false)
+        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.onWater || _player.isRolling || _player.canMove == false)
             return;
 
-        if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.AirCut))
+        if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.FireGem))
         {
             if (_health._currentMana > 0 && _player.timeAirCut >= _player.timeForSkills)
             {
-                isAirCuting = true;
+                isFireCuting = true;
                 _player.timeAirCut = 0f; //reseta o tempo do aircut para poder fazer a contagem;
                 _animation.OnAirCut();
                 //.PlayAudio("aircut");
@@ -341,8 +329,7 @@ public class PlayerInputs : MonoBehaviour
     {
         isAttacking = false;
         isGrabing = false;
-        isAirCuting = false;
-        isTornado = false;
+        isFireCuting = false;
         isParachuting = false;
         _player.isHealing = false;
 

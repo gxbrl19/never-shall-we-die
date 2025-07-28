@@ -49,6 +49,9 @@ public class PlayerAnimations : MonoBehaviour
         //Dash
         _animation.SetBool("IsRolling", _player.isRolling);
 
+        //DoubleJump
+        _animation.SetBool("DoubleJump", _player.isDoubleJumping);
+
         //Parachute
         _animation.SetBool("IsParachuting", _input.isParachuting);
 
@@ -108,24 +111,13 @@ public class PlayerAnimations : MonoBehaviour
 
     void StopAirCut()
     { //chamado na animação de Air Cut
-        _input.isAirCuting = false;
+        _input.isFireCuting = false;
         _animation.SetBool("AirCut", false);
     }
 
     public void OnHealing()
     {
         _animation.SetTrigger("Healing");
-    }
-
-    public void OnTornado()
-    {
-        _animation.SetBool("Tornado", true);
-    }
-
-    void StopTornado() //chamado na animação de Tornado
-    {
-        _input.isTornado = false;
-        _animation.SetBool("Tornado", false);
     }
 
     public void OnDead()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Skills
 {
-    AirCut, Tornado, WaterSpin
+    FireGem, AirGem, WaterGem
 }
 
 public class PlayerSkills : MonoBehaviour

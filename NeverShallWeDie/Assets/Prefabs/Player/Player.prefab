@@ -1022,7 +1022,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: TornadoAttack
+        m_MethodName: ParachuteButton
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1158,6 +1158,7 @@ MonoBehaviour:
   canGrab: 0
   isGrounded: 0
   isJumping: 0
+  isDoubleJumping: 0
   isHealing: 0
   isRolling: 0
   isGrabing: 0
@@ -1205,6 +1206,7 @@ MonoBehaviour:
   playerDirection: 1
   initialGravity: 0
   speed: 0
+  canDoubleJump: 0
   maxStamina: 5
   currentStamina: 0
   isExhausted: 0
