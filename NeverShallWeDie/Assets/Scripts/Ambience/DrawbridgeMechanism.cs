@@ -29,11 +29,11 @@ public class DrawbridgeMechanism : MonoBehaviour
 
     private void Update()
     {
-        if (_triggered && _input.interact)
+        if (_triggered && _input.pressInteract)
         {
             UIManager.instance.ActivePanelDrawbridge();
             _triggered = false;
-            _input.interact = false;
+            _input.pressInteract = false;
         }
     }
 

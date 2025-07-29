@@ -17,7 +17,6 @@ public class PlayerAudio : MonoBehaviour
 
     [SerializeField] EventReference waterspin;
     [SerializeField] EventReference aircut;
-    [SerializeField] EventReference tornado;
 
     [SerializeField] GameObject healing;
     [SerializeField] GameObject grabing;
@@ -91,11 +90,6 @@ public class PlayerAudio : MonoBehaviour
     public void PlayAircut() //animação
     {
         RuntimeManager.PlayOneShot(aircut);
-    }
-
-    public void PlayTornado() //animação
-    {
-        RuntimeManager.PlayOneShot(tornado);
     }
 
     public void PlayGrab()

@@ -25,9 +25,9 @@ public class EnterShip : MonoBehaviour
 
     void Update()
     {
-        if (_triggered && _input.interact)
+        if (_triggered && _input.pressInteract)
         {
-            _input.interact = false;
+            _input.pressInteract = false;
             RuntimeManager.PlayOneShot(openDoor);
             Enter();
         }

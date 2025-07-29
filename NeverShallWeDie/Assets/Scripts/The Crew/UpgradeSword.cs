@@ -21,10 +21,10 @@ public class UpgradeSword : MonoBehaviour
 
     void Update()
     {
-        if (_playerTriggered && _input.interact)
+        if (_playerTriggered && _input.pressInteract)
         {
             _playerTriggered = false;
-            _input.interact = false;
+            _input.pressInteract = false;
             UIManager.instance._katanaPrice = _price;
             UIManager.instance.ActivePanelUpKatana();
         }

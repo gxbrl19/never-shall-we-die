@@ -29,7 +29,7 @@ public class Flag : MonoBehaviour
 
         if (_enabled == 0)
         {
-            if (_playerTriggered && _inputs.interact)
+            if (_playerTriggered && _inputs.pressInteract)
             {
                 _animation.SetBool("Begin", true);
                 _animation.SetBool("Enabled", true);
@@ -41,7 +41,7 @@ public class Flag : MonoBehaviour
             _animation.SetBool("Enabled", true);
         }
 
-        if (_playerTriggered && _inputs.interact)
+        if (_playerTriggered && _inputs.pressInteract)
         {
             GameManager.instance._flags[_idFlag] = 1;
             SetCheckpoint();
@@ -55,7 +55,7 @@ public class Flag : MonoBehaviour
 
     void SetCheckpoint()
     {
-        _inputs.interact = false;
+        _inputs.pressInteract = false;
         Scene _currentScene = SceneManager.GetActiveScene();
         GameManager.instance._checkpointScene = _currentScene.buildIndex;
         GameManager.instance._direction = _direction;

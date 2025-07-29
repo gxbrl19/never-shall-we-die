@@ -182,7 +182,6 @@ public class UIManager : MonoBehaviour
     void SkillControl()
     {
         _fire.fillAmount = _player.timeAirCut / _player.timeForSkills;
-        _air.fillAmount = _player.timeTornado / _player.timeForSkills;
         _water.fillAmount = _player.timeWaterSpin / _player.timeForSkills;
     }
 

@@ -123,7 +123,7 @@ public class DialogueSystem : MonoBehaviour
                 state = STATE.DISABLED;
                 currentText = 0;
                 finished = false;
-                _input.interact = false;
+                _input.pressInteract = false;
                 _player.EnabledControls();
                 if (_navigator != null) { _navigator.NextState(); }
                 if (_blacksmith != null) { _blacksmith.NextState(); }

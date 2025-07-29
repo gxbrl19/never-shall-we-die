@@ -51,7 +51,7 @@ public class CrewItem : MonoBehaviour
         }
 
         //verifica o input
-        if (_input.interact && _triggered)
+        if (_input.pressInteract && _triggered)
         {
             DisableItem();
             Invoke("NewItem", 0.5f); //da um delay para a animação de novo equipamento

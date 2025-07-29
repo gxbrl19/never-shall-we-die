@@ -5,37 +5,47 @@ using UnityEngine;
 public class Wind : MonoBehaviour
 {
     private bool _playerIn = false;
-    private BuoyancyEffector2D _effect;    
+    private BuoyancyEffector2D _effect;
     private PlayerInputs _input;
 
-    private void Awake() {        
+    private void Awake()
+    {
         _input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInputs>();
         _effect = GetComponent<BuoyancyEffector2D>();
     }
 
-    private void Start() {
+    private void Start()
+    {
         _effect.enabled = false;
     }
 
-    private void Update() {
-        if (_playerIn) { 
-            if (_input.isParachuting) {
+    private void Update()
+    {
+        if (_playerIn)
+        {
+            if (_input.pressParachute)
+            {
                 _effect.enabled = true;
             }
-            else {
+            else
+            {
                 _effect.enabled = false;
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Player") {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
             _playerIn = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.tag == "Player") {
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
             _playerIn = false;
             _effect.enabled = false;
         }

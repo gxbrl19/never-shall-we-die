@@ -9,15 +9,15 @@ public class PlayerInputs : MonoBehaviour
     private float _vertical;
     private float _horizontal_r;
     private float _vertical_r;
-    private bool _jumpPressed;
+    private bool _pressJump;
     private bool _jumpHeld;
     private bool _pressRoll;
     private bool _isAttacking;
     private bool _isFireCuting;
     private bool _isSliding;
-    private bool _isParachuting;
-    private bool _isGrabing;
-    private bool _interact;
+    private bool _pressParachute;
+    private bool _pressGrab;
+    private bool _pressInteract;
     private float rawInput;
     private Player _player;
     private PlayerAudio _audio;
@@ -51,10 +51,10 @@ public class PlayerInputs : MonoBehaviour
         set { _vertical_r = value; }
     }
 
-    public bool jumpPressed
+    public bool pressJump
     {
-        get { return _jumpPressed; }
-        set { _jumpPressed = value; }
+        get { return _pressJump; }
+        set { _pressJump = value; }
     }
 
     public bool jumpHeld
@@ -87,22 +87,22 @@ public class PlayerInputs : MonoBehaviour
         set { _isSliding = value; }
     }
 
-    public bool isParachuting
+    public bool pressParachute
     {
-        get { return _isParachuting; }
-        set { _isParachuting = value; }
+        get { return _pressParachute; }
+        set { _pressParachute = value; }
     }
 
-    public bool isGrabing
+    public bool pressGrab
     {
-        get { return _isGrabing; }
-        set { _isGrabing = value; }
+        get { return _pressGrab; }
+        set { _pressGrab = value; }
     }
 
-    public bool interact
+    public bool pressInteract
     {
-        get { return _interact; }
-        set { _interact = value; }
+        get { return _pressInteract; }
+        set { _pressInteract = value; }
     }
     #endregion
 
@@ -189,10 +189,10 @@ public class PlayerInputs : MonoBehaviour
         if (_player.isGrounded || _collision._onWall || _player.onClimbing || _player.onWater || _player.isGriding && !_player.isDoubleJumping)
         {
             if (callback.started)
-                _jumpPressed = true;
+                _pressJump = true;
 
             if (!_player.onWater)
-                _player.playerMovement.canDoubleJump = true;
+                _player.playerMovement.canDoubleJump = _player.playerMovement.currentStamina > 0f && !_player.playerMovement.isExhausted;
 
             _jumpHeld = callback.performed;
         }
@@ -202,6 +202,7 @@ public class PlayerInputs : MonoBehaviour
             {
                 _player.isDoubleJumping = true;
                 _player.playerMovement.canDoubleJump = false;
+                _player.playerMovement.StaminaConsumption(1.3f);
             }
         }
     }
@@ -213,19 +214,19 @@ public class PlayerInputs : MonoBehaviour
 
         if (_callback.started && !_player.canGrab)
         {
-            _interact = true;
-            _isGrabing = false;
+            _pressInteract = true;
+            _pressGrab = false;
         }
         else if (_callback.started && _player.canGrab)
         {
-            _isGrabing = true;
-            _interact = false;
+            _pressGrab = true;
+            _pressInteract = false;
         }
 
         if (_callback.canceled)
         {
-            _interact = false;
-            _isGrabing = false;
+            _pressInteract = false;
+            _pressGrab = false;
         }
     }
 
@@ -270,25 +271,26 @@ public class PlayerInputs : MonoBehaviour
         if (_player.isDead || !_player.isGrounded || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onWater || _player.onHit || _player.isGrabing || _player.isRolling || _player.isSliding || _player.canMove == false)
             return;
 
-        if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots))
+        if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots) && _player.playerMovement.currentStamina > 0f && !_player.playerMovement.isExhausted)
         {
             _isSliding = true;
             _audio.PlaySlide();
+            _player.playerMovement.StaminaConsumption(1.5f);
         }
     }
 
     public void ParachuteButton(InputAction.CallbackContext callback)
     {
-        if (_player.isDead || _player.isGrounded || _collision._onWall || _player.onClimbing || _player.onWater || _player.isGriding && !_player.isDoubleJumping) return;
+        if (_player.isDead || _player.isGrounded || _collision._onWall || _player.onClimbing || _player.onWater || _player.isGriding) return;
 
-        if (callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Parachute))
+        if (callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Parachute) && _player.playerMovement.currentStamina > 0f && !_player.playerMovement.isExhausted)
         {
-            _isParachuting = true;
+            _pressParachute = true;
             _audio.PlayParachute();
         }
-        else if (_player.isGrounded || callback.canceled)
+        else if (callback.canceled)
         {
-            _isParachuting = false;
+            _pressParachute = false;
         }
     }
 
@@ -328,9 +330,9 @@ public class PlayerInputs : MonoBehaviour
     public void OnHit()
     {
         isAttacking = false;
-        isGrabing = false;
+        pressGrab = false;
         isFireCuting = false;
-        isParachuting = false;
+        pressParachute = false;
         _player.isHealing = false;
 
         horizontal = 0f;

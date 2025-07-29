@@ -47,19 +47,12 @@ public class Player : MonoBehaviour
     [BoxGroup("Components")] public Transform _aircutPoint;
     [HideInInspector] public float aircutMana;
 
-    //Tornado
-    [HideInInspector] public bool inTornado;
-    [HideInInspector] public float timeTornado;
-    [BoxGroup("GameObjects")] public WindSpin _tornado;
-    [BoxGroup("Components")] public Transform _tornadoPoint;
-    private float tornadoMana;
-
     //States
     [HideInInspector] public bool canMove = true;
     [HideInInspector] public bool canGrab;
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool isJumping;
-    public bool isDoubleJumping;
+    [HideInInspector] public bool isDoubleJumping;
     [HideInInspector] public bool isHealing;
     [HideInInspector] public bool isRolling;
     [HideInInspector] public bool isGrabing;
@@ -95,17 +88,16 @@ public class Player : MonoBehaviour
 
         waterSpinMana = 4f;
         aircutMana = 4f;
-        tornadoMana = 4f;
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.AirCut)) { PlayerSkills.instance.skills.Add(Skills.AirCut); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.Tornado)) { PlayerSkills.instance.skills.Add(Skills.Tornado); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.WaterSpin)) { PlayerSkills.instance.skills.Add(Skills.WaterSpin); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.FireGem)) { PlayerSkills.instance.skills.Add(Skills.FireGem); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.AirGem)) { PlayerSkills.instance.skills.Add(Skills.AirGem); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.WaterGem)) { PlayerSkills.instance.skills.Add(Skills.WaterGem); }
     }
 
     void Start()
@@ -115,7 +107,6 @@ public class Player : MonoBehaviour
 
         timeForSkills = 3f;
         timeAirCut = timeForSkills;
-        timeTornado = timeForSkills;
         timeWaterSpin = timeForSkills;
 
         if (_scriptablePosition.SceneTransition)
@@ -137,7 +128,6 @@ public class Player : MonoBehaviour
     {
         //contagem das skills
         timeAirCut += Time.deltaTime;
-        timeTornado += Time.deltaTime;
         timeWaterSpin += Time.deltaTime;
     }
 
@@ -174,13 +164,14 @@ public class Player : MonoBehaviour
 
     void OnParachute()
     {
-        if (playerInputs.isParachuting)
+        if (playerInputs.pressParachute && playerMovement.currentStamina > 0f)
         {
             rb.drag = speedParachute;
+            playerMovement.StaminaConsumption(.04f);
         }
         else
         {
-            playerInputs.isParachuting = false;
+            playerInputs.pressParachute = false;
             rb.drag = normalFallSpeed;
         }
     }
@@ -243,14 +234,6 @@ public class Player : MonoBehaviour
         playerHealth.ManaConsumption(aircutMana);
     }
 
-    public void Tornado() //chamado na animação de Tornado
-    {
-        if (isDead || !canMove) { return; }
-
-        Instantiate(_tornado.gameObject, _tornadoPoint.position, _tornadoPoint.rotation);
-        playerHealth.ManaConsumption(tornadoMana);
-    }
-
     void WaterSpin()
     {
         if (isDead || !canMove)
@@ -287,7 +270,6 @@ public class Player : MonoBehaviour
 
         if (isSliding && ((timeSlide < limitSlide) || hitSlide)) //_hitSlide verifica se ainda tem GroundLayer em cima
         {
-
             DisableControls(); ;
             timeSlide += Time.deltaTime;
             if (playerMovement.playerDirection < 0) { rb.velocity = Vector2.left * slideForce; }

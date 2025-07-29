@@ -44,7 +44,7 @@ public class Door : MonoBehaviour
 
     private void Update()
     {
-        if (_playerTriggered && _input.interact)
+        if (_playerTriggered && _input.pressInteract)
         {
             if (_locked)
             {

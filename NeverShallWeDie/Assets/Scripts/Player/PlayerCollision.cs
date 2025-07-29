@@ -77,7 +77,7 @@ public class PlayerCollision : MonoBehaviour
         }
 
         //
-        if (_player.canGrab && _input.isGrabing)
+        if (_player.canGrab && _input.pressGrab)
         {
             _box = _hit.collider.gameObject;
             _player.isGrabing = true;
@@ -85,7 +85,7 @@ public class PlayerCollision : MonoBehaviour
             _box.GetComponent<FixedJoint2D>().enabled = true;
             _box.GetComponent<FixedJoint2D>().connectedBody = this.GetComponent<Rigidbody2D>();
         }
-        else if (!_input.isGrabing || !_player.canGrab)
+        else if (!_input.pressGrab || !_player.canGrab)
         {
             _player.isGrabing = false;
             _box.GetComponent<Rigidbody2D>().mass = 500f;
@@ -122,7 +122,7 @@ public class PlayerCollision : MonoBehaviour
         if ((!_upRay && _downRay) && !_player.onWater)
         {
             _onWall = true;
-            _input.isParachuting = false;
+            _input.pressParachute = false;
         }
 
         if (_onWall)
@@ -166,7 +166,7 @@ public class PlayerCollision : MonoBehaviour
                 return;
             }
 
-            if (_input.isParachuting == true) { _input.isParachuting = false; } //cancela o parachute
+            if (_input.pressParachute == true) { _input.pressParachute = false; } //cancela o parachute
 
             _player.EnterInWater();
         }

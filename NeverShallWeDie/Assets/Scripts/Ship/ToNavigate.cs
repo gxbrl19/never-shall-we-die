@@ -21,10 +21,10 @@ public class ToNavigate : MonoBehaviour
         //verifica se a bandeira do navio está hasteada
         if (GameManager.instance._flags[0] == 1) { _collider.enabled = true; } else { _collider.enabled = false; }
 
-        if (_playerTriggered && _input.interact)
+        if (_playerTriggered && _input.pressInteract)
         {
             _playerTriggered = false;
-            _input.interact = false;
+            _input.pressInteract = false;
             UIManager.instance.ActivePanelNavigate();
         }
     }

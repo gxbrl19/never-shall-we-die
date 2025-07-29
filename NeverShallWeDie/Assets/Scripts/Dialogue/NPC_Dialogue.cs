@@ -18,11 +18,11 @@ public class NPC_Dialogue : MonoBehaviour
 
     void Update()
     {
-        if (_playerTriggered && _input.interact)
+        if (_playerTriggered && _input.pressInteract)
         {
             _dialogueSystem.Next();
             _player.DisableControls();
-            _input.interact = false;
+            _input.pressInteract = false;
             _playerTriggered = false;
         }
     }

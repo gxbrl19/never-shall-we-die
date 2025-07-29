@@ -53,7 +53,7 @@ public class PlayerAnimations : MonoBehaviour
         _animation.SetBool("DoubleJump", _player.isDoubleJumping);
 
         //Parachute
-        _animation.SetBool("IsParachuting", _input.isParachuting);
+        _animation.SetBool("IsParachuting", _input.pressParachute);
 
         //WallSlide
         _animation.SetBool("IsWalling", _collision._onWall);

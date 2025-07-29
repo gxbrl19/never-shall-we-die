@@ -14,7 +14,7 @@ public class UpgradeShip : MonoBehaviour
     Animator _animation;
     [SerializeField] Transform _body;
     [SerializeField] Transform _workPosition;
-    [SerializeField] Transform  _initialPosition;
+    [SerializeField] Transform _initialPosition;
 
     bool _walk;
     bool _return;
@@ -31,10 +31,10 @@ public class UpgradeShip : MonoBehaviour
     void Update()
     {
 
-        if (_playerTriggered && _input.interact)
+        if (_playerTriggered && _input.pressInteract)
         {
             _playerTriggered = false;
-            _input.interact = false;
+            _input.pressInteract = false;
             VerifyProjects(); //desabilita o projeto que já foi feito
             UIManager.instance.ActivePanelShip();
         }

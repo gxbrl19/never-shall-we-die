@@ -33,9 +33,9 @@ public class AncientStone : MonoBehaviour
 
     void Update()
     {
-        if (_playerTriggered && _inputs.interact)
+        if (_playerTriggered && _inputs.pressInteract)
         {
-            _inputs.interact = false;
+            _inputs.pressInteract = false;
             _collider.enabled = false;
             GameManager.instance._ancientStones[_idStone] = 1;
             _animation.SetBool("Starting", true);

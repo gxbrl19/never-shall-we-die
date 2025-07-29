@@ -27,7 +27,7 @@ public class ExitShip : MonoBehaviour
     {
         //verifica se a bandeira do navio está hasteada
         if (GameManager.instance._flags[0] == 1) { _collider.enabled = true; } else { _collider.enabled = false; }
-        if (_triggered && _input.interact) { Exit(); }
+        if (_triggered && _input.pressInteract) { Exit(); }
     }
 
     void Exit()
@@ -38,7 +38,7 @@ public class ExitShip : MonoBehaviour
 
         if (SceneExists("Scenes/" + _nextSceneName))
         {
-            _input.interact = false;
+            _input.pressInteract = false;
             UIManager.instance.FadeIn();
             Invoke("GetNextScene", .5f);
         }

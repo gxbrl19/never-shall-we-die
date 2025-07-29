@@ -22,10 +22,10 @@ public class BuyMap : MonoBehaviour
     {
         VerifyMap(); //verifica se já tem o mapa e desabilita o collider
 
-        if (_playerTriggered && _input.interact)
+        if (_playerTriggered && _input.pressInteract)
         {
             _playerTriggered = false;
-            _input.interact = false;
+            _input.pressInteract = false;
             UIManager.instance._mapPrice = _price;
             UIManager.instance._mapBuyId = _mapID;
             UIManager.instance.ActivePanelBuyMap();

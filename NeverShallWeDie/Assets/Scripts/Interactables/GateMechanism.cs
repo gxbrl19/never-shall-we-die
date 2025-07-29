@@ -19,26 +19,26 @@ public class GateMechanism : MonoBehaviour
 
     private void Update()
     {
-        if (_triggered && _input.interact)
+        if (_triggered && _input.pressInteract)
         {
             if (GameManager.instance._gateMechanism == 0)
             {
                 Debug.Log("Parece estar quebrado");
                 //TODO: mensagem que os sistema está quebrado
-                _input.interact = false;
+                _input.pressInteract = false;
                 return;
             }
             if (GameManager.instance._gateMechanism == 1 && GameManager.instance._gateBoss == 0)
             {
                 GameManager.instance._gateBoss = 1;
                 _animation.SetBool("Ok", true); //conserta o mecanismo
-                _input.interact = false;
+                _input.pressInteract = false;
                 return;
             }
             if (GameManager.instance._gateMechanism == 1 && GameManager.instance._gateBoss == 1)
             {
                 _gateBoss.EnabledGate(); //abre o portão
-                _input.interact = false;
+                _input.pressInteract = false;
             }
         }
     }

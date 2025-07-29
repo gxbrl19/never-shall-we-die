@@ -19,22 +19,23 @@ public class PlayerMovement : MonoBehaviour
     private float jumpForce = 16f;
     private float jumpHoldForce = 1.7f;
     private float jumpHoldDuration = 0.17f;
-    public bool canDoubleJump = false;
+    [HideInInspector] public bool canDoubleJump = false;
     private float doubleJumpForce = 30f;
     private float jumpTime;
     private float ghostDuration = 0.15f;
     private float ghostTime;
 
+    //Stamina
+    [HideInInspector] public float maxStamina = 5f;
+    public float currentStamina;
+    [HideInInspector] public bool isExhausted = false; //se zerar a stamina
+    private float staminaCooldown = 1f;
+    private float rechargeStamina = 1f;
+    private float lastStaminaTime = -Mathf.Infinity;
+
     //Roll
     private bool canRoll = true;
     private float rollForce = 13f;
-    private float staminaToRoll = 1.1f;
-    [HideInInspector] public float maxStamina = 5f;
-    [HideInInspector] public float currentStamina;
-    private float staminaCooldown = 1f;
-    private float rechargeStamina = 1f;
-    [HideInInspector] public bool isExhausted = false; //se zerar a stamina
-    private float lastRollTime = -Mathf.Infinity;
 
     //Slope
     private float slopeCheckDistance = 1f;
@@ -86,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Time.time > lastRollTime + staminaCooldown && currentStamina < maxStamina)
+        if (Time.time > lastStaminaTime + staminaCooldown && currentStamina < maxStamina)
         {
             currentStamina += rechargeStamina * Time.deltaTime;
 
@@ -113,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
         OnRoll();
     }
 
+    #region Move
     void PhysicsCheck()
     {
         if (!player.isDead)
@@ -126,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
             if ((leftFoot || rightFoot) && !bridgeHit && !player.onClimbing) //encostou no chão
             {
                 player.isGrounded = true;
-                player.playerInputs.isParachuting = false;
+                player.playerInputs.pressParachute = false;
                 player.isDoubleJumping = false;
             }
 
@@ -150,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
             player.rb.gravityScale = initialGravity;
         }
     }
-
+    #endregion
 
     void CheckMove()
     {
@@ -203,6 +205,7 @@ public class PlayerMovement : MonoBehaviour
         player.playerAnimations.yVelocity = Mathf.Abs(yVelocity);
     }
 
+    #region Slope
     void CheckSlope()
     {
         Vector2 _checkPos = transform.position - new Vector3(0.0f, colliderSize.y / 2);
@@ -262,13 +265,15 @@ public class PlayerMovement : MonoBehaviour
             player.rb.sharedMaterial = player._noFrictionMaterial;
         }
     }
+    #endregion
 
+    #region Jump
     void JumpControl()
     {
-        if (player.playerInputs.jumpPressed && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isRolling) //pulo comum
+        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isRolling) //pulo comum
         {
             player.isJumping = true;
-            player.playerInputs.jumpPressed = false;
+            player.playerInputs.pressJump = false;
 
             player.rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
@@ -281,18 +286,18 @@ public class PlayerMovement : MonoBehaviour
         else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isRolling)
         {
             player.isDoubleJumping = false;
-            player.playerInputs.jumpPressed = false;
+            player.playerInputs.pressJump = false;
 
             player.rb.velocity = Vector2.zero;
             player.rb.AddForce(Vector2.up * doubleJumpForce, ForceMode2D.Impulse);
             player.playerAudio.PlayJump();
         }
-        else if (player.playerInputs.jumpPressed && player.onWater && canSwin && !player.playerCollision._onWall) // na água
+        else if (player.playerInputs.pressJump && player.onWater && canSwin && !player.playerCollision._onWall) // na água
         {
             if (player.playerCollision._outWaterHit && player.playerCollision._inWaterHit)
             {
                 player.isJumping = true;
-                player.playerInputs.jumpPressed = false;
+                player.playerInputs.pressJump = false;
                 player.rb.velocity = Vector2.zero;
                 player.rb.AddForce(Vector2.up * jumpOutWater, ForceMode2D.Impulse);
                 jumpTime = Time.time + jumpHoldDuration;
@@ -306,18 +311,18 @@ public class PlayerMovement : MonoBehaviour
                 canSwin = false;
             }
         }
-        else if (player.playerInputs.jumpPressed && player.playerInputs.vertical <= -0.3f && !player.onClimbing) // pulo por baixo da plataforma
+        else if (player.playerInputs.pressJump && player.playerInputs.vertical <= -0.3f && !player.onClimbing) // pulo por baixo da plataforma
         {
             PassThroughBridge();
         }
-        else if (player.playerInputs.jumpPressed && player.playerCollision._onWall && !player.isGrounded && !player.onWater) // pulo parede
+        else if (player.playerInputs.pressJump && player.playerCollision._onWall && !player.isGrounded && !player.onWater) // pulo parede
         {
             player.isJumping = true;
-            player.playerInputs.jumpPressed = false;
+            player.playerInputs.pressJump = false;
 
             player.rb.AddForce(new Vector2((jumpForce + 2f) * -playerDirection, jumpForce + 7f), ForceMode2D.Impulse);
         }
-        else if (player.playerInputs.jumpPressed && (player.onClimbing || player.isGriding) && (TouchingVine() || TouchingLadder() || TouchingGrid())) //pulo da LADDER ou VINE
+        else if (player.playerInputs.pressJump && (player.onClimbing || player.isGriding) && (TouchingVine() || TouchingLadder() || TouchingGrid())) //pulo da LADDER ou VINE
         {
             FinishClimb();
             FinishGrid();
@@ -342,8 +347,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        player.playerInputs.jumpPressed = false;
+        player.playerInputs.pressJump = false;
     }
+    #endregion
 
     void BlockMove() //verifica se está no ar e tira a gravidade do player
     {
@@ -367,6 +373,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    #region Stamina
+    public void StaminaConsumption(float consume)
+    {
+        lastStaminaTime = Time.time;
+
+        if (currentStamina < consume)
+        {
+            currentStamina = 0f;
+            isExhausted = true; //entra em exaustão
+        }
+        else
+        {
+            currentStamina -= consume;
+        }
+    }
+    #endregion
+
     #region Roll
     void OnRoll()
     {
@@ -384,17 +407,7 @@ public class PlayerMovement : MonoBehaviour
 
         player.isRolling = true;
         player.playerInputs.pressRoll = false;
-        lastRollTime = Time.time;
-
-        if (currentStamina < staminaToRoll)
-        {
-            currentStamina = 0f;
-            isExhausted = true; //entra em exaustão
-        }
-        else
-        {
-            currentStamina -= staminaToRoll;
-        }
+        StaminaConsumption(1.1f);
 
         Vector2 direction = player.playerMovement.playerDirection < 0 ? Vector2.left : Vector2.right;
         player.rb.velocity = direction * rollForce;
@@ -423,7 +436,7 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator SwimControl()
     {
         yield return new WaitForSeconds(swinLimit);
-        player.playerInputs.jumpPressed = false;
+        player.playerInputs.pressJump = false;
         canSwin = true;
     }
     #endregion
