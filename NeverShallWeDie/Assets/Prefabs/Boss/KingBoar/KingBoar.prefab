@@ -206,16 +206,18 @@ MonoBehaviour:
       Data3: -1046982240
       Data4: -140031906
     Path: event:/sfx/gameplay/SFX_COMBAT_king_boar_death_01
-  meleeRange: 2
-  moveSpeed: 5
-  trunkCooldown: 1.2
-  attackCooldown: 1.5
+  attackCooldown: 2
+  minionCooldown: 25
+  meleeRange: 4
+  distanceToPlayer: 0
+  spikePrefab: {fileID: 7461815092132374738, guid: cf4a2d0da2c88ba459a137a58a9fd6d6, type: 3}
+  minionPrefab: {fileID: 6225380674925314573, guid: bddd0ecaca8198347b6ef5d8c2eb7b3c, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   spikePoint: {fileID: 2767968365365502128}
-  spikePrefab: {fileID: 7461815092132374738, guid: cf4a2d0da2c88ba459a137a58a9fd6d6, type: 3}
-  attackTimer: 0
+  boarMinionRight: {fileID: 0}
+  boarMinionLeft: {fileID: 0}
   gruntSFX:
     Guid:
       Data1: 1789714676

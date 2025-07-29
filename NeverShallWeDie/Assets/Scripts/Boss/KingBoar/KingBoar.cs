@@ -4,27 +4,29 @@ using FMODUnity;
 public class KingBoar : BossBase
 {
     private enum State { Intro, Idle, Walk, LaunchSpike, TrunkAttack, MinionAttack, Dead }
+    private State currentState = State.Intro;
 
     [Header("Stats")]
-    [SerializeField] private float meleeRange = 2f;
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float trunkCooldown = 1.2f;
-    [SerializeField] private float attackCooldown = 1.5f;
-    private float distanceToPlayer;
-    [SerializeField] private LayerMask groundLayer;
-
-    [Header("Attacks")]
-    [SerializeField] private Transform spikePoint;
+    private bool introPlayed = false;
+    private float moveSpeed = 5f;
+    [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private float minionCooldown = 25f;
+    private float attackTimer = 0f;
+    private float minionTimer = 0f;
+    [SerializeField] private float meleeRange = 4f;
+    [SerializeField] private float distanceToPlayer;
+    private int direction;
 
     [Header("Prefabs")]
     [SerializeField] private Transform spikePrefab;
+    [SerializeField] private GameObject minionPrefab;
 
-    private State currentState = State.Intro;
+    [Header("References")]
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform spikePoint;
+    [SerializeField] private Transform boarMinionRight;
+    [SerializeField] private Transform boarMinionLeft;
 
-    [SerializeField] private float attackTimer = 0f;
-    private float swordTimer = 0f;
-
-    private bool introPlayed = false;
     private Player player;
     private Transform playerPosition;
 
@@ -63,7 +65,7 @@ public class KingBoar : BossBase
         if (currentState != State.Intro)
         {
             attackTimer += Time.deltaTime;
-            swordTimer += Time.deltaTime;
+            minionTimer += Time.deltaTime;
         }
     }
 
@@ -81,22 +83,36 @@ public class KingBoar : BossBase
             case State.Idle:
                 rb.velocity = Vector2.zero;
                 animator.SetBool("Walk", false);
+
+                if (distanceToPlayer > meleeRange)
+                    ChangeState(State.Walk);
+
                 break;
 
             case State.Walk:
+                if (distanceToPlayer <= meleeRange)
+                    ChangeState(State.Idle);
+
                 MoveTowardsPlayer();
                 break;
 
             case State.LaunchSpike:
-                SpikeAttack();
+                rb.velocity = Vector2.zero;
+                animator.Play("SpikeAttack");
+                attackTimer = 0f;
                 break;
 
             case State.TrunkAttack:
-                TrunkAttack();
+                rb.velocity = Vector2.zero;
+                animator.Play("TrunkAttack");
+                attackTimer = 0f;
                 break;
 
             case State.MinionAttack:
-                MinionAttack();
+                rb.velocity = Vector2.zero;
+                animator.Play("MinionAttack");
+                attackTimer = 0f;
+                minionTimer = 0f;
                 break;
 
             case State.Dead:
@@ -107,36 +123,13 @@ public class KingBoar : BossBase
         {
             FlipSprite();
 
-            if (distanceToPlayer <= meleeRange)
-            {
-                if (swordTimer >= trunkCooldown)
-                    ChangeState(State.TrunkAttack);
-                else
-                    ChangeState(State.Idle);
-            }
-            else
-            {
-                if (attackTimer >= attackCooldown)
-                {
-                    int randomAttack = Random.Range(0, 2);
+            if (minionTimer >= minionCooldown)
+                ChangeState(State.MinionAttack);
 
-                    switch (randomAttack)
-                    {
-                        case 0:
-                            ChangeState(State.LaunchSpike);
-                            break;
-                        case 1:
-                            ChangeState(State.MinionAttack);
-                            break;
-                        case 2:
-                            break;
-                    }
-                }
-                else
-                {
-                    ChangeState(State.Walk);
-                }
-            }
+            if (distanceToPlayer <= meleeRange && attackTimer >= attackCooldown)
+                ChangeState(State.TrunkAttack);
+            else if (distanceToPlayer > meleeRange && attackTimer >= attackCooldown)
+                ChangeState(State.LaunchSpike);
         }
     }
 
@@ -154,30 +147,33 @@ public class KingBoar : BossBase
         rb.velocity = new Vector2(dir.x * moveSpeed, rb.velocity.y);
     }
 
-    private void SpikeAttack()
-    {
-        rb.velocity = Vector2.zero;
-        animator.Play("SpikeAttack");
-    }
-
     public void ThrowSpike() //chamado na animação spike
     {
         float launchForce = 1f;
         Vector2 velocity = (playerPosition.position - transform.position) * launchForce;
-        Transform bomb = Instantiate(spikePrefab, spikePoint.position, Quaternion.identity);
-        bomb.GetComponent<Rigidbody2D>().velocity = velocity;
+
+        Transform spike = Instantiate(spikePrefab, spikePoint.position, Quaternion.identity);
+        spike.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x + 4f, velocity.y - 0.5f);
+
+        Transform spike2 = Instantiate(spikePrefab, spikePoint.position, Quaternion.identity);
+        spike2.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x, velocity.y - 0.5f);
+
+        Transform spike3 = Instantiate(spikePrefab, spikePoint.position, Quaternion.identity);
+        spike3.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity.x - 4f, velocity.y - 0.5f);
     }
 
-    private void TrunkAttack()
+    public void MinionAttack() //chamado na animação
     {
-        rb.velocity = Vector2.zero;
-        animator.Play("TrunkAttack");
-        swordTimer = 0f;
-    }
-
-    private void MinionAttack()
-    {
-        animator.Play("MinionAttack");
+        if (direction == 1)
+        {
+            GameObject minion = Instantiate(minionPrefab, boarMinionLeft.position, Quaternion.identity);
+            minion.GetComponent<BoarMinion>().minionDirection = direction;
+        }
+        else
+        {
+            GameObject minion = Instantiate(minionPrefab, boarMinionRight.position, Quaternion.identity);
+            minion.GetComponent<BoarMinion>().minionDirection = direction;
+        }
     }
 
     private void FlipSprite()
@@ -187,9 +183,11 @@ public class KingBoar : BossBase
         Vector2 dir = (playerPosition.position - transform.position).normalized;
 
         if (dir.x > 0.1f)
-            transform.localScale = new Vector3(1, 1, 1);
+            direction = 1;
         else if (dir.x < -0.1f)
-            transform.localScale = new Vector3(-1, 1, 1);
+            direction = -1;
+
+        transform.localScale = new Vector3(direction, 1, 1);
     }
 
     public void StartIntro() //chamado do trigger

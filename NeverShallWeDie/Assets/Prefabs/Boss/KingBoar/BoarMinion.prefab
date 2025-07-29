@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8256217016403278680}
   - component: {fileID: 5633248370580284101}
   - component: {fileID: 3290155203062384522}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BoarMinion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38810d2044d8f34e8f073a6869b61fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _direction: 0
+  minionDirection: 0
 --- !u!114 &3290155203062384522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,5 +169,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 5
-  _hitEffect: {fileID: 0}
+  attackPower: 2
+  hitEffect: {fileID: 0}

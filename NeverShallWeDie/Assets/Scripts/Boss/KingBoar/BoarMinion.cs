@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BoarMinion : MonoBehaviour
 {
-    [HideInInspector] public float _direction;
-    Vector2 _speed = new Vector2(8f, 0f);
+    [HideInInspector] public float minionDirection;
+    Vector2 minionSpeed = new Vector2(8f, 0f);
 
     void Start()
     {
-        transform.localScale = new Vector2(-_direction, 1f);
+        transform.localScale = new Vector2(-minionDirection, 1f);
     }
 
     void FixedUpdate()
     {
-        transform.Translate(_speed * _direction * Time.deltaTime);
+        transform.Translate(minionSpeed * minionDirection * Time.deltaTime);
     }
 }
