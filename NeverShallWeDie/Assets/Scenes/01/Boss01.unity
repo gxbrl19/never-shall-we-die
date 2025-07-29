@@ -5957,22 +5957,31 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
+  _intro: 1
   _equipments: 
   _skills: 
+  _inventory: 
+  _currentHP: 0
+  _currentMP: 0
   _hpMax: 25
   _mpMax: 15
-  _katanaLevel: 0
   _gold: 0
-  _qtdPotentium: 0
-  _qtdOrb: 0
+  _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
+  _ancientStones: 
   _airCutblock: 
   _barriersLever: 
+  _secret: 
+  _secretDrawbridge: 0
+  _drawbridge: 0
   _gateMechanism: 0
   _gateBoss: 0
   _shipUpgrades: 
+  _shipPosX: 0
+  _shipPosY: 0
+  _lastPier: 
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -5981,14 +5990,11 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
-  _hammer: 0
-  _grimoire: 0
   _bestiary: 
   _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
-  _keys: 
   _doors: 
   _inputType: 
 --- !u!4 &291602084
@@ -12276,6 +12282,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1057110331 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7974561495492405567, guid: 7a1fac06a42696941a98c783e17c90c9, type: 3}
+  m_PrefabInstance: {fileID: 8653747621995585801}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23cea62319236cd43ae182d2a6890999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1087899208
 GameObject:
   m_ObjectHideFlags: 0
@@ -15836,9 +15853,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a927c5fcdb9573c4d893353b7993a2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossController: {fileID: 2086455876}
-  _bossDoor: {fileID: 1840211399}
-  _bossDoor2: {fileID: 1242314782}
+  bossBase: {fileID: 1057110331}
+  introDelay: 0
+  bossDoor: {fileID: 1840211399}
+  bossDoor2: {fileID: 1242314782}
 --- !u!61 &1949417713
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15992,17 +16010,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2086455876 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6646260321002561890, guid: 7a1fac06a42696941a98c783e17c90c9, type: 3}
-  m_PrefabInstance: {fileID: 8653747621995585801}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f7906d9ec006a346bcc4802132394fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2095755094
 GameObject:
   m_ObjectHideFlags: 0
@@ -16344,11 +16351,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7974561495492405567, guid: 7a1fac06a42696941a98c783e17c90c9, type: 3}
+      propertyPath: bossDoor
+      value: 
+      objectReference: {fileID: 1840211399}
+    - target: {fileID: 7974561495492405567, guid: 7a1fac06a42696941a98c783e17c90c9, type: 3}
+      propertyPath: bossDoor2
+      value: 
+      objectReference: {fileID: 1242314782}
+    - target: {fileID: 7974561495492405567, guid: 7a1fac06a42696941a98c783e17c90c9, type: 3}
+      propertyPath: wantedBoss
+      value: 
+      objectReference: {fileID: 634800256}
+    - target: {fileID: 7974561495492405567, guid: 7a1fac06a42696941a98c783e17c90c9, type: 3}
       propertyPath: _boarMinionLeft
       value: 
       objectReference: {fileID: 2050830217}
     - target: {fileID: 7974561495492405567, guid: 7a1fac06a42696941a98c783e17c90c9, type: 3}
+      propertyPath: minionSpawnLeft
+      value: 
+      objectReference: {fileID: 2050830217}
+    - target: {fileID: 7974561495492405567, guid: 7a1fac06a42696941a98c783e17c90c9, type: 3}
       propertyPath: _boarMinionRight
+      value: 
+      objectReference: {fileID: 828323561}
+    - target: {fileID: 7974561495492405567, guid: 7a1fac06a42696941a98c783e17c90c9, type: 3}
+      propertyPath: minionSpawnRight
       value: 
       objectReference: {fileID: 828323561}
     m_RemovedComponents: []

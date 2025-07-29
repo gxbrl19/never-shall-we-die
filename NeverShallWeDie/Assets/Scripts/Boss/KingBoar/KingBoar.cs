@@ -1,192 +1,239 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class KingBoar : MonoBehaviour
+public class KingBoar : BossBase
 {
-    [Header("Spikes")]
-    [SerializeField] Transform _shootPoint;
-    [SerializeField] Transform _spike;
-    float _launchForce = 1f;
-    Vector2 _velocitySpike;
+    private enum State { Intro, Idle, Walk, LaunchSpike, TrunkAttack, MinionAttack, Dead }
 
-    [Header("BoarMinion")]
-    [SerializeField] GameObject _boarMinion;
-    [SerializeField] Transform _boarMinionLeft;
-    [SerializeField] Transform _boarMinionRight;
+    [Header("Stats")]
+    [SerializeField] private float meleeRange = 2f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float trunkCooldown = 1.2f;
+    [SerializeField] private float attackCooldown = 1.5f;
+    private float distanceToPlayer;
+    [SerializeField] private LayerMask groundLayer;
+
+    [Header("Attacks")]
+    [SerializeField] private Transform spikePoint;
+
+    [Header("Prefabs")]
+    [SerializeField] private Transform spikePrefab;
+
+    private State currentState = State.Intro;
+
+    [SerializeField] private float attackTimer = 0f;
+    private float swordTimer = 0f;
+
+    private bool introPlayed = false;
+    private Player player;
+    private Transform playerPosition;
 
     [Header("FMOD Events")]
-    [SerializeField] EventReference grunt;
-    [SerializeField] EventReference attack;
-    [SerializeField] EventReference minethrow;
-    [SerializeField] EventReference callbackup;
+    [SerializeField] private EventReference gruntSFX;
+    [SerializeField] private EventReference attackSFX;
+    [SerializeField] private EventReference spikeThrowSFX;
+    [SerializeField] private EventReference callBackupSFX;
 
-    float _speed = 2f;
-    float _timer;
-    float _timerMinions;
-    int _numAttack;
-    int _direction;
-    bool _intro;
-    bool _starter = false;
-    bool _attacking = false;
-    bool _walking = false;
-    BossController _bossController;
-    AudioSource _audioSource;
-    Player _player;
-
-
-    void Awake()
+    protected override void Awake()
     {
-        _bossController = GetComponent<BossController>();
-        _audioSource = GetComponent<AudioSource>();
-        _player = FindObjectOfType<Player>();
+        base.Awake();
+
+        playerPosition = FindObjectOfType<Player>().GetComponent<Transform>();
+        player = FindObjectOfType<Player>();
     }
 
     void Start()
     {
-        _timer = 0f;
-    }
-
-    void Update()
-    {
-        if (_intro) //tremida na camera
+        if (GameManager.instance._bosses[bossId] == 1)
         {
-            CinemachineShake.instance.ShakeCamera(3f, 0.15f);
+            gameObject.SetActive(false);
             return;
         }
 
-        if (!_starter || _bossController._isDead || _player.isDead) { return; }
-
-        Flip();
-
-        _walking = VerifyDistancePlayer();
-        _bossController._animation.SetBool("Walk", _walking);
-
-        //attack
-        if (!_attacking) { _timer += Time.deltaTime; }
-        if (_timer > 1.3f) { AttackController(); }
-
-        _velocitySpike = (_player.transform.position - transform.position) * _launchForce;
-        _timerMinions += Time.deltaTime;
     }
 
-    private void FixedUpdate()
+    protected override void Update()
     {
-        if (_walking && !_attacking)
+        base.Update();
+
+        if (isDead) return;
+
+        HandleState();
+
+        if (currentState != State.Intro)
         {
-            transform.Translate(new Vector3(_speed * _direction, 0f, 0f) * Time.deltaTime);
+            attackTimer += Time.deltaTime;
+            swordTimer += Time.deltaTime;
         }
     }
 
-    bool VerifyDistancePlayer()
+    private void HandleState()
     {
-        float distance = Vector3.Distance(_player.transform.position, transform.position);
-        return distance > 5; //se a distancia do Boss pro Player for maior que 5 habilita o Walk
-    }
+        if (playerPosition == null || isDead) return;
 
-    #region Attacks
-    void AttackController()
-    {
-        if (_attacking) { return; }
-        //_numAttack = Random.Range((int)_range.x, (int)_range.y);
+        distanceToPlayer = Vector2.Distance(transform.position, playerPosition.position);
 
-        _attacking = true;
-
-        if (!_walking && _timerMinions < 10f) { _numAttack = 1; }
-        else if (_walking && _timerMinions < 10f) { _numAttack = 2; }
-        else if (_walking && _timerMinions >= 10f) { _numAttack = 3; }
-        _bossController._animation.SetInteger("Index", _numAttack);
-        _bossController._animation.SetBool("Attacking", true);
-    }
-
-    public void SpikeAttack() //chamado na animação Attack02
-    {
-        PlayMineThrow();
-
-        Transform spike = Instantiate(_spike, _shootPoint.position, Quaternion.identity);
-        spike.GetComponent<Rigidbody2D>().velocity = new Vector2(_velocitySpike.x + 4f, _velocitySpike.y - 0.5f);
-
-        Transform spike2 = Instantiate(_spike, _shootPoint.position, Quaternion.identity);
-        spike2.GetComponent<Rigidbody2D>().velocity = new Vector2(_velocitySpike.x, _velocitySpike.y - 0.5f);
-
-        Transform spike3 = Instantiate(_spike, _shootPoint.position, Quaternion.identity);
-        spike3.GetComponent<Rigidbody2D>().velocity = new Vector2(_velocitySpike.x - 4f, _velocitySpike.y - 0.5f);
-    }
-
-    public void MinionAttack() //chamado na animação Attack03
-    {
-        PlayCallBackup();
-
-        if (_direction == 1)
+        switch (currentState)
         {
-            GameObject minion = Instantiate(_boarMinion, _boarMinionLeft.position, Quaternion.identity);
-            minion.GetComponent<BoarMinion>()._direction = _direction;
-        }
-        else
-        {
-            GameObject minion = Instantiate(_boarMinion, _boarMinionRight.position, Quaternion.identity);
-            minion.GetComponent<BoarMinion>()._direction = _direction;
+            case State.Intro:
+                break;
+
+            case State.Idle:
+                rb.velocity = Vector2.zero;
+                animator.SetBool("Walk", false);
+                break;
+
+            case State.Walk:
+                MoveTowardsPlayer();
+                break;
+
+            case State.LaunchSpike:
+                SpikeAttack();
+                break;
+
+            case State.TrunkAttack:
+                TrunkAttack();
+                break;
+
+            case State.MinionAttack:
+                MinionAttack();
+                break;
+
+            case State.Dead:
+                break;
         }
 
-        _timerMinions = 0f;
-    }
-
-    public void FinishAttack() //chamado nas animações
-    {
-        _attacking = false;
-        _timer = 0f;
-        _bossController._animation.SetBool("Attacking", false);
-    }
-    #endregion
-
-    void Flip()
-    {
-        if (_bossController._isDead || _attacking) { return; }
-
-        if (transform.position.x < _player.transform.position.x)
+        if (currentState == State.Idle || currentState == State.Walk)
         {
-            transform.localScale = new Vector2(1, 1);
-            _direction = 1;
-        }
-        else if (transform.position.x > _player.transform.position.x)
-        {
-            transform.localScale = new Vector2(-1, 1);
-            _direction = -1;
+            FlipSprite();
+
+            if (distanceToPlayer <= meleeRange)
+            {
+                if (swordTimer >= trunkCooldown)
+                    ChangeState(State.TrunkAttack);
+                else
+                    ChangeState(State.Idle);
+            }
+            else
+            {
+                if (attackTimer >= attackCooldown)
+                {
+                    int randomAttack = Random.Range(0, 2);
+
+                    switch (randomAttack)
+                    {
+                        case 0:
+                            ChangeState(State.LaunchSpike);
+                            break;
+                        case 1:
+                            ChangeState(State.MinionAttack);
+                            break;
+                        case 2:
+                            break;
+                    }
+                }
+                else
+                {
+                    ChangeState(State.Walk);
+                }
+            }
         }
     }
 
-    public void Intro() //chamado na animação de Intro
+    private void ChangeState(State newState)
     {
-        _intro = true;
-        PlayGrunt();
+        if (currentState == newState) return;
+        currentState = newState;
     }
 
-    public void FinishIntro() //chamado na animação de Intro
+    private void MoveTowardsPlayer()
     {
-        _intro = false;
-        _player.EnabledControls();
-        _starter = true;
-        BackgroundMusic.instance.MusicControl(7);
+        animator.SetBool("Walk", true);
+
+        Vector2 dir = (playerPosition.position - transform.position).normalized;
+        rb.velocity = new Vector2(dir.x * moveSpeed, rb.velocity.y);
     }
 
-    public void PlayGrunt()
+    private void SpikeAttack()
     {
-        RuntimeManager.PlayOneShot(grunt);
+        rb.velocity = Vector2.zero;
+        animator.Play("SpikeAttack");
     }
 
-    public void PlayAttack() //chamado na animação de ataque
+    public void ThrowSpike() //chamado na animação spike
     {
-        RuntimeManager.PlayOneShot(attack);
+        float launchForce = 1f;
+        Vector2 velocity = (playerPosition.position - transform.position) * launchForce;
+        Transform bomb = Instantiate(spikePrefab, spikePoint.position, Quaternion.identity);
+        bomb.GetComponent<Rigidbody2D>().velocity = velocity;
     }
 
-    public void PlayMineThrow()
+    private void TrunkAttack()
     {
-        RuntimeManager.PlayOneShot(minethrow);
+        rb.velocity = Vector2.zero;
+        animator.Play("TrunkAttack");
+        swordTimer = 0f;
     }
 
-    public void PlayCallBackup()
+    private void MinionAttack()
     {
-        RuntimeManager.PlayOneShot(callbackup);
+        animator.Play("MinionAttack");
     }
+
+    private void FlipSprite()
+    {
+        if (currentState == State.TrunkAttack) return;
+
+        Vector2 dir = (playerPosition.position - transform.position).normalized;
+
+        if (dir.x > 0.1f)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (dir.x < -0.1f)
+            transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    public void StartIntro() //chamado do trigger
+    {
+        if (introPlayed) return;
+
+        introPlayed = true;
+        ChangeState(State.Intro);
+        animator.SetBool("Intro", true);
+    }
+
+    public void StartBoss() //chamado na animação de intro2
+    {
+        ActivateBossUI();
+        ChangeState(State.Idle);
+        player.EnabledControls();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+    }
+
+    public void FinishAttack() //chamado nas animações de ataque
+    {
+        rb.velocity = Vector2.zero;
+        attackTimer = 0f;
+        ChangeState(State.Idle);
+    }
+
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+        ChangeState(State.Dead);
+    }
+
+    RaycastHit2D Raycast(Vector2 rayDirection, float length, LayerMask layerMask) //raio para detectar o chão
+    {
+        Vector2 point = new Vector2(transform.position.x, transform.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(point, rayDirection, length, layerMask);
+        Color color = hit ? Color.red : Color.green;
+        Debug.DrawRay(point, rayDirection * length, color);
+        return hit;
+    }
+
+    // SFX - chamados na animação
+    public void AudioGrunt() => RuntimeManager.PlayOneShot(gruntSFX);
+    public void AudioTrunk() => RuntimeManager.PlayOneShot(attackSFX);
+    public void AudioSpikeThrow() => RuntimeManager.PlayOneShot(spikeThrowSFX);
+    public void AudioCallBackup() => RuntimeManager.PlayOneShot(callBackupSFX);
 }
