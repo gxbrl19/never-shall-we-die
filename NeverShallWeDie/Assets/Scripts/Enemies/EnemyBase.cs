@@ -44,11 +44,6 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         }
     }
 
-    protected virtual void Update()
-    {
-
-    }
-
     public virtual void TakeHit(int power, Vector2 hitDirection, float knockbackForce = 5f)
     {
         if (isHurt || isDead || enemyName == "Beetboom" || enemyName == "Barrel Monkey") return;

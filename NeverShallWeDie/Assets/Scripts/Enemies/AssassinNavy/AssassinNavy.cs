@@ -30,7 +30,7 @@ public class AssassinNavy : EnemyBase
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
-    protected override void Update()
+    private void Update()
     {
         if (isDead || isHurt || player == null) return;
 

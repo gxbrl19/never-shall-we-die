@@ -30,7 +30,7 @@ public class SpearNavy : EnemyBase
         player = FindObjectOfType<Player>().GetComponent<Transform>();
     }
 
-    protected override void Update()
+    private void Update()
     {
         if (isDead || isHurt || player == null) return;
 

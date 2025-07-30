@@ -25,7 +25,7 @@ public class AxeNavy : EnemyBase
         player = FindAnyObjectByType<Player>();
     }
 
-    protected override void Update()
+    private void Update()
     {
         if (isDead || player == null) return;
 

@@ -25,7 +25,7 @@ public class Crawler : EnemyBase
         SetDirectionVector();
     }
 
-    protected override void Update()
+    private void Update()
     {
         if (isDead) return;
 

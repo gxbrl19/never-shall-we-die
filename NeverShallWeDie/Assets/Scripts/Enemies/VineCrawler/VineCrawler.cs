@@ -15,7 +15,7 @@ public class VineCrawler : EnemyBase
         base.Awake();
     }
 
-    protected override void Update()
+    private void Update()
     {
         if (isDead) return;
 

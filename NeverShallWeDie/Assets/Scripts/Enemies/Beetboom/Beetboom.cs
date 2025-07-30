@@ -26,10 +26,8 @@ public class Beetboom : EnemyBase
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
-
         if (isDead || player == null) return;
 
         animator.SetBool("Run", currentState == State.Chase);

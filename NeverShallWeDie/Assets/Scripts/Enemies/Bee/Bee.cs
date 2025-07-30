@@ -38,7 +38,7 @@ public class BeeEnemy : EnemyBase
         player = GameObject.FindGameObjectWithTag("AttackPoint");
     }
 
-    protected override void Update()
+    private void Update()
     {
         if (isDead)
         {

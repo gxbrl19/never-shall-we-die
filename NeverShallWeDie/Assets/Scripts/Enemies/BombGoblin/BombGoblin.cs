@@ -38,7 +38,7 @@ public class BombGoblin : EnemyBase
         direction = (int)transform.localScale.x;
     }
 
-    protected override void Update()
+    private void Update()
     {
         if (isDead) return;
 

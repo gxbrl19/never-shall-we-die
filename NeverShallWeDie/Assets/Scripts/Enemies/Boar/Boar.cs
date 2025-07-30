@@ -18,7 +18,7 @@ public class Boar : EnemyBase
         currentState = State.Patrol;
     }
 
-    protected override void Update()
+    private void Update()
     {
         if (isDead) return;
 
