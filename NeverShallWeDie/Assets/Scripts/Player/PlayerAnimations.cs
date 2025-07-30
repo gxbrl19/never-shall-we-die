@@ -63,7 +63,7 @@ public class PlayerAnimations : MonoBehaviour
 
         //Grid
         _animation.SetBool("IsGriding", _player.isGriding);
-        _animation.SetBool("GridMove", xVelocity != 0 || yVelocity != 0);
+        _animation.SetBool("GridMove", xVelocity != 0 || yVelocity != 0 && _player.isGriding);
 
         //Swim
         if (_player.onWater) { _animation.SetBool("IsSwimming", true); } else { _animation.SetBool("IsSwimming", false); }
@@ -71,8 +71,8 @@ public class PlayerAnimations : MonoBehaviour
         //Water Spin
         _animation.SetBool("WaterSpin", _player.inWaterSpin);
 
-        //Slide
-        _animation.SetBool("IsSliding", _input.isSliding);
+        //Dash
+        _animation.SetBool("IsDashing", _player.isDashing);
 
         //Grab
         _animation.SetBool("IsGrabing", _player.isGrabing);

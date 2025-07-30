@@ -974,7 +974,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: Slide
+        m_MethodName: Dash
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   _powerPickup: {fileID: 9056689326667320452}
   _dust: {fileID: 2433915885738270050, guid: e76119983bc3ad942bb43f70e9f7a201, type: 3}
   _recoveryEffect: {fileID: 8334568750684773814, guid: af97633c12733e54cb5109b0d6ba86ba, type: 3}
-  isSliding: 0
+  isDashing: 0
   timeForSkills: 0
   timeWaterSpin: 0
   inWaterSpin: 0
@@ -1159,6 +1159,7 @@ MonoBehaviour:
   isBackdashing: 0
   isGrabing: 0
   isGriding: 0
+  canDash: 0
   isDead: 0
   onSlope: 0
   onBridge: 0

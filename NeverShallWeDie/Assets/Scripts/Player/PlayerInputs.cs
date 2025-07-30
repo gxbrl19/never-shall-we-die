@@ -14,7 +14,7 @@ public class PlayerInputs : MonoBehaviour
     private bool _pressBackdash;
     private bool _isAttacking;
     private bool _isFireCuting;
-    private bool _isSliding;
+    private bool _pressDash;
     private bool _pressParachute;
     private bool _pressGrab;
     private bool _pressInteract;
@@ -81,10 +81,10 @@ public class PlayerInputs : MonoBehaviour
         set { _pressBackdash = value; }
     }
 
-    public bool isSliding
+    public bool pressDash
     {
-        get { return _isSliding; }
-        set { _isSliding = value; }
+        get { return _pressDash; }
+        set { _pressDash = value; }
     }
 
     public bool pressParachute
@@ -232,7 +232,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Healing(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || !_player.isGrounded || _player.onHit || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onWater || _player.canMove == false || _collision._onWall || _player.isGrabing || _player.isBackdashing || _player.isSliding)
+        if (_player.isDead || !_player.isGrounded || _player.onHit || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onWater || _player.canMove == false || _collision._onWall || _player.isGrabing || _player.isBackdashing || _player.isDashing)
             return;
 
         if (_callback.started)
@@ -248,7 +248,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void SwordAttack(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.isBackdashing || _player.isSliding || _player.canMove == false)
+        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.isBackdashing || _player.isDashing || _player.canMove == false)
             return;
 
         if (_callback.started && !_player.onWater && PlayerEquipment.instance.equipments.Contains(Equipments.Katana))
@@ -266,16 +266,15 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void Slide(InputAction.CallbackContext _callback)
+    public void Dash(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || !_player.isGrounded || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onWater || _player.onHit || _player.isGrabing || _player.isBackdashing || _player.isSliding || _player.canMove == false)
+        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onWater || _player.onHit || _player.isGrabing || _player.isBackdashing || _player.isDashing || _player.canMove == false)
             return;
 
         if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots) && _player.playerMovement.currentStamina > 0f && !_player.playerMovement.isExhausted)
         {
-            _isSliding = true;
+            _pressDash = true;
             _audio.PlaySlide();
-            _player.playerMovement.StaminaConsumption(1.5f);
         }
     }
 
@@ -313,7 +312,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Backdash(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || !_player.isGrounded || _player.canMove == false || _player.onHit || _isAttacking || _player.onWater || Time.timeScale == 0f)
+        if (_player.isDead || !_player.isGrounded || _player.canMove == false || _player.onHit || _player.isDashing || _isAttacking || _player.onWater || Time.timeScale == 0f)
             return;
 
         if (_callback.started && !_player.canGrab)
@@ -332,6 +331,7 @@ public class PlayerInputs : MonoBehaviour
         isAttacking = false;
         pressGrab = false;
         isFireCuting = false;
+        pressDash = false;
         pressParachute = false;
         _player.isHealing = false;
 

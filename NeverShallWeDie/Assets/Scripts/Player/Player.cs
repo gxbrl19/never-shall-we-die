@@ -26,11 +26,10 @@ public class Player : MonoBehaviour
     private float speedParachute = 20f;
 
     //Slide
-    [HideInInspector] public bool isSliding = false;
-    bool hitSlide = false;
-    float timeSlide = 0f;
-    float limitSlide = 0.5f;
-    float slideForce = 15f;
+    [HideInInspector] public bool isDashing = false;
+    float dashTimer = 0f;
+    float dashCooldown = .5f;
+    float dashForce = 15f;
 
     //Skills
     [HideInInspector] public float timeForSkills;
@@ -57,6 +56,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isBackdashing;
     [HideInInspector] public bool isGrabing;
     [HideInInspector] public bool isGriding;
+    [HideInInspector] public bool canDash;
     [HideInInspector] public bool isDead = false;
     [HideInInspector] public bool onSlope;
     [HideInInspector] public bool onBridge;
@@ -126,6 +126,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        dashTimer += Time.deltaTime;
         //contagem das skills
         timeAirCut += Time.deltaTime;
         timeWaterSpin += Time.deltaTime;
@@ -133,8 +134,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        CheckSlide();
-        OnSlide();
+        OnDash();
         OnParachute();
 
         //Special Attacks
@@ -263,56 +263,40 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    #region Slide
-    void OnSlide()
+    #region Dash
+    void OnDash()
     {
-        if (playerInputs.isSliding && !isSliding) { isSliding = true; }
+        canDash = playerMovement.currentStamina > 0f && !playerMovement.isExhausted && dashTimer >= dashCooldown;
 
-        if (isSliding && ((timeSlide < limitSlide) || hitSlide)) //_hitSlide verifica se ainda tem GroundLayer em cima
+        if (playerInputs.pressDash && canDash && !isDashing)
         {
-            DisableControls(); ;
-            timeSlide += Time.deltaTime;
-            if (playerMovement.playerDirection < 0) { rb.velocity = Vector2.left * slideForce; }
-            else if (playerMovement.playerDirection > 0) { rb.velocity = Vector2.right * slideForce; }
+            isDashing = true;
+            playerInputs.pressDash = false;
+            playerMovement.StaminaConsumption(1.3f);
+            dashTimer = 0f;
+            rb.velocity = Vector2.zero;
         }
-        else if (isSliding && timeSlide >= limitSlide)
-        {
-            if (!hitSlide) //se ainda estiver em baixo do GroundLayer continua o Slide
-            {
-                timeSlide = 0f;
-                playerInputs.isSliding = false;
-                isSliding = false;
-                rb.velocity = Vector2.zero;
-                EnabledControls();
-            }
-        }
+
+        if (isDashing)
+            ExecuteDash();
     }
 
-    public void CheckSlide()
+    void ExecuteDash()
     {
-        hitSlide = false;
-        Vector2 position = new Vector2(transform.position.x, transform.position.y - 1f);
-        RaycastHit2D _slideHit = RaycastSlide(position, Vector2.up, 2f, _groundLayer);
-
-        if (_slideHit)
-        {
-            hitSlide = true;
-        }
+        rb.gravityScale = 0f;
+        Vector2 dir = playerMovement.playerDirection < 0 ? Vector2.left : Vector2.right;
+        rb.AddForce(dir * dashForce, ForceMode2D.Impulse);
     }
 
+    public void FinishDash() //chamado também na animação de Dash
+    {
+        rb.gravityScale = 8f;
+        isDashing = false;
+    }
     #endregion
 
     public void CreateRecoveryEffect()
     {
         Instantiate(_recoveryEffect, transform.position, Quaternion.identity);
-    }
-
-    RaycastHit2D RaycastSlide(Vector2 offset, Vector2 rayDirection, float length, LayerMask layerMask)
-    {
-        Vector2 _position = new Vector2(offset.x, offset.y + 0.10f);
-        RaycastHit2D _hit = Physics2D.Raycast(_position, rayDirection, length, layerMask);
-        Color _color = _hit ? Color.green : Color.white;
-        Debug.DrawRay(_position, rayDirection * length, _color);
-        return _hit;
     }
 }

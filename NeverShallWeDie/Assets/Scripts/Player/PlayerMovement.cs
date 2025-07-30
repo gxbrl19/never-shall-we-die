@@ -274,7 +274,7 @@ public class PlayerMovement : MonoBehaviour
     #region Jump
     void JumpControl()
     {
-        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isBackdashing) //pulo comum
+        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isBackdashing && !player.isDashing) //pulo comum
         {
             player.isJumping = true;
             player.playerInputs.pressJump = false;
@@ -287,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
             player.playerAudio.PlayJump();
             CreateDust(1);
         }
-        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isBackdashing)
+        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isBackdashing && !player.isDashing)
         {
             player.isDoubleJumping = false;
             player.playerInputs.pressJump = false;
@@ -413,7 +413,7 @@ public class PlayerMovement : MonoBehaviour
         StaminaConsumption(1.1f);
         backdashTimer = 0f;
 
-        Vector2 direction = player.playerMovement.playerDirection < 0 ? Vector2.left : Vector2.right;
+        Vector2 direction = playerDirection < 0 ? Vector2.left : Vector2.right;
         player.rb.velocity = -direction * backdashForce;
     }
 
