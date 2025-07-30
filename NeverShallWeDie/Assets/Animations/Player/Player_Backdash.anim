@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_Roll
+  m_Name: Player_Backdash
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,25 +21,19 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -145002716983159489, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - time: 0.083333336
-      value: {fileID: -2659912704815166259, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+      value: {fileID: -6965754790058340778, guid: e58b8dd98954bf040a85ebf94f768b66, type: 3}
+    - time: 0.055555556
+      value: {fileID: 1772141772249315598, guid: e58b8dd98954bf040a85ebf94f768b66, type: 3}
+    - time: 0.11111111
+      value: {fileID: 6302253794898530897, guid: e58b8dd98954bf040a85ebf94f768b66, type: 3}
     - time: 0.16666667
-      value: {fileID: -7923293956143381933, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - time: 0.25
-      value: {fileID: 4772261587656693653, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - time: 0.33333334
-      value: {fileID: 682027023112345549, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - time: 0.41666666
-      value: {fileID: 2313663199123428666, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - time: 0.5
-      value: {fileID: 3107221226782229343, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+      value: {fileID: -7235767404975708240, guid: e58b8dd98954bf040a85ebf94f768b66, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 12
+  m_SampleRate: 18
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -56,19 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -145002716983159489, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - {fileID: -2659912704815166259, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - {fileID: -7923293956143381933, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - {fileID: 4772261587656693653, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - {fileID: 682027023112345549, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - {fileID: 2313663199123428666, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
-    - {fileID: 3107221226782229343, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - {fileID: -6965754790058340778, guid: e58b8dd98954bf040a85ebf94f768b66, type: 3}
+    - {fileID: 1772141772249315598, guid: e58b8dd98954bf040a85ebf94f768b66, type: 3}
+    - {fileID: 6302253794898530897, guid: e58b8dd98954bf040a85ebf94f768b66, type: 3}
+    - {fileID: -7235767404975708240, guid: e58b8dd98954bf040a85ebf94f768b66, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5833333
+    m_StopTime: 0.22222222
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -89,14 +80,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlayRoll
+    functionName: PlayBackdash
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 682c69cd37afa5541b03431e86330846, type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5
-    functionName: FinishRoll
+  - time: 0.16666667
+    functionName: FinishBackdash
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

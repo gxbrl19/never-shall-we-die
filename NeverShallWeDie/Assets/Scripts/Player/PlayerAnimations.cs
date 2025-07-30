@@ -46,8 +46,8 @@ public class PlayerAnimations : MonoBehaviour
         //Attack
         _animation.SetBool("IsAttacking", _input.isAttacking);
 
-        //Dash
-        _animation.SetBool("IsRolling", _player.isRolling);
+        //Backdash
+        _animation.SetBool("IsBackdashing", _player.isBackdashing);
 
         //DoubleJump
         _animation.SetBool("DoubleJump", _player.isDoubleJumping);
