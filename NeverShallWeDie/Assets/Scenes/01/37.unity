@@ -655,6 +655,13 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  _texting:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!82 &70745961
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6663,67 +6670,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1001 &167631433
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4644543759711248985, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: _idBarrel
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 23.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -40.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543439, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_Name
-      value: Barrel (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
 --- !u!1 &239819003
 GameObject:
   m_ObjectHideFlags: 0
@@ -7023,67 +6969,6 @@ Transform:
   - {fileID: 1087899209}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &608493263
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4644543759711248985, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: _idBarrel
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 25.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -40.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543439, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_Name
-      value: Barrel
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
 --- !u!1 &654701003
 GameObject:
   m_ObjectHideFlags: 0
@@ -7117,8 +7002,7 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
-  _level: 0
-  _xp: 0
+  _intro: 1
   _equipments: 
   _skills: 
   _inventory: 
@@ -7127,11 +7011,11 @@ MonoBehaviour:
   _hpMax: 25
   _mpMax: 15
   _gold: 0
-  _upPoints: 0
   _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
+  _ancientStones: 
   _airCutblock: 
   _barriersLever: 
   _secret: 
@@ -7142,6 +7026,7 @@ MonoBehaviour:
   _shipUpgrades: 
   _shipPosX: 0
   _shipPosY: 0
+  _lastPier: 
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -11280,67 +11165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1746913485
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4644543759711248985, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: _idBarrel
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 22.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -40.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543434, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7307292371763543439, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
-      propertyPath: m_Name
-      value: Barrel (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ddc6e4cf665e9d148a7c523954d0fc43, type: 3}
 --- !u!1 &1849113040
 GameObject:
   m_ObjectHideFlags: 0
@@ -11671,9 +11495,6 @@ SceneRoots:
   - {fileID: 569487878}
   - {fileID: 1849113041}
   - {fileID: 1407301883}
-  - {fileID: 608493263}
-  - {fileID: 167631433}
-  - {fileID: 1746913485}
   - {fileID: 464805052}
   - {fileID: 1967415560}
   - {fileID: 880809858}
