@@ -49,8 +49,8 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         if (isHurt || isDead || enemyName == "Beetboom" || enemyName == "Barrel Monkey") return;
 
         isHurt = true;
-        Invoke("ResetHurt", .3f);
-        //rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
+        Invoke("ResetHurt", .2f);
+        rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
 
         TakeDamage(power);
     }
@@ -62,13 +62,15 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         CinemachineShake.instance.ShakeCamera(3f, 0.15f); //tremida na camera
 
         if (currentHealth <= 0)
-        {
             Die();
-        }
         else
-        {
-            RuntimeManager.PlayOneShot(hit);
-        }
+            OnHurt();
+    }
+
+    protected virtual void OnHurt()
+    {
+        //animator.SetTrigger("Hurt");
+        RuntimeManager.PlayOneShot(hit);
     }
 
     protected virtual void Die()

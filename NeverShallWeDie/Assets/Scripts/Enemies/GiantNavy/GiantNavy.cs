@@ -24,7 +24,7 @@ public class GiantNavy : EnemyBase
 
     private void Update()
     {
-        if (isDead || player == null) return;
+        if (isDead || isHurt || player == null) return;
 
         animator.SetBool("Run", currentState == State.Chase);
 

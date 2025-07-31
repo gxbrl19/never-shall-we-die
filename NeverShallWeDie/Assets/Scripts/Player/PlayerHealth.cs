@@ -84,7 +84,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!player.onHit || player.isDead) return;
 
-        playerInput.OnHit(); //cancela input
+        playerInput.CancelInputs();
         player.rb.velocity = Vector2.zero;
     }
 

@@ -50,21 +50,24 @@ public class AssassinNavy : EnemyBase
                 break;
 
             case State.Chase:
-                if (distance <= attackDistance && !isOnCooldown)
+                if (distance <= attackDistance)
                 {
-                    ChangeState(State.Attack);
-                    animator.SetTrigger("Attack");
-                    isOnCooldown = true;
-                    cooldownTimer = attackCooldown;
-                    rb.velocity = Vector2.zero;
+                    if (!isOnCooldown)
+                    {
+                        ChangeState(State.Attack);
+                        animator.SetTrigger("Attack");
+                        isOnCooldown = true;
+                        cooldownTimer = attackCooldown;
+                        rb.velocity = Vector2.zero;
+                    }
+                    else
+                    {
+                        ChangeState(State.Idle);
+                    }
                 }
 
                 if (!playerDetected)
                     ChangeState(State.Idle);
-                break;
-
-            case State.Attack:
-                // Espera o evento FinishAttack()
                 break;
 
             case State.Dashback:

@@ -164,13 +164,13 @@ public class PlayerMovement : MonoBehaviour
         float yVelocity = 0f;
         float horizontal = player.playerInputs.GetHorizontal();
 
-        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.playerInputs.isAttacking && !player.isHealing && !player.isRoll) //chão comum
+        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.playerInputs.pressAttack && !player.isHealing && !player.isRoll) //chão comum
         {
             xVelocity = speed * horizontal;
             yVelocity = 0.0f;
             player.rb.velocity = new Vector2(xVelocity, yVelocity);
         }
-        else if (player.isGrounded && player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing & !player.playerInputs.isAttacking) //diagonal
+        else if (player.isGrounded && player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing & !player.playerInputs.pressAttack) //diagonal
         {
             xVelocity = speed * slopeNormalPerp.x * -horizontal;
             yVelocity = speed * slopeNormalPerp.y * -horizontal;
@@ -260,7 +260,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.DrawRay(_hit.point, _hit.normal, Color.yellow);
         }
 
-        if (player.onSlope && (player.playerInputs.horizontal == 0.0f || player.onSlope && player.playerInputs.isAttacking || player.isHealing))
+        if (player.onSlope && (player.playerInputs.horizontal == 0.0f || player.onSlope && player.playerInputs.pressAttack || player.isHealing))
         {
             player.rb.sharedMaterial = player._frictionMaterial;
         }
@@ -360,7 +360,7 @@ public class PlayerMovement : MonoBehaviour
         if (player.isDead || !player.canMove)
             return;
 
-        if ((player.playerInputs.isAttacking && player.isGrounded && !player.onWater) || player.isHealing) { player.rb.velocity = Vector2.zero; }
+        if ((player.playerInputs.pressAttack && player.isGrounded && !player.onWater) || player.isHealing) { player.rb.velocity = Vector2.zero; }
 
         //para no ar
         if (player.playerInputs.isFireCuting)
@@ -642,7 +642,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.isFireCuting || player.inWaterSpin || player.playerInputs.isAttacking || player.isRoll)
+        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.isFireCuting || player.inWaterSpin || player.playerInputs.pressAttack || player.isRoll)
             return;
 
         if (player.isGrounded)

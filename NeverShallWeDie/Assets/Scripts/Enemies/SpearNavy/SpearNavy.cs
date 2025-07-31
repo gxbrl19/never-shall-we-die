@@ -19,6 +19,7 @@ public class SpearNavy : EnemyBase
     private float throwTimer = 0f;
     private bool isThrowing = false;
     private bool playerDetected = false;
+    private float direction;
 
     protected override void Awake()
     {
@@ -68,9 +69,6 @@ public class SpearNavy : EnemyBase
                 if (distanceToPlayerX > 0.2f)
                 {
                     rb.velocity = dir.normalized * moveSpeed;
-
-                    if (dir.x != 0)
-                        transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
                 }
                 else
                 {
@@ -101,6 +99,8 @@ public class SpearNavy : EnemyBase
                     ChangeState(State.Idle);
                 break;
         }
+
+        FlipTowardsPlayer();
 
         //corrige flutuação resetando a velocidade na vertical
         if (Mathf.Abs(rb.velocity.y) > 0.1f)
@@ -134,5 +134,16 @@ public class SpearNavy : EnemyBase
         animator.SetBool("Throw", false);
         isThrowing = false;
         ChangeState(State.Chase);
+    }
+
+    private void FlipTowardsPlayer()
+    {
+        if (player == null || currentState == State.Throw) return;
+
+        float dir = player.position.x - transform.position.x;
+        if (dir != 0)
+            direction = Mathf.Sign(dir);
+
+        transform.localScale = new Vector3(direction, 1, 1);
     }
 }

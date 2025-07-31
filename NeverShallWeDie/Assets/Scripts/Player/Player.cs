@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool canGrab;
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool isJumping;
+    [HideInInspector] public bool isAttacking;
     [HideInInspector] public bool isDoubleJumping;
     [HideInInspector] public bool isHealing;
     [HideInInspector] public bool isRoll;
@@ -90,7 +91,7 @@ public class Player : MonoBehaviour
         aircutMana = 4f;
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
@@ -126,6 +127,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        OnKatana();
+
         dashTimer += Time.deltaTime;
         //contagem das skills
         timeAirCut += Time.deltaTime;
@@ -156,11 +159,19 @@ public class Player : MonoBehaviour
         canMove = true;
     }
 
+    #region Katana
+    public void OnKatana()
+    {
+        if (playerInputs.pressAttack)
+            isAttacking = true;
+    }
     public void FinishAttack() //chamado na animação de ataque da katana
     {
-        playerInputs.isAttacking = false;
+        isAttacking = false;
+        playerInputs.pressAttack = false;
         rb.gravityScale = playerMovement.initialGravity;
     }
+    #endregion
 
     void OnParachute()
     {
@@ -239,7 +250,7 @@ public class Player : MonoBehaviour
         if (isDead || !canMove)
             return;
 
-        if (playerInputs.isAttacking && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
+        if (playerInputs.pressAttack && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
         {
             gameObject.layer = LayerMask.NameToLayer("WaterSpin");
             inWaterSpin = true;
@@ -258,7 +269,7 @@ public class Player : MonoBehaviour
     public void FinishWaterSpin() //chamado também na animação de Water Spin
     {
         inWaterSpin = false;
-        playerInputs.isAttacking = false;
+        playerInputs.pressAttack = false;
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
     #endregion

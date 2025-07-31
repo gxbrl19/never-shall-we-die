@@ -200,7 +200,7 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Platform")) { this.transform.parent = other.transform; }
 
         //cancela o jump ataque ao cair no chão
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) { _input.isAttacking = false; }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) { _input.pressAttack = false; }
     }
 
     private void OnCollisionExit2D(Collision2D other)

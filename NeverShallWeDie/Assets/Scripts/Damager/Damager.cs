@@ -16,7 +16,7 @@ public class Damager : MonoBehaviour
             if (enemy != null)
             {
                 Vector2 dir = (other.transform.position - playerPosition.position).normalized;
-                enemy.TakeHit(attackPower, dir, 6f); //knockback + dano
+                enemy.TakeHit(attackPower, dir, 7f); //knockback + dano
                 Instantiate(hitEffect, transform.position, transform.rotation);
             }
         }

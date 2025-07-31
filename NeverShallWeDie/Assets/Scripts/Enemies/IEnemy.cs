@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IEnemy
 {
-    void TakeHit(int power, Vector2 hitDirection, float knockbackForce = 5f);
+    void TakeHit(int power, Vector2 hitDirection, float knockbackForce = 7f);
     void TakeDamage(int amount);
 }
 

@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
-    private Player _player;
-    private PlayerInputs _input;
-    private PlayerCollision _collision;
-    private Animator _animation;
+    private Player player;
+    private Animator animator;
 
     [HideInInspector] public float xVelocity;
     [HideInInspector] public float yVelocity;
 
     void Start()
     {
-        _player = GetComponent<Player>();
-        _input = GetComponent<PlayerInputs>();
-        _animation = GetComponent<Animator>();
-        _collision = GetComponent<PlayerCollision>();
+        player = GetComponent<Player>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -28,110 +24,111 @@ public class PlayerAnimations : MonoBehaviour
     void AnimatorController()
     {
         //INTRO
-        _animation.SetBool("Intro", GameManager.instance._intro == 0);
+        animator.SetBool("Intro", GameManager.instance._intro == 0);
 
         //Idle
-        _animation.SetBool("IsGrounded", _player.isGrounded);
+        animator.SetBool("IsGrounded", player.isGrounded);
 
         //Fall
-        _animation.SetFloat("Fall", _player.rb.velocity.y);
+        if (!player.isDashing)
+            animator.SetFloat("Fall", player.rb.velocity.y);
 
         //Walk
-        _animation.SetFloat("Speed", Mathf.Abs(xVelocity));
+        animator.SetFloat("Speed", Mathf.Abs(xVelocity));
 
         //Climb
-        _animation.SetBool("IsClimbing", _player.onClimbing);
-        _animation.SetFloat("Vertical", Mathf.Abs(yVelocity));
+        animator.SetBool("IsClimbing", player.onClimbing);
+        animator.SetFloat("Vertical", Mathf.Abs(yVelocity));
 
         //Attack
-        _animation.SetBool("IsAttacking", _input.isAttacking);
+        animator.SetBool("IsAttacking", player.isAttacking);
 
         //Roll
-        _animation.SetBool("IsRolling", _player.isRoll);
+        animator.SetBool("IsRolling", player.isRoll);
 
         //DoubleJump
-        _animation.SetBool("DoubleJump", _player.isDoubleJumping);
+        animator.SetBool("DoubleJump", player.isDoubleJumping);
 
         //Parachute
-        _animation.SetBool("IsParachuting", _input.pressParachute);
+        animator.SetBool("IsParachuting", player.playerInputs.pressParachute);
 
         //WallSlide
-        _animation.SetBool("IsWalling", _collision._onWall);
+        animator.SetBool("IsWalling", player.playerCollision._onWall);
 
         //Healing
-        _animation.SetBool("Healing", _player.isHealing);
+        animator.SetBool("Healing", player.isHealing);
 
         //Grid
-        _animation.SetBool("IsGriding", _player.isGriding);
-        _animation.SetBool("GridMove", xVelocity != 0 || yVelocity != 0 && _player.isGriding);
+        animator.SetBool("IsGriding", player.isGriding);
+        animator.SetBool("GridMove", xVelocity != 0 || yVelocity != 0 && player.isGriding);
 
         //Swim
-        if (_player.onWater) { _animation.SetBool("IsSwimming", true); } else { _animation.SetBool("IsSwimming", false); }
+        if (player.onWater) { animator.SetBool("IsSwimming", true); } else { animator.SetBool("IsSwimming", false); }
 
         //Water Spin
-        _animation.SetBool("WaterSpin", _player.inWaterSpin);
+        animator.SetBool("WaterSpin", player.inWaterSpin);
 
         //Dash
-        _animation.SetBool("IsDashing", _player.isDashing);
+        animator.SetBool("IsDashing", player.isDashing);
 
         //Grab
-        _animation.SetBool("IsGrabing", _player.isGrabing);
+        animator.SetBool("IsGrabing", player.isGrabing);
 
-        if (_player.playerMovement.playerDirection == 1 && _input.horizontal > 0 && _player.isGrabing)
+        if (player.playerMovement.playerDirection == 1 && player.playerInputs.horizontal > 0 && player.isGrabing)
         {
-            _animation.SetBool("IsPulling", false); //puxar
-            _animation.SetBool("IsPushing", true); //empurrar
+            animator.SetBool("IsPulling", false); //puxar
+            animator.SetBool("IsPushing", true); //empurrar
         }
-        else if (_player.playerMovement.playerDirection == 1 && _input.horizontal < 0 && _player.isGrabing)
+        else if (player.playerMovement.playerDirection == 1 && player.playerInputs.horizontal < 0 && player.isGrabing)
         {
-            _animation.SetBool("IsPulling", true); //puxar
-            _animation.SetBool("IsPushing", false); //empurrar
+            animator.SetBool("IsPulling", true); //puxar
+            animator.SetBool("IsPushing", false); //empurrar
         }
-        else if (_player.playerMovement.playerDirection == -1 && _input.horizontal > 0 && _player.isGrabing)
+        else if (player.playerMovement.playerDirection == -1 && player.playerInputs.horizontal > 0 && player.isGrabing)
         {
-            _animation.SetBool("IsPulling", true); //puxar
-            _animation.SetBool("IsPushing", false); //empurrar
+            animator.SetBool("IsPulling", true); //puxar
+            animator.SetBool("IsPushing", false); //empurrar
         }
-        else if (_player.playerMovement.playerDirection == -1 && _input.horizontal < 0 && _player.isGrabing)
+        else if (player.playerMovement.playerDirection == -1 && player.playerInputs.horizontal < 0 && player.isGrabing)
         {
-            _animation.SetBool("IsPulling", false); //puxar
-            _animation.SetBool("IsPushing", true); //empurrar
+            animator.SetBool("IsPulling", false); //puxar
+            animator.SetBool("IsPushing", true); //empurrar
         }
         else
         {
-            _animation.SetBool("IsPulling", false); //puxar
-            _animation.SetBool("IsPushing", false); //empurrar
+            animator.SetBool("IsPulling", false); //puxar
+            animator.SetBool("IsPushing", false); //empurrar
         }
     }
 
     public void OnAirCut()
     {
-        _animation.SetBool("AirCut", true);
+        animator.SetBool("AirCut", true);
     }
 
     void StopAirCut()
     { //chamado na animação de Air Cut
-        _input.isFireCuting = false;
-        _animation.SetBool("AirCut", false);
+        player.playerInputs.isFireCuting = false;
+        animator.SetBool("AirCut", false);
     }
 
     public void OnHealing()
     {
-        _animation.SetTrigger("Healing");
+        animator.SetTrigger("Healing");
     }
 
     public void OnDead()
     {
-        _animation.SetTrigger("Dead");
+        animator.SetTrigger("Dead");
     }
 
     public void OnHit()
     {
-        _animation.SetTrigger("Hit");
+        animator.SetTrigger("Hit");
     }
 
     public void SetPowerPickup()
     {
-        _animation.SetTrigger("PowerPickup");
+        animator.SetTrigger("PowerPickup");
     }
 }
