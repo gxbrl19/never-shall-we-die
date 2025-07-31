@@ -7,7 +7,7 @@ public class PlayerAudio : MonoBehaviour
 {
     [SerializeField] EventReference katana;
     [SerializeField] EventReference jump;
-    [SerializeField] EventReference backdash;
+    [SerializeField] EventReference roll;
     [SerializeField] EventReference hit;
     [SerializeField] EventReference death;
     [SerializeField] EventReference watersplash;
@@ -48,9 +48,9 @@ public class PlayerAudio : MonoBehaviour
         RuntimeManager.PlayOneShot(jump);
     }
 
-    public void PlayBackdash() //animação
+    public void PlayRoll() //animação
     {
-        RuntimeManager.PlayOneShot(backdash);
+        RuntimeManager.PlayOneShot(roll);
     }
 
     public void PlayHit() //script

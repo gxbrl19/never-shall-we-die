@@ -33,11 +33,11 @@ public class PlayerMovement : MonoBehaviour
     private float rechargeStamina = 1f;
     private float lastStaminaTime = -Mathf.Infinity;
 
-    //Backdash
-    private bool canBackdash = true;
-    private float backdashForce = 13f;
-    private float backdashCooldown = .7f;
-    private float backdashTimer;
+    //Roll
+    private bool canRoll = true;
+    private float rollForce = 13f;
+    private float rollCooldown = .7f;
+    private float rollTimer;
 
     //Slope
     private float slopeCheckDistance = 1f;
@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        backdashTimer += Time.deltaTime;
+        rollTimer += Time.deltaTime;
 
         if (Time.time > lastStaminaTime + staminaCooldown && currentStamina < maxStamina)
         {
@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         OnWater();
         OnClimb();
         OnGrid();
-        OnBackdash();
+        OnRoll();
     }
 
     #region Move
@@ -164,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
         float yVelocity = 0f;
         float horizontal = player.playerInputs.GetHorizontal();
 
-        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.playerInputs.isAttacking && !player.isHealing && !player.isBackdashing) //chão comum
+        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.playerInputs.isAttacking && !player.isHealing && !player.isRoll) //chão comum
         {
             xVelocity = speed * horizontal;
             yVelocity = 0.0f;
@@ -274,7 +274,7 @@ public class PlayerMovement : MonoBehaviour
     #region Jump
     void JumpControl()
     {
-        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isBackdashing && !player.isDashing) //pulo comum
+        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isRoll && !player.isDashing) //pulo comum
         {
             player.isJumping = true;
             player.playerInputs.pressJump = false;
@@ -287,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
             player.playerAudio.PlayJump();
             CreateDust(1);
         }
-        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isBackdashing && !player.isDashing)
+        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isRoll && !player.isDashing)
         {
             player.isDoubleJumping = false;
             player.playerInputs.pressJump = false;
@@ -394,32 +394,32 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    #region Backdash
-    void OnBackdash()
+    #region Roll
+    void OnRoll()
     {
-        canBackdash = currentStamina > 0f && !isExhausted && backdashTimer >= backdashCooldown;
+        canRoll = currentStamina > 0f && !isExhausted && rollTimer >= rollCooldown;
 
-        if (player.playerInputs.pressBackdash && canBackdash && !player.isBackdashing)
+        if (player.playerInputs.pressRoll && canRoll && !player.isRoll)
         {
-            ExecuteBackdash();
+            ExecuteRoll();
         }
     }
 
-    private void ExecuteBackdash()
+    private void ExecuteRoll()
     {
         //gameObject.layer = LayerMask.NameToLayer("Invencible");
-        player.isBackdashing = true;
-        player.playerInputs.pressBackdash = false;
+        player.isRoll = true;
+        player.playerInputs.pressRoll = false;
         StaminaConsumption(1.1f);
-        backdashTimer = 0f;
+        rollTimer = 0f;
 
         Vector2 direction = playerDirection < 0 ? Vector2.left : Vector2.right;
-        player.rb.velocity = -direction * backdashForce;
+        player.rb.velocity = direction * rollForce;
     }
 
-    public void FinishBackdash() //chamado também na animação de Backdash
+    public void FinishRoll() //chamado também na animação de Roll
     {
-        player.isBackdashing = false;
+        player.isRoll = false;
         //gameObject.layer = LayerMask.NameToLayer("Player");
     }
     #endregion
@@ -642,7 +642,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.isFireCuting || player.inWaterSpin || player.playerInputs.isAttacking || player.isBackdashing)
+        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.isFireCuting || player.inWaterSpin || player.playerInputs.isAttacking || player.isRoll)
             return;
 
         if (player.isGrounded)

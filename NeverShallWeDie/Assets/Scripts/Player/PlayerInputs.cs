@@ -11,7 +11,7 @@ public class PlayerInputs : MonoBehaviour
     private float _vertical_r;
     private bool _pressJump;
     private bool _jumpHeld;
-    private bool _pressBackdash;
+    private bool _pressRoll;
     private bool _isAttacking;
     private bool _isFireCuting;
     private bool _pressDash;
@@ -75,10 +75,10 @@ public class PlayerInputs : MonoBehaviour
         set { _isFireCuting = value; }
     }
 
-    public bool pressBackdash
+    public bool pressRoll
     {
-        get { return _pressBackdash; }
-        set { _pressBackdash = value; }
+        get { return _pressRoll; }
+        set { _pressRoll = value; }
     }
 
     public bool pressDash
@@ -232,7 +232,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Healing(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || !_player.isGrounded || _player.onHit || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onWater || _player.canMove == false || _collision._onWall || _player.isGrabing || _player.isBackdashing || _player.isDashing)
+        if (_player.isDead || !_player.isGrounded || _player.onHit || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onWater || _player.canMove == false || _collision._onWall || _player.isGrabing || _player.isRoll || _player.isDashing)
             return;
 
         if (_callback.started)
@@ -248,7 +248,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void SwordAttack(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.isBackdashing || _player.isDashing || _player.canMove == false)
+        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.isRoll || _player.isDashing || _player.canMove == false)
             return;
 
         if (_callback.started && !_player.onWater && PlayerEquipment.instance.equipments.Contains(Equipments.Katana))
@@ -268,7 +268,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onWater || _player.onHit || _player.isGrabing || _player.isBackdashing || _player.isDashing || _player.canMove == false)
+        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onWater || _player.onHit || _player.isGrabing || _player.isRoll || _player.isDashing || _player.canMove == false)
             return;
 
         if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots) && _player.playerMovement.currentStamina > 0f && !_player.playerMovement.isExhausted)
@@ -295,7 +295,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void AirCutAttack(InputAction.CallbackContext _callback)
     {
-        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.onWater || _player.isBackdashing || _player.canMove == false)
+        if (_player.isDead || _isAttacking || _isFireCuting || Time.timeScale == 0f || _player.onClimbing || _collision._onWall || _player.onHit || _player.isGrabing || _player.onWater || _player.isRoll || _player.canMove == false)
             return;
 
         if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.FireGem))
@@ -310,19 +310,19 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void Backdash(InputAction.CallbackContext _callback)
+    public void Roll(InputAction.CallbackContext _callback)
     {
         if (_player.isDead || !_player.isGrounded || _player.canMove == false || _player.onHit || _player.isDashing || _isAttacking || _player.onWater || Time.timeScale == 0f)
             return;
 
         if (_callback.started && !_player.canGrab)
         {
-            _pressBackdash = true;
+            _pressRoll = true;
         }
 
         if (_callback.canceled)
         {
-            _pressBackdash = false;
+            _pressRoll = false;
         }
     }
 

@@ -160,9 +160,9 @@ public class PlayerCollision : MonoBehaviour
             if (other.gameObject.tag.Equals("Lava")) { Instantiate(_dropLava, position, other.transform.rotation); }
             else { Instantiate(_dropWater, position, other.transform.rotation); }
 
-            if (_player.isBackdashing)
+            if (_player.isRoll)
             {
-                _player.playerMovement.FinishBackdash(); //cancela o Roll ao entrar na água
+                _player.playerMovement.FinishRoll(); //cancela o Roll ao entrar na água
                 return;
             }
 
@@ -209,7 +209,7 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Platform")) { this.transform.parent = null; }
 
         //cancela o Roll ao sair do chão
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) { _player.playerMovement.FinishBackdash(); }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) { _player.playerMovement.FinishRoll(); }
     }
 
     private void OnDrawGizmos()
