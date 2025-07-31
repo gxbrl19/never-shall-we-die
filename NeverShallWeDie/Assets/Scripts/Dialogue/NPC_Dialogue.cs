@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class NPC_Dialogue : MonoBehaviour
 {
-    bool _playerTriggered;
-    DialogueSystem _dialogueSystem;
-    Player _player;
-    PlayerInputs _input;
+    bool playerTriggered;
+    DialogueSystem dialogueSystem;
+    SpriteRenderer spriteRenderer;
+    Player player;
+    PlayerInputs playerInput;
 
     void Awake()
     {
-        _dialogueSystem = GetComponentInChildren<DialogueSystem>();
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        _input = _player.GetComponent<PlayerInputs>();
+        dialogueSystem = GetComponentInChildren<DialogueSystem>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        playerInput = player.GetComponent<PlayerInputs>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        if (_playerTriggered && _input.pressInteract)
+        FlipTowardsPlayer();
+
+        if (playerTriggered && playerInput.pressInteract)
         {
-            _dialogueSystem.Next();
-            _player.DisableControls();
-            _input.pressInteract = false;
-            _playerTriggered = false;
+            dialogueSystem.Next();
+            player.DisableControls();
+            playerInput.pressInteract = false;
+            playerTriggered = false;
         }
     }
 
@@ -31,7 +35,7 @@ public class NPC_Dialogue : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
-            _playerTriggered = true;
+            playerTriggered = true;
         }
     }
 
@@ -39,7 +43,15 @@ public class NPC_Dialogue : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
-            _playerTriggered = false;
+            playerTriggered = false;
         }
+    }
+
+    private void FlipTowardsPlayer()
+    {
+        if (player == null) return;
+
+        float dir = player.transform.position.x - transform.position.x;
+        spriteRenderer.flipX = dir > 0 ? false : true;
     }
 }

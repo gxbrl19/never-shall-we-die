@@ -7,6 +7,7 @@ public class AxeNavy : EnemyBase
     [Header("Comportamento")]
     [SerializeField] Transform[] patrolPoints;
     [SerializeField] LayerMask playerLayer;
+    [SerializeField] LayerMask groundLayer;
 
     float patrolSpeed = 2f;
     float chaseSpeed = 3f;
@@ -60,10 +61,25 @@ public class AxeNavy : EnemyBase
 
     private void DetectPlayer()
     {
+        playerDetected = false;
+
         Vector2 origin = transform.position;
-        Vector2 center = origin + new Vector2(detectionBoxSize.x / (3f * transform.localScale.x), 0f); //desloca o centro para a direita (2f seria a metade)
-        playerDetected = Physics2D.OverlapBox(center, detectionBoxSize, 0, playerLayer);
+        Vector2 center = origin + new Vector2(detectionBoxSize.x / (3f * transform.localScale.x), 0f);
+
+        Collider2D hit = Physics2D.OverlapBox(center, detectionBoxSize, 0, playerLayer);
+        if (hit != null && player != null)
+        {
+            //verifica se tem parede na frente
+            Vector2 direction = (player.transform.position - transform.position).normalized;
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+
+            RaycastHit2D ray = Physics2D.Raycast(transform.position, direction, distance, groundLayer);
+
+            if (ray.collider == null)
+                playerDetected = true;
+        }
     }
+
 
     private void HandleIdle()
     {

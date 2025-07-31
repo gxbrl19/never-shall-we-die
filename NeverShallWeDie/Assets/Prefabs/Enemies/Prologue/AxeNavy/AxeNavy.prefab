@@ -303,6 +303,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 16896
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &4176460974584168609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9191837266437560592}
-  - component: {fileID: 2416035792043887588}
+  - component: {fileID: 4935212677433418724}
   m_Layer: 26
   m_Name: Collider
   m_TagString: Untagged
@@ -415,8 +418,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 779384994571147730}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &2416035792043887588
-CapsuleCollider2D:
+--- !u!61 &4935212677433418724
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -447,9 +450,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.8665972}
-  m_Size: {x: 0.25336266, y: 0.25336266}
-  m_Direction: 0
+  m_Offset: {x: 0, y: -0.8134346}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.35539246}
+  m_EdgeRadius: 0
 --- !u!1 &6115848010230007947
 GameObject:
   m_ObjectHideFlags: 0

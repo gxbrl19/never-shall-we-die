@@ -205,6 +205,7 @@ public class KingBoar : BossBase
         ChangeState(State.Idle);
         player.EnabledControls();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+        BackgroundMusic.instance.MusicControl(7);
     }
 
     public void FinishAttack() //chamado nas animações de ataque

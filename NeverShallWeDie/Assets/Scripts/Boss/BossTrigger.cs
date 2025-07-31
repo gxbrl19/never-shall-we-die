@@ -53,7 +53,7 @@ public class BossTrigger : MonoBehaviour
 
             //desativa o trigger
             gameObject.SetActive(false);
-            //BackgroundMusic.instance.MusicControl(-1);
+            BackgroundMusic.instance.MusicControl(-1);
         }
     }
 

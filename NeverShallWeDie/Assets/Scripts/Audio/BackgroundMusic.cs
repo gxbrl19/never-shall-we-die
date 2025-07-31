@@ -51,11 +51,6 @@ public class BackgroundMusic : MonoBehaviour
         _musicObjects[index].SetActive(true);
     }
 
-    public void FinishBoss()
-    {
-        MusicControl(8);
-    }
-
     public void ReturnToMapMusic() //método para retornar a música após vencer o Boss
     {
         //verifica se já existe o save _lastPier com o nome da cena do Cais selecionado
