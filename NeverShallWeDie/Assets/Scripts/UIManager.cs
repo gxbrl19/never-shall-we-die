@@ -20,22 +20,33 @@ public class UIManager : MonoBehaviour
     private Scene _currentScene;
     public int _sceneID;
 
-    [BoxGroup("HUD")][SerializeField] private Image _healthBar;
-    [BoxGroup("HUD")][SerializeField] private Image _healingBar;
-    [BoxGroup("HUD")][SerializeField] private Image _staminaBar;
+    private float delayHealthStart = 0.3f; //tempo de delay antes de começar a diminuir
+    private float delayHealthSpeed = 5f;  //quão rápido a barra branca alcança a vermelha
+    private float delayHealthTimer = 0f;
+    [BoxGroup("HUD")][Header("Health")][SerializeField] private Image _healthBar;
+    [BoxGroup("HUD")][SerializeField] private Image _healthBarDelay;
     [BoxGroup("HUD")][SerializeField] private Text _txtHealthInPause;
+
+    [BoxGroup("HUD")][Header("Healing")][SerializeField] private Image _healingBar;
     [BoxGroup("HUD")][SerializeField] private Text _txtHealingInPause;
-    [BoxGroup("HUD")][SerializeField] private Text _txtGold;
+
+    [BoxGroup("HUD")][Header("Stamina")][SerializeField] private Image _staminaBar;
+
+    [BoxGroup("HUD")][Header("Gold")][SerializeField] private Text _txtGold;
     [BoxGroup("HUD")][SerializeField] private Text _txtGoldInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtGoldBuy;
     [BoxGroup("HUD")][SerializeField] private Animator _goldBuyAnimator;
-    [BoxGroup("HUD")][SerializeField] private Image _imgFeedbackItem;
+
+    [BoxGroup("HUD")][Header("FeedbackItem")][SerializeField] private Image _imgFeedbackItem;
     [BoxGroup("HUD")][SerializeField] private Animator _feedbackItemAnimator;
-    [BoxGroup("HUD")][SerializeField] private Image _fire;
+
+    [BoxGroup("HUD")][Header("Skills")][SerializeField] private Image _fire;
     [BoxGroup("HUD")][SerializeField] private Image _air;
     [BoxGroup("HUD")][SerializeField] private Image _water;
-    [BoxGroup("HUD")][SerializeField] private GameObject _skullSave;
-    [BoxGroup("HUD")] public GameObject _pnlBoss;
+
+    [BoxGroup("HUD")][Header("Save")][SerializeField] private GameObject _skullSave;
+
+    [BoxGroup("HUD")][Header("Boss")] public GameObject _pnlBoss;
     [BoxGroup("HUD")] public Image _healthBoss;
     [BoxGroup("HUD")] public Text _txtBossName;
 
@@ -156,14 +167,48 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        UpdateHealthBars();
         StatsController();
         SkillControl();
     }
 
     #region HUD
+    void UpdateHealthBars()
+    {
+        float currentHealth = _health._currentHealth;
+        float maxHealth = _health._maxHealth;
+        float healthPercent = currentHealth / maxHealth;
+
+        _healthBar.fillAmount = healthPercent;
+
+        if (_healthBarDelay.fillAmount > _healthBar.fillAmount)
+        {
+            delayHealthTimer += Time.deltaTime;
+
+            if (delayHealthTimer >= delayHealthStart)
+            {
+                _healthBarDelay.fillAmount = Mathf.Lerp(
+                    _healthBarDelay.fillAmount,
+                    _healthBar.fillAmount,
+                    Time.deltaTime * delayHealthSpeed
+                );
+
+                if (Mathf.Abs(_healthBarDelay.fillAmount - _healthBar.fillAmount) < 0.01f)
+                {
+                    _healthBarDelay.fillAmount = _healthBar.fillAmount;
+                    delayHealthTimer = 0f;
+                }
+            }
+        }
+        else
+        {
+            _healthBarDelay.fillAmount = healthPercent;
+            delayHealthTimer = 0f;
+        }
+    }
+
     void StatsController()
     {
-        _healthBar.fillAmount = _health._currentHealth / _health._maxHealth;
         _healingBar.fillAmount = _health._currentMana / _health._maxMana;
         _staminaBar.fillAmount = _movement.currentStamina / _movement.maxStamina;
         _staminaBar.color = _movement.isExhausted ? Color.red : Color.green;
