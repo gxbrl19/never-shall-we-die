@@ -12,7 +12,7 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] EventReference death;
     [SerializeField] EventReference watersplash;
     [SerializeField] EventReference swim;
-    [SerializeField] EventReference slide;
+    [SerializeField] EventReference dash;
     [SerializeField] EventReference parachute;
 
     [SerializeField] EventReference waterspin;
@@ -72,9 +72,9 @@ public class PlayerAudio : MonoBehaviour
     {
         RuntimeManager.PlayOneShot(swim);
     }
-    public void PlaySlide() //script
+    public void PlayDash() //animação
     {
-        RuntimeManager.PlayOneShot(slide);
+        RuntimeManager.PlayOneShot(dash);
     }
 
     public void PlayParachute() //script

@@ -1076,6 +1076,7 @@ MonoBehaviour:
   canGrab: 0
   isGrounded: 0
   isJumping: 0
+  isAttacking: 0
   isDoubleJumping: 0
   isHealing: 0
   isRoll: 0
@@ -1309,7 +1310,7 @@ MonoBehaviour:
       Data3: -537521252
       Data4: -1391536609
     Path: event:/generic/player/water_swin
-  slide:
+  dash:
     Guid:
       Data1: 439910025
       Data2: 1106702180

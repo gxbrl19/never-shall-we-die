@@ -258,16 +258,16 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void Dash(InputAction.CallbackContext _callback)
+    public void Dash(InputAction.CallbackContext callback)
     {
         if (player.isDead || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onWater || player.onHit || player.isGrabing || player.isRoll || player.isDashing || player.canMove == false)
             return;
 
-        if (_callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Boots) && player.playerMovement.currentStamina > 0f && !player.playerMovement.isExhausted)
-        {
+        if (callback.started)
             _pressDash = true;
-            player.playerAudio.PlaySlide();
-        }
+
+        if (callback.canceled)
+            _pressDash = false;
     }
 
     public void ParachuteButton(InputAction.CallbackContext callback)

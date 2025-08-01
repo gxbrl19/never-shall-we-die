@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
@@ -277,10 +277,11 @@ public class Player : MonoBehaviour
     #region Dash
     void OnDash()
     {
-        canDash = playerMovement.currentStamina > 0f && !playerMovement.isExhausted && dashTimer >= dashCooldown;
+        canDash = playerMovement.currentStamina > 0f && PlayerEquipment.instance.equipments.Contains(Equipments.Boots) && !playerMovement.isExhausted && dashTimer >= dashCooldown;
 
         if (playerInputs.pressDash && canDash && !isDashing)
         {
+            DisableControls();
             isDashing = true;
             playerInputs.pressDash = false;
             playerMovement.StaminaConsumption(1.3f);
@@ -299,8 +300,9 @@ public class Player : MonoBehaviour
         rb.AddForce(dir * dashForce, ForceMode2D.Impulse);
     }
 
-    public void FinishDash() //chamado também na animação de Dash
+    public void FinishDash() //chamado na animação de Dash
     {
+        EnabledControls();
         rb.gravityScale = 8f;
         isDashing = false;
     }
