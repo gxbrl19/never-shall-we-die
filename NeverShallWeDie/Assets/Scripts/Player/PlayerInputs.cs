@@ -304,18 +304,14 @@ public class PlayerInputs : MonoBehaviour
 
     public void Roll(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || !player.isGrounded || player.canMove == false || player.isDashing || _pressAttack || player.onWater || Time.timeScale == 0f)
+        if (player.isDead || !player.isGrounded || player.canMove == false || player.isDashing || _pressAttack || player.onWater || player.canGrab || Time.timeScale == 0f)
             return;
 
-        if (_callback.started && !player.canGrab)
-        {
+        if (_callback.started)
             _pressRoll = true;
-        }
 
         if (_callback.canceled)
-        {
             _pressRoll = false;
-        }
     }
 
     public void CancelInputs()

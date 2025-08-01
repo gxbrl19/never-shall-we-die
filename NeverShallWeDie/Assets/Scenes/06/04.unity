@@ -13106,8 +13106,6 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
-  _level: 0
-  _xp: 0
   _intro: 1
   _equipments: 
   _skills: 
@@ -13117,7 +13115,6 @@ MonoBehaviour:
   _hpMax: 25
   _mpMax: 15
   _gold: 0
-  _upPoints: 0
   _katanaLevel: 0
   _flags: 
   _barrels: 
@@ -13133,6 +13130,7 @@ MonoBehaviour:
   _shipUpgrades: 
   _shipPosX: 0
   _shipPosY: 0
+  _lastPier: 
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -13657,11 +13655,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.42
+      value: 13.48
       objectReference: {fileID: 0}
     - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -39.97
+      value: -46.91
       objectReference: {fileID: 0}
     - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
       propertyPath: m_LocalPosition.z
