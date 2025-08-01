@@ -121,6 +121,4 @@ public abstract class BossBase : MonoBehaviour, IBoss
     {
         RuntimeManager.PlayOneShot(dead);
     }
-
-    public BossObject GetData() => bossObject;
 }
