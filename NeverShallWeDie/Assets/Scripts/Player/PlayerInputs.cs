@@ -224,7 +224,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Healing(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || !player.isGrounded || player.onHit || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onWater || player.canMove == false || player.playerCollision._onWall || player.isGrabing || player.isRoll || player.isDashing)
+        if (player.isDead || !player.isGrounded || player.onHit || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onWater || player.canMove == false || player.playerCollision._onWall || player.isGrabing || player.isRolling || player.isDashing)
             return;
 
         if (_callback.started)
@@ -240,7 +240,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void SwordAttack(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isAttacking || _isFireCuting || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onHit || player.isGrabing || player.isRoll || player.isDashing || !player.canMove)
+        if (player.isDead || player.isAttacking || _isFireCuting || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onHit || player.isGrabing || player.isRolling || player.isDashing || !player.canMove)
             return;
 
         if (callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && !player.onWater)
@@ -260,7 +260,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext callback)
     {
-        if (player.isDead || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onWater || player.onHit || player.isGrabing || player.isRoll || player.isDashing || player.canMove == false)
+        if (player.isDead || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onWater || player.onHit || player.isGrabing || player.isRolling || player.isDashing || player.canMove == false)
             return;
 
         if (callback.started)
@@ -287,7 +287,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void AirCutAttack(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onHit || player.isGrabing || player.onWater || player.isRoll || player.canMove == false)
+        if (player.isDead || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onHit || player.isGrabing || player.onWater || player.isRolling || player.canMove == false)
             return;
 
         if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.FireGem))

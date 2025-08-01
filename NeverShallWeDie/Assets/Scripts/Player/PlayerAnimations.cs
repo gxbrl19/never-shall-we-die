@@ -44,7 +44,7 @@ public class PlayerAnimations : MonoBehaviour
         animator.SetBool("IsAttacking", player.isAttacking);
 
         //Roll
-        animator.SetBool("IsRolling", player.isRoll);
+        animator.SetBool("IsRolling", player.isRolling);
 
         //DoubleJump
         animator.SetBool("DoubleJump", player.isDoubleJumping);

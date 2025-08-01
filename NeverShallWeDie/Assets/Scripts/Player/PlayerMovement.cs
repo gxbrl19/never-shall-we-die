@@ -164,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
         float yVelocity = 0f;
         float horizontal = player.playerInputs.GetHorizontal();
 
-        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.playerInputs.pressAttack && !player.isHealing && !player.isRoll) //chão comum
+        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.playerInputs.pressAttack && !player.isHealing && !player.isRolling) //chão comum
         {
             xVelocity = speed * horizontal;
             yVelocity = 0.0f;
@@ -274,7 +274,7 @@ public class PlayerMovement : MonoBehaviour
     #region Jump
     void JumpControl()
     {
-        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isRoll && !player.isDashing) //pulo comum
+        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isRolling && !player.isDashing) //pulo comum
         {
             player.isJumping = true;
             player.playerInputs.pressJump = false;
@@ -287,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
             player.playerAudio.PlayJump();
             CreateDust(1);
         }
-        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isRoll && !player.isDashing)
+        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isRolling && !player.isDashing)
         {
             player.isDoubleJumping = false;
             player.playerInputs.pressJump = false;
@@ -399,7 +399,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canRoll = currentStamina > 0f && player.playerInputs.horizontal != 0 && !isExhausted && rollTimer >= rollCooldown;
 
-        if (player.playerInputs.pressRoll && canRoll && !player.isRoll)
+        if (player.playerInputs.pressRoll && canRoll && !player.isRolling)
         {
             ExecuteRoll();
         }
@@ -408,7 +408,7 @@ public class PlayerMovement : MonoBehaviour
     private void ExecuteRoll()
     {
         //gameObject.layer = LayerMask.NameToLayer("Invencible");
-        player.isRoll = true;
+        player.isRolling = true;
         player.playerInputs.pressRoll = false;
         StaminaConsumption(1.1f);
         rollTimer = 0f;
@@ -419,7 +419,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void FinishRoll() //chamado também na animação de Roll
     {
-        player.isRoll = false;
+        player.isRolling = false;
         //gameObject.layer = LayerMask.NameToLayer("Player");
     }
     #endregion
@@ -642,7 +642,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.isFireCuting || player.inWaterSpin || player.playerInputs.pressAttack || player.isRoll)
+        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.isFireCuting || player.inWaterSpin || player.playerInputs.pressAttack || player.isRolling)
             return;
 
         if (player.isGrounded)

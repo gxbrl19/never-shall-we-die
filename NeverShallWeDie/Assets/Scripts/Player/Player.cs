@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isDashing = false;
     float dashTimer = 0f;
     float dashCooldown = .5f;
-    float dashForce = 15f;
+    float dashForce = 32f;
 
     //Skills
     [HideInInspector] public float timeForSkills;
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isAttacking;
     [HideInInspector] public bool isDoubleJumping;
     [HideInInspector] public bool isHealing;
-    [HideInInspector] public bool isRoll;
+    [HideInInspector] public bool isRolling;
     [HideInInspector] public bool isGrabing;
     [HideInInspector] public bool isGriding;
     [HideInInspector] public bool canDash;
@@ -281,7 +281,7 @@ public class Player : MonoBehaviour
 
         if (playerInputs.pressDash && canDash && !isDashing)
         {
-            DisableControls();
+            canMove = false;
             isDashing = true;
             playerInputs.pressDash = false;
             playerMovement.StaminaConsumption(1.3f);
@@ -296,13 +296,16 @@ public class Player : MonoBehaviour
     void ExecuteDash()
     {
         rb.gravityScale = 0f;
+
         Vector2 dir = playerMovement.playerDirection < 0 ? Vector2.left : Vector2.right;
         rb.AddForce(dir * dashForce, ForceMode2D.Impulse);
+
+        Invoke("FinishDash", .2f);
     }
 
-    public void FinishDash() //chamado na animação de Dash
+    public void FinishDash() //chamado no Invoke dentro de ExecuteDash
     {
-        EnabledControls();
+        canMove = true;
         rb.gravityScale = 8f;
         isDashing = false;
     }
