@@ -24,7 +24,7 @@ public class Glades : MonoBehaviour
             gameObject.SetActive(true);
             _collider.enabled = true;
         }
-        else if (GameManager.instance._navigator == "COMPLETE" || GameManager.instance._navigator == "CREW")
+        else if (GameManager.instance._navigator == "OTHER" || GameManager.instance._navigator == "COMPLETE" || GameManager.instance._navigator == "CREW")
         {
             gameObject.SetActive(false);
             _collider.enabled = false;

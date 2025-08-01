@@ -7,6 +7,8 @@ public class BarrierLever : MonoBehaviour
 {
     [SerializeField] int _id;
 
+    [HideInInspector] public bool _opened;
+
     [Header("Camera")]
     [SerializeField] Animator _animation;
     [SerializeField] GameObject _mainCamera;
@@ -24,8 +26,8 @@ public class BarrierLever : MonoBehaviour
     private void Start()
     {
         //verifica se já foi acionado
-        bool finish = GameManager.instance._barriersLever[_id] == 1;
-        _animation.SetBool("Finish", finish);
+        _opened = GameManager.instance._barriersLever[_id] == 1;
+        _animation.SetBool("Finish", _opened);
     }
 
     public void EnabledCamera()
@@ -39,6 +41,7 @@ public class BarrierLever : MonoBehaviour
     void EnabledBarrier()
     {
         GameManager.instance._barriersLever[_id] = 1;
+        _opened = true;
         _animation.SetBool("Enabled", true);
         RuntimeManager.PlayOneShot(portalOpen);
         Invoke("FinishEnabled", 2.02f);

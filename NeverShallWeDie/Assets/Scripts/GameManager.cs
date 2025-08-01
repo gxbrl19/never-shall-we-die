@@ -91,10 +91,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int _checkpointScene; //a cena atual que será o checkpoint
     [HideInInspector] public int _direction;
 
-    [HideInInspector] public string _navigator;
-    [HideInInspector] public string _shipwright;
-    [HideInInspector] public string _witch;
-    [HideInInspector] public string _blacksmith;
+    public string _navigator;
+    public string _shipwright;
+    public string _witch;
+    public string _blacksmith;
 
     [Header("Functions")]
     [HideInInspector] public int[] _maps;

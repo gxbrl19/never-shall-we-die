@@ -49,7 +49,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         if (isHurt || isDead || enemyName == "Beetboom" || enemyName == "Barrel Monkey") return;
 
         isHurt = true;
-        Invoke("ResetHurt", .2f);
+        Invoke("ResetHurt", .15f);
         rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
 
         TakeDamage(power);

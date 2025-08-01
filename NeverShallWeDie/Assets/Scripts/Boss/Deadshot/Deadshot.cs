@@ -70,7 +70,7 @@ public class Deadshot : BossBase
 
     private void HandleState()
     {
-        if (playerPosition == null || isDead) return;
+        if (playerPosition == null || isDead || player.isDead) return;
 
         distanceToPlayer = Vector2.Distance(transform.position, playerPosition.position);
 
