@@ -1,40 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DamagerForTime : MonoBehaviour
 {
-    float _timeForDamage = 1.8f;
-    bool _triggered;
-    Damager _damage;
-    PlayerHealth _health;
+    int attackPower = 4;
+    PlayerHealth playerHealth;
 
     private void Awake()
     {
-        _damage = GetComponent<Damager>();
-        _health = FindObjectOfType<PlayerHealth>();
+        playerHealth = FindObjectOfType<PlayerHealth>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
-            _triggered = true;
-            InvokeRepeating("SetDamage", _timeForDamage, _timeForDamage);
+            playerHealth.TakeDamage(attackPower);
+            UIManager.instance.FadeIn();
+            Invoke("GetNextScene", .5f);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    void GetNextScene()
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
-        {
-            _triggered = false;
-            CancelInvoke("SetDamage");
-        }
-    }
-
-    void SetDamage()
-    {
-        if (_triggered && _health._currentHealth > 0) { _health.TakeDamage(_damage.attackPower); }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

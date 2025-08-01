@@ -12027,7 +12027,6 @@ GameObject:
   - component: {fileID: 992466865}
   - component: {fileID: 992466864}
   - component: {fileID: 992466863}
-  - component: {fileID: 992466862}
   - component: {fileID: 992466861}
   m_Layer: 4
   m_Name: TileLava
@@ -12063,20 +12062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da7243ffee3a96418c18dfb982234eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &992466862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992466859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _power: 2
-  _hitEffect: {fileID: 0}
 --- !u!60 &992466863
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -14158,18 +14143,20 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
+  _intro: 1
   _equipments: 
   _skills: 
   _inventory: 
+  _currentHP: 0
+  _currentMP: 0
   _hpMax: 25
   _mpMax: 15
-  _katanaLevel: 0
   _gold: 0
-  _qtdPotentium: 0
-  _qtdOrb: 0
+  _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
+  _ancientStones: 
   _airCutblock: 
   _barriersLever: 
   _secret: 
@@ -14178,6 +14165,9 @@ MonoBehaviour:
   _gateMechanism: 0
   _gateBoss: 0
   _shipUpgrades: 
+  _shipPosX: 0
+  _shipPosY: 0
+  _lastPier: 
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -14186,9 +14176,6 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
-  _submarine: 0
-  _propulsion: 0
-  _artillery: 0
   _bestiary: 
   _bosses: 
   _masterVol: 0

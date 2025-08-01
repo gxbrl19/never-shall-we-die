@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7530275430339035781}
   - component: {fileID: 2341920972473162451}
   - component: {fileID: 4553984249705013520}
-  - component: {fileID: 6805659385934011512}
   - component: {fileID: 3204642059512698673}
   m_Layer: 0
   m_Name: Thorns
@@ -132,20 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.937541, y: 1.1950264}
   m_EdgeRadius: 0
---- !u!114 &6805659385934011512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4591770922065622674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _power: 4
-  _hitEffect: {fileID: 0}
 --- !u!114 &3204642059512698673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,4 +143,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da7243ffee3a96418c18dfb982234eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acid: 0
