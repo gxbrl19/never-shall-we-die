@@ -613,7 +613,7 @@ public class UIManager : MonoBehaviour
     {
         _inUIScreen = false;
         _player.EnabledControls();
-        PlayerPrefs.SetInt("Scene", 2); //cena do OpenWorld (configurar o index de acordo com o BuildSettings)
+        GameManager.instance._sceneForLoad = 2; //cena do OpenWorld (configurar o index de acordo com o BuildSettings)
         SceneManager.LoadScene("Scenes/Load");
     }
 

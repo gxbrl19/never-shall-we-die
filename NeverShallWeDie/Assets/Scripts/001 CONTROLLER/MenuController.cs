@@ -100,7 +100,7 @@ public class MenuController : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt("Scene", scene);
+            GameManager.instance._sceneForLoad = scene;
             SceneManager.LoadScene("Scenes/Load");
         }
 

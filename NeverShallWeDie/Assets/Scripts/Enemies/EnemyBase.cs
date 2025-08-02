@@ -49,10 +49,13 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         if (isHurt || isDead || enemyName == "Beetboom" || enemyName == "Barrel Monkey") return;
 
         isHurt = true;
-        Invoke("ResetHurt", .15f);
-        rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
-
+        Invoke("ResetHurt", .2f);
         TakeDamage(power);
+
+        //knockback
+        if (isDead || enemyName == "Evil Vine") return;
+        rb.velocity = Vector2.zero;
+        rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
     }
 
     public virtual void TakeDamage(int amount)
@@ -103,6 +106,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
 
     protected virtual void ResetHurt() //chamado no TakeHit()
     {
+        rb.velocity = Vector2.zero;
         sprite.color = defaultColor;
         isHurt = false;
     }

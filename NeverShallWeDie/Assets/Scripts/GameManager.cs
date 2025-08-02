@@ -85,7 +85,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<ShipUpgrade> _shipUpgrades;
     [HideInInspector] public float _shipPosX; //salva a posição do navio para quando voltar para o OpenWorld
     [HideInInspector] public float _shipPosY; //salva a posição do navio para quando voltar para o OpenWorld
-    public string _lastPier = "";
+    public string _lastPier = ""; //salva o ultimo Pier
+    public int _sceneForLoad; //salva o ID da cena pra passar pro Loading
     [HideInInspector] public int[] _rocks; //Rocks já destruídos
 
     [HideInInspector] public int _checkpointScene; //a cena atual que será o checkpoint

@@ -397,7 +397,8 @@ public class PlayerMovement : MonoBehaviour
     #region Roll
     void OnRoll()
     {
-        canRoll = currentStamina > 0f && player.playerInputs.horizontal != 0 && !isExhausted && rollTimer >= rollCooldown;
+        float horizontal = player.playerInputs.GetHorizontal();
+        canRoll = currentStamina > 0f && horizontal != 0 && !isExhausted && rollTimer >= rollCooldown;
 
         if (player.playerInputs.pressRoll && canRoll && !player.isRolling)
         {

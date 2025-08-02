@@ -304,7 +304,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void Roll(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || !player.isGrounded || player.canMove == false || player.isDashing || _pressAttack || player.onWater || player.canGrab || Time.timeScale == 0f)
+        if (player.isDead || !player.isGrounded || player.canMove == false || player.isDashing || _pressAttack || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
             return;
 
         if (_callback.started)

@@ -20,7 +20,7 @@ public class Boar : EnemyBase
 
     private void Update()
     {
-        if (isDead) return;
+        if (isDead || isHurt) return;
 
         switch (currentState)
         {
@@ -58,32 +58,4 @@ public class Boar : EnemyBase
         else if (transform.position.x > targetX)
             transform.localScale = new Vector2(-1, 1);
     }
-
-    /*public void Knockback()
-    {
-        if (!controller._onHit || controller._isDead)
-            return;
-
-        if (knockback)
-        {
-            if (direction < 0)
-            {
-                body.velocity = Vector2.zero;
-                body.AddForce(Vector2.right * knockbackForce, ForceMode2D.Impulse);
-            }
-            else if (direction > 0)
-            {
-                body.velocity = Vector2.zero;
-                body.AddForce(Vector2.left * knockbackForce, ForceMode2D.Impulse);
-            }
-
-            Invoke("FinishKnockback", 0.3f);
-        }
-    }
-
-    public void FinishKnockback()
-    {
-        body.velocity = Vector2.zero;
-        knockback = false;
-    }*/
 }

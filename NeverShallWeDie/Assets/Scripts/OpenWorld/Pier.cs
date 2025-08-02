@@ -27,9 +27,8 @@ public class Pier : MonoBehaviour
             _playerTriggered = false;
             var currentLocale = LocalizationSettings.SelectedLocale;
             _islandName = (currentLocale.Identifier.Code == "pt-BR") ? _ptIslandName : _engIslandName;
-            //if (currentLocale.Identifier.Code == "pt-BR") { _islandName = _ptIslandName; } else if (currentLocale.Identifier.Code == "en") { _islandName = _engIslandName; }
 
-            //_ship.StopMove();
+
             _ship._canMove = false;
             AudioHUD.instance.PlaySelectButton();
             CanvasOpenWorld.instance.OpenLevelSelect(_islandName);

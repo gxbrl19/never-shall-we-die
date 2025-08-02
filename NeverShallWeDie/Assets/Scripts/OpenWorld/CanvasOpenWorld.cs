@@ -50,11 +50,11 @@ public class CanvasOpenWorld : MonoBehaviour
         _ship.SavePos();
 
         _ship._canMove = true;
-        PlayerPrefs.SetInt("Scene", 4); //cena do navio
+        GameManager.instance._sceneForLoad = 4; //cena do navio
         SceneManager.LoadScene("Scenes/Load");
 
         //passa o nome da cena para usar no ExitShip
-        PlayerPrefs.SetString("Pier", _sceneName);
+        GameManager.instance._lastPier = _sceneName;
     }
 
     public void CancelLevel() //chamado no botão NO do pnl_select
