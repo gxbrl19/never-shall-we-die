@@ -249,7 +249,7 @@ public class PlayerInputs : MonoBehaviour
         }
         else if (callback.started && player.onWater && PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
         {
-            if (player.playerHealth._currentMana > 0 && player.timeWaterSpin >= player.timeForSkills)
+            if (player.playerHealth.currentMana > 0 && player.timeWaterSpin >= player.timeForSkills)
             {
                 _pressAttack = true;
                 player.timeWaterSpin = 0f; //reseta o tempo do water spin para poder fazer a contagem;
@@ -292,7 +292,7 @@ public class PlayerInputs : MonoBehaviour
 
         if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.FireGem))
         {
-            if (player.playerHealth._currentMana > 0 && player.timeAirCut >= player.timeForSkills)
+            if (player.playerHealth.currentMana > 0 && player.timeAirCut >= player.timeForSkills)
             {
                 isFireCuting = true;
                 player.timeAirCut = 0f; //reseta o tempo do aircut para poder fazer a contagem;

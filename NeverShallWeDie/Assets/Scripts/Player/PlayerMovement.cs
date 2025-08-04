@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Roll
     private bool canRoll = true;
-    private float rollForce = 13f;
+    private float rollForce = 10f;
     private float rollCooldown = .7f;
     private float rollTimer;
 
@@ -398,7 +398,7 @@ public class PlayerMovement : MonoBehaviour
     void OnRoll()
     {
         float horizontal = player.playerInputs.GetHorizontal();
-        canRoll = currentStamina > 0f && horizontal != 0 && !isExhausted && rollTimer >= rollCooldown;
+        canRoll = currentStamina > 0f && !isExhausted && rollTimer >= rollCooldown;
 
         if (player.playerInputs.pressRoll && canRoll && !player.isRolling)
         {

@@ -175,8 +175,8 @@ public class UIManager : MonoBehaviour
     #region HUD
     void UpdateHealthBars()
     {
-        float currentHealth = _health._currentHealth;
-        float maxHealth = _health._maxHealth;
+        float currentHealth = _health.currentHealth;
+        float maxHealth = _health.maxHealth;
         float healthPercent = currentHealth / maxHealth;
 
         _healthBar.fillAmount = healthPercent;
@@ -209,13 +209,13 @@ public class UIManager : MonoBehaviour
 
     void StatsController()
     {
-        _healingBar.fillAmount = _health._currentMana / _health._maxMana;
+        _healingBar.fillAmount = _health.currentMana / _health.maxMana;
         _staminaBar.fillAmount = _movement.currentStamina / _movement.maxStamina;
         _staminaBar.color = _movement.isExhausted ? Color.red : Color.green;
 
         //convertendo para INT
-        int health = (int)_health._maxHealth;
-        int mana = (int)_health._maxMana;
+        int health = (int)_health.maxHealth;
+        int mana = (int)_health.maxMana;
         _txtGold.text = GameManager.instance._gold.ToString();
 
         //stats no pause
@@ -715,8 +715,8 @@ public class UIManager : MonoBehaviour
         {
             _inUIScreen = false;
             _player.EnabledControls();
-            _health._maxHealth += 5f;
-            GameManager.instance._hpMax = _health._maxHealth;
+            _health.maxHealth += 5f;
+            GameManager.instance._hpMax = _health.maxHealth;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
             AudioHUD.instance.PlayUpgradeHP();
@@ -738,8 +738,8 @@ public class UIManager : MonoBehaviour
         {
             _inUIScreen = false;
             _player.EnabledControls();
-            _health._maxMana += 5f;
-            GameManager.instance._mpMax = _health._maxMana;
+            _health.maxMana += 5f;
+            GameManager.instance._mpMax = _health.maxMana;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
             AudioHUD.instance.PlayUpgradeHP();

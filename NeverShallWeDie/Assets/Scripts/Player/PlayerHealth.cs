@@ -5,13 +5,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Vida e Mana")]
-    [HideInInspector] public float _maxHealth;
-    public float _currentHealth;
-    [HideInInspector] public float _maxMana;
-    public float _currentMana;
-
-    [Header("Estados")]
-    public bool _isDead;
+    [HideInInspector] public float maxHealth;
+    public float currentHealth;
+    [HideInInspector] public float maxMana;
+    public float currentMana;
 
     [Header("Partículas & Visual")]
     public GameObject _objHealing;
@@ -37,55 +34,46 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        _maxHealth = 25f;
-        _maxMana = 15f;
+        maxHealth = 25f;
+        maxMana = 15f;
 
         startColor = spriteRenderer.color;
-        _currentHealth = GetHealth();
-        _currentMana = GetMana();
+        currentHealth = GetHealth();
+        currentMana = GetMana();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Healing();
-        OnHit(); // chamada constante enquanto _onHit for true
     }
 
     public void TakeDamage(int damage)
     {
-        if (_isDead) return;
+        if (player.isDead || player.onHit) return;
 
-        player.gameObject.layer = LayerMask.NameToLayer("Invencible");
-        player.onHit = true;
-        player.canMove = false;
-
-        _currentHealth -= damage;
-        SetHealth(_currentHealth);
-
+        currentHealth -= damage;
+        SetHealth(currentHealth);
         playerAudio.PlayHit();
         CinemachineShake.instance.ShakeCamera(6f, 0.15f);
-        spriteRenderer.color = _damageColor;
+
+        if (currentHealth < 1)
+            Die();
+        else
+            OnHit();
 
         Instantiate(_particleHit, transform.position, Quaternion.identity);
-        playerAnimations.OnHit();
 
-        if (_currentHealth < 1)
-        {
-            _isDead = true;
-            playerAudio.PlayDeath();
-            player.rb.velocity = Vector2.zero;
-            player.OnDead();
-            BackgroundMusic.instance.MusicControl(9);
-            LostGold(0.3f);
-        }
     }
 
     void OnHit()
     {
-        if (!player.onHit || player.isDead) return;
-
-        playerInput.CancelInputs();
         player.rb.velocity = Vector2.zero;
+        playerAnimations.OnHit();
+        player.gameObject.layer = LayerMask.NameToLayer("Invencible");
+        player.onHit = true;
+        player.canMove = false;
+        playerInput.CancelInputs();
+        spriteRenderer.color = _damageColor;
     }
 
     public void FinishHit() //chamado da animação de Hit
@@ -93,6 +81,16 @@ public class PlayerHealth : MonoBehaviour
         player.onHit = false;
         player.canMove = true;
         StartCoroutine(FinishInvincible());
+    }
+
+    void Die()
+    {
+        player.isDead = true;
+        playerAudio.PlayDeath();
+        player.rb.velocity = Vector2.zero;
+        player.OnDead();
+        BackgroundMusic.instance.MusicControl(9);
+        LostGold(0.3f);
     }
 
     IEnumerator FinishInvincible()
@@ -126,21 +124,21 @@ public class PlayerHealth : MonoBehaviour
 
     public void FillBottle(float healing)
     {
-        _currentMana = Mathf.Min(_currentMana + healing, _maxMana);
-        SetMana(_currentMana);
+        currentMana = Mathf.Min(currentMana + healing, maxMana);
+        SetMana(currentMana);
     }
 
     public void Healing()
     {
         _objHealing.SetActive(player.isHealing);
 
-        if (player.isHealing && _currentHealth < _maxHealth && _currentMana >= 0.1f)
+        if (player.isHealing && currentHealth < maxHealth && currentMana >= 0.1f)
         {
-            _currentHealth += .06f;
-            _currentMana -= .06f;
+            currentHealth += .03f;
+            currentMana -= .03f;
 
-            SetHealth(_currentHealth);
-            SetMana(_currentMana);
+            SetHealth(currentHealth);
+            SetMana(currentMana);
             CinemachineShake.instance.ShakeCamera(3f, 0.15f);
         }
         else
@@ -151,15 +149,15 @@ public class PlayerHealth : MonoBehaviour
 
     public void ManaConsumption(float consume)
     {
-        _currentMana = Mathf.Max(_currentMana - consume, 0f);
-        SetMana(_currentMana);
+        currentMana = Mathf.Max(currentMana - consume, 0f);
+        SetMana(currentMana);
     }
 
 
     public void ResetHealth()
     {
-        _currentHealth = _maxHealth;
-        _currentMana = 0f;
+        currentHealth = maxHealth;
+        currentMana = 0f;
     }
 
     #region GameManager (Persistência entre cenas)
@@ -171,7 +169,7 @@ public class PlayerHealth : MonoBehaviour
 
     public float GetHealth()
     {
-        return GameManager.instance._currentHP != 0 ? GameManager.instance._currentHP : _maxHealth;
+        return GameManager.instance._currentHP != 0 ? GameManager.instance._currentHP : maxHealth;
     }
 
     public void SetMana(float mana)

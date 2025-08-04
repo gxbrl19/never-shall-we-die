@@ -47,9 +47,9 @@ public class Flag : MonoBehaviour
             SetCheckpoint();
 
             //reseta a vida do player
-            _health._currentHealth = _health._maxHealth;
-            _health.SetHealth(_health._currentHealth);
-            _health.SetMana(_health._currentMana);
+            _health.currentHealth = _health.maxHealth;
+            _health.SetHealth(_health.currentHealth);
+            _health.SetMana(_health.currentMana);
         }
     }
 
