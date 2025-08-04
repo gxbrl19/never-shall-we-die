@@ -38,7 +38,7 @@ public class Recovery : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.collider.CompareTag("Player"))
         {
             RuntimeManager.PlayOneShot(collected);
             UIManager.instance.FeedbackItem(_sprite.sprite);

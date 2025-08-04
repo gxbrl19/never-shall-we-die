@@ -25,9 +25,7 @@ public class Damager : MonoBehaviour
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
 
             if (playerHealth != null)
-            {
                 playerHealth.TakeDamage(attackPower);
-            }
         }
 
         else if (other.gameObject.layer == 7) //Boss

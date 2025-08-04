@@ -101,6 +101,8 @@ public class PlayerMovement : MonoBehaviour
                 isExhausted = false; //stamina cheia novamente
             }
         }
+
+        OnRoll();
     }
 
 
@@ -115,7 +117,6 @@ public class PlayerMovement : MonoBehaviour
         OnWater();
         OnClimb();
         OnGrid();
-        OnRoll();
     }
 
     #region Move
@@ -398,7 +399,7 @@ public class PlayerMovement : MonoBehaviour
     void OnRoll()
     {
         float horizontal = player.playerInputs.GetHorizontal();
-        canRoll = currentStamina > 0f && !isExhausted && rollTimer >= rollCooldown;
+        canRoll = currentStamina > 0f && horizontal != 0 && !isExhausted && rollTimer >= rollCooldown;
 
         if (player.playerInputs.pressRoll && canRoll && !player.isRolling)
         {

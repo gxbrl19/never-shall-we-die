@@ -1079,7 +1079,7 @@ MonoBehaviour:
   isAttacking: 0
   isDoubleJumping: 0
   isHealing: 0
-  isRoll: 0
+  isRolling: 0
   isGrabing: 0
   isGriding: 0
   canDash: 0
@@ -1189,11 +1189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f0a21b3e798ff4c91db9e7b1147a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 0
-  _currentHealth: 0
-  _maxMana: 0
-  _currentMana: 0
-  _isDead: 0
+  maxHealth: 0
+  currentHealth: 0
+  maxMana: 0
+  currentMana: 0
   _objHealing: {fileID: 934120453744383874}
   _particleHit: {fileID: 3090874618421301866, guid: eb2b8392e365bed4f9243ee02d24c8bf, type: 3}
   _damageColor: {r: 0.972549, g: 0.27058825, b: 0.27058825, a: 1}
@@ -1561,7 +1560,7 @@ GameObject:
   - component: {fileID: 4793336905468492211}
   m_Layer: 26
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
