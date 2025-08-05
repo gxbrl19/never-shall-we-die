@@ -848,7 +848,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: Jump
+        m_MethodName: ButtonSouth
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -864,7 +864,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: SwordAttack
+        m_MethodName: ButtonWest
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -880,7 +880,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: Climb
+        m_MethodName: UpAndDown
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -896,7 +896,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: Dash
+        m_MethodName: LeftTrigger
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -912,7 +912,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: AirCutAttack
+        m_MethodName: RightTrigger
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -928,7 +928,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: Interact
+        m_MethodName: ButtonNorth
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -944,7 +944,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: ParachuteButton
+        m_MethodName: RightShoulder
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -960,7 +960,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: Healing
+        m_MethodName: LeftShoulder
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -976,7 +976,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8160846808588850495}
         m_TargetAssemblyTypeName: PlayerInputs, Assembly-CSharp
-        m_MethodName: Roll
+        m_MethodName: ButtonEast
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

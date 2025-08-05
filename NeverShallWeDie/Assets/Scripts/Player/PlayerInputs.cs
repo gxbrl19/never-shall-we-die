@@ -126,7 +126,7 @@ public class PlayerInputs : MonoBehaviour
         rawInput = 0f;
     }
 
-    public void Climb(InputAction.CallbackContext callback)
+    public void UpAndDown(InputAction.CallbackContext callback)
     {
         if (player.isDead || Time.timeScale == 0f)
             return;
@@ -174,7 +174,7 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void Jump(InputAction.CallbackContext callback)
+    public void ButtonSouth(InputAction.CallbackContext callback)
     {
         if (player.isDead || player.canMove == false || Time.timeScale == 0f) return;
 
@@ -199,7 +199,7 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void Interact(InputAction.CallbackContext _callback)
+    public void ButtonNorth(InputAction.CallbackContext _callback)
     {
         if (player.isDead || player.isHealing || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.canMove == false)
             return;
@@ -222,23 +222,7 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void Healing(InputAction.CallbackContext _callback)
-    {
-        if (player.isDead || !player.isGrounded || player.onHit || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onWater || player.canMove == false || player.playerCollision._onWall || player.isGrabing || player.isRolling || player.isDashing)
-            return;
-
-        if (_callback.started)
-        {
-            player.isHealing = true;
-        }
-
-        if (_callback.canceled)
-        {
-            player.isHealing = false;
-        }
-    }
-
-    public void SwordAttack(InputAction.CallbackContext callback)
+    public void ButtonWest(InputAction.CallbackContext callback)
     {
         if (player.isDead || player.isAttacking || _isFireCuting || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onHit || player.isGrabing || player.isRolling || player.isDashing || !player.canMove)
             return;
@@ -258,7 +242,35 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void Dash(InputAction.CallbackContext callback)
+    public void ButtonEast(InputAction.CallbackContext _callback)
+    {
+        if (player.isDead || !player.isGrounded || player.canMove == false || player.isDashing || _pressAttack || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
+            return;
+
+        if (_callback.started)
+            _pressRoll = true;
+
+        if (_callback.canceled)
+            _pressRoll = false;
+    }
+
+    public void LeftShoulder(InputAction.CallbackContext _callback)
+    {
+        if (player.isDead || !player.isGrounded || player.onHit || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onWater || player.canMove == false || player.playerCollision._onWall || player.isGrabing || player.isRolling || player.isDashing)
+            return;
+
+        if (_callback.started)
+        {
+            player.isHealing = true;
+        }
+
+        if (_callback.canceled)
+        {
+            player.isHealing = false;
+        }
+    }
+
+    public void LeftTrigger(InputAction.CallbackContext callback)
     {
         if (player.isDead || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onWater || player.onHit || player.isGrabing || player.isRolling || player.isDashing || player.canMove == false)
             return;
@@ -270,7 +282,7 @@ public class PlayerInputs : MonoBehaviour
             _pressDash = false;
     }
 
-    public void ParachuteButton(InputAction.CallbackContext callback)
+    public void RightShoulder(InputAction.CallbackContext callback)
     {
         if (player.isDead || player.isGrounded || player.playerCollision._onWall || player.onClimbing || player.onWater || player.isGriding) return;
 
@@ -285,7 +297,7 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void AirCutAttack(InputAction.CallbackContext _callback)
+    public void RightTrigger(InputAction.CallbackContext _callback)
     {
         if (player.isDead || _pressAttack || _isFireCuting || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onHit || player.isGrabing || player.onWater || player.isRolling || player.canMove == false)
             return;
@@ -302,18 +314,6 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void Roll(InputAction.CallbackContext _callback)
-    {
-        if (player.isDead || !player.isGrounded || player.canMove == false || player.isDashing || _pressAttack || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
-            return;
-
-        if (_callback.started)
-            _pressRoll = true;
-
-        if (_callback.canceled)
-            _pressRoll = false;
-    }
-
     public void CancelInputs()
     {
         pressAttack = false;
@@ -326,5 +326,4 @@ public class PlayerInputs : MonoBehaviour
         horizontal = 0f;
         vertical = 0f;
     }
-
 }
