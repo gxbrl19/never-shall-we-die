@@ -36,9 +36,9 @@ public class NewItem : MonoBehaviour
         _collider.enabled = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.tag == "AttackPoint")
         {
             RuntimeManager.PlayOneShot(collected);
             UIManager.instance.FeedbackItem(_spriteRenderer.sprite);

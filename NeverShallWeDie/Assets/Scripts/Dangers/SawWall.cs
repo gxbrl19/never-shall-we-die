@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SawWall : MonoBehaviour
 {
-    //public GameObject _enemyAttackPoint;
     public List<Transform> _paths = new List<Transform>();
     public float _speed;
     private int _pathIndex;

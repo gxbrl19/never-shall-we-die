@@ -1130,6 +1130,7 @@ MonoBehaviour:
   maxStamina: 5
   currentStamina: 0
   isExhausted: 0
+  rollForce: 10
   ladder: {fileID: 0}
   vine: {fileID: 0}
   canSwin: 1
@@ -1444,8 +1445,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8160846809695199608}
-  m_Layer: 9
-  m_Name: EnemyAttack
+  - component: {fileID: 1927880504853151448}
+  m_Layer: 0
+  m_Name: AttackPoint (Collision with items)
   m_TagString: AttackPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1460,12 +1462,47 @@ Transform:
   m_GameObject: {fileID: 8160846809695199611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -0.01, z: 0}
+  m_LocalPosition: {x: -0.004, y: -0.536, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8160846808588850630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1927880504853151448
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160846809695199611}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.02481556, y: 0.4317913}
+  m_Size: {x: 0.88712215, y: 1.8635826}
+  m_Direction: 0
 --- !u!1 &8909993161202707593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,7 +1597,7 @@ GameObject:
   - component: {fileID: 4793336905468492211}
   m_Layer: 26
   m_Name: GroundCheck
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -36,9 +36,10 @@ public class Gold : MonoBehaviour
         _body.velocity = Vector2.zero;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
+        //if (collision.gameObject.layer == LayerMask.NameToLayer("FootChar"))
+        if (collision.tag == "AttackPoint")
         {
             GameManager.instance._gold += 1;
             PlayCollect();

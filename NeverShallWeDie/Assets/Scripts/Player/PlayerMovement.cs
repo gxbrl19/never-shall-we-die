@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Roll
     private bool canRoll = true;
-    private float rollForce = 10f;
+    [SerializeField] private float rollForce = 10f;
     private float rollCooldown = .7f;
     private float rollTimer;
 
