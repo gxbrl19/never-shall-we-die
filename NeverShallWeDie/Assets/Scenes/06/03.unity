@@ -16252,8 +16252,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0
   m_LocalBounds:
-    m_Center: {x: 1.66015, y: -2.3653, z: 0}
-    m_Extent: {x: 3.87995, y: 4.5834, z: 0}
+    m_Center: {x: 1.6605501, y: -2.36595, z: 0}
+    m_Extent: {x: 3.88065, y: 4.58345, z: 0}
   m_PointLightInnerAngle: 359.99997
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 0.6
@@ -16595,8 +16595,6 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
-  _level: 0
-  _xp: 0
   _intro: 1
   _equipments: 
   _skills: 
@@ -16606,7 +16604,6 @@ MonoBehaviour:
   _hpMax: 25
   _mpMax: 15
   _gold: 0
-  _upPoints: 0
   _katanaLevel: 0
   _flags: 
   _barrels: 
@@ -16622,6 +16619,8 @@ MonoBehaviour:
   _shipUpgrades: 
   _shipPosX: 0
   _shipPosY: 0
+  _lastPier: 
+  _sceneForLoad: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -16930,8 +16929,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0
   m_LocalBounds:
-    m_Center: {x: 1.8656999, y: -2.8464499, z: 0}
-    m_Extent: {x: 4.0857, y: 5.06335, z: 0}
+    m_Center: {x: 1.86575, y: -2.8465, z: 0}
+    m_Extent: {x: 4.08575, y: 5.0634003, z: 0}
   m_PointLightInnerAngle: 359.99997
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 0.6
@@ -36907,6 +36906,83 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3aad2e8b03e84408ad3a88b78c311f, type: 3}
+--- !u!1001 &1033415625
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1873675811842991068, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: _plus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873675811842991068, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: _btnSprite
+      value: 
+      objectReference: {fileID: -1632353930, guid: 8a9a77f8be3369542b5e82f994831f05, type: 3}
+    - target: {fileID: 1873675811842991068, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: _keySprite
+      value: 
+      objectReference: {fileID: -487119812, guid: 8a9a77f8be3369542b5e82f994831f05, type: 3}
+    - target: {fileID: 1873675811842991068, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: _txtEnglish
+      value: Parry
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873675811842991068, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: _txtPortuguese
+      value: Aparar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029721, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_Name
+      value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -49.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373271078219029724, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7f2c5f250fb5d6c46b2045ad2b8aadc5, type: 3}
 --- !u!1 &1092066998
 GameObject:
   m_ObjectHideFlags: 0
@@ -37378,8 +37454,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0
   m_LocalBounds:
-    m_Center: {x: 1.3539501, y: -8.8502, z: 0}
-    m_Extent: {x: 3.5738502, y: 11.0675, z: 0}
+    m_Center: {x: 1.3538501, y: -8.850901, z: 0}
+    m_Extent: {x: 3.57325, y: 11.0679, z: 0}
   m_PointLightInnerAngle: 359.99997
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 0.6
@@ -38252,8 +38328,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0
   m_LocalBounds:
-    m_Center: {x: 0.76405, y: -9.3806, z: 0}
-    m_Extent: {x: 2.98305, y: 11.609301, z: 0}
+    m_Center: {x: 0.76405, y: -9.380449, z: 0}
+    m_Extent: {x: 2.98385, y: 11.60935, z: 0}
   m_PointLightInnerAngle: 359.99997
   m_PointLightOuterAngle: 359.99997
   m_PointLightInnerRadius: 0.6
@@ -38574,6 +38650,7 @@ SceneRoots:
   - {fileID: 1849113041}
   - {fileID: 300300562}
   - {fileID: 9665127}
+  - {fileID: 1033415625}
   - {fileID: 1407301883}
   - {fileID: 464805052}
   - {fileID: 1967415560}

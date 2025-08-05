@@ -39,7 +39,7 @@ public class Gold : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if (collision.gameObject.layer == LayerMask.NameToLayer("FootChar"))
-        if (collision.tag == "AttackPoint")
+        if (collision.tag == "Player")
         {
             GameManager.instance._gold += 1;
             PlayCollect();

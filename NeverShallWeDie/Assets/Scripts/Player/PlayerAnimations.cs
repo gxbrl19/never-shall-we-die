@@ -43,9 +43,6 @@ public class PlayerAnimations : MonoBehaviour
         //Attack
         animator.SetBool("IsAttacking", player.isAttacking);
 
-        //Roll
-        animator.SetBool("IsRolling", player.isRolling);
-
         //DoubleJump
         animator.SetBool("DoubleJump", player.isDoubleJumping);
 
@@ -101,6 +98,11 @@ public class PlayerAnimations : MonoBehaviour
         }
     }
 
+    public void PlayAnimParry()
+    {
+        animator.SetTrigger("Parry");
+    }
+
     public void OnAirCut()
     {
         animator.SetBool("AirCut", true);
@@ -108,7 +110,7 @@ public class PlayerAnimations : MonoBehaviour
 
     void StopAirCut()
     { //chamado na animação de Air Cut
-        player.playerInputs.isFireCuting = false;
+        player.playerInputs.pressFireGem = false;
         animator.SetBool("AirCut", false);
     }
 

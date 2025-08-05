@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
         currentMana = GetMana();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Healing();
     }
@@ -134,8 +134,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (player.isHealing && currentHealth < maxHealth && currentMana >= 0.1f)
         {
-            currentHealth += .03f;
-            currentMana -= .03f;
+            currentHealth += .06f;
+            currentMana -= .06f;
 
             SetHealth(currentHealth);
             SetMana(currentMana);

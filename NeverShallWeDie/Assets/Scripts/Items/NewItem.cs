@@ -38,7 +38,7 @@ public class NewItem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "AttackPoint")
+        if (collision.tag == "Player")
         {
             RuntimeManager.PlayOneShot(collected);
             UIManager.instance.FeedbackItem(_spriteRenderer.sprite);

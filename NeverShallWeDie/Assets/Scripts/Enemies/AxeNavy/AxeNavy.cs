@@ -28,7 +28,7 @@ public class AxeNavy : EnemyBase
 
     private void Update()
     {
-        if (isDead || player == null) return;
+        if (isDead || isHurt || player == null) return;
 
         UpdateCooldown();
         DetectPlayer();

@@ -52,9 +52,9 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool isJumping;
     [HideInInspector] public bool isAttacking;
+    [HideInInspector] public bool isParrying;
     [HideInInspector] public bool isDoubleJumping;
     [HideInInspector] public bool isHealing;
-    [HideInInspector] public bool isRolling;
     [HideInInspector] public bool isGrabing;
     [HideInInspector] public bool isGriding;
     [HideInInspector] public bool canDash;

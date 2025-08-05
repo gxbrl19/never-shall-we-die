@@ -50,13 +50,20 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
 
         isHurt = true;
         Invoke("ResetHurt", .2f);
-        TakeDamage(power);
 
-        //knockback
-        bool canKnockback = enemyName != "Evil Vine" && enemyName != "Dark Mage";
-        if (isDead || !canKnockback) return;
-        rb.velocity = Vector2.zero;
-        rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
+        if (power == 0) //parry
+        {
+            //knockback
+            bool canKnockback = enemyName != "Evil Vine" && enemyName != "Dark Mage";
+            if (isDead || !canKnockback) return;
+            rb.velocity = Vector2.zero;
+            rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
+            OnHurt();
+        }
+        else //damage
+        {
+            TakeDamage(power);
+        }
     }
 
     public virtual void TakeDamage(int amount)
@@ -68,13 +75,12 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         if (currentHealth <= 0)
             Die();
         else
-            OnHurt();
+            RuntimeManager.PlayOneShot(hit);
     }
 
-    protected virtual void OnHurt()
+    protected virtual void OnHurt() //efeito do Parry
     {
-        //animator.SetTrigger("Hurt");
-        RuntimeManager.PlayOneShot(hit);
+        animator.SetTrigger("Hurt");
     }
 
     protected virtual void Die()
