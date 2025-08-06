@@ -166,13 +166,13 @@ public class PlayerMovement : MonoBehaviour
         float yVelocity = 0f;
         float horizontal = player.playerInputs.GetHorizontal();
 
-        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.playerInputs.pressAttack && !player.isHealing && !player.isParrying) //chão comum
+        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing && !player.isParrying) //chão comum
         {
             xVelocity = speed * horizontal;
             yVelocity = 0.0f;
             player.rb.velocity = new Vector2(xVelocity, yVelocity);
         }
-        else if (player.isGrounded && player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing & !player.playerInputs.pressAttack) //diagonal
+        else if (player.isGrounded && player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing) //diagonal
         {
             xVelocity = speed * slopeNormalPerp.x * -horizontal;
             yVelocity = speed * slopeNormalPerp.y * -horizontal;
@@ -404,7 +404,9 @@ public class PlayerMovement : MonoBehaviour
         {
             player.isParrying = true;
             player.playerInputs.pressParry = false;
-            player.playerAnimations.PlayAnimParry();
+            player.playerAnimations.AnimParry();
+            player.rb.velocity = Vector2.zero;
+            Invoke("FinishParry", .2f);
         }
     }
 

@@ -163,12 +163,16 @@ public class Player : MonoBehaviour
     public void OnKatana()
     {
         if (playerInputs.pressAttack)
+        {
             isAttacking = true;
+            playerInputs.pressAttack = false;
+            playerAnimations.AnimAttack();
+            Invoke("FinishAttack", .2f);
+        }
     }
     public void FinishAttack() //chamado na animação de ataque da katana
     {
         isAttacking = false;
-        playerInputs.pressAttack = false;
         rb.gravityScale = playerMovement.initialGravity;
     }
     #endregion

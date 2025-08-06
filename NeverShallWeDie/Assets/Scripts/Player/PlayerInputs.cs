@@ -224,14 +224,16 @@ public class PlayerInputs : MonoBehaviour
 
     public void ButtonWest(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onHit || player.isGrabing || player.isParrying || player.isDashing || !player.canMove)
+        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall
+        || player.onHit || player.isGrabing || player.isParrying || player.isDashing || !player.canMove
+        || !PlayerEquipment.instance.equipments.Contains(Equipments.Katana))
             return;
 
-        if (callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && !player.onWater)
+        if (callback.started && !player.onWater)
         {
             _pressAttack = true;
         }
-        else if (callback.started && player.onWater && PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
+        else if (callback.started && player.onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
         {
             if (player.playerHealth.currentMana > 0 && player.timeWaterSpin >= player.timeForSkills)
             {

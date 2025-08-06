@@ -98,9 +98,16 @@ public class PlayerAnimations : MonoBehaviour
         }
     }
 
-    public void PlayAnimParry()
+    public void AnimAttack()
     {
-        animator.SetTrigger("Parry");
+        animator.Play("Player_Katana");
+        //animator.SetTrigger("Attack");
+    }
+
+    public void AnimParry()
+    {
+        animator.Play("Player_Parry");
+        //animator.SetTrigger("Parry");
     }
 
     public void OnAirCut()

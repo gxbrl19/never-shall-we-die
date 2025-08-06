@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1763452989692623889}
   - component: {fileID: 6031585729880318059}
   - component: {fileID: 2529970165682002235}
-  - component: {fileID: 2542005558591742607}
+  - component: {fileID: 5629152953397160955}
   m_Layer: 12
   m_Name: Spear
   m_TagString: Untagged
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   lifetime: 5
---- !u!114 &2542005558591742607
+--- !u!114 &5629152953397160955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,8 +183,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8212883212767371751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bd211de800e55e4ebb1a91fe22db671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 3
-  _hitEffect: {fileID: 0}
+  hitEffect: {fileID: 0}

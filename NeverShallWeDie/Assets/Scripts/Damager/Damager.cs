@@ -20,6 +20,7 @@ public class Damager : MonoBehaviour
                 Instantiate(hitEffect, transform.position, transform.rotation);
             }
         }
+
         else if (other.gameObject.layer == 9) //Player
         {
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
@@ -37,19 +38,6 @@ public class Damager : MonoBehaviour
                 Vector2 dir = (other.transform.position - playerPosition.position).normalized;
                 boss.TakeHit(attackPower, dir, 6f); //knockback + dano
                 Instantiate(hitEffect, transform.position, transform.rotation);
-            }
-        }
-
-        else if (other.gameObject.layer == 0) //Default (Parry)
-        {
-            Player player = FindObjectOfType<Player>().GetComponent<Player>();
-            Transform playerPosition = FindObjectOfType<Player>().GetComponent<Transform>();
-            IEnemy enemy = GetComponentInParent<IEnemy>();
-
-            if (player.isParrying && enemy != null)
-            {
-                Vector2 dir = (other.transform.position - playerPosition.position).normalized;
-                enemy.TakeHit(0, dir, 7f); //knockback + dano
             }
         }
     }

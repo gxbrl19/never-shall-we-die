@@ -51,11 +51,11 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         isHurt = true;
         Invoke("ResetHurt", .2f);
 
-        if (power == 0) //parry
+        bool parryReaction = enemyName != "Evil Vine" && enemyName != "Dark Mage" && enemyName != "Boar";
+
+        if (power == 0 && parryReaction) //parry
         {
             //knockback
-            bool canKnockback = enemyName != "Evil Vine" && enemyName != "Dark Mage";
-            if (isDead || !canKnockback) return;
             rb.velocity = Vector2.zero;
             rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
             OnHurt();
