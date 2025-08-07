@@ -418,6 +418,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 direction = playerDirection < 0 ? Vector2.left : Vector2.right;
         player.rb.velocity = direction * rollForce;
+        Invoke("FinishRoll", .3f);
     }
 
     public void FinishRoll() //chamado também na animação de Roll

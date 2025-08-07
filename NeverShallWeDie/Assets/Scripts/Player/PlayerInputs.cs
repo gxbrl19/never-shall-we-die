@@ -201,7 +201,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void ButtonNorth(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || player.isHealing || _pressAttack || _pressFireGem || Time.timeScale == 0f || player.canMove == false)
+        if (player.isDead || player.isHealing || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.canMove == false)
             return;
 
         if (_callback.started && !player.canGrab)
@@ -246,7 +246,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void ButtonEast(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || player.isRolling || player.canMove == false || player.isDashing || _pressAttack || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
+        if (player.isDead || player.isRolling || player.canMove == false || player.isDashing || player.isAttacking || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
             return;
 
         if (_callback.started)
@@ -258,7 +258,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void LeftShoulder(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || !player.isGrounded || player.onHit || _pressAttack || _pressFireGem || Time.timeScale == 0f || player.onWater || player.canMove == false || player.playerCollision._onWall || player.isGrabing || player.isRolling || player.isDashing)
+        if (player.isDead || !player.isGrounded || player.onHit || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onWater || player.canMove == false || player.playerCollision._onWall || player.isGrabing || player.isRolling || player.isDashing)
             return;
 
         if (_callback.started)
@@ -274,7 +274,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void LeftTrigger(InputAction.CallbackContext callback)
     {
-        if (player.isDead || _pressAttack || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onWater || player.onHit || player.isGrabing || player.isRolling || player.isDashing || player.canMove == false)
+        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onWater || player.onHit || player.isGrabing || player.isRolling || player.isDashing || player.canMove == false)
             return;
 
         if (callback.started)
@@ -301,7 +301,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void RightTrigger(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || _pressAttack || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onHit || player.isGrabing || player.onWater || player.isRolling || player.canMove == false)
+        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onHit || player.isGrabing || player.onWater || player.isRolling || player.canMove == false)
             return;
 
         if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.FireGem))

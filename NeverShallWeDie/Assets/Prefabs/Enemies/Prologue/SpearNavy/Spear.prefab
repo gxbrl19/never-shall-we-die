@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4852488833907978055}
   - component: {fileID: 1763452989692623889}
   - component: {fileID: 6031585729880318059}
-  - component: {fileID: 2529970165682002235}
-  - component: {fileID: 5629152953397160955}
+  - component: {fileID: 6547147325740118093}
+  - component: {fileID: 194373750259757318}
   m_Layer: 12
   m_Name: Spear
   m_TagString: Untagged
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2529970165682002235
+--- !u!114 &6547147325740118093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b317a68b85a61944bf9d7449a08cd22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 15
   lifetime: 5
---- !u!114 &5629152953397160955
+--- !u!114 &194373750259757318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,8 +183,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8212883212767371751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd211de800e55e4ebb1a91fe22db671, type: 3}
+  m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 3
+  attackPower: 5
   hitEffect: {fileID: 0}

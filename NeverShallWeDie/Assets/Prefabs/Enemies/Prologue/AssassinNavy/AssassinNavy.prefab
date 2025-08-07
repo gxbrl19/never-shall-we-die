@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5238646512257658322}
   - component: {fileID: 7705722113162894660}
-  - component: {fileID: 4276231003270799543}
+  - component: {fileID: 3398024030197448579}
   m_Layer: 12
   m_Name: AttackPoint
   m_TagString: Enemy
@@ -96,10 +96,10 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.9795705, y: 0.26902682}
-  m_Size: {x: 1.3830606, y: 0.8766622}
+  m_Offset: {x: 1.3122528, y: 0.43410754}
+  m_Size: {x: 0.71769667, y: 0.4731334}
   m_Direction: 1
---- !u!114 &4276231003270799543
+--- !u!114 &3398024030197448579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 530350482602673829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd211de800e55e4ebb1a91fe22db671, type: 3}
+  m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackPower: 3
