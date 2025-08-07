@@ -102,8 +102,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //OnRoll();
-        OnParry();
+        OnRoll();
     }
 
 
@@ -166,7 +165,7 @@ public class PlayerMovement : MonoBehaviour
         float yVelocity = 0f;
         float horizontal = player.playerInputs.GetHorizontal();
 
-        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing && !player.isParrying) //chão comum
+        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing && !player.isRolling) //chão comum
         {
             xVelocity = speed * horizontal;
             yVelocity = 0.0f;
@@ -276,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
     #region Jump
     void JumpControl()
     {
-        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isParrying && !player.isDashing) //pulo comum
+        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isRolling && !player.isDashing) //pulo comum
         {
             player.isJumping = true;
             player.playerInputs.pressJump = false;
@@ -289,7 +288,7 @@ public class PlayerMovement : MonoBehaviour
             player.playerAudio.PlayJump();
             CreateDust(1);
         }
-        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isParrying && !player.isDashing)
+        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isRolling && !player.isDashing)
         {
             player.isDoubleJumping = false;
             player.playerInputs.pressJump = false;
@@ -396,32 +395,14 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    #region Parry
-
-    void OnParry()
-    {
-        if (player.playerInputs.pressParry)
-        {
-            player.isParrying = true;
-            player.playerInputs.pressParry = false;
-            player.playerAnimations.AnimParry();
-            player.rb.velocity = Vector2.zero;
-            Invoke("FinishParry", .2f);
-        }
-    }
-
-    public void FinishParry() //chamado na animação
-    {
-        player.isParrying = false;
-        player.rb.gravityScale = player.playerMovement.initialGravity;
-    }
+    #region Roll
 
     void OnRoll()
     {
         float horizontal = player.playerInputs.GetHorizontal();
         canRoll = currentStamina > 0f && horizontal != 0 && !isExhausted && rollTimer >= rollCooldown;
 
-        if (player.playerInputs.pressParry && canRoll && !player.isParrying)
+        if (player.playerInputs.pressRoll && canRoll && !player.isRolling)
         {
             ExecuteRoll();
         }
@@ -429,9 +410,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void ExecuteRoll()
     {
-        //gameObject.layer = LayerMask.NameToLayer("Invencible");
-        player.isParrying = true;
-        player.playerInputs.pressParry = false;
+        player.playerAnimations.AnimRoll();
+        player.isRolling = true;
+        player.playerInputs.pressRoll = false;
         StaminaConsumption(1.1f);
         rollTimer = 0f;
 
@@ -441,8 +422,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void FinishRoll() //chamado também na animação de Roll
     {
-        player.isParrying = false;
-        //gameObject.layer = LayerMask.NameToLayer("Player");
+        player.isRolling = false;
     }
     #endregion
 
@@ -664,7 +644,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressFireGem || player.inWaterSpin || player.playerInputs.pressAttack || player.isParrying)
+        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressFireGem || player.inWaterSpin || player.playerInputs.pressAttack || player.isRolling)
             return;
 
         if (player.isGrounded)

@@ -28,7 +28,7 @@ public class AxeNavy : EnemyBase
 
     private void Update()
     {
-        if (isDead || isHurt || player == null) return;
+        if (isDead || player == null) return;
 
         UpdateCooldown();
         DetectPlayer();
@@ -126,6 +126,10 @@ public class AxeNavy : EnemyBase
             cooldownTimer = attackCooldown;
             rb.velocity = Vector2.zero;
             return;
+        }
+        else if (distance <= attackDistance && cooldownTimer > 0f)
+        {
+            currentState = State.Idle;
         }
 
         if (!playerDetected)

@@ -15,7 +15,7 @@ public class DamagerParry : MonoBehaviour
             Transform playerPosition = FindObjectOfType<Player>().GetComponent<Transform>();
             IEnemy enemy = GetComponentInParent<IEnemy>();
 
-            if (player.isParrying && enemy != null)
+            if (player.isRolling && enemy != null)
             {
                 Vector2 dir = (other.transform.position - playerPosition.position).normalized;
                 enemy.TakeHit(0, dir, 7f); //knockback + dano

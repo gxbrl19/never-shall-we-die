@@ -46,24 +46,17 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
 
     public virtual void TakeHit(int power, Vector2 hitDirection, float knockbackForce = 5f)
     {
-        if (isHurt || isDead || enemyName == "Beetboom" || enemyName == "Barrel Monkey") return;
+        if (isDead || enemyName == "Beetboom" || enemyName == "Barrel Monkey") return;
 
         isHurt = true;
         Invoke("ResetHurt", .2f);
+        TakeDamage(power);
 
-        bool parryReaction = enemyName != "Evil Vine" && enemyName != "Dark Mage" && enemyName != "Boar";
-
-        if (power == 0 && parryReaction) //parry
-        {
-            //knockback
-            rb.velocity = Vector2.zero;
-            rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
-            OnHurt();
-        }
-        else //damage
-        {
-            TakeDamage(power);
-        }
+        //knockback
+        bool canKnockback = enemyName != "Evil Vine" && enemyName != "Dark Mage";
+        if (isDead || !canKnockback) return;
+        rb.velocity = Vector2.zero;
+        rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
     }
 
     public virtual void TakeDamage(int amount)
@@ -75,12 +68,13 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         if (currentHealth <= 0)
             Die();
         else
-            RuntimeManager.PlayOneShot(hit);
+            OnHurt();
     }
 
-    protected virtual void OnHurt() //efeito do Parry
+    protected virtual void OnHurt()
     {
-        animator.SetTrigger("Hurt");
+        RuntimeManager.PlayOneShot(hit);
+        //animator.SetTrigger("Hurt");
     }
 
     protected virtual void Die()
@@ -111,7 +105,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         }
     }
 
-    protected virtual void ResetHurt() //chamado no TakeHit()
+    protected virtual void ResetHurt() //chamado no take hit
     {
         rb.velocity = Vector2.zero;
         sprite.color = defaultColor;

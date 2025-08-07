@@ -160,7 +160,7 @@ public class PlayerCollision : MonoBehaviour
             if (other.gameObject.tag.Equals("Lava")) { Instantiate(_dropLava, position, other.transform.rotation); }
             else { Instantiate(_dropWater, position, other.transform.rotation); }
 
-            if (_player.isParrying)
+            if (_player.isRolling)
             {
                 _player.playerMovement.FinishRoll(); //cancela o Roll ao entrar na água
                 return;

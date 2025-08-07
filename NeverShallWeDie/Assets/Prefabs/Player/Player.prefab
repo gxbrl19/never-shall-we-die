@@ -1077,7 +1077,7 @@ MonoBehaviour:
   isGrounded: 0
   isJumping: 0
   isAttacking: 0
-  isParrying: 0
+  isRolling: 0
   isDoubleJumping: 0
   isHealing: 0
   isGrabing: 0
@@ -1447,7 +1447,7 @@ GameObject:
   - component: {fileID: 8160846809695199608}
   - component: {fileID: 1927880504853151448}
   m_Layer: 0
-  m_Name: AttackPoint (Parry)
+  m_Name: RollCollider
   m_TagString: AttackPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1500,8 +1500,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.4615154, y: 0.41699028}
-  m_Size: {x: 0.6886091, y: 1.7656975}
+  m_Offset: {x: -1.2943628, y: 0.30591774}
+  m_Size: {x: 1.0229144, y: 1.5623589}
   m_Direction: 0
 --- !u!1 &8909993161202707593
 GameObject:

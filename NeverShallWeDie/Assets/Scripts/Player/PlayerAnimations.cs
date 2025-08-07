@@ -104,9 +104,9 @@ public class PlayerAnimations : MonoBehaviour
         //animator.SetTrigger("Attack");
     }
 
-    public void AnimParry()
+    public void AnimRoll()
     {
-        animator.Play("Player_Parry");
+        animator.Play("Player_Roll");
         //animator.SetTrigger("Parry");
     }
 

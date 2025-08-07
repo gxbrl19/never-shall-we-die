@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_Parry
+  m_Name: Player_Roll
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -17,27 +17,6 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves:
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Enabled
-    path: AttackPoint (Parry)
-    classID: 70
-    script: {fileID: 0}
-    flags: 0
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -59,13 +38,44 @@ AnimationClip:
     classID: 70
     script: {fileID: 0}
     flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: RollCollider
+    classID: 70
+    script: {fileID: 0}
+    flags: 0
   m_PPtrCurves:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 7728707986581759857, guid: e35a3502fde986b4badd9fdca9d025bd, type: 3}
+      value: {fileID: -145002716983159489, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - time: 0.083333336
+      value: {fileID: -2659912704815166259, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - time: 0.16666667
+      value: {fileID: -7923293956143381933, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
     - time: 0.25
-      value: {fileID: 7728707986581759857, guid: e35a3502fde986b4badd9fdca9d025bd, type: 3}
+      value: {fileID: 4772261587656693653, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - time: 0.33333334
+      value: {fileID: 682027023112345549, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - time: 0.41666666
+      value: {fileID: 2313663199123428666, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - time: 0.5
+      value: {fileID: 3107221226782229343, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -79,7 +89,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 257003351
+      path: 0
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 70
@@ -88,7 +98,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 0
+      path: 1331433124
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 70
@@ -106,14 +116,19 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 7728707986581759857, guid: e35a3502fde986b4badd9fdca9d025bd, type: 3}
-    - {fileID: 7728707986581759857, guid: e35a3502fde986b4badd9fdca9d025bd, type: 3}
+    - {fileID: -145002716983159489, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - {fileID: -2659912704815166259, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - {fileID: -7923293956143381933, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - {fileID: 4772261587656693653, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - {fileID: 682027023112345549, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - {fileID: 2313663199123428666, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
+    - {fileID: 3107221226782229343, guid: 974ec3028d6a1b1479a03e36bdd1d229, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -135,27 +150,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Enabled
-    path: AttackPoint (Parry)
-    classID: 70
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -171,19 +165,40 @@ AnimationClip:
     classID: 70
     script: {fileID: 0}
     flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: RollCollider
+    classID: 70
+    script: {fileID: 0}
+    flags: 0
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlayKatana
+    functionName: PlayRoll
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.25
-    functionName: FinishParry
+  - time: 0.5
+    functionName: FinishRoll
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
