@@ -232,6 +232,7 @@ public class PlayerInputs : MonoBehaviour
         if (callback.started && !player.onWater)
         {
             _pressAttack = true;
+            player.OnKatana();
         }
         else if (callback.started && player.onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
         {

@@ -127,8 +127,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        OnKatana();
-
         dashTimer += Time.deltaTime;
         //contagem das skills
         timeAirCut += Time.deltaTime;
@@ -142,6 +140,13 @@ public class Player : MonoBehaviour
 
         //Special Attacks
         WaterSpin();
+    }
+
+    public void CancelMovesOnHit()
+    {
+        FinishAttack();
+        FinishDash();
+        playerMovement.FinishRoll();
     }
 
     #region Movement
@@ -162,18 +167,14 @@ public class Player : MonoBehaviour
     #region Katana
     public void OnKatana()
     {
-        if (playerInputs.pressAttack)
-        {
-            isAttacking = true;
-            playerInputs.pressAttack = false;
-            playerAnimations.AnimAttack();
-            Invoke("FinishAttack", .2f);
-        }
+        isAttacking = true;
+        playerInputs.pressAttack = false;
+        playerAnimations.AnimAttack();
+        Invoke("FinishAttack", .2f); //garante o fim do ataque
     }
-    public void FinishAttack() //chamado na animação de ataque da katana
+    public void FinishAttack() //chamado também na animação de ataque da katana
     {
         isAttacking = false;
-        rb.gravityScale = playerMovement.initialGravity;
     }
     #endregion
 

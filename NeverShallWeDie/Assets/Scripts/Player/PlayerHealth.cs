@@ -73,6 +73,7 @@ public class PlayerHealth : MonoBehaviour
         player.onHit = true;
         player.canMove = false;
         playerInput.CancelInputs();
+        player.CancelMovesOnHit();
         spriteRenderer.color = _damageColor;
     }
 

@@ -40,9 +40,6 @@ public class PlayerAnimations : MonoBehaviour
         animator.SetBool("IsClimbing", player.onClimbing);
         animator.SetFloat("Vertical", Mathf.Abs(yVelocity));
 
-        //Attack
-        animator.SetBool("IsAttacking", player.isAttacking);
-
         //DoubleJump
         animator.SetBool("DoubleJump", player.isDoubleJumping);
 
