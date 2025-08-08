@@ -9,10 +9,10 @@ public class Crab : EnemyBase
     [SerializeField] private LayerMask playerLayer;
     private float attackRange = 2.5f;
     private float distanceToPlayer;
-    private float moveSpeed = 8f;
-    private float attackCooldown = 1.8f;
+    private float moveSpeed = 11f;
+    private float attackCooldown = .2f;
+    private float attackCounter = 0f;
     private float direction;
-    private float lastAttackTime;
     private bool playerDetected = false;
     Vector2 detectionBoxSize = new Vector2(20f, 3f);
     Transform player;
@@ -29,6 +29,8 @@ public class Crab : EnemyBase
 
         animator.SetBool("Run", currentState == State.Chase);
 
+        attackCounter += .2f * Time.deltaTime;
+
         DetectPlayer();
 
         distanceToPlayer = Vector2.Distance(transform.position, player.position);
@@ -36,14 +38,14 @@ public class Crab : EnemyBase
         switch (currentState)
         {
             case State.Idle:
-                if (playerDetected)
+                if (playerDetected && attackCounter > attackCooldown)
                     ChangeState(State.Chase);
+
                 break;
 
             case State.Chase:
                 if (distanceToPlayer <= attackRange)
                 {
-                    rb.velocity = Vector2.zero;
                     ChangeState(State.Attack);
                 }
                 else
@@ -51,16 +53,14 @@ public class Crab : EnemyBase
                     MoveTowardsPlayer();
                 }
 
-                if (!playerDetected)
-                    ChangeState(State.Idle);
-
                 break;
 
             case State.Attack:
-                if (Time.time >= lastAttackTime + attackCooldown)
+                if (attackCounter > attackCooldown)
                 {
+                    attackCounter = 0f;
+                    rb.velocity = Vector2.zero;
                     animator.SetTrigger("Attack");
-                    lastAttackTime = Time.time;
                 }
 
                 break;
@@ -102,10 +102,7 @@ public class Crab : EnemyBase
 
     public void FinishAttack() //chamado também na animação Attack
     {
-        if (playerDetected && distanceToPlayer > attackRange)
-            ChangeState(State.Chase);
-        else
-            ChangeState(State.Idle);
+        ChangeState(State.Idle);
     }
 
     private void OnDrawGizmosSelected()
