@@ -1,0 +1,868 @@
+fileFormatVersion: 2
+guid: 4fb552683b517fc498c2e744d81f27b0
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 16
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638460091908186554
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: SwordShark_Frame_0
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 145
+      y: 42
+      width: 39
+      height: 32
+    spriteID: f20f507fa5589e44d8f74218740f5044
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 145, y: 42}
+  - name: SwordShark_Frame_1
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.53333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 163
+      width: 39
+      height: 30
+    spriteID: b0dc885dbb1dfd346a924da2ddaa6316
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 163}
+  - name: SwordShark_Frame_2
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 192
+      y: 42
+      width: 39
+      height: 32
+    spriteID: 5fee283450789284bb51046009e0f437
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 192, y: 42}
+  - name: SwordShark_Frame_3
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.4848485}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 42
+      width: 39
+      height: 33
+    spriteID: a2760c6aac34ac4419d70f70b10fe77c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 42}
+  - name: SwordShark_Frame_4
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 83
+      width: 39
+      height: 32
+    spriteID: 98761480c8c586f45b3c1b5b3293bfaa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 83}
+  - name: SwordShark_Frame_5
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 51
+      y: 83
+      width: 39
+      height: 32
+    spriteID: 8655ed9ebbc14524b9210569aaa4caca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 51, y: 83}
+  - name: SwordShark_Frame_6
+    originalName: 
+    pivot: {x: 0.36842108, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 123
+      width: 38
+      height: 32
+    spriteID: af1955bbc03368b43bbf28ac5f1b35a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 123}
+  - name: SwordShark_Frame_7
+    originalName: 
+    pivot: {x: 0.36585367, y: 0.53333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 51
+      y: 123
+      width: 41
+      height: 30
+    spriteID: 4d1bdd77cc606c745959bdace754064a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 51, y: 123}
+  - name: SwordShark_Frame_8
+    originalName: 
+    pivot: {x: 0.44444445, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 143
+      y: 163
+      width: 36
+      height: 32
+    spriteID: 1905015df3a63ab4ab65e641362ffcd3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 143, y: 163}
+  - name: SwordShark_Frame_9
+    originalName: 
+    pivot: {x: 0.31914896, y: 0.53333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 120
+      y: 4
+      width: 47
+      height: 30
+    spriteID: 6a9a0121b5c32a74e877e64842188728
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 120, y: 4}
+  - name: SwordShark_Frame_10
+    originalName: 
+    pivot: {x: 0.31914896, y: 0.53333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 175
+      y: 4
+      width: 47
+      height: 30
+    spriteID: 705554fd9e6ad27448b8453ecbef0799
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 175, y: 4}
+  - name: SwordShark_Frame_11
+    originalName: 
+    pivot: {x: 0.30612245, y: 0.53333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 63
+      y: 4
+      width: 49
+      height: 30
+    spriteID: e4f1cd6d71a42574f8821abc04588720
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 63, y: 4}
+  - name: SwordShark_Frame_12
+    originalName: 
+    pivot: {x: 0.29411766, y: 0.53333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 51
+      height: 30
+    spriteID: b07a6b08b18a2f446bb08d7e08bbd5c9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: SwordShark_Frame_13
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 98
+      y: 83
+      width: 39
+      height: 32
+    spriteID: e830f69a3d0e51d44b4e4700dc92c318
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 98, y: 83}
+  - name: SwordShark_Frame_14
+    originalName: 
+    pivot: {x: 0.36842108, y: 0.4666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 187
+      y: 163
+      width: 38
+      height: 30
+    spriteID: 34ed469e2fd9b344597e39d124bdcb64
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 187, y: 163}
+  - name: SwordShark_Frame_15
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.4375}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 145
+      y: 83
+      width: 39
+      height: 32
+    spriteID: f33b90a5493e2c44694343c1c4173952
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 145, y: 83}
+  - name: SwordShark_Frame_16
+    originalName: 
+    pivot: {x: 0.35135132, y: 0.4375}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 163
+      width: 37
+      height: 32
+    spriteID: ff37ab5136f9bae439782b93d08cd182
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 163}
+  - name: SwordShark_Frame_17
+    originalName: 
+    pivot: {x: 0.36842108, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 146
+      y: 123
+      width: 38
+      height: 32
+    spriteID: 85d1cc04cca38c24199b8f674c20fe70
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 146, y: 123}
+  - name: SwordShark_Frame_18
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.4666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 163
+      width: 39
+      height: 30
+    spriteID: 885b57a9f65766e48bf1ae40b6da3f8c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 163}
+  - name: SwordShark_Frame_19
+    originalName: 
+    pivot: {x: 0.36842108, y: 0.40625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 192
+      y: 123
+      width: 38
+      height: 32
+    spriteID: 833574290c7de284192f21a4849e4527
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 192, y: 123}
+  - name: SwordShark_Frame_20
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.4375}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 192
+      y: 83
+      width: 39
+      height: 32
+    spriteID: 9d344ac162a72f64cbb8889d3c022b03
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 192, y: 83}
+  - name: SwordShark_Frame_21
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.4848485}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 51
+      y: 42
+      width: 39
+      height: 33
+    spriteID: 01552c1a7e44c3a42bc3c8ef1fc2af72
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 51, y: 42}
+  - name: SwordShark_Frame_22
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 123
+      width: 39
+      height: 32
+    spriteID: 095f622a755980842af279be7ed0f41a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 123}
+  - name: SwordShark_Frame_23
+    originalName: 
+    pivot: {x: 0.38461542, y: 0.4848485}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 98
+      y: 42
+      width: 39
+      height: 33
+    spriteID: 4dd7a55b3685ebd4f81726caa274eed4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 98, y: 42}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 269092436
+    name: SwordShark
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: SwordShark_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 25
+        y: 16
+        width: 39
+        height: 32
+      spriteId: f20f507fa5589e44d8f74218740f5044
+    - name: SwordShark_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 25
+        y: 16
+        width: 39
+        height: 30
+      spriteId: b0dc885dbb1dfd346a924da2ddaa6316
+    - name: SwordShark_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 25
+        y: 16
+        width: 39
+        height: 32
+      spriteId: 5fee283450789284bb51046009e0f437
+    - name: SwordShark_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 25
+        y: 16
+        width: 39
+        height: 33
+      spriteId: a2760c6aac34ac4419d70f70b10fe77c
+    - name: SwordShark_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 25
+        y: 16
+        width: 39
+        height: 32
+      spriteId: 98761480c8c586f45b3c1b5b3293bfaa
+    - name: SwordShark_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 25
+        y: 16
+        width: 39
+        height: 32
+      spriteId: 8655ed9ebbc14524b9210569aaa4caca
+    - name: SwordShark_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 26
+        y: 16
+        width: 38
+        height: 32
+      spriteId: af1955bbc03368b43bbf28ac5f1b35a9
+    - name: SwordShark_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 25
+        y: 16
+        width: 41
+        height: 30
+      spriteId: 4d1bdd77cc606c745959bdace754064a
+    - name: SwordShark_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 24
+        y: 16
+        width: 36
+        height: 32
+      spriteId: 1905015df3a63ab4ab65e641362ffcd3
+    - name: SwordShark_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 25
+        y: 16
+        width: 47
+        height: 30
+      spriteId: 6a9a0121b5c32a74e877e64842188728
+    - name: SwordShark_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 25
+        y: 16
+        width: 47
+        height: 30
+      spriteId: 705554fd9e6ad27448b8453ecbef0799
+    - name: SwordShark_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 25
+        y: 16
+        width: 49
+        height: 30
+      spriteId: e4f1cd6d71a42574f8821abc04588720
+    - name: SwordShark_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 25
+        y: 16
+        width: 51
+        height: 30
+      spriteId: b07a6b08b18a2f446bb08d7e08bbd5c9
+    - name: SwordShark_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 25
+        y: 16
+        width: 39
+        height: 32
+      spriteId: e830f69a3d0e51d44b4e4700dc92c318
+    - name: SwordShark_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 26
+        y: 18
+        width: 38
+        height: 30
+      spriteId: 34ed469e2fd9b344597e39d124bdcb64
+    - name: SwordShark_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 25
+        y: 18
+        width: 39
+        height: 32
+      spriteId: f33b90a5493e2c44694343c1c4173952
+    - name: SwordShark_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 27
+        y: 18
+        width: 37
+        height: 32
+      spriteId: ff37ab5136f9bae439782b93d08cd182
+    - name: SwordShark_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 26
+        y: 16
+        width: 38
+        height: 32
+      spriteId: 85d1cc04cca38c24199b8f674c20fe70
+    - name: SwordShark_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 25
+        y: 18
+        width: 39
+        height: 30
+      spriteId: 885b57a9f65766e48bf1ae40b6da3f8c
+    - name: SwordShark_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 26
+        y: 19
+        width: 38
+        height: 32
+      spriteId: 833574290c7de284192f21a4849e4527
+    - name: SwordShark_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 25
+        y: 18
+        width: 39
+        height: 32
+      spriteId: 9d344ac162a72f64cbb8889d3c022b03
+    - name: SwordShark_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 25
+        y: 16
+        width: 39
+        height: 33
+      spriteId: 01552c1a7e44c3a42bc3c8ef1fc2af72
+    - name: SwordShark_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 25
+        y: 16
+        width: 39
+        height: 32
+      spriteId: 095f622a755980842af279be7ed0f41a
+    - name: SwordShark_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 25
+        y: 16
+        width: 39
+        height: 33
+      spriteId: 4dd7a55b3685ebd4f81726caa274eed4
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 80, y: 64}
