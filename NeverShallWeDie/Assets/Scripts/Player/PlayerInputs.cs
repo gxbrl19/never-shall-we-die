@@ -178,7 +178,7 @@ public class PlayerInputs : MonoBehaviour
     {
         if (player.isDead || player.canMove == false || Time.timeScale == 0f) return;
 
-        if (player.isGrounded || player.playerCollision._onWall || player.onClimbing || player.onWater || player.isGriding && !player.isDoubleJumping)
+        if (player.isGrounded || player.onLedge || player.isWallSliding || player.onClimbing || player.onWater || player.isGriding && !player.isDoubleJumping)
         {
             if (callback.started)
                 _pressJump = true;
@@ -190,7 +190,7 @@ public class PlayerInputs : MonoBehaviour
         }
         else if (!player.isGrounded && PlayerSkills.instance.skills.Contains(Skills.AirGem) && !player.isDoubleJumping && player.playerMovement.canDoubleJump)
         {
-            if (callback.started && !player.playerCollision._onWall)
+            if (callback.started && !player.onLedge)
             {
                 player.isDoubleJumping = true;
                 player.playerMovement.canDoubleJump = false;
@@ -224,7 +224,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void ButtonWest(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall
+        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.onLedge
         || player.onHit || player.isGrabing || player.isRolling || player.isDashing || !player.canMove
         || !PlayerEquipment.instance.equipments.Contains(Equipments.Katana))
             return;
@@ -259,7 +259,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void LeftShoulder(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || !player.isGrounded || player.onHit || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onWater || player.canMove == false || player.playerCollision._onWall || player.isGrabing || player.isRolling || player.isDashing)
+        if (player.isDead || !player.isGrounded || player.onHit || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onWater || player.canMove == false || player.onLedge || player.isGrabing || player.isRolling || player.isDashing)
             return;
 
         if (_callback.started)
@@ -275,7 +275,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void LeftTrigger(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onWater || player.onHit || player.isGrabing || player.isRolling || player.isDashing || player.canMove == false)
+        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.onLedge || player.onWater || player.onHit || player.isGrabing || player.isRolling || player.isDashing || player.canMove == false)
             return;
 
         if (callback.started)
@@ -287,7 +287,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void RightShoulder(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isGrounded || player.playerCollision._onWall || player.onClimbing || player.onWater || player.isGriding) return;
+        if (player.isDead || player.isGrounded || player.onLedge || player.onClimbing || player.onWater || player.isGriding) return;
 
         if (callback.started && PlayerEquipment.instance.equipments.Contains(Equipments.Parachute) && player.playerMovement.currentStamina > 0f && !player.playerMovement.isExhausted)
         {
@@ -302,7 +302,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void RightTrigger(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.playerCollision._onWall || player.onHit || player.isGrabing || player.onWater || player.isRolling || player.canMove == false)
+        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.onLedge || player.onHit || player.isGrabing || player.onWater || player.isRolling || player.canMove == false)
             return;
 
         if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.FireGem))

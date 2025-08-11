@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private float rollCooldown = .7f;
     private float rollTimer;
 
+
     //Slope
     private float slopeCheckDistance = 1f;
     private float slopeDownAngle;
@@ -60,6 +61,14 @@ public class PlayerMovement : MonoBehaviour
 
     //Grab
     private float grabSpeed = 2f;
+
+    //WallJump
+    [Header("Wall Jump Settings")]
+    private Vector2 wallJumpForce = new Vector2(10f, 15f);
+    private float wallSlideSpeed = 1.6f;
+    private float wallJumpLockTime = 0.25f; //tempo que bloqueia controle horizontal após pulo
+    private float wallJumpLockCounter;
+    private int wallDirection;
 
     //Water
     private float waterGravity = 0.4f;
@@ -103,6 +112,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         OnRoll();
+
+        if (wallJumpLockCounter > 0)
+        {
+            wallJumpLockCounter -= Time.deltaTime;
+            //player.canMove = false;
+            player.playerInputs.horizontal = 0f;
+        }
+
+        HandleWallSlide();
     }
 
 
@@ -183,7 +201,7 @@ public class PlayerMovement : MonoBehaviour
             yVelocity = player.rb.velocity.y;
             player.rb.velocity = new Vector2(xVelocity, yVelocity);
         }
-        else if (!player.isGrounded && !player.onWater) //no ar
+        else if (!player.isGrounded && !player.onWater && wallJumpLockCounter <= 0f) //no ar
         {
             xVelocity = speed * horizontal;
             yVelocity = player.rb.velocity.y;
@@ -288,7 +306,7 @@ public class PlayerMovement : MonoBehaviour
             player.playerAudio.PlayJump();
             CreateDust(1);
         }
-        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isRolling && !player.isDashing)
+        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isRolling && !player.isDashing) //double jump
         {
             player.isDoubleJumping = false;
             player.playerInputs.pressJump = false;
@@ -297,9 +315,9 @@ public class PlayerMovement : MonoBehaviour
             player.rb.AddForce(Vector2.up * doubleJumpForce, ForceMode2D.Impulse);
             player.playerAudio.PlayJump();
         }
-        else if (player.playerInputs.pressJump && player.onWater && canSwin && !player.playerCollision._onWall) // na água
+        else if (player.playerInputs.pressJump && player.onWater && canSwin && !player.onLedge) // na água
         {
-            if (player.playerCollision._outWaterHit && player.playerCollision._inWaterHit)
+            if (player.playerCollision.outWaterHit && player.playerCollision.inWaterHit)
             {
                 player.isJumping = true;
                 player.playerInputs.pressJump = false;
@@ -309,7 +327,7 @@ public class PlayerMovement : MonoBehaviour
                 ghostTime = Time.time;
                 player.playerAudio.PlayJump();
             }
-            else if (!player.playerCollision._outWaterHit && player.playerCollision._inWaterHit)
+            else if (!player.playerCollision.outWaterHit && player.playerCollision.inWaterHit)
             {
                 player.rb.velocity = Vector2.zero;
                 player.rb.AddForce(Vector2.up * swimForce, ForceMode2D.Impulse);
@@ -320,7 +338,20 @@ public class PlayerMovement : MonoBehaviour
         {
             PassThroughBridge();
         }
-        else if (player.playerInputs.pressJump && player.playerCollision._onWall && !player.isGrounded && !player.onWater) // pulo parede
+        else if (player.playerInputs.pressJump && player.isWallSliding) // pulo da parede
+        {
+            player.isJumping = true;
+            player.playerInputs.pressJump = false;
+
+            wallJumpLockCounter = wallJumpLockTime; //bloqueia input horizontal por um tempo
+
+            player.rb.velocity = Vector2.zero;
+            player.rb.velocity = new Vector2(wallJumpForce.x * -wallDirection, wallJumpForce.y);
+
+            player.isWallSliding = false;
+            Flip();
+        }
+        else if (player.playerInputs.pressJump && player.onLedge && !player.isGrounded && !player.onWater) // pulo da beirada
         {
             player.isJumping = true;
             player.playerInputs.pressJump = false;
@@ -377,6 +408,24 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    #region Wall Slide
+    void HandleWallSlide()
+    {
+        //if (player.playerCollision.touchingWall && PlayerEquipment.instance.equipments.Contains(Equipments.Boots) && !player.isGrounded && !player.onLedge && player.rb.velocity.y < 0)
+        if (player.playerCollision.touchingWall && !player.isGrounded && !player.onLedge && player.rb.velocity.y < 0)
+        {
+            player.isWallSliding = true;
+            wallDirection = playerDirection; //wallDirection = direção da parede (oposta ao movimento)
+            player.rb.velocity = new Vector2(player.rb.velocity.x, Mathf.Clamp(player.rb.velocity.y, -wallSlideSpeed, float.MaxValue)); //limita a velocidade de descida
+        }
+        else
+        {
+            player.isWallSliding = false;
+        }
+    }
+
+    #endregion
 
     #region Stamina
     public void StaminaConsumption(float consume)

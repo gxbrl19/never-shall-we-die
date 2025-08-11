@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isAttacking;
     [HideInInspector] public bool isRolling;
     [HideInInspector] public bool isDoubleJumping;
+    [HideInInspector] public bool isWallSliding;
     [HideInInspector] public bool isHealing;
     [HideInInspector] public bool isGrabing;
     [HideInInspector] public bool isGriding;
@@ -61,6 +62,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isDead = false;
     [HideInInspector] public bool onSlope;
     [HideInInspector] public bool onBridge;
+    [HideInInspector] public bool onLedge;
     [HideInInspector] public bool onWater;
     [HideInInspector] public bool onHit = false;
     [HideInInspector] public bool onClimbing;
@@ -135,7 +137,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        OnDash();
+        //OnDash();
         OnParachute();
 
         //Special Attacks

@@ -47,7 +47,7 @@ public class PlayerAnimations : MonoBehaviour
         animator.SetBool("IsParachuting", player.playerInputs.pressParachute);
 
         //WallSlide
-        animator.SetBool("IsWalling", player.playerCollision._onWall);
+        animator.SetBool("IsWalling", player.onLedge);
 
         //Healing
         animator.SetBool("Healing", player.isHealing);
