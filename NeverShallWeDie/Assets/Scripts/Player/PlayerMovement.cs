@@ -19,8 +19,6 @@ public class PlayerMovement : MonoBehaviour
     private float jumpForce = 16f;
     private float jumpHoldForce = 1.7f;
     private float jumpHoldDuration = 0.17f;
-    [HideInInspector] public bool canDoubleJump = false;
-    private float doubleJumpForce = 30f;
     private float jumpTime;
     private float ghostDuration = 0.15f;
     private float ghostTime;
@@ -35,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Roll
     private bool canRoll = true;
-    [SerializeField] private float rollForce = 10f;
+    private float rollForce = 10f;
     private float rollCooldown = .7f;
     private float rollTimer;
 
@@ -152,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 player.isGrounded = true;
                 player.playerInputs.pressParachute = false;
-                player.isDoubleJumping = false;
+                player.onAirSpecial = false;
             }
 
             if (player.rb.velocity.y <= 0.0f) //queda
@@ -293,7 +291,7 @@ public class PlayerMovement : MonoBehaviour
     #region Jump
     void JumpControl()
     {
-        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isDoubleJumping && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isRolling && !player.isDashing) //pulo comum
+        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.onAirSpecial && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isRolling && !player.onAirSpecial) //pulo comum
         {
             player.isJumping = true;
             player.playerInputs.pressJump = false;
@@ -306,13 +304,13 @@ public class PlayerMovement : MonoBehaviour
             player.playerAudio.PlayJump();
             CreateDust(1);
         }
-        else if (player.isDoubleJumping && !player.onWater && !player.onClimbing && !player.isHealing && !player.isRolling && !player.isDashing) //double jump
+        else if (!player.isGrounded && player.onAirSpecial && !player.onWater && !player.onClimbing && !player.isHealing && !player.isRolling) //air gem
         {
-            player.isDoubleJumping = false;
+            player.onAirSpecial = false;
             player.playerInputs.pressJump = false;
 
             player.rb.velocity = Vector2.zero;
-            player.rb.AddForce(Vector2.up * doubleJumpForce, ForceMode2D.Impulse);
+            player.rb.AddForce(Vector2.up * player.impulseForce, ForceMode2D.Impulse);
             player.playerAudio.PlayJump();
         }
         else if (player.playerInputs.pressJump && player.onWater && canSwin && !player.onLedge) // na água
@@ -395,7 +393,7 @@ public class PlayerMovement : MonoBehaviour
         if ((player.playerInputs.pressAttack && player.isGrounded && !player.onWater) || player.isHealing) { player.rb.velocity = Vector2.zero; }
 
         //para no ar
-        if (player.playerInputs.pressFireGem)
+        if (player.playerInputs.pressRightTrigger)
         {
             if (!player.isGrounded)
             {
@@ -693,7 +691,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressFireGem || player.inWaterSpin || player.playerInputs.pressAttack || player.isRolling)
+        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressRightTrigger || player.onWaterSpecial || player.playerInputs.pressAttack || player.isRolling)
             return;
 
         if (player.isGrounded)

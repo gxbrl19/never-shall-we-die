@@ -25,26 +25,25 @@ public class Player : MonoBehaviour
     private float normalFallSpeed = 0f;
     private float speedParachute = 20f;
 
-    //Slide
-    [HideInInspector] public bool isDashing = false;
-    float dashTimer = 0f;
-    float dashCooldown = .5f;
-    float dashForce = 32f;
-
     //Skills
     [HideInInspector] public float timeForSkills;
+    [HideInInspector] public float impulseForce = 35f;
 
-    //Water Spin
-    [HideInInspector] public float timeWaterSpin;
+    //Air Gem
+    [HideInInspector] public float timeAirGem;
+    [HideInInspector] public float airMana;
+
+
+    //Water Gem
+    [HideInInspector] public float timeWaterGem;
     private float waterSpinForce = 10f;
-    [HideInInspector] public bool inWaterSpin;
-    [HideInInspector] public float waterSpinMana;
+    [HideInInspector] public float waterMana;
 
-    //Air Cut
-    [HideInInspector] public float timeAirCut;
+    //Fire Gem
+    [HideInInspector] public float timeFireGem;
     [BoxGroup("GameObjects")] public AirCut _aircut;
     [BoxGroup("Components")] public Transform _aircutPoint;
-    [HideInInspector] public float aircutMana;
+    [HideInInspector] public float fireMana;
 
     //States
     [HideInInspector] public bool canMove = true;
@@ -53,20 +52,22 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isJumping;
     [HideInInspector] public bool isAttacking;
     [HideInInspector] public bool isRolling;
-    [HideInInspector] public bool isDoubleJumping;
     [HideInInspector] public bool isWallSliding;
     [HideInInspector] public bool isHealing;
     [HideInInspector] public bool isGrabing;
     [HideInInspector] public bool isGriding;
     [HideInInspector] public bool canDash;
-    [HideInInspector] public bool isDead = false;
     [HideInInspector] public bool onSlope;
     [HideInInspector] public bool onBridge;
     [HideInInspector] public bool onLedge;
     [HideInInspector] public bool onWater;
     [HideInInspector] public bool onHit = false;
     [HideInInspector] public bool onClimbing;
+    [HideInInspector] public bool onFireSpecial = false;
+    [HideInInspector] public bool onWaterSpecial = false;
+    [HideInInspector] public bool onAirSpecial = false;
     [HideInInspector] public bool newSkillCollected;
+    [HideInInspector] public bool isDead = false;
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public PlayerMovement playerMovement;
@@ -89,17 +90,18 @@ public class Player : MonoBehaviour
         playerAudio = GetComponent<PlayerAudio>();
         playerHealth = GetComponent<PlayerHealth>();
 
-        waterSpinMana = 4f;
-        aircutMana = 4f;
+        waterMana = 4f;
+        fireMana = 4f;
+        airMana = 4;
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
-        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
+        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
         //if (!PlayerSkills.instance.skills.Contains(Skills.FireGem)) { PlayerSkills.instance.skills.Add(Skills.FireGem); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.AirGem)) { PlayerSkills.instance.skills.Add(Skills.AirGem); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.AirGem)) { PlayerSkills.instance.skills.Add(Skills.AirGem); }
         //if (!PlayerSkills.instance.skills.Contains(Skills.WaterGem)) { PlayerSkills.instance.skills.Add(Skills.WaterGem); }
     }
 
@@ -109,8 +111,9 @@ public class Player : MonoBehaviour
         isDead = false;
 
         timeForSkills = 3f;
-        timeAirCut = timeForSkills;
-        timeWaterSpin = timeForSkills;
+        timeFireGem = timeForSkills;
+        timeWaterGem = timeForSkills;
+        timeAirGem = timeForSkills;
 
         if (_scriptablePosition.SceneTransition)
         {
@@ -129,15 +132,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        dashTimer += Time.deltaTime;
         //contagem das skills
-        timeAirCut += Time.deltaTime;
-        timeWaterSpin += Time.deltaTime;
+        timeFireGem += Time.deltaTime;
+        timeWaterGem += Time.deltaTime;
+        timeAirGem += Time.deltaTime;
     }
 
     void FixedUpdate()
     {
-        //OnDash();
         OnParachute();
 
         //Special Attacks
@@ -147,7 +149,6 @@ public class Player : MonoBehaviour
     public void CancelMovesOnHit()
     {
         FinishAttack();
-        FinishDash();
         playerMovement.FinishRoll();
     }
 
@@ -249,7 +250,7 @@ public class Player : MonoBehaviour
         _aircut.transform.localScale = _scale;
 
         Instantiate(_aircut.gameObject, _aircutPoint.position, _aircutPoint.rotation);
-        playerHealth.ManaConsumption(aircutMana);
+        playerHealth.ManaConsumption(fireMana);
     }
 
     void WaterSpin()
@@ -260,7 +261,7 @@ public class Player : MonoBehaviour
         if (playerInputs.pressAttack && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
         {
             gameObject.layer = LayerMask.NameToLayer("WaterSpin");
-            inWaterSpin = true;
+            onWaterSpecial = true;
 
             if (playerMovement.playerDirection < 0)
             {
@@ -275,46 +276,9 @@ public class Player : MonoBehaviour
 
     public void FinishWaterSpin() //chamado também na animação de Water Spin
     {
-        inWaterSpin = false;
+        onWaterSpecial = false;
         playerInputs.pressAttack = false;
         gameObject.layer = LayerMask.NameToLayer("Player");
-    }
-    #endregion
-
-    #region Dash
-    void OnDash()
-    {
-        canDash = playerMovement.currentStamina > 0f && PlayerEquipment.instance.equipments.Contains(Equipments.Boots) && !playerMovement.isExhausted && dashTimer >= dashCooldown;
-
-        if (playerInputs.pressDash && canDash && !isDashing)
-        {
-            canMove = false;
-            isDashing = true;
-            playerInputs.pressDash = false;
-            playerMovement.StaminaConsumption(1.3f);
-            dashTimer = 0f;
-            rb.velocity = Vector2.zero;
-        }
-
-        if (isDashing)
-            ExecuteDash();
-    }
-
-    void ExecuteDash()
-    {
-        rb.gravityScale = 0f;
-
-        Vector2 dir = playerMovement.playerDirection < 0 ? Vector2.left : Vector2.right;
-        rb.AddForce(dir * dashForce, ForceMode2D.Impulse);
-
-        Invoke("FinishDash", .2f);
-    }
-
-    public void FinishDash() //chamado no Invoke dentro de ExecuteDash
-    {
-        canMove = true;
-        rb.gravityScale = 8f;
-        isDashing = false;
     }
     #endregion
 

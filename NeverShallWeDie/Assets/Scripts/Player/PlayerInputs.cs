@@ -13,8 +13,8 @@ public class PlayerInputs : MonoBehaviour
     private bool _jumpHeld;
     private bool _pressRoll;
     private bool _pressAttack;
-    private bool _pressFireGem;
-    private bool _pressDash;
+    private bool _pressRightTrigger;
+    private bool _pressLeftTrigger;
     private bool _pressParachute;
     private bool _pressGrab;
     private bool _pressInteract;
@@ -65,10 +65,10 @@ public class PlayerInputs : MonoBehaviour
         set { _pressAttack = value; }
     }
 
-    public bool pressFireGem
+    public bool pressRightTrigger
     {
-        get { return _pressFireGem; }
-        set { _pressFireGem = value; }
+        get { return _pressRightTrigger; }
+        set { _pressRightTrigger = value; }
     }
 
     public bool pressRoll
@@ -77,10 +77,10 @@ public class PlayerInputs : MonoBehaviour
         set { _pressRoll = value; }
     }
 
-    public bool pressDash
+    public bool pressLeftTrigger
     {
-        get { return _pressDash; }
-        set { _pressDash = value; }
+        get { return _pressLeftTrigger; }
+        set { _pressLeftTrigger = value; }
     }
 
     public bool pressParachute
@@ -178,30 +178,18 @@ public class PlayerInputs : MonoBehaviour
     {
         if (player.isDead || player.canMove == false || Time.timeScale == 0f) return;
 
-        if (player.isGrounded || player.onLedge || player.isWallSliding || player.onClimbing || player.onWater || player.isGriding && !player.isDoubleJumping)
+        if (player.isGrounded || player.onLedge || player.isWallSliding || player.onClimbing || player.onWater || player.isGriding)
         {
             if (callback.started)
                 _pressJump = true;
 
-            if (!player.onWater)
-                player.playerMovement.canDoubleJump = player.playerMovement.currentStamina > 0f && !player.playerMovement.isExhausted;
-
             _jumpHeld = callback.performed;
-        }
-        else if (!player.isGrounded && PlayerSkills.instance.skills.Contains(Skills.AirGem) && !player.isDoubleJumping && player.playerMovement.canDoubleJump)
-        {
-            if (callback.started && !player.onLedge)
-            {
-                player.isDoubleJumping = true;
-                player.playerMovement.canDoubleJump = false;
-                player.playerMovement.StaminaConsumption(1.3f);
-            }
         }
     }
 
     public void ButtonNorth(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || player.isHealing || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.canMove == false)
+        if (player.isDead || player.isHealing || player.isAttacking || _pressRightTrigger || Time.timeScale == 0f || player.canMove == false)
             return;
 
         if (_callback.started && !player.canGrab)
@@ -224,8 +212,8 @@ public class PlayerInputs : MonoBehaviour
 
     public void ButtonWest(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.onLedge
-        || player.onHit || player.isGrabing || player.isRolling || player.isDashing || !player.canMove
+        if (player.isDead || player.isAttacking || _pressRightTrigger || Time.timeScale == 0f || player.onClimbing || player.onLedge
+        || player.onHit || player.isGrabing || player.isRolling || player.onAirSpecial || !player.canMove
         || !PlayerEquipment.instance.equipments.Contains(Equipments.Katana))
             return;
 
@@ -234,55 +222,56 @@ public class PlayerInputs : MonoBehaviour
             _pressAttack = true;
             player.OnKatana();
         }
-        else if (callback.started && player.onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
-        {
-            if (player.playerHealth.currentMana > 0 && player.timeWaterSpin >= player.timeForSkills)
-            {
-                _pressAttack = true;
-                player.timeWaterSpin = 0f; //reseta o tempo do water spin para poder fazer a contagem;
-                player.playerHealth.ManaConsumption(player.waterSpinMana);
-            }
-        }
     }
 
-    public void ButtonEast(InputAction.CallbackContext _callback)
+    public void ButtonEast(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isRolling || player.canMove == false || player.isDashing || player.isAttacking || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
+        if (player.isDead || player.isRolling || player.canMove == false || player.onAirSpecial || player.isAttacking || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
             return;
 
-        if (_callback.started)
+        if (callback.started)
             _pressRoll = true;
 
-        if (_callback.canceled)
+        if (callback.canceled)
             _pressRoll = false;
     }
 
-    public void LeftShoulder(InputAction.CallbackContext _callback)
+    public void LeftShoulder(InputAction.CallbackContext callback)
     {
-        if (player.isDead || !player.isGrounded || player.onHit || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onWater || player.canMove == false || player.onLedge || player.isGrabing || player.isRolling || player.isDashing)
+        if (player.isDead || !player.isGrounded || player.onHit || player.isAttacking || _pressRightTrigger || Time.timeScale == 0f || player.onWater || player.canMove == false || player.onLedge || player.isGrabing || player.isRolling || player.onAirSpecial)
             return;
 
-        if (_callback.started)
-        {
+        if (callback.started)
             player.isHealing = true;
-        }
 
-        if (_callback.canceled)
-        {
+        if (callback.canceled)
             player.isHealing = false;
-        }
     }
 
     public void LeftTrigger(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.onLedge || player.onWater || player.onHit || player.isGrabing || player.isRolling || player.isDashing || player.canMove == false)
+        if (player.isDead || player.isAttacking || player.isHealing || Time.timeScale == 0f || player.onClimbing || player.onLedge || player.isWallSliding || player.onHit || player.isGrabing || player.isRolling || player.onWaterSpecial || player.onAirSpecial || player.canMove == false)
             return;
 
-        if (callback.started)
-            _pressDash = true;
-
-        if (callback.canceled)
-            _pressDash = false;
+        else if (callback.started && PlayerSkills.instance.skills.Contains(Skills.WaterGem) && player.onWater)
+        {
+            if (player.playerHealth.currentMana > 0 && player.timeWaterGem >= player.timeForSkills)
+            {
+                _pressLeftTrigger = true;
+                player.timeWaterGem = 0f; //reseta o tempo
+                player.playerHealth.ManaConsumption(player.waterMana);
+            }
+        }
+        else if (callback.started && PlayerSkills.instance.skills.Contains(Skills.AirGem) && !player.isGrounded && !player.onWater)
+        {
+            if (player.playerHealth.currentMana > 0 && player.timeAirGem >= player.timeForSkills)
+            {
+                _pressLeftTrigger = true;
+                player.onAirSpecial = true;
+                player.timeAirGem = 0f; //reseta o tempo
+                player.playerHealth.ManaConsumption(player.airMana);
+            }
+        }
     }
 
     public void RightShoulder(InputAction.CallbackContext callback)
@@ -302,15 +291,15 @@ public class PlayerInputs : MonoBehaviour
 
     public void RightTrigger(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || player.isAttacking || _pressFireGem || Time.timeScale == 0f || player.onClimbing || player.onLedge || player.onHit || player.isGrabing || player.onWater || player.isRolling || player.canMove == false)
+        if (player.isDead || player.isAttacking || _pressRightTrigger || Time.timeScale == 0f || player.onClimbing || player.onLedge || player.onHit || player.isGrabing || player.onWater || player.isRolling || player.canMove == false)
             return;
 
         if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.FireGem))
         {
-            if (player.playerHealth.currentMana > 0 && player.timeAirCut >= player.timeForSkills)
+            if (player.playerHealth.currentMana > 0 && player.timeFireGem >= player.timeForSkills)
             {
-                pressFireGem = true;
-                player.timeAirCut = 0f; //reseta o tempo do aircut para poder fazer a contagem;
+                pressRightTrigger = true;
+                player.timeFireGem = 0f; //reseta o tempo do aircut para poder fazer a contagem;
                 player.playerAnimations.OnAirCut();
                 //.PlayAudio("aircut");
             }
@@ -322,9 +311,9 @@ public class PlayerInputs : MonoBehaviour
         pressAttack = false;
         pressRoll = false;
         pressGrab = false;
-        pressDash = false;
+        pressLeftTrigger = false;
         pressParachute = false;
-        pressFireGem = false;
+        pressRightTrigger = false;
         player.isHealing = false;
 
         horizontal = 0f;

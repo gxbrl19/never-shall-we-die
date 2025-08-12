@@ -30,7 +30,7 @@ public class PlayerAnimations : MonoBehaviour
         animator.SetBool("IsGrounded", player.isGrounded);
 
         //Fall
-        if (!player.isDashing)
+        if (!player.onAirSpecial)
             animator.SetFloat("Fall", player.rb.velocity.y);
 
         //Walk
@@ -40,8 +40,6 @@ public class PlayerAnimations : MonoBehaviour
         animator.SetBool("IsClimbing", player.onClimbing);
         animator.SetFloat("Vertical", Mathf.Abs(yVelocity));
 
-        //DoubleJump
-        animator.SetBool("DoubleJump", player.isDoubleJumping);
 
         //Parachute
         animator.SetBool("IsParachuting", player.playerInputs.pressParachute);
@@ -60,10 +58,10 @@ public class PlayerAnimations : MonoBehaviour
         if (player.onWater) { animator.SetBool("IsSwimming", true); } else { animator.SetBool("IsSwimming", false); }
 
         //Water Spin
-        animator.SetBool("WaterSpin", player.inWaterSpin);
+        animator.SetBool("WaterSpin", player.onWaterSpecial);
 
-        //Dash
-        animator.SetBool("IsDashing", player.isDashing);
+        //Air Gem
+        animator.SetBool("AirGem", player.onAirSpecial);
 
         //Grab
         animator.SetBool("IsGrabing", player.isGrabing);
@@ -114,7 +112,7 @@ public class PlayerAnimations : MonoBehaviour
 
     void StopAirCut()
     { //chamado na animação de Air Cut
-        player.playerInputs.pressFireGem = false;
+        player.playerInputs.pressRightTrigger = false;
         animator.SetBool("AirCut", false);
     }
 
