@@ -8,6 +8,8 @@ public class Flag : MonoBehaviour
 {
     public int _idFlag;
     public int _direction = 1;
+    public Transform healingPoint;
+    public GameObject healingObject;
     [SerializeField] EventReference _checkpointSound;
     bool _playerTriggered;
     Animator _animation;
@@ -55,6 +57,7 @@ public class Flag : MonoBehaviour
 
     void SetCheckpoint()
     {
+        Instantiate(healingObject, healingPoint.position, Quaternion.identity);
         _inputs.pressInteract = false;
         Scene _currentScene = SceneManager.GetActiveScene();
         GameManager.instance._checkpointScene = _currentScene.buildIndex;

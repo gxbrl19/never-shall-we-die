@@ -61,8 +61,7 @@ public class PlayerHealth : MonoBehaviour
         else
             OnHit();
 
-        Instantiate(_particleHit, transform.position, Quaternion.identity);
-
+        Instantiate(_particleHit, player.transform.position, Quaternion.identity);
     }
 
     void OnHit()
