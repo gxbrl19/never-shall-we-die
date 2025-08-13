@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
 
     //Air Gem
     [HideInInspector] public float timeAirGem;
+    [BoxGroup("GameObjects")] public Impulse _ImpulseEffect;
+    [BoxGroup("Components")] public Transform _airGemPoint;
     [HideInInspector] public float airMana;
 
 
@@ -238,6 +240,15 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Skills
+
+    public void AirGem()
+    {
+        Vector3 _scale = _ImpulseEffect.transform.localScale;
+        _scale.x = transform.localScale.x;
+        _ImpulseEffect.transform.localScale = _scale;
+
+        Instantiate(_ImpulseEffect.gameObject, _airGemPoint.position, _airGemPoint.rotation);
+    }
     public void AirCut() //chamado na animação de AirCut
     {
         if (isDead || !canMove)

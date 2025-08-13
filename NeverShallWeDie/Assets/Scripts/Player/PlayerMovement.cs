@@ -311,6 +311,7 @@ public class PlayerMovement : MonoBehaviour
 
             player.rb.velocity = Vector2.zero;
             player.rb.AddForce(Vector2.up * player.impulseForce, ForceMode2D.Impulse);
+            player.AirGem();
             player.playerAudio.PlayJump();
         }
         else if (player.playerInputs.pressJump && player.onWater && canSwin && !player.onLedge) // na água
