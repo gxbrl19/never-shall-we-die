@@ -226,7 +226,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void ButtonEast(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isRolling || player.canMove == false || player.onAirSpecial || player.isAttacking || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
+        if (player.isDead || !player.isGrounded || player.isRolling || player.canMove == false || player.onAirSpecial || player.isAttacking || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
             return;
 
         if (callback.started)

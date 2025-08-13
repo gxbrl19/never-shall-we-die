@@ -114,8 +114,6 @@ public class PlayerMovement : MonoBehaviour
         if (wallJumpLockCounter > 0)
         {
             wallJumpLockCounter -= Time.deltaTime;
-            //player.canMove = false;
-            player.playerInputs.horizontal = 0f;
         }
 
         HandleWallSlide();
@@ -411,11 +409,19 @@ public class PlayerMovement : MonoBehaviour
     #region Wall Slide
     void HandleWallSlide()
     {
-        //if (player.playerCollision.touchingWall && PlayerEquipment.instance.equipments.Contains(Equipments.Boots) && !player.isGrounded && !player.onLedge && player.rb.velocity.y < 0)
-        if (player.playerCollision.touchingWall && !player.isGrounded && !player.onLedge && player.rb.velocity.y < 0)
+        bool canSlide =
+        player.playerCollision.touchingWall &&
+        PlayerEquipment.instance.equipments.Contains(Equipments.Boots) &&
+        //player.playerInputs.horizontal != 0f && //define se precisa apertar o botão horizontal para fazer o wall slide
+        !player.isGrounded &&
+        !player.onLedge &&
+        player.rb.velocity.y < 0;
+
+        if (canSlide)
         {
             player.isWallSliding = true;
             wallDirection = playerDirection; //wallDirection = direção da parede (oposta ao movimento)
+
             player.rb.velocity = new Vector2(player.rb.velocity.x, Mathf.Clamp(player.rb.velocity.y, -wallSlideSpeed, float.MaxValue)); //limita a velocidade de descida
         }
         else
@@ -423,7 +429,6 @@ public class PlayerMovement : MonoBehaviour
             player.isWallSliding = false;
         }
     }
-
     #endregion
 
     #region Stamina

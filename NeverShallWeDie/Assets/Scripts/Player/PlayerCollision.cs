@@ -23,7 +23,6 @@ public class PlayerCollision : MonoBehaviour
     //Climb Ledge
     private float wallRayDistance = 0.24f;
     private BoxCollider2D colliderClimbLedge;
-    private Vector2 wallHitNormal;
     [HideInInspector] public bool touchingWall;
     [BoxGroup("ClimbLedge")] public GameObject _climbLedgePoint;
     [BoxGroup("ClimbLedge")] public LayerMask _groundLayer;
@@ -132,8 +131,6 @@ public class PlayerCollision : MonoBehaviour
         RaycastHit2D downRay = RaycastWallJump(_climbLedgePoint.transform.position + offset, Vector2.right * player.playerMovement.playerDirection, wallRayDistance, _groundLayer);
 
         touchingWall = upRay && downRay;
-        if (touchingWall)
-            wallHitNormal = upRay.normal;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
