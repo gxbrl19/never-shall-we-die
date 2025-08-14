@@ -7,20 +7,25 @@ public class SwordShark : EnemyBase
 
     [Header("Stats")]
     [SerializeField] private LayerMask playerLayer;
-    private float attackRange = 2.2f;
+    private float attackRange = 2f;
     private float distanceToPlayer;
     private float moveSpeed = 8f;
     private float attackCooldown = .2f;
     private float attackCounter = 0f;
     private float direction;
     private bool playerDetected = false;
-    Vector2 detectionBoxSize = new Vector2(20f, 3f);
+    private Vector2 detectionBoxSize = new Vector2(20f, 4.5f);
+    //private bool disabled = false;
     Transform player;
 
     private void Start()
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        //TODO: desabilitar inimigos ao derrotar o Boss que controla a mente deles
+        //if (boss derrotado)
+        //disabled = true;
     }
 
     private void Update()
@@ -44,14 +49,12 @@ public class SwordShark : EnemyBase
                 break;
 
             case State.Chase:
-                if (distanceToPlayer <= attackRange)
-                {
+                if (playerDetected && distanceToPlayer <= attackRange)
                     ChangeState(State.Attack);
-                }
-                else
-                {
+                else if (playerDetected && distanceToPlayer > attackRange)
                     MoveTowardsPlayer();
-                }
+                else
+                    ChangeState(State.Idle);
 
                 break;
 
@@ -96,7 +99,7 @@ public class SwordShark : EnemyBase
     private void DetectPlayer()
     {
         Vector2 origin = transform.position;
-        Vector2 center = origin + new Vector2(detectionBoxSize.x / (3f * transform.localScale.x), 0f); //desloca o centro para a direita (2f seria a metade)
+        Vector2 center = origin + new Vector2(detectionBoxSize.x / (2f * direction), 0f); //desloca o centro para a direita (2f seria a metade)
         playerDetected = Physics2D.OverlapBox(center, detectionBoxSize, 0, playerLayer);
     }
 
