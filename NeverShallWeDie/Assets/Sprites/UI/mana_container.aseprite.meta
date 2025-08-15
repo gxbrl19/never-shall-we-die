@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1a2a41330f2825f4bbcf2872688a2a97
+guid: e84d21632d194c446aedd41f57709b77
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,8 +128,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 84
-      height: 16
+      width: 63
+      height: 13
     spriteID: ef359c5b23ded4b47b8c42b95ad0ef81
     spriteBone: []
     spriteOutline: []
@@ -139,37 +139,17 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: health
-    originalName: 
-    pivot: {x: 0.49999997, y: 0.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 28
-      width: 76
-      height: 8
-    spriteID: 8316b69c399c8ed4d9a54b3384ac90a4
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 28}
   - name: delay
     originalName: 
-    pivot: {x: 0.49999997, y: 0.5}
+    pivot: {x: 0.49999997, y: 0.41666666}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 44
-      width: 76
-      height: 8
+      y: 40
+      width: 59
+      height: 6
     spriteID: fbf0f1335459e4a40b9bee33b8cb071d
     spriteBone: []
     spriteOutline: []
@@ -178,7 +158,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 44}
+    uvTransform: {x: 4, y: 40}
+  - name: mana
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 25
+      width: 59
+      height: 7
+    spriteID: f35fdce11208c3f4db1dc1b4836ada06
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 25}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -191,28 +191,11 @@ ScriptedImporter:
     - name: Layer
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 2
         y: 0
-        width: 84
-        height: 16
+        width: 63
+        height: 13
       spriteId: ef359c5b23ded4b47b8c42b95ad0ef81
-    linkedCells: []
-    parentIndex: -1
-  - layerIndex: 2
-    guid: 1627531870
-    name: health
-    layerFlags: 3
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: health
-      frameIndex: 0
-      cellRect:
-        x: 4
-        y: 4
-        width: 76
-        height: 8
-      spriteId: 8316b69c399c8ed4d9a54b3384ac90a4
     linkedCells: []
     parentIndex: -1
   - layerIndex: 1
@@ -227,9 +210,26 @@ ScriptedImporter:
       cellRect:
         x: 4
         y: 4
-        width: 76
-        height: 8
+        width: 59
+        height: 6
       spriteId: fbf0f1335459e4a40b9bee33b8cb071d
+    linkedCells: []
+    parentIndex: -1
+  - layerIndex: 2
+    guid: 1040126897
+    name: mana
+    layerFlags: 3
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: mana
+      frameIndex: 0
+      cellRect:
+        x: 4
+        y: 3
+        width: 59
+        height: 7
+      spriteId: f35fdce11208c3f4db1dc1b4836ada06
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -295,4 +295,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 84, y: 16}
+  canvasSize: {x: 67, y: 13}
