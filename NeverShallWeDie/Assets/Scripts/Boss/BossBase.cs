@@ -31,6 +31,7 @@ public abstract class BossBase : MonoBehaviour, IBoss
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        bossId = bossObject.bossID;
 
         if (bossObject != null)
         {

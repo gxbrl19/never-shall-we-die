@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
 
     //Enemy
     [HideInInspector] public int[] _bestiary;
-    [HideInInspector] public int[] _bosses;
+    public int[] _bosses;
 
     //Prefabs
     [HideInInspector] public float _masterVol;

@@ -46425,6 +46425,7 @@ MonoBehaviour:
   _shipPosX: 0
   _shipPosY: 0
   _lastPier: 
+  _sceneForLoad: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -46762,7 +46763,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1739194555
   m_SortingLayer: 5
-  m_SortingOrder: 25
+  m_SortingOrder: 15
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -48538,7 +48539,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.712223
+      value: 18.708115
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y
