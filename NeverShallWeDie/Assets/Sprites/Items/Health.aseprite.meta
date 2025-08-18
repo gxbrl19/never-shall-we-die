@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Heart
+  - name: Health
     originalName: 
-    pivot: {x: 0.53333336, y: 0.5714286}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 15
-      height: 14
-    spriteID: f169870451fd2e545964afd11b4da622
+      width: 10
+      height: 10
+    spriteID: cbd6cbd0cefd88541aadc841a59d7d4e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1260111146
-    name: Heart
+    guid: 1643805692
+    name: Health
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Heart
+    - name: Health
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 15
-        height: 14
-      spriteId: f169870451fd2e545964afd11b4da622
+        x: 3
+        y: 3
+        width: 10
+        height: 10
+      spriteId: cbd6cbd0cefd88541aadc841a59d7d4e
     linkedCells: []
     parentIndex: -1
   platformSettings:

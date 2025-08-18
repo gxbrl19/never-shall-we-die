@@ -9,7 +9,7 @@ public class Boar : EnemyBase
     [Header("Comportamento")]
     [SerializeField] Transform[] patrolPoints;
 
-    float patrolSpeed = 8f;
+    float patrolSpeed = 6.5f;
     int patrolIndex = 0;
     State currentState;
 

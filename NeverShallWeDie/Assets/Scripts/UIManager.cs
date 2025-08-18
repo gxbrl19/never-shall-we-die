@@ -161,6 +161,7 @@ public class UIManager : MonoBehaviour
     {
         _currentScene = SceneManager.GetActiveScene();
         _sceneID = _currentScene.buildIndex;
+        _healthBarDelay.fillAmount = _healthBar.fillAmount;
 
         Resolutions();
     }
