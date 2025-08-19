@@ -17,6 +17,6 @@ public class InputSelect : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.instance._inputType == "Gamepad") { _image.sprite = _gamepadSprite; } else { _image.sprite = _keyboardSprite;}
+        if (GameManager.instance._inputType == "Gamepad") { _image.sprite = _gamepadSprite; } else { _image.sprite = _keyboardSprite; }
     }
 }

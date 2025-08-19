@@ -5,6 +5,7 @@ using UnityEngine;
 public class SubmarinePoint : MonoBehaviour
 {
     [SerializeField] Transform _nextPoint;
+    [SerializeField] GameObject _btnSubmarine;
 
     bool _triggered;
     ShipOpenWorld _ship;
@@ -30,6 +31,7 @@ public class SubmarinePoint : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
             _triggered = true;
+            _btnSubmarine.SetActive(true);
         }
     }
 
@@ -38,6 +40,7 @@ public class SubmarinePoint : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
             _triggered = false;
+            _btnSubmarine.SetActive(false);
         }
     }
 }

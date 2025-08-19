@@ -11,9 +11,6 @@ public class CanvasOpenWorld : MonoBehaviour
 {
     public static CanvasOpenWorld instance;
 
-    [Header("Interact")]
-    public GameObject _pnlInteract;
-
     [Header("Level Select")]
     public GameObject _pnlLevelSelect;
     public GameObject _btnYes;
