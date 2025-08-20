@@ -269,26 +269,22 @@ public class Player : MonoBehaviour
         if (isDead || !canMove)
             return;
 
-        if (playerInputs.pressAttack && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
+        if (playerInputs.pressLeftTrigger && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
         {
             gameObject.layer = LayerMask.NameToLayer("WaterSpin");
             onWaterSpecial = true;
 
             if (playerMovement.playerDirection < 0)
-            {
                 rb.velocity = Vector2.left * waterSpinForce;
-            }
             else if (playerMovement.playerDirection > 0)
-            {
                 rb.velocity = Vector2.right * waterSpinForce;
-            }
         }
     }
 
     public void FinishWaterSpin() //chamado também na animação de Water Spin
     {
         onWaterSpecial = false;
-        playerInputs.pressAttack = false;
+        playerInputs.pressLeftTrigger = false;
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
     #endregion

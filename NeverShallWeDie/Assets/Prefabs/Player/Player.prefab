@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 189796434766038698}
   - component: {fileID: 284241024472872337}
   m_Layer: 16
-  m_Name: WaterSpin
+  m_Name: WaterSpinAttack
   m_TagString: SwordAtk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 0
+  attackPower: 3
   hitEffect: {fileID: 0}
 --- !u!1 &4846621408429234600
 GameObject:
@@ -492,6 +492,73 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!1 &6715817516973359336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2513561102990584245}
+  - component: {fileID: 4506113253851473240}
+  m_Layer: 29
+  m_Name: WaterSpinBlock
+  m_TagString: SwordAtk
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2513561102990584245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6715817516973359336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.969, y: -0.197, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8160846808588850630}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &4506113253851473240
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6715817516973359336}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.9099269, y: 0.1367929}
+  m_Size: {x: 0.6406075, y: 0.6406075}
+  m_Direction: 1
 --- !u!1 &7334478533414609481
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +755,7 @@ Transform:
   - {fileID: 8160846809695199608}
   - {fileID: 8160846809661711540}
   - {fileID: 1652972573381873277}
+  - {fileID: 2513561102990584245}
   - {fileID: 5724987312424878211}
   - {fileID: 293419937806343516}
   - {fileID: 8841459981562994291}

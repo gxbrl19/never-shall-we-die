@@ -186,8 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _power: 1
-  _hitEffect: {fileID: 0}
+  attackPower: 2
+  hitEffect: {fileID: 0}
 --- !u!1 &8801202496137987716
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 5923345334866189488}
   - component: {fileID: 3715441341401872862}
   m_Layer: 29
-  m_Name: Damager2
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
