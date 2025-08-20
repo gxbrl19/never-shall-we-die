@@ -11330,10 +11330,6 @@ PrefabInstance:
       value: Blacksmith_Crew
       objectReference: {fileID: 0}
     - target: {fileID: 6196630704637659677, guid: bf1a73ca262810e4480cb838b7a05edc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6196630704637659677, guid: bf1a73ca262810e4480cb838b7a05edc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.78
       objectReference: {fileID: 0}
@@ -17825,10 +17821,6 @@ PrefabInstance:
       value: Witch_Crew
       objectReference: {fileID: 0}
     - target: {fileID: 6196630704637659677, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6196630704637659677, guid: a6b45f54bd70e5842a94568543fc06d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.699997
       objectReference: {fileID: 0}
@@ -19359,8 +19351,6 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
-  _level: 0
-  _xp: 0
   _intro: 1
   _equipments: 
   _skills: 
@@ -19370,7 +19360,6 @@ MonoBehaviour:
   _hpMax: 25
   _mpMax: 15
   _gold: 0
-  _upPoints: 0
   _katanaLevel: 0
   _flags: 
   _barrels: 
@@ -19386,6 +19375,8 @@ MonoBehaviour:
   _shipUpgrades: 
   _shipPosX: 0
   _shipPosY: 0
+  _lastPier: 
+  _sceneForLoad: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0

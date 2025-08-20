@@ -454,6 +454,13 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  _texting:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!82 &70745961
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6915,17 +6922,20 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
+  _intro: 1
   _equipments: 
   _skills: 
+  _inventory: 
+  _currentHP: 0
+  _currentMP: 0
   _hpMax: 25
   _mpMax: 15
-  _katanaLevel: 0
   _gold: 0
-  _qtdPotentium: 0
-  _qtdOrb: 0
+  _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
+  _ancientStones: 
   _airCutblock: 
   _barriersLever: 
   _secret: 
@@ -6934,6 +6944,10 @@ MonoBehaviour:
   _gateMechanism: 0
   _gateBoss: 0
   _shipUpgrades: 
+  _shipPosX: 0
+  _shipPosY: 0
+  _lastPier: 
+  _sceneForLoad: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -6942,17 +6956,11 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
-  _hammer: 0
-  _grimoire: 0
-  _submarine: 0
-  _propulsion: 0
-  _artillery: 0
   _bestiary: 
   _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
-  _keys: 
   _doors: 
   _inputType: 
 --- !u!4 &443406205
@@ -7974,7 +7982,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1739194555
   m_SortingLayer: 5
-  m_SortingOrder: 6
+  m_SortingOrder: 15
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

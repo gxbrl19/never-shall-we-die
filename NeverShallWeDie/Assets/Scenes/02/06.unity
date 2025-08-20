@@ -27934,8 +27934,6 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
-  _level: 0
-  _xp: 0
   _intro: 1
   _equipments: 
   _skills: 
@@ -27945,7 +27943,6 @@ MonoBehaviour:
   _hpMax: 25
   _mpMax: 15
   _gold: 0
-  _upPoints: 0
   _katanaLevel: 0
   _flags: 
   _barrels: 
@@ -27961,6 +27958,8 @@ MonoBehaviour:
   _shipUpgrades: 
   _shipPosX: 0
   _shipPosY: 0
+  _lastPier: 
+  _sceneForLoad: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -28136,7 +28135,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1739194555
   m_SortingLayer: 5
-  m_SortingOrder: 6
+  m_SortingOrder: 15
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

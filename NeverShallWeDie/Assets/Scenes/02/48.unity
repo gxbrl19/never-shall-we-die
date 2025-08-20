@@ -511,6 +511,13 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  _texting:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!82 &70745961
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12921,7 +12928,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1739194555
   m_SortingLayer: 5
-  m_SortingOrder: 6
+  m_SortingOrder: 15
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -15296,6 +15303,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1030461540
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 488089280159050737, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_Name
+      value: Bridge (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -59.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
 --- !u!1 &1091558583
 GameObject:
   m_ObjectHideFlags: 0
@@ -17525,17 +17589,20 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
+  _intro: 1
   _equipments: 
   _skills: 
+  _inventory: 
+  _currentHP: 0
+  _currentMP: 0
   _hpMax: 25
   _mpMax: 15
-  _katanaLevel: 0
   _gold: 0
-  _qtdPotentium: 0
-  _qtdOrb: 0
+  _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
+  _ancientStones: 
   _airCutblock: 
   _barriersLever: 
   _secret: 
@@ -17544,6 +17611,10 @@ MonoBehaviour:
   _gateMechanism: 0
   _gateBoss: 0
   _shipUpgrades: 
+  _shipPosX: 0
+  _shipPosY: 0
+  _lastPier: 
+  _sceneForLoad: 0
   _rocks: 
   _checkpointScene: 0
   _direction: 0
@@ -17552,17 +17623,11 @@ MonoBehaviour:
   _witch: 
   _blacksmith: 
   _maps: 
-  _hammer: 0
-  _grimoire: 0
-  _submarine: 0
-  _propulsion: 0
-  _artillery: 0
   _bestiary: 
   _bosses: 
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
-  _keys: 
   _doors: 
   _inputType: 
 --- !u!4 &1992021751
@@ -17852,6 +17917,7 @@ SceneRoots:
   - {fileID: 689093417}
   - {fileID: 13195263}
   - {fileID: 326279822}
+  - {fileID: 1030461540}
   - {fileID: 1407301883}
   - {fileID: 464805052}
   - {fileID: 1724121642}
