@@ -34,8 +34,8 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        maxHealth = 25f;
-        maxMana = 15f;
+        maxHealth = GameManager.instance._hpMax;
+        maxMana = GameManager.instance._mpMax;
 
         startColor = spriteRenderer.color;
         currentHealth = GetHealth();

@@ -66,11 +66,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<Items> _inventory;
     [HideInInspector] public float _currentHP; //usado para manter o HP na troca de cena
     [HideInInspector] public float _currentMP; //usado para manter o MP na troca de cena
-    [HideInInspector] public float _hpMax = 25f;
-    [HideInInspector] public float _mpMax = 15f;
+    public float _hpMax;
+    public float _mpMax;
     public int _hpMpLevel;
     public int _gold; //total de gold coletado
-    public int _katanaLevel;
+    [HideInInspector] public int _katanaLevel;
 
     [HideInInspector] public int[] _flags; //Flags já liberadas
     [HideInInspector] public int[] _barrels; //Barrels já destruídos
@@ -145,6 +145,8 @@ public class GameManager : MonoBehaviour
         //Enemies
         _bosses = new int[6];
 
+        _hpMax = 25f;
+        _mpMax = 15f;
         _hpMpLevel = 1;
         _katanaLevel = 1;
 
