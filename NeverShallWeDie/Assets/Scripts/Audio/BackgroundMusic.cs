@@ -82,6 +82,9 @@ public class BackgroundMusic : MonoBehaviour
             case "04/H7":
                 MusicControl(4);
                 break;
+            case "04/H8":
+                MusicControl(4);
+                break;
         }
     }
 }

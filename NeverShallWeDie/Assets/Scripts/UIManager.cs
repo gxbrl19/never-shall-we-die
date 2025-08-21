@@ -103,12 +103,14 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Crew")][Header("Blacksmith")] public GameObject _pnlUpKatana;
     [BoxGroup("Crew")] public GameObject _buttonYesUpKatana;
     [BoxGroup("Crew")] public Text _txtKatanaPrice;
-    [BoxGroup("Crew")] public Text _txtCurrPotentium;
+    [BoxGroup("Crew")] public Text _txtKatanaCurrLvl;
+    [HideInInspector] public int _katanaInitialPrice = 200;
     [HideInInspector] public int _katanaPrice;
     [BoxGroup("Crew")][Header("Witch")] public GameObject _pnlUpHpMp;
     [BoxGroup("Crew")] public GameObject _buttonYesUpHpMp;
-    [BoxGroup("Crew")] public Text _txtUpHpMpPrice;
-    [BoxGroup("Crew")] public Text _txtCurrOrbs;
+    [HideInInspector] public int _txtInitialHpMpPrice = 200;
+    [BoxGroup("Crew")] public Text _txtHpMpPrice;
+    [BoxGroup("Crew")] public Text _txtCurrHpMpLvl;
     [HideInInspector] public int _UpHpMpPrice;
     [BoxGroup("Crew")][Header("Shipwright")] public GameObject _pnlUPShip;
     [BoxGroup("Crew")] public GameObject _firstButtonShip;
@@ -664,8 +666,10 @@ public class UIManager : MonoBehaviour
 
     public void ActivePanelUpKatana()
     {
+        _katanaPrice = _katanaInitialPrice * GameManager.instance._katanaLevel; //aumentando o preço conforme o level
         _inUIScreen = true;
         _player.DisableControls();
+        _txtKatanaCurrLvl.text = GameManager.instance._katanaLevel.ToString();
         _txtKatanaPrice.text = _katanaPrice.ToString();
         _pnlUpKatana.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpKatana);
@@ -674,7 +678,7 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeKatana() //chamado no botão Yes do pnl_upKatana (UI Manager)
     {
-        if (GameManager.instance._gold >= _katanaPrice)
+        if (GameManager.instance._gold >= _katanaPrice && GameManager.instance._katanaLevel < 4)
         {
             _inUIScreen = false;
             _player.EnabledControls();
@@ -703,9 +707,11 @@ public class UIManager : MonoBehaviour
 
     public void ActivePanelHpMp()
     {
+        _UpHpMpPrice = _txtInitialHpMpPrice * GameManager.instance._hpMpLevel; //aumentando o preço conforme o level
         _inUIScreen = true;
         _player.DisableControls();
-        _txtUpHpMpPrice.text = _UpHpMpPrice.ToString();
+        _txtCurrHpMpLvl.text = GameManager.instance._hpMpLevel.ToString();
+        _txtHpMpPrice.text = _UpHpMpPrice.ToString();
         _pnlUpHpMp.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpHpMp);
         AudioHUD.instance.PlaySelectButton();
@@ -713,10 +719,11 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeHP() //chamado no botão HP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice)
+        if (GameManager.instance._gold >= _UpHpMpPrice && GameManager.instance._hpMpLevel < 6)
         {
             _inUIScreen = false;
             _player.EnabledControls();
+            GameManager.instance._hpMpLevel += 1;
             _health.maxHealth += 5f;
             GameManager.instance._hpMax = _health.maxHealth;
             _pnlUpHpMp.SetActive(false);
@@ -736,10 +743,11 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeMP() //chamado no botão MP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice)
+        if (GameManager.instance._gold >= _UpHpMpPrice && GameManager.instance._hpMpLevel < 6)
         {
             _inUIScreen = false;
             _player.EnabledControls();
+            GameManager.instance._hpMpLevel += 1;
             _health.maxMana += 5f;
             GameManager.instance._mpMax = _health.maxMana;
             _pnlUpHpMp.SetActive(false);

@@ -415,6 +415,7 @@ public class PlayerMovement : MonoBehaviour
         //player.playerInputs.horizontal != 0f && //define se precisa apertar o botão horizontal para fazer o wall slide
         !player.isGrounded &&
         !player.onLedge &&
+        !player.onClimbing &&
         player.rb.velocity.y < 0;
 
         if (canSlide)

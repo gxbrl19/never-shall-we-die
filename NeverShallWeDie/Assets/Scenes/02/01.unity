@@ -927,13 +927,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236b1d0fd5216a34abd330091b70e5cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 70745961}
-  _btnClick: {fileID: 8300000, guid: f0a14e9cf62052c4ab9fd28a833aa187, type: 3}
-  _navigationBtn: {fileID: 0}
-  _pauseBtn: {fileID: 8300000, guid: d989b46cd18b9a24d9cd45f9d7944e5c, type: 3}
-  _clickVolume: 0.5
-  _navigationVolume: 0
-  _pauseVolume: 0.7
+  _confirmBtn:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _backBtn:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _navigationBtn:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _selectBtn:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _sliderIncrease:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _sliderDecrease:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _openMap:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _closeMap:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _upgradeKatana:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _upgradeMP:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _upgradeShip:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _texting:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!82 &70745961
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1063,7 +1140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -52.509
+      value: -52.191
       objectReference: {fileID: 0}
     - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1095,6 +1172,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488089280159050741, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449218265210580385, guid: 223b3ddfbf6bfec4b98a5d9c8f8c0078, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10193,14 +10274,33 @@ MonoBehaviour:
   _save1: 0
   _save2: 0
   _save3: 0
+  _intro: 1
   _equipments: 
   _skills: 
+  _inventory: 
+  _currentHP: 0
+  _currentMP: 0
+  _hpMax: 25
+  _mpMax: 15
   _gold: 0
+  _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
+  _ancientStones: 
   _airCutblock: 
   _barriersLever: 
+  _secret: 
+  _secretDrawbridge: 0
+  _drawbridge: 0
+  _gateMechanism: 0
+  _gateBoss: 0
+  _shipUpgrades: 
+  _shipPosX: 0
+  _shipPosY: 0
+  _lastPier: 
+  _sceneForLoad: 0
+  _rocks: 
   _checkpointScene: 0
   _direction: 0
   _navigator: 
@@ -10213,6 +10313,7 @@ MonoBehaviour:
   _masterVol: 0
   _musicVol: 0
   _sfxVol: 0
+  _doors: 
   _inputType: 
 --- !u!4 &566699222
 Transform:
@@ -25728,7 +25829,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.724918
+      value: 18.731888
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25791,6 +25892,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1899247522610456770, guid: 774f7d125c99b794a8e19bf645e7fd50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.3588943
+      objectReference: {fileID: 0}
     - target: {fileID: 4491579791724944907, guid: 774f7d125c99b794a8e19bf645e7fd50, type: 3}
       propertyPath: m_Name
       value: UIPlayer

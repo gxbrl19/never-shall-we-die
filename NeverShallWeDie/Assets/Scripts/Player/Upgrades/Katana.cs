@@ -21,16 +21,16 @@ public class Katana : MonoBehaviour
         switch (_level)
         {
             default:
-            case 0:
+            case 1:
                 _damager.attackPower = _equipmentObject.damager1;
                 break;
-            case 1:
+            case 2:
                 _damager.attackPower = _equipmentObject.damager2;
                 break;
-            case 2:
+            case 3:
                 _damager.attackPower = _equipmentObject.damager3;
                 break;
-            case 3:
+            case 4:
                 _damager.attackPower = _equipmentObject.damager4;
                 break;
         }

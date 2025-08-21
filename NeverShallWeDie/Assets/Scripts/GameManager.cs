@@ -16,6 +16,7 @@ public class PlayerData
     public List<Items> items;
     public float hpMax;
     public float mpMax;
+    public int hpMpLevel;
     public int gold;
     public int katanaLevel;
     public int[] flags;
@@ -67,8 +68,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float _currentMP; //usado para manter o MP na troca de cena
     [HideInInspector] public float _hpMax = 25f;
     [HideInInspector] public float _mpMax = 15f;
+    public int _hpMpLevel;
     public int _gold; //total de gold coletado
-    [HideInInspector] public int _katanaLevel;
+    public int _katanaLevel;
 
     [HideInInspector] public int[] _flags; //Flags já liberadas
     [HideInInspector] public int[] _barrels; //Barrels já destruídos
@@ -143,6 +145,9 @@ public class GameManager : MonoBehaviour
         //Enemies
         _bosses = new int[6];
 
+        _hpMpLevel = 1;
+        _katanaLevel = 1;
+
         LoadBasic();
     }
 
@@ -154,8 +159,8 @@ public class GameManager : MonoBehaviour
 
         _navigator = "MEET"; //TODO: - passar para o MEET ao terminar a demo (OTHER para a demo)
         _shipwright = "COMPLETE"; //DEMO - passar para o COMPLETE ao terminar a demo
-        _witch = "MEET"; //TODO: - passar para o MEET ao terminar a demo
-        _blacksmith = "MEET"; //TODO: - passar para o MEET ao terminar a demo
+        _witch = "CREW"; //TODO: - passar para o MEET ao terminar a demo
+        _blacksmith = "CREW"; //TODO: - passar para o MEET ao terminar a demo
     }
 
     void Update()
@@ -190,6 +195,7 @@ public class GameManager : MonoBehaviour
         _data.items = _inventory;
         _data.hpMax = _hpMax;
         _data.mpMax = _mpMax;
+        _data.hpMpLevel = _hpMpLevel;
         _data.gold = _gold;
         _data.katanaLevel = _katanaLevel;
 
@@ -283,6 +289,7 @@ public class GameManager : MonoBehaviour
             _inventory = _data.items;
             _hpMax = _data.hpMax;
             _mpMax = _data.mpMax;
+            _hpMpLevel = _data.hpMpLevel;
             _gold = _data.gold;
             _katanaLevel = _data.katanaLevel;
 
