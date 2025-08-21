@@ -98,12 +98,12 @@ public class Player : MonoBehaviour
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
         //if (!PlayerSkills.instance.skills.Contains(Skills.FireGem)) { PlayerSkills.instance.skills.Add(Skills.FireGem); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.AirGem)) { PlayerSkills.instance.skills.Add(Skills.AirGem); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.AirGem)) { PlayerSkills.instance.skills.Add(Skills.AirGem); }
         //if (!PlayerSkills.instance.skills.Contains(Skills.WaterGem)) { PlayerSkills.instance.skills.Add(Skills.WaterGem); }
     }
 
@@ -175,7 +175,7 @@ public class Player : MonoBehaviour
         isAttacking = true;
         playerInputs.pressAttack = false;
         playerAnimations.AnimAttack();
-        Invoke("FinishAttack", .2f); //garante o fim do ataque
+        Invoke("FinishAttack", .3f); //garante o fim do ataque
     }
     public void FinishAttack() //chamado também na animação de ataque da katana
     {

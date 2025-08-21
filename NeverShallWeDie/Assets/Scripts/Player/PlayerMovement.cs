@@ -697,7 +697,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressRightTrigger || player.onWaterSpecial || player.playerInputs.pressAttack || player.isRolling)
+        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressRightTrigger || player.onWaterSpecial || player.isAttacking || player.isRolling)
             return;
 
         if (player.isGrounded)
