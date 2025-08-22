@@ -416,6 +416,7 @@ public class PlayerMovement : MonoBehaviour
         !player.isGrounded &&
         !player.onLedge &&
         !player.onClimbing &&
+        !player.onHit &&
         player.rb.velocity.y < 0;
 
         if (canSlide)
