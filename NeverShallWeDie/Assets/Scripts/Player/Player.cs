@@ -43,8 +43,8 @@ public class Player : MonoBehaviour
 
     //Fire Gem
     [HideInInspector] public float timeFireGem;
-    [BoxGroup("GameObjects")] public AirCut _aircut;
-    [BoxGroup("Components")] public Transform _aircutPoint;
+    [BoxGroup("GameObjects")] public AirCut _fireGem;
+    [BoxGroup("Components")] public Transform _fireGemPoint;
     [HideInInspector] public float fireMana;
 
     //States
@@ -254,13 +254,13 @@ public class Player : MonoBehaviour
         if (isDead || !canMove)
             return;
 
-        _aircut._direction = playerMovement.playerDirection;
+        _fireGem._direction = playerMovement.playerDirection;
 
-        Vector3 _scale = _aircut.transform.localScale;
+        Vector3 _scale = _fireGem.transform.localScale;
         _scale.x = transform.localScale.x;
-        _aircut.transform.localScale = _scale;
+        _fireGem.transform.localScale = _scale;
 
-        Instantiate(_aircut.gameObject, _aircutPoint.position, _aircutPoint.rotation);
+        Instantiate(_fireGem.gameObject, _fireGemPoint.position, _fireGemPoint.rotation);
         playerHealth.ManaConsumption(fireMana);
     }
 

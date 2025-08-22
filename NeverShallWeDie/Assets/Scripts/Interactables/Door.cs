@@ -32,6 +32,12 @@ public class Door : MonoBehaviour
     {
         _locked = GameManager.instance._doors[_doorID] == 0 ? true : false;
 
+        if (!_locked) { _animation.SetBool("Open", true); }
+    }
+
+    private void Update()
+    {
+        //verificando se já tem a chave
         if (_doorID == 0) { _withKey = InventorySystem.instance.items.Contains(Items.Key0); }
         else if (_doorID == 1) { _withKey = InventorySystem.instance.items.Contains(Items.Key1); }
         else if (_doorID == 2) { _withKey = InventorySystem.instance.items.Contains(Items.Key2); }
@@ -39,11 +45,6 @@ public class Door : MonoBehaviour
         else if (_doorID == 4) { _withKey = InventorySystem.instance.items.Contains(Items.Key4); }
         else if (_doorID == 5) { _withKey = InventorySystem.instance.items.Contains(Items.Key5); }
 
-        if (!_locked) { _animation.SetBool("Open", true); }
-    }
-
-    private void Update()
-    {
         if (_playerTriggered && _input.pressInteract)
         {
             if (_locked)

@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2596015545165567744}
   m_Layer: 9
-  m_Name: AirCutPoint
+  m_Name: FireGemtPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -824,7 +824,6 @@ Transform:
   - {fileID: 8160846809661711540}
   - {fileID: 1652972573381873277}
   - {fileID: 2513561102990584245}
-  - {fileID: 5724987312424878211}
   - {fileID: 293419937806343516}
   - {fileID: 8841459981562994291}
   - {fileID: 2769497171945588618}
@@ -1240,8 +1239,8 @@ MonoBehaviour:
   timeWaterGem: 0
   waterMana: 0
   timeFireGem: 0
-  _aircut: {fileID: 6993672965945786157, guid: 1d231f750fdc7224499d32169bd29f44, type: 3}
-  _aircutPoint: {fileID: 2596015545165567744}
+  _fireGem: {fileID: 0}
+  _fireGemPoint: {fileID: 2596015545165567744}
   fireMana: 0
   canMove: 1
   canGrab: 0
@@ -1676,88 +1675,6 @@ CapsuleCollider2D:
   m_Offset: {x: -1.2943628, y: 0.30591774}
   m_Size: {x: 1.0229144, y: 1.5623589}
   m_Direction: 0
---- !u!1 &8909993161202707593
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5724987312424878211}
-  - component: {fileID: 1360287956973162881}
-  - component: {fileID: 5001283020358193246}
-  m_Layer: 16
-  m_Name: Tornado
-  m_TagString: SwordAtk
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5724987312424878211
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8909993161202707593}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.969, y: -0.197, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8160846808588850630}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1360287956973162881
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8909993161202707593}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -2.0329545, y: 0.16954888}
-  m_Size: {x: 3.2757354, y: 1.0207072}
-  m_Direction: 1
---- !u!114 &5001283020358193246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8909993161202707593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPower: 0
-  hitEffect: {fileID: 0}
 --- !u!1 &9025100403178150623
 GameObject:
   m_ObjectHideFlags: 0

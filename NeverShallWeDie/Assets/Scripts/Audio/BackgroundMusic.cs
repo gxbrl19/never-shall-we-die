@@ -34,7 +34,7 @@ public class BackgroundMusic : MonoBehaviour
             else if (scene == 8 || scene == 9 || scene == 10) { MusicControl(1); } //forest
             else if (scene == 62 || scene == 63 || scene == 64) { MusicControl(2); } //mizuton
             else if (scene == 122 || scene == 123 || scene == 124) { MusicControl(3); } //winter
-            else if (scene == 180 || scene == 181 || scene == 182) { MusicControl(4); } //prison
+            else if (scene == 181 || scene == 182 || scene == 183) { MusicControl(4); } //prison
             else if (scene == 244 || scene == 245 || scene == 246) { MusicControl(5); } //mansion TODO: passar quando inserir a ultima ilha
             else if (scene == 280) { MusicControl(6); } //kingdom TODO: passar quando inserir a ultima ilha
         }
