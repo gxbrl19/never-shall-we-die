@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class IceStake : MonoBehaviour
 {
-    Animator _animation;
-    Collider2D _collider;
-    Rigidbody2D _body;
-    
+    Animator animator;
+    Rigidbody2D rb;
+
     void Start()
     {
-        _animation = GetComponent<Animator>();
-        _collider = GetComponent<Collider2D>();
-        _body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D _other)
     {
-        if(_other.gameObject.layer == 8) //Ground
+        if (_other.gameObject.layer == 8) //Ground
         {
-            Destroy(_collider, 0.5f);
-            _body.velocity = Vector3.zero;
-            _body.bodyType = RigidbodyType2D.Static;
+            rb.velocity = Vector3.zero;
+            rb.bodyType = RigidbodyType2D.Static;
+            animator.SetTrigger("Break");
         }
     }
 }

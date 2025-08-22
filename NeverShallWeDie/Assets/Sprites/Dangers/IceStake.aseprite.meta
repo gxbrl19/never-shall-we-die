@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: IceStake
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.44444445, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 14
-      height: 32
+      y: 82
+      width: 9
+      height: 29
     spriteID: cd6c5136ed52fe44cbd197e1942d8ad1
     spriteBone: []
     spriteOutline: []
@@ -138,7 +138,87 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
+    uvTransform: {x: 4, y: 82}
+  - name: IceStake_Frame_1
+    originalName: 
+    pivot: {x: 0.45833334, y: 0.6041667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 24
+      height: 24
+    spriteID: c7cc51334cbfc704d87945c47976f5ea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: IceStake_Frame_2
+    originalName: 
+    pivot: {x: 0.53333336, y: 0.8055556}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 36
+      width: 30
+      height: 18
+    spriteID: c1793ea6a9d18a34d83b3b0d3d952088
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 36}
+  - name: IceStake_Frame_3
+    originalName: 
+    pivot: {x: 0.4666667, y: 1.2083334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 62
+      width: 30
+      height: 12
+    spriteID: 5bf7e90710002e74fab8df66523f3533
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 62}
+  - name: IceStake_Frame_4
+    originalName: 
+    pivot: {x: 0.5294118, y: 14.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 62
+      width: 17
+      height: 1
+    spriteID: a07c27b127594fb4288cb2472c5e5104
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 62}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -148,14 +228,46 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: IceStake
+    - name: IceStake_Frame_0
       frameIndex: 0
       cellRect:
-        x: 1
+        x: 12
         y: 0
-        width: 14
-        height: 32
+        width: 9
+        height: 29
       spriteId: cd6c5136ed52fe44cbd197e1942d8ad1
+    - name: IceStake_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 5
+        y: 0
+        width: 24
+        height: 24
+      spriteId: c7cc51334cbfc704d87945c47976f5ea
+    - name: IceStake_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 30
+        height: 18
+      spriteId: c1793ea6a9d18a34d83b3b0d3d952088
+    - name: IceStake_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 2
+        y: 0
+        width: 30
+        height: 12
+      spriteId: 5bf7e90710002e74fab8df66523f3533
+    - name: IceStake_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 7
+        y: 0
+        width: 17
+        height: 1
+      spriteId: a07c27b127594fb4288cb2472c5e5104
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -221,4 +333,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 32}
+  canvasSize: {x: 32, y: 29}
