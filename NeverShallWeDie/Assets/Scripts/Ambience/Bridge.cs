@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class Bridge : MonoBehaviour
 {
-    private int _myLayer;
+    Collider2D coll;
 
-    public int _ignoreLayer;
-
-    void Start()
+    void Awake()
     {
-        _myLayer = gameObject.layer;
+        coll = GetComponent<Collider2D>();
     }
 
     public void PassingThrough()
     {
-        gameObject.layer = _ignoreLayer;
+        coll.enabled = false;
         Invoke("SetDefaultLayer", 0.5f);
     }
 
     void SetDefaultLayer()
     {
-        gameObject.layer = _myLayer;
+        coll.enabled = true;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

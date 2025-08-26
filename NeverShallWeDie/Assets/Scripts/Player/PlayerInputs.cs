@@ -213,7 +213,7 @@ public class PlayerInputs : MonoBehaviour
     public void ButtonWest(InputAction.CallbackContext callback)
     {
         if (player.isDead || player.isAttacking || _pressRightTrigger || Time.timeScale == 0f || player.onClimbing || player.onLedge
-        || player.onHit || player.isGrabing || player.isRolling || player.onAirSpecial || !player.canMove
+        || player.onHit || player.isGrabing || player.isGriding || player.isRolling || player.onAirSpecial || !player.canMove
         || !PlayerEquipment.instance.equipments.Contains(Equipments.Katana))
             return;
 

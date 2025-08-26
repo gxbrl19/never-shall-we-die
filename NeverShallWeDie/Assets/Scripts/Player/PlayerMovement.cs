@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Bridge
     private float bridgeCheckDistance = -1.09f;
+    [HideInInspector] public Bridge bridge;
 
     //Grab
     private float grabSpeed = 2f;
@@ -331,7 +332,7 @@ public class PlayerMovement : MonoBehaviour
                 canSwin = false;
             }
         }
-        else if (player.playerInputs.pressJump && player.playerInputs.vertical <= -0.3f && !player.onClimbing) // pulo por baixo da plataforma
+        else if (player.playerInputs.pressJump && player.playerInputs.vertical <= -0.3f && player.onBridge && !player.onClimbing) // pulo por baixo da plataforma
         {
             PassThroughBridge();
         }
@@ -508,22 +509,18 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D _bridgeHitUp = RaycastBridge(transform.position, Vector2.up, bridgeCheckDistance, player._bridgeLayer);
 
         if (_bridgeHitUp)
-        {
             bridgeHit = true;
-        }
     }
 
-    public void SetBridge(Bridge bridge)
+    public void SetBridge(Bridge bridgeReference)
     {
-        player.bridge = bridge;
+        bridge = bridgeReference;
     }
 
     public void PassThroughBridge()
     {
-        if (player.bridge != null)
-        {
-            player.bridge.PassingThrough();
-        }
+        if (bridge != null)
+            bridge.PassingThrough();
     }
 
     RaycastHit2D RaycastBridge(Vector2 offset, Vector2 rayDirection, float length, LayerMask layerMask)

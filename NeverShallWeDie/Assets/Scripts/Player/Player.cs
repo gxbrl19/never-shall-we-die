@@ -79,7 +79,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public PlayerHealth playerHealth;
     [HideInInspector] public PlayerCollision playerCollision;
     [HideInInspector] public PlayerAudio playerAudio;
-    [HideInInspector] public Bridge bridge;
 
     private void Awake()
     {
@@ -97,7 +96,7 @@ public class Player : MonoBehaviour
         airMana = 4;
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
