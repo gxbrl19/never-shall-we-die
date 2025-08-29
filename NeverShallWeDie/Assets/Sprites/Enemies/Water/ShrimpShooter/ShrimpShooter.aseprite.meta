@@ -1,0 +1,756 @@
+fileFormatVersion: 2
+guid: 79ee8c36e33dd1c438604f24641c6221
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 16
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638460091908186554
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: ShrimpShooter_Frame_0
+    originalName: 
+    pivot: {x: 0.48, y: 0.57142854}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 181
+      y: 79
+      width: 50
+      height: 28
+    spriteID: 6549ed45d185a134d9be17098dbae521
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 181, y: 79}
+  - name: ShrimpShooter_Frame_1
+    originalName: 
+    pivot: {x: 0.49019608, y: 0.59259254}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 117
+      width: 51
+      height: 27
+    spriteID: 9458b0374187fe146ba031c05f4418bc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 117}
+  - name: ShrimpShooter_Frame_2
+    originalName: 
+    pivot: {x: 0.49019608, y: 0.5333333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 79
+      width: 51
+      height: 30
+    spriteID: 40c36166fdc3e76459a662329ea4aaeb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 79}
+  - name: ShrimpShooter_Frame_3
+    originalName: 
+    pivot: {x: 0.49019608, y: 0.5333333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 63
+      y: 79
+      width: 51
+      height: 30
+    spriteID: 71436d4f943f85743b9f90f4a088f264
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 63, y: 79}
+  - name: ShrimpShooter_Frame_4
+    originalName: 
+    pivot: {x: 0.49019608, y: 0.57142854}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 122
+      y: 79
+      width: 51
+      height: 28
+    spriteID: 3215cadc8b5ba1342b877c35b170f6c0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 122, y: 79}
+  - name: ShrimpShooter_Frame_5
+    originalName: 
+    pivot: {x: 0.48, y: 0.57142854}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 66
+      y: 42
+      width: 50
+      height: 28
+    spriteID: 16898eb273c4e9f439336dca76e5c7a3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 66, y: 42}
+  - name: ShrimpShooter_Frame_6
+    originalName: 
+    pivot: {x: 0.50000006, y: 0.5769231}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 189
+      width: 44
+      height: 26
+    spriteID: 98edc2bc8dde51142b5592ac75ff4de5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 189}
+  - name: ShrimpShooter_Frame_7
+    originalName: 
+    pivot: {x: 0.5111111, y: 0.48275867}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 174
+      y: 152
+      width: 45
+      height: 29
+    spriteID: decf2a9acc295894bba4483d6bba5d11
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 174, y: 152}
+  - name: ShrimpShooter_Frame_8
+    originalName: 
+    pivot: {x: 0.48936167, y: 0.5172414}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 152
+      width: 47
+      height: 29
+    spriteID: c5396661e1eeb3e41a137cda6e4fcc8e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 152}
+  - name: ShrimpShooter_Frame_9
+    originalName: 
+    pivot: {x: 0.45833337, y: 0.57142854}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 152
+      width: 48
+      height: 28
+    spriteID: 3040e94e144dd0e4e985f544558d6dc9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 152}
+  - name: ShrimpShooter_Frame_10
+    originalName: 
+    pivot: {x: 0.45098037, y: 0.5769231}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 115
+      y: 152
+      width: 51
+      height: 26
+    spriteID: 97ced72d8360edd49beb6bd329f51d14
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 115, y: 152}
+  - name: ShrimpShooter_Frame_11
+    originalName: 
+    pivot: {x: 0.4259259, y: 0.48275867}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 194
+      y: 4
+      width: 54
+      height: 29
+    spriteID: c0f21fc92da16df4fae0a092a9c241db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 194, y: 4}
+  - name: ShrimpShooter_Frame_12
+    originalName: 
+    pivot: {x: 0.4259259, y: 0.5172414}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 42
+      width: 54
+      height: 29
+    spriteID: 086a5be68010c5c44928c3a1df540e5c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 42}
+  - name: ShrimpShooter_Frame_13
+    originalName: 
+    pivot: {x: 0.42000005, y: 0.57142854}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 42
+      width: 50
+      height: 28
+    spriteID: 726ef07a57e368f468a095e5dc11cda4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 42}
+  - name: ShrimpShooter_Frame_14
+    originalName: 
+    pivot: {x: 0.24418606, y: 0.57142854}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 4
+      width: 86
+      height: 28
+    spriteID: b3534d76e2259bc4cba8b17fb34dce72
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: 4}
+  - name: ShrimpShooter_Frame_15
+    originalName: 
+    pivot: {x: 0.25000003, y: 0.5333333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 88
+      height: 30
+    spriteID: f6b9d1f0ca932064c9b021888487a4a6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: ShrimpShooter_Frame_16
+    originalName: 
+    pivot: {x: 0.42000005, y: 0.57142854}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 182
+      y: 42
+      width: 50
+      height: 28
+    spriteID: 6d788f45f6a7d2b44af5e5a3760d46ec
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 182, y: 42}
+  - name: ShrimpShooter_Frame_17
+    originalName: 
+    pivot: {x: 0.45098037, y: 0.59259254}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 63
+      y: 117
+      width: 51
+      height: 27
+    spriteID: 9a41f7f7ad580a94db1879d4413f0340
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 63, y: 117}
+  - name: ShrimpShooter_Frame_18
+    originalName: 
+    pivot: {x: 0.45098037, y: 0.59259254}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 122
+      y: 117
+      width: 51
+      height: 27
+    spriteID: e4d88657f8a6b874ca9d8be56adae251
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 122, y: 117}
+  - name: ShrimpShooter_Frame_19
+    originalName: 
+    pivot: {x: 0.45098037, y: 0.59259254}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 181
+      y: 117
+      width: 51
+      height: 27
+    spriteID: 0a0f9a9d6cfab8049974d526659d2c29
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 181, y: 117}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1630198925
+    name: ShrimpShooter
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: ShrimpShooter_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 48
+        y: 32
+        width: 50
+        height: 28
+      spriteId: 6549ed45d185a134d9be17098dbae521
+    - name: ShrimpShooter_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 47
+        y: 32
+        width: 51
+        height: 27
+      spriteId: 9458b0374187fe146ba031c05f4418bc
+    - name: ShrimpShooter_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 47
+        y: 32
+        width: 51
+        height: 30
+      spriteId: 40c36166fdc3e76459a662329ea4aaeb
+    - name: ShrimpShooter_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 47
+        y: 32
+        width: 51
+        height: 30
+      spriteId: 71436d4f943f85743b9f90f4a088f264
+    - name: ShrimpShooter_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 47
+        y: 32
+        width: 51
+        height: 28
+      spriteId: 3215cadc8b5ba1342b877c35b170f6c0
+    - name: ShrimpShooter_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 48
+        y: 32
+        width: 50
+        height: 28
+      spriteId: 16898eb273c4e9f439336dca76e5c7a3
+    - name: ShrimpShooter_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 50
+        y: 33
+        width: 44
+        height: 26
+      spriteId: 98edc2bc8dde51142b5592ac75ff4de5
+    - name: ShrimpShooter_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 49
+        y: 34
+        width: 45
+        height: 29
+      spriteId: decf2a9acc295894bba4483d6bba5d11
+    - name: ShrimpShooter_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 49
+        y: 33
+        width: 47
+        height: 29
+      spriteId: c5396661e1eeb3e41a137cda6e4fcc8e
+    - name: ShrimpShooter_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 50
+        y: 32
+        width: 48
+        height: 28
+      spriteId: 3040e94e144dd0e4e985f544558d6dc9
+    - name: ShrimpShooter_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 49
+        y: 33
+        width: 51
+        height: 26
+      spriteId: 97ced72d8360edd49beb6bd329f51d14
+    - name: ShrimpShooter_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 49
+        y: 34
+        width: 54
+        height: 29
+      spriteId: c0f21fc92da16df4fae0a092a9c241db
+    - name: ShrimpShooter_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 49
+        y: 33
+        width: 54
+        height: 29
+      spriteId: 086a5be68010c5c44928c3a1df540e5c
+    - name: ShrimpShooter_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 51
+        y: 32
+        width: 50
+        height: 28
+      spriteId: 726ef07a57e368f468a095e5dc11cda4
+    - name: ShrimpShooter_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 51
+        y: 32
+        width: 86
+        height: 28
+      spriteId: b3534d76e2259bc4cba8b17fb34dce72
+    - name: ShrimpShooter_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 50
+        y: 32
+        width: 88
+        height: 30
+      spriteId: f6b9d1f0ca932064c9b021888487a4a6
+    - name: ShrimpShooter_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 51
+        y: 32
+        width: 50
+        height: 28
+      spriteId: 6d788f45f6a7d2b44af5e5a3760d46ec
+    - name: ShrimpShooter_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 49
+        y: 32
+        width: 51
+        height: 27
+      spriteId: 9a41f7f7ad580a94db1879d4413f0340
+    - name: ShrimpShooter_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 49
+        y: 32
+        width: 51
+        height: 27
+      spriteId: e4d88657f8a6b874ca9d8be56adae251
+    - name: ShrimpShooter_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 49
+        y: 32
+        width: 51
+        height: 27
+      spriteId: 0a0f9a9d6cfab8049974d526659d2c29
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 144, y: 96}
