@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 6225380675490421192}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.53, y: 0, z: 0}
+  m_LocalPosition: {x: -12, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 2611031687389739660}
   - component: {fileID: 6225380676328330654}
   - component: {fileID: 8129350013714801604}
-  - component: {fileID: 8626063002186934191}
+  - component: {fileID: 8423651204301957856}
   - component: {fileID: 6225380676328330653}
   m_Layer: 12
   m_Name: Sprite
@@ -243,7 +243,7 @@ Animator:
   m_GameObject: {fileID: 6225380676328330723}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16a32ba55e728be42be2caefb90561c6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -281,7 +281,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8626063002186934191
+--- !u!114 &8423651204301957856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,26 +290,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6225380676328330723}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0042f1877cb8e284c9f587f6a8a8cbcb, type: 3}
+  m_Script: {fileID: 11500000, guid: da6b43c33b8b6334b956b84b5a06dae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObject: {fileID: 11400000, guid: ffc4e15bdeb20ee49a8c8e2893c522dc, type: 2}
+  enemyObject: {fileID: 11400000, guid: f08cab4e6afd9624c9b274c18ee15c06, type: 2}
   currentHealth: 0
   deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
   hit:
     Guid:
-      Data1: 1251028960
-      Data2: 1299567375
-      Data3: 1715849628
-      Data4: 738790566
-    Path: event:/sfx/gameplay/SFX_COMBAT_boar_hit_01
+      Data1: 1194926906
+      Data2: 1079356389
+      Data3: 420128935
+      Data4: -404233844
+    Path: event:/generic/combat/enemy_hit
   death:
     Guid:
-      Data1: 575494128
-      Data2: 1144348170
-      Data3: -211167058
-      Data4: -1582031362
-    Path: event:/sfx/gameplay/SFX_COMBAT_boar_death_01
+      Data1: -1277808937
+      Data2: 1287559987
+      Data3: -370825569
+      Data4: -1116620846
+    Path: event:/generic/combat/enemy_death
   patrolPoints:
   - {fileID: 6225380675490421193}
   - {fileID: 6225380676907233842}
@@ -353,7 +353,7 @@ Transform:
   m_GameObject: {fileID: 6225380676907233845}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.59, y: 0, z: 0}
+  m_LocalPosition: {x: 12, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

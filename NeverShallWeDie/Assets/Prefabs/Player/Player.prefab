@@ -381,8 +381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 3
-  hitEffect: {fileID: 0}
+  attackPower: 15
+  hitEffect: {fileID: 7245457253207120127, guid: a1e482cf809c36341997c82c2c7420ba, type: 3}
 --- !u!1 &4846621408429234600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1272,6 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   playerCollision: {fileID: 0}
   playerAudio: {fileID: 0}
-  bridge: {fileID: 0}
 --- !u!114 &8160846808588850495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,6 +1304,7 @@ MonoBehaviour:
   isExhausted: 0
   ladder: {fileID: 0}
   vine: {fileID: 0}
+  bridge: {fileID: 0}
   canSwin: 1
   bridgeHit: 0
 --- !u!114 &8160846808588850494
