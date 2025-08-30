@@ -324,6 +324,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpTime = Time.time + jumpHoldDuration;
                 ghostTime = Time.time;
                 player.playerAudio.PlayJump();
+                player.playerAudio.PlayWaterSplash();
             }
             else if (!player.playerCollision.outWaterHit && player.playerCollision.inWaterHit)
             {

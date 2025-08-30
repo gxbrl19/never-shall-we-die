@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 887894573211247682}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: AirGemPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   m_Layer: 9
   m_Name: PlayerFoot
   m_TagString: PlayerFoot
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6095420535408145094}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Healing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8996096827250974117}
   - component: {fileID: 6163384303540226903}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: GrabingSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2596015545165567744}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: FireGemtPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6670305598234032891}
   - component: {fileID: 1756045535626217382}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,10 +474,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8841459981562994291}
+  - component: {fileID: 7609330348880935355}
+  - component: {fileID: 3732708568675868719}
   m_Layer: 0
   m_Name: OutWaterPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -496,6 +498,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8160846808588850630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &7609330348880935355
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5474408373558853201}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.37511826, y: -1.0205116}
+  m_Size: {x: 0.7027664, y: 0.7027664}
+  m_Direction: 0
+--- !u!114 &3732708568675868719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5474408373558853201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d3b9b9efe0bd44aac04ab36f1759fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outWaterPoint: {fileID: 5474408373558853201}
+  dropWater: {fileID: 9192269212389312563, guid: 2c8640e47c8cee3469a29a56319dafaa, type: 3}
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
 --- !u!1 &6331946840236455516
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4948423605938868825}
   - component: {fileID: 5271367179038822746}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: HealingSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -719,7 +773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4342493059249266109}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: TornadoPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1337,19 +1391,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4194304
   _box: {fileID: 4567039666440174750, guid: 474b2fc9a4a0f3b42b49b5681ef240bf, type: 3}
-  outWaterHit: 0
-  inWaterHit: 0
-  _outWaterPoint: {fileID: 5474408373558853201}
-  _dropWater: {fileID: 9192269212389312563, guid: 2c8640e47c8cee3469a29a56319dafaa, type: 3}
-  _waterLayer:
-    serializedVersion: 2
-    m_Bits: 16
-  _dropLava: {fileID: 9192269212389312563, guid: 6f8ad3fd913badf4186079460918d526, type: 3}
   touchingWall: 0
   _climbLedgePoint: {fileID: 1601008547502738022}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 4227328
+  outWaterHit: 0
+  inWaterHit: 0
 --- !u!114 &3227473634612903610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1688,7 +1736,7 @@ GameObject:
   m_Layer: 26
   m_Name: GroundCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

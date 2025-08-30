@@ -10,16 +10,6 @@ public class PlayerCollision : MonoBehaviour
     [BoxGroup("Box")] public LayerMask _boxLayer;
     [BoxGroup("Box")] public GameObject _box;
 
-    //Water
-    private float waterCheckRadius = 0.1f;
-    private Vector3 waterCheckDistance = new Vector3(0f, 0.7f, 0f);
-    [HideInInspector] public bool outWaterHit;
-    [HideInInspector] public bool inWaterHit;
-    [BoxGroup("Water")] public GameObject _outWaterPoint;
-    [BoxGroup("Water")] public GameObject _dropWater;
-    [BoxGroup("Water")] public LayerMask _waterLayer;
-    [BoxGroup("Water")] public GameObject _dropLava;
-
     //Climb Ledge
     private float wallRayDistance = 0.24f;
     private BoxCollider2D colliderClimbLedge;
@@ -27,7 +17,9 @@ public class PlayerCollision : MonoBehaviour
     [BoxGroup("ClimbLedge")] public GameObject _climbLedgePoint;
     [BoxGroup("ClimbLedge")] public LayerMask _groundLayer;
 
-    //Grid
+    //Water
+    [HideInInspector] public bool outWaterHit;
+    [HideInInspector] public bool inWaterHit;
 
     Player player;
 
@@ -49,7 +41,6 @@ public class PlayerCollision : MonoBehaviour
     private void FixedUpdate()
     {
         BoxMoveCheck();
-        WaterCheck();
         LedgeCheck();
         WallCheck();
     }
@@ -82,24 +73,6 @@ public class PlayerCollision : MonoBehaviour
             player.isGrabing = false;
             _box.GetComponent<Rigidbody2D>().mass = 500f;
             _box.GetComponent<FixedJoint2D>().enabled = false;
-        }
-    }
-
-    void WaterCheck()
-    {
-        if (player.isDead)
-            return;
-
-        outWaterHit = !Physics2D.OverlapCircle(_outWaterPoint.transform.position, waterCheckRadius, _waterLayer);
-        inWaterHit = Physics2D.OverlapCircle(_outWaterPoint.transform.position - waterCheckDistance, waterCheckRadius, _waterLayer);
-
-        if (inWaterHit)
-        {
-            player.onWater = true;
-        }
-        else
-        {
-            player.onWater = false;
         }
     }
 
@@ -144,47 +117,11 @@ public class PlayerCollision : MonoBehaviour
         {
             player.playerMovement.vine = other.transform;
         }
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
-        {
-            //verifica primeiro se é a layer do Player ou do Invencible que está entrando na água
-            if (gameObject.layer != LayerMask.NameToLayer("Player") && gameObject.layer != LayerMask.NameToLayer("Invencible")) { return; }
-
-            player.onWater = true;
-            Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
-            player.playerAudio.PlayWaterSplash();
-
-            //drop
-            if (other.gameObject.tag.Equals("Lava")) { Instantiate(_dropLava, position, other.transform.rotation); }
-            else { Instantiate(_dropWater, position, other.transform.rotation); }
-
-            if (player.isRolling)
-            {
-                player.playerMovement.FinishRoll(); //cancela o Roll ao entrar na água
-                return;
-            }
-
-            if (player.playerInputs.pressParachute == true) { player.playerInputs.pressParachute = false; } //cancela o parachute
-
-            player.EnterInWater();
-        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
-        {
-            //verifica primeiro se é a layer do Player ou do Invencible que está saindo da água
-            if (gameObject.layer != LayerMask.NameToLayer("Player") && gameObject.layer != LayerMask.NameToLayer("Invencible")) { return; }
 
-            player.onWater = false;
-            Vector3 position = other.gameObject.GetComponent<Collider2D>().bounds.ClosestPoint(new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z));
-            player.playerAudio.PlayWaterSplash();
-
-            //drop
-            if (other.gameObject.tag.Equals("Lava")) { Instantiate(_dropLava, position, other.transform.rotation); }
-            else { Instantiate(_dropWater, position, other.transform.rotation); }
-        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -215,14 +152,6 @@ public class PlayerCollision : MonoBehaviour
         //box
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.right * transform.localScale.x * distanceBox);
-
-        //water
-        Gizmos.color = Color.blue; //check out water
-        Gizmos.DrawWireSphere(_outWaterPoint.transform.position, waterCheckRadius);
-        Gizmos.DrawWireSphere(_outWaterPoint.transform.position, waterCheckRadius);
-        Gizmos.color = Color.blue; //check in water
-        Gizmos.DrawWireSphere(_outWaterPoint.transform.position - waterCheckDistance, waterCheckRadius);
-        Gizmos.DrawWireSphere(_outWaterPoint.transform.position - waterCheckDistance, waterCheckRadius);
     }
 
     RaycastHit2D RaycastWallJump(Vector2 position, Vector2 rayDirection, float length, LayerMask layerMask)
