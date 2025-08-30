@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvilVine_Projectile : MonoBehaviour
+public class ShrimpShooter_Projectile : MonoBehaviour
 {
     [HideInInspector] public float direction;
     private bool destroy = false;
-    private Vector2 force = new Vector2(30f, 0f);
+    private Vector2 force = new Vector2(35f, 0f);
 
     void FixedUpdate()
     {
