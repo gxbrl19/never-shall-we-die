@@ -1,0 +1,964 @@
+fileFormatVersion: 2
+guid: e59178f0c0efb3a4a849648de70a3ad4
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 16
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 0
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638756444729330622
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Wanted_Boss_KingBoar_Frame_0
+    originalName: 
+    pivot: {x: 2.226804, y: 1.391129}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 276
+      width: 97
+      height: 124
+    spriteID: 560254c6987dbca46acfaafeecf9517e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 276}
+  - name: Wanted_Boss_KingBoar_Frame_1
+    originalName: 
+    pivot: {x: 1.5419848, y: 1.1842107}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 135
+      width: 131
+      height: 133
+    spriteID: bb6d9c160400b224d8feec7bd17f71dd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 135}
+  - name: Wanted_Boss_KingBoar_Frame_2
+    originalName: 
+    pivot: {x: 0.9588236, y: 1.2176471}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 920
+      width: 170
+      height: 85
+    spriteID: 79f049639434f1f489d520b4d6d5c7bf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 920}
+  - name: Wanted_Boss_KingBoar_Frame_3
+    originalName: 
+    pivot: {x: 0.852349, y: 1.7596154}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 481
+      y: 135
+      width: 149
+      height: 52
+    spriteID: d0fd4fdff9b4c624bb0052880188d94e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 481, y: 135}
+  - name: Wanted_Boss_KingBoar_Frame_4
+    originalName: 
+    pivot: {x: 0.44041446, y: 1.596154}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 407
+      y: 4
+      width: 193
+      height: 78
+    spriteID: 306b8c1d6385b574ebf9c84134a6bbdb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 407, y: 4}
+  - name: Wanted_Boss_KingBoar_Frame_5
+    originalName: 
+    pivot: {x: 0.20095696, y: 0.97967476}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 4
+      width: 209
+      height: 123
+    spriteID: b1dfc79539e9a4c40af9e05ea655f832
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 4}
+  - name: Wanted_Boss_KingBoar_Frame_6
+    originalName: 
+    pivot: {x: 0, y: 0.76993865}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 178
+      height: 163
+    spriteID: 5eab1f6c0ff2ffa4881bde8826ad34b2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Wanted_Boss_KingBoar_Frame_7
+    originalName: 
+    pivot: {x: -0.45985407, y: 0.33695653}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 880
+      width: 137
+      height: 138
+    spriteID: 58705637fb498ae40b580f9967b51d84
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 880}
+  - name: Wanted_Boss_KingBoar_Frame_8
+    originalName: 
+    pivot: {x: -0.45132732, y: -0.15979381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 855
+      y: 4
+      width: 113
+      height: 97
+    spriteID: 12a9ec7d50219fc4390372d946486109
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 855, y: 4}
+  - name: Wanted_Boss_KingBoar_Frame_9
+    originalName: 
+    pivot: {x: 0.09782608, y: -0.92105275}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 854
+      width: 92
+      height: 57
+    spriteID: d1c62f66f716186499ce88c30880cf5b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 854}
+  - name: Wanted_Boss_KingBoar_Frame_10
+    originalName: 
+    pivot: {x: 0.43749997, y: 0.111650474}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 613
+      width: 64
+      height: 103
+    spriteID: 74bc538389beee44194a588be7547d4c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 613}
+  - name: Wanted_Boss_KingBoar_Frame_11
+    originalName: 
+    pivot: {x: 0.4186046, y: 0.2239583}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 509
+      width: 86
+      height: 96
+    spriteID: ec836d53bd5310541b51580614d115b5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 509}
+  - name: Wanted_Boss_KingBoar_Frame_12
+    originalName: 
+    pivot: {x: 0.53398055, y: 0.18421055}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 724
+      width: 103
+      height: 57
+    spriteID: 63090c393192c054bbd62db56ba17fe4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 724}
+  - name: Wanted_Boss_KingBoar_Frame_13
+    originalName: 
+    pivot: {x: 0.64077663, y: 0.18421055}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 789
+      width: 103
+      height: 57
+    spriteID: 942c9d60fa180184aaf94258a5a06ef5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 789}
+  - name: Wanted_Boss_KingBoar_Frame_14
+    originalName: 
+    pivot: {x: 0.7596154, y: 0.6612903}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 408
+      width: 104
+      height: 93
+    spriteID: f5de0f42e6f1b66498f51cac842362e6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 342, y: 408}
+  - name: Wanted_Boss_KingBoar_Frame_15
+    originalName: 
+    pivot: {x: 0.61946905, y: 0.45338976}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 734
+      y: 4
+      width: 113
+      height: 118
+    spriteID: db6022ebe6f4d524395c81f3e13b8c52
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 734, y: 4}
+  - name: Wanted_Boss_KingBoar_Frame_16
+    originalName: 
+    pivot: {x: 0.5169492, y: 0.47881353}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 608
+      y: 4
+      width: 118
+      height: 118
+    spriteID: ed66b548bd176004ab91c0257e967b6c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 608, y: 4}
+  - name: Wanted_Boss_KingBoar_Frame_17
+    originalName: 
+    pivot: {x: 0.46527773, y: 0.47872344}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 175
+      width: 144
+      height: 141
+    spriteID: 4355f680c153d9946b92f2c121340917
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 175}
+  - name: Wanted_Boss_KingBoar_Frame_18
+    originalName: 
+    pivot: {x: 0.46527773, y: 0.47872344}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 324
+      width: 144
+      height: 141
+    spriteID: 110b809d754063641982e66586587ac4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 324}
+  - name: Wanted_Boss_KingBoar_Frame_19
+    originalName: 
+    pivot: {x: 0.46527773, y: 0.47872344}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 473
+      width: 144
+      height: 141
+    spriteID: 297c82875b44d8540b198ba95d63727b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 473}
+  - name: Wanted_Boss_KingBoar_Frame_20
+    originalName: 
+    pivot: {x: 0.46527773, y: 0.47872344}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 622
+      width: 144
+      height: 141
+    spriteID: 3bbf4ce634af4f248a57cd43f4c7d4ee
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 622}
+  - name: Wanted_Boss_KingBoar_Frame_21
+    originalName: 
+    pivot: {x: 0.46527773, y: 0.47872344}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 771
+      width: 144
+      height: 141
+    spriteID: fa8afa523e3b6cb41b7c04d1962df1ea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 771}
+  - name: Wanted_Boss_KingBoar_Frame_22
+    originalName: 
+    pivot: {x: 0.46527773, y: 0.47872344}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 135
+      width: 144
+      height: 141
+    spriteID: 4bc9d7e8d02cbaf4bb01ca3036716aa2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 135}
+  - name: Wanted_Boss_KingBoar_Frame_23
+    originalName: 
+    pivot: {x: 0.46527773, y: 0.47872344}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 284
+      width: 144
+      height: 141
+    spriteID: fe97ca2c9ecbf0246b19c9e43256412a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 284}
+  - name: Wanted_Boss_KingBoar_Frame_24
+    originalName: 
+    pivot: {x: 0.46527773, y: 0.47872344}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 433
+      width: 144
+      height: 141
+    spriteID: d586ec1b0def94f418621fed800d1753
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 433}
+  - name: Wanted_Boss_KingBoar_Frame_25
+    originalName: 
+    pivot: {x: 0.46527773, y: 0.47872344}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 582
+      width: 144
+      height: 141
+    spriteID: 8dc95058e85272247b9842dcd0820a6d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 582}
+  - name: Wanted_Boss_KingBoar_Frame_26
+    originalName: 
+    pivot: {x: 0.46527773, y: 0.47872344}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 190
+      y: 731
+      width: 144
+      height: 141
+    spriteID: f1596360b7dd08845a283dab844c09bf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 190, y: 731}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -512661739
+    name: Wanted_Boss_KingBoar
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Wanted_Boss_KingBoar_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 20
+        y: 0
+        width: 97
+        height: 124
+      spriteId: 560254c6987dbca46acfaafeecf9517e
+    - name: Wanted_Boss_KingBoar_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 34
+        y: 15
+        width: 131
+        height: 133
+      spriteId: bb6d9c160400b224d8feec7bd17f71dd
+    - name: Wanted_Boss_KingBoar_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 73
+        y: 69
+        width: 170
+        height: 85
+      spriteId: 79f049639434f1f489d520b4d6d5c7bf
+    - name: Wanted_Boss_KingBoar_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 109
+        y: 81
+        width: 149
+        height: 52
+      spriteId: d0fd4fdff9b4c624bb0052880188d94e
+    - name: Wanted_Boss_KingBoar_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 151
+        y: 48
+        width: 193
+        height: 78
+      spriteId: 306b8c1d6385b574ebf9c84134a6bbdb
+    - name: Wanted_Boss_KingBoar_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 194
+        y: 52
+        width: 209
+        height: 123
+      spriteId: b1dfc79539e9a4c40af9e05ea655f832
+    - name: Wanted_Boss_KingBoar_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 236
+        y: 47
+        width: 178
+        height: 163
+      spriteId: 5eab1f6c0ff2ffa4881bde8826ad34b2
+    - name: Wanted_Boss_KingBoar_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 299
+        y: 126
+        width: 137
+        height: 138
+      spriteId: 58705637fb498ae40b580f9967b51d84
+    - name: Wanted_Boss_KingBoar_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 287
+        y: 188
+        width: 113
+        height: 97
+      spriteId: 12a9ec7d50219fc4390372d946486109
+    - name: Wanted_Boss_KingBoar_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 227
+        y: 225
+        width: 92
+        height: 57
+      spriteId: d1c62f66f716186499ce88c30880cf5b
+    - name: Wanted_Boss_KingBoar_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 208
+        y: 161
+        width: 64
+        height: 103
+      spriteId: 74bc538389beee44194a588be7547d4c
+    - name: Wanted_Boss_KingBoar_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 200
+        y: 151
+        width: 86
+        height: 96
+      spriteId: ec836d53bd5310541b51580614d115b5
+    - name: Wanted_Boss_KingBoar_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 181
+        y: 162
+        width: 103
+        height: 57
+      spriteId: 63090c393192c054bbd62db56ba17fe4
+    - name: Wanted_Boss_KingBoar_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 170
+        y: 162
+        width: 103
+        height: 57
+      spriteId: 942c9d60fa180184aaf94258a5a06ef5
+    - name: Wanted_Boss_KingBoar_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 157
+        y: 111
+        width: 104
+        height: 93
+      spriteId: f5de0f42e6f1b66498f51cac842362e6
+    - name: Wanted_Boss_KingBoar_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 166
+        y: 119
+        width: 113
+        height: 118
+      spriteId: db6022ebe6f4d524395c81f3e13b8c52
+    - name: Wanted_Boss_KingBoar_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 175
+        y: 116
+        width: 118
+        height: 118
+      spriteId: ed66b548bd176004ab91c0257e967b6c
+    - name: Wanted_Boss_KingBoar_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 169
+        y: 105
+        width: 144
+        height: 141
+      spriteId: 4355f680c153d9946b92f2c121340917
+    - name: Wanted_Boss_KingBoar_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 169
+        y: 105
+        width: 144
+        height: 141
+      spriteId: 110b809d754063641982e66586587ac4
+    - name: Wanted_Boss_KingBoar_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 169
+        y: 105
+        width: 144
+        height: 141
+      spriteId: 297c82875b44d8540b198ba95d63727b
+    - name: Wanted_Boss_KingBoar_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 169
+        y: 105
+        width: 144
+        height: 141
+      spriteId: 3bbf4ce634af4f248a57cd43f4c7d4ee
+    - name: Wanted_Boss_KingBoar_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 169
+        y: 105
+        width: 144
+        height: 141
+      spriteId: fa8afa523e3b6cb41b7c04d1962df1ea
+    - name: Wanted_Boss_KingBoar_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 169
+        y: 105
+        width: 144
+        height: 141
+      spriteId: 4bc9d7e8d02cbaf4bb01ca3036716aa2
+    - name: Wanted_Boss_KingBoar_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 169
+        y: 105
+        width: 144
+        height: 141
+      spriteId: fe97ca2c9ecbf0246b19c9e43256412a
+    - name: Wanted_Boss_KingBoar_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 169
+        y: 105
+        width: 144
+        height: 141
+      spriteId: d586ec1b0def94f418621fed800d1753
+    - name: Wanted_Boss_KingBoar_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 169
+        y: 105
+        width: 144
+        height: 141
+      spriteId: 8dc95058e85272247b9842dcd0820a6d
+    - name: Wanted_Boss_KingBoar_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 169
+        y: 105
+        width: 144
+        height: 141
+      spriteId: f1596360b7dd08845a283dab844c09bf
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Windows Store Apps
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 472, y: 345}
