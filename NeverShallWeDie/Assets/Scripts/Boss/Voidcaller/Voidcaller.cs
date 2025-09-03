@@ -151,7 +151,7 @@ public class Voidcaller : BossBase
         ChangeState(State.Idle);
         player.EnabledControls();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
-        BackgroundMusic.instance.MusicControl(7);
+        //BackgroundMusic.instance.MusicControl(7);
     }
 
     // Chamado ao final de qualquer ataque

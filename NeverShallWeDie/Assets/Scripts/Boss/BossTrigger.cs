@@ -6,7 +6,6 @@ using UnityEngine;
 public class BossTrigger : MonoBehaviour
 {
     [SerializeField] BossBase bossBase;
-    [SerializeField] private float introDelay = 0f;
     [SerializeField] BossDoor bossDoor;
     [SerializeField] BossDoor bossDoor2;
 
@@ -48,12 +47,11 @@ public class BossTrigger : MonoBehaviour
             bossDoor2._tiggered = true;
             player.DisableControls();
 
-            //ativa o boss após o tempo da intro (ou imediatamente, se delay = 0)
-            Invoke(nameof(ActivateBoss), introDelay);
+            ActivateBoss();
 
             //desativa o trigger
             gameObject.SetActive(false);
-            BackgroundMusic.instance.MusicControl(-1);
+            //BackgroundMusic.instance.MusicControl(-1);
         }
     }
 

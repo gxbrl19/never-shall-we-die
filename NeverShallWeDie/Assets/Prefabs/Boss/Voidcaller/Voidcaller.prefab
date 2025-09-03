@@ -124,8 +124,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.22908306, y: -1.5511818}
-  m_Size: {x: 2.2800274, y: 3.8877945}
+  m_Offset: {x: 0.14860821, y: -2.2469254}
+  m_Size: {x: 2.359541, y: 3.7287674}
   m_Direction: 0
 --- !u!50 &3468754070037256922
 Rigidbody2D:
@@ -142,7 +142,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -164,7 +164,7 @@ Animator:
   m_GameObject: {fileID: 295333832740964883}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dbbeef4e0b8e17047b4361fc1283488f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43059ebf9cc46534c8e0ddec87a0f301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossObject: {fileID: 11400000, guid: 7b0fd3633d185ff49abc38b0787a9c66, type: 2}
+  bossObject: {fileID: 11400000, guid: 4b10793f2eafd3544b304e304581f1ec, type: 2}
   bossId: 0
   bossDoor: {fileID: 0}
   bossDoor2: {fileID: 0}
@@ -307,7 +307,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.26484776, y: -3.3245335}
+  m_Offset: {x: 0.17558765, y: -3.9537296}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -318,7 +318,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5296955, y: 0.34485245}
+  m_Size: {x: 2.4105663, y: 0.3219719}
   m_EdgeRadius: 0
 --- !u!1 &4443140272264407555
 GameObject:
@@ -467,7 +467,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.22302914, y: -1.609993}
+  m_Offset: {x: 0.13478279, y: -2.3355541}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -478,7 +478,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7527256, y: 3.4672623}
+  m_Size: {x: 2.0707817, y: 3.5268974}
   m_EdgeRadius: 0
 --- !u!114 &641708100861996485
 MonoBehaviour:
