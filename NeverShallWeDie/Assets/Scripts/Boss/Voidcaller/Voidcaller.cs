@@ -3,7 +3,7 @@ using FMODUnity;
 
 public class Voidcaller : BossBase
 {
-    private enum State { Intro, Idle, Move, Attack1, Attack2, SpecialAttack, Dead }
+    private enum State { Intro, Idle, Move, RayAttack, Attack2, SpecialAttack, Dead }
     private State currentState = State.Intro;
 
     [Header("Stats")]
@@ -19,6 +19,10 @@ public class Voidcaller : BossBase
     private Player player;
     private Transform playerPosition;
     private int direction;
+
+    [Header("VoidcallerRay")]
+    [SerializeField] private Transform rayPrefab; //prefab do raio
+    [SerializeField] private Transform[] rayPoints; //6 pontos fixos onde os raios podem cair
 
     protected override void Awake()
     {
@@ -66,9 +70,9 @@ public class Voidcaller : BossBase
 
                 // Placeholder de lógica para mudar de estado futuramente
                 if (attackTimer >= attackCooldown)
-                    ChangeState(State.Attack1);
-                else if (specialTimer >= specialCooldown)
-                    ChangeState(State.SpecialAttack);
+                    ChangeState(State.RayAttack);
+                //else if (specialTimer >= specialCooldown)
+                //ChangeState(State.SpecialAttack);
 
                 break;
 
@@ -76,9 +80,9 @@ public class Voidcaller : BossBase
                 MoveTowardsPoint(); // pontos de ataque vão ser definidos por você
                 break;
 
-            case State.Attack1:
+            case State.RayAttack:
                 rb.velocity = Vector2.zero;
-                animator.Play("Attack1");
+                animator.Play("RayAttack");
                 attackTimer = 0f;
                 break;
 
@@ -120,6 +124,25 @@ public class Voidcaller : BossBase
         // Por enquanto deixei seguindo o player como placeholder
         Vector2 dir = (playerPosition.position - transform.position).normalized;
         rb.velocity = new Vector2(dir.x * moveSpeed, rb.velocity.y);
+    }
+
+    public void SpawnRays() //chamado na animação
+    {
+        if (rayPoints.Length < 6)
+        {
+            Debug.LogWarning("Defina 6 pontos para o ataque de raios!");
+            return;
+        }
+
+        //escolhe qual posição ficará vazia
+        int emptyIndex = Random.Range(0, rayPoints.Length);
+
+        for (int i = 0; i < rayPoints.Length; i++)
+        {
+            if (i == emptyIndex) continue; //espaço vazio
+
+            Instantiate(rayPrefab, rayPoints[i].position, Quaternion.identity);
+        }
     }
 
     private void FlipSprite()
