@@ -3,16 +3,15 @@ using FMODUnity;
 
 public class Voidcaller : BossBase
 {
-    private enum State { Intro, Idle, Move, RayAttack, Attack2, SpecialAttack, Dead }
+    private enum State { Intro, Idle, RayAttack, Octopus, SpecialAttack, Dead }
     private State currentState = State.Intro;
 
     [Header("Stats")]
     private bool introPlayed = false;
-    [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float attackCooldown = 3f;
     [SerializeField] private float specialCooldown = 15f;
-    private float attackTimer = 0f;
-    private float specialTimer = 0f;
+    [SerializeField] private float attackTimer = 0f;
+    [SerializeField] private float specialTimer = 0f;
 
     [Header("References")]
     [SerializeField] private LayerMask groundLayer;
@@ -21,8 +20,10 @@ public class Voidcaller : BossBase
     private int direction;
 
     [Header("VoidcallerRay")]
-    [SerializeField] private Transform rayPrefab; //prefab do raio
-    [SerializeField] private Transform[] rayPoints; //6 pontos fixos onde os raios podem cair
+    [SerializeField] private Transform rayPrefab;
+    [SerializeField] private Transform[] rayPoints; //pontos fixos onde os raios podem cair
+    [SerializeField] private GameObject octopusPrefab;
+    [SerializeField] private Transform[] octopusPoints; //6ontos fixos onde o tentaculo aparecer
 
     protected override void Awake()
     {
@@ -68,16 +69,10 @@ public class Voidcaller : BossBase
                 rb.velocity = Vector2.zero;
                 animator.SetBool("Move", false);
 
-                // Placeholder de lógica para mudar de estado futuramente
-                if (attackTimer >= attackCooldown)
+                if (attackTimer >= attackCooldown && specialTimer < specialCooldown)
+                    SortAttack();
+                else if (specialTimer >= specialCooldown)
                     ChangeState(State.RayAttack);
-                //else if (specialTimer >= specialCooldown)
-                //ChangeState(State.SpecialAttack);
-
-                break;
-
-            case State.Move:
-                MoveTowardsPoint(); // pontos de ataque vão ser definidos por você
                 break;
 
             case State.RayAttack:
@@ -86,9 +81,9 @@ public class Voidcaller : BossBase
                 attackTimer = 0f;
                 break;
 
-            case State.Attack2:
+            case State.Octopus:
                 rb.velocity = Vector2.zero;
-                animator.Play("Attack2");
+                animator.Play("OctopusAttack");
                 attackTimer = 0f;
                 break;
 
@@ -104,9 +99,22 @@ public class Voidcaller : BossBase
                 break;
         }
 
-        if (currentState == State.Idle || currentState == State.Move)
+        if (currentState == State.Idle)
         {
             FlipSprite();
+        }
+    }
+
+    private void SortAttack()
+    {
+        //int attackIndex = Random.Range(0, 2);
+        int attackIndex = 0;
+
+        switch (attackIndex)
+        {
+            case 0:
+                ChangeState(State.Octopus);
+                break;
         }
     }
 
@@ -116,33 +124,24 @@ public class Voidcaller : BossBase
         currentState = newState;
     }
 
-    private void MoveTowardsPoint()
-    {
-        animator.SetBool("Move", true);
-
-        // Aqui você vai definir pontos específicos para onde ele deve se mover
-        // Por enquanto deixei seguindo o player como placeholder
-        Vector2 dir = (playerPosition.position - transform.position).normalized;
-        rb.velocity = new Vector2(dir.x * moveSpeed, rb.velocity.y);
-    }
-
     public void SpawnRays() //chamado na animação
     {
-        if (rayPoints.Length < 6)
-        {
-            Debug.LogWarning("Defina 6 pontos para o ataque de raios!");
-            return;
-        }
-
-        //escolhe qual posição ficará vazia
-        int emptyIndex = Random.Range(0, rayPoints.Length);
+        int emptyIndex = Random.Range(0, rayPoints.Length); //escolhe qual posição ficará vazia
 
         for (int i = 0; i < rayPoints.Length; i++)
         {
             if (i == emptyIndex) continue; //espaço vazio
-
             Instantiate(rayPrefab, rayPoints[i].position, Quaternion.identity);
         }
+    }
+
+    public void SpawnOctopus() //chamado na animação
+    {
+        int point = Random.Range(0, octopusPoints.Length);
+        Vector3 spawnPosition = new Vector3(playerPosition.position.x, octopusPoints[point].position.y);
+
+        GameObject octopus = Instantiate(octopusPrefab, spawnPosition, Quaternion.identity);
+        octopus.GetComponent<VoidcallerOctopus>().direction = direction;
     }
 
     private void FlipSprite()
@@ -157,7 +156,6 @@ public class Voidcaller : BossBase
         transform.localScale = new Vector3(direction, 1, 1);
     }
 
-    // Chamado pelo trigger da cutscene
     public void StartIntro()
     {
         if (introPlayed) return;
@@ -167,8 +165,7 @@ public class Voidcaller : BossBase
         animator.SetBool("Intro", true);
     }
 
-    // Chamado no fim da animação de intro
-    public void StartBoss()
+    public void StartBoss() //chamado no fim da animação de intro
     {
         ActivateBossUI();
         ChangeState(State.Idle);
@@ -177,11 +174,18 @@ public class Voidcaller : BossBase
         //BackgroundMusic.instance.MusicControl(7);
     }
 
-    // Chamado ao final de qualquer ataque
-    public void FinishAttack()
+    public void FinishAttack() //chamado ao final de qualquer ataque (menos rayattack)
     {
         rb.velocity = Vector2.zero;
         attackTimer = 0f;
+        ChangeState(State.Idle);
+    }
+
+    public void FinishSpecialAttack() //chamado na animação RayAttack
+    {
+        rb.velocity = Vector2.zero;
+        attackTimer = 0f;
+        specialTimer = 0f;
         ChangeState(State.Idle);
     }
 

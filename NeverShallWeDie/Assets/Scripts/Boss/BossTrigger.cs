@@ -32,7 +32,7 @@ public class BossTrigger : MonoBehaviour
     {
         if (triggered) return;
 
-        if (other.CompareTag("Player") && bossBase != null)
+        if ((other.CompareTag("Player") || other.CompareTag("AttackPoint")) && bossBase != null)
         {
             triggered = true;
 

@@ -53,7 +53,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         TakeDamage(power);
 
         //knockback
-        bool canKnockback = enemyName != "Evil Vine" && enemyName != "Dark Mage";
+        bool canKnockback = enemyName != "Evil Vine" && enemyName != "Dark Mage" && enemyName != "Voidcaller Octopus";
         if (isDead || !canKnockback) return;
         rb.velocity = Vector2.zero;
         rb.velocity = new Vector2(hitDirection.normalized.x * knockbackForce, 0f);
