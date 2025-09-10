@@ -206,9 +206,12 @@ MonoBehaviour:
       Data3: -370825569
       Data4: -1116620846
     Path: event:/generic/combat/enemy_death
-  moveSpeed: 3
   attackCooldown: 3
   specialCooldown: 15
+  attackTimer: 0
+  leftLimit: {fileID: 0}
+  rightLimit: {fileID: 0}
+  moveSpeed: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -471,7 +474,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13478279, y: -2.3355541}
+  m_Offset: {x: 0.12734604, y: -2.216566}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -482,7 +485,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0707817, y: 3.5268974}
+  m_Size: {x: 1.6691933, y: 3.2889214}
   m_EdgeRadius: 0
 --- !u!114 &641708100861996485
 MonoBehaviour:
