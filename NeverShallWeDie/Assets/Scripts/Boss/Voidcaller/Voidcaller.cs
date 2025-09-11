@@ -3,18 +3,14 @@ using FMODUnity;
 
 public class Voidcaller : BossBase
 {
-    private enum State { Intro, Move, Idle, RayAttack, Octopus, SpecialAttack, Dead }
+    private enum State { Intro, Move, Idle, Disappear, RayAttack, Octopus, Spell, SpecialAttack, Dead }
     private State currentState = State.Intro;
-
-    [Header("Stats")]
     private bool introPlayed = false;
-    [SerializeField] private float attackCooldown = 3f;
-    [SerializeField] private float attackTimer = 0f;
 
     [Header("Move")]
     [SerializeField] private Transform leftLimit;
     [SerializeField] private Transform rightLimit;
-    private float moveSpeed = 4;
+    private float moveSpeed = 9;
     private int direction;
 
     [Header("References")]
@@ -27,21 +23,30 @@ public class Voidcaller : BossBase
 
     [Header("Octopus")]
     [SerializeField] private GameObject octopusPrefab;
-    [SerializeField] private Transform[] octopusPoints; //6ontos fixos onde o tentaculo aparecer
+
+    [Header("Spell Settings")]
+    [SerializeField] private GameObject spellPrefab;
+    [SerializeField] private Transform leftCastPoint;
+    [SerializeField] private Transform rightCastPoint;
 
     [Header("Sequence")]
     int currentAttackIndex = 0;
     State[] attackPattern = new State[]
     {
+        State.Spell,
+        State.Spell,
+        State.Spell,
         State.Octopus,
+        State.Spell,
+        State.Spell,
         State.Octopus,
+        State.Disappear,
+        State.Spell,
+        State.Spell,
         State.Octopus,
-        State.RayAttack,
-        State.Octopus,
-        State.Octopus,
-        State.RayAttack,
-        State.Octopus,
-        State.RayAttack,
+        State.Spell,
+        State.Spell,
+        State.Disappear,
     };
 
     protected override void Awake()
@@ -68,11 +73,6 @@ public class Voidcaller : BossBase
         if (isDead) return;
 
         HandleState();
-
-        if (currentState != State.Intro)
-        {
-            attackTimer += Time.deltaTime;
-        }
     }
 
     private void HandleState()
@@ -93,8 +93,9 @@ public class Voidcaller : BossBase
 
                     if (transform.position.x >= rightLimit.position.x)
                     {
-                        direction = -1;
-                        transform.localScale = new Vector3(direction, 1, 1);
+                        Flip();
+                        rb.velocity = Vector2.zero;
+                        ChangeState(State.Idle);
                     }
                 }
                 else
@@ -103,42 +104,43 @@ public class Voidcaller : BossBase
 
                     if (transform.position.x <= leftLimit.position.x)
                     {
-                        direction = 1;
-                        transform.localScale = new Vector3(direction, 1, 1);
+                        Flip();
+                        rb.velocity = Vector2.zero;
+                        ChangeState(State.Idle);
                     }
-                }
-
-                if (attackTimer >= attackCooldown)
-                {
-                    rb.velocity = Vector2.zero;
-                    ChangeState(State.Idle);
                 }
                 break;
 
             case State.Idle:
                 rb.velocity = Vector2.zero;
                 animator.SetBool("Move", false);
+                NextAttack();
+                break;
 
-                if (attackTimer >= attackCooldown)
-                    NextAttack();
+            case State.Disappear:
+                rb.velocity = Vector2.zero;
+                animator.Play("Disappear");
                 break;
 
             case State.RayAttack:
                 rb.velocity = Vector2.zero;
                 animator.Play("RayAttack");
-                attackTimer = 0f;
+                break;
+
+            case State.Spell:
+                rb.velocity = Vector2.zero;
+                animator.Play("Cast");
+
                 break;
 
             case State.Octopus:
                 rb.velocity = Vector2.zero;
                 animator.Play("OctopusAttack");
-                attackTimer = 0f;
                 break;
 
             case State.SpecialAttack:
                 rb.velocity = Vector2.zero;
                 animator.Play("SpecialAttack");
-                attackTimer = 0f;
                 break;
 
             case State.Dead:
@@ -177,11 +179,16 @@ public class Voidcaller : BossBase
 
     public void SpawnOctopus() //chamado na animação
     {
-        int point = Random.Range(0, octopusPoints.Length);
-        Vector3 spawnPosition = new Vector3(playerPosition.position.x, octopusPoints[point].position.y);
-
+        Vector3 spawnPosition = new Vector3(playerPosition.position.x, leftCastPoint.position.y);
         GameObject octopus = Instantiate(octopusPrefab, spawnPosition, Quaternion.identity);
         octopus.GetComponent<VoidcallerOctopus>().direction = direction;
+    }
+
+    public void SpawnSpell() //chamado na animação
+    {
+        Vector3 spawnPosition = direction == 1 ? new Vector3(leftCastPoint.position.x, leftCastPoint.position.y) : new Vector3(rightCastPoint.position.x, rightCastPoint.position.y);
+        GameObject spell = Instantiate(spellPrefab, spawnPosition, Quaternion.identity);
+        spell.GetComponent<VoidcallerSpell>().direction.x = direction;
     }
 
     public void StartIntro()
@@ -202,10 +209,20 @@ public class Voidcaller : BossBase
         //BackgroundMusic.instance.MusicControl(7);
     }
 
+    public void FinishDisappear() //chamado na animação
+    {
+        ChangeState(State.RayAttack);
+    }
+
     public void FinishAttack() //chamado ao final de qualquer ataque (menos rayattack)
     {
-        attackTimer = 0f;
         ChangeState(State.Move);
+    }
+
+    private void Flip()
+    {
+        direction = -direction;
+        transform.localScale = new Vector3(direction, 1, 1);
     }
 
     protected override void OnDeath()
