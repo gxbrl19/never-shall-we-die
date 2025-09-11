@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashTimer;
     private float dashDuration = 0.1f;
     private float dashCooldownTimer;
-    private float dashCooldown = 0.5f;
+    private float dashCooldown = 0.7f;
 
     //Slope
     private float slopeCheckDistance = 1f;
@@ -451,7 +451,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (player.isDashing)
         {
-            //player.rb.velocity = Vector2.zero;
             dashTimer += Time.deltaTime;
             if (dashTimer >= dashDuration)
                 FinishDash();
