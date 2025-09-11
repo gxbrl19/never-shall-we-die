@@ -31,12 +31,12 @@ public class PlayerMovement : MonoBehaviour
     private float rechargeStamina = 1f;
     private float lastStaminaTime = -Mathf.Infinity;
 
-    //Roll
-    private bool canRoll = true;
-    private float rollForce = 10f;
-    private float rollCooldown = .7f;
-    private float rollTimer;
-
+    //Dash
+    private float dashForce = 30f;
+    private float dashTimer;
+    private float dashDuration = 0.1f;
+    private float dashCooldownTimer;
+    private float dashCooldown = 0.5f;
 
     //Slope
     private float slopeCheckDistance = 1f;
@@ -97,8 +97,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        rollTimer += Time.deltaTime;
-
         if (Time.time > lastStaminaTime + staminaCooldown && currentStamina < maxStamina)
         {
             currentStamina += rechargeStamina * Time.deltaTime;
@@ -110,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        OnRoll();
+        OnDash();
 
         if (wallJumpLockCounter > 0)
         {
@@ -162,15 +160,17 @@ public class PlayerMovement : MonoBehaviour
             player.rb.velocity = Vector2.zero;
         }
 
-        //gravidade na água
+        ChangeGravity();
+    }
+
+    void ChangeGravity()
+    {
         if (player.onWater)
-        {
             player.rb.gravityScale = waterGravity;
-        }
+        else if (player.isDashing)
+            player.rb.gravityScale = 0f;
         else
-        {
             player.rb.gravityScale = initialGravity;
-        }
     }
     #endregion
 
@@ -180,13 +180,13 @@ public class PlayerMovement : MonoBehaviour
         float yVelocity = 0f;
         float horizontal = player.playerInputs.GetHorizontal();
 
-        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing && !player.isRolling) //chão comum
+        if (player.isGrounded && !player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing && !player.isDashing) //chão comum
         {
             xVelocity = speed * horizontal;
             yVelocity = 0.0f;
             player.rb.velocity = new Vector2(xVelocity, yVelocity);
         }
-        else if (player.isGrounded && player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing) //diagonal
+        else if (player.isGrounded && player.onSlope && !player.isGrabing && !player.isJumping && !player.onWater && !player.isHealing && !player.isDashing) //diagonal
         {
             xVelocity = speed * slopeNormalPerp.x * -horizontal;
             yVelocity = speed * slopeNormalPerp.y * -horizontal;
@@ -198,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
             yVelocity = player.rb.velocity.y;
             player.rb.velocity = new Vector2(xVelocity, yVelocity);
         }
-        else if (!player.isGrounded && !player.onWater && wallJumpLockCounter <= 0f) //no ar
+        else if (!player.isGrounded && !player.onWater && wallJumpLockCounter <= 0f && !player.isDashing) //no ar
         {
             xVelocity = speed * horizontal;
             yVelocity = player.rb.velocity.y;
@@ -290,7 +290,7 @@ public class PlayerMovement : MonoBehaviour
     #region Jump
     void JumpControl()
     {
-        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.onAirSpecial && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isRolling && !player.onAirSpecial) //pulo comum
+        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.onAirSpecial && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isDashing && !player.onAirSpecial) //pulo comum
         {
             player.isJumping = true;
             player.playerInputs.pressJump = false;
@@ -303,7 +303,7 @@ public class PlayerMovement : MonoBehaviour
             player.playerAudio.PlayJump();
             CreateDust(1);
         }
-        else if (!player.isGrounded && player.onAirSpecial && !player.onWater && !player.onClimbing && !player.isHealing && !player.isRolling) //air gem
+        else if (!player.isGrounded && player.onAirSpecial && !player.onWater && !player.onClimbing && !player.isHealing && !player.isDashing) //air gem
         {
             player.onAirSpecial = false;
             player.playerInputs.pressJump = false;
@@ -392,20 +392,6 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         if ((player.playerInputs.pressAttack && player.isGrounded && !player.onWater) || player.isHealing) { player.rb.velocity = Vector2.zero; }
-
-        //para no ar
-        if (player.playerInputs.pressRightTrigger)
-        {
-            if (!player.isGrounded)
-            {
-                player.rb.velocity = Vector2.zero;
-                player.rb.gravityScale = 0f;
-            }
-            else
-            {
-                player.rb.velocity = Vector2.zero;
-            }
-        }
     }
 
     #region Wall Slide
@@ -413,7 +399,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool canSlide =
         player.playerCollision.touchingWall &&
-        PlayerEquipment.instance.equipments.Contains(Equipments.Boots) &&
+        PlayerEquipment.instance.equipments.Contains(Equipments.Hook) &&
         //player.playerInputs.horizontal != 0f && //define se precisa apertar o botão horizontal para fazer o wall slide
         !player.isGrounded &&
         !player.onLedge &&
@@ -452,35 +438,48 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    #region Roll
+    #region Dash
 
-    void OnRoll()
+    void OnDash()
     {
-        float horizontal = player.playerInputs.GetHorizontal();
-        canRoll = currentStamina > 0f && horizontal != 0 && !isExhausted && rollTimer >= rollCooldown;
+        bool pressDash = player.playerInputs.pressDash;
 
-        if (player.playerInputs.pressRoll && canRoll && !player.isRolling)
+        bool canDash = !isExhausted && currentStamina > 0f && dashCooldownTimer >= dashCooldown && PlayerEquipment.instance.equipments.Contains(Equipments.Boots);
+
+        if (pressDash && canDash)
+            ExecuteDash();
+
+        if (player.isDashing)
         {
-            ExecuteRoll();
+            //player.rb.velocity = Vector2.zero;
+            dashTimer += Time.deltaTime;
+            if (dashTimer >= dashDuration)
+                FinishDash();
         }
+
+        dashCooldownTimer += Time.deltaTime;
     }
 
-    private void ExecuteRoll()
+    private void ExecuteDash()
     {
-        player.playerAnimations.AnimRoll();
-        player.isRolling = true;
-        player.playerInputs.pressRoll = false;
-        StaminaConsumption(1.1f);
-        rollTimer = 0f;
+        player.playerAnimations.AnimDash(); // cria uma animação separada se quiser
+        player.isDashing = true;
+        dashTimer = 0f;
+        dashCooldownTimer = 0f;
+        player.playerInputs.pressDash = false;
+
+        StaminaConsumption(0.9f);
 
         Vector2 direction = playerDirection < 0 ? Vector2.left : Vector2.right;
-        player.rb.velocity = direction * rollForce;
+        player.rb.velocity = direction * dashForce;
     }
 
-    public void FinishRoll() //chamado também na animação de Roll
+    public void FinishDash()
     {
-        player.isRolling = false;
+        player.isDashing = false;
+        player.rb.velocity = Vector2.zero; // cancela a velocidade no fim do dash
     }
+
     #endregion
 
     #region Water
@@ -490,9 +489,7 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         if (!canSwin)
-        {
             StartCoroutine(SwimControl());
-        }
     }
 
     public IEnumerator SwimControl()
@@ -697,7 +694,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressRightTrigger || player.onWaterSpecial || player.isAttacking || player.isRolling)
+        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressRightTrigger || player.onWaterSpecial || player.isAttacking || player.isDashing)
             return;
 
         if (player.isGrounded)

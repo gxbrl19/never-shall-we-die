@@ -102,9 +102,9 @@ public class PlayerAnimations : MonoBehaviour
         //animator.SetTrigger("Attack");
     }
 
-    public void AnimRoll()
+    public void AnimDash()
     {
-        animator.Play("Player_Roll");
+        animator.Play("Player_Dash");
         //animator.SetTrigger("Parry");
     }
 

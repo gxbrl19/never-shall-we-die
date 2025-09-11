@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool isJumping;
     [HideInInspector] public bool isAttacking;
-    [HideInInspector] public bool isRolling;
+    [HideInInspector] public bool isDashing;
     [HideInInspector] public bool isWallSliding;
     [HideInInspector] public bool isHealing;
     [HideInInspector] public bool isGrabing;
@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Hook)) { PlayerEquipment.instance.equipments.Add(Equipments.Hook); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
@@ -150,7 +151,7 @@ public class Player : MonoBehaviour
     public void CancelMovesOnHit()
     {
         FinishAttack();
-        playerMovement.FinishRoll();
+        playerMovement.FinishDash();
     }
 
     #region Movement

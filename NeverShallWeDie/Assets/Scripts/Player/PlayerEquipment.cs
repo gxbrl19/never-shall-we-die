@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Equipments
 {
-    Katana, Compass, Parachute, Boots, Lantern
+    Katana, Compass, Parachute, Hook, Lantern, Boots
 }
 
 public class PlayerEquipment : MonoBehaviour
@@ -13,12 +13,15 @@ public class PlayerEquipment : MonoBehaviour
 
     public List<Equipments> equipments;
 
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
     }
 
-    private void Start() {
-        for (int i = 0; i < GameManager.instance._equipments.Count; i++) {
+    private void Start()
+    {
+        for (int i = 0; i < GameManager.instance._equipments.Count; i++)
+        {
             equipments.Add(GameManager.instance._equipments[i]);
         }
     }

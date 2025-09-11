@@ -874,7 +874,6 @@ Transform:
   - {fileID: 8160846807967464020}
   - {fileID: 1568111074333454484}
   - {fileID: 2563729136429627825}
-  - {fileID: 8160846809695199608}
   - {fileID: 8160846809661711540}
   - {fileID: 1652972573381873277}
   - {fileID: 2513561102990584245}
@@ -935,7 +934,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.0625, y: 0.9375}
+  m_Size: {x: 1.625, y: 1.9375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1301,7 +1300,7 @@ MonoBehaviour:
   isGrounded: 0
   isJumping: 0
   isAttacking: 0
-  isRolling: 0
+  isDashing: 0
   isWallSliding: 0
   isHealing: 0
   isGrabing: 0
@@ -1356,6 +1355,11 @@ MonoBehaviour:
   maxStamina: 5
   currentStamina: 0
   isExhausted: 0
+  dashForce: 20
+  dashTimer: 0
+  dashDuration: 0.2
+  dashCooldownTimer: 0
+  dashCooldown: 1
   ladder: {fileID: 0}
   vine: {fileID: 0}
   bridge: {fileID: 0}
@@ -1656,73 +1660,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _equipmentObject: {fileID: 11400000, guid: 6e33cd5ac01cf094db50eddc774140b1, type: 2}
---- !u!1 &8160846809695199611
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8160846809695199608}
-  - component: {fileID: 1927880504853151448}
-  m_Layer: 0
-  m_Name: RollCollider
-  m_TagString: AttackPoint
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8160846809695199608
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8160846809695199611}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.37, y: -0.536, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8160846808588850630}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1927880504853151448
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8160846809695199611}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -1.2943628, y: 0.30591774}
-  m_Size: {x: 1.0229144, y: 1.5623589}
-  m_Direction: 0
 --- !u!1 &9025100403178150623
 GameObject:
   m_ObjectHideFlags: 0

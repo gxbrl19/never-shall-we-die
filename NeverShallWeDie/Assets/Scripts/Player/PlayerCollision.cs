@@ -144,7 +144,7 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Platform")) { this.transform.parent = null; }
 
         //cancela o Roll ao sair do chão
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) { player.playerMovement.FinishRoll(); }
+        //if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) { player.playerMovement.FinishDash(); }
     }
 
     private void OnDrawGizmos()

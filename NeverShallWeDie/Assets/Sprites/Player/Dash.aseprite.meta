@@ -119,7 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Roll_Frame_0
+  - name: Dash_Frame_0
     originalName: 
     pivot: {x: 0.50000006, y: 0.59259254}
     alignment: 9
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 43
       width: 34
       height: 27
-    spriteID: 493087b7dfaf350488c5136ffd25ddd0
+    spriteID: 7eeec5ca104b88444ab392de6f129167
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,7 +139,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 43}
-  - name: Roll_Frame_1
+  - name: Dash_Frame_1
     originalName: 
     pivot: {x: 0.47222227, y: 0.5483871}
     alignment: 9
@@ -150,7 +150,7 @@ ScriptedImporter:
       y: 4
       width: 36
       height: 31
-    spriteID: 436238ca4de1c22469f6292fa8c67a96
+    spriteID: 6d2d61ee32a96204dadc88478eef8d28
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -159,7 +159,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Roll_Frame_2
+  - name: Dash_Frame_2
     originalName: 
     pivot: {x: 0.5416666, y: 0.8571429}
     alignment: 9
@@ -170,7 +170,7 @@ ScriptedImporter:
       y: 62
       width: 24
       height: 21
-    spriteID: 1fd81790de1d43044abdb8dff3908c57
+    spriteID: 662a2aaec02b7754c87a604e06188d80
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -179,7 +179,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 84, y: 62}
-  - name: Roll_Frame_3
+  - name: Dash_Frame_3
     originalName: 
     pivot: {x: 0.5757576, y: 0.9411764}
     alignment: 9
@@ -190,7 +190,7 @@ ScriptedImporter:
       y: 37
       width: 33
       height: 17
-    spriteID: 2906d53e88e547f469fa89ea0a0b74c0
+    spriteID: 991ad94353e942b49b09641718187381
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -199,7 +199,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 84, y: 37}
-  - name: Roll_Frame_4
+  - name: Dash_Frame_4
     originalName: 
     pivot: {x: 0.57142854, y: 0.57142854}
     alignment: 9
@@ -210,7 +210,7 @@ ScriptedImporter:
       y: 78
       width: 28
       height: 28
-    spriteID: 2d84d2f18e9c14b4281d267321786f3f
+    spriteID: 68886826fa6c2464f909fefdf0f1e772
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -219,7 +219,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 78}
-  - name: Roll_Frame_5
+  - name: Dash_Frame_5
     originalName: 
     pivot: {x: 0.6071429, y: 0.59259254}
     alignment: 9
@@ -230,7 +230,7 @@ ScriptedImporter:
       y: 4
       width: 28
       height: 27
-    spriteID: fce3b6bdfb44f9d47b6cdd7e704375fb
+    spriteID: 6f3483cd87cbfa14693ace1c74706e9a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -239,7 +239,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 48, y: 4}
-  - name: Roll_Frame_6
+  - name: Dash_Frame_6
     originalName: 
     pivot: {x: 0.55172414, y: 0.6399999}
     alignment: 9
@@ -250,7 +250,7 @@ ScriptedImporter:
       y: 4
       width: 29
       height: 25
-    spriteID: 401571f775f77d54f99de88fe5d2d98b
+    spriteID: b47e3101433b27a4688e3692205c8f0d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -262,68 +262,68 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -460376283
-    name: Roll
+    guid: -1909053322
+    name: Dash
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Roll_Frame_0
+    - name: Dash_Frame_0
       frameIndex: 0
       cellRect:
         x: 7
         y: 8
         width: 34
         height: 27
-      spriteId: 493087b7dfaf350488c5136ffd25ddd0
-    - name: Roll_Frame_1
+      spriteId: 7eeec5ca104b88444ab392de6f129167
+    - name: Dash_Frame_1
       frameIndex: 1
       cellRect:
         x: 7
         y: 7
         width: 36
         height: 31
-      spriteId: 436238ca4de1c22469f6292fa8c67a96
-    - name: Roll_Frame_2
+      spriteId: 6d2d61ee32a96204dadc88478eef8d28
+    - name: Dash_Frame_2
       frameIndex: 2
       cellRect:
         x: 11
         y: 6
         width: 24
         height: 21
-      spriteId: 1fd81790de1d43044abdb8dff3908c57
-    - name: Roll_Frame_3
+      spriteId: 662a2aaec02b7754c87a604e06188d80
+    - name: Dash_Frame_3
       frameIndex: 3
       cellRect:
         x: 5
         y: 8
         width: 33
         height: 17
-      spriteId: 2906d53e88e547f469fa89ea0a0b74c0
-    - name: Roll_Frame_4
+      spriteId: 991ad94353e942b49b09641718187381
+    - name: Dash_Frame_4
       frameIndex: 4
       cellRect:
         x: 8
         y: 8
         width: 28
         height: 28
-      spriteId: 2d84d2f18e9c14b4281d267321786f3f
-    - name: Roll_Frame_5
+      spriteId: 68886826fa6c2464f909fefdf0f1e772
+    - name: Dash_Frame_5
       frameIndex: 5
       cellRect:
         x: 7
         y: 8
         width: 28
         height: 27
-      spriteId: fce3b6bdfb44f9d47b6cdd7e704375fb
-    - name: Roll_Frame_6
+      spriteId: 6f3483cd87cbfa14693ace1c74706e9a
+    - name: Dash_Frame_6
       frameIndex: 6
       cellRect:
         x: 8
         y: 8
         width: 29
         height: 25
-      spriteId: 401571f775f77d54f99de88fe5d2d98b
+      spriteId: b47e3101433b27a4688e3692205c8f0d
     linkedCells: []
     parentIndex: -1
   platformSettings:

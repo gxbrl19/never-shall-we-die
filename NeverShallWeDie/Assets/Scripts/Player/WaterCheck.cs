@@ -38,9 +38,9 @@ public class WaterCheck : MonoBehaviour
             player.playerAudio.PlayWaterSplash();
             Instantiate(dropWater, position, other.transform.rotation);
 
-            if (player.isRolling)
+            if (player.isDashing)
             {
-                player.playerMovement.FinishRoll(); //cancela o Roll ao entrar na água
+                player.playerMovement.FinishDash(); //cancela o Roll ao entrar na água
                 return;
             }
 
