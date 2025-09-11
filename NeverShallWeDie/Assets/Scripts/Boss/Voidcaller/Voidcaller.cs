@@ -3,14 +3,17 @@ using FMODUnity;
 
 public class Voidcaller : BossBase
 {
-    private enum State { Intro, Move, Idle, Disappear, RayAttack, Octopus, Spell, SpecialAttack, Dead }
+    private enum State { Intro, Chase, Idle, Disappear, RayAttack, Octopus, Spell, SpecialAttack, Dead }
     private State currentState = State.Intro;
     private bool introPlayed = false;
 
-    [Header("Move")]
-    [SerializeField] private Transform leftLimit;
-    [SerializeField] private Transform rightLimit;
-    private float moveSpeed = 9;
+
+    [Header("Chase")]
+    private float attackTimer;
+    private float attackCooldown = 3f;
+    private Vector2 attackReturnTarget;
+    private float chaseSpeed = 2f;
+    private Vector2 chaseVelocity;
     private int direction;
 
     [Header("References")]
@@ -84,37 +87,32 @@ public class Voidcaller : BossBase
             case State.Intro:
                 break;
 
-            case State.Move:
-                animator.SetBool("Move", true);
+            case State.Chase:
+                attackTimer += Time.deltaTime;
 
-                if (direction == 1)
-                {
-                    rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+                attackReturnTarget = new Vector2(
+                    player.transform.position.x + (5f * -direction),
+                    player.transform.position.y + 6f
+                );
 
-                    if (transform.position.x >= rightLimit.position.x)
-                    {
-                        Flip();
-                        rb.velocity = Vector2.zero;
-                        ChangeState(State.Idle);
-                    }
-                }
-                else
-                {
-                    rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+                transform.position = Vector2.SmoothDamp(
+                    transform.position,
+                    attackReturnTarget,
+                    ref chaseVelocity,
+                    0.3f,              //tempo de suavização
+                    chaseSpeed          //velocidade máxima
+                );
 
-                    if (transform.position.x <= leftLimit.position.x)
-                    {
-                        Flip();
-                        rb.velocity = Vector2.zero;
-                        ChangeState(State.Idle);
-                    }
-                }
+                if (attackTimer >= attackCooldown)
+                    ChangeState(State.Idle);
                 break;
 
             case State.Idle:
                 rb.velocity = Vector2.zero;
                 animator.SetBool("Move", false);
-                NextAttack();
+
+                if (attackTimer >= attackCooldown)
+                    NextAttack();
                 break;
 
             case State.Disappear:
@@ -146,6 +144,11 @@ public class Voidcaller : BossBase
             case State.Dead:
                 rb.velocity = Vector2.zero;
                 break;
+        }
+
+        if (currentState == State.Chase)
+        {
+            FlipSprite();
         }
     }
 
@@ -188,7 +191,7 @@ public class Voidcaller : BossBase
     {
         Vector3 spawnPosition = direction == 1 ? new Vector3(leftCastPoint.position.x, leftCastPoint.position.y) : new Vector3(rightCastPoint.position.x, rightCastPoint.position.y);
         GameObject spell = Instantiate(spellPrefab, spawnPosition, Quaternion.identity);
-        spell.GetComponent<VoidcallerSpell>().direction.x = direction;
+        spell.GetComponent<VoidcallerSpell>().direction = new Vector2(direction, 0);
     }
 
     public void StartIntro()
@@ -203,7 +206,7 @@ public class Voidcaller : BossBase
     public void StartBoss() //chamado no fim da animação de intro
     {
         ActivateBossUI();
-        ChangeState(State.Move);
+        ChangeState(State.Chase);
         player.EnabledControls();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
         //BackgroundMusic.instance.MusicControl(7);
@@ -216,12 +219,19 @@ public class Voidcaller : BossBase
 
     public void FinishAttack() //chamado ao final de qualquer ataque (menos rayattack)
     {
-        ChangeState(State.Move);
+        attackTimer = 0f;
+        ChangeState(State.Chase);
     }
 
-    private void Flip()
+    private void FlipSprite()
     {
-        direction = -direction;
+        Vector2 dir = (playerPosition.position - transform.position).normalized;
+
+        if (dir.x > 0.1f)
+            direction = 1;
+        else if (dir.x < -0.1f)
+            direction = -1;
+
         transform.localScale = new Vector3(direction, 1, 1);
     }
 
