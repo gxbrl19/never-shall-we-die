@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638409159749582400
+  platformSettingsDirtyTick: 638932309335436998
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,36 +121,16 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Dash_Frame_0
     originalName: 
-    pivot: {x: 0.50000006, y: 0.59259254}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 43
-      width: 34
-      height: 27
-    spriteID: 7eeec5ca104b88444ab392de6f129167
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 43}
-  - name: Dash_Frame_1
-    originalName: 
-    pivot: {x: 0.47222227, y: 0.5483871}
+    pivot: {x: 0.5625, y: 0.55172414}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 36
-      height: 31
-    spriteID: 6d2d61ee32a96204dadc88478eef8d28
+      width: 32
+      height: 29
+    spriteID: 10afbd403207a4949a3d2c61a29bd2f4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -159,58 +139,38 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Dash_Frame_1
+    originalName: 
+    pivot: {x: 0.51724136, y: 0.55172414}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 41
+      width: 29
+      height: 29
+    spriteID: 995c729f72d7ad2408edc537f3a7a4b3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 41}
   - name: Dash_Frame_2
     originalName: 
-    pivot: {x: 0.5416666, y: 0.8571429}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 62
-      width: 24
-      height: 21
-    spriteID: 662a2aaec02b7754c87a604e06188d80
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 84, y: 62}
-  - name: Dash_Frame_3
-    originalName: 
-    pivot: {x: 0.5757576, y: 0.9411764}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 37
-      width: 33
-      height: 17
-    spriteID: 991ad94353e942b49b09641718187381
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 84, y: 37}
-  - name: Dash_Frame_4
-    originalName: 
-    pivot: {x: 0.57142854, y: 0.57142854}
+    pivot: {x: 0.6956521, y: 0.53333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 78
-      width: 28
-      height: 28
-    spriteID: 68886826fa6c2464f909fefdf0f1e772
+      width: 23
+      height: 30
+    spriteID: 7e58ceeba370a67408c72d62a616c991
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -219,18 +179,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 78}
-  - name: Dash_Frame_5
+  - name: Dash_Frame_3
     originalName: 
-    pivot: {x: 0.6071429, y: 0.59259254}
+    pivot: {x: 0.6818182, y: 0.53333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 48
-      y: 4
-      width: 28
-      height: 27
-    spriteID: 6f3483cd87cbfa14693ace1c74706e9a
+      x: 35
+      y: 78
+      width: 22
+      height: 30
+    spriteID: df7dd8939994c854d8dd6823b2255998
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -238,27 +198,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 48, y: 4}
-  - name: Dash_Frame_6
-    originalName: 
-    pivot: {x: 0.55172414, y: 0.6399999}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 4
-      width: 29
-      height: 25
-    spriteID: b47e3101433b27a4688e3692205c8f0d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 84, y: 4}
+    uvTransform: {x: 35, y: 78}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -271,59 +211,35 @@ ScriptedImporter:
     - name: Dash_Frame_0
       frameIndex: 0
       cellRect:
-        x: 7
-        y: 8
-        width: 34
-        height: 27
-      spriteId: 7eeec5ca104b88444ab392de6f129167
+        x: 22
+        y: 16
+        width: 32
+        height: 29
+      spriteId: 10afbd403207a4949a3d2c61a29bd2f4
     - name: Dash_Frame_1
       frameIndex: 1
       cellRect:
-        x: 7
-        y: 7
-        width: 36
-        height: 31
-      spriteId: 6d2d61ee32a96204dadc88478eef8d28
+        x: 25
+        y: 16
+        width: 29
+        height: 29
+      spriteId: 995c729f72d7ad2408edc537f3a7a4b3
     - name: Dash_Frame_2
       frameIndex: 2
       cellRect:
-        x: 11
-        y: 6
-        width: 24
-        height: 21
-      spriteId: 662a2aaec02b7754c87a604e06188d80
+        x: 24
+        y: 16
+        width: 23
+        height: 30
+      spriteId: 7e58ceeba370a67408c72d62a616c991
     - name: Dash_Frame_3
       frameIndex: 3
       cellRect:
-        x: 5
-        y: 8
-        width: 33
-        height: 17
-      spriteId: 991ad94353e942b49b09641718187381
-    - name: Dash_Frame_4
-      frameIndex: 4
-      cellRect:
-        x: 8
-        y: 8
-        width: 28
-        height: 28
-      spriteId: 68886826fa6c2464f909fefdf0f1e772
-    - name: Dash_Frame_5
-      frameIndex: 5
-      cellRect:
-        x: 7
-        y: 8
-        width: 28
-        height: 27
-      spriteId: 6f3483cd87cbfa14693ace1c74706e9a
-    - name: Dash_Frame_6
-      frameIndex: 6
-      cellRect:
-        x: 8
-        y: 8
-        width: 29
-        height: 25
-      spriteId: b47e3101433b27a4688e3692205c8f0d
+        x: 25
+        y: 16
+        width: 22
+        height: 30
+      spriteId: df7dd8939994c854d8dd6823b2255998
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -389,4 +305,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 48, y: 48}
+  canvasSize: {x: 80, y: 64}

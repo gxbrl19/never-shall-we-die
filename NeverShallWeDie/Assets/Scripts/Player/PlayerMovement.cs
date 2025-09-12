@@ -476,7 +476,7 @@ public class PlayerMovement : MonoBehaviour
     public void FinishDash()
     {
         player.isDashing = false;
-        player.rb.velocity = Vector2.zero; // cancela a velocidade no fim do dash
+        //player.rb.velocity = Vector2.zero; // cancela a velocidade no fim do dash
     }
 
     #endregion
