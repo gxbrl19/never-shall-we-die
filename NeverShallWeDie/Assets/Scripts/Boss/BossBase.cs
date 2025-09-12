@@ -20,7 +20,6 @@ public abstract class BossBase : MonoBehaviour, IBoss
 
     [SerializeField] BossDoor bossDoor;
     [SerializeField] BossDoor bossDoor2;
-    [SerializeField] WantedBoss wantedBoss;
 
     [Header("FMOD Events")]
     [SerializeField] EventReference hit;
@@ -103,14 +102,6 @@ public abstract class BossBase : MonoBehaviour, IBoss
     {
         spriteRenderer.color = defaultColor;
         isHurt = false;
-    }
-
-    public virtual void SetWanted() //chamado na animação de morte
-    {
-        if (wantedBoss == null)
-            BackgroundMusic.instance.ReturnToMapMusic(); //retorna a música sem o WantedBoss
-        else
-            wantedBoss.StartWanted();
     }
 
     protected virtual void PlayHit()

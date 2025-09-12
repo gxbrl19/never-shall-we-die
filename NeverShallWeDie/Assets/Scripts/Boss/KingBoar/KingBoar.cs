@@ -3,7 +3,8 @@ using FMODUnity;
 
 public class KingBoar : BossBase
 {
-    private enum State { Intro, Idle, Walk, LaunchSpike, TrunkAttack, MinionAttack, Dead }
+    private enum State { Intro, Idle, Walk, LaunchSpike, TrunkAttack, MinionAttack }
+    [SerializeField] WantedBoss wantedBoss;
     private State currentState = State.Intro;
 
     [Header("Stats")]
@@ -114,9 +115,6 @@ public class KingBoar : BossBase
                 attackTimer = 0f;
                 minionTimer = 0f;
                 break;
-
-            case State.Dead:
-                break;
         }
 
         if (currentState == State.Idle || currentState == State.Walk)
@@ -215,12 +213,6 @@ public class KingBoar : BossBase
         ChangeState(State.Idle);
     }
 
-    protected override void OnDeath()
-    {
-        base.OnDeath();
-        ChangeState(State.Dead);
-    }
-
     RaycastHit2D Raycast(Vector2 rayDirection, float length, LayerMask layerMask) //raio para detectar o chão
     {
         Vector2 point = new Vector2(transform.position.x, transform.position.y);
@@ -228,6 +220,11 @@ public class KingBoar : BossBase
         Color color = hit ? Color.red : Color.green;
         Debug.DrawRay(point, rayDirection * length, color);
         return hit;
+    }
+
+    public void Dead() //chamado na animação de morte
+    {
+        wantedBoss.StartWanted();
     }
 
     // SFX - chamados na animação

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Deadshot : BossBase
 {
-    private enum State { Intro, Idle, Run, Shotgun, SwordAttack, ThrowBomb, DashAttack, Dead }
+    private enum State { Intro, Idle, Run, Shotgun, SwordAttack, ThrowBomb, DashAttack }
 
     [Header("Stats")]
     [SerializeField] private float meleeRange = 2f;
@@ -103,9 +103,6 @@ public class Deadshot : BossBase
 
             case State.DashAttack:
                 DashAttack();
-                break;
-
-            case State.Dead:
                 break;
         }
 
@@ -258,10 +255,9 @@ public class Deadshot : BossBase
         ChangeState(State.Idle);
     }
 
-    protected override void OnDeath()
+    public void Dead() //chamado na animação de morte
     {
-        base.OnDeath();
-        ChangeState(State.Dead);
+        BackgroundMusic.instance.ReturnToMapMusic(); //retorna a música sem o WantedBoss
     }
 
     RaycastHit2D Raycast(Vector2 rayDirection, float length, LayerMask layerMask) //raio para detectar o chão
