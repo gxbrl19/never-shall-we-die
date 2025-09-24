@@ -20,12 +20,9 @@ public class UIManager : MonoBehaviour
     private Scene _currentScene;
     public int _sceneID;
 
-    private float delayHealthStart = 0.3f; //tempo de delay antes de começar a diminuir
-    private float delayHealthSpeed = 5f;  //quão rápido a barra branca alcança a vermelha
-    private float delayHealthTimer = 0f;
-    [BoxGroup("HUD")][Header("Health")][SerializeField] private Image _healthBar;
-    [BoxGroup("HUD")][SerializeField] private Image _healthBarDelay;
-    [BoxGroup("HUD")][SerializeField] private Text _txtHealthInPause;
+    [BoxGroup("HUD")][Header("Health")][SerializeField] private Image[] _healths;
+    [BoxGroup("HUD")][SerializeField] private Sprite _fullHealth;
+    [BoxGroup("HUD")][SerializeField] private Sprite _emptyHealth;
 
     [BoxGroup("HUD")][Header("Healing")][SerializeField] private Image _healingBar;
     [BoxGroup("HUD")][SerializeField] private Text _txtHealingInPause;
@@ -163,50 +160,27 @@ public class UIManager : MonoBehaviour
     {
         _currentScene = SceneManager.GetActiveScene();
         _sceneID = _currentScene.buildIndex;
-        _healthBarDelay.fillAmount = _healthBar.fillAmount;
 
         Resolutions();
     }
 
     void Update()
     {
-        UpdateHealthBars();
+        UpdateHealth();
         StatsController();
         SkillControl();
     }
 
     #region HUD
-    void UpdateHealthBars()
+    void UpdateHealth()
     {
         float currentHealth = _health.currentHealth;
         float maxHealth = _health.maxHealth;
-        float healthPercent = currentHealth / maxHealth;
 
-        _healthBar.fillAmount = healthPercent;
-
-        if (_healthBarDelay.fillAmount > _healthBar.fillAmount)
+        for (int i = 0; i < _healths.Length; i++)
         {
-            delayHealthTimer += Time.deltaTime;
-
-            if (delayHealthTimer >= delayHealthStart)
-            {
-                _healthBarDelay.fillAmount = Mathf.Lerp(
-                    _healthBarDelay.fillAmount,
-                    _healthBar.fillAmount,
-                    Time.deltaTime * delayHealthSpeed
-                );
-
-                if (Mathf.Abs(_healthBarDelay.fillAmount - _healthBar.fillAmount) < 0.01f)
-                {
-                    _healthBarDelay.fillAmount = _healthBar.fillAmount;
-                    delayHealthTimer = 0f;
-                }
-            }
-        }
-        else
-        {
-            _healthBarDelay.fillAmount = healthPercent;
-            delayHealthTimer = 0f;
+            _healths[i].sprite = i < currentHealth ? _fullHealth : _emptyHealth;
+            _healths[i].enabled = i < maxHealth ? true : false;
         }
     }
 
@@ -222,7 +196,6 @@ public class UIManager : MonoBehaviour
         _txtGold.text = GameManager.instance._gold.ToString();
 
         //stats no pause
-        _txtHealthInPause.text = health.ToString();
         _txtHealingInPause.text = mana.ToString();
         _txtGoldInPause.text = GameManager.instance._gold.ToString();
     }
@@ -724,7 +697,7 @@ public class UIManager : MonoBehaviour
             _inUIScreen = false;
             _player.EnabledControls();
             GameManager.instance._hpMpLevel += 1;
-            _health.maxHealth += 5f;
+            _health.maxHealth += 1;
             GameManager.instance._hpMax = _health.maxHealth;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;

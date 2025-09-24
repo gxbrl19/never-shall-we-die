@@ -119,7 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Layer
+  - name: health_empty
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
@@ -128,9 +128,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 84
-      height: 16
-    spriteID: ef359c5b23ded4b47b8c42b95ad0ef81
+      width: 14
+      height: 14
+    spriteID: eb5bd480534bd604f8fdd3d991dadc39
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,18 +139,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: health
+  - name: health_full
     originalName: 
-    pivot: {x: 0.49999997, y: 0.5}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 28
-      width: 76
-      height: 8
-    spriteID: 8316b69c399c8ed4d9a54b3384ac90a4
+      y: 26
+      width: 14
+      height: 14
+    spriteID: 589fff8044c6717458d75bb67dbb6a2a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -158,78 +158,41 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 28}
-  - name: delay
-    originalName: 
-    pivot: {x: 0.49999997, y: 0.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 44
-      width: 76
-      height: 8
-    spriteID: fbf0f1335459e4a40b9bee33b8cb071d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 44}
+    uvTransform: {x: 4, y: 26}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1949975077
-    name: Layer
+    guid: 1685676654
+    name: health_empty
     layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: Layer
+    - name: health_empty
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 84
-        height: 16
-      spriteId: ef359c5b23ded4b47b8c42b95ad0ef81
-    linkedCells: []
-    parentIndex: -1
-  - layerIndex: 2
-    guid: 1627531870
-    name: health
-    layerFlags: 3
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: health
-      frameIndex: 0
-      cellRect:
-        x: 4
-        y: 4
-        width: 76
-        height: 8
-      spriteId: 8316b69c399c8ed4d9a54b3384ac90a4
+        x: 1
+        y: 1
+        width: 14
+        height: 14
+      spriteId: eb5bd480534bd604f8fdd3d991dadc39
     linkedCells: []
     parentIndex: -1
   - layerIndex: 1
-    guid: 1652789892
-    name: delay
+    guid: 1785383701
+    name: health_full
     layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: delay
+    - name: health_full
       frameIndex: 0
       cellRect:
-        x: 4
-        y: 4
-        width: 76
-        height: 8
-      spriteId: fbf0f1335459e4a40b9bee33b8cb071d
+        x: 1
+        y: 1
+        width: 14
+        height: 14
+      spriteId: 589fff8044c6717458d75bb67dbb6a2a
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -295,4 +258,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 84, y: 16}
+  canvasSize: {x: 16, y: 16}

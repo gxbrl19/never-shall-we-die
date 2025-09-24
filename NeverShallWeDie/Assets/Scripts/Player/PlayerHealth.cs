@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Vida e Mana")]
-    [HideInInspector] public float maxHealth;
-    public float currentHealth;
+    [HideInInspector] public int maxHealth;
+    public int currentHealth;
     [HideInInspector] public float maxMana;
     public float currentMana;
 
@@ -134,7 +134,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (player.isHealing && currentHealth < maxHealth && currentMana >= 0.1f)
         {
-            currentHealth += .06f;
+            //currentHealth += .06f;
             currentMana -= .06f;
 
             SetHealth(currentHealth);
@@ -162,12 +162,12 @@ public class PlayerHealth : MonoBehaviour
 
     #region GameManager (Persistência entre cenas)
 
-    public void SetHealth(float health)
+    public void SetHealth(int health)
     {
         GameManager.instance._currentHP = health;
     }
 
-    public float GetHealth()
+    public int GetHealth()
     {
         return GameManager.instance._currentHP != 0 ? GameManager.instance._currentHP : maxHealth;
     }

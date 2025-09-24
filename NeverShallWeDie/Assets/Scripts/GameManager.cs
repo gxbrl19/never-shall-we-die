@@ -14,7 +14,7 @@ public class PlayerData
     public List<Equipments> equipments;
     public List<Skills> skills;
     public List<Items> items;
-    public float hpMax;
+    public int hpMax;
     public float mpMax;
     public int hpMpLevel;
     public int gold;
@@ -64,9 +64,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<Equipments> _equipments;
     [HideInInspector] public List<Skills> _skills;
     [HideInInspector] public List<Items> _inventory;
-    [HideInInspector] public float _currentHP; //usado para manter o HP na troca de cena
+    [HideInInspector] public int _currentHP; //usado para manter o HP na troca de cena
     [HideInInspector] public float _currentMP; //usado para manter o MP na troca de cena
-    public float _hpMax;
+    public int _hpMax;
     public float _mpMax;
     public int _hpMpLevel;
     public int _gold; //total de gold coletado
@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         //Enemies
         _bosses = new int[6];
 
-        _hpMax = 25f;
+        _hpMax = 4; //testando corações (25f)
         _mpMax = 15f;
         _hpMpLevel = 1;
         _katanaLevel = 1;
