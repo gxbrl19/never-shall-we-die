@@ -252,7 +252,6 @@ MonoBehaviour:
   enemyObject: {fileID: 11400000, guid: bf0254d75001c40449c53f4ad9933419, type: 2}
   currentHealth: 0
   deathEffect: {fileID: 6531695823994183524, guid: 6a3cbaa9c84e3664586a68797ff628e5, type: 3}
-  animator: {fileID: 0}
   hit:
     Guid:
       Data1: 1994048421
@@ -300,5 +299,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 0
+  attackPower: 1
   hitEffect: {fileID: 0}

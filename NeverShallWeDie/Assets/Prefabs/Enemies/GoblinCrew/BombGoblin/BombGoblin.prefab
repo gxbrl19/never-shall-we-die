@@ -205,11 +205,6 @@ MonoBehaviour:
       Data3: 1539037571
       Data4: 1656383288
     Path: event:/sfx/gameplay/SFX_COMBAT_bombman_death_01
-  raycastSize: 20
-  launchForce: 1
-  moveSpeed: 1.5
-  attackCooldown: 1.2
-  direction: 0
   shootPoint: {fileID: 3717038025127673065}
   bombPrefab: {fileID: 7461815092132374738, guid: 5837b8cd96010c34fb6ea9a3d8e43654, type: 3}
   groundLayer:
@@ -469,5 +464,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 2
+  attackPower: 1
   hitEffect: {fileID: 0}
