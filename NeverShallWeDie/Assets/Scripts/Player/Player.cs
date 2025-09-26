@@ -33,19 +33,16 @@ public class Player : MonoBehaviour
     [HideInInspector] public float timeAirGem;
     [BoxGroup("GameObjects")] public Impulse _ImpulseEffect;
     [BoxGroup("Components")] public Transform _airGemPoint;
-    [HideInInspector] public float airMana;
 
 
     //Water Gem
     [HideInInspector] public float timeWaterGem;
     private float waterSpinForce = 10f;
-    [HideInInspector] public float waterMana;
 
     //Fire Gem
     [HideInInspector] public float timeFireGem;
     [BoxGroup("GameObjects")] public AirCut _fireGem;
     [BoxGroup("Components")] public Transform _fireGemPoint;
-    [HideInInspector] public float fireMana;
 
     //States
     [HideInInspector] public bool canMove = true;
@@ -90,10 +87,6 @@ public class Player : MonoBehaviour
         playerCollision = GetComponent<PlayerCollision>();
         playerAudio = GetComponent<PlayerAudio>();
         playerHealth = GetComponent<PlayerHealth>();
-
-        waterMana = 4f;
-        fireMana = 4f;
-        airMana = 4;
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
@@ -261,7 +254,6 @@ public class Player : MonoBehaviour
         _fireGem.transform.localScale = _scale;
 
         Instantiate(_fireGem.gameObject, _fireGemPoint.position, _fireGemPoint.rotation);
-        playerHealth.ManaConsumption(fireMana);
     }
 
     void WaterSpin()

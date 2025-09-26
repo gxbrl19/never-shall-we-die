@@ -7,8 +7,8 @@ public class PlayerHealth : MonoBehaviour
     [Header("Vida e Mana")]
     [HideInInspector] public int maxHealth;
     public int currentHealth;
-    [HideInInspector] public float maxMana;
-    public float currentMana;
+    [HideInInspector] public int maxHealing;
+    public int currentHealing;
 
     [Header("Partículas & Visual")]
     public GameObject _objHealing;
@@ -35,11 +35,11 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         maxHealth = GameManager.instance._hpMax;
-        maxMana = GameManager.instance._mpMax;
+        maxHealing = GameManager.instance._hlMax;
 
         startColor = spriteRenderer.color;
         currentHealth = GetHealth();
-        currentMana = GetMana();
+        currentHealing = GetHealing();
     }
 
     void FixedUpdate()
@@ -122,23 +122,23 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void FillBottle(float healing)
+    public void FillBottle(int healing)
     {
-        currentMana = Mathf.Min(currentMana + healing, maxMana);
-        SetMana(currentMana);
+        currentHealing += healing;
+        SetHealing(currentHealing);
     }
 
     public void Healing()
     {
         _objHealing.SetActive(player.isHealing);
 
-        if (player.isHealing && currentHealth < maxHealth && currentMana >= 0.1f)
+        if (player.isHealing && currentHealth < maxHealth && currentHealing >= 0.1f)
         {
-            //currentHealth += .06f;
-            currentMana -= .06f;
+            currentHealth += 2;
+            currentHealing -= 1;
 
             SetHealth(currentHealth);
-            SetMana(currentMana);
+            SetHealing(currentHealing);
             CinemachineShake.instance.ShakeCamera(3f, 0.15f);
         }
         else
@@ -147,17 +147,17 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void ManaConsumption(float consume)
+    public void ManaConsumption(int consume)
     {
-        currentMana = Mathf.Max(currentMana - consume, 0f);
-        SetMana(currentMana);
+        currentHealing -= consume;
+        SetHealing(currentHealing);
     }
 
 
     public void ResetHealth()
     {
         currentHealth = maxHealth;
-        currentMana = 0f;
+        currentHealing = 0;
     }
 
     #region GameManager (Persistência entre cenas)
@@ -172,14 +172,14 @@ public class PlayerHealth : MonoBehaviour
         return GameManager.instance._currentHP != 0 ? GameManager.instance._currentHP : maxHealth;
     }
 
-    public void SetMana(float mana)
+    public void SetHealing(int mana)
     {
-        GameManager.instance._currentMP = mana;
+        GameManager.instance._currentHL = mana;
     }
 
-    public float GetMana()
+    public int GetHealing()
     {
-        return GameManager.instance._currentMP != 0 ? GameManager.instance._currentMP : 0f;
+        return GameManager.instance._currentHL != 0 ? GameManager.instance._currentHL : 0;
     }
 
     #endregion

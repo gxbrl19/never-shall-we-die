@@ -255,21 +255,21 @@ public class PlayerInputs : MonoBehaviour
 
         else if (callback.started && PlayerSkills.instance.skills.Contains(Skills.WaterGem) && player.onWater)
         {
-            if (player.playerHealth.currentMana > 0 && player.timeWaterGem >= player.timeForSkills)
+            if (player.playerHealth.currentHealing > 0 && player.timeWaterGem >= player.timeForSkills)
             {
                 _pressLeftTrigger = true;
                 player.timeWaterGem = 0f; //reseta o tempo
-                player.playerHealth.ManaConsumption(player.waterMana);
+                //player.playerHealth.ManaConsumption(player.waterMana);
             }
         }
         else if (callback.started && PlayerSkills.instance.skills.Contains(Skills.AirGem) && !player.isGrounded && !player.onWater)
         {
-            if (player.playerHealth.currentMana > 0 && player.timeAirGem >= player.timeForSkills)
+            if (player.playerHealth.currentHealing > 0 && player.timeAirGem >= player.timeForSkills)
             {
                 _pressLeftTrigger = true;
                 player.onAirSpecial = true;
                 player.timeAirGem = 0f; //reseta o tempo
-                player.playerHealth.ManaConsumption(player.airMana);
+                //player.playerHealth.ManaConsumption(player.airMana);
             }
         }
     }
@@ -296,7 +296,7 @@ public class PlayerInputs : MonoBehaviour
 
         if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.FireGem))
         {
-            if (player.playerHealth.currentMana > 0 && player.timeFireGem >= player.timeForSkills)
+            if (player.playerHealth.currentHealing > 0 && player.timeFireGem >= player.timeForSkills)
             {
                 pressRightTrigger = true;
                 player.timeFireGem = 0f; //reseta o tempo do aircut para poder fazer a contagem;

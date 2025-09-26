@@ -51,7 +51,7 @@ public class Flag : MonoBehaviour
             //reseta a vida do player
             _health.currentHealth = _health.maxHealth;
             _health.SetHealth(_health.currentHealth);
-            _health.SetMana(_health.currentMana);
+            _health.SetHealing(_health.currentHealing);
         }
     }
 

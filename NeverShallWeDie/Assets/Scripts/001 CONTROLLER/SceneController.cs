@@ -86,7 +86,7 @@ public class SceneController : MonoBehaviour
         _scriptablePosition.SetAttributes(true, GameManager.instance._direction, 1);
 
         _health.SetHealth(_health.maxHealth);
-        _health.SetMana(0f);
+        _health.SetHealing(0);
 
         _player.gameObject.layer = LayerMask.NameToLayer("PlayerDead");
         _player.gameObject.GetComponent<Player>().DisableControls();

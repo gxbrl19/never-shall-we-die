@@ -15,7 +15,7 @@ public class PlayerData
     public List<Skills> skills;
     public List<Items> items;
     public int hpMax;
-    public float mpMax;
+    public int hlMax;
     public int hpMpLevel;
     public int gold;
     public int katanaLevel;
@@ -65,10 +65,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<Skills> _skills;
     [HideInInspector] public List<Items> _inventory;
     [HideInInspector] public int _currentHP; //usado para manter o HP na troca de cena
-    [HideInInspector] public float _currentMP; //usado para manter o MP na troca de cena
+    [HideInInspector] public int _currentHL; //usado para manter o HL na troca de cena
     public int _hpMax;
-    public float _mpMax;
-    public int _hpMpLevel;
+    public int _hlMax;
+    public int _hpHlLevel;
     public int _gold; //total de gold coletado
     [HideInInspector] public int _katanaLevel;
 
@@ -145,9 +145,9 @@ public class GameManager : MonoBehaviour
         //Enemies
         _bosses = new int[6];
 
-        _hpMax = 4; //testando corações (25f)
-        _mpMax = 15f;
-        _hpMpLevel = 1;
+        _hpMax = 4;
+        _hlMax = 2;
+        _hpHlLevel = 1;
         _katanaLevel = 1;
 
         LoadBasic();
@@ -196,8 +196,8 @@ public class GameManager : MonoBehaviour
         _data.skills = _skills;
         _data.items = _inventory;
         _data.hpMax = _hpMax;
-        _data.mpMax = _mpMax;
-        _data.hpMpLevel = _hpMpLevel;
+        _data.hlMax = _hlMax;
+        _data.hpMpLevel = _hpHlLevel;
         _data.gold = _gold;
         _data.katanaLevel = _katanaLevel;
 
@@ -290,8 +290,8 @@ public class GameManager : MonoBehaviour
             _skills = _data.skills;
             _inventory = _data.items;
             _hpMax = _data.hpMax;
-            _mpMax = _data.mpMax;
-            _hpMpLevel = _data.hpMpLevel;
+            _hlMax = _data.hlMax;
+            _hpHlLevel = _data.hpMpLevel;
             _gold = _data.gold;
             _katanaLevel = _data.katanaLevel;
 

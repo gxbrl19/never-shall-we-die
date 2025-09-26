@@ -24,13 +24,13 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][SerializeField] private Sprite _fullHealth;
     [BoxGroup("HUD")][SerializeField] private Sprite _emptyHealth;
 
-    [BoxGroup("HUD")][Header("Healing")][SerializeField] private Image _healingBar;
-    [BoxGroup("HUD")][SerializeField] private Text _txtHealingInPause;
+    [BoxGroup("HUD")][Header("Healing")][SerializeField] private Image[] _healings;
+    [BoxGroup("HUD")][SerializeField] private Sprite _fullHealing;
+    [BoxGroup("HUD")][SerializeField] private Sprite _emptyHealing;
 
     [BoxGroup("HUD")][Header("Stamina")][SerializeField] private Image _staminaBar;
 
     [BoxGroup("HUD")][Header("Gold")][SerializeField] private Text _txtGold;
-    [BoxGroup("HUD")][SerializeField] private Text _txtGoldInPause;
     [BoxGroup("HUD")][SerializeField] private Text _txtGoldBuy;
     [BoxGroup("HUD")][SerializeField] private Animator _goldBuyAnimator;
 
@@ -138,19 +138,19 @@ public class UIManager : MonoBehaviour
 
     bool _inUIScreen;
 
-    Player _player;
-    PlayerInputs _input;
-    PlayerHealth _health;
-    PlayerMovement _movement;
+    Player player;
+    PlayerInputs playerInputs;
+    PlayerHealth playerHealth;
+    PlayerMovement playerMovement;
 
     private void Awake()
     {
         instance = this;
 
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        _input = _player.GetComponent<PlayerInputs>();
-        _health = _player.GetComponent<PlayerHealth>();
-        _movement = _player.GetComponent<PlayerMovement>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        playerInputs = player.GetComponent<PlayerInputs>();
+        playerHealth = player.GetComponent<PlayerHealth>();
+        playerMovement = player.GetComponent<PlayerMovement>();
 
         Time.timeScale = 1f;
         //_player.EnabledControls();
@@ -166,45 +166,43 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        UpdateHealth();
         StatsController();
         SkillControl();
     }
 
     #region HUD
-    void UpdateHealth()
+
+    void StatsController()
     {
-        float currentHealth = _health.currentHealth;
-        float maxHealth = _health.maxHealth;
+        float currentHealth = playerHealth.currentHealth;
+        float maxHealth = playerHealth.maxHealth;
+
+        float currentHealing = playerHealth.currentHealing;
+        float maxHealing = playerHealth.maxHealing;
 
         for (int i = 0; i < _healths.Length; i++)
         {
             _healths[i].sprite = i < currentHealth ? _fullHealth : _emptyHealth;
             _healths[i].enabled = i < maxHealth ? true : false;
         }
-    }
 
-    void StatsController()
-    {
-        _healingBar.fillAmount = _health.currentMana / _health.maxMana;
-        _staminaBar.fillAmount = _movement.currentStamina / _movement.maxStamina;
-        _staminaBar.color = _movement.isExhausted ? Color.red : Color.green;
+        for (int i = 0; i < _healings.Length; i++)
+        {
+            _healings[i].sprite = i < currentHealing ? _fullHealing : _emptyHealing;
+            _healings[i].enabled = i < maxHealing ? true : false;
+        }
 
-        //convertendo para INT
-        int health = (int)_health.maxHealth;
-        int mana = (int)_health.maxMana;
+        _staminaBar.fillAmount = playerMovement.currentStamina / playerMovement.maxStamina;
+        _staminaBar.color = playerMovement.isExhausted ? Color.red : Color.green;
+
         _txtGold.text = GameManager.instance._gold.ToString();
-
-        //stats no pause
-        _txtHealingInPause.text = mana.ToString();
-        _txtGoldInPause.text = GameManager.instance._gold.ToString();
     }
 
     void SkillControl()
     {
-        _fire.fillAmount = _player.timeFireGem / _player.timeForSkills;
-        _water.fillAmount = _player.timeWaterGem / _player.timeForSkills;
-        _air.fillAmount = _player.timeAirGem / _player.timeForSkills;
+        _fire.fillAmount = player.timeFireGem / player.timeForSkills;
+        _water.fillAmount = player.timeWaterGem / player.timeForSkills;
+        _air.fillAmount = player.timeAirGem / player.timeForSkills;
     }
 
     public void SaveEnabled()
@@ -240,7 +238,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         _menuPause.gameObject.SetActive(true);
         _isPaused = true;
-        _input.horizontal = 0f;
+        playerInputs.horizontal = 0f;
 
         _panelIndex = 0;
         MovePanel();
@@ -251,7 +249,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         _menuPause.gameObject.SetActive(false);
         _isPaused = false;
-        _player.EnabledControls();
+        player.EnabledControls();
     }
 
     void SwitchPanel(string side)
@@ -351,7 +349,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         _menuMap.gameObject.SetActive(true);
         _inMap = true;
-        _input.horizontal = 0f;
+        playerInputs.horizontal = 0f;
 
         SetLocalization();
         _mapPanelIndex = _mapID;
@@ -365,7 +363,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         _menuMap.gameObject.SetActive(false);
         _inMap = false;
-        _player.EnabledControls();
+        player.EnabledControls();
     }
 
     void ChangeMap(string side)
@@ -457,7 +455,7 @@ public class UIManager : MonoBehaviour
     public void MemberJoined(string name, Sprite image)
     {
         _inNewMember = true;
-        _player.DisableControls();
+        player.DisableControls();
         _pnlNewMember.SetActive(true);
         BackgroundMusic.instance.MusicControl(11);
 
@@ -470,7 +468,7 @@ public class UIManager : MonoBehaviour
     public void FinishMemberJoined() //chamado na função MemberJoined()
     {
         _inNewMember = false;
-        _player.EnabledControls();
+        player.EnabledControls();
         _pnlNewMember.SetActive(false);
         BackgroundMusic.instance.ReturnToMapMusic();
     }
@@ -481,7 +479,7 @@ public class UIManager : MonoBehaviour
     public void ActivePanelDrawbridge()
     {
         _inUIScreen = true;
-        _player.DisableControls();
+        player.DisableControls();
         _pnlDrawbridge.SetActive(true);
         AudioHUD.instance.PlayBackButton();
         EventSystem.current.SetSelectedGameObject(_firstButtonKey);
@@ -490,7 +488,7 @@ public class UIManager : MonoBehaviour
     public void RecuseDrawbridge() //chamado no botão back do pnl_drawbridge (UI Manager)
     {
         _inUIScreen = false;
-        _player.EnabledControls();
+        player.EnabledControls();
         DrawbridgeMechanism.instance.CancelSelect();
         _pnlDrawbridge.SetActive(false);
         AudioHUD.instance.PlayBackButton();
@@ -528,7 +526,7 @@ public class UIManager : MonoBehaviour
     public void UpDrawbridge()
     {
         _inUIScreen = false;
-        _player.EnabledControls();
+        player.EnabledControls();
         _pnlDrawbridge.SetActive(false);
     }
 
@@ -581,7 +579,7 @@ public class UIManager : MonoBehaviour
     public void ActivePanelNavigate()
     {
         _inUIScreen = true;
-        _player.DisableControls();
+        player.DisableControls();
         _pnlNavigate.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesNavigate);
     }
@@ -589,7 +587,7 @@ public class UIManager : MonoBehaviour
     public void Navigate() //chamdo no botão Yes do pnl_navigate (UI Manager)
     {
         _inUIScreen = false;
-        _player.EnabledControls();
+        player.EnabledControls();
         GameManager.instance._sceneForLoad = 2; //cena do OpenWorld (configurar o index de acordo com o BuildSettings)
         SceneManager.LoadScene("Scenes/Load");
     }
@@ -597,14 +595,14 @@ public class UIManager : MonoBehaviour
     public void RecuseNavigate() //chamdo no botão No do pnl_navigate (UI Manager)
     {
         _inUIScreen = false;
-        _player.EnabledControls();
+        player.EnabledControls();
         _pnlNavigate.SetActive(false);
     }
 
     public void ActivePanelBuyMap()
     {
         _inUIScreen = true;
-        _player.DisableControls();
+        player.DisableControls();
         _txtMapPrice.text = _mapPrice.ToString();
         _pnlBuyMap.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesBuyMap);
@@ -616,7 +614,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.instance._gold >= _mapPrice)
         {
             _inUIScreen = false;
-            _player.EnabledControls();
+            player.EnabledControls();
             GameManager.instance._maps[_mapBuyId] = 1;
             _pnlBuyMap.SetActive(false);
             GameManager.instance._gold -= _mapPrice;
@@ -633,7 +631,7 @@ public class UIManager : MonoBehaviour
     public void RecuseBuyMap() //chamado no botão No do pnl_buymap (UI Manager)
     {
         _inUIScreen = false;
-        _player.EnabledControls();
+        player.EnabledControls();
         _pnlBuyMap.SetActive(false);
     }
 
@@ -641,7 +639,7 @@ public class UIManager : MonoBehaviour
     {
         _katanaPrice = _katanaInitialPrice * GameManager.instance._katanaLevel; //aumentando o preço conforme o level
         _inUIScreen = true;
-        _player.DisableControls();
+        player.DisableControls();
         _txtKatanaCurrLvl.text = GameManager.instance._katanaLevel.ToString();
         _txtKatanaPrice.text = _katanaPrice.ToString();
         _pnlUpKatana.SetActive(true);
@@ -654,7 +652,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.instance._gold >= _katanaPrice && GameManager.instance._katanaLevel < 4)
         {
             _inUIScreen = false;
-            _player.EnabledControls();
+            player.EnabledControls();
             GameManager.instance._katanaLevel += 1;
             _pnlUpKatana.SetActive(false);
             GameManager.instance._gold -= _katanaPrice;
@@ -674,16 +672,16 @@ public class UIManager : MonoBehaviour
     public void RecuseUpgradeKatana() //chamado no botão No do pnl_upKatana (UI Manager)
     {
         _inUIScreen = false;
-        _player.EnabledControls();
+        player.EnabledControls();
         _pnlUpKatana.SetActive(false);
     }
 
     public void ActivePanelHpMp()
     {
-        _UpHpMpPrice = _txtInitialHpMpPrice * GameManager.instance._hpMpLevel; //aumentando o preço conforme o level
+        _UpHpMpPrice = _txtInitialHpMpPrice * GameManager.instance._hpHlLevel; //aumentando o preço conforme o level
         _inUIScreen = true;
-        _player.DisableControls();
-        _txtCurrHpMpLvl.text = GameManager.instance._hpMpLevel.ToString();
+        player.DisableControls();
+        _txtCurrHpMpLvl.text = GameManager.instance._hpHlLevel.ToString();
         _txtHpMpPrice.text = _UpHpMpPrice.ToString();
         _pnlUpHpMp.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpHpMp);
@@ -692,13 +690,13 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeHP() //chamado no botão HP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice && GameManager.instance._hpMpLevel < 6)
+        if (GameManager.instance._gold >= _UpHpMpPrice && GameManager.instance._hpHlLevel < 6)
         {
             _inUIScreen = false;
-            _player.EnabledControls();
-            GameManager.instance._hpMpLevel += 1;
-            _health.maxHealth += 1;
-            GameManager.instance._hpMax = _health.maxHealth;
+            player.EnabledControls();
+            GameManager.instance._hpHlLevel += 1;
+            playerHealth.maxHealth += 1;
+            GameManager.instance._hpMax = playerHealth.maxHealth;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
             AudioHUD.instance.PlayUpgradeHP();
@@ -716,13 +714,13 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeMP() //chamado no botão MP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice && GameManager.instance._hpMpLevel < 6)
+        if (GameManager.instance._gold >= _UpHpMpPrice && GameManager.instance._hpHlLevel < 6)
         {
             _inUIScreen = false;
-            _player.EnabledControls();
-            GameManager.instance._hpMpLevel += 1;
-            _health.maxMana += 5f;
-            GameManager.instance._mpMax = _health.maxMana;
+            player.EnabledControls();
+            GameManager.instance._hpHlLevel += 1;
+            playerHealth.maxHealing += 1;
+            GameManager.instance._hlMax = playerHealth.maxHealing;
             _pnlUpHpMp.SetActive(false);
             GameManager.instance._gold -= _UpHpMpPrice;
             AudioHUD.instance.PlayUpgradeHP();
@@ -741,14 +739,14 @@ public class UIManager : MonoBehaviour
     public void RecuseUpHpMp() //chamado no botão Cancel do pnl_upHpMp (UI Manager)
     {
         _inUIScreen = false;
-        _player.EnabledControls();
+        player.EnabledControls();
         _pnlUpHpMp.SetActive(false);
     }
 
     public void ActivePanelShip()
     {
         _inUIScreen = true;
-        _player.DisableControls();
+        player.DisableControls();
         _pnlUPShip.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_firstButtonShip);
         AudioHUD.instance.PlaySelectButton();
@@ -773,7 +771,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.instance._gold >= _upShipPrice)
         {
             _inUIScreen = false;
-            _player.EnabledControls();
+            player.EnabledControls();
 
             if (id == 0)
             {
@@ -809,20 +807,20 @@ public class UIManager : MonoBehaviour
     public void RecuseUpShip() //chamado no botão Cancel do pnl_Ship (UI Manager)
     {
         _inUIScreen = false;
-        _player.EnabledControls();
+        player.EnabledControls();
         _pnlUPShip.SetActive(false);
     }
 
     public void OpenAncientStone()
     {
         _pnlAncientStoneText.SetActive(true);
-        _player.DisableControls();
+        player.DisableControls();
     }
 
     public void CloseAncientStone()
     {
         _pnlAncientStoneText.SetActive(false);
-        _player.EnabledControls();
+        player.EnabledControls();
     }
 
     #endregion
