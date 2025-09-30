@@ -90,14 +90,14 @@ public class Player : MonoBehaviour
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
-        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Boots)) { PlayerEquipment.instance.equipments.Add(Equipments.Boots); }
-        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Hook)) { PlayerEquipment.instance.equipments.Add(Equipments.Hook); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.FireGem)) { PlayerSkills.instance.skills.Add(Skills.FireGem); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.AirGem)) { PlayerSkills.instance.skills.Add(Skills.AirGem); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.WaterGem)) { PlayerSkills.instance.skills.Add(Skills.WaterGem); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Knife)) { PlayerEquipment.instance.equipments.Add(Equipments.Knife); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Bomb)) { PlayerEquipment.instance.equipments.Add(Equipments.Bomb); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.Dash)) { PlayerSkills.instance.skills.Add(Skills.Dash); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.Slide)) { PlayerSkills.instance.skills.Add(Skills.Slide); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.Impulse)) { PlayerSkills.instance.skills.Add(Skills.Impulse); }
     }
 
     void Start()
@@ -131,6 +131,8 @@ public class Player : MonoBehaviour
         timeFireGem += Time.deltaTime;
         timeWaterGem += Time.deltaTime;
         timeAirGem += Time.deltaTime;
+
+        OnHealing();
     }
 
     void FixedUpdate()
@@ -138,7 +140,7 @@ public class Player : MonoBehaviour
         OnParachute();
 
         //Special Attacks
-        WaterSpin();
+        //WaterSpin();
     }
 
     public void CancelMovesOnHit()
@@ -175,6 +177,25 @@ public class Player : MonoBehaviour
         isAttacking = false;
     }
     #endregion
+
+    public void StartHealing()
+    {
+        isHealing = true;
+        playerInputs.pressHealing = false;
+        playerAnimations.AnimHealing();
+    }
+
+    public void OnHealing()
+    {
+        if (!isHealing) return;
+        CinemachineShake.instance.ShakeCamera(3f, 0.15f);
+    }
+
+    public void FinishHealing() //chamado também na animação
+    {
+        isHealing = false;
+        playerHealth.Healing();
+    }
 
     void OnParachute()
     {
@@ -261,7 +282,7 @@ public class Player : MonoBehaviour
         if (isDead || !canMove)
             return;
 
-        if (playerInputs.pressLeftTrigger && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
+        /*if (playerInputs.pressLeftTrigger && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
         {
             gameObject.layer = LayerMask.NameToLayer("WaterSpin");
             onWaterSpecial = true;
@@ -270,7 +291,7 @@ public class Player : MonoBehaviour
                 rb.velocity = Vector2.left * waterSpinForce;
             else if (playerMovement.playerDirection > 0)
                 rb.velocity = Vector2.right * waterSpinForce;
-        }
+        }*/
     }
 
     public void FinishWaterSpin() //chamado também na animação de Water Spin

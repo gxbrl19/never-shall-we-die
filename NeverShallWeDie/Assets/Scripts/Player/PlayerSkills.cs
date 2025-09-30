@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Skills
 {
-    FireGem, AirGem, WaterGem
+    Impulse, Slide, Dash
 }
 
 public class PlayerSkills : MonoBehaviour

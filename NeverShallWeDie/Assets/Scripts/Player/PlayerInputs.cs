@@ -13,7 +13,7 @@ public class PlayerInputs : MonoBehaviour
     private bool _jumpHeld;
     private bool _pressDash;
     private bool _pressAttack;
-    private bool _pressRightTrigger;
+    private bool _pressHealing;
     private bool _pressLeftTrigger;
     private bool _pressParachute;
     private bool _pressGrab;
@@ -65,10 +65,10 @@ public class PlayerInputs : MonoBehaviour
         set { _pressAttack = value; }
     }
 
-    public bool pressRightTrigger
+    public bool pressHealing
     {
-        get { return _pressRightTrigger; }
-        set { _pressRightTrigger = value; }
+        get { return _pressHealing; }
+        set { _pressHealing = value; }
     }
 
     public bool pressDash
@@ -185,11 +185,16 @@ public class PlayerInputs : MonoBehaviour
 
             _jumpHeld = callback.performed;
         }
+        else if (callback.started && PlayerSkills.instance.skills.Contains(Skills.Impulse) && !player.isGrounded && !player.onWater)
+        {
+            _pressLeftTrigger = true;
+            player.onAirSpecial = true;
+        }
     }
 
     public void ButtonNorth(InputAction.CallbackContext _callback)
     {
-        if (player.isDead || player.isHealing || player.isAttacking || _pressRightTrigger || Time.timeScale == 0f || player.canMove == false)
+        if (player.isDead || player.isHealing || player.isAttacking || _pressHealing || Time.timeScale == 0f || player.canMove == false)
             return;
 
         if (_callback.started && !player.canGrab)
@@ -212,7 +217,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void ButtonWest(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isAttacking || _pressRightTrigger || Time.timeScale == 0f || player.onClimbing || player.onLedge
+        if (player.isDead || player.isAttacking || _pressHealing || Time.timeScale == 0f || player.onClimbing || player.onLedge
         || player.onHit || player.isGrabing || player.isGriding || player.isDashing || player.onAirSpecial || !player.canMove
         || !PlayerEquipment.instance.equipments.Contains(Equipments.Katana))
             return;
@@ -226,55 +231,32 @@ public class PlayerInputs : MonoBehaviour
 
     public void ButtonEast(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isDashing || player.canMove == false || player.onAirSpecial || player.isAttacking || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
-            return;
+        bool canHealing = !player.isDead
+        && !player.onHit
+        && !player.isAttacking
+        && !player.isHealing
+        && Time.timeScale > 0f
+        && !player.onWater
+        && player.canMove
+        && !player.onLedge
+        && !player.isGrabing
+        && !player.isDashing
+        && !player.onAirSpecial
+        && player.playerHealth.currentHealing > 0;
 
-        if (callback.started)
-            _pressDash = true;
-
-        if (callback.canceled)
-            _pressDash = false;
+        if (callback.started && canHealing)
+        {
+            _pressHealing = true;
+            player.StartHealing();
+        }
     }
 
     public void LeftShoulder(InputAction.CallbackContext callback)
     {
-        if (player.isDead || !player.isGrounded || player.onHit || player.isAttacking || _pressRightTrigger || Time.timeScale == 0f || player.onWater || player.canMove == false || player.onLedge || player.isGrabing || player.isDashing || player.onAirSpecial)
-            return;
-
-        if (callback.started)
-            player.isHealing = true;
-
-        if (callback.canceled)
-            player.isHealing = false;
+        //knife
     }
 
     public void LeftTrigger(InputAction.CallbackContext callback)
-    {
-        if (player.isDead || player.isAttacking || player.isHealing || Time.timeScale == 0f || player.onClimbing || player.onLedge || player.isWallSliding || player.onHit || player.isGrabing || player.isDashing || player.onWaterSpecial || player.onAirSpecial || player.canMove == false)
-            return;
-
-        else if (callback.started && PlayerSkills.instance.skills.Contains(Skills.WaterGem) && player.onWater)
-        {
-            if (player.playerHealth.currentHealing > 0 && player.timeWaterGem >= player.timeForSkills)
-            {
-                _pressLeftTrigger = true;
-                player.timeWaterGem = 0f; //reseta o tempo
-                //player.playerHealth.ManaConsumption(player.waterMana);
-            }
-        }
-        else if (callback.started && PlayerSkills.instance.skills.Contains(Skills.AirGem) && !player.isGrounded && !player.onWater)
-        {
-            if (player.playerHealth.currentHealing > 0 && player.timeAirGem >= player.timeForSkills)
-            {
-                _pressLeftTrigger = true;
-                player.onAirSpecial = true;
-                player.timeAirGem = 0f; //reseta o tempo
-                //player.playerHealth.ManaConsumption(player.airMana);
-            }
-        }
-    }
-
-    public void RightShoulder(InputAction.CallbackContext callback)
     {
         if (player.isDead || player.isGrounded || player.onLedge || player.onClimbing || player.onWater || player.isGriding) return;
 
@@ -289,21 +271,21 @@ public class PlayerInputs : MonoBehaviour
         }
     }
 
-    public void RightTrigger(InputAction.CallbackContext _callback)
+    public void RightShoulder(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isAttacking || _pressRightTrigger || Time.timeScale == 0f || player.onClimbing || player.onLedge || player.onHit || player.isGrabing || player.onWater || player.isDashing || player.canMove == false)
+        //bomb
+    }
+
+    public void RightTrigger(InputAction.CallbackContext callback)
+    {
+        if (player.isDead || player.isDashing || player.canMove == false || player.onAirSpecial || player.isAttacking || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
             return;
 
-        if (PlayerEquipment.instance.equipments.Contains(Equipments.Katana) && PlayerSkills.instance.skills.Contains(Skills.FireGem))
-        {
-            if (player.playerHealth.currentHealing > 0 && player.timeFireGem >= player.timeForSkills)
-            {
-                pressRightTrigger = true;
-                player.timeFireGem = 0f; //reseta o tempo do aircut para poder fazer a contagem;
-                player.playerAnimations.OnAirCut();
-                //.PlayAudio("aircut");
-            }
-        }
+        if (callback.started)
+            _pressDash = true;
+
+        if (callback.canceled)
+            _pressDash = false;
     }
 
     public void CancelInputs()
@@ -313,7 +295,7 @@ public class PlayerInputs : MonoBehaviour
         pressGrab = false;
         pressLeftTrigger = false;
         pressParachute = false;
-        pressRightTrigger = false;
+        _pressHealing = false;
         player.isHealing = false;
 
         horizontal = 0f;

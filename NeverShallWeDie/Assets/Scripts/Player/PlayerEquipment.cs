@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Equipments
 {
-    Katana, Compass, Parachute, Hook, Lantern, Boots
+    Katana, Compass, Parachute, Lantern, Knife, Bomb
 }
 
 public class PlayerEquipment : MonoBehaviour

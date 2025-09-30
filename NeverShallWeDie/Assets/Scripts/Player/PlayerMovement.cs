@@ -310,7 +310,7 @@ public class PlayerMovement : MonoBehaviour
 
             player.rb.velocity = Vector2.zero;
             player.rb.AddForce(Vector2.up * player.impulseForce, ForceMode2D.Impulse);
-            player.AirGem();
+            //player.AirGem();
             player.playerAudio.PlayJump();
         }
         else if (player.playerInputs.pressJump && player.onWater && canSwin && !player.onLedge) // na água
@@ -399,7 +399,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool canSlide =
         player.playerCollision.touchingWall &&
-        PlayerEquipment.instance.equipments.Contains(Equipments.Hook) &&
+        PlayerSkills.instance.skills.Contains(Skills.Slide) &&
         //player.playerInputs.horizontal != 0f && //define se precisa apertar o botão horizontal para fazer o wall slide
         !player.isGrounded &&
         !player.onLedge &&
@@ -444,7 +444,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool pressDash = player.playerInputs.pressDash;
 
-        bool canDash = !isExhausted && currentStamina > 0f && dashCooldownTimer >= dashCooldown && PlayerEquipment.instance.equipments.Contains(Equipments.Boots);
+        bool canDash = !isExhausted && currentStamina > 0f && dashCooldownTimer >= dashCooldown && PlayerSkills.instance.skills.Contains(Skills.Dash);
 
         if (pressDash && canDash)
             ExecuteDash();
@@ -693,7 +693,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressRightTrigger || player.onWaterSpecial || player.isAttacking || player.isDashing)
+        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressHealing || player.onWaterSpecial || player.isAttacking || player.isDashing)
             return;
 
         if (player.isGrounded)

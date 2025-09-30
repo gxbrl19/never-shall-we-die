@@ -11,7 +11,6 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealing;
 
     [Header("Partículas & Visual")]
-    public GameObject _objHealing;
     public GameObject _particleHit;
     public Color _damageColor;
 
@@ -44,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
 
     void FixedUpdate()
     {
-        Healing();
+
     }
 
     public void TakeDamage(int damage)
@@ -130,21 +129,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void Healing()
     {
-        _objHealing.SetActive(player.isHealing);
+        currentHealth += 2;
+        currentHealth = currentHealth > maxHealth ? maxHealth : currentHealth;
 
-        if (player.isHealing && currentHealth < maxHealth && currentHealing >= 0.1f)
-        {
-            currentHealth += 2;
-            currentHealing -= 1;
+        currentHealing -= 1;
 
-            SetHealth(currentHealth);
-            SetHealing(currentHealing);
-            CinemachineShake.instance.ShakeCamera(3f, 0.15f);
-        }
-        else
-        {
-            player.isHealing = false;
-        }
+        SetHealth(currentHealth);
+        SetHealing(currentHealing);
     }
 
     public void ManaConsumption(int consume)

@@ -50,9 +50,6 @@ public class PlayerAnimations : MonoBehaviour
         //WallSlide
         animator.SetBool("IsWallSliding", player.isWallSliding);
 
-        //Healing
-        animator.SetBool("Healing", player.isHealing);
-
         //Grid
         animator.SetBool("IsGriding", player.isGriding);
         animator.SetBool("GridMove", xVelocity != 0 || yVelocity != 0 && player.isGriding);
@@ -99,29 +96,21 @@ public class PlayerAnimations : MonoBehaviour
     public void AnimAttack()
     {
         animator.Play("Player_Katana");
-        //animator.SetTrigger("Attack");
     }
 
     public void AnimDash()
     {
         animator.Play("Player_Dash");
-        //animator.SetTrigger("Parry");
+    }
+
+    public void AnimHealing()
+    {
+        animator.Play("Player_Healing");
     }
 
     public void OnAirCut()
     {
         animator.SetBool("AirCut", true);
-    }
-
-    void StopAirCut()
-    { //chamado na animação de Air Cut
-        player.playerInputs.pressRightTrigger = false;
-        animator.SetBool("AirCut", false);
-    }
-
-    public void OnHealing()
-    {
-        animator.SetTrigger("Healing");
     }
 
     public void OnDead()
