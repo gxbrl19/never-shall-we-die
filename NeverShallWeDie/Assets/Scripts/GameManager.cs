@@ -16,7 +16,6 @@ public class PlayerData
     public List<Items> items;
     public int hpMax;
     public int hlMax;
-    public int hpMpLevel;
     public int gold;
     public int katanaLevel;
     public int[] flags;
@@ -68,7 +67,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int _currentHL; //usado para manter o HL na troca de cena
     public int _hpMax;
     public int _hlMax;
-    public int _hpHlLevel;
     public int _gold; //total de gold coletado
     [HideInInspector] public int _katanaLevel;
 
@@ -147,7 +145,6 @@ public class GameManager : MonoBehaviour
 
         _hpMax = 4;
         _hlMax = 2;
-        _hpHlLevel = 1;
         _katanaLevel = 1;
 
         LoadBasic();
@@ -161,8 +158,8 @@ public class GameManager : MonoBehaviour
 
         _navigator = "MEET"; //TODO: - passar para o MEET ao terminar a demo (OTHER para a demo)
         _shipwright = "COMPLETE"; //DEMO - passar para o COMPLETE ao terminar a demo
-        _witch = "CREW"; //TODO: - passar para o MEET ao terminar a demo
-        _blacksmith = "CREW"; //TODO: - passar para o MEET ao terminar a demo
+        _witch = "MEET"; //TODO: - passar para o MEET ao terminar a demo
+        _blacksmith = "MEET"; //TODO: - passar para o MEET ao terminar a demo
     }
 
     void Update()
@@ -197,7 +194,6 @@ public class GameManager : MonoBehaviour
         _data.items = _inventory;
         _data.hpMax = _hpMax;
         _data.hlMax = _hlMax;
-        _data.hpMpLevel = _hpHlLevel;
         _data.gold = _gold;
         _data.katanaLevel = _katanaLevel;
 
@@ -291,7 +287,6 @@ public class GameManager : MonoBehaviour
             _inventory = _data.items;
             _hpMax = _data.hpMax;
             _hlMax = _data.hlMax;
-            _hpHlLevel = _data.hpMpLevel;
             _gold = _data.gold;
             _katanaLevel = _data.katanaLevel;
 

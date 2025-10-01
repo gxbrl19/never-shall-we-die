@@ -25,25 +25,6 @@ public class Player : MonoBehaviour
     private float normalFallSpeed = 0f;
     private float speedParachute = 20f;
 
-    //Skills
-    [HideInInspector] public float timeForSkills;
-    [HideInInspector] public float impulseForce = 35f;
-
-    //Air Gem
-    [HideInInspector] public float timeAirGem;
-    [BoxGroup("GameObjects")] public Impulse _ImpulseEffect;
-    [BoxGroup("Components")] public Transform _airGemPoint;
-
-
-    //Water Gem
-    [HideInInspector] public float timeWaterGem;
-    private float waterSpinForce = 10f;
-
-    //Fire Gem
-    [HideInInspector] public float timeFireGem;
-    [BoxGroup("GameObjects")] public AirCut _fireGem;
-    [BoxGroup("Components")] public Transform _fireGemPoint;
-
     //States
     [HideInInspector] public bool canMove = true;
     [HideInInspector] public bool canGrab;
@@ -51,6 +32,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isJumping;
     [HideInInspector] public bool isAttacking;
     [HideInInspector] public bool isDashing;
+    [HideInInspector] public bool isImpulsing;
     [HideInInspector] public bool isWallSliding;
     [HideInInspector] public bool isHealing;
     [HideInInspector] public bool isGrabing;
@@ -62,9 +44,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool onWater;
     [HideInInspector] public bool onHit = false;
     [HideInInspector] public bool onClimbing;
-    [HideInInspector] public bool onFireSpecial = false;
-    [HideInInspector] public bool onWaterSpecial = false;
-    [HideInInspector] public bool onAirSpecial = false;
     [HideInInspector] public bool newSkillCollected;
     [HideInInspector] public bool isDead = false;
 
@@ -90,25 +69,20 @@ public class Player : MonoBehaviour
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
-        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
-        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
-        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
-        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Knife)) { PlayerEquipment.instance.equipments.Add(Equipments.Knife); }
-        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Bomb)) { PlayerEquipment.instance.equipments.Add(Equipments.Bomb); }
-        if (!PlayerSkills.instance.skills.Contains(Skills.Dash)) { PlayerSkills.instance.skills.Add(Skills.Dash); }
-        if (!PlayerSkills.instance.skills.Contains(Skills.Slide)) { PlayerSkills.instance.skills.Add(Skills.Slide); }
-        if (!PlayerSkills.instance.skills.Contains(Skills.Impulse)) { PlayerSkills.instance.skills.Add(Skills.Impulse); }
+        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
+        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Knife)) { PlayerEquipment.instance.equipments.Add(Equipments.Knife); }
+        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Bomb)) { PlayerEquipment.instance.equipments.Add(Equipments.Bomb); }
+        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
+        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
+        //if (!PlayerSkills.instance.skills.Contains(Skills.Dash)) { PlayerSkills.instance.skills.Add(Skills.Dash); }
+        //if (!PlayerSkills.instance.skills.Contains(Skills.Slide)) { PlayerSkills.instance.skills.Add(Skills.Slide); }
+        //if (!PlayerSkills.instance.skills.Contains(Skills.Impulse)) { PlayerSkills.instance.skills.Add(Skills.Impulse); }
     }
 
     void Start()
     {
         onWater = false;
         isDead = false;
-
-        timeForSkills = 3f;
-        timeFireGem = timeForSkills;
-        timeWaterGem = timeForSkills;
-        timeAirGem = timeForSkills;
 
         if (_scriptablePosition.SceneTransition)
         {
@@ -127,20 +101,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        //contagem das skills
-        timeFireGem += Time.deltaTime;
-        timeWaterGem += Time.deltaTime;
-        timeAirGem += Time.deltaTime;
-
         OnHealing();
     }
 
     void FixedUpdate()
     {
         OnParachute();
-
-        //Special Attacks
-        //WaterSpin();
     }
 
     public void CancelMovesOnHit()
@@ -251,55 +217,6 @@ public class Player : MonoBehaviour
         _powerPickup.SetActive(false);
     }
 
-    #endregion
-
-    #region Skills
-
-    public void AirGem()
-    {
-        Vector3 _scale = _ImpulseEffect.transform.localScale;
-        _scale.x = transform.localScale.x;
-        _ImpulseEffect.transform.localScale = _scale;
-
-        Instantiate(_ImpulseEffect.gameObject, _airGemPoint.position, _airGemPoint.rotation);
-    }
-    public void AirCut() //chamado na animação de AirCut
-    {
-        if (isDead || !canMove)
-            return;
-
-        _fireGem._direction = playerMovement.playerDirection;
-
-        Vector3 _scale = _fireGem.transform.localScale;
-        _scale.x = transform.localScale.x;
-        _fireGem.transform.localScale = _scale;
-
-        Instantiate(_fireGem.gameObject, _fireGemPoint.position, _fireGemPoint.rotation);
-    }
-
-    void WaterSpin()
-    {
-        if (isDead || !canMove)
-            return;
-
-        /*if (playerInputs.pressLeftTrigger && onWater && PlayerSkills.instance.skills.Contains(Skills.WaterGem))
-        {
-            gameObject.layer = LayerMask.NameToLayer("WaterSpin");
-            onWaterSpecial = true;
-
-            if (playerMovement.playerDirection < 0)
-                rb.velocity = Vector2.left * waterSpinForce;
-            else if (playerMovement.playerDirection > 0)
-                rb.velocity = Vector2.right * waterSpinForce;
-        }*/
-    }
-
-    public void FinishWaterSpin() //chamado também na animação de Water Spin
-    {
-        onWaterSpecial = false;
-        playerInputs.pressLeftTrigger = false;
-        gameObject.layer = LayerMask.NameToLayer("Player");
-    }
     #endregion
 
     public void CreateRecoveryEffect()

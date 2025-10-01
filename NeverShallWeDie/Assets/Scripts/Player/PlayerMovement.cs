@@ -16,10 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private float groundDistance = 0.3f;
 
     //Jump
-    private float jumpForce = 16f;
-    private float jumpHoldForce = 1.7f;
-    private float jumpHoldDuration = 0.17f;
-    private float jumpTime;
+    private float jumpForce = 30f;
     private float ghostDuration = 0.15f;
     private float ghostTime;
 
@@ -116,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         HandleWallSlide();
+        HandleImpulse();
     }
 
 
@@ -147,7 +145,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 player.isGrounded = true;
                 player.playerInputs.pressParachute = false;
-                player.onAirSpecial = false;
             }
 
             if (player.rb.velocity.y <= 0.0f) //queda
@@ -258,12 +255,12 @@ public class PlayerMovement : MonoBehaviour
 
     void SlopeCheckVertical(Vector2 checkPos)
     {
-        RaycastHit2D _hit = Physics2D.Raycast(checkPos, Vector2.down, slopeCheckDistance, player._groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(checkPos, Vector2.down, slopeCheckDistance, player._groundLayer);
 
-        if (_hit)
+        if (hit)
         {
-            slopeNormalPerp = Vector2.Perpendicular(_hit.normal).normalized;
-            slopeDownAngle = Vector2.Angle(_hit.normal, Vector2.up);
+            slopeNormalPerp = Vector2.Perpendicular(hit.normal).normalized;
+            slopeDownAngle = Vector2.Angle(hit.normal, Vector2.up);
 
             if (slopeDownAngle != slopeDownAngleOld)
             {
@@ -272,8 +269,8 @@ public class PlayerMovement : MonoBehaviour
 
             slopeDownAngleOld = slopeDownAngle;
 
-            Debug.DrawRay(_hit.point, slopeNormalPerp, Color.green);
-            Debug.DrawRay(_hit.point, _hit.normal, Color.yellow);
+            Debug.DrawRay(hit.point, slopeNormalPerp, Color.green);
+            Debug.DrawRay(hit.point, hit.normal, Color.yellow);
         }
 
         if (player.onSlope && (player.playerInputs.horizontal == 0.0f || player.onSlope && player.playerInputs.pressAttack || player.isHealing))
@@ -290,38 +287,38 @@ public class PlayerMovement : MonoBehaviour
     #region Jump
     void JumpControl()
     {
-        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.onAirSpecial && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isDashing && !player.onAirSpecial) //pulo comum
+        if (player.isAttacking) return;
+
+        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isImpulsing && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isDashing) //pulo comum
         {
-            player.isJumping = true;
             player.playerInputs.pressJump = false;
+            player.isJumping = true;
 
             player.rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-            jumpTime = Time.time + jumpHoldDuration;
 
             ghostTime = Time.time;
             player.playerAudio.PlayJump();
             CreateDust(1);
         }
-        else if (!player.isGrounded && player.onAirSpecial && !player.onWater && !player.onClimbing && !player.isHealing && !player.isDashing) //air gem
+        else if (player.playerInputs.pressJump && !player.isGrounded && !player.onLedge && !player.isImpulsing && !player.onWater && !player.onClimbing && !player.isHealing && !player.isDashing && player.onBridge)
         {
-            player.onAirSpecial = false;
             player.playerInputs.pressJump = false;
+            player.isImpulsing = true;
 
             player.rb.velocity = Vector2.zero;
-            player.rb.AddForce(Vector2.up * player.impulseForce, ForceMode2D.Impulse);
-            //player.AirGem();
+            player.rb.AddForce(new Vector2(player.rb.velocity.x, jumpForce - 5f), ForceMode2D.Impulse);
+
             player.playerAudio.PlayJump();
         }
         else if (player.playerInputs.pressJump && player.onWater && canSwin && !player.onLedge) // na água
         {
             if (player.playerCollision.outWaterHit && player.playerCollision.inWaterHit)
             {
-                player.isJumping = true;
                 player.playerInputs.pressJump = false;
+                player.isJumping = true;
+
                 player.rb.velocity = Vector2.zero;
                 player.rb.AddForce(Vector2.up * jumpOutWater, ForceMode2D.Impulse);
-                jumpTime = Time.time + jumpHoldDuration;
                 ghostTime = Time.time;
                 player.playerAudio.PlayJump();
                 player.playerAudio.PlayWaterSplash();
@@ -339,8 +336,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (player.playerInputs.pressJump && player.isWallSliding) // pulo da parede
         {
-            player.isJumping = true;
             player.playerInputs.pressJump = false;
+            player.isJumping = true;
 
             wallJumpLockCounter = wallJumpLockTime; //bloqueia input horizontal por um tempo
 
@@ -355,34 +352,21 @@ public class PlayerMovement : MonoBehaviour
             player.isJumping = true;
             player.playerInputs.pressJump = false;
 
-            player.rb.AddForce(new Vector2((jumpForce + 2f) * -playerDirection, jumpForce + 7f), ForceMode2D.Impulse);
+            player.rb.AddForce(new Vector2((jumpForce + 2f) * -playerDirection, jumpForce - 5f), ForceMode2D.Impulse);
         }
         else if (player.playerInputs.pressJump && (player.onClimbing || player.isGriding) && (TouchingVine() || TouchingLadder() || TouchingGrid())) //pulo da LADDER ou VINE
         {
+            player.playerInputs.pressJump = false;
+            player.isJumping = true;
+
             FinishClimb();
             FinishGrid();
-            player.isJumping = true;
+
             player.playerInputs.vertical = 0f;
             player.rb.velocity = Vector2.zero;
             player.rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            jumpTime = Time.time + jumpHoldDuration;
             player.playerAudio.PlayJump();
         }
-
-        if (player.isJumping)
-        {
-            if (player.playerInputs.jumpHeld)
-            {
-                player.rb.AddForce(Vector2.up * jumpHoldForce, ForceMode2D.Impulse);
-            }
-
-            if (jumpTime <= Time.time)
-            {
-                player.isJumping = false;
-            }
-        }
-
-        player.playerInputs.pressJump = false;
     }
     #endregion
 
@@ -418,6 +402,16 @@ public class PlayerMovement : MonoBehaviour
         {
             player.isWallSliding = false;
         }
+    }
+    #endregion
+
+    #region Impulse
+    void HandleImpulse()
+    {
+        if (!player.isImpulsing) return;
+
+        if (player.isGrounded || player.onLedge || player.onWater || player.onClimbing || player.isHealing || player.isDashing || player.isAttacking)
+            player.isImpulsing = false;
     }
     #endregion
 
@@ -693,13 +687,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressHealing || player.onWaterSpecial || player.isAttacking || player.isDashing)
-            return;
+        if (player.isDead || !player.canMove || player.isGrabing || player.playerInputs.pressHealing || player.isAttacking || player.isDashing) return;
 
         if (player.isGrounded)
-        {
             CreateDust(-1);
-        }
 
         player.playerMovement.playerDirection *= -1;
 
@@ -710,8 +701,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void CreateDust(int dir)
     {
-        if (player.onWater)
-            return;
+        if (player.onWater) return;
 
         Vector3 scale = player._dust.transform.localScale;
         Vector3 position = player._groundCheck.position;

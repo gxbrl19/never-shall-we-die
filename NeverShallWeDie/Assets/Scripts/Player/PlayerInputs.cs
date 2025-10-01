@@ -10,7 +10,6 @@ public class PlayerInputs : MonoBehaviour
     private float _horizontal_r;
     private float _vertical_r;
     private bool _pressJump;
-    private bool _jumpHeld;
     private bool _pressDash;
     private bool _pressAttack;
     private bool _pressHealing;
@@ -51,12 +50,6 @@ public class PlayerInputs : MonoBehaviour
     {
         get { return _pressJump; }
         set { _pressJump = value; }
-    }
-
-    public bool jumpHeld
-    {
-        get { return _jumpHeld; }
-        set { _jumpHeld = value; }
     }
 
     public bool pressAttack
@@ -115,7 +108,10 @@ public class PlayerInputs : MonoBehaviour
 
     public float GetHorizontal()
     {
-        if (player.isDead || player.canMove == false || player.newSkillCollected || Time.timeScale == 0f)
+        if (player.isDead
+        || player.canMove == false
+        || player.newSkillCollected
+        || Time.timeScale == 0f)
             return 0f; //bloqueia o uso do input, mas não a leitura
 
         return rawInput;
@@ -178,18 +174,14 @@ public class PlayerInputs : MonoBehaviour
     {
         if (player.isDead || player.canMove == false || Time.timeScale == 0f) return;
 
-        if (player.isGrounded || player.onLedge || player.isWallSliding || player.onClimbing || player.onWater || player.isGriding)
-        {
-            if (callback.started)
-                _pressJump = true;
+        bool jump = player.isGrounded || player.onLedge || player.isWallSliding || player.onClimbing || player.onWater || player.isGriding;
+        bool impulse = !player.isGrounded && !player.onLedge && !player.isWallSliding && !player.onClimbing && !player.onWater && !player.isGriding && PlayerSkills.instance.skills.Contains(Skills.Impulse);
 
-            _jumpHeld = callback.performed;
-        }
-        else if (callback.started && PlayerSkills.instance.skills.Contains(Skills.Impulse) && !player.isGrounded && !player.onWater)
-        {
-            _pressLeftTrigger = true;
-            player.onAirSpecial = true;
-        }
+        if (callback.started)
+            _pressJump = jump || impulse;
+
+        if (callback.canceled)
+            _pressJump = false;
     }
 
     public void ButtonNorth(InputAction.CallbackContext _callback)
@@ -218,7 +210,7 @@ public class PlayerInputs : MonoBehaviour
     public void ButtonWest(InputAction.CallbackContext callback)
     {
         if (player.isDead || player.isAttacking || _pressHealing || Time.timeScale == 0f || player.onClimbing || player.onLedge
-        || player.onHit || player.isGrabing || player.isGriding || player.isDashing || player.onAirSpecial || !player.canMove
+        || player.onHit || player.isGrabing || player.isGriding || player.isDashing || !player.canMove
         || !PlayerEquipment.instance.equipments.Contains(Equipments.Katana))
             return;
 
@@ -241,7 +233,6 @@ public class PlayerInputs : MonoBehaviour
         && !player.onLedge
         && !player.isGrabing
         && !player.isDashing
-        && !player.onAirSpecial
         && player.playerHealth.currentHealing > 0;
 
         if (callback.started && canHealing)
@@ -278,7 +269,7 @@ public class PlayerInputs : MonoBehaviour
 
     public void RightTrigger(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.isDashing || player.canMove == false || player.onAirSpecial || player.isAttacking || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
+        if (player.isDead || player.isDashing || player.canMove == false || player.isAttacking || player.onWater || player.canGrab || Time.timeScale == 0f || player.onHit)
             return;
 
         if (callback.started)

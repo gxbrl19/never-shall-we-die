@@ -167,7 +167,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         StatsController();
-        SkillControl();
     }
 
     #region HUD
@@ -196,13 +195,6 @@ public class UIManager : MonoBehaviour
         _staminaBar.color = playerMovement.isExhausted ? Color.red : Color.green;
 
         _txtGold.text = GameManager.instance._gold.ToString();
-    }
-
-    void SkillControl()
-    {
-        _fire.fillAmount = player.timeFireGem / player.timeForSkills;
-        _water.fillAmount = player.timeWaterGem / player.timeForSkills;
-        _air.fillAmount = player.timeAirGem / player.timeForSkills;
     }
 
     public void SaveEnabled()
@@ -678,10 +670,10 @@ public class UIManager : MonoBehaviour
 
     public void ActivePanelHpMp()
     {
-        _UpHpMpPrice = _txtInitialHpMpPrice * GameManager.instance._hpHlLevel; //aumentando o preço conforme o level
+        //_UpHpMpPrice = _txtInitialHpMpPrice * GameManager.instance._hpHlLevel; //aumentando o preço conforme o level
         _inUIScreen = true;
         player.DisableControls();
-        _txtCurrHpMpLvl.text = GameManager.instance._hpHlLevel.ToString();
+        //_txtCurrHpMpLvl.text = GameManager.instance._hpHlLevel.ToString();
         _txtHpMpPrice.text = _UpHpMpPrice.ToString();
         _pnlUpHpMp.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_buttonYesUpHpMp);
@@ -690,11 +682,11 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeHP() //chamado no botão HP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice && GameManager.instance._hpHlLevel < 6)
+        if (GameManager.instance._gold >= _UpHpMpPrice && GameManager.instance._hpMax < 8)
         {
             _inUIScreen = false;
             player.EnabledControls();
-            GameManager.instance._hpHlLevel += 1;
+            GameManager.instance._hpMax += 1;
             playerHealth.maxHealth += 1;
             GameManager.instance._hpMax = playerHealth.maxHealth;
             _pnlUpHpMp.SetActive(false);
@@ -714,11 +706,11 @@ public class UIManager : MonoBehaviour
 
     public void UpgradeMP() //chamado no botão MP do pnl_upHpMp (UI Manager)
     {
-        if (GameManager.instance._gold >= _UpHpMpPrice && GameManager.instance._hpHlLevel < 6)
+        if (GameManager.instance._gold >= _UpHpMpPrice && GameManager.instance._hlMax < 4)
         {
             _inUIScreen = false;
             player.EnabledControls();
-            GameManager.instance._hpHlLevel += 1;
+            GameManager.instance._hlMax += 1;
             playerHealth.maxHealing += 1;
             GameManager.instance._hlMax = playerHealth.maxHealing;
             _pnlUpHpMp.SetActive(false);

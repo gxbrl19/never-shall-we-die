@@ -36,9 +36,4 @@ public class EquipmentObject : ScriptableObject
     [BoxGroup("Info")]
     [VerticalGroup("Info/Stats")]
     [TextArea(5, 10)] public string engDescription;
-
-    public int damager1;
-    public int damager2;
-    public int damager3;
-    public int damager4;
 }

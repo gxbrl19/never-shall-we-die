@@ -30,7 +30,7 @@ public class PlayerAnimations : MonoBehaviour
         animator.SetBool("IsGrounded", player.isGrounded);
 
         //Fall
-        if (!player.onAirSpecial)
+        if (!player.isImpulsing)
             animator.SetFloat("Fall", player.rb.velocity.y);
 
         //Walk
@@ -40,15 +40,17 @@ public class PlayerAnimations : MonoBehaviour
         animator.SetBool("IsClimbing", player.onClimbing);
         animator.SetFloat("Vertical", Mathf.Abs(yVelocity));
 
-
         //Parachute
         animator.SetBool("IsParachuting", player.playerInputs.pressParachute);
 
         //Ledge
         animator.SetBool("IsWalling", player.onLedge);
 
-        //WallSlide
+        //Slide
         animator.SetBool("IsWallSliding", player.isWallSliding);
+
+        //Impulse
+        animator.SetBool("IsImpulsing", player.isImpulsing);
 
         //Grid
         animator.SetBool("IsGriding", player.isGriding);
@@ -56,12 +58,6 @@ public class PlayerAnimations : MonoBehaviour
 
         //Swim
         if (player.onWater) { animator.SetBool("IsSwimming", true); } else { animator.SetBool("IsSwimming", false); }
-
-        //Water Spin
-        animator.SetBool("WaterSpin", player.onWaterSpecial);
-
-        //Air Gem
-        animator.SetBool("AirGem", player.onAirSpecial);
 
         //Grab
         animator.SetBool("IsGrabing", player.isGrabing);
@@ -98,14 +94,14 @@ public class PlayerAnimations : MonoBehaviour
         animator.Play("Player_Katana");
     }
 
-    public void AnimDash()
-    {
-        animator.Play("Player_Dash");
-    }
-
     public void AnimHealing()
     {
         animator.Play("Player_Healing");
+    }
+
+    public void AnimDash()
+    {
+        animator.Play("Player_Dash");
     }
 
     public void OnAirCut()

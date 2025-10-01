@@ -5,34 +5,16 @@ using UnityEngine;
 
 public class Katana : MonoBehaviour
 {
-    [SerializeField] private EquipmentObject _equipmentObject;
-    private Damager _damager;
-    private int _level;
+    [SerializeField] private EquipmentObject equipmentObject;
+    private Damager damager;
 
     private void Awake()
     {
-        _damager = GetComponent<Damager>();
+        damager = GetComponent<Damager>();
     }
 
     private void Update()
     {
-        _level = GameManager.instance._katanaLevel;
-
-        switch (_level)
-        {
-            default:
-            case 1:
-                _damager.attackPower = _equipmentObject.damager1;
-                break;
-            case 2:
-                _damager.attackPower = _equipmentObject.damager2;
-                break;
-            case 3:
-                _damager.attackPower = _equipmentObject.damager3;
-                break;
-            case 4:
-                _damager.attackPower = _equipmentObject.damager4;
-                break;
-        }
+        damager.attackPower = GameManager.instance._katanaLevel;
     }
 }

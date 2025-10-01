@@ -934,7 +934,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.625, y: 1.9375}
+  m_Size: {x: 1.75, y: 1.9375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1283,24 +1283,13 @@ MonoBehaviour:
   _powerPickup: {fileID: 9056689326667320452}
   _dust: {fileID: 2433915885738270050, guid: e76119983bc3ad942bb43f70e9f7a201, type: 3}
   _recoveryEffect: {fileID: 8334568750684773814, guid: af97633c12733e54cb5109b0d6ba86ba, type: 3}
-  timeForSkills: 0
-  impulseForce: 35
-  timeAirGem: 0
-  _ImpulseEffect: {fileID: 8710696165210416558, guid: 0f7fd7d80953bd04ca05f850f92cd296, type: 3}
-  _airGemPoint: {fileID: 887894573211247682}
-  airMana: 0
-  timeWaterGem: 0
-  waterMana: 0
-  timeFireGem: 0
-  _fireGem: {fileID: 0}
-  _fireGemPoint: {fileID: 2596015545165567744}
-  fireMana: 0
   canMove: 1
   canGrab: 0
   isGrounded: 0
   isJumping: 0
   isAttacking: 0
   isDashing: 0
+  isImpulsing: 0
   isWallSliding: 0
   isHealing: 0
   isGrabing: 0
@@ -1312,9 +1301,6 @@ MonoBehaviour:
   onWater: 0
   onHit: 0
   onClimbing: 0
-  onFireSpecial: 0
-  onWaterSpecial: 0
-  onAirSpecial: 0
   newSkillCollected: 0
   isDead: 0
   rb: {fileID: 0}
@@ -1355,11 +1341,6 @@ MonoBehaviour:
   maxStamina: 5
   currentStamina: 0
   isExhausted: 0
-  dashForce: 20
-  dashTimer: 0
-  dashDuration: 0.2
-  dashCooldownTimer: 0
-  dashCooldown: 1
   ladder: {fileID: 0}
   vine: {fileID: 0}
   bridge: {fileID: 0}
@@ -1416,9 +1397,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
-  maxMana: 0
-  currentMana: 0
-  _objHealing: {fileID: 934120453744383874}
+  maxHealing: 0
+  currentHealing: 0
   _particleHit: {fileID: 7245457253207120127, guid: d18fdaf3aa663c246ade022014e11381, type: 3}
   _damageColor: {r: 0.972549, g: 0.27058825, b: 0.27058825, a: 1}
 --- !u!114 &4984949831048678110
@@ -1659,7 +1639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9bdeaf239b74c428f638cd67f31361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _equipmentObject: {fileID: 11400000, guid: 6e33cd5ac01cf094db50eddc774140b1, type: 2}
+  equipmentObject: {fileID: 11400000, guid: 6e33cd5ac01cf094db50eddc774140b1, type: 2}
 --- !u!1 &9025100403178150623
 GameObject:
   m_ObjectHideFlags: 0
