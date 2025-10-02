@@ -37,7 +37,6 @@ public class CheckSkills : MonoBehaviour
             UIManager.instance._buttonSkillID = _buttonID;
             UIManager.instance._pnlSkills.SetActive(true);
             UIManager.instance._nameSkill.text = _skill.nameSkill;
-            UIManager.instance._imgParchment.sprite = _skill.parchment;
             UIManager.instance._keyboardSkill.sprite = _skill.keyboardButton;
             UIManager.instance._gamepadSkill.sprite = _skill.gamepadButton;
         }

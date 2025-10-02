@@ -69,8 +69,8 @@ public class PlayerMovement : MonoBehaviour
     //Water
     private float waterGravity = 0.4f;
     private float waterSpeed = 4f;
-    private float swimForce = 3f;
-    private float jumpOutWater = 10f;
+    private float swimForce = 4f;
+    private float jumpOutWater = 20f;
     private float swinLimit = 0.2f;
 
 
@@ -300,7 +300,7 @@ public class PlayerMovement : MonoBehaviour
             player.playerAudio.PlayJump();
             CreateDust(1);
         }
-        else if (player.playerInputs.pressJump && !player.isGrounded && !player.onLedge && !player.isImpulsing && !player.onWater && !player.onClimbing && !player.isHealing && !player.isDashing && player.onBridge)
+        else if (player.playerInputs.pressJump && !player.isGrounded && !player.onLedge && !player.isImpulsing && !player.onWater && !player.onClimbing && !player.isHealing && !player.isDashing && player.onBridge) //impulse
         {
             player.playerInputs.pressJump = false;
             player.isImpulsing = true;
@@ -319,7 +319,7 @@ public class PlayerMovement : MonoBehaviour
 
                 player.rb.velocity = Vector2.zero;
                 player.rb.AddForce(Vector2.up * jumpOutWater, ForceMode2D.Impulse);
-                ghostTime = Time.time;
+
                 player.playerAudio.PlayJump();
                 player.playerAudio.PlayWaterSplash();
             }
