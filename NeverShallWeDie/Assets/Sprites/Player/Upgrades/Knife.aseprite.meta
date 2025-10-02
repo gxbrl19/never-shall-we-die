@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0d735188bb1917343a7509b838bc4a4c
+guid: 6ee132120b10c4341817032667c588c5
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638408608942069165
+  platformSettingsDirtyTick: 638454197458090395
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,58 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Katana_Frame_0
+  - name: Knife
     originalName: 
-    pivot: {x: 0.43750003, y: 0.4}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 66
-      y: 46
-      width: 16
-      height: 35
-    spriteID: 589cad3979a6c614391b8d3d213906ad
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 66, y: 46}
-  - name: Katana_Frame_1
-    originalName: 
-    pivot: {x: 0.37037036, y: 0.46875}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 49
-      width: 54
-      height: 32
-    spriteID: 7256b371f3d18a540b498fd556aa7f26
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 49}
-  - name: Katana_Frame_2
-    originalName: 
-    pivot: {x: 0.4259259, y: 0.4054054}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 54
-      height: 37
-    spriteID: 700218fa59e1ab143a254102cf079946
+      width: 22
+      height: 4
+    spriteID: 5d9347d134b5cd041993480a845e18dc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -179,95 +139,23 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Katana_Frame_3
-    originalName: 
-    pivot: {x: 0.68571436, y: 0.44117647}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 89
-      width: 35
-      height: 34
-    spriteID: 91675205d010020418af1895a686c680
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 89}
-  - name: Katana_Frame_4
-    originalName: 
-    pivot: {x: 0.68571436, y: 0.44117647}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 66
-      y: 4
-      width: 35
-      height: 34
-    spriteID: 4a342697aebcaf34c83960b110992985
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 66, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -225002488
-    name: Katana
+    guid: 1103828807
+    name: Knife
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Katana_Frame_0
+    - name: Knife
       frameIndex: 0
       cellRect:
-        x: 33
-        y: 18
-        width: 16
-        height: 35
-      spriteId: 589cad3979a6c614391b8d3d213906ad
-    - name: Katana_Frame_1
-      frameIndex: 1
-      cellRect:
-        x: 20
-        y: 17
-        width: 54
-        height: 32
-      spriteId: 7256b371f3d18a540b498fd556aa7f26
-    - name: Katana_Frame_2
-      frameIndex: 2
-      cellRect:
-        x: 17
-        y: 17
-        width: 54
-        height: 37
-      spriteId: 700218fa59e1ab143a254102cf079946
-    - name: Katana_Frame_3
-      frameIndex: 3
-      cellRect:
-        x: 16
-        y: 17
-        width: 35
-        height: 34
-      spriteId: 91675205d010020418af1895a686c680
-    - name: Katana_Frame_4
-      frameIndex: 4
-      cellRect:
-        x: 16
-        y: 17
-        width: 35
-        height: 34
-      spriteId: 4a342697aebcaf34c83960b110992985
+        x: 5
+        y: 14
+        width: 22
+        height: 4
+      spriteId: 5d9347d134b5cd041993480a845e18dc
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -333,4 +221,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 80, y: 64}
+  canvasSize: {x: 32, y: 32}

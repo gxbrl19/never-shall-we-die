@@ -14,10 +14,7 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] EventReference swim;
     [SerializeField] EventReference dash;
     [SerializeField] EventReference parachute;
-
-    [SerializeField] EventReference waterspin;
-    [SerializeField] EventReference aircut;
-
+    [SerializeField] EventReference knife;
     [SerializeField] GameObject healing;
     [SerializeField] GameObject grabing;
 
@@ -82,14 +79,9 @@ public class PlayerAudio : MonoBehaviour
         RuntimeManager.PlayOneShot(parachute);
     }
 
-    public void PlayWaterSpin() //animação
+    public void PlayKnife() //animação
     {
-        RuntimeManager.PlayOneShot(waterspin);
-    }
-
-    public void PlayAircut() //animação
-    {
-        RuntimeManager.PlayOneShot(aircut);
+        RuntimeManager.PlayOneShot(knife);
     }
 
     public void PlayGrab()

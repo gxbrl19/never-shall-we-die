@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &74950675414301187
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 887894573211247682}
-  m_Layer: 0
-  m_Name: AirGemPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &887894573211247682
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74950675414301187}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.82, y: -1.97, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8160846808588850630}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &720636584482126277
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2596015545165567744}
   m_Layer: 0
-  m_Name: FireGemtPoint
+  m_Name: KnifePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,7 +264,7 @@ Transform:
   m_GameObject: {fileID: 4281653560344317244}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.971, y: 0, z: 0}
+  m_LocalPosition: {x: 0.971, y: 0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -764,37 +733,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &7621714909395054388
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4342493059249266109}
-  m_Layer: 0
-  m_Name: TornadoPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4342493059249266109
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7621714909395054388}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.95, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8160846808588850630}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8160846807967464023
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,8 +819,6 @@ Transform:
   - {fileID: 8841459981562994291}
   - {fileID: 2769497171945588618}
   - {fileID: 2596015545165567744}
-  - {fileID: 887894573211247682}
-  - {fileID: 4342493059249266109}
   - {fileID: 6095420535408145094}
   - {fileID: 4948423605938868825}
   - {fileID: 8996096827250974117}
@@ -934,7 +870,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.75, y: 1.9375}
+  m_Size: {x: 0.26, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1283,6 +1219,8 @@ MonoBehaviour:
   _powerPickup: {fileID: 9056689326667320452}
   _dust: {fileID: 2433915885738270050, guid: e76119983bc3ad942bb43f70e9f7a201, type: 3}
   _recoveryEffect: {fileID: 8334568750684773814, guid: af97633c12733e54cb5109b0d6ba86ba, type: 3}
+  _knife: {fileID: 7674776021567772950, guid: 1d231f750fdc7224499d32169bd29f44, type: 3}
+  _knifePoint: {fileID: 2596015545165567744}
   canMove: 1
   canGrab: 0
   isGrounded: 0
@@ -1528,20 +1466,13 @@ MonoBehaviour:
       Data3: 117808061
       Data4: -1682933477
     Path: event:/generic/player/parachute
-  waterspin:
+  knife:
     Guid:
-      Data1: -783996541
-      Data2: 1273044893
-      Data3: 734022541
-      Data4: 693463425
-    Path: event:/generic/player/water_spin
-  aircut:
-    Guid:
-      Data1: 794703590
-      Data2: 1306690194
-      Data3: -219619432
-      Data4: -1297970836
-    Path: event:/generic/player/aircut
+      Data1: -1211567334
+      Data2: 1103070275
+      Data3: 507047303
+      Data4: -120740017
+    Path: event:/sfx/gameplay/SFX_COMBAT_pirate_sword_01
   healing: {fileID: 6331946840236455516}
   grabing: {fileID: 3182375604534030408}
 --- !u!1 &8160846809661711543

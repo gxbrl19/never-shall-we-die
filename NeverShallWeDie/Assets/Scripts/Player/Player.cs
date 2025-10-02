@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     //Parachute
     private float normalFallSpeed = 0f;
     private float speedParachute = 20f;
+    [BoxGroup("GameObjects")] public Knife _knife;
+    [BoxGroup("Components")] public Transform _knifePoint;
 
     //States
     [HideInInspector] public bool canMove = true;
@@ -141,6 +143,18 @@ public class Player : MonoBehaviour
     public void FinishAttack() //chamado também na animação de ataque da katana
     {
         isAttacking = false;
+    }
+    #endregion
+
+    #region Knife
+    public void ShotKnife() //chamada na animação
+    {
+        if (isDead || !canMove)
+            return;
+
+        _knife.dir = playerMovement.playerDirection;
+
+        Instantiate(_knife.gameObject, _knifePoint.position, _knifePoint.rotation);
     }
     #endregion
 

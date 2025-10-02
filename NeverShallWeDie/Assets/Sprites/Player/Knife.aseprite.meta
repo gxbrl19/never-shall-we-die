@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0d735188bb1917343a7509b838bc4a4c
+guid: 7a3431a0b710d5648bd1433275e36432
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638408608942069165
+  platformSettingsDirtyTick: 638949510412220091
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,58 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Katana_Frame_0
+  - name: Knife_Frame_0
     originalName: 
-    pivot: {x: 0.43750003, y: 0.4}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 66
-      y: 46
-      width: 16
-      height: 35
-    spriteID: 589cad3979a6c614391b8d3d213906ad
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 66, y: 46}
-  - name: Katana_Frame_1
-    originalName: 
-    pivot: {x: 0.37037036, y: 0.46875}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 49
-      width: 54
-      height: 32
-    spriteID: 7256b371f3d18a540b498fd556aa7f26
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 49}
-  - name: Katana_Frame_2
-    originalName: 
-    pivot: {x: 0.4259259, y: 0.4054054}
+    pivot: {x: 0.55263156, y: 0.46875}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 54
-      height: 37
-    spriteID: 700218fa59e1ab143a254102cf079946
+      width: 38
+      height: 32
+    spriteID: 1ceb1fac6da23e44dbf5f9081137e2f5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -179,18 +139,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Katana_Frame_3
+  - name: Knife_Frame_1
     originalName: 
-    pivot: {x: 0.68571436, y: 0.44117647}
+    pivot: {x: 0.59259254, y: 0.46875}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 89
-      width: 35
-      height: 34
-    spriteID: 91675205d010020418af1895a686c680
+      y: 44
+      width: 27
+      height: 32
+    spriteID: 54ee6b1fdb8367e4aaf2196e5158d8db
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -198,19 +158,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 89}
-  - name: Katana_Frame_4
+    uvTransform: {x: 4, y: 44}
+  - name: Knife_Frame_2
     originalName: 
-    pivot: {x: 0.68571436, y: 0.44117647}
+    pivot: {x: 0.5769231, y: 0.46875}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 66
-      y: 4
-      width: 35
-      height: 34
-    spriteID: 4a342697aebcaf34c83960b110992985
+      x: 4
+      y: 84
+      width: 26
+      height: 32
+    spriteID: bda025835d325c84283e9d64cf0c492a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -218,56 +178,68 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 66, y: 4}
+    uvTransform: {x: 4, y: 84}
+  - name: Knife_Frame_3
+    originalName: 
+    pivot: {x: 0.4999999, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 4
+      width: 6
+      height: 1
+    spriteID: da758d36e569fe4449cabaf7d0756e8e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -225002488
-    name: Katana
+    guid: 1103828807
+    name: Knife
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Katana_Frame_0
+    - name: Knife_Frame_0
       frameIndex: 0
       cellRect:
-        x: 33
-        y: 18
-        width: 16
-        height: 35
-      spriteId: 589cad3979a6c614391b8d3d213906ad
-    - name: Katana_Frame_1
+        x: 19
+        y: 17
+        width: 38
+        height: 32
+      spriteId: 1ceb1fac6da23e44dbf5f9081137e2f5
+    - name: Knife_Frame_1
       frameIndex: 1
       cellRect:
-        x: 20
+        x: 24
         y: 17
-        width: 54
+        width: 27
         height: 32
-      spriteId: 7256b371f3d18a540b498fd556aa7f26
-    - name: Katana_Frame_2
+      spriteId: 54ee6b1fdb8367e4aaf2196e5158d8db
+    - name: Knife_Frame_2
       frameIndex: 2
       cellRect:
-        x: 17
+        x: 25
         y: 17
-        width: 54
-        height: 37
-      spriteId: 700218fa59e1ab143a254102cf079946
-    - name: Katana_Frame_3
+        width: 26
+        height: 32
+      spriteId: bda025835d325c84283e9d64cf0c492a
+    - name: Knife_Frame_3
       frameIndex: 3
       cellRect:
-        x: 16
-        y: 17
-        width: 35
-        height: 34
-      spriteId: 91675205d010020418af1895a686c680
-    - name: Katana_Frame_4
-      frameIndex: 4
-      cellRect:
-        x: 16
-        y: 17
-        width: 35
-        height: 34
-      spriteId: 4a342697aebcaf34c83960b110992985
+        x: 37
+        y: 32
+        width: 6
+        height: 1
+      spriteId: da758d36e569fe4449cabaf7d0756e8e
     linkedCells: []
     parentIndex: -1
   platformSettings:

@@ -104,9 +104,9 @@ public class PlayerAnimations : MonoBehaviour
         animator.Play("Player_Dash");
     }
 
-    public void OnAirCut()
+    public void AnimKnife()
     {
-        animator.SetBool("AirCut", true);
+        animator.Play("Player_Knife");
     }
 
     public void OnDead()

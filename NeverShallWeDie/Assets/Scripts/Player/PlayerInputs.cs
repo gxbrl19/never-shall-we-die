@@ -244,7 +244,22 @@ public class PlayerInputs : MonoBehaviour
 
     public void LeftShoulder(InputAction.CallbackContext callback)
     {
-        //knife
+        bool canShot = !player.isDead
+        && player.canMove
+        && !player.isAttacking
+        && !player.isHealing
+        && Time.timeScale != 0
+        && !player.onClimbing
+        && !player.onLedge
+        && !player.onHit
+        && !player.isGrabing
+        && !player.isGriding
+        && !player.isDashing
+        && !player.onWater
+        && PlayerEquipment.instance.equipments.Contains(Equipments.Knife);
+
+        if (callback.started && canShot)
+            player.playerAnimations.AnimKnife();
     }
 
     public void LeftTrigger(InputAction.CallbackContext callback)
