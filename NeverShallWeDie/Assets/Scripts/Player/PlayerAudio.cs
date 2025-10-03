@@ -15,6 +15,7 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] EventReference dash;
     [SerializeField] EventReference parachute;
     [SerializeField] EventReference knife;
+    [SerializeField] EventReference bomb;
     [SerializeField] GameObject healing;
     [SerializeField] GameObject grabing;
 
@@ -82,6 +83,11 @@ public class PlayerAudio : MonoBehaviour
     public void PlayKnife() //animação
     {
         RuntimeManager.PlayOneShot(knife);
+    }
+
+    public void PlayBomb() //animação
+    {
+        RuntimeManager.PlayOneShot(bomb);
     }
 
     public void PlayGrab()

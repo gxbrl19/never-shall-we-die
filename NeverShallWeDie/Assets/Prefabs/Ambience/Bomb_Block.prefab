@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8175646809048764067}
   - component: {fileID: 8079523578497949689}
   - component: {fileID: 7976416786607815405}
-  - component: {fileID: 807949089884001122}
+  - component: {fileID: 5851955741714936170}
   m_Layer: 8
-  m_Name: AirCut_Block
+  m_Name: Bomb_Block
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: -303135505
   m_SortingLayer: 2
   m_SortingOrder: 3
-  m_Sprite: {fileID: 4544332623811201207, guid: 70006fd1ae2fc444e8670d162b023515, type: 3}
+  m_Sprite: {fileID: -7694256140194225470, guid: 70006fd1ae2fc444e8670d162b023515, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.625, y: 3.5625}
+  m_Size: {x: 3, y: 3.9375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -120,12 +120,12 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.45692062, y: 1.8935738}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.6666667, y: 0}
+    pivot: {x: 0.5, y: 0.53174603}
     oldSize: {x: 3, y: 3.9375}
-    newSize: {x: 3.625, y: 3.5625}
+    newSize: {x: 3, y: 3.9375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -154,7 +154,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &807949089884001122
+--- !u!114 &5851955741714936170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,11 +163,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 75775502877950392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68f2216886bdc624a87d5650212f9474, type: 3}
+  m_Script: {fileID: 11500000, guid: f796e001912d7cb4fbdf9bd0ef161f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 0
-  _burnSound:
+  id: 0
+  destroySound:
     Guid:
       Data1: -939359448
       Data2: 1226991869
@@ -250,12 +250,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.32801437, y: 2.9212227}
-      - {x: 0.11841583, y: 3.6922035}
-      - {x: -0.82099533, y: 3.78656}
-      - {x: -1.2675171, y: 2.9106064}
-      - {x: -1.6161375, y: 1.6652677}
-      - {x: -1.9582267, y: 0.019619107}
-      - {x: 0.9406792, y: 0.008159876}
-      - {x: 0.6729498, y: 1.842865}
+    - - {x: 0.70036316, y: 1.0780983}
+      - {x: 0.527998, y: 1.7559929}
+      - {x: -0.13215065, y: 1.7200279}
+      - {x: -0.35526276, y: 1.477066}
+      - {x: -1.0017633, y: 0.17587638}
+      - {x: -1.4927897, y: -2.0469131}
+      - {x: 1.4805847, y: -2.0956075}
+      - {x: 1.2128553, y: -0.14919662}
   m_UseDelaunayMesh: 0

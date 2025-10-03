@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Bomb : MonoBehaviour
 {
     [HideInInspector] public float dir = 1;
     Rigidbody2D body;
+
+    [Header("FMOD Events")]
+    [SerializeField] EventReference explode;
 
     private void Awake()
     {
@@ -17,8 +21,8 @@ public class Bomb : MonoBehaviour
         body.AddForce(new Vector2(25f * dir, 13f), ForceMode2D.Impulse);
     }
 
-    void StopMovement()
+    public void PlaySound() //chamado na animação
     {
-        body.velocity = Vector2.zero;
+        RuntimeManager.PlayOneShot(explode);
     }
 }

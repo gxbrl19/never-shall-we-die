@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 1029474633534067468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.13, y: 0.45, z: 0}
+  m_LocalPosition: {x: 1.08, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1507,6 +1507,13 @@ MonoBehaviour:
       Data3: 507047303
       Data4: -120740017
     Path: event:/sfx/gameplay/SFX_COMBAT_pirate_sword_01
+  bomb:
+    Guid:
+      Data1: 1525677379
+      Data2: 1290658737
+      Data3: -1837999992
+      Data4: 241103502
+    Path: event:/sfx/gameplay/SFX_COMBAT_bombman_throw_bomb_01
   healing: {fileID: 6331946840236455516}
   grabing: {fileID: 3182375604534030408}
 --- !u!1 &8160846809661711543
@@ -1699,7 +1706,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.322, y: 1.105, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3534268563856617028}

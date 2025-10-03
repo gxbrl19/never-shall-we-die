@@ -22,7 +22,7 @@ public class PlayerData
     public int[] barrels;
     public int[] chests;
     public int[] ancientStones;
-    public int[] airCutblock;
+    public int[] bombBlock;
     public int[] barriersLever;
     public int[] secret;
     public int secretDrawbridge;
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int[] _barrels; //Barrels já destruídos
     [HideInInspector] public int[] _chests; //Chests já liberadas
     public int[] _ancientStones; //Daily já liberadas
-    [HideInInspector] public int[] _airCutblock; //Air Cut Blocks já destruídos
+    [HideInInspector] public int[] _bombBlock; //Air Cut Blocks já destruídos
     [HideInInspector] public int[] _barriersLever; //Barriers Lever já acionados
     [HideInInspector] public int[] _secret; //Segredo do mapa do mapa 04 (gerado aleatoriamente)
     [HideInInspector] public int _secretDrawbridge; //Item encontrado numa folha
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         }
 
         _flags = new int[16];
-        _airCutblock = new int[3]; //TODO: colocar o numero de AirCut Blocks que estarão no game
+        _bombBlock = new int[3]; //TODO: colocar o numero de Bomb Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
         _chests = new int[50]; //TODO: colocar o numero de Chests que estarão no game
         _ancientStones = new int[9];
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
         _data.barrels = _barrels;
         _data.chests = _chests;
         _data.ancientStones = _ancientStones;
-        _data.airCutblock = _airCutblock;
+        _data.bombBlock = _bombBlock;
         _data.barriersLever = _barriersLever;
 
         _data.secret = _secret;
@@ -289,7 +289,7 @@ public class GameManager : MonoBehaviour
             _barrels = _data.barrels;
             _chests = _data.chests;
             _ancientStones = _data.ancientStones;
-            _airCutblock = _data.airCutblock;
+            _bombBlock = _data.bombBlock;
             _barriersLever = _data.barriersLever;
 
             _secret = _data.secret;
