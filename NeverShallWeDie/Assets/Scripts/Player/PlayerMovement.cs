@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
     //WallJump
     [Header("Wall Jump Settings")]
-    private Vector2 wallJumpForce = new Vector2(10f, 15f);
+    private Vector2 wallJumpForce = new Vector2(10f, 20f);
     private float wallSlideSpeed = 1.6f;
     private float wallJumpLockTime = 0.25f; //tempo que bloqueia controle horizontal após pulo
     private float wallJumpLockCounter;
