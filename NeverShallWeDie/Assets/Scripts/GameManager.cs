@@ -41,11 +41,6 @@ public class PlayerData
     public string witch;
     public string blacksmith;
     public int[] maps;
-    public int hammer;
-    public int grimoire;
-    public int submarine;
-    public int propulsion;
-    public int artillery;
     public int[] bestiary;
     public int[] bosses;
 }
