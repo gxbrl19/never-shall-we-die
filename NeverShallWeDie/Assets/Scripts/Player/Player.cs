@@ -24,8 +24,14 @@ public class Player : MonoBehaviour
     //Parachute
     private float normalFallSpeed = 0f;
     private float speedParachute = 20f;
+
+    //Knife
     [BoxGroup("GameObjects")] public Knife _knife;
     [BoxGroup("Components")] public Transform _knifePoint;
+
+    //Bomb
+    [BoxGroup("GameObjects")] public Bomb _bomb;
+    [BoxGroup("Components")] public Transform _bombPoint;
 
     //States
     [HideInInspector] public bool canMove = true;
@@ -73,7 +79,7 @@ public class Player : MonoBehaviour
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Knife)) { PlayerEquipment.instance.equipments.Add(Equipments.Knife); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Bomb)) { PlayerEquipment.instance.equipments.Add(Equipments.Bomb); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Bomb)) { PlayerEquipment.instance.equipments.Add(Equipments.Bomb); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
         //if (!PlayerSkills.instance.skills.Contains(Skills.Dash)) { PlayerSkills.instance.skills.Add(Skills.Dash); }
@@ -153,8 +159,18 @@ public class Player : MonoBehaviour
             return;
 
         _knife.dir = playerMovement.playerDirection;
-
         Instantiate(_knife.gameObject, _knifePoint.position, _knifePoint.rotation);
+    }
+    #endregion
+
+    #region Bomb
+    public void ShotBomb() //chamada na animação
+    {
+        if (isDead || !canMove)
+            return;
+
+        _bomb.dir = playerMovement.playerDirection;
+        Instantiate(_bomb.gameObject, _bombPoint.position, _bombPoint.rotation);
     }
     #endregion
 

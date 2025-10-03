@@ -121,15 +121,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: BombShot_Frame_0
     originalName: 
-    pivot: {x: 0.6363636, y: 0.45714286}
+    pivot: {x: 0.40740737, y: 0.55172414}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 42
-      width: 44
-      height: 35
+      y: 39
+      width: 27
+      height: 29
     spriteID: bc4f4cac170536d4b9b9538a4413cdad
     spriteBone: []
     spriteOutline: []
@@ -138,18 +138,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 42}
+    uvTransform: {x: 4, y: 39}
   - name: BombShot_Frame_1
     originalName: 
-    pivot: {x: 0.6, y: 0.47058824}
+    pivot: {x: 0.40740737, y: 0.55172414}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 85
-      width: 40
-      height: 34
+      x: 39
+      y: 39
+      width: 27
+      height: 29
     spriteID: b6a2727f00ba6374bb706842e188946e
     spriteBone: []
     spriteOutline: []
@@ -158,18 +158,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 85}
+    uvTransform: {x: 39, y: 39}
   - name: BombShot_Frame_2
     originalName: 
-    pivot: {x: 0.33333334, y: 0.53333336}
+    pivot: {x: 0.47222227, y: 0.5925926}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 57
-      height: 30
+      width: 36
+      height: 27
     spriteID: 183a8c23ccc5fae4faa8139913fe7285
     spriteBone: []
     spriteOutline: []
@@ -181,15 +181,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: BombShot_Frame_3
     originalName: 
-    pivot: {x: 0.73684216, y: 0.43243244}
+    pivot: {x: 0.73684216, y: 0.516129}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 31
-      y: 175
+      x: 4
+      y: 76
       width: 19
-      height: 37
+      height: 31
     spriteID: d361e990141729e438481ab5b42f8ee5
     spriteBone: []
     spriteOutline: []
@@ -198,18 +198,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 31, y: 175}
+    uvTransform: {x: 4, y: 76}
   - name: BombShot_Frame_4
     originalName: 
-    pivot: {x: 0.7894737, y: 0.4}
+    pivot: {x: 0.7894737, y: 0.516129}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 31
-      y: 127
+      y: 76
       width: 19
-      height: 40
+      height: 31
     spriteID: 942c12a6fa0be7b4ca3d1857c7a485e9
     spriteBone: []
     spriteOutline: []
@@ -218,18 +218,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 31, y: 127}
+    uvTransform: {x: 31, y: 76}
   - name: BombShot_Frame_5
     originalName: 
-    pivot: {x: 0.7894737, y: 0.3902439}
+    pivot: {x: 0.7894737, y: 0.516129}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 127
+      x: 58
+      y: 76
       width: 19
-      height: 41
+      height: 31
     spriteID: 0ea9a32f73c13444ebb1830e82adcce6
     spriteBone: []
     spriteOutline: []
@@ -238,18 +238,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 127}
+    uvTransform: {x: 58, y: 76}
   - name: BombShot_Frame_6
     originalName: 
-    pivot: {x: 0.73684216, y: 0.3902439}
+    pivot: {x: 0.73684216, y: 0.516129}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 176
+      x: 85
+      y: 76
       width: 19
-      height: 41
+      height: 31
     spriteID: 2450d2c08026fe842b0a2919bed69d7e
     spriteBone: []
     spriteOutline: []
@@ -258,7 +258,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 176}
+    uvTransform: {x: 85, y: 76}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -271,26 +271,26 @@ ScriptedImporter:
     - name: BombShot_Frame_0
       frameIndex: 0
       cellRect:
-        x: 12
+        x: 29
         y: 16
-        width: 44
-        height: 35
+        width: 27
+        height: 29
       spriteId: bc4f4cac170536d4b9b9538a4413cdad
     - name: BombShot_Frame_1
       frameIndex: 1
       cellRect:
-        x: 16
+        x: 29
         y: 16
-        width: 40
-        height: 34
+        width: 27
+        height: 29
       spriteId: b6a2727f00ba6374bb706842e188946e
     - name: BombShot_Frame_2
       frameIndex: 2
       cellRect:
-        x: 21
+        x: 23
         y: 16
-        width: 57
-        height: 30
+        width: 36
+        height: 27
       spriteId: 183a8c23ccc5fae4faa8139913fe7285
     - name: BombShot_Frame_3
       frameIndex: 3
@@ -298,7 +298,7 @@ ScriptedImporter:
         x: 26
         y: 16
         width: 19
-        height: 37
+        height: 31
       spriteId: d361e990141729e438481ab5b42f8ee5
     - name: BombShot_Frame_4
       frameIndex: 4
@@ -306,7 +306,7 @@ ScriptedImporter:
         x: 25
         y: 16
         width: 19
-        height: 40
+        height: 31
       spriteId: 942c12a6fa0be7b4ca3d1857c7a485e9
     - name: BombShot_Frame_5
       frameIndex: 5
@@ -314,7 +314,7 @@ ScriptedImporter:
         x: 25
         y: 16
         width: 19
-        height: 41
+        height: 31
       spriteId: 0ea9a32f73c13444ebb1830e82adcce6
     - name: BombShot_Frame_6
       frameIndex: 6
@@ -322,7 +322,7 @@ ScriptedImporter:
         x: 26
         y: 16
         width: 19
-        height: 41
+        height: 31
       spriteId: 2450d2c08026fe842b0a2919bed69d7e
     linkedCells: []
     parentIndex: -1

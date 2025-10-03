@@ -253,13 +253,17 @@ public class PlayerInputs : MonoBehaviour
         && !player.onLedge
         && !player.onHit
         && !player.isGrabing
+        && !player.isWallSliding
         && !player.isGriding
         && !player.isDashing
         && !player.onWater
         && PlayerEquipment.instance.equipments.Contains(Equipments.Knife);
 
         if (callback.started && canShot)
+        {
+            player.isAttacking = true;
             player.playerAnimations.AnimKnife();
+        }
     }
 
     public void LeftTrigger(InputAction.CallbackContext callback)
@@ -279,7 +283,26 @@ public class PlayerInputs : MonoBehaviour
 
     public void RightShoulder(InputAction.CallbackContext callback)
     {
-        //bomb
+        bool canShot = !player.isDead
+        && player.canMove
+        && !player.isAttacking
+        && !player.isHealing
+        && Time.timeScale != 0
+        && !player.onClimbing
+        && !player.onLedge
+        && !player.onHit
+        && !player.isGrabing
+        && !player.isWallSliding
+        && !player.isGriding
+        && !player.isDashing
+        && !player.onWater
+        && PlayerEquipment.instance.equipments.Contains(Equipments.Bomb);
+
+        if (callback.started && canShot)
+        {
+            player.isAttacking = true;
+            player.playerAnimations.AnimBomb();
+        }
     }
 
     public void RightTrigger(InputAction.CallbackContext callback)

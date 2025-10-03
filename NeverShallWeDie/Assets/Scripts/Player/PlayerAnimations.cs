@@ -109,6 +109,11 @@ public class PlayerAnimations : MonoBehaviour
         animator.Play("Player_Knife");
     }
 
+    public void AnimBomb()
+    {
+        animator.Play("Player_Bomb");
+    }
+
     public void OnDead()
     {
         animator.SetTrigger("Dead");
