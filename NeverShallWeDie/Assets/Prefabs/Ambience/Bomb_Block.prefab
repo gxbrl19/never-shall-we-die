@@ -82,7 +82,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3, y: 3.9375}
+  m_Size: {x: 0.9375, y: 0.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -123,9 +123,9 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.53174603}
-    oldSize: {x: 3, y: 3.9375}
-    newSize: {x: 3, y: 3.9375}
+    pivot: {x: 0.48888892, y: 0.52459013}
+    oldSize: {x: 2.8125, y: 3.8125}
+    newSize: {x: 0.9375, y: 0.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  bombBlockPieces: {fileID: 75775502877950392, guid: 9da063e3f09b1844fa9bf0d9c97eb475, type: 3}
   destroySound:
     Guid:
       Data1: -939359448
@@ -250,12 +251,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.70036316, y: 1.0780983}
-      - {x: 0.527998, y: 1.7559929}
+    - - {x: 0.76669884, y: 1.2771072}
+      - {x: 0.32069778, y: 1.8057442}
       - {x: -0.13215065, y: 1.7200279}
       - {x: -0.35526276, y: 1.477066}
-      - {x: -1.0017633, y: 0.17587638}
-      - {x: -1.4927897, y: -2.0469131}
-      - {x: 1.4805847, y: -2.0956075}
-      - {x: 1.2128553, y: -0.14919662}
+      - {x: -1.1261425, y: -0.28847528}
+      - {x: -1.1279416, y: -1.9805756}
+      - {x: 1.1489054, y: -1.9961011}
+      - {x: 1.2957745, y: -0.3564949}
   m_UseDelaunayMesh: 0
