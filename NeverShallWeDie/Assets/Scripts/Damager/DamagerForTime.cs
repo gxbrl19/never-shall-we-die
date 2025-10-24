@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DamagerForTime : MonoBehaviour
 {
-    int attackPower = 4;
+    int attackPower = 1;
     PlayerHealth playerHealth;
 
     private void Awake()

@@ -77,12 +77,12 @@ public class Player : MonoBehaviour
 
         //adiciona as habilidades para usar na demo ( TODO: comentar essa parte quando for a versão final)
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Katana)) { PlayerEquipment.instance.equipments.Add(Equipments.Katana); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Lantern)) { PlayerEquipment.instance.equipments.Add(Equipments.Lantern); }
         if (!PlayerEquipment.instance.equipments.Contains(Equipments.Knife)) { PlayerEquipment.instance.equipments.Add(Equipments.Knife); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Bomb)) { PlayerEquipment.instance.equipments.Add(Equipments.Bomb); }
-        //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Bomb)) { PlayerEquipment.instance.equipments.Add(Equipments.Bomb); }
+        if (!PlayerEquipment.instance.equipments.Contains(Equipments.Parachute)) { PlayerEquipment.instance.equipments.Add(Equipments.Parachute); }
         //if (!PlayerEquipment.instance.equipments.Contains(Equipments.Compass)) { PlayerEquipment.instance.equipments.Add(Equipments.Compass); }
-        //if (!PlayerSkills.instance.skills.Contains(Skills.Dash)) { PlayerSkills.instance.skills.Add(Skills.Dash); }
+        if (!PlayerSkills.instance.skills.Contains(Skills.Dash)) { PlayerSkills.instance.skills.Add(Skills.Dash); }
         if (!PlayerSkills.instance.skills.Contains(Skills.Slide)) { PlayerSkills.instance.skills.Add(Skills.Slide); }
         //if (!PlayerSkills.instance.skills.Contains(Skills.Impulse)) { PlayerSkills.instance.skills.Add(Skills.Impulse); }
     }
