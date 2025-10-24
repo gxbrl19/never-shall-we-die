@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         }
 
         _flags = new int[16];
-        _bombBlock = new int[3]; //TODO: colocar o numero de Bomb Blocks que estarão no game
+        _bombBlock = new int[4]; //TODO: colocar o numero de Bomb Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
         _chests = new int[50]; //TODO: colocar o numero de Chests que estarão no game
         _ancientStones = new int[9];
