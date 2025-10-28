@@ -121,12 +121,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void FillBottle(int healing)
-    {
-        currentHealing += healing;
-        SetHealing(currentHealing);
-    }
-
     public void Healing()
     {
         currentHealth += 2;
