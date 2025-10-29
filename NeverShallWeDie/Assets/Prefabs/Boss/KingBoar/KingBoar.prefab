@@ -191,7 +191,6 @@ MonoBehaviour:
   bossId: 0
   bossDoor: {fileID: 0}
   bossDoor2: {fileID: 0}
-  wantedBoss: {fileID: 0}
   hit:
     Guid:
       Data1: 1856260652
@@ -206,6 +205,7 @@ MonoBehaviour:
       Data3: -1046982240
       Data4: -140031906
     Path: event:/sfx/gameplay/SFX_COMBAT_king_boar_death_01
+  wantedBoss: {fileID: 0}
   attackCooldown: 2
   minionCooldown: 25
   meleeRange: 4
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 4
+  attackPower: 2
   hitEffect: {fileID: 0}
 --- !u!1 &9205237825482595479
 GameObject:
@@ -526,5 +526,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 3
+  attackPower: 2
   hitEffect: {fileID: 0}

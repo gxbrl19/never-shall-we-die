@@ -189,7 +189,6 @@ MonoBehaviour:
   bossId: 0
   bossDoor: {fileID: 0}
   bossDoor2: {fileID: 0}
-  wantedBoss: {fileID: 0}
   hit:
     Guid:
       Data1: 1194926906
@@ -204,16 +203,18 @@ MonoBehaviour:
       Data3: -370825569
       Data4: -1116620846
     Path: event:/generic/combat/enemy_death
-  attackCooldown: 3
-  attackTimer: 0
-  leftLimit: {fileID: 0}
-  rightLimit: {fileID: 0}
+  wantedBoss: {fileID: 0}
   rayPrefab: {fileID: 6140459629503585936, guid: 4579a51af7acf354ca016ed2ffab99cb, type: 3}
   rayPoints: []
   octopusPrefab: {fileID: 7945657189933873773, guid: b0940ab2cf96ccb4d9a8e6ec6e3e0cf0, type: 3}
   spellPrefab: {fileID: 7945657189933873773, guid: 055ba3871614dd54486431e5a1746048, type: 3}
   leftCastPoint: {fileID: 0}
   rightCastPoint: {fileID: 0}
+  diveDuration: 1.5
+  diveHeight: 5
+  groundY: 0
+  leftLimit: -15
+  rightLimit: 15
 --- !u!1 &4144519659990359942
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,5 +382,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821c16b42b63ee4897f5846708edbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 3
+  attackPower: 2
   hitEffect: {fileID: 0}
