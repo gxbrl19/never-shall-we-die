@@ -2,131 +2,81 @@ using UnityEngine;
 
 public class AssassinNavy : EnemyBase
 {
-    private enum State { Idle, Chase, Attack, Dashback }
-
-    [Header("Comportamento")]
-    private float attackDistance = 2f;
-    private float moveSpeed = 5f;
-    private float attackCooldown = 1f;
-    private float dashBackForce = 6f;
-    private float dashBackDuration = .3f;
-    private float direction;
-
-    [Header("Detecção")]
-    [SerializeField] private Vector2 detectionSize = new Vector2(10f, 2f);
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private LayerMask playerLayer;
-
-    private Transform player;
+    private enum State { Idle, Chase, Attack }
     private State currentState = State.Idle;
-    private float cooldownTimer = 0f;
-    private float dashTimer = 0f;
-    private bool isGrounded = false;
-    private bool isOnCooldown = false;
+
+    [Header("Stats")]
+    [SerializeField] private LayerMask playerLayer;
+    private float attackRange = 2f;
+    private float distanceToPlayer;
+    private float moveSpeed = 6.5f;
+    private float attackCooldown = .2f;
+    private float attackCounter = 0f;
+    private float direction;
     private bool playerDetected = false;
+    private Vector2 detectionBoxSize = new Vector2(10f, 4.5f);
+    //private bool disabled = false;
+    Transform player;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     private void Update()
     {
-        if (isDead || isHurt || player == null) return;
+        if (isDead || player == null) return;
 
-        animator.SetBool("Dashback", currentState == State.Dashback);
         animator.SetBool("Run", currentState == State.Chase);
 
-        float distance = Vector2.Distance(transform.position, player.position);
+        attackCounter += .2f * Time.deltaTime;
 
-        //detectando o player
-        playerDetected = IsPlayerInDetectionBox();
+        DetectPlayer();
+
+        distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         switch (currentState)
         {
             case State.Idle:
-                if (playerDetected)
+                if (playerDetected && attackCounter > attackCooldown)
                     ChangeState(State.Chase);
+
                 break;
 
             case State.Chase:
-                if (distance <= attackDistance)
-                {
-                    if (!isOnCooldown)
-                    {
-                        ChangeState(State.Attack);
-                        animator.SetTrigger("Attack");
-                        isOnCooldown = true;
-                        cooldownTimer = attackCooldown;
-                        rb.velocity = Vector2.zero;
-                    }
-                    else
-                    {
-                        ChangeState(State.Idle);
-                    }
-                }
-
-                if (!playerDetected)
+                if (playerDetected && distanceToPlayer <= attackRange)
+                    ChangeState(State.Attack);
+                else if (playerDetected && distanceToPlayer > attackRange)
+                    MoveTowardsPlayer();
+                else
                     ChangeState(State.Idle);
+
                 break;
 
-            case State.Dashback:
-                dashTimer -= Time.deltaTime;
-                if (dashTimer <= 0f)
+            case State.Attack:
+                if (attackCounter > attackCooldown)
                 {
-                    ChangeState(State.Chase);
+                    attackCounter = 0f;
+                    rb.velocity = Vector2.zero;
+                    animator.SetTrigger("Attack");
                 }
-                break;
-        }
 
-        // Cooldown de ataque
-        if (isOnCooldown)
-        {
-            cooldownTimer -= Time.deltaTime;
-            if (cooldownTimer <= 0f)
-                isOnCooldown = false;
+                break;
         }
 
         FlipTowardsPlayer();
     }
 
-    private void FixedUpdate()
+    private void MoveTowardsPlayer()
     {
-        if (isDead || player == null) return;
-
-        RaycastHit2D detectGround = Raycast(Vector2.down, 1.1f, groundLayer);
-        isGrounded = detectGround;
-
-        if (currentState == State.Chase && isGrounded && playerDetected)
-        {
-            Vector2 direction = (player.position - transform.position).normalized;
-            Vector2 targetPosition = rb.position + direction * moveSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(targetPosition);
-        }
-    }
-
-    private void ChangeState(State newState)
-    {
-        if (currentState == State.Dashback && newState != State.Idle && newState != State.Chase)
-            return; // Evita interromper o dash
-
-        currentState = newState;
-    }
-
-    public void FinishAttack() //chamado na animação de Attack
-    {
-        if (isDead) return;
-
-        ChangeState(State.Dashback);
-        dashTimer = dashBackDuration;
-
-        float dashDir = transform.localScale.x > 0 ? -1 : 1;
-        rb.velocity = new Vector2(dashDir * dashBackForce, rb.velocity.y);
+        Vector2 direction = (player.position - transform.position).normalized;
+        rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
     }
 
     private void FlipTowardsPlayer()
     {
-        if (player == null) return;
+        if (player == null || currentState == State.Attack) return;
 
         float dir = player.position.x - transform.position.x;
         if (dir != 0)
@@ -135,28 +85,30 @@ public class AssassinNavy : EnemyBase
         transform.localScale = new Vector3(direction, 1, 1);
     }
 
-    private bool IsPlayerInDetectionBox()
+    private void ChangeState(State newState)
     {
-        Vector2 origin = transform.position;
-        Vector2 center = origin + new Vector2(detectionSize.x / (2f * direction), 0f); //desloca o centro para a direita, metade do tamanho
-        Collider2D hit = Physics2D.OverlapBox(center, detectionSize, 0, playerLayer);
-        return hit != null;
+        if (currentState == newState) return;
+
+        currentState = newState;
     }
 
-    RaycastHit2D Raycast(Vector2 rayDirection, float length, LayerMask layerMask) //raio para detectar o chão
+    private void DetectPlayer()
     {
-        Vector2 point = new Vector2(transform.position.x, transform.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(point, rayDirection, length, layerMask);
-        Color color = hit ? Color.red : Color.green;
-        Debug.DrawRay(point, rayDirection * length, color);
-        return hit;
+        Vector2 origin = transform.position;
+        Vector2 center = origin + new Vector2(detectionBoxSize.x / (2f * direction), 0f); //desloca o centro para a direita (2f seria a metade)
+        playerDetected = Physics2D.OverlapBox(center, detectionBoxSize, 0, playerLayer);
+    }
+
+    public void FinishAttack() //chamado também na animação Attack
+    {
+        ChangeState(State.Idle);
     }
 
     private void OnDrawGizmosSelected()
     {
         Vector2 origin = transform.position;
-        Vector2 center = origin + new Vector2(detectionSize.x / (2f * direction), 0f); //desloca o centro para a direita, metade do tamanho
+        Vector2 center = origin + new Vector2(detectionBoxSize.x / (2f * direction), 0f); //desloca o centro para a direita, metade do tamanho
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(center, detectionSize);
+        Gizmos.DrawWireCube(center, detectionBoxSize);
     }
 }

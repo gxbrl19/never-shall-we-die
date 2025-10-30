@@ -233,7 +233,8 @@ public class PlayerInputs : MonoBehaviour
         && !player.onLedge
         && !player.isGrabing
         && !player.isDashing
-        && player.playerHealth.currentHealing > 0;
+        && player.playerHealth.currentHealing > 0
+        && player.playerHealth.currentHealth < player.playerHealth.maxHealth;
 
         if (callback.started && canHealing)
         {

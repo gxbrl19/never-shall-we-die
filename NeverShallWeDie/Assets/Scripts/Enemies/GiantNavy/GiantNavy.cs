@@ -7,65 +7,65 @@ public class GiantNavy : EnemyBase
 
     [Header("Stats")]
     [SerializeField] private LayerMask playerLayer;
-    private float attackRange = 2.5f;
-    private float moveSpeed = 2.5f;
-    private float attackCooldown = 1.8f;
+    private float attackRange = 2f;
+    private float distanceToPlayer;
+    private float moveSpeed = 4f;
+    private float attackCooldown = .5f;
+    private float attackCounter = 0f;
     private float direction;
-    private float lastAttackTime;
     private bool playerDetected = false;
-    Vector2 detectionBoxSize = new Vector2(10f, 1f);
+    private Vector2 detectionBoxSize = new Vector2(10f, 4.5f);
+    //private bool disabled = false;
     Transform player;
 
     private void Start()
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        //TODO: desabilitar inimigos ao derrotar o Boss que controla a mente deles
+        //if (boss derrotado)
+        //disabled = true;
     }
 
     private void Update()
     {
-        if (isDead || isHurt || player == null) return;
+        if (isDead || player == null) return;
 
         animator.SetBool("Run", currentState == State.Chase);
 
+        attackCounter += .2f * Time.deltaTime;
+
         DetectPlayer();
 
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         switch (currentState)
         {
             case State.Idle:
-                if (playerDetected)
+                if (playerDetected && attackCounter > attackCooldown)
                     ChangeState(State.Chase);
+
                 break;
 
             case State.Chase:
-                if (distanceToPlayer <= attackRange)
-                {
-                    rb.velocity = Vector2.zero;
+                if (playerDetected && distanceToPlayer <= attackRange)
                     ChangeState(State.Attack);
-                }
-                else
-                {
+                else if (playerDetected && distanceToPlayer > attackRange)
                     MoveTowardsPlayer();
-                }
-
-                if (!playerDetected)
+                else
                     ChangeState(State.Idle);
 
                 break;
 
             case State.Attack:
-                if (Time.time >= lastAttackTime + attackCooldown)
+                if (attackCounter > attackCooldown)
                 {
+                    attackCounter = 0f;
+                    rb.velocity = Vector2.zero;
                     animator.SetTrigger("Attack");
-                    lastAttackTime = Time.time;
                 }
 
-                if (distanceToPlayer > attackRange + 1f)
-                {
-                    ChangeState(State.Chase);
-                }
                 break;
         }
 
@@ -99,16 +99,13 @@ public class GiantNavy : EnemyBase
     private void DetectPlayer()
     {
         Vector2 origin = transform.position;
-        Vector2 center = origin + new Vector2(detectionBoxSize.x / (3f * transform.localScale.x), 0f); //desloca o centro para a direita (2f seria a metade)
+        Vector2 center = origin + new Vector2(detectionBoxSize.x / (2f * direction), 0f); //desloca o centro para a direita (2f seria a metade)
         playerDetected = Physics2D.OverlapBox(center, detectionBoxSize, 0, playerLayer);
     }
 
-    public void FinishAttack() //chamado na animação Attack
+    public void FinishAttack() //chamado também na animação Attack
     {
-        if (playerDetected)
-            currentState = State.Chase;
-        else
-            currentState = State.Idle;
+        ChangeState(State.Idle);
     }
 
     private void OnDrawGizmosSelected()
