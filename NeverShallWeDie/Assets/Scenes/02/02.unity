@@ -15806,16 +15806,16 @@ MonoBehaviour:
   _skills: 
   _inventory: 
   _currentHP: 0
-  _currentMP: 0
+  _currentHL: 0
   _hpMax: 25
-  _mpMax: 15
+  _hlMax: 0
   _gold: 0
   _katanaLevel: 0
   _flags: 
   _barrels: 
   _chests: 
   _ancientStones: 
-  _airCutblock: 
+  _bombBlock: 
   _barriersLever: 
   _secret: 
   _secretDrawbridge: 0
@@ -40956,7 +40956,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.712223
+      value: 18.704689
       objectReference: {fileID: 0}
     - target: {fileID: 270366039213392132, guid: c7c9bd0e86e137546a428961c12e014b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -41019,10 +41019,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1899247522610456770, guid: 774f7d125c99b794a8e19bf645e7fd50, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -2.358879
-      objectReference: {fileID: 0}
     - target: {fileID: 4491579791724944907, guid: 774f7d125c99b794a8e19bf645e7fd50, type: 3}
       propertyPath: m_Name
       value: UIPlayer

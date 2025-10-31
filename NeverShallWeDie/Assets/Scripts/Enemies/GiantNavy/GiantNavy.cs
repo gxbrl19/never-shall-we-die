@@ -22,10 +22,6 @@ public class GiantNavy : EnemyBase
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
-
-        //TODO: desabilitar inimigos ao derrotar o Boss que controla a mente deles
-        //if (boss derrotado)
-        //disabled = true;
     }
 
     private void Update()
