@@ -18,8 +18,12 @@ public class DamagerForTime : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") || other.gameObject.layer == LayerMask.NameToLayer("Invencible"))
         {
             playerHealth.TakeDamage(attackPower);
-            UIManager.instance.FadeIn();
-            Invoke("GetNextScene", .5f);
+
+            if (playerHealth.currentHealth > 0)
+            {
+                UIManager.instance.FadeIn();
+                Invoke("GetNextScene", .5f);
+            }
         }
     }
 
