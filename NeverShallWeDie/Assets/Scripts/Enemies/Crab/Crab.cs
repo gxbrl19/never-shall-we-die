@@ -8,6 +8,7 @@ public class Crab : EnemyBase
     [Header("Stats")]
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] Transform[] patrolPoints;
+    [SerializeField] GameObject damagerObj;
     private float attackRange = 2.1f;
     private float distanceToPlayer;
     private float moveSpeed = 5f;
@@ -16,21 +17,21 @@ public class Crab : EnemyBase
     private float direction;
     int patrolIndex = 0;
     Transform player;
-    //private bool disabled = false;
+    private bool disabled = false;
 
     private void Start()
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
-        //TODO: desabilitar inimigos ao derrotar o Boss que controla a mente deles
-        //if (boss derrotado)
-        //disabled = true;
+        disabled = GameManager.instance._bosses[2] == 1; //desabilista o inimigos da água se o boss 2 estiver morto
+        damagerObj.SetActive(!disabled);
+        gameObject.layer = disabled ? LayerMask.NameToLayer("Default") : LayerMask.NameToLayer("Enemy");
     }
 
     private void Update()
     {
-        if (isDead || player == null) return;
+        if (isDead || player == null || disabled) return;
 
         animator.SetBool("Run", currentState == State.Patrol);
 

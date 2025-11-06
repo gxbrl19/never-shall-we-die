@@ -8,6 +8,7 @@ public class ShrimpShooter : EnemyBase
 
     [Header("Stats")]
     [SerializeField] private LayerMask playerLayer;
+    [SerializeField] GameObject damagerObj;
     private float attackRange = 11f;
     private float distanceToPlayer;
     private float moveSpeed = 8f;
@@ -16,6 +17,7 @@ public class ShrimpShooter : EnemyBase
     private float direction;
     private bool playerDetected = false;
     private Vector2 detectionBoxSize = new Vector2(20f, 4.5f);
+    private bool disabled = false;
 
     [Header("Referências")]
     [SerializeField] GameObject projectilePrefab;
@@ -31,14 +33,14 @@ public class ShrimpShooter : EnemyBase
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
-        //TODO: desabilitar inimigos ao derrotar o Boss que controla a mente deles
-        //if (boss derrotado)
-        //disabled = true;
+        disabled = GameManager.instance._bosses[2] == 1; //desabilista o inimigos da água se o boss 2 estiver morto
+        damagerObj.SetActive(!disabled);
+        gameObject.layer = disabled ? LayerMask.NameToLayer("Default") : LayerMask.NameToLayer("Enemy");
     }
 
     private void Update()
     {
-        if (isDead || player == null) return;
+        if (isDead || player == null || disabled) return;
 
         animator.SetBool("Run", currentState == State.Chase);
 

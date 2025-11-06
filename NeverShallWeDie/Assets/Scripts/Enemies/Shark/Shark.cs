@@ -8,14 +8,20 @@ public class Shark : EnemyBase
 
     [Header("Comportamento")]
     [SerializeField] Transform[] patrolPoints;
+    [SerializeField] GameObject damagerObj;
 
     float patrolSpeed = 5f;
     int patrolIndex = 0;
     State currentState;
+    private bool disabled = false;
 
     private void Start()
     {
         currentState = State.Patrol;
+
+        disabled = GameManager.instance._bosses[2] == 1; //desabilista o inimigos da água se o boss 2 estiver morto
+        damagerObj.SetActive(!disabled);
+        gameObject.layer = disabled ? LayerMask.NameToLayer("Default") : LayerMask.NameToLayer("Enemy");
     }
 
     private void Update()
