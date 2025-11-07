@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Katana : MonoBehaviour
 {
-    [SerializeField] private EquipmentObject equipmentObject;
     private Damager damager;
 
     private void Awake()

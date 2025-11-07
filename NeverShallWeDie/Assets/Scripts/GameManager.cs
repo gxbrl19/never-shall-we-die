@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     public int _hpMax;
     public int _hlMax;
     public int _gold; //total de gold coletado
-    [HideInInspector] public int _katanaLevel;
+    public int _katanaLevel;
 
     [HideInInspector] public int[] _flags; //Flags já liberadas
     [HideInInspector] public int[] _barrels; //Barrels já destruídos
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     //Enemy
     [HideInInspector] public int[] _bestiary;
-    public int[] _bosses;
+    [HideInInspector] public int[] _bosses;
 
     //Prefabs
     [HideInInspector] public float _masterVol;
