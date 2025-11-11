@@ -14,8 +14,8 @@ public class PlayerData
     public List<Equipments> equipments;
     public List<Skills> skills;
     public List<Items> items;
-    public int hpMax;
-    public int hlMax;
+    public float hpMax;
+    public float hlMax;
     public int gold;
     public int katanaLevel;
     public int[] flags;
@@ -58,10 +58,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<Equipments> _equipments;
     [HideInInspector] public List<Skills> _skills;
     [HideInInspector] public List<Items> _inventory;
-    [HideInInspector] public int _currentHP; //usado para manter o HP na troca de cena
-    [HideInInspector] public int _currentHL; //usado para manter o HL na troca de cena
-    public int _hpMax;
-    public int _hlMax;
+    [HideInInspector] public float _currentHP; //usado para manter o HP na troca de cena
+    [HideInInspector] public float _currentHL; //usado para manter o HL na troca de cena
+    public float _hpMax;
+    public float _hlMax;
     public int _gold; //total de gold coletado
     public int _katanaLevel;
 

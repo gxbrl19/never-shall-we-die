@@ -21,12 +21,10 @@ public class UIManager : MonoBehaviour
     public int _sceneID;
 
     [BoxGroup("HUD")][Header("Health")][SerializeField] private Image[] _healths;
-    [BoxGroup("HUD")][SerializeField] private Sprite _fullHealth;
-    [BoxGroup("HUD")][SerializeField] private Sprite _emptyHealth;
+    [BoxGroup("HUD")][Header("Healing")][SerializeField] private Image[] _healthContainer;
 
     [BoxGroup("HUD")][Header("Healing")][SerializeField] private Image[] _healings;
-    [BoxGroup("HUD")][SerializeField] private Sprite _fullHealing;
-    [BoxGroup("HUD")][SerializeField] private Sprite _emptyHealing;
+    [BoxGroup("HUD")][Header("Healing")][SerializeField] private Image[] _healingContainer;
 
     [BoxGroup("HUD")][Header("Stamina")][SerializeField] private Image _staminaBar;
 
@@ -181,14 +179,14 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < _healths.Length; i++)
         {
-            _healths[i].sprite = i < currentHealth ? _fullHealth : _emptyHealth;
-            _healths[i].enabled = i < maxHealth ? true : false;
+            _healths[i].fillAmount = currentHealth > (i + 1) ? 1 : (currentHealth - i) / 1;
+            _healthContainer[i].enabled = i < maxHealth ? true : false;
         }
 
         for (int i = 0; i < _healings.Length; i++)
         {
-            _healings[i].sprite = i < currentHealing ? _fullHealing : _emptyHealing;
-            _healings[i].enabled = i < maxHealing ? true : false;
+            _healings[i].fillAmount = currentHealing > (i + 1) ? 1 : (currentHealing - i) / 1;
+            _healingContainer[i].enabled = i < maxHealing ? true : false;
         }
 
         _staminaBar.fillAmount = playerMovement.currentStamina / playerMovement.maxStamina;

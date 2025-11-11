@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Vida e Mana")]
-    [HideInInspector] public int maxHealth;
-    public int currentHealth;
-    [HideInInspector] public int maxHealing;
-    public int currentHealing;
+    [HideInInspector] public float maxHealth;
+    public float currentHealth;
+    [HideInInspector] public float maxHealing;
+    public float currentHealing;
 
     [Header("Partículas & Visual")]
     public GameObject _particleHit;
@@ -121,6 +121,16 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void FillBottle(float healing)
+    {
+        currentHealing += healing;
+
+        if (currentHealing >= maxHealing)
+            currentHealing = maxHealing;
+
+        SetHealing(currentHealing);
+    }
+
     public void Healing()
     {
         currentHealth += 2;
@@ -132,13 +142,6 @@ public class PlayerHealth : MonoBehaviour
         SetHealing(currentHealing);
     }
 
-    public void ManaConsumption(int consume)
-    {
-        currentHealing -= consume;
-        SetHealing(currentHealing);
-    }
-
-
     public void ResetHealth()
     {
         currentHealth = maxHealth;
@@ -147,22 +150,22 @@ public class PlayerHealth : MonoBehaviour
 
     #region GameManager (Persistência entre cenas)
 
-    public void SetHealth(int health)
+    public void SetHealth(float health)
     {
         GameManager.instance._currentHP = health;
     }
 
-    public int GetHealth()
+    public float GetHealth()
     {
         return GameManager.instance._currentHP != 0 ? GameManager.instance._currentHP : maxHealth;
     }
 
-    public void SetHealing(int mana)
+    public void SetHealing(float mana)
     {
         GameManager.instance._currentHL = mana;
     }
 
-    public int GetHealing()
+    public float GetHealing()
     {
         return GameManager.instance._currentHL != 0 ? GameManager.instance._currentHL : 0;
     }
