@@ -10,6 +10,7 @@ public class PlayerInputs : MonoBehaviour
     private float _horizontal_r;
     private float _vertical_r;
     private bool _pressJump;
+    private bool _holdJump;
     private bool _pressDash;
     private bool _pressAttack;
     private bool _pressHealing;
@@ -50,6 +51,12 @@ public class PlayerInputs : MonoBehaviour
     {
         get { return _pressJump; }
         set { _pressJump = value; }
+    }
+
+    public bool holdJump
+    {
+        get { return _holdJump; }
+        set { _holdJump = value; }
     }
 
     public bool pressAttack
@@ -172,17 +179,33 @@ public class PlayerInputs : MonoBehaviour
 
     public void ButtonSouth(InputAction.CallbackContext callback)
     {
-        if (player.isDead || player.canMove == false || Time.timeScale == 0f) return;
+        if (player.isDead || player.canMove == false || Time.timeScale == 0f)
+            return;
 
         bool jump = player.isGrounded || player.onLedge || player.isWallSliding || player.onClimbing || player.onWater || player.isGriding;
         bool impulse = !player.isGrounded && !player.onLedge && !player.isWallSliding && !player.onClimbing && !player.onWater && !player.isGriding && PlayerSkills.instance.skills.Contains(Skills.Impulse);
 
+        // Quando o botão é iniciado
         if (callback.started)
+        {
             _pressJump = jump || impulse;
+            _holdJump = true;
+        }
 
+        // Enquanto o botão é mantido
+        if (callback.performed)
+        {
+            _holdJump = true;
+        }
+
+        // Quando o botão é solto
         if (callback.canceled)
+        {
             _pressJump = false;
+            _holdJump = false;
+        }
     }
+
 
     public void ButtonNorth(InputAction.CallbackContext _callback)
     {

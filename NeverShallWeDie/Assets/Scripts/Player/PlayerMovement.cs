@@ -16,9 +16,13 @@ public class PlayerMovement : MonoBehaviour
     private float groundDistance = 0.3f;
 
     //Jump
-    private float jumpForce = 30f;
+    private float jumpForce = 27f;
     private float ghostDuration = 0.15f;
     private float ghostTime;
+    private float holdJumpForce = 0.4f; // força extra enquanto segura
+    private float maxHoldTime = 0.2f;   // tempo máximo de sustentação
+
+    private float jumpHoldTimer;
 
     //Stamina
     [HideInInspector] public float maxStamina = 5f;
@@ -289,10 +293,47 @@ public class PlayerMovement : MonoBehaviour
     {
         if (player.isAttacking) return;
 
-        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) && !player.isImpulsing && !player.onWater && player.playerInputs.vertical > -0.3f && !player.onClimbing && !player.isHealing && !player.isDashing) //pulo comum
+        // --- IMPULSE (DOUBLE JUMP) - tratar antes do pulo normal ---
+        if (player.playerInputs.pressJump
+            && !player.isGrounded
+            && !player.onLedge
+            && !player.isImpulsing
+            && !player.onClimbing
+            && !player.onWater
+            && !player.isGriding
+            && !player.isHealing
+            && !player.isDashing
+            && PlayerSkills.instance.skills.Contains(Skills.Impulse))
+        {
+            // executa o impulso (pulo duplo)
+            player.playerInputs.pressJump = false;
+            player.isImpulsing = true;
+            player.isJumping = true;
+
+            // garante impulso consistente
+            player.rb.velocity = new Vector2(player.rb.velocity.x, 0f);
+            player.rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+            player.playerAudio.PlayJump();
+            return; // opcional: evita que outras checagens interfiram neste frame
+        }
+
+        // --- PULO NORMAL ---
+        if (player.playerInputs.pressJump && (player.isGrounded || ghostTime > Time.time) &&
+            !player.isImpulsing && !player.onWater && player.playerInputs.vertical > -0.3f &&
+            !player.onClimbing && !player.isHealing && !player.isDashing)
         {
             player.playerInputs.pressJump = false;
             player.isJumping = true;
+            jumpHoldTimer = 0f;
+
+            // garante que o pulo não seja anulado pela gravidade no mesmo frame
+            player.isGrounded = false;
+
+            // zera a velocidade vertical e aplica o impulso
+            Vector2 vel = player.rb.velocity;
+            vel.y = 0f;
+            player.rb.velocity = vel;
 
             player.rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
@@ -300,17 +341,33 @@ public class PlayerMovement : MonoBehaviour
             player.playerAudio.PlayJump();
             CreateDust(1);
         }
-        else if (player.playerInputs.pressJump && !player.isGrounded && !player.onLedge && !player.isImpulsing && !player.onWater && !player.onClimbing && !player.isHealing && !player.isDashing && player.onBridge) //impulse
+
+        // --- PULO VARIÁVEL (enquanto segura o botão) ---
+        if (player.isJumping && player.playerInputs.holdJump && jumpHoldTimer < maxHoldTime)
+        {
+            jumpHoldTimer += Time.fixedDeltaTime;
+            player.rb.AddForce(Vector2.up * holdJumpForce, ForceMode2D.Force);
+        }
+
+        // --- CORTE DO PULO (soltou o botão) ---
+        if (!player.playerInputs.holdJump && player.isJumping && player.rb.velocity.y > 0f)
+        {
+            player.rb.velocity = new Vector2(player.rb.velocity.x, player.rb.velocity.y * 0.5f);
+            player.isJumping = false;
+        }
+
+        // --- RESTANTE DOS CASOS (água, ponte, wall jump, ledge, climb/grid) ---
+        else if (player.playerInputs.pressJump && !player.isGrounded && !player.onLedge && !player.isImpulsing &&
+                 !player.onWater && !player.onClimbing && !player.isHealing && !player.isDashing && player.onBridge)
         {
             player.playerInputs.pressJump = false;
             player.isImpulsing = true;
 
             player.rb.velocity = Vector2.zero;
             player.rb.AddForce(new Vector2(player.rb.velocity.x, jumpForce - 5f), ForceMode2D.Impulse);
-
             player.playerAudio.PlayJump();
         }
-        else if (player.playerInputs.pressJump && player.onWater && canSwin && !player.onLedge) // na água
+        else if (player.playerInputs.pressJump && player.onWater && canSwin && !player.onLedge)
         {
             if (player.playerCollision.outWaterHit && player.playerCollision.inWaterHit)
             {
@@ -330,31 +387,30 @@ public class PlayerMovement : MonoBehaviour
                 canSwin = false;
             }
         }
-        else if (player.playerInputs.pressJump && player.playerInputs.vertical <= -0.3f && player.onBridge && !player.onClimbing) // pulo por baixo da plataforma
+        else if (player.playerInputs.pressJump && player.playerInputs.vertical <= -0.3f && player.onBridge && !player.onClimbing)
         {
             PassThroughBridge();
         }
-        else if (player.playerInputs.pressJump && player.isWallSliding) // pulo da parede
+        else if (player.playerInputs.pressJump && player.isWallSliding)
         {
             player.playerInputs.pressJump = false;
             player.isJumping = true;
 
-            wallJumpLockCounter = wallJumpLockTime; //bloqueia input horizontal por um tempo
-
+            wallJumpLockCounter = wallJumpLockTime;
             player.rb.velocity = Vector2.zero;
             player.rb.velocity = new Vector2(wallJumpForce.x * -wallDirection, wallJumpForce.y);
 
             player.isWallSliding = false;
             Flip();
         }
-        else if (player.playerInputs.pressJump && player.onLedge && !player.isGrounded && !player.onWater) // pulo da beirada
+        else if (player.playerInputs.pressJump && player.onLedge && !player.isGrounded && !player.onWater)
         {
             player.isJumping = true;
             player.playerInputs.pressJump = false;
-
             player.rb.AddForce(new Vector2((jumpForce + 2f) * -playerDirection, jumpForce - 5f), ForceMode2D.Impulse);
         }
-        else if (player.playerInputs.pressJump && (player.onClimbing || player.isGriding) && (TouchingVine() || TouchingLadder() || TouchingGrid())) //pulo da LADDER ou VINE
+        else if (player.playerInputs.pressJump && (player.onClimbing || player.isGriding) &&
+                 (TouchingVine() || TouchingLadder() || TouchingGrid()))
         {
             player.playerInputs.pressJump = false;
             player.isJumping = true;
@@ -367,7 +423,12 @@ public class PlayerMovement : MonoBehaviour
             player.rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             player.playerAudio.PlayJump();
         }
+
+        // --- Resetar flag ao tocar o chão ---
+        if (player.isGrounded && player.rb.velocity.y <= 0f)
+            player.isJumping = false;
     }
+
     #endregion
 
     void BlockMove() //verifica se está no ar e tira a gravidade do player
