@@ -61,6 +61,8 @@ public class KingBoar : BossBase
 
         if (isDead) return;
 
+        if (player.isDead) { ChangeState(State.Idle); }
+
         HandleState();
 
         if (currentState != State.Intro)
@@ -72,7 +74,7 @@ public class KingBoar : BossBase
 
     private void HandleState()
     {
-        if (playerPosition == null || isDead || player.isDead) return;
+        if (playerPosition == null || isDead) return;
 
         distanceToPlayer = Vector2.Distance(transform.position, playerPosition.position);
 

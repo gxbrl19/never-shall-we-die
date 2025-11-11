@@ -97,12 +97,14 @@ public class Voidcaller : BossBase
         base.Update();
         if (isDead) return;
 
+        if (player.isDead) { ChangeState(State.Idle); }
+
         HandleState();
     }
 
     private void HandleState()
     {
-        if (playerPosition == null || isDead || player.isDead) return;
+        if (playerPosition == null || isDead) return;
 
         switch (currentState)
         {

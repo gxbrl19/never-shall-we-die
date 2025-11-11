@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     public int _gold; //total de gold coletado
     public int _katanaLevel;
 
-    [HideInInspector] public int[] _flags; //Flags já liberadas
+    public int[] _flags; //Flags já liberadas
     [HideInInspector] public int[] _barrels; //Barrels já destruídos
     [HideInInspector] public int[] _chests; //Chests já liberadas
     public int[] _ancientStones; //Daily já liberadas
@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        _flags = new int[16];
+        _flags = new int[18];
         _bombBlock = new int[4]; //TODO: colocar o numero de Bomb Blocks que estarão no game
         _barrels = new int[50]; //TODO: colocar o numero de Barrels que estarão no game
         _chests = new int[50]; //TODO: colocar o numero de Chests que estarão no game
