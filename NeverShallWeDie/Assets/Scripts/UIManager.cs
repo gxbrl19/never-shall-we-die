@@ -35,10 +35,6 @@ public class UIManager : MonoBehaviour
     [BoxGroup("HUD")][Header("FeedbackItem")][SerializeField] private Image _imgFeedbackItem;
     [BoxGroup("HUD")][SerializeField] private Animator _feedbackItemAnimator;
 
-    [BoxGroup("HUD")][Header("Skills")][SerializeField] private Image _fire;
-    [BoxGroup("HUD")][SerializeField] private Image _air;
-    [BoxGroup("HUD")][SerializeField] private Image _water;
-
     [BoxGroup("HUD")][Header("Save")][SerializeField] private GameObject _skullSave;
 
     [BoxGroup("HUD")][Header("Boss")] public GameObject _pnlBoss;
