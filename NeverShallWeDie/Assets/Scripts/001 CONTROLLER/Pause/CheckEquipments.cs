@@ -9,18 +9,19 @@ public class CheckEquipments : MonoBehaviour
 {
     [SerializeField] int _buttonID;
     [SerializeField] EquipmentObject _equipment;
-    [SerializeField] Image _imageButton;
+    Image _imageButton;
+    Text _textButton;
+
+    private void Awake()
+    {
+        _imageButton = transform.Find("image_equip").GetComponent<Image>();
+        _textButton = transform.Find("txt_equip").GetComponent<Text>();
+    }
 
     private void Update()
     {
-        if (PlayerEquipment.instance.equipments.Contains(_equipment.equipment))
-        {
-            _imageButton.enabled = true;
-        }
-        else
-        {
-            _imageButton.enabled = false;
-        }
+        _imageButton.enabled = PlayerEquipment.instance.equipments.Contains(_equipment.equipment);
+        if (_textButton != null) { _textButton.enabled = PlayerEquipment.instance.equipments.Contains(_equipment.equipment); }
     }
 
     public void Check()

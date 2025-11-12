@@ -1419,7 +1419,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonID: 2
   _skill: {fileID: 11400000, guid: 7293e9697917dc543b9c73c33aecd551, type: 2}
-  _imageButton: {fileID: 9057519565079432127}
 --- !u!1 &209961870331818966
 GameObject:
   m_ObjectHideFlags: 0
@@ -4027,7 +4026,7 @@ GameObject:
   - component: {fileID: 239847585934734012}
   - component: {fileID: 7507012459301644187}
   m_Layer: 5
-  m_Name: img_water
+  m_Name: image_gems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4583,7 +4582,7 @@ GameObject:
   - component: {fileID: 5007881077028173229}
   - component: {fileID: 8738348488589632761}
   m_Layer: 5
-  m_Name: txt_impulse
+  m_Name: txt_skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4798,7 +4797,7 @@ GameObject:
   - component: {fileID: 2614208281338646288}
   - component: {fileID: 4786510134643527386}
   m_Layer: 5
-  m_Name: img_air
+  m_Name: image_gems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5866,7 +5865,7 @@ GameObject:
   - component: {fileID: 3179259817498175415}
   - component: {fileID: 1227535336066823798}
   m_Layer: 5
-  m_Name: txt_parachute
+  m_Name: txt_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7187,7 +7186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonID: 5
   _equipment: {fileID: 11400000, guid: cfb1ce4a696329c45982c181e58f1bfe, type: 2}
-  _imageButton: {fileID: 1523403005890840674}
 --- !u!1 &1408210095764797691
 GameObject:
   m_ObjectHideFlags: 0
@@ -8004,7 +8002,7 @@ GameObject:
   - component: {fileID: 4186188964246700060}
   - component: {fileID: 7880353582149722878}
   m_Layer: 5
-  m_Name: txt_bomb
+  m_Name: txt_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8807,7 +8805,7 @@ GameObject:
   - component: {fileID: 4430980505380224733}
   - component: {fileID: 5570151237355901146}
   m_Layer: 5
-  m_Name: img_bomb
+  m_Name: image_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9216,7 +9214,7 @@ GameObject:
   - component: {fileID: 2311353343221931124}
   - component: {fileID: 5845927062127298426}
   m_Layer: 5
-  m_Name: txt_air
+  m_Name: txt_gems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9295,7 +9293,7 @@ GameObject:
   - component: {fileID: 703842508181697877}
   - component: {fileID: 5743954982838297080}
   m_Layer: 5
-  m_Name: img_slide
+  m_Name: image_skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10096,7 +10094,7 @@ GameObject:
   - component: {fileID: 4978585435972832435}
   - component: {fileID: 1329953588275485661}
   - component: {fileID: 174407518483474396}
-  - component: {fileID: 8976129613055772271}
+  - component: {fileID: 2525694275991688729}
   m_Layer: 5
   m_Name: btn_water
   m_TagString: Untagged
@@ -10207,18 +10205,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8976129613055772271}
-        m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
-        m_MethodName: Check
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 9067393720111904276}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ClickSound
@@ -10260,7 +10246,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &8976129613055772271
+--- !u!114 &2525694275991688729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10269,12 +10255,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2036541383890097241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e366ba9bbee44224b8554786c630f312, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b14f7ff24d0764f8f1358ba4810e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonID: 2
-  _skill: {fileID: 11400000, guid: 7293e9697917dc543b9c73c33aecd551, type: 2}
-  _imageButton: {fileID: 7507012459301644187}
+  _itemObject: {fileID: 11400000, guid: 1f66ce286c455544fa640f921f1439af, type: 2}
 --- !u!1 &2075513343201961638
 GameObject:
   m_ObjectHideFlags: 0
@@ -11702,7 +11686,7 @@ GameObject:
   - component: {fileID: 1450561188407278517}
   - component: {fileID: 4720313568445766964}
   m_Layer: 5
-  m_Name: txt_katana
+  m_Name: txt_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14079,7 +14063,7 @@ GameObject:
   - component: {fileID: 6424700039706462911}
   - component: {fileID: 4396593581465405996}
   m_Layer: 5
-  m_Name: txt_parachute
+  m_Name: txt_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14351,7 +14335,7 @@ GameObject:
   - component: {fileID: 5678004150517058109}
   - component: {fileID: 3792768624495701338}
   m_Layer: 5
-  m_Name: txt_lantern
+  m_Name: txt_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15217,7 +15201,7 @@ GameObject:
   - component: {fileID: 6177133627606759107}
   - component: {fileID: 9057519565079432127}
   m_Layer: 5
-  m_Name: img_dash
+  m_Name: image_skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18602,7 +18586,7 @@ GameObject:
   - component: {fileID: 3420502949854299334}
   - component: {fileID: 1523403005890840674}
   m_Layer: 5
-  m_Name: img_compass
+  m_Name: image_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19817,7 +19801,7 @@ GameObject:
   - component: {fileID: 635287546990804708}
   - component: {fileID: 3097412961853473436}
   m_Layer: 5
-  m_Name: img_knife
+  m_Name: image_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21464,7 +21448,7 @@ GameObject:
   - component: {fileID: 1942964543501483052}
   - component: {fileID: 6338643524839843252}
   m_Layer: 5
-  m_Name: txt_slide
+  m_Name: txt_skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21706,7 +21690,7 @@ GameObject:
   - component: {fileID: 1029153958501323379}
   - component: {fileID: 6075975012802023005}
   m_Layer: 5
-  m_Name: txt_dash
+  m_Name: txt_skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24687,7 +24671,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonID: 4
   _equipment: {fileID: 11400000, guid: 01b87324027cba74eb2343ae0342021e, type: 2}
-  _imageButton: {fileID: 6680987981711128312}
 --- !u!1 &5029486209637716963
 GameObject:
   m_ObjectHideFlags: 0
@@ -27074,7 +27057,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonID: 2
   _equipment: {fileID: 11400000, guid: 3e2558235cbf13743ae85847d632831c, type: 2}
-  _imageButton: {fileID: 3097412961853473436}
 --- !u!1 &5435820387400775268
 GameObject:
   m_ObjectHideFlags: 0
@@ -28132,7 +28114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonID: 0
   _equipment: {fileID: 11400000, guid: 6e33cd5ac01cf094db50eddc774140b1, type: 2}
-  _imageButton: {fileID: 805901365462102833}
 --- !u!1 &5676490695205360486
 GameObject:
   m_ObjectHideFlags: 0
@@ -28649,7 +28630,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonID: 1
   _equipment: {fileID: 11400000, guid: 2407d75a9bdf58248b12cc09221dab2b, type: 2}
-  _imageButton: {fileID: 36022617596067937}
 --- !u!1 &5755544318836399976
 GameObject:
   m_ObjectHideFlags: 0
@@ -28817,7 +28797,7 @@ GameObject:
   - component: {fileID: 7058037859482481295}
   - component: {fileID: 6264133537730350593}
   - component: {fileID: 9118757560170459812}
-  - component: {fileID: 3274411085263421281}
+  - component: {fileID: 3133985397971986236}
   m_Layer: 5
   m_Name: btn_air
   m_TagString: Untagged
@@ -28928,18 +28908,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3274411085263421281}
-        m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
-        m_MethodName: Check
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 9067393720111904276}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ClickSound
@@ -28981,7 +28949,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &3274411085263421281
+--- !u!114 &3133985397971986236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -28990,12 +28958,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5823513589525617928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e366ba9bbee44224b8554786c630f312, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b14f7ff24d0764f8f1358ba4810e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonID: 1
-  _skill: {fileID: 11400000, guid: 07241abc99153d04c973d00e5e19a50d, type: 2}
-  _imageButton: {fileID: 4786510134643527386}
+  _itemObject: {fileID: 11400000, guid: f3d4cb41184630043be0ea7dde26c310, type: 2}
 --- !u!1 &5969183715789958975
 GameObject:
   m_ObjectHideFlags: 0
@@ -29506,7 +29472,7 @@ GameObject:
   - component: {fileID: 2375884347368407667}
   - component: {fileID: 7029544987166746037}
   m_Layer: 5
-  m_Name: img_impulse
+  m_Name: image_skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36104,7 +36070,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonID: 3
   _equipment: {fileID: 11400000, guid: d8100e9754659e8409f58e023cd6fade, type: 2}
-  _imageButton: {fileID: 5570151237355901146}
 --- !u!1 &7465926569659731663
 GameObject:
   m_ObjectHideFlags: 0
@@ -37419,7 +37384,7 @@ GameObject:
   - component: {fileID: 4245910194118765157}
   - component: {fileID: 5256051340248237906}
   m_Layer: 5
-  m_Name: img_fire
+  m_Name: image_gems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38094,7 +38059,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonID: 1
   _skill: {fileID: 11400000, guid: 07241abc99153d04c973d00e5e19a50d, type: 2}
-  _imageButton: {fileID: 5743954982838297080}
 --- !u!1 &7931573687069677963
 GameObject:
   m_ObjectHideFlags: 0
@@ -39471,7 +39435,7 @@ GameObject:
   - component: {fileID: 4664289468757445451}
   - component: {fileID: 8900917309445514524}
   m_Layer: 5
-  m_Name: txt_water
+  m_Name: txt_gems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39953,7 +39917,7 @@ GameObject:
   - component: {fileID: 1217829009371865861}
   - component: {fileID: 6040080733172664795}
   - component: {fileID: 8609444759553814277}
-  - component: {fileID: 1797710811286678625}
+  - component: {fileID: 1930370245652070081}
   m_Layer: 5
   m_Name: btn_fire
   m_TagString: Untagged
@@ -40064,18 +40028,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1797710811286678625}
-        m_TargetAssemblyTypeName: CheckSkills, Assembly-CSharp
-        m_MethodName: Check
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 9067393720111904276}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ClickSound
@@ -40117,7 +40069,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1797710811286678625
+--- !u!114 &1930370245652070081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40126,12 +40078,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8292346237174070040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e366ba9bbee44224b8554786c630f312, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b14f7ff24d0764f8f1358ba4810e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonID: 0
-  _skill: {fileID: 11400000, guid: 409a520db95af2846b051ea1a0d70e4e, type: 2}
-  _imageButton: {fileID: 5256051340248237906}
+  _itemObject: {fileID: 11400000, guid: 3faabff0487d0444197bce0b9defe936, type: 2}
 --- !u!1 &8300529045519743365
 GameObject:
   m_ObjectHideFlags: 0
@@ -40394,7 +40344,7 @@ GameObject:
   - component: {fileID: 448954594817879574}
   - component: {fileID: 36022617596067937}
   m_Layer: 5
-  m_Name: img_lantern
+  m_Name: image_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40695,7 +40645,7 @@ GameObject:
   - component: {fileID: 3157367090781019435}
   - component: {fileID: 7352496981132747488}
   m_Layer: 5
-  m_Name: txt_knife
+  m_Name: txt_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41638,7 +41588,7 @@ GameObject:
   - component: {fileID: 6960724371050860611}
   - component: {fileID: 805901365462102833}
   m_Layer: 5
-  m_Name: img_katana
+  m_Name: image_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42417,7 +42367,7 @@ GameObject:
   - component: {fileID: 1317104365511715061}
   - component: {fileID: 6680987981711128312}
   m_Layer: 5
-  m_Name: img_parachute
+  m_Name: image_equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44003,7 +43953,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonID: 0
   _skill: {fileID: 11400000, guid: 409a520db95af2846b051ea1a0d70e4e, type: 2}
-  _imageButton: {fileID: 7029544987166746037}
 --- !u!1 &9062883502854540623
 GameObject:
   m_ObjectHideFlags: 0
@@ -44365,7 +44314,7 @@ GameObject:
   - component: {fileID: 7450409494084441526}
   - component: {fileID: 1279992669533502563}
   m_Layer: 5
-  m_Name: txt_fire
+  m_Name: txt_gems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

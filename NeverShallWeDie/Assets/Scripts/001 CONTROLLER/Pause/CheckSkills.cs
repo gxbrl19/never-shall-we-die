@@ -7,26 +7,19 @@ public class CheckSkills : MonoBehaviour
 {
     [SerializeField] int _buttonID;
     [SerializeField] SkillObject _skill;
-    [SerializeField] Image _imageButton;
+    Image _imageButton;
     Text _textButton;
 
     private void Awake()
     {
-        _textButton = GetComponentInChildren<Text>();
+        _imageButton = transform.Find("image_skill").GetComponent<Image>();
+        _textButton = transform.Find("txt_skill").GetComponent<Text>();
     }
 
     private void Update()
     {
-        if (PlayerSkills.instance.skills.Contains(_skill.skill))
-        {
-            _imageButton.enabled = true;
-            if (_textButton != null) { _textButton.enabled = true; }
-        }
-        else
-        {
-            _imageButton.enabled = false;
-            if (_textButton != null) { _textButton.enabled = false; }
-        }
+        _imageButton.enabled = PlayerSkills.instance.skills.Contains(_skill.skill);
+        if (_textButton != null) { _textButton.enabled = PlayerSkills.instance.skills.Contains(_skill.skill); }
     }
 
     public void Check()
