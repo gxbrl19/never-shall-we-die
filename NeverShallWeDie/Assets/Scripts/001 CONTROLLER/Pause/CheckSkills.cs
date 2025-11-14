@@ -8,18 +8,15 @@ public class CheckSkills : MonoBehaviour
     [SerializeField] int _buttonID;
     [SerializeField] SkillObject _skill;
     Image _imageButton;
-    Text _textButton;
 
     private void Awake()
     {
         _imageButton = transform.Find("image_skill").GetComponent<Image>();
-        _textButton = transform.Find("txt_skill").GetComponent<Text>();
     }
 
     private void Update()
     {
         _imageButton.enabled = PlayerSkills.instance.skills.Contains(_skill.skill);
-        if (_textButton != null) { _textButton.enabled = PlayerSkills.instance.skills.Contains(_skill.skill); }
     }
 
     public void Check()
