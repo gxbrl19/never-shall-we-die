@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class CheckSkills : MonoBehaviour
 {
@@ -19,20 +21,28 @@ public class CheckSkills : MonoBehaviour
         _imageButton.enabled = PlayerSkills.instance.skills.Contains(_skill.skill);
     }
 
-    public void Check()
+    public void Check() //chamado no evento do botão
     {
-        if (PlayerSkills.instance.skills.Contains(_skill.skill))
-        {
-            UIManager.instance.OpenSkillDescription();
-            UIManager.instance._buttonSkillID = _buttonID;
-            UIManager.instance._pnlSkills.SetActive(true);
-            UIManager.instance._nameSkill.text = _skill.nameSkill;
-            UIManager.instance._keyboardSkill.sprite = _skill.keyboardButton;
-            UIManager.instance._gamepadSkill.sprite = _skill.gamepadButton;
-        }
-        else
-        {
-            UIManager.instance._pnlSkills.SetActive(false);
-        }
+        UIManager.instance._descriptions.SetActive(false);
+        UIManager.instance._btnKeyboard.gameObject.SetActive(false);
+        UIManager.instance._btnGamepad.gameObject.SetActive(false);
+
+        if (!PlayerSkills.instance.skills.Contains(_skill.skill))
+            return;
+
+        UIManager.instance._descriptions.SetActive(true);
+        //localization
+        var currentLocale = LocalizationSettings.SelectedLocale;
+        if (currentLocale.Identifier.Code == "pt-BR") { UIManager.instance._txtDescription.text = _skill.ptDescription; }
+        else if (currentLocale.Identifier.Code == "en") { UIManager.instance._txtDescription.text = _skill.engDescription; }
+        //localization
+
+        if (_skill.gamepadButton == null || _skill.keyboardButton == null)
+            return;
+
+        UIManager.instance._btnKeyboard.gameObject.SetActive(true);
+        UIManager.instance._btnGamepad.gameObject.SetActive(true);
+        UIManager.instance._btnKeyboard.sprite = _skill.keyboardButton;
+        UIManager.instance._btnGamepad.sprite = _skill.gamepadButton;
     }
 }

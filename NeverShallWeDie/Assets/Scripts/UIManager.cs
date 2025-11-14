@@ -48,23 +48,10 @@ public class UIManager : MonoBehaviour
     [BoxGroup("Pause Switch")] public GameObject[] _buttons;
 
     [Header("Equipments")]
-    [BoxGroup("Pause Switch")] public GameObject[] _buttonsEquipment;
-    [HideInInspector] public int _buttonEquipID;
     [BoxGroup("Pause Switch")] public GameObject _descriptions;
     [BoxGroup("Pause Switch")] public Image _btnKeyboard;
     [BoxGroup("Pause Switch")] public Image _btnGamepad;
     [BoxGroup("Pause Switch")] public Text _txtDescription;
-    [BoxGroup("Pause Switch")] public GameObject _buttonBackEquipDescription;
-
-    [Header("Skills")]
-    [BoxGroup("Pause Switch")] public GameObject[] _buttonsSkill;
-    [HideInInspector] public int _buttonSkillID;
-    [BoxGroup("Pause Switch")] public GameObject _pnlSkills;
-    [BoxGroup("Pause Switch")] public Text _nameSkill;
-    [BoxGroup("Pause Switch")] public Image _imgParchment;
-    [BoxGroup("Pause Switch")] public Image _gamepadSkill;
-    [BoxGroup("Pause Switch")] public Image _keyboardSkill;
-    [BoxGroup("Pause Switch")] public GameObject _buttonBackSkillDescription;
 
     [Header("Items")]
     [BoxGroup("Pause Switch")] public GameObject _pnlItems;
@@ -260,7 +247,6 @@ public class UIManager : MonoBehaviour
     void MovePanel()
     {
         _descriptions.SetActive(false);
-        _pnlSkills.SetActive(false);
         _pnlCrew.SetActive(false);
         _pnlConfig.SetActive(false);
         _pnlItems.SetActive(false);
@@ -288,30 +274,6 @@ public class UIManager : MonoBehaviour
                 _pnlConfig.SetActive(true);
             }
         }
-    }
-
-    public void OpenEquipDescription()
-    {
-        _descriptions.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(_buttonBackEquipDescription);
-    }
-
-    public void ReturnToEquipDescription()
-    {
-        _descriptions.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(_buttonsEquipment[_buttonEquipID]);
-    }
-
-    public void OpenSkillDescription()
-    {
-        _pnlSkills.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(_buttonBackSkillDescription);
-    }
-
-    public void ReturnToSkillDescription()
-    {
-        _pnlSkills.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(_buttonsSkill[_buttonSkillID]);
     }
 
     public void OpenCrewDescription(string name, Sprite draw)

@@ -38,4 +38,12 @@ public class SkillObject : ScriptableObject
     [BoxGroup("Info")]
     [VerticalGroup("Info/Stats")]
     [LabelWidth(100)] public Sprite gamepadButton;
+
+    [BoxGroup("Info")]
+    [VerticalGroup("Info/Stats")]
+    [TextArea(5, 10)] public string ptDescription;
+
+    [BoxGroup("Info")]
+    [VerticalGroup("Info/Stats")]
+    [TextArea(5, 10)] public string engDescription;
 }

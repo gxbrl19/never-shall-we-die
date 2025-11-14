@@ -21,31 +21,28 @@ public class CheckEquipments : MonoBehaviour
         _imageButton.enabled = PlayerEquipment.instance.equipments.Contains(_equipment.equipment);
     }
 
-    public void Check()
+    public void Check() //chamado no evento do botão
     {
-        if (PlayerEquipment.instance.equipments.Contains(_equipment.equipment))
-        {
-            UIManager.instance.OpenEquipDescription();
-            UIManager.instance._buttonEquipID = _buttonID;
+        UIManager.instance._descriptions.SetActive(false);
+        UIManager.instance._btnKeyboard.gameObject.SetActive(false);
+        UIManager.instance._btnGamepad.gameObject.SetActive(false);
 
-            if (_equipment.gamepadButton != null && _equipment.keyboardButton != null)
-            {
-                UIManager.instance._btnKeyboard.gameObject.SetActive(true);
-                UIManager.instance._btnGamepad.gameObject.SetActive(true);
-                UIManager.instance._btnKeyboard.sprite = _equipment.keyboardButton;
-                UIManager.instance._btnGamepad.sprite = _equipment.gamepadButton;
-            }
-            else
-            {
-                UIManager.instance._btnKeyboard.gameObject.SetActive(false);
-                UIManager.instance._btnGamepad.gameObject.SetActive(false);
-            }
+        if (!PlayerEquipment.instance.equipments.Contains(_equipment.equipment))
+            return;
 
-            //localization
-            var currentLocale = LocalizationSettings.SelectedLocale;
-            if (currentLocale.Identifier.Code == "pt-BR") { UIManager.instance._txtDescription.text = _equipment.ptDescription; }
-            else if (currentLocale.Identifier.Code == "en") { UIManager.instance._txtDescription.text = _equipment.engDescription; }
-            //localization
-        }
+        UIManager.instance._descriptions.SetActive(true);
+        //localization
+        var currentLocale = LocalizationSettings.SelectedLocale;
+        if (currentLocale.Identifier.Code == "pt-BR") { UIManager.instance._txtDescription.text = _equipment.ptDescription; }
+        else if (currentLocale.Identifier.Code == "en") { UIManager.instance._txtDescription.text = _equipment.engDescription; }
+        //localization
+
+        if (_equipment.gamepadButton == null || _equipment.keyboardButton == null)
+            return;
+
+        UIManager.instance._btnKeyboard.gameObject.SetActive(true);
+        UIManager.instance._btnGamepad.gameObject.SetActive(true);
+        UIManager.instance._btnKeyboard.sprite = _equipment.keyboardButton;
+        UIManager.instance._btnGamepad.sprite = _equipment.gamepadButton;
     }
 }

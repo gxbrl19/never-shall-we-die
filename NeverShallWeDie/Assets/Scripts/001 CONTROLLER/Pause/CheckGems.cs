@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class CheckGems : MonoBehaviour
 {
@@ -22,17 +24,23 @@ public class CheckGems : MonoBehaviour
 
     private void Update()
     {
-        if (_item == Items.WaterGem)
-        {
-            _imageButton.enabled = InventorySystem.instance.items.Contains(Items.WaterGem);
-        }
-        else if (_item == Items.FireGem)
-        {
-            _imageButton.enabled = InventorySystem.instance.items.Contains(Items.FireGem);
-        }
-        else if (_item == Items.AirGem)
-        {
-            _imageButton.enabled = InventorySystem.instance.items.Contains(Items.AirGem);
-        }
+        _imageButton.enabled = InventorySystem.instance.items.Contains(_itemObject.item);
+    }
+
+    public void Check() //chamado no evento do botão
+    {
+        UIManager.instance._descriptions.SetActive(false);
+        UIManager.instance._btnKeyboard.gameObject.SetActive(false);
+        UIManager.instance._btnGamepad.gameObject.SetActive(false);
+
+        if (!InventorySystem.instance.items.Contains(_itemObject.item))
+            return;
+
+        UIManager.instance._descriptions.SetActive(true);
+        //localization
+        var currentLocale = LocalizationSettings.SelectedLocale;
+        if (currentLocale.Identifier.Code == "pt-BR") { UIManager.instance._txtDescription.text = _itemObject.ptDescription; }
+        else if (currentLocale.Identifier.Code == "en") { UIManager.instance._txtDescription.text = _itemObject.engDescription; }
+        //localization
     }
 }

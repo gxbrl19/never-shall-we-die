@@ -10,4 +10,6 @@ public class ItemObject : ScriptableObject
     public Items item;
     public string ptName;
     public string engName;
+    public string ptDescription;
+    public string engDescription;
 }
