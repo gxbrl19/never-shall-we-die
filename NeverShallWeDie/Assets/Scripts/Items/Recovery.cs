@@ -45,8 +45,7 @@ public class Recovery : MonoBehaviour
             _sprite.enabled = false;
             _collider.enabled = false;
             _player.CreateRecoveryEffect();
-            _health.currentHealing += 1;
-            _health.SetHealing(_health.currentHealing);
+            _health.FillHealing(1);
         }
     }
 }

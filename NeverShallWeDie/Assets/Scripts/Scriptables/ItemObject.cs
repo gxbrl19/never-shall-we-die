@@ -10,6 +10,6 @@ public class ItemObject : ScriptableObject
     public Items item;
     public string ptName;
     public string engName;
-    public string ptDescription;
-    public string engDescription;
+    [TextArea(5, 10)] public string ptDescription;
+    [TextArea(5, 10)] public string engDescription;
 }

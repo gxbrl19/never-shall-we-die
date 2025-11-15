@@ -91,7 +91,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
         Instantiate(deathEffect, transform.position, Quaternion.identity);
 
         PlayerHealth playerHealth = FindFirstObjectByType<PlayerHealth>();
-        playerHealth.FillBottle(.3f);
+        playerHealth.FillHealing(.25f);
     }
 
     private void TryDropItem()

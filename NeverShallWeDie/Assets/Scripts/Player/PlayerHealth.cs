@@ -121,7 +121,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void FillBottle(float healing)
+    public void FillHealing(float healing)
     {
         currentHealing += healing;
 
